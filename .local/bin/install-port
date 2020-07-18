@@ -1,0 +1,162 @@
+#!/usr/local/bin/perl -w
+
+use strict;
+use warnings;
+use Term::ANSIColor;
+
+sub upgrdports {
+	my $upgrd_nbr_cmd = "/usr/sbin/pkg version -l '<' | /usr/bin/wc -l | /usr/bin/awk '{print \$1}'";
+	if (system('/usr/local/bin/dash',
+			   '-c',
+			   '/usr/local/bin/sudo /usr/sbin/pkg update') != 0) {
+		exit;
+	}
+	if (system('/usr/local/bin/dash',
+			   '-c',
+			   '/usr/local/bin/sudo /usr/sbin/portsnap fetch update') != 0) {
+		exit;
+	}
+	print colored("\nPorts to be updated: ", 'bold');
+	my $upgrd_nbr = `$upgrd_nbr_cmd`;
+	chomp $upgrd_nbr;
+	print colored($upgrd_nbr, 'bold green') . "\n";
+	open(PS, "/usr/sbin/pkg version -l '<' |");
+	while (<PS>) {
+		print
+	}
+	close(PS);
+	if ($upgrd_nbr == 0) {
+		print colored("No ports to be updated.\n", 'bold green');
+		exit;
+	}
+	print colored("\nUpgrade these ports? ", 'bold yellow')
+		. colored('[', 'bold green')
+		. colored('y', 'bold red')
+		. colored('/N', 'bold green')
+		. colored("]\n", 'bold green')
+		. colored("~> ", 'yellow');
+	my $answer = <STDIN>;
+	chomp $answer;
+	if ($answer ne "y" && $answer ne "Y") {
+		print "Exiting...\n";
+		exit;
+	}
+	system('/usr/local/bin/dash',
+		   '-c',
+		   '/usr/local/bin/notify-send "Initiating upgrade" "Ports upgrade has started\nTotal: ' . $upgrd_nbr . ' to be updated" >/dev/null 2>&1');
+	if ($upgrd_nbr == 1) {
+		system('/usr/local/bin/dash',
+			   '-c',
+			   '/usr/local/bin/espeak "Initiating ' . $upgrd_nbr . ' port upgrade" & >/dev/null 2>&1');
+	}
+	else {
+		system('/usr/local/bin/dash',
+			   '-c',
+			   '/usr/local/bin/espeak "Initiating ' . $upgrd_nbr . ' ports upgrade" & >/dev/null 2>&1');
+	}
+	if (system('/usr/local/bin/dash',
+			   '-c',
+			   '/usr/local/bin/sudo /usr/local/sbin/portupgrade -a') == 0) {
+		my $failed_nbr = `$upgrd_nbr_cmd`;
+		chomp $failed_nbr;
+		my $diff_nbr = $upgrd_nbr - $failed_nbr;
+		system('/usr/local/bin/dash',
+			   '-c',
+			   '/usr/local/bin/notify-send "Upgrade complete!" "Ports upgrade installed successfully\nTotal: ' . $diff_nbr . ' installed" >/dev/null 2>&1');
+		system('/usr/local/bin/dash',
+			   '-c',
+			   '/usr/local/bin/espeak "Success: $upnbr ports upgrade installed successfully" & >/dev/null 2>&1');
+	}
+	else {
+		my $failed_nbr = `$upgrd_nbr_cmd`;
+		substr($failed_nbr, -1) = "";
+		my $diff_nbr = $upgrd_nbr - $failed_nbr;
+		system('/usr/local/bin/dash',
+			   '-c',
+			   '/usr/local/bin/notify-send -u critical -t 10000 "Upgrade failed!" "Some ports failed to compile\nTotal: ' . $diff_nbr . ' installed - ' . $failed_nbr . ' failed" >/dev/null 2>&1');
+		system('/usr/local/bin/dash',
+			   '-c',
+			   '/usr/local/bin/espeak "Failure: not all ports were upgraded - $diffnbr installed - $failednbr failed" & >/dev/null 2>&1');
+	}
+	exit;
+}
+
+sub configport {
+	my $port = $_[0];
+	my $port_basename = $_[1];
+	if (system('/usr/local/bin/dash',
+			   '-c',
+			   '/usr/local/bin/sudo /usr/bin/make config-recursive && /usr/local/bin/sudo /usr/bin/make config-recursive && /usr/local/bin/sudo /usr/bin/make config-recursive') == 0) {
+		system('/usr/local/bin/dash',
+			   '-c',
+			   '/usr/local/bin/notify-send "Configuration success!" "Ports config - ' . $port . ' - configured successfully" >/dev/null 2>&1');
+		system('/usr/local/bin/dash',
+			   '-c',
+			   '/usr/local/bin/espeak "Success: ' . $port_basename . ' configured successfully. Initiating compilation." & >/dev/null 2>&1');
+	}
+	else {
+		system('/usr/local/bin/dash',
+			   '-c',
+			   '/usr/local/bin/notify-send -u critical -t 10000 "Configuration failure!" "Ports config - ' . $port . ' - failed to configure" >/dev/null 2>&1');
+		system('/usr/local/bin/dash',
+			   '-c',
+			   '/usr/local/bin/espeak "Failure: failed to configure ' . $port_basename . '" & >/dev/null 2>&1');
+	}
+}
+
+sub installport {
+	my $port = $_[0];
+	my $port_basename = $_[1];
+	if (system('/usr/local/bin/dash',
+			   '-c',
+			   '/usr/local/bin/sudo /usr/bin/make install clean') == 0) {
+		system('/usr/local/bin/dash',
+			   '-c',
+			   '/usr/local/bin/notify-send "Compilation success!" "Ports - ' . $port . ' - installed successfully" >/dev/null 2>&1');
+		system('/usr/local/bin/dash',
+			   '-c',
+			   '/usr/local/bin/espeak "Success: ' . $port_basename . ' installed successfully" & >/dev/null 2>&1');
+	}
+	else {
+		system('/usr/local/bin/dash',
+			   '-c',
+			   '/usr/local/bin/notify-send -u critical -t 10000 "Compilation failure!" "Ports - ' . $port . ' - failed to install" >/dev/null 2>&1');
+		system('/usr/local/bin/dash',
+			   '-c',
+			   '/usr/local/bin/espeak "Failure: failed to install ' . $port_basename . '" & >/dev/null 2>&1');
+	}
+}
+
+sub main {
+	my $argc = $#ARGV + 1;
+	if ($argc == 0) {
+		print colored("Failed!\n", 'bold red')
+			. "No port or argument specified\n";
+		exit 1;
+	}
+	my $port = $ARGV[0];
+	if ($ARGV[0] eq "upgrade") {
+		upgrdports();
+	}
+	elsif (-d "/usr/ports/" . $port) {
+		my $port_basename = `echo $ARGV[0] | awk -F '/' '{print \$2}'`;
+		print colored("Port ", 'bold')
+			. colored($port, 'bold green')
+			. colored(" found\n", 'bold');
+		chdir "/usr/ports/" . $port;
+		configport($port, $port_basename);
+		installport($port, $port_basename);
+	}
+	else {
+		print colored("Failed!\n", 'bold red')
+			. "Port "
+			. colored($port, 'bold yellow')
+			. " doesn't exist in "
+			. colored("/usr/ports/\n", 'bold');
+	}
+	exit;
+}
+
+main();
+
+__END__

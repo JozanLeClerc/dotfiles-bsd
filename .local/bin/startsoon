@@ -1,0 +1,11 @@
+#!/usr/local/bin/dash
+
+while true; do
+	clear
+	# figlet -s -L -c -t "Stream starting soon" | lolcat -F 0.05
+	figlet -s -L -c -t "Stream starting soon"
+	echo
+	# figlet -s -L -c -t "take a coffee!" | lolcat -F 0.05
+	figlet -s -L -c -t "take a coffee!"
+	sleep 5
+done

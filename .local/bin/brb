@@ -1,0 +1,11 @@
+#!/usr/local/bin/dash
+
+while true; do
+	clear
+	# figlet -s -L -c -t "Joe will be right back" | lolcat -F 0.05
+	figlet -s -L -c -t "Joe will be right back"
+	echo
+	# figlet -s -L -c -t "please stand by..." | lolcat -F 0.05
+	figlet -s -L -c -t "please stand by..."
+	sleep 5
+done
