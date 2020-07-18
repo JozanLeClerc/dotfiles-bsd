@@ -2,6 +2,18 @@
 #+PROPERTY: header-args :tangle .zshrc
 
 * Table of contents :toc:
+- [[#about][About]]
+- [[#colors-for-the-prompt][Colors for the prompt]]
+- [[#history][History]]
+  - [[#basic][Basic]]
+  - [[#share-history-between-multiple-zsh-instances][Share history between multiple zsh instances]]
+- [[#stuff-for-completions][Stuff for completions]]
+- [[#key-bindings][Key bindings]]
+  - [[#basic-keybindings][Basic keybindings]]
+  - [[#command-line-edit][Command line edit]]
+- [[#sourcing-alias-and-plugins-files][sourcing alias and plugins files]]
+- [[#prompt-variables][Prompt variables]]
+
 * About
 This is my ~.zshrc~ org file. Pretty straight forward.
 
