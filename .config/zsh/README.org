@@ -1,5 +1,5 @@
 #+TITLE: ZSH configuration
-#+PROPERTY:
+#+PROPERTY: header-args :tangle .zshrc
 
 This is my ~.zshrc~ org file. Pretty straight forward.
 
