@@ -5,6 +5,7 @@
 # see also sh(1), environ(7).
 #
 
+
 # These are normally set through /etc/login.conf.  You may override them here
 # if wanted.
 # PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:$HOME/bin; export PATH
