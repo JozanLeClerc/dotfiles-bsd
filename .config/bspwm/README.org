@@ -20,8 +20,7 @@
 
 * The shebang
   For my ~bspwm~ init script, I am using the ~dash~ shell for it is very fast.
-  #+BEGIN_SRC shell
-#!/usr/local/bin/dash
+  #+BEGIN_SRC shell :shebang #!/usr/local/bin/dash 
   #+END_SRC
 
 * Restart safety
