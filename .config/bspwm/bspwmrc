@@ -1,6 +1,4 @@
 #!/usr/local/bin/dash
-
-
 run() {
 	if ! pgrep "$1";
 	then

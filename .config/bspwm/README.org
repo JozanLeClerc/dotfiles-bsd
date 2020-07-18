@@ -3,7 +3,6 @@
 
 * Table of contents :toc:
 - [[#about][About]]
-- [[#the-shebang][The shebang]]
 - [[#restart-safety][Restart safety]]
   - [[#no-rerun-function][No-rerun function]]
   - [[#killing][Killing]]
@@ -18,16 +17,13 @@
 * About
   The following is my ~bspwm~ init script.
 
-* The shebang
   For my ~bspwm~ init script, I am using the ~dash~ shell for it is very fast.
-  #+BEGIN_SRC shell :shebang #!/usr/local/bin/dash 
-  #+END_SRC
 
 * Restart safety
 ** No-rerun function
    The following function helps me not restart a specific program in case it is already running,
    avoiding creating a new instance everytime I restart ~bspwm~.
-   #+BEGIN_SRC shell
+   #+BEGIN_SRC shell :shebang #!/usr/local/bin/dash 
 run() {
 	if ! pgrep "$1";
 	then
