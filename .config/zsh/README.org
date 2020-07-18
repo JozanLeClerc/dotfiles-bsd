@@ -1,0 +1,6 @@
+#+TITLE: ZSH configuration
+#+PROPERTY:
+
+#+BEGIN_SRC shell
+
+#+END_SRC
