@@ -19,6 +19,9 @@
 
   For my ~bspwm~ init script, I am using the ~dash~ shell for it is very fast.
 
+  You can get ~bspwm~ here: [[https://github.com/baskerville/bspwm][bspwm]].
+
+
 * Restart safety
 ** No-rerun function
    The following function helps me not restart a specific program in case it is already running,
