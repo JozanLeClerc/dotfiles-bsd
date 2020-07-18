@@ -47,7 +47,7 @@ super + Return
 * dmenu
   #+BEGIN_SRC text
 super + p
-	/usr/local/bin/dmenu_run -c -l 5 -m 0 -fn "mononoki:size=13" -nb "#222222" -nf "#bbbbbb" -sb "#b92121" -sf "#eeeeee"
+	/usr/local/bin/dmenu_run -c -l 5 -m 0 -fn "mononoki Nerd Font:size=13" -nb "#222222" -nf "#bbbbbb" -sb "#b92121" -sf "#eeeeee"
   #+END_SRC
 
 * Restarting sxhkd
