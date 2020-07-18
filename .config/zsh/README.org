@@ -1,6 +1,8 @@
 #+TITLE: ZSH configuration
 #+PROPERTY: header-args :tangle .zshrc
 
+* Table of contents :toc:
+* About
 This is my ~.zshrc~ org file. Pretty straight forward.
 
 * Colors for the prompt
