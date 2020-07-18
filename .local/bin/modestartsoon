@@ -1,8 +1,0 @@
-#!/usr/local/bin/dash
-
-st -e '/home/jozan/.local/bin/startsoon' &
-sleep 0.5
-st -e '/home/jozan/.local/bin/maze' &
-sleep 2
-bspc node -z top 0 -260
-exit
