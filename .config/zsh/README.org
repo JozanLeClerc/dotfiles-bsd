@@ -1,6 +1,7 @@
 #+TITLE: ZSH configuration
 #+PROPERTY:
 
-#+BEGIN_SRC shell
+This is my ~.zshrc~ org file. Pretty straight forward.
 
+#+BEGIN_SRC shell
 #+END_SRC
