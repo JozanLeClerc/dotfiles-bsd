@@ -1,175 +1,122 @@
-#
-# wm independent hotkeys
-#
-
-# terminal emulator
 super + Return
-	alacritty
+	/usr/local/bin/alacritty
 
-# program launcher
 super + p
-	dmenu_run -c -l 5 -m 0 -fn "UbuntuMono:size=13" -nb "#222222" -nf "#bbbbbb" -sb "#b92121" -sf "#eeeeee"
+	/usr/local/bin/dmenu_run -c -l 5 -m 0 -fn "mononoki:size=13" -nb "#222222" -nf "#bbbbbb" -sb "#b92121" -sf "#eeeeee"
 
-# make sxhkd reload its configuration files:
 super + control + r
-	pkill -USR1 -x sxhkd
+	/bin/pkill -USR1 -x sxhkd
 
-#
-# bspwm hotkeys
-#
-
-# quit/restart bspwm
 super + shift + {e,r}
-	bspc {quit,wm -r}
+	/usr/local/bin/bspc {quit,wm -r}
 
-# close and kill
 super + {_,shift + }q
-	bspc node -{c,k}
+	/usr/local/bin/bspc node -{c,k}
 
-# alternate between the tiled and monocle layout
 super + m
-	bspc desktop -l next
+	/usr/local/bin/bspc desktop -l next
 
-# send the newest marked node to the newest preselected node
 super + y
-	bspc node newest.marked.local -n newest.!automatic.local
+	/usr/local/bin/bspc node newest.marked.local -n newest.!automatic.local
 
-# swap the current node and the biggest node
 super + g
-	bspc node -s biggest
+	/usr/local/bin/bspc node -s biggest
 
-#
-# state/flags
-#
-
-# set the window state
 super + {s,shift + t,space,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+	/usr/local/bin/bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
-# set the node flags
 super + ctrl + {m,x,y,z}
-	bspc node -g {marked,locked,sticky,private}
+	/usr/local/bin/bspc node -g {marked,locked,sticky,private}
 
-#
-# focus/swap
-#
-
-# focus the node in the given direction
 super + {_,shift + }{h,j,k,l}
-	bspc node -{f,s} {west,south,north,east}
+	/usr/local/bin/bspc node -{f,s} {west,south,north,east}
 
-# focus the node for the given path jump
 super + { ,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
+	/usr/local/bin/bspc node -f @{parent,brother,first,second}
 
-# focus the next/previous node in the current desktop
 super + {_,shift + }c
-	bspc node -f {next,prev}.local
+	/usr/local/bin/bspc node -f {next,prev}.local
 
-# focus the next/previous desktop in the current monitor
 super + bracket{left,right}
-	bspc desktop -f {prev,next}.local
+	/usr/local/bin/bspc desktop -f {prev,next}.local
 
-# focus the last node/desktop
 alt + {grave,Tab}
-	bspc {node,desktop} -f last
+	/usr/local/bin/bspc {node,desktop} -f last
 
-# focus the older or newer node in the focus history
 super + {o,i}
-	bspc wm -h off; \
-	bspc node {older,newer} -f; \
-	bspc wm -h on
+	/usr/local/bin/bspc wm -h off; \
+	/usr/local/bin/bspc node {older,newer} -f; \
+	/usr/local/bin/bspc wm -h on
 
-# focus or send to the given desktop
 super + {_,shift + }{F1}
-	bspc {desktop -f,node -d} 01
+	/usr/local/bin/bspc {desktop -f,node -d} 01
 super + {_,shift + }{F2}
-	bspc {desktop -f,node -d} 02
+	/usr/local/bin/bspc {desktop -f,node -d} 02
 super + {_,shift + }{F3}
-	bspc {desktop -f,node -d} 03
+	/usr/local/bin/bspc {desktop -f,node -d} 03
 super + {_,shift + }{F4}
-	bspc {desktop -f,node -d} 04
+	/usr/local/bin/bspc {desktop -f,node -d} 04
 super + {_,shift + }{F5}
-	bspc {desktop -f,node -d} 05
+	/usr/local/bin/bspc {desktop -f,node -d} 05
 super + {_,shift + }{F6}
-	bspc {desktop -f,node -d} 06
+	/usr/local/bin/bspc {desktop -f,node -d} 06
 super + {_,shift + }{F7}
-	bspc {desktop -f,node -d} 07
+	/usr/local/bin/bspc {desktop -f,node -d} 07
 super + {_,shift + }{F8}
-	bspc {desktop -f,node -d} 08
+	/usr/local/bin/bspc {desktop -f,node -d} 08
 super + {_,shift + }{F9}
-	bspc {desktop -f,node -d} 09
+	/usr/local/bin/bspc {desktop -f,node -d} 09
 super + {_,shift + }{F10}
-	bspc {desktop -f,node -d} 10
+	/usr/local/bin/bspc {desktop -f,node -d} 10
 super + {_,shift + }{F11}
-	bspc {desktop -f,node -d} 11
+	/usr/local/bin/bspc {desktop -f,node -d} 11
 super + {_,shift + }{F12}
-	bspc {desktop -f,node -d} 12
-#
-# preselect
-#
+	/usr/local/bin/bspc {desktop -f,node -d} 12
 
-# preselect the direction
 super + ctrl + {h,j,k,l}
-	bspc node -p {west,south,north,east}
+	/usr/local/bin/bspc node -p {west,south,north,east}
 
-# preselect the ratio
 super + ctrl + {1-9}
-	bspc node -o 0.{1-9}
+	/usr/local/bin/bspc node -o 0.{1-9}
 
-# cancel the preselection for the focused node
 super + ctrl + {space,Escape}
-	bspc node -p cancel
+	/usr/local/bin/bspc node -p cancel
 
-# cancel the preselection for the focused desktop
 super + ctrl + shift + space
-	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+	/usr/local/bin/bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
-#
-# move/resize
-#
-
-# expand a window by moving one of its side outward
 ctrl + alt + {Left,Down,Up,Right}
-	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+	/usr/local/bin/bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
-# contract a window by moving one of its side inward
 super + ctrl + {Left,Down,Up,Right}
-	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+	/usr/local/bin/bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
-# move a floating window
 super + {Left,Down,Up,Right}
-	bspc node -v {-20 0,0 20,0 -20,20 0}
+	/usr/local/bin/bspc node -v {-20 0,0 20,0 -20,20 0}
 
-#
-# some quick start apps
-#
 super + 1
-	st -e vifm
+	/usr/local/bin/alacritty -e vifm
 super + 2
-	st
+	/usr/local/bin/alacritty
 super + 3
-	firefox --kiosk https://start.duckduckgo.com/
+	/usr/local/bin/firefox --kiosk https://start.duckduckgo.com/
 super + 4
-	st -e w3m https://start.duckduckgo.com/
+	/usr/local/bin/alacritty -e w3m https://start.duckduckgo.com/
 
-#
-# XF86Keys
-#
 {XF86AudioRaiseVolume}
-	/home/jozan/.local/bin/mixer-set raise >/dev/null 2>&1
+	/usr/home/jozan/.local/bin/mixer-set raise >/dev/null 2>&1
 
 {XF86AudioLowerVolume}
-	/home/jozan/.local/bin/mixer-set lower >/dev/null 2>&1
+	/usr/home/jozan/.local/bin/mixer-set lower >/dev/null 2>&1
 
 {XF86AudioMute}
-	/home/jozan/.local/bin/mixer-set toggle >/dev/null 2>&1
+	/usr/home/jozan/.local/bin/mixer-set toggle >/dev/null 2>&1
 
 {XF86MonBrightnessUp}
-	xbacklight -inc 4
+	/usr/local/bin/xbacklight -inc 4
 
 {XF86MonBrightnessDown}
-	xbacklight -dec 4
+	/usr/local/bin/xbacklight -dec 4
 
 {XF86Sleep}
-	/home/jozan/.local/bin/gotosleep
+	/usr/home/jozan/.local/bin/gotosleep

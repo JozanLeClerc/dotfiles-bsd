@@ -1,0 +1,245 @@
+#+TITLE: SXHKD config
+#+PROPERTY: header-args :tangle sxhkdrc
+
+* Table of contents :toc:
+- [[#about][About]]
+- [[#terminal-emulator][Terminal emulator]]
+- [[#dmenu][dmenu]]
+- [[#restarting-sxhkd][Restarting sxhkd]]
+- [[#quitting-and-restarting-bspwm][Quitting and restarting bspwm]]
+- [[#closing-and-killing-apps][Closing and killing apps]]
+- [[#strange-keys][Strange keys]]
+  - [[#alternate-between-the-tiled-and-monocle-layout][Alternate between the tiled and monocle layout]]
+  - [[#send-the-newest-marked-node-to-the-newest-preselected-node][Send the newest marked node to the newest preselected node]]
+  - [[#swap-the-current-node-and-the-biggest-node][Swap the current node and the biggest node]]
+- [[#state-and-flags][State and flags]]
+  - [[#set-the-window-state][Set the window state]]
+  - [[#set-the-node-flags][Set the node flags]]
+- [[#focus-and-swap][Focus and swap]]
+  - [[#focusswap-the-node-in-the-given-direction][Focus/swap the node in the given direction]]
+  - [[#focus-the-node-for-the-given-path-jump][Focus the node for the given path jump]]
+  - [[#focus-the-nextprevious-node-in-the-current-desktop][Focus the next/previous node in the current desktop]]
+  - [[#focus-the-nextprevious-desktop-in-the-current-monitor][Focus the next/previous desktop in the current monitor]]
+  - [[#focus-the-last-nodedesktop][Focus the last node/desktop]]
+  - [[#focus-the-older-or-newer-node-in-the-focus-history][Focus the older or newer node in the focus history]]
+  - [[#focus-or-send-to-the-given-desktop][Focus or send to the given desktop]]
+- [[#preselect-options][Preselect options]]
+  - [[#preselect-the-direction][Preselect the direction]]
+  - [[#preselect-the-ratio][Preselect the ratio]]
+  - [[#cancel-the-preselection-for-the-focused-node][Cancel the preselection for the focused node]]
+  - [[#cancel-the-preselection-for-the-focused-desktop][Cancel the preselection for the focused desktop]]
+- [[#move-and-resize][Move and resize]]
+  - [[#expand-a-window-by-moving-one-of-its-side-outward][Expand a window by moving one of its side outward]]
+  - [[#contract-a-window-by-moving-one-of-its-side-inward][Contract a window by moving one of its side inward]]
+  - [[#move-a-floating-window][Move a floating window]]
+- [[#some-quick-launch-apps][Some quick launch apps]]
+- [[#xf86-keys][XF86 keys]]
+
+* About
+  The following is my ~sxhkd~ configuration file.
+
+* Terminal emulator
+  #+BEGIN_SRC text
+super + Return
+	/usr/local/bin/alacritty
+  #+END_SRC
+
+* dmenu
+  #+BEGIN_SRC text
+super + p
+	/usr/local/bin/dmenu_run -c -l 5 -m 0 -fn "mononoki:size=13" -nb "#222222" -nf "#bbbbbb" -sb "#b92121" -sf "#eeeeee"
+  #+END_SRC
+
+* Restarting sxhkd
+  #+BEGIN_SRC text
+super + control + r
+	/bin/pkill -USR1 -x sxhkd
+  #+END_SRC
+
+* Quitting and restarting bspwm
+  #+BEGIN_SRC text
+super + shift + {e,r}
+	/usr/local/bin/bspc {quit,wm -r}
+  #+END_SRC
+  
+* Closing and killing apps
+  #+BEGIN_SRC text
+super + {_,shift + }q
+	/usr/local/bin/bspc node -{c,k}
+  #+END_SRC
+
+* Strange keys
+** Alternate between the tiled and monocle layout
+   #+BEGIN_SRC text
+super + m
+	/usr/local/bin/bspc desktop -l next
+   #+END_SRC
+
+** Send the newest marked node to the newest preselected node
+   #+BEGIN_SRC text
+super + y
+	/usr/local/bin/bspc node newest.marked.local -n newest.!automatic.local
+   #+END_SRC
+
+** Swap the current node and the biggest node
+   #+BEGIN_SRC text
+super + g
+	/usr/local/bin/bspc node -s biggest
+   #+END_SRC
+
+* State and flags
+** Set the window state
+   #+BEGIN_SRC text
+super + {s,shift + t,space,f}
+	/usr/local/bin/bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+   #+END_SRC
+
+** Set the node flags
+   #+BEGIN_SRC text
+super + ctrl + {m,x,y,z}
+	/usr/local/bin/bspc node -g {marked,locked,sticky,private}
+   #+END_SRC
+
+* Focus and swap
+** Focus/swap the node in the given direction
+   #+BEGIN_SRC text
+super + {_,shift + }{h,j,k,l}
+	/usr/local/bin/bspc node -{f,s} {west,south,north,east}
+   #+END_SRC
+   
+** Focus the node for the given path jump
+   #+BEGIN_SRC text
+super + { ,b,comma,period}
+	/usr/local/bin/bspc node -f @{parent,brother,first,second}
+   #+END_SRC
+
+** Focus the next/previous node in the current desktop
+   #+BEGIN_SRC text
+super + {_,shift + }c
+	/usr/local/bin/bspc node -f {next,prev}.local
+   #+END_SRC
+
+** Focus the next/previous desktop in the current monitor
+   #+BEGIN_SRC text
+super + bracket{left,right}
+	/usr/local/bin/bspc desktop -f {prev,next}.local
+   #+END_SRC
+
+** Focus the last node/desktop
+   #+BEGIN_SRC text
+alt + {grave,Tab}
+	/usr/local/bin/bspc {node,desktop} -f last
+   #+END_SRC
+
+** Focus the older or newer node in the focus history
+   #+BEGIN_SRC text
+super + {o,i}
+	/usr/local/bin/bspc wm -h off; \
+	/usr/local/bin/bspc node {older,newer} -f; \
+	/usr/local/bin/bspc wm -h on
+   #+END_SRC
+
+** Focus or send to the given desktop
+   #+BEGIN_SRC text
+super + {_,shift + }{F1}
+	/usr/local/bin/bspc {desktop -f,node -d} 01
+super + {_,shift + }{F2}
+	/usr/local/bin/bspc {desktop -f,node -d} 02
+super + {_,shift + }{F3}
+	/usr/local/bin/bspc {desktop -f,node -d} 03
+super + {_,shift + }{F4}
+	/usr/local/bin/bspc {desktop -f,node -d} 04
+super + {_,shift + }{F5}
+	/usr/local/bin/bspc {desktop -f,node -d} 05
+super + {_,shift + }{F6}
+	/usr/local/bin/bspc {desktop -f,node -d} 06
+super + {_,shift + }{F7}
+	/usr/local/bin/bspc {desktop -f,node -d} 07
+super + {_,shift + }{F8}
+	/usr/local/bin/bspc {desktop -f,node -d} 08
+super + {_,shift + }{F9}
+	/usr/local/bin/bspc {desktop -f,node -d} 09
+super + {_,shift + }{F10}
+	/usr/local/bin/bspc {desktop -f,node -d} 10
+super + {_,shift + }{F11}
+	/usr/local/bin/bspc {desktop -f,node -d} 11
+super + {_,shift + }{F12}
+	/usr/local/bin/bspc {desktop -f,node -d} 12
+   #+END_SRC
+
+* Preselect options
+** Preselect the direction
+   #+BEGIN_SRC text
+super + ctrl + {h,j,k,l}
+	/usr/local/bin/bspc node -p {west,south,north,east}
+   #+END_SRC
+
+** Preselect the ratio
+   #+BEGIN_SRC text
+super + ctrl + {1-9}
+	/usr/local/bin/bspc node -o 0.{1-9}
+   #+END_SRC
+
+** Cancel the preselection for the focused node
+   #+BEGIN_SRC text
+super + ctrl + {space,Escape}
+	/usr/local/bin/bspc node -p cancel
+   #+END_SRC
+
+** Cancel the preselection for the focused desktop
+   #+BEGIN_SRC text
+super + ctrl + shift + space
+	/usr/local/bin/bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+   #+END_SRC
+
+* Move and resize
+** Expand a window by moving one of its side outward
+   #+BEGIN_SRC text
+ctrl + alt + {Left,Down,Up,Right}
+	/usr/local/bin/bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+   #+END_SRC
+
+** Contract a window by moving one of its side inward
+   #+BEGIN_SRC text
+super + ctrl + {Left,Down,Up,Right}
+	/usr/local/bin/bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+   #+END_SRC
+
+** Move a floating window
+   #+BEGIN_SRC text
+super + {Left,Down,Up,Right}
+	/usr/local/bin/bspc node -v {-20 0,0 20,0 -20,20 0}
+   #+END_SRC
+
+* Some quick launch apps
+  #+BEGIN_SRC text
+super + 1
+	/usr/local/bin/alacritty -e vifm
+super + 2
+	/usr/local/bin/alacritty
+super + 3
+	/usr/local/bin/firefox --kiosk https://start.duckduckgo.com/
+super + 4
+	/usr/local/bin/alacritty -e w3m https://start.duckduckgo.com/
+  #+END_SRC
+
+* XF86 keys
+  #+BEGIN_SRC text
+{XF86AudioRaiseVolume}
+	/usr/home/jozan/.local/bin/mixer-set raise >/dev/null 2>&1
+
+{XF86AudioLowerVolume}
+	/usr/home/jozan/.local/bin/mixer-set lower >/dev/null 2>&1
+
+{XF86AudioMute}
+	/usr/home/jozan/.local/bin/mixer-set toggle >/dev/null 2>&1
+
+{XF86MonBrightnessUp}
+	/usr/local/bin/xbacklight -inc 4
+
+{XF86MonBrightnessDown}
+	/usr/local/bin/xbacklight -dec 4
+
+{XF86Sleep}
+	/usr/home/jozan/.local/bin/gotosleep
+  #+END_SRC
