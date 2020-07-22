@@ -23,23 +23,23 @@ use constant {
 };
 
 sub root_shell {
-	system(
+	my $ret = system(
 		DASH_PATH,
 		'-c',
 		$_[0]
 		);
-	return;
+	return $ret;
 }
 
 sub user_shell {
-	system(
+	my $ret = system(
 		DASH_PATH,
 		'-c',
 		SU_PATH . ' ' . DEFAULT_USER . ' << EOF
 ' . $_[0] . ' >/dev/null 2>&1
 EOF'
 		);
-	return;
+	return $ret;
 }
 
 sub fbsd_update {
