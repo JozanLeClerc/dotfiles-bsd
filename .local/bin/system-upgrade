@@ -15,13 +15,14 @@ use constant {
 	GREP_PATH			=> '/usr/bin/grep',
 	WC_PATH				=> '/usr/bin/wc',
 	TR_PATH				=> '/usr/bin/tr',
+	TEE_PATH			=> '/usr/bin/tee',
 	FREEBSD_UPDATE_PATH	=> '/usr/sbin/freebsd-update',
 	PORTMASTER_PATH		=> '/usr/local/sbin/portmaster',
 	ESPEAK_PATH			=> '/usr/local/bin/espeak',
 	NOTIFY_PATH			=> '/usr/local/bin/notify-send',
 };
 
-sub shell {
+sub root_shell {
 	system(
 		DASH_PATH,
 		'-c',
@@ -42,10 +43,27 @@ EOF'
 }
 
 sub fbsd_update {
+	my $out;
 	user_shell(NOTIFY_PATH . ' "Fetching" "Fetching FreeBSD updates"');
 	user_shell(ESPEAK_PATH . ' "Fetching FreeBSD updates" &');
-	shell(FREEBSD_UPDATE_PATH . ' fetch');
+	open(
+		PS,
+		DASH_PATH . ' -c "' .
+		FREEBSD_UPDATE_PATH . ' fetch" |'
+		);
+	while (my $read = <PS>) {
+		print $read;
+		$out .= $read;
+	}
+	close(PS);
 	return;
+}
+
+sub clean_exit {
+	my $end_date = `/bin/date`;
+	chomp($end_date);
+	print "\n\n" . $end_date . ": system upgrade complete!\n";
+	exit;
 }
 
 sub main {
@@ -60,7 +78,7 @@ sub main {
 	close($fh);
 	tee(STDOUT, '>>', LOG_FILE);
 	fbsd_update();
-	exit;
+	clean_exit();
 }
 
 main();
