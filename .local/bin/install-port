@@ -56,7 +56,7 @@ sub upgrdports {
 	}
 	if (system('/usr/local/bin/dash',
 			   '-c',
-			   '/usr/local/bin/sudo /usr/local/sbin/portmaster -a') == 0) {
+			   '/usr/local/bin/sudo /usr/local/sbin/portmaster -dya --no-confirm') == 0) {
 		my $failed_nbr = `$upgrd_nbr_cmd`;
 		chomp $failed_nbr;
 		my $diff_nbr = $upgrd_nbr - $failed_nbr;
