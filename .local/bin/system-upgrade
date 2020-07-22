@@ -2,4 +2,22 @@
 
 use warnings;
 use strict;
-use constant LOG_FILE	=> "/var/log/system-upgrade.log";
+use constant LOG_FILE	=> '/var/log/system-upgrade.log';
+use constant {
+	DASH_PATH	=> '/usr/local/bin/dash',
+};
+
+sub shell {
+	system(
+		DASH_PATH,
+		'-c',
+		$_[0]
+		);
+}
+
+sub main {
+	shell("ls -l");
+	exit;
+}
+
+main();

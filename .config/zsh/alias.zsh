@@ -1,4 +1,4 @@
-alias ls='ls -hGF'
+alias ls='ls -lhGF'
 alias c='clear'
 alias less='less --tabs 4'
 alias bc='clear; bc -l'
