@@ -4,18 +4,21 @@ use warnings;
 use strict;
 use Term::ANSIColor;
 use File::Tee qw(tee);
+use Net::Ping;
+use File::Basename;
 
 use constant DEFAULT_USER	=> 'jozan';
 use constant LOG_FILE		=> '/var/log/system-upgrade.log';
 use constant {
-	DASH_PATH		=> '/usr/local/bin/dash',
-	SU_PATH			=> '/usr/bin/su',
-	GREP_PATH		=> '/usr/bin/grep',
-	WC_PATH			=> '/usr/bin/wc',
-	TR_PATH			=> '/usr/bin/tr',
-	PORTMASTER_PATH	=> '/usr/local/sbin/portmaster',
-	ESPEAK_PATH		=> '/usr/local/bin/espeak',
-	NOTIFY_PATH		=> '/usr/local/bin/notify-send',
+	DASH_PATH			=> '/usr/local/bin/dash',
+	SU_PATH				=> '/usr/bin/su',
+	GREP_PATH			=> '/usr/bin/grep',
+	WC_PATH				=> '/usr/bin/wc',
+	TR_PATH				=> '/usr/bin/tr',
+	FREEBSD_UPDATE_PATH	=> '/usr/sbin/freebsd-update',
+	PORTMASTER_PATH		=> '/usr/local/sbin/portmaster',
+	ESPEAK_PATH			=> '/usr/local/bin/espeak',
+	NOTIFY_PATH			=> '/usr/local/bin/notify-send',
 };
 
 sub shell {
@@ -24,6 +27,7 @@ sub shell {
 		'-c',
 		$_[0]
 		);
+	return;
 }
 
 sub user_shell {
@@ -31,15 +35,31 @@ sub user_shell {
 		DASH_PATH,
 		'-c',
 		SU_PATH . ' ' . DEFAULT_USER . ' << EOF
-' . $_[0] . '
+' . $_[0] . ' >/dev/null 2>&1
 EOF'
 		);
+	return;
+}
+
+sub fbsd_update {
+	user_shell(NOTIFY_PATH . ' "Fetching" "Fetching FreeBSD updates"');
+	user_shell(ESPEAK_PATH . ' "Fetching FreeBSD updates" &');
+	shell(FREEBSD_UPDATE_PATH . ' fetch');
+	return;
 }
 
 sub main {
-	user_shell(ESPEAK_PATH . ' test &');
-	user_shell(NOTIFY_PATH . ' qweqwe');
-	shell('touch /qwe');
+	my $p = Net::Ping->new;
+	if (!($p->ping('freebsd.org', 2))) {
+		print STDERR colored(basename($0) . ":" , 'bold') . colored(" failure:", 'bold red') . " you seem not connected to the internet.\n";
+		user_shell(ESPEAK_PATH . ' "Failure: internet connection required" &');
+		exit 1;
+	}
+	open(my $fh, '>>:encoding(UTF-8)', LOG_FILE);
+	print $fh "\n\n===============\nBegining update: " . `/bin/date` . "\n";
+	close($fh);
+	tee(STDOUT, '>>', LOG_FILE);
+	fbsd_update();
 	exit;
 }
 
