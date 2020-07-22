@@ -43,9 +43,15 @@ EOF'
 }
 
 sub fbsd_update {
-	my $out;
+	my $output;
+	print '
++----------------+
+|                |
+| FreeBSD update |
+|                |
++----------------+' . "\n\n";
 	user_shell(NOTIFY_PATH . ' "Fetching" "Fetching FreeBSD updates"');
-	user_shell(ESPEAK_PATH . ' "Fetching FreeBSD updates" &');
+	user_shell(ESPEAK_PATH . ' "Initializing. Fetching FreeBSD updates" &');
 	open(
 		PS,
 		DASH_PATH . ' -c "' .
@@ -53,9 +59,14 @@ sub fbsd_update {
 		);
 	while (my $read = <PS>) {
 		print $read;
-		$out .= $read;
+		$output .= $read;
 	}
 	close(PS);
+	if (!($output =~ m/No updates needed/)) {
+		user_shell(NOTIFY_PATH . ' "Installing" "Installing FreeBSD updates"');
+		user_shell(ESPEAK_PATH . ' "Installing FreeBSD updates" &');
+		root_shell(FREEBSD_UPDATE_PATH . ' install');
+	}
 	return;
 }
 
