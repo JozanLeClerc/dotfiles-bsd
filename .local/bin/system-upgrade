@@ -2,9 +2,20 @@
 
 use warnings;
 use strict;
-use constant LOG_FILE	=> '/var/log/system-upgrade.log';
+use Term::ANSIColor;
+use File::Tee qw(tee);
+
+use constant DEFAULT_USER	=> 'jozan';
+use constant LOG_FILE		=> '/var/log/system-upgrade.log';
 use constant {
-	DASH_PATH	=> '/usr/local/bin/dash',
+	DASH_PATH		=> '/usr/local/bin/dash',
+	SU_PATH			=> '/usr/bin/su',
+	GREP_PATH		=> '/usr/bin/grep',
+	WC_PATH			=> '/usr/bin/wc',
+	TR_PATH			=> '/usr/bin/tr',
+	PORTMASTER_PATH	=> '/usr/local/sbin/portmaster',
+	ESPEAK_PATH		=> '/usr/local/bin/espeak',
+	NOTIFY_PATH		=> '/usr/local/bin/notify-send',
 };
 
 sub shell {
@@ -15,9 +26,23 @@ sub shell {
 		);
 }
 
+sub user_shell {
+	system(
+		DASH_PATH,
+		'-c',
+		SU_PATH . ' ' . DEFAULT_USER . ' << EOF
+' . $_[0] . '
+EOF'
+		);
+}
+
 sub main {
-	shell("ls -l");
+	user_shell(ESPEAK_PATH . ' test &');
+	user_shell(NOTIFY_PATH . ' qweqwe');
+	shell('touch /qwe');
 	exit;
 }
 
 main();
+
+__END__
