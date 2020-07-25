@@ -25,6 +25,8 @@
 		delete-old-versions t
 		kept-new-versions 20
 		kept-old-versions 5)
+
+(server-start)
 #+END_SRC
 
 ** MELPA and non-MELPA

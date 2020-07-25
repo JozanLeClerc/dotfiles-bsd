@@ -21,7 +21,6 @@
 
   You can get ~bspwm~ here: [[https://github.com/baskerville/bspwm][bspwm]].
 
-
 * Restart safety
 ** No-rerun function
    The following function helps me not restart a specific program in case it is already running,
@@ -77,15 +76,15 @@ bspc config single_monocle			true
 * Applications workspaces assignations
   #+BEGIN_SRC shell
 if [ $screens -eq 3 ]; then
-	bspc rule -a Emacs desktop=01 follow=true
+	bspc rule -a Emacs state=tiled
 	bspc rule -a Firefox desktop=08 follow=true
 	bspc rule -a Wine desktop=07 state=floating
 elif [ $screens -eq 2 ]; then
-	bspc rule -a Emacs desktop=01 follow=true
+	bspc rule -a Emacs state=tiled
 	bspc rule -a Firefox desktop=08 follow=true
 	bspc rule -a Wine desktop=07 state=floating
 elif [ $screens -eq 1 ]; then
-	bspc rule -a Emacs desktop=01 follow=true
+	bspc rule -a Emacs state=tiled
 	bspc rule -a Firefox desktop=08 follow=true
 	bspc rule -a Wine desktop=04 state=floating
 fi
@@ -115,6 +114,7 @@ sleep 2
 
 ** Foreground applications
    #+BEGIN_SRC shell
+bspc desktop -f 01
 run emacs &
 sleep 12
 if [ $screens -eq 3 ]; then

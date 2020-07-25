@@ -33,15 +33,15 @@ bspc config gapless_monocle			true
 bspc config single_monocle			true
 
 if [ $screens -eq 3 ]; then
-	bspc rule -a Emacs desktop=01 follow=true
+	bspc rule -a Emacs state=tiled
 	bspc rule -a Firefox desktop=08 follow=true
 	bspc rule -a Wine desktop=07 state=floating
 elif [ $screens -eq 2 ]; then
-	bspc rule -a Emacs desktop=01 follow=true
+	bspc rule -a Emacs state=tiled
 	bspc rule -a Firefox desktop=08 follow=true
 	bspc rule -a Wine desktop=07 state=floating
 elif [ $screens -eq 1 ]; then
-	bspc rule -a Emacs desktop=01 follow=true
+	bspc rule -a Emacs state=tiled
 	bspc rule -a Firefox desktop=08 follow=true
 	bspc rule -a Wine desktop=04 state=floating
 fi
@@ -64,6 +64,7 @@ run dunst > /dev/null 2>&1 &
 run lowbat --say "You're low, partner" >/dev/null 2>&1 &
 sleep 2
 
+bspc desktop -f 01
 run emacs &
 sleep 12
 if [ $screens -eq 3 ]; then

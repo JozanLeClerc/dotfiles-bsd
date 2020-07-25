@@ -32,7 +32,7 @@
   - [[#expand-a-window-by-moving-one-of-its-side-outward][Expand a window by moving one of its side outward]]
   - [[#contract-a-window-by-moving-one-of-its-side-inward][Contract a window by moving one of its side inward]]
   - [[#move-a-floating-window][Move a floating window]]
-- [[#some-quick-launch-apps][Some quick launch apps]]
+- [[#some-custom-quick-launch-apps][Some custom quick launch apps]]
 - [[#xf86-keys][XF86 keys]]
 
 * About
@@ -211,12 +211,12 @@ super + {Left,Down,Up,Right}
 	/usr/local/bin/bspc node -v {-20 0,0 20,0 -20,20 0}
    #+END_SRC
 
-* Some quick launch apps
+* Some custom quick launch apps
   #+BEGIN_SRC text
 super + 1
 	/usr/local/bin/alacritty -e vifm
 super + 2
-	/usr/local/bin/alacritty
+	/usr/local/bin/emacsclient -c
 super + 3
 	/usr/local/bin/firefox --kiosk https://start.duckduckgo.com/
 super + 4

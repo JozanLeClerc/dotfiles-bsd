@@ -16,9 +16,6 @@
 # serial line.
 # TERM=xterm; 	export TERM
 
-EDITOR=nvim;   	export EDITOR
-PAGER=less;  	export PAGER
-
 # set ENV to a file invoked each time sh is started for interactive use.
 ENV=$HOME/.shrc; export ENV
 
@@ -27,8 +24,10 @@ export PATH="${HOME}/.local/bin:${HOME}/.cargo/bin:/usr/local/llvm10/bin:/usr/lo
 
 # Apps
 # export ZSH="/home/jozan/.oh-my-zsh"
-export EDITOR="nvim"
-export TERMINAL="st"
+export EDITOR="emacsclient -c"
+export VISUAL="emacsclient -c -a emacs"
+export PAGER="less"
+export TERMINAL="alacritty"
 export BROWSER="firefox"
 export READER="zathura"
 export FILE="vifm"
