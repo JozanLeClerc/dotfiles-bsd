@@ -741,6 +741,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 	(ansi-term shell-pop-term-shell)))))
 
 (setq shell-pop-term-shell "/usr/local/bin/zsh")
+(add-to-list 'evil-emacs-state-modes 'term-mode)
 #+END_SRC
 
 *** org-bullets
