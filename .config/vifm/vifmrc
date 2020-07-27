@@ -1,7 +1,7 @@
 " vim: filetype=vifm
 source ~/.config/vifm/vifmshortcuts
 
-set vicmd="emacsclient -c"
+set vicmd="nvim"
 set syscalls
 set nofollowlinks
 set sortnumbers
@@ -27,7 +27,7 @@ map <C-v> <C-w>v
 map R :restart<CR>
 map x :!sxiv -ft * 2>/dev/null &<CR>
 nnoremap o :file &<cr>
-map E :!$EDITOR %f<CR>
+map E :!emacsclient -c %f<CR>
 map mkd :mkdir<space>
 map bg :!setbg %f &<CR>
 map X :!ext %f &<CR>
@@ -49,8 +49,8 @@ map gh :cd ~/<CR>
 map gr :cd /<CR>
 map gm :cd /mnt<CR>
 
-fileview */ tree %c -L 1 --dirsfirst
-fileview ../ tree %c -L 1 --dirsfirst
+fileview */ tree -C %c -L 1 --dirsfirst
+fileview ../ tree -C %c -L 1 --dirsfirst
 fileviewer *.html w3m -dump %c
 filextype *.html,*.htm firefox %f 2>/dev/null &
 
