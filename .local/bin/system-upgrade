@@ -17,6 +17,8 @@ use constant {
 	TR_PATH				=> '/usr/bin/tr',
 	TEE_PATH			=> '/usr/bin/tee',
 	FREEBSD_UPDATE_PATH	=> '/usr/sbin/freebsd-update',
+	PKG_PATH			=> '/usr/sbin/pkg',
+	PORTSNAP_PATH		=> '/usr/sbin/portsnap',
 	PORTMASTER_PATH		=> '/usr/local/sbin/portmaster',
 	ESPEAK_PATH			=> '/usr/local/bin/espeak',
 	NOTIFY_PATH			=> '/usr/local/bin/notify-send',
@@ -35,8 +37,8 @@ sub user_shell {
 	my $ret = system(
 		DASH_PATH,
 		'-c',
-		SU_PATH . ' ' . DEFAULT_USER . ' << EOF
-' . $_[0] . ' >/dev/null 2>&1
+		SU_PATH . ' ' . DEFAULT_USER . ' << EOF >/dev/null 2>&1
+' . $_[0] . '
 EOF'
 		);
 	return $ret;
@@ -44,12 +46,12 @@ EOF'
 
 sub fbsd_update {
 	my $output;
-	print '
+	print "
 +----------------+
 |                |
 | FreeBSD update |
 |                |
-+----------------+' . "\n\n";
++----------------+\n\n";
 	user_shell(NOTIFY_PATH . ' "Fetching" "Fetching FreeBSD updates"');
 	user_shell(ESPEAK_PATH . ' "Initializing. Fetching FreeBSD updates" &');
 	open(
@@ -65,9 +67,21 @@ sub fbsd_update {
 	if (!($output =~ m/No updates needed/)) {
 		user_shell(NOTIFY_PATH . ' "Installing" "Installing FreeBSD updates"');
 		user_shell(ESPEAK_PATH . ' "Installing FreeBSD updates" &');
-		root_shell(FREEBSD_UPDATE_PATH . ' install');
+		system(
+			FREEBSD_UPDATE_PATH,
+			'install'
+			);
 	}
 	return;
+}
+
+sub ports_update {
+	print "
++----------------+
+|                |
+|  ports update  |
+|                |
++----------------+\n\n";
 }
 
 sub clean_exit {
@@ -89,6 +103,7 @@ sub main {
 	close($fh);
 	tee(STDOUT, '>>', LOG_FILE);
 	fbsd_update();
+	ports_update();
 	clean_exit();
 }
 
