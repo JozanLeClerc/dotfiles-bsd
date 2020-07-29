@@ -15,6 +15,7 @@ use constant {
 	GREP_PATH			=> '/usr/bin/grep',
 	WC_PATH				=> '/usr/bin/wc',
 	TR_PATH				=> '/usr/bin/tr',
+	YES_PATH			=> '/usr/bin/yes',
 	TEE_PATH			=> '/usr/bin/tee',
 	FREEBSD_UPDATE_PATH	=> '/usr/sbin/freebsd-update',
 	PKG_PATH			=> '/usr/sbin/pkg',
@@ -138,9 +139,9 @@ sub ports_update {
 	}
 	if (
 		system(
-			PORTMASTER_PATH,
-			'-dya',
-			'--no-confirm'
+			DASH_PATH,
+			'-c',
+			YES_PATH . 'q | ' . PORTMASTER_PATH . ' -dya --no-confirm'
 		) == 0
 		) {
 		user_shell(NOTIFY_PATH . ' "Upgrade complete!" "Ports upgrade installed successfully\nTotal: ' . $pre_amount . ' installed"');
