@@ -6,9 +6,9 @@ use Term::ANSIColor;
 use File::Tee qw(tee);
 use Net::Ping;
 use File::Basename;
+use Capture::Tiny qw(capture);
 
 use constant DEFAULT_USER	=> 'jozan';
-use constant LOG_FILE		=> '/var/log/system-upgrade.log';
 use constant {
 	DASH_PATH			=> '/usr/local/bin/dash',
 	SU_PATH				=> '/usr/bin/su',
@@ -21,24 +21,20 @@ use constant {
 	PORTSNAP_PATH		=> '/usr/sbin/portsnap',
 	PORTMASTER_PATH		=> '/usr/local/sbin/portmaster',
 	ESPEAK_PATH			=> '/usr/local/bin/espeak',
-	NOTIFY_PATH			=> '/usr/local/bin/notify-send',
+	NOTIFY_PATH			=> '/usr/local/bin/notify-send'
 };
-
-sub root_shell {
-	my $ret = system(
-		DASH_PATH,
-		'-c',
-		$_[0]
-		);
-	return $ret;
-}
+use constant {
+	STDOUT_CAPTURE	=> 0,
+	STDERR_CAPTURE	=> 1,
+	EXIT_CAPTURE	=> 2
+};
 
 sub user_shell {
 	my $ret = system(
 		DASH_PATH,
 		'-c',
-		SU_PATH . ' ' . DEFAULT_USER . ' << EOF >/dev/null 2>&1
-' . $_[0] . '
+		SU_PATH . ' ' . DEFAULT_USER . ' << EOF
+' . $_[0] . ' >/dev/null 2>&1
 EOF'
 		);
 	return $ret;
@@ -82,6 +78,100 @@ sub ports_update {
 |  ports update  |
 |                |
 +----------------+\n\n";
+	user_shell(NOTIFY_PATH . ' "Refreshing repos" "Updating pkg and ports repositories"');
+	user_shell(ESPEAK_PATH . ' "Updating pkg and ports repositories" &');
+	system(
+		PKG_PATH,
+		'update'
+		);
+	system(
+		PORTSNAP_PATH,
+		'fetch',
+		'update'
+		);
+	user_shell(NOTIFY_PATH . ' "Listing ports" "Listing ports in need for update, this may take a while..."');
+	user_shell(ESPEAK_PATH . ' "Listing ports in need for update, please stand by" &');
+	print "Listing ports in need for update, this may take a while...\n";
+	my @pre_list = capture{
+		system(
+			PORTMASTER_PATH,
+			'-L'
+			);
+	};
+	my @pre_array = split("\n", $pre_list[STDOUT_CAPTURE]);
+	my @pre_amount_array = grep(/new\ version/, @pre_array);
+	my $pre_amount;
+	foreach my $i (@pre_amount_array) {
+		$pre_amount .= $i;
+	}
+	$pre_amount =~ s/\D//g;
+	print colored("\nPorts to be updated: ", 'bold') . colored($pre_amount, 'bold green') . "\n";
+	my @update_array;
+	foreach my $i (@pre_array) {
+		if ($i =~ /New\ version\ available/) {
+			$i =~ s/.+?(?=:).+\s+//;
+			$i .= "\n";
+			push @update_array, $i;
+		}
+	}
+	print @update_array;
+	user_shell(NOTIFY_PATH . ' "Answer needed" "Do you whish to update these ' . $pre_amount . ' ports?"');
+	user_shell(ESPEAK_PATH . ' "Listing complete. Should I upgrade these ' . $pre_amount . ' ports?" &');
+	print colored("\nUpgrade these ports? ", 'bold yellow')
+		. colored('[', 'bold green')
+		. colored('y', 'bold red')
+		. colored('/N', 'bold green')
+		. colored("]\n", 'bold green')
+		. colored("~> ", 'yellow');
+	my $answer = <STDIN>;
+	chomp $answer;
+	if ($answer ne "y" && $answer ne "Y") {
+		print "Exiting...\n";
+		exit;
+	}
+	user_shell(NOTIFY_PATH . ' "Initiating upgrade" "Ports upgrade has started\nTotal: ' . $pre_amount . ' to be updated"');
+	if ($pre_amount == 1) {
+		user_shell(ESPEAK_PATH . ' "Initiating ' . $pre_amount . ' port upgrade. Configuration might be needed before compilation." &');
+	}
+	else {
+		user_shell(ESPEAK_PATH . ' "Initiating ' . $pre_amount . ' ports upgrade. Configuration might be needed before compilation." &');
+	}
+	if (
+		system(
+			PORTMASTER_PATH,
+			'-dya',
+			'--no-confirm'
+		) == 0
+		) {
+		user_shell(NOTIFY_PATH . ' "Upgrade complete!" "Ports upgrade installed successfully\nTotal: ' . $pre_amount . ' installed"');
+		user_shell(ESPEAK_PATH . ' "Success: ' . $pre_amount . ' ports installed successfully" &');
+	}
+	else {
+		print "Some ports failed. Listing ports in need for update, this may take a while...\n";
+		user_shell(NOTIFY_PATH . ' -u critical -t 15000 "Failure!" "One or several ports failed to build"');
+		user_shell(ESPEAK_PATH . ' "Failure: one or several ports failed to install. Listing ports in need for update, please stand by" &');
+		my @post_list = capture{
+			system(
+				PORTMASTER_PATH,
+				'-L'
+				);
+		};
+		my @post_array = split("\n", $post_list[STDOUT_CAPTURE]);
+		my @post_amount_array = grep(/new\ version/, @post_array);
+		my $post_amount;
+		foreach my $i (@post_amount_array) {
+			$post_amount .= $i;
+		}
+		$post_amount =~ s/\D//g;
+		my $diff_nbr = $pre_amount - $post_amount;
+		print . "\n"
+			. colored($diff_nbr, 'bold green')
+			. ' were updated, '
+			. colored($post_amount, 'bold yellow') . " ports still need to be updated.\n";
+		user_shell(NOTIFY_PATH . ' -u critical -t 15000 "Summary" "Upgraded - ' . $diff_nbr . '\nRemaining - ' . $post_amount . '"');
+		user_shell(ESPEAK_PATH . ' "Failure: not all ports were upgraded - ' . $diff_nbr . ' upgraded - ' . $post_amount . ' remaining. Listing ports in need for update, please stand by" &');
+	}
+	return;
 }
 
 sub clean_exit {
@@ -95,13 +185,17 @@ sub main {
 	my $p = Net::Ping->new;
 	if (!($p->ping('freebsd.org', 2))) {
 		print STDERR colored(basename($0) . ":" , 'bold') . colored(" failure:", 'bold red') . " you seem not connected to the internet.\n";
+		user_shell(NOTIFY_PATH . ' -u critical -t 10000 "Failure" "Internet connection required"');
 		user_shell(ESPEAK_PATH . ' "Failure: internet connection required" &');
 		exit 1;
 	}
-	open(my $fh, '>>:encoding(UTF-8)', LOG_FILE);
-	print $fh "\n\n===============\nBegining update: " . `/bin/date` . "\n";
-	close($fh);
-	tee(STDOUT, '>>', LOG_FILE);
+	my $user = $ENV{LOGNAME} || $ENV{USER} || getpwuid($<);
+	if ($user ne 'root') {
+		print STDERR colored(basename($0) . ":" , 'bold') . colored(" failure:", 'bold red') . " insufficent privileges, needs to be run as root.\n";
+		user_shell(NOTIFY_PATH . ' -u critical -t 10000 "Failure" "root privileges required"');
+		user_shell(ESPEAK_PATH . ' "Failure: root privileges required" &');
+		exit 2;
+	}
 	fbsd_update();
 	ports_update();
 	clean_exit();
