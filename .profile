@@ -20,7 +20,7 @@
 ENV=$HOME/.shrc; export ENV
 
 # Path
-export PATH="${HOME}/.local/bin:${HOME}/.cargo/bin:/usr/local/llvm10/bin:${PATH}"
+export PATH="${HOME}/.local/bin:${HOME}/.cargo/bin:/usr/local/llvm11/bin:${PATH}"
 
 # Apps
 # export ZSH="/home/jozan/.oh-my-zsh"
