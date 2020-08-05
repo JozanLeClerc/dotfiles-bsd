@@ -225,10 +225,10 @@
 
 *** Golden ratio
 #+BEGIN_SRC emacs-lisp
-(require 'golden-ratio)
-(golden-ratio-mode 1)
-(setq golden-ratio-adjust-factor		.9
-	  golden-ratio-wide-adjust-factor	.9)
+;; (require 'golden-ratio)
+;; (golden-ratio-mode 1)
+;; (setq golden-ratio-adjust-factor		.9
+;; 	  golden-ratio-wide-adjust-factor	.9)
 #+END_SRC
 
 *** mu4e
