@@ -42,7 +42,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # ccache
-export CCACHE_PATH="/usr/bin:/usr/local/bin:/usr/local/llvm10/bin"
+export CCACHE_PATH="/usr/bin:/usr/local/bin:/usr/local/llvm11/bin"
 export CCACHE_DIR="/var/cache/ccache-jozan"
 export CCACHE_LOGFILE="/var/log/ccache.log"
 

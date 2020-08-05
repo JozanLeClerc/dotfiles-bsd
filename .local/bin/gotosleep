@@ -1,4 +1,4 @@
 #!/usr/local/bin/dash
 
 slock &
-sudo acpiconf -s 3
+acpiconf -s 3

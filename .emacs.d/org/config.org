@@ -123,7 +123,7 @@
 (require 'evil-mu4e)
 (require 'evil-collection)
 (evil-mode t)
-;; (evil-collection-init)
+(evil-collection-init)
 
 
 (setq evil-emacs-state-cursor '("#b16286" box))

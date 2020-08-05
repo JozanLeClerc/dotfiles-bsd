@@ -69,7 +69,7 @@
 	(cons 340 "#676E95")
 	(cons 360 "#676E95")))
  '(vc-annotate-very-old-color nil))
-(load-theme 'doom-palenight)
+(load-theme 'gruvbox-dark-hard)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
