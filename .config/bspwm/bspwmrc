@@ -21,7 +21,6 @@ use constant {
 	LOWBAT_PATH			=> '/usr/local/bin/lowbat',
 	EMACS_PATH			=> '/usr/local/bin/emacs',
 	ALACRITTY_PATH		=> '/usr/local/bin/alacritty',
-	DASH_PATH			=> '/usr/local/bin/dash',
 	SH_PATH				=> '/bin/sh',
 	ZSH_PATH			=> '/usr/local/bin/zsh',
 	COWSAY_PATH			=> '/usr/local/bin/cowsay',
