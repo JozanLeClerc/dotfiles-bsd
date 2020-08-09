@@ -825,6 +825,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (global-set-key [f5] 'my/exec-f5)
 (global-set-key [f6] 'my/exec-f6)
 (global-set-key (kbd "C-x d") 'ranger)
+(global-set-key (kbd "M-1") 'shell-command)
+(global-set-key (kbd "M-7") 'async-shell-command)
 ;; (add-hook 'rust-mode-hook 'my/cargo-f5-minor-mode)
 
 (shell-pop--set-shell-type 'my/shell-pop-shell-type my/shell-pop-shell-type)

@@ -130,6 +130,7 @@ sub bspc_rules
 	system(BSPC_PATH, 'rule', '-a', 'Zathura',			'state=tiled');
 	system(BSPC_PATH, 'rule', '-a', 'qTox',				'desktop=12');
 	system(BSPC_PATH, 'rule', '-a', 'DergodsRealmII',	'state=floating');
+	system(BSPC_PATH, 'rule', '-a', 'obs',				'desktop=12', 'follow=true');
 	return;
 }
 
@@ -153,7 +154,6 @@ sub run_bg_programs
 
 sub fg_on_three_screens
 {
-	system(ESPEAK_PATH . ' "' . COWSAY_WELCOME . '" &');
 	system(
 		ALACRITTY_PATH . ' -e ' . SH_PATH . ' -c \'' .
 		COWSAY_PATH . ' "' . COWSAY_WELCOME . '"; ' . ZSH_PATH .
@@ -179,7 +179,6 @@ sub fg_on_three_screens
 
 sub fg_on_two_screens
 {
-	system(ESPEAK_PATH, COWSAY_WELCOME, '&');
 	system(
 		ALACRITTY_PATH . ' -e ' . SH_PATH . ' -c \'' .
 		COWSAY_PATH . ' "' . COWSAY_WELCOME . '"; ' . ZSH_PATH .
@@ -205,7 +204,6 @@ sub fg_on_two_screens
 
 sub fg_on_one_screen
 {
-	system(ESPEAK_PATH, COWSAY_WELCOME, '&');
 	system(
 		ALACRITTY_PATH . ' -e ' . SH_PATH . ' -c \'' .
 		COWSAY_PATH . ' "' . COWSAY_WELCOME . '"; ' . ZSH_PATH .
@@ -238,6 +236,7 @@ sub run_fg_programs
 	run_if_dead(EMACS_PATH, '&');
 	sleep(12);
 	system(BSPC_PATH, 'desktop', '-f', '09');
+	system(ESPEAK_PATH . ' "' . COWSAY_WELCOME . '" &');
 	if ($screens == 3) {
 		fg_on_three_screens();
 	}
