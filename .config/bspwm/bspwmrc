@@ -220,10 +220,10 @@ sub fg_on_one_screen
 	sleep(1);
 	system(BSPC_PATH, 'node', '-f', 'west');
 	system(BSPC_PATH, 'node', '-f', 'north');
-	system(BSPC_PATH, 'node', '-z', 'bottom', '0', '-280');
+	system(BSPC_PATH, 'node', '-z', 'bottom', '0', '-200');
 	system(BSPC_PATH, 'node', '-z', 'right', '-220', '0');
 	system(BSPC_PATH, 'node', '-f', 'east');
-	system(BSPC_PATH, 'node', '-z', 'top', '0', '70');
+	system(BSPC_PATH, 'node', '-z', 'bottom', '0', '70');
 	system(BSPC_PATH, 'node', '-f', 'north');
 	return;
 }
