@@ -87,7 +87,7 @@ sub enable_screens
 	($stdout, undef, undef) = capture {
 		system(XRANDR_PATH);
 	};
-	if ($stdout =~ m/DP1 connected/ && $stdout =~ m/VGA1 connected/ == 1) {
+	if ($stdout =~ m/HDMI1 connected/ && $stdout =~ m/VGA1 connected/ == 1) {
 		$screens = 3;
 		system(TRIPLESCREEN_PATH);
 	}

@@ -1,27 +1,13 @@
 #!/bin/sh
 
-# Small screen on the left
-# xrandr --output LVDS1 --off
-# xrandr --output VGA1 --mode 1440x900 --pos 0x324 --rotate normal
-# xrandr --output HDMI1 --off
-# xrandr --output DP1 --primary --mode 1920x1080 --pos 1440x0 --rotate normal
-# xrandr --output HDMI2 --off
-# xrandr --output HDMI3 --off
-# xrandr --output DP2 --off
-# xrandr --output DP3 --off
-
-# bspc monitor VGA1 -d 01 02 03 04 09 10 11 12
-# bspc monitor DP1 -d 05 06 07 08
-
-# Small screen on the right
 xrandr --output LVDS1 --off
-xrandr --output HDMI1 --off
-xrandr --output DP1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
-xrandr --output VGA1 --mode 1440x900 --pos 1920x226 --rotate normal
+xrandr --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
+xrandr --output DP1 --off
+xrandr --output VGA1 --mode 1440x900 --pos 1920x20 --rotate normal
 xrandr --output HDMI2 --off
 xrandr --output HDMI3 --off
 xrandr --output DP2 --off
 xrandr --output DP3 --off
 
+bspc monitor HDMI1 -d	01 02 03 04 05 06 07
 bspc monitor VGA1 -d	08 09 10 11 12
-bspc monitor DP1 -d		01 02 03 04 05 06 07
