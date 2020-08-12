@@ -6,6 +6,7 @@ use Capture::Tiny qw(capture);
 use WWW::Curl::Easy;
 
 use constant {
+	SXHKD_PATH			=> '/usr/local/bin/sxhkd',
 	PGREP_PATH			=> '/bin/pgrep',
 	PKILL_PATH			=> '/bin/pkill',
 	XRANDR_PATH			=> '/usr/local/bin/xrandr',
@@ -50,8 +51,7 @@ sub run_if_dead
 {
 	my @argv = @_;
 	my $bin;
-	my $cat_str;
-	my $i;
+	my $pid;
 
 	$bin = $argv[0];
 	$bin =~ s/.+\///g;
@@ -62,19 +62,12 @@ sub run_if_dead
 			);
 	};
 	$retval = ($retval >> 8) & 0xff;
-	$cat_str = '';
-	$i = 0;
-	foreach (@argv) {
-		if ($i == 0 || $_ eq '&') {
-			$cat_str .= $_;
-		}
-		else {
-			$cat_str .= '"' . $_ . '" ';
-		}
-		$i += 1;
-	}
 	if ($retval != 0) {
-		system($cat_str);
+		$pid = fork();
+		if (not $pid) {
+			exec(@argv);
+			exit;
+		}
 	}
 	return;
 }
@@ -82,7 +75,6 @@ sub run_if_dead
 sub kill_some
 {
 	system(PKILL_PATH, 'alacritty');
-	system(PKILL_PATH, 'compton');
 	return;
 }
 
@@ -138,7 +130,10 @@ sub run_bg_programs
 {
 	my ($screens) = @_;
 
-	run_if_dead(COMPTON_PATH, '&');
+	run_if_dead(SXHKD_PATH);
+	run_if_dead(COMPTON_PATH);
+	run_if_dead(DUNST_PATH);
+	run_if_dead(LOWBAT_PATH);
 	if ($screens > 1) {
 		system(FEH_PATH, '--bg-fill', WALLPAPER_PATH, '--bg-fill', WALLPAPER_PATH);
 	}
@@ -147,25 +142,40 @@ sub run_bg_programs
 	}
 	system(XSET_PATH, 'r', 'rate', XSET_R_RATE_DELAY, XSET_R_RATE_RATE);
 	system(SETXKBMAP_PATH, '-layout', 'us,fr', '-option', 'grp:alt_shift_toggle');
-	run_if_dead(DUNST_PATH, '&');
-	run_if_dead(LOWBAT_PATH, '&');
 	return;
 }
 
 sub fg_on_three_screens
 {
-	system(
-		ALACRITTY_PATH . ' -e ' . SH_PATH . ' -c \'' .
-		COWSAY_PATH . ' "' . COWSAY_WELCOME . '"; ' . ZSH_PATH .
-		'\' &'
-		);
+	my @term_pid;
+
+	$term_pid[0] = fork();
+	if (not $term_pid[0]) {
+		exec(
+			ALACRITTY_PATH, '-e', SH_PATH, '-c',
+			COWSAY_PATH . ' "' . COWSAY_WELCOME . '"; ' . ZSH_PATH
+			);
+		exit;
+	}
 	sleep(1);
-	system(ALACRITTY_PATH . ' -e ' . HTOP_PATH . ' &');
+	$term_pid[1] = fork();
+	if (not $term_pid[1]) {
+		exec(ALACRITTY_PATH, '-e', HTOP_PATH);
+		exit;
+	}
 	sleep(1);
-	system(ALACRITTY_PATH . ' -e ' . GOTOP_PATH . ' &');
+	$term_pid[2] = fork();
+	if (not $term_pid[2]) {
+		exec(ALACRITTY_PATH, '-e', GOTOP_PATH);
+		exit;
+	}
 	sleep(1);
 	system(BSPC_PATH, 'node', '-f', 'west');
-	system(ALACRITTY_PATH . ' -e ' . VIFM_PATH . ' &');
+	$term_pid[3] = fork();
+	if (not $term_pid[3]) {
+		exec(ALACRITTY_PATH, '-e', VIFM_PATH);
+		exit;
+	}
 	sleep(1);
 	system(BSPC_PATH, 'node', '-z', 'right', '180', '0');
 	system(BSPC_PATH, 'node', '-z', 'top', '0', '70');
@@ -179,18 +189,35 @@ sub fg_on_three_screens
 
 sub fg_on_two_screens
 {
-	system(
-		ALACRITTY_PATH . ' -e ' . SH_PATH . ' -c \'' .
-		COWSAY_PATH . ' "' . COWSAY_WELCOME . '"; ' . ZSH_PATH .
-		'\' &'
-		);
+	my @term_pid;
+
+	$term_pid[0] = fork();
+	if (not $term_pid[0]) {
+		exec(
+			ALACRITTY_PATH, '-e', SH_PATH, '-c',
+			COWSAY_PATH . ' "' . COWSAY_WELCOME . '"; ' . ZSH_PATH
+			);
+		exit;
+	}
 	sleep(1);
-	system(ALACRITTY_PATH . ' -e ' . HTOP_PATH . ' &');
+	$term_pid[1] = fork();
+	if (not $term_pid[1]) {
+		exec(ALACRITTY_PATH, '-e', HTOP_PATH);
+		exit;
+	}
 	sleep(1);
-	system(ALACRITTY_PATH, ' -e ', GOTOP_PATH, ' &');
+	$term_pid[2] = fork();
+	if (not $term_pid[2]) {
+		exec(ALACRITTY_PATH, '-e', GOTOP_PATH);
+		exit;
+	}
 	sleep(1);
 	system(BSPC_PATH, 'node', '-f', 'west');
-	system(ALACRITTY_PATH . ' -e ' . VIFM_PATH . ' &');
+	$term_pid[3] = fork();
+	if (not $term_pid[3]) {
+		exec(ALACRITTY_PATH, '-e', VIFM_PATH);
+		exit;
+	}
 	sleep(1);
 	system(BSPC_PATH, 'node', '-z', 'right', '180', '0');
 	system(BSPC_PATH, 'node', '-z', 'top', '0', '70');
@@ -204,19 +231,34 @@ sub fg_on_two_screens
 
 sub fg_on_one_screen
 {
-	system(
-		ALACRITTY_PATH . ' -e ' . SH_PATH . ' -c \'' .
-		COWSAY_PATH . ' "' . COWSAY_WELCOME . '"; ' . ZSH_PATH .
-		'\' &'
-		);
+	my @term_pid;
+
+	$term_pid[0] = fork();
+	if (not $term_pid[0]) {
+		exec(
+			ALACRITTY_PATH, '-e', SH_PATH, '-c',
+			COWSAY_PATH . ' "' . COWSAY_WELCOME . '"; ' . ZSH_PATH
+			);
+		exit;
+	}
 	sleep(1);
 	system(BSPC_PATH, 'node', '-p', 'west');
-	system(ALACRITTY_PATH . ' -e ' . HTOP_PATH . ' &');
+	$term_pid[1] = fork();
+	if (not $term_pid[1]) {
+		exec(ALACRITTY_PATH, '-e', HTOP_PATH);
+		exit;
+	}
 	sleep(1);
-	system(ALACRITTY_PATH . ' -e ' . GOTOP_PATH . ' &');
+	$term_pid[2] = fork();
+	if (not $term_pid[2]) {
+		exec(ALACRITTY_PATH, '-e', GOTOP_PATH);
+	}
 	sleep(1);
 	system(BSPC_PATH, 'node', '-f', 'east');
-	system(ALACRITTY_PATH . ' -e ' . VIFM_PATH . ' &');
+	$term_pid[3] = fork();
+	if (not $term_pid[3]) {
+		exec(ALACRITTY_PATH, '-e', VIFM_PATH);
+	}
 	sleep(1);
 	system(BSPC_PATH, 'node', '-f', 'west');
 	system(BSPC_PATH, 'node', '-f', 'north');
@@ -231,12 +273,16 @@ sub fg_on_one_screen
 sub run_fg_programs
 {
 	my ($screens) = @_;
+	my $espeak_pid;
 
 	system(BSPC_PATH, 'desktop', '-f', '01');
-	run_if_dead(EMACS_PATH, '&');
+	run_if_dead(EMACS_PATH);
 	sleep(12);
 	system(BSPC_PATH, 'desktop', '-f', '09');
-	system(ESPEAK_PATH . ' "' . COWSAY_WELCOME . '" &');
+	$espeak_pid = fork();
+	if (not $espeak_pid) {
+		exec(ESPEAK_PATH, COWSAY_WELCOME);
+	}
 	if ($screens == 3) {
 		fg_on_three_screens();
 	}
@@ -261,7 +307,7 @@ sub run_network_programs
 	$retval = $curl->perform;
 	if ($retval == 0) {
 		system(GIT_PATH, '-C', '/usr/home/jozan/.elfeed', 'pull', 'origin', 'master');
-		run_if_dead(QTOX_PATH, '&');
+		run_if_dead(QTOX_PATH);
 	}
 	return;
 }
