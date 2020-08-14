@@ -235,7 +235,6 @@
 #+BEGIN_SRC emacs-lisp
 (require 'org-mime)
 (require 'mu4e)
-(require 'cl)
 
 (setq mu4e-maildir (expand-file-name "/home/jozan/Maildir"))
 
@@ -620,8 +619,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (setq tab-always-indent 'complete)
 (setq-default tab-width 4)
 (setq tab-width 4)
-(defvaralias 'c-basic-offset 'tab-width)
-(defvaralias 'cperl-indent-level 'tab-width)
+;; (defvaralias 'c-basic-offset 'tab-width)
+;; (defvaralias 'cperl-indent-level 'tab-width)
 #+END_SRC
 
 *** all the icons
