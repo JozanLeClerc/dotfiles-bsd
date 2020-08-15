@@ -118,12 +118,11 @@
 (setq evil-want-keybinding nil)
 (setq evil-want-C-u-scroll t)
 (require 'evil)
-(require 'evil-org)
 (require 'evil-magit)
 (require 'evil-mu4e)
-(require 'evil-collection)
+;; (require 'evil-collection)
 (evil-mode t)
-(evil-collection-init)
+;; (evil-collection-init)
 
 
 (setq evil-emacs-state-cursor '("#b16286" box))
@@ -154,6 +153,20 @@
 
 (evil-leader/set-key "SPC" 'evil-search-highlight-persist-remove-all)
 #+END_SRC
+
+*** Evil nerd commenter
+#+BEGIN_SRC emacs-lisp
+(require 'evil-nerd-commenter)
+(evilnc-default-hotkeys)
+#+END_SRC
+
+*** Vimish Fold
+	#+BEGIN_SRC emacs-lisp
+	(require 'vimish-fold)
+	(require 'evil-vimish-fold)
+	(add-hook 'prog-mode-hook 'evil-vimish-fold-mode)
+	(add-hook 'text-mode-hook 'evil-vimish-fold-mode)
+	#+END_SRC
 
 *** Centaur tabs
 #+BEGIN_SRC emacs-lisp
@@ -374,12 +387,6 @@
 (setq w3m-default-display-inline-images t)
 #+END_SRC
 
-*** Origami mode
-#+BEGIN_SRC emacs-lisp
-(require 'origami)
-(add-hook 'prog-mode-hook 'origami-mode)
-#+END_SRC
-
 *** NeoTree
 #+BEGIN_SRC emacs-lisp
 (require 'neotree)
@@ -566,12 +573,6 @@ buffer in current window."
    (current-buffer)))
 
 (global-set-key (kbd "C-c t") 'my/toggle-window-dedicated)
-#+END_SRC
-
-*** evil nerd commenter
-#+BEGIN_SRC emacs-lisp
-(require 'evil-nerd-commenter)
-(evilnc-default-hotkeys)
 #+END_SRC
 
 *** cargo
