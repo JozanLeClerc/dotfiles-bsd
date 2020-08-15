@@ -145,10 +145,8 @@ sub run_fg_programs
 		exec(TERMS_THREAD, $screens);
 		exit;
 	}
-	sleep(8);
-	system(BSPC_PATH, 'desktop', '-f', '01');
+	sleep(14);
 	run_if_dead(EMACS_PATH);
-	sleep(8);
 	return;
 }
 
