@@ -2,6 +2,7 @@
 
 use strict;
 use warnings;
+use Time::HiRes;
 
 use constant {
 	BSPC_PATH		=> '/usr/local/bin/bspc',
@@ -39,26 +40,26 @@ sub fg_on_three_screens
 			);
 		exit;
 	}
-	sleep(3);
+	Time::HiRes::sleep(3.6);
 	$term_pid[1] = fork();
 	if (not $term_pid[1]) {
 		exec(ALACRITTY_PATH, '-e', HTOP_PATH);
 		exit;
 	}
-	sleep(3);
+	Time::HiRes::sleep(3.6);
 	$term_pid[2] = fork();
 	if (not $term_pid[2]) {
 		exec(ALACRITTY_PATH, '-e', GOTOP_PATH);
 		exit;
 	}
-	sleep(3);
+	Time::HiRes::sleep(3.6);
 	system(BSPC_PATH, 'node', '-f', 'west');
 	$term_pid[3] = fork();
 	if (not $term_pid[3]) {
 		exec(ALACRITTY_PATH, '-e', VIFM_PATH);
 		exit;
 	}
-	sleep(3);
+	Time::HiRes::sleep(3.6);
 	system(BSPC_PATH, 'node', '-z', 'right', '180', '0');
 	system(BSPC_PATH, 'node', '-z', 'top', '0', '70');
 	system(BSPC_PATH, 'node', '-f', 'east');
@@ -81,26 +82,26 @@ sub fg_on_two_screens
 			);
 		exit;
 	}
-	sleep(3);
+	Time::HiRes::sleep(3.6);
 	$term_pid[1] = fork();
 	if (not $term_pid[1]) {
 		exec(ALACRITTY_PATH, '-e', HTOP_PATH);
 		exit;
 	}
-	sleep(3);
+	Time::HiRes::sleep(3.6);
 	$term_pid[2] = fork();
 	if (not $term_pid[2]) {
 		exec(ALACRITTY_PATH, '-e', GOTOP_PATH);
 		exit;
 	}
-	sleep(3);
+	Time::HiRes::sleep(3.6);
 	system(BSPC_PATH, 'node', '-f', 'west');
 	$term_pid[3] = fork();
 	if (not $term_pid[3]) {
 		exec(ALACRITTY_PATH, '-e', VIFM_PATH);
 		exit;
 	}
-	sleep(3);
+	Time::HiRes::sleep(3.6);
 	system(BSPC_PATH, 'node', '-z', 'right', '180', '0');
 	system(BSPC_PATH, 'node', '-z', 'top', '0', '70');
 	system(BSPC_PATH, 'node', '-f', 'east');
@@ -123,25 +124,25 @@ sub fg_on_one_screen
 			);
 		exit;
 	}
-	sleep(3);
+	Time::HiRes::sleep(3.6);
 	system(BSPC_PATH, 'node', '-p', 'west');
 	$term_pid[1] = fork();
 	if (not $term_pid[1]) {
 		exec(ALACRITTY_PATH, '-e', HTOP_PATH);
 		exit;
 	}
-	sleep(3);
+	Time::HiRes::sleep(3.6);
 	$term_pid[2] = fork();
 	if (not $term_pid[2]) {
 		exec(ALACRITTY_PATH, '-e', GOTOP_PATH);
 	}
-	sleep(3);
+	Time::HiRes::sleep(3.6);
 	system(BSPC_PATH, 'node', '-f', 'east');
 	$term_pid[3] = fork();
 	if (not $term_pid[3]) {
 		exec(ALACRITTY_PATH, '-e', VIFM_PATH);
 	}
-	sleep(3);
+	Time::HiRes::sleep(3.6);
 	system(BSPC_PATH, 'node', '-f', 'west');
 	system(BSPC_PATH, 'node', '-f', 'north');
 	system(BSPC_PATH, 'node', '-z', 'bottom', '0', '-200');
