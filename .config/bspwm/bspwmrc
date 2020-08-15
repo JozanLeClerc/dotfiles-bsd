@@ -3,7 +3,6 @@
 use strict;
 use warnings;
 use Capture::Tiny qw(capture);
-use WWW::Curl::Easy;
 
 use constant {
 	SXHKD_PATH			=> '/usr/local/bin/sxhkd',
@@ -22,15 +21,8 @@ use constant {
 	LOWBAT_PATH			=> '/usr/local/bin/lowbat',
 	EMACS_PATH			=> '/usr/local/bin/emacs',
 	ALACRITTY_PATH		=> '/usr/local/bin/alacritty',
-	SH_PATH				=> '/bin/sh',
-	ZSH_PATH			=> '/usr/local/bin/zsh',
-	COWSAY_PATH			=> '/usr/local/bin/cowsay',
-	ESPEAK_PATH			=> '/usr/local/bin/espeak',
-	HTOP_PATH			=> '/usr/local/bin/htop',
-	GOTOP_PATH			=> '/usr/local/bin/gotop',
-	VIFM_PATH			=> '/usr/local/bin/vifm',
-	GIT_PATH			=> '/usr/local/bin/git',
-	QTOX_PATH			=> '/usr/local/bin/qtox'
+	TERMS_THREAD		=> '/usr/home/jozan/.config/bspwm/terms_thread.pl',
+	NETWORK_THREAD		=> '/usr/home/jozan/.config/bspwm/network_thread.pl'
 };
 use constant {
 	BSP_BORDER_WIDTH		=> 1,
@@ -43,9 +35,7 @@ use constant {
 	XSET_R_RATE_DELAY		=> 200,
 	XSET_R_RATE_RATE		=> 100,
 };
-use constant WALLPAPER_PATH		=> '/usr/home/jozan/Pictures/wallpaper.jpg';
-use constant COWSAY_WELCOME		=> 'Welcome back, partner! And remember to try glest!';
-use constant NETWORK_TEST_URL	=> 'https://freebsd.org/';
+use constant WALLPAPER_PATH	=> '/usr/home/jozan/Pictures/wallpaper.jpg';
 
 sub run_if_dead
 {
@@ -145,169 +135,31 @@ sub run_bg_programs
 	return;
 }
 
-sub fg_on_three_screens
-{
-	my @term_pid;
-
-	$term_pid[0] = fork();
-	if (not $term_pid[0]) {
-		exec(
-			ALACRITTY_PATH, '-e', SH_PATH, '-c',
-			COWSAY_PATH . ' "' . COWSAY_WELCOME . '"; ' . ZSH_PATH
-			);
-		exit;
-	}
-	sleep(1);
-	$term_pid[1] = fork();
-	if (not $term_pid[1]) {
-		exec(ALACRITTY_PATH, '-e', HTOP_PATH);
-		exit;
-	}
-	sleep(1);
-	$term_pid[2] = fork();
-	if (not $term_pid[2]) {
-		exec(ALACRITTY_PATH, '-e', GOTOP_PATH);
-		exit;
-	}
-	sleep(1);
-	system(BSPC_PATH, 'node', '-f', 'west');
-	$term_pid[3] = fork();
-	if (not $term_pid[3]) {
-		exec(ALACRITTY_PATH, '-e', VIFM_PATH);
-		exit;
-	}
-	sleep(1);
-	system(BSPC_PATH, 'node', '-z', 'right', '180', '0');
-	system(BSPC_PATH, 'node', '-z', 'top', '0', '70');
-	system(BSPC_PATH, 'node', '-f', 'east');
-	system(BSPC_PATH, 'node', '-f', 'north');
-	system(BSPC_PATH, 'node', '-z', 'bottom', '0', '-280');
-	system(BSPC_PATH, 'node', '-f', 'north');
-	system(BSPC_PATH, 'node', '-f', 'west');
-	return;
-}
-
-sub fg_on_two_screens
-{
-	my @term_pid;
-
-	$term_pid[0] = fork();
-	if (not $term_pid[0]) {
-		exec(
-			ALACRITTY_PATH, '-e', SH_PATH, '-c',
-			COWSAY_PATH . ' "' . COWSAY_WELCOME . '"; ' . ZSH_PATH
-			);
-		exit;
-	}
-	sleep(1);
-	$term_pid[1] = fork();
-	if (not $term_pid[1]) {
-		exec(ALACRITTY_PATH, '-e', HTOP_PATH);
-		exit;
-	}
-	sleep(1);
-	$term_pid[2] = fork();
-	if (not $term_pid[2]) {
-		exec(ALACRITTY_PATH, '-e', GOTOP_PATH);
-		exit;
-	}
-	sleep(1);
-	system(BSPC_PATH, 'node', '-f', 'west');
-	$term_pid[3] = fork();
-	if (not $term_pid[3]) {
-		exec(ALACRITTY_PATH, '-e', VIFM_PATH);
-		exit;
-	}
-	sleep(1);
-	system(BSPC_PATH, 'node', '-z', 'right', '180', '0');
-	system(BSPC_PATH, 'node', '-z', 'top', '0', '70');
-	system(BSPC_PATH, 'node', '-f', 'east');
-	system(BSPC_PATH, 'node', '-f', 'north');
-	system(BSPC_PATH, 'node', '-z', 'bottom', '0', '-280');
-	system(BSPC_PATH, 'node', '-f', 'north');
-	system(BSPC_PATH, 'node', '-f', 'west');
-	return;
-}
-
-sub fg_on_one_screen
-{
-	my @term_pid;
-
-	$term_pid[0] = fork();
-	if (not $term_pid[0]) {
-		exec(
-			ALACRITTY_PATH, '-e', SH_PATH, '-c',
-			COWSAY_PATH . ' "' . COWSAY_WELCOME . '"; ' . ZSH_PATH
-			);
-		exit;
-	}
-	sleep(1);
-	system(BSPC_PATH, 'node', '-p', 'west');
-	$term_pid[1] = fork();
-	if (not $term_pid[1]) {
-		exec(ALACRITTY_PATH, '-e', HTOP_PATH);
-		exit;
-	}
-	sleep(1);
-	$term_pid[2] = fork();
-	if (not $term_pid[2]) {
-		exec(ALACRITTY_PATH, '-e', GOTOP_PATH);
-	}
-	sleep(1);
-	system(BSPC_PATH, 'node', '-f', 'east');
-	$term_pid[3] = fork();
-	if (not $term_pid[3]) {
-		exec(ALACRITTY_PATH, '-e', VIFM_PATH);
-	}
-	sleep(1);
-	system(BSPC_PATH, 'node', '-f', 'west');
-	system(BSPC_PATH, 'node', '-f', 'north');
-	system(BSPC_PATH, 'node', '-z', 'bottom', '0', '-200');
-	system(BSPC_PATH, 'node', '-z', 'right', '-220', '0');
-	system(BSPC_PATH, 'node', '-f', 'east');
-	system(BSPC_PATH, 'node', '-z', 'bottom', '0', '70');
-	system(BSPC_PATH, 'node', '-f', 'north');
-	return;
-}
-
 sub run_fg_programs
 {
 	my ($screens) = @_;
-	my $espeak_pid;
+	my $pid;
 
+	$pid = fork();
+	if (not $pid) {
+		exec(TERMS_THREAD, $screens);
+		exit;
+	}
+	sleep(8);
 	system(BSPC_PATH, 'desktop', '-f', '01');
 	run_if_dead(EMACS_PATH);
-	sleep(12);
-	system(BSPC_PATH, 'desktop', '-f', '09');
-	$espeak_pid = fork();
-	if (not $espeak_pid) {
-		exec(ESPEAK_PATH, COWSAY_WELCOME);
-	}
-	if ($screens == 3) {
-		fg_on_three_screens();
-	}
-	elsif ($screens == 2) {
-		fg_on_two_screens();
-	}
-	else {
-		fg_on_one_screen();
-	}
+	sleep(8);
 	return;
 }
 
 sub run_network_programs
 {
-	my $curl;
-	my $response_body;
-	my $retval;
+	my $pid;
 
-	$curl = WWW::Curl::Easy->new;
-	$curl->setopt(CURLOPT_URL, NETWORK_TEST_URL);
-	$curl->setopt(CURLOPT_WRITEDATA, \$response_body);
-	$retval = $curl->perform;
-	if ($retval == 0) {
-		system(GIT_PATH, '-C', '/usr/home/jozan/.elfeed', 'pull', 'origin', 'master');
-		run_if_dead(QTOX_PATH);
+	$pid = fork();
+	if (not $pid) {
+		exec(NETWORK_THREAD);
+		exit;
 	}
 	return;
 }
