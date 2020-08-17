@@ -203,6 +203,9 @@
 			(string-prefix-p "*scratch*" name)
 			(string-prefix-p "*Messages*" name)
 			(string-prefix-p "todo.org" name)
+			(string-prefix-p "*Mingus Help*" name)
+			(string-prefix-p "*Mingus*" name)
+			(string-prefix-p "*Mingus Browser*" name)
 			(and (string-prefix-p "magit" name)
 				(not (file-name-extension name))))))
 
@@ -817,6 +820,41 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (setq exec "./a.out; ret=$?; echo \"\e[1;35m~>\"; if [ $ret -ne 0 ]; then echo -n \"\e[1;31m$ret\"; if [ $ret -eq 127 ]; then echo \" - Missing a.out, comipler error! \"; exit; elif [ $ret -eq 134 ]; then echo \" - Abort! \"; elif [ $ret -eq 138 ]; then echo \" - Bus error! \"; elif [ $ret -eq 139 ]; then echo \" - Segmentation fault! \"; fi; fi; echo \"\e[1;35m\n\n.emacs v1.5 Tilde Edition by Joe\"")
   (async-shell-command exec))
 #+END_SRC
+
+** Custom functions
+*** startsoon-mode
+	#+BEGIN_SRC emacs-lisp
+	(defun my/startsoon ()
+		(interactive)
+		(split-window-right)
+		(windmove-right)
+		(split-window-below)
+		(enlarge-window 10)
+		(windmove-down)
+		(switch-to-buffer "*Mingus*")
+		(mingus-refresh)
+		(windmove-up)
+		(term "/usr/home/jozan/.local/bin/startsoon")
+		(windmove-left)
+		(zone))
+	#+END_SRC
+
+*** brb-mode
+	#+BEGIN_SRC emacs-lisp
+	(defun my/brb ()
+		(interactive)
+		(split-window-right)
+		(windmove-right)
+		(split-window-below)
+		(enlarge-window 10)
+		(windmove-down)
+		(switch-to-buffer "*Mingus*")
+		(mingus-refresh)
+		(windmove-up)
+		(term "/usr/home/jozan/.local/bin/brb")
+		(windmove-left)
+		(zone))
+	#+END_SRC
 
 ** Other key bindings
 #+BEGIN_SRC emacs-lisp
