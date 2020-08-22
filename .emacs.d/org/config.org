@@ -9,7 +9,7 @@
 (scroll-bar-mode -1)
 (blink-cursor-mode 0)
 
-(set-frame-font "mononoki Nerd Font:pixelsize=16" nil t)
+(set-frame-font "mononoki Nerd Font:pixelsize=15" nil t)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (add-hook 'text-mode-hook 'display-line-numbers-mode)
 
