@@ -189,7 +189,7 @@
 	  centaur-tabs-height				1
 	  centaur-tabs-style				"bar"
 	  centaur-tabs-set-bar				'left
-	  centaur-tabs-change-fonts			"DejaVu Sans Mono Nerd Font")
+	  centaur-tabs-change-fonts			"mononoki Nerd Font")
 
 (defun centaur-tabs-hide-tab (x)
 	(let ((name (format "%s" x)))
@@ -200,6 +200,8 @@
 			(string-prefix-p "*Compile-Log*" name)
 			(string-prefix-p "*lsp" name)
 			(string-prefix-p "*elfeed-log*" name)
+			(string-prefix-p "*elfeed-search*" name)
+			(string-prefix-p "*elfeed-entry*" name)
 			(string-prefix-p "*scratch*" name)
 			(string-prefix-p "*Messages*" name)
 			(string-prefix-p "todo.org" name)
@@ -762,6 +764,15 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (add-hook 'markdown-mode-hook 'toc-org-mode)
 (define-key markdown-mode-map (kbd "\C-c\C-o") 'toc-org-markdown-follow-thing-at-point)
 #+END_SRC
+
+*** irony
+	#+BEGIN_SRC emacs-lisp
+	(require 'irony)
+	(add-hook 'c++-mode-hook 'irony-mode)
+	(add-hook 'c-mode-hook 'irony-mode)
+	(add-hook 'objc-mode-hook 'irony-mode)
+	(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+	#+END_SRC
 
 ** Compilation
 *** Close window after errorless compilation
