@@ -62,14 +62,7 @@ sub run_if_dead
 			PGREP_PATH,
 			$bin
 			);
-	};
-	$retval = ($retval >> 8) & 0xff;
-	if ($retval != 0) {
-		$pid = fork();
-		if (not $pid) {
-			exec(@argv);
-			exit;
-		}
+	}; $retval = ($retval >> 8) & 0xff; if ($retval != 0) { $pid = fork(); if (not $pid) { exec(@argv); exit; }
 	}
 	return;
 }
@@ -254,7 +247,6 @@ sub fg_on_one_screen
 	}
 	Time::HiRes::sleep(3.6);
 	system(BSPC_PATH, 'node', '-p', 'west');
-	Time::HiRes::sleep(0.5);
 	$term_pid[1] = fork();
 	if (not $term_pid[1]) {
 		exec(ALACRITTY_PATH, '-e', HTOP_PATH);
@@ -285,6 +277,7 @@ sub run_terms
 {
 	my ($screens) = @_;
 
+	Time::HiRes::sleep(1);
 	system(BSPC_PATH, 'desktop', '-f', '09');
 	if ($screens == 3) {
 		fg_on_three_screens();
