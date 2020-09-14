@@ -43,7 +43,7 @@ use constant {
 	BSP_GAPLESS_MONOCLE		=> 'true',
 	BSP_SINGLE_MONOCLE		=> 'true',
 	XSET_R_RATE_DELAY		=> 200,
-	XSET_R_RATE_RATE		=> 100
+	XSET_R_RATE_RATE		=> 150
 };
 use constant WALLPAPER_PATH		=> '/usr/home/jozan/Pictures/wallpaper.jpg';
 use constant COWSAY_WELCOME		=> 'Welcome back, partner! And remember to try glest!';

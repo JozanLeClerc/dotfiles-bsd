@@ -504,14 +504,6 @@
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 #+END_SRC
 
-*** Auto-complete
-#+BEGIN_SRC emacs-lisp
-(require 'auto-complete)
-
-(require 'auto-complete-config)
-(ac-config-default)
-#+END_SRC
-
 *** C default style
 #+BEGIN_SRC emacs-lisp
 (setq c-default-style "bsd")
@@ -772,6 +764,33 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 	(add-hook 'c-mode-hook 'irony-mode)
 	(add-hook 'objc-mode-hook 'irony-mode)
 	(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+	#+END_SRC
+
+*** company
+	#+BEGIN_SRC emacs-lisp
+	(require 'company)
+	(require 'company-irony)
+	;; (add-to-list 'company-backends 'company-irony)
+	;; (add-to-list 'company-backends 'company-yasnippet)
+	(add-hook 'after-init-hook 'global-company-mode)
+	(global-company-mode)
+	;; company delay until suggestions are shown
+	(setq company-idle-delay 0)
+	
+	;; weight by frequency
+	(setq company-transformers '(company-sort-by-occurrence))
+	
+	;; Add yasnippet support for all company backends
+	;; https://github.com/syl20bnr/spacemacs/pull/179
+	(defvar company-mode/enable-yas t "Enable yasnippet for all backends.")
+	
+	(defun company-mode/backend-with-yas (backend)
+	  (if (or (not company-mode/enable-yas) (and (listp backend)    (member 'company-yasnippet backend)))
+	  backend
+	(append (if (consp backend) backend (list backend))
+	        '(:with company-yasnippet))))
+	
+	(setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
 	#+END_SRC
 
 ** Compilation
