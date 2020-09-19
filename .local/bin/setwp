@@ -32,7 +32,8 @@ sub choose_and_copy
 	my $i;
 
 	$rand = int(rand(@files - 1));
-	copy($files[$rand], WP_FILE);
+	unlink(WP_FILE);
+	copy(WP_POOL . $files[$rand], WP_FILE);
 	return;
 }
 
