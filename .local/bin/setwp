@@ -38,23 +38,22 @@ sub choose_and_copy
 
 sub set_wp
 {
-	my $screens = ($_[0]);
-
-	if ($screens == 0) {
-		# get them screens
-	}
+	system(
+		FEH_PATH,
+		'--bg-fill',
+		WP_FILE,
+		'--bg-fill',
+		WP_FILE,
+		'--bg-fill',
+		WP_FILE
+		);
 	return;
 }
 
 sub main
 {
 	choose_and_copy(get_pool_files());
-	if ($#ARGV + 1 > 0) {
-		set_wp($ARGV[0]);
-	}
-	else {
-		set_wp(0);
-	}
+	set_wp();
 	return;
 }
 
