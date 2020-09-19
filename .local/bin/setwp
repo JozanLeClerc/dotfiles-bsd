@@ -1,0 +1,63 @@
+#!/usr/local/bin/perl
+
+use strict;
+use warnings;
+use File::Copy;
+
+use constant {
+	WP_FILE	=> '/usr/home/jozan/Pictures/wallpaper.jpg',
+	WP_POOL	=> '/usr/home/jozan/Pictures/wallpapers/'
+};
+use constant FEH_PATH	=> '/usr/local/bin/feh';
+
+sub get_pool_files
+{
+	my @files;
+	my $i;
+
+	$i = 0;
+	opendir(DIR, WP_POOL) or die "Couldn't open directory " . WP_POOL . ": $!";
+	while ($files[$i] = readdir(DIR)) {
+		next if $files[$i] =~ /^\./;
+		$i++;
+	}
+	closedir(DIR);
+	return @files;
+}
+
+sub choose_and_copy
+{
+	my @files = (@_);
+	my $rand;
+	my $i;
+
+	$rand = int(rand(@files - 1));
+	copy($files[$rand], WP_FILE);
+	return;
+}
+
+sub set_wp
+{
+	my $screens = ($_[0]);
+
+	if ($screens == 0) {
+		# get them screens
+	}
+	return;
+}
+
+sub main
+{
+	choose_and_copy(get_pool_files());
+	if ($#ARGV + 1 > 0) {
+		set_wp($ARGV[0]);
+	}
+	else {
+		set_wp(0);
+	}
+	return;
+}
+
+main();
+
+__END__
