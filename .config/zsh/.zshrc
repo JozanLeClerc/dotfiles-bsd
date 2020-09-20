@@ -37,5 +37,19 @@ bindkey "^e" edit-command-line
 [ -f "$XDG_CONFIG_HOME/zsh/alias.zsh" ]		&& source $ZDOTDIR/alias.zsh
 [ -f "$XDG_CONFIG_HOME/zsh/plugins.zsh" ]	&& source $ZDOTDIR/plugins.zsh
 
+globalias() {
+	if [[ $LBUFFER =~ '^[a-z0-9]+$' ]]; then
+		zle _expand_alias
+		zle expand-word
+	fi
+	zle self-insert
+}
+
+zle -N globalias
+
+bindkey -v " " globalias
+bindkey -v "^ " magic-space
+bindkey -M isearch " " magic-space
+
 PROMPT="%B%{$fg[red]%}%M %{$fg[blue]%}%c%{$fg[red]%}%%%{$reset_color%} "
 RPROMPT="${RPROMPT}"'%{$fg_bold[red]%}%(?..%?)%{$reset_color%} $(gitprompt)'
