@@ -390,22 +390,22 @@
 (require 'w3m-load)
 (setq w3m-home-page "https://start.duckduckgo.com/")
 (setq w3m-default-display-inline-images t)
-(define-key w3m-mode-map "w" 'right-word)
-(define-key w3m-mode-map "b" 'left-word)
-(define-key w3m-mode-map "<" 'scroll-left)
-(define-key w3m-mode-map ">" 'scroll-right)
-(define-key w3m-mode-map (kbd "C-d") 'evil-scroll-page-down)
-(define-key w3m-mode-map (kbd "C-u") 'evil-scroll-page-up)
-(define-key w3m-mode-map "H" 'w3m-view-previous-page)
-(define-key w3m-mode-map "L" 'w3m-view-next-page)
-(define-key w3m-mode-map "o" 'w3m-goto-url)
-(define-key w3m-mode-map "O" 'w3m-goto-url-new-session)
-(define-key w3m-mode-map "v" 'w3m-view-image)
-(define-key w3m-mode-map "$" 'w3m-end-of-line)
-(define-key w3m-mode-map "^" 'w3m-beginning-of-line)
-(define-key w3m-mode-map (kbd "M-j") 'w3m-next-buffer)
-(define-key w3m-mode-map (kbd "M-k") 'w3m-previous-buffer)
-(define-key w3m-mode-map "t" 'w3m-copy-buffer)
+;; (define-key w3m-mode-map "w" 'right-word)
+;; (define-key w3m-mode-map "b" 'left-word)
+;; (define-key w3m-mode-map "<" 'scroll-left)
+;; (define-key w3m-mode-map ">" 'scroll-right)
+;; (define-key w3m-mode-map (kbd "C-d") 'evil-scroll-page-down)
+;; (define-key w3m-mode-map (kbd "C-u") 'evil-scroll-page-up)
+;; (define-key w3m-mode-map "H" 'w3m-view-previous-page)
+;; (define-key w3m-mode-map "L" 'w3m-view-next-page)
+;; (define-key w3m-mode-map "o" 'w3m-goto-url)
+;; (define-key w3m-mode-map "O" 'w3m-goto-url-new-session)
+;; (define-key w3m-mode-map "v" 'w3m-view-image)
+;; (define-key w3m-mode-map "$" 'w3m-end-of-line)
+;; (define-key w3m-mode-map "^" 'w3m-beginning-of-line)
+;; (define-key w3m-mode-map (kbd "M-j") 'w3m-next-buffer)
+;; (define-key w3m-mode-map (kbd "M-k") 'w3m-previous-buffer)
+;; (define-key w3m-mode-map "t" 'w3m-copy-buffer)
 #+END_SRC
 
 *** NeoTree
@@ -565,11 +565,6 @@ Attribution: URL `https://manuel-uberti.github.io/emacs/2018/02/17/magit-bury-bu
 (require 'ranger)
 (ranger-override-dired-mode t)
 (add-hook 'dired-mode-hook 'auto-revert-mode)
-#+END_SRC
-
-*** lldb
-#+BEGIN_SRC emacs-lisp
-(require 'realgud-lldb)
 #+END_SRC
 
 *** Lock windows

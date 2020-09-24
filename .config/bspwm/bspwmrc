@@ -62,7 +62,14 @@ sub run_if_dead
 			PGREP_PATH,
 			$bin
 			);
-	}; $retval = ($retval >> 8) & 0xff; if ($retval != 0) { $pid = fork(); if (not $pid) { exec(@argv); exit; }
+	};
+	$retval = ($retval >> 8) & 0xff;
+	if ($retval != 0) {
+		$pid = fork();
+		if (not $pid) {
+			exec(@argv);
+			exit;
+		}
 	}
 	return;
 }
