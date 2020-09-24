@@ -32,6 +32,7 @@ use constant {
 	VIFM_PATH			=> '/usr/local/bin/vifm',
 	GIT_PATH			=> '/usr/local/bin/git',
 	QTOX_PATH			=> '/usr/local/bin/qtox',
+	XSETROOT_PATH		=> '/usr/local/bin/xsetroot',
 	SETWP_PATH			=> '/usr/home/jozan/.local/bin/setwp'
 };
 use constant {
@@ -135,6 +136,7 @@ sub run_bg_programs
 	run_if_dead(DUNST_PATH);
 	run_if_dead(LOWBAT_PATH);
 	system(SETWP_PATH);
+	system(XSETROOT_PATH, '-cursor_name', 'left_ptr');
 	system(XSET_PATH, 'r', 'rate', XSET_R_RATE_DELAY, XSET_R_RATE_RATE);
 	system(SETXKBMAP_PATH, '-layout', 'us,fr', '-option', 'grp:alt_shift_toggle');
 	return;
