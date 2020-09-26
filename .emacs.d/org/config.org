@@ -62,6 +62,7 @@
 
 ;;file to save todo items
 (setq org-agenda-files (quote ("~/.emacs.d/org/todo/todo.org")))
+(setq org-log-done 'time)
 
 ;;set priority range from A to C with default A
 (setq org-highest-priority ?A)
