@@ -26,8 +26,8 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -v "^?" backward-delete-char
 bindkey -v "^[[A" history-beginning-search-backward
 bindkey -v "^[[B" history-beginning-search-forward
-bindkey -v "^K" history-beginning-search-backward
-bindkey -v "^J" history-beginning-search-forward
+# bindkey -v "^K" history-beginning-search-backward
+# bindkey -v "^J" history-beginning-search-forward
 bindkey -M vicmd "k" history-beginning-search-backward
 bindkey -M vicmd "j" history-beginning-search-forward
 

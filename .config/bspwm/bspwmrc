@@ -32,7 +32,6 @@ use constant {
 	GOTOP_PATH			=> '/usr/local/bin/gotop',
 	VIFM_PATH			=> '/usr/local/bin/vifm',
 	GIT_PATH			=> '/usr/local/bin/git',
-	QTOX_PATH			=> '/usr/local/bin/qtox',
 	XSETROOT_PATH		=> '/usr/local/bin/xsetroot',
 	XINPUT_PATH			=> '/usr/local/bin/xinput',
 	SETWP_PATH			=> '/usr/home/jozan/.local/bin/setwp',
@@ -330,7 +329,6 @@ sub run_network_programs
 	$curl->setopt(CURLOPT_WRITEDATA, \$response_body);
 	if ($curl->perform == 0) {
 		system(GIT_PATH, '-C', '/usr/home/jozan/.elfeed', 'pull', 'origin', 'master');
-		run_if_dead(QTOX_PATH);
 	}
 	return;
 }
