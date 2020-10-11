@@ -23,7 +23,10 @@ sub get_new_files
 	my @new_files;
 
 	foreach (@og_files) {
+		$_ =~ s/\ -\ /-/g;
+		$_ =~ s/\_-\_/-/g;
 		$_ =~ s/\ /_/g;
+		$_ =~ s/[\$#@~!&*()\[\];,:?^`\\\/]+/-/g;
 		$_ = lc($_);
 		push @new_files, $_;
 	}
