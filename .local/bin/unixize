@@ -2,17 +2,16 @@
 
 use warnings;
 use strict;
-use File::Copy;
+use File::Copy qw/mv/;
 
 sub get_og_files
 {
 	my @og_files;
-	my $file;
 
 	opendir(DIR, '.') or die $!;
-	while ($file = readdir(DIR)) {
-		next if ($file =~ m/^\./);
-		push @og_files, $file;
+	while (readdir(DIR)) {
+		next if ($_ =~ m/^\./);
+		push @og_files, $_;
 	}
 	closedir(DIR);
 	return @og_files;
@@ -23,8 +22,10 @@ sub get_new_files
 	my @og_files = @_;
 	my @new_files;
 
-	push @new_files, @og_files;
-	foreach (@new_files) {
+	foreach (@og_files) {
+		$_ =~ s/\ /_/g;
+		$_ = lc($_);
+		push @new_files, $_;
 	}
 	return @new_files;
 }
@@ -33,11 +34,21 @@ sub main
 {
 	my @og_files;
 	my @new_files;
+	my @files;
 
 	@og_files = get_og_files();
 	@new_files = get_new_files(@og_files);
-	foreach (@new_files) {
-		print "'$_'\n";
+	while (@og_files || @new_files) {
+		$files[0] = shift @og_files;
+		$files[1] = shift @new_files;
+		if (@ARGV == 1 && $ARGV[0] eq '-R' && -d $files[0]) {
+			chdir($files[0]) or die $!;
+			main();
+			chdir('../');
+		}
+		next if (-e $files[1]);
+		mv($files[0], $files[1]) or print STDERR $! . "\n";
+		print "'". $files[0] . "' -> '" . $files[1] . "'\n";
 	}
 	return;
 }
