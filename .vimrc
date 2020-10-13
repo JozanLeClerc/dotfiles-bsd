@@ -24,6 +24,7 @@ Plug 'brglng/vim-sidebar-manager'
 Plug 'preservim/tagbar'
 Plug 'vifm/vifm.vim'
 Plug 'mhinz/vim-startify'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mg979/vim-visual-multi'
 call plug#end()
@@ -49,6 +50,7 @@ let mapleader=","
 	autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 	colorscheme gruvbox-material
 	set wildmode=longest,list,full
+	set makeprg=gmake
 
 " Some quick bindings
 	nnoremap c "_c
@@ -68,11 +70,13 @@ let mapleader=","
 	nnoremap <C-x>3 :vsp<CR>
 	nnoremap <C-x>0 <C-w>q
 	nnoremap <C-x>d :Vifm<CR>
-	nnoremap <C-x><C-f> :e<space>
 	nnoremap <C-x><C-s> :w<CR>
+	nnoremap <C-x><C-f> :Files<CR>
+	nnoremap <C-x><C-b> :Buffers<CR>
 	nnoremap <silent> <leader>w :w <BAR> :bp <BAR> :bd #<CR>
 	nnoremap <silent> <C-x>k :w <BAR> :bp <BAR> :bd #<CR>
 	nnoremap <F1> :sp<CR><C-w>j:term<CR>:resize -10<CR>i
+	nnoremap <F4> :make<space>-j5<space>
 	nnoremap <C-x>u :UndotreeToggle<CR>
 	nmap <leader>1 <Plug>AirlineSelectTab1
 	nmap <leader>2 <Plug>AirlineSelectTab2
@@ -119,7 +123,7 @@ let mapleader=","
 
 	noremap <silent> <F2> :call sidebar#toggle('nerdtree')<CR>
 	noremap <silent> <F3> :call sidebar#toggle('tagbar')<CR>
-	noremap <silent> <F4> :call sidebar#toggle('undotree')<CR>
+	noremap <silent> <F5> :call sidebar#toggle('undotree')<CR>
 	let g:startify_session_before_save = ['call sidebar#close_all()']
 
 	" Startify
@@ -161,7 +165,7 @@ let mapleader=","
 	let g:airline_theme = 'base16_gruvbox_dark_hard'
 	let g:airline_powerline_fonts = 1
 	let g:airline_symbols_ascii = 1
-	let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+	let g:airline#parts#ffenc#skip_expected_string = 'utf-8[unix]'
 
 " Rainbow
 	let g:rainbow_active = 1
