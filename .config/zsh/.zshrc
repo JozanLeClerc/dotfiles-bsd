@@ -1,3 +1,5 @@
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+
 autoload -U colors && colors
 
 HISTSIZE=5000
