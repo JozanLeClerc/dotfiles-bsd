@@ -1,4 +1,10 @@
-" .vimrc 3.1 by Joe
+" .vimrc 4.0 by Joe
+"      _
+"     | | ___   ___
+"  _  | |/ _ \ / _ \
+" | |_| | (_) |  __/
+"  \___/ \___/ \___|
+" 
 
 " Plugins
 call plug#begin('~/.vim/plugged')
@@ -12,12 +18,19 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'luochen1990/rainbow'
 Plug 'preservim/nerdcommenter'
+Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
+Plug 'ryanoasis/vim-devicons'
+Plug 'brglng/vim-sidebar-manager'
+Plug 'preservim/tagbar'
+Plug 'vifm/vifm.vim'
+Plug 'mhinz/vim-startify'
 call plug#end()
 
 let mapleader=","
 
 " Some basics:
-	"set bg=light
+	set bg=dark
 	set go=a
 	set mouse=a
 	set nohlsearch
@@ -25,7 +38,6 @@ let mapleader=","
 	set tabstop=4
 	set softtabstop=4
 	set shiftwidth=4
-	nnoremap c "_c
 	set nocompatible
 	filetype plugin indent on
 	set encoding=utf-8
@@ -33,28 +45,105 @@ let mapleader=","
 	set ruler
 	syntax on
 	set hidden
-
-" Nerdtree
-	autocmd StdinReadPre * let s:std_in=1
-	autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-" Enable autocompletion:
+	autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+	colorscheme gruvbox-material
 	set wildmode=longest,list,full
 
 " Some quick bindings
-	noremap <C-x>g :G<CR>
-	noremap <A-;> :call NERDComment(0,"toggle")<CR>
-	noremap <silent> <A-k> :bprevious<CR>
-	noremap <silent> <A-j> :bnext<CR>
-	noremap <C-h> <C-w>h
-	noremap <C-j> <C-w>j
-	noremap <C-k> <C-w>k
-	noremap <C-l> <C-w>l
-	noremap <C-o> <C-w>o
-	noremap <C-x>0 <C-w>q
-	noremap <C-x><C-f> :e<space>
-	noremap <silent> <leader>w :w <BAR> :bp <BAR> :bd #<CR>
-	noremap <silent> <C-x>k :w <BAR> :bp <BAR> :bd #<CR>
+	nnoremap c "_c
+	nnoremap <C-x>g :G<CR>
+	nnoremap <M-;> :call NERDComment(0,"toggle")<CR>
+	nnoremap <M-x> :
+	nnoremap <M-1> :!
+	nnoremap <silent> <M-k> :bprevious<CR>
+	nnoremap <silent> <M-j> :bnext<CR>
+	nnoremap <C-h> <C-w>h
+	nnoremap <C-j> <C-w>j
+	nnoremap <C-k> <C-w>k
+	nnoremap <C-l> <C-w>l
+	nnoremap <C-o> <C-w>o
+	nnoremap <C-x>1 <C-w>o
+	nnoremap <C-x>2 :vsp<CR>
+	nnoremap <C-x>3 :sp<CR>
+	nnoremap <C-x>0 <C-w>q
+	nnoremap <C-x><C-f> :e<space>
+	nnoremap <C-x><C-s> :w<CR>
+	nnoremap <silent> <leader>w :w <BAR> :bp <BAR> :bd #<CR>
+	nnoremap <silent> <C-x>k :w <BAR> :bp <BAR> :bd #<CR>
+	nnoremap <F1> :sp<CR><C-w>j:term<CR>:resize -10<CR>i
+	nnoremap <C-x>u :UndotreeToggle<CR>
+	nmap <leader>1 <Plug>AirlineSelectTab1
+	nmap <leader>2 <Plug>AirlineSelectTab2
+	nmap <leader>3 <Plug>AirlineSelectTab3
+	nmap <leader>4 <Plug>AirlineSelectTab4
+	nmap <leader>5 <Plug>AirlineSelectTab5
+	nmap <leader>6 <Plug>AirlineSelectTab6
+	nmap <leader>7 <Plug>AirlineSelectTab7
+	nmap <leader>8 <Plug>AirlineSelectTab8
+	nmap <leader>9 <Plug>AirlineSelectTab9
+	nmap <leader>0 <Plug>AirlineSelectTab10
+
+" sidebars
+	let g:NERDTreeWinPos = 'left'
+	let g:NERDTreeWinSize = 40
+	let g:NERDTreeQuitOnOpen = 0
+	let g:tagbar_left = 1
+	let g:tagbar_width = 40
+	let g:tagbar_autoclose = 0
+	let g:tagbar_autofocus = 1
+	let g:undotree_SetFocusWhenToggle = 1
+	let g:undotree_SplitWidth = 40
+	
+	let g:sidebars = {
+			\ 'nerdtree': {
+			\     'position': 'left',
+			\     'check_win': {nr -> getwinvar(nr, '&filetype') ==# 'nerdtree'},
+			\     'open': 'NERDTree',
+			\     'close': 'NERDTreeClose'
+			\ },
+			\ 'tagbar': {
+			\     'position': 'left',
+			\     'check_win': {nr -> bufname(winbufnr(nr)) =~ '__Tagbar__'},
+			\     'open': 'TagbarOpen',
+			\     'close': 'TagbarClose'
+			\ },
+			\ 'undotree': {
+			\     'position': 'left',
+			\     'check_win': {nr -> getwinvar(nr, '&filetype') ==# 'undotree'},
+			\     'open': 'UndotreeShow',
+			\     'close': 'UndotreeHide'
+			\ }
+			\ }
+
+	noremap <silent> <F2> :call sidebar#toggle('nerdtree')<CR>
+	noremap <silent> <F3> :call sidebar#toggle('tagbar')<CR>
+	noremap <silent> <F4> :call sidebar#toggle('undotree')<CR>
+	let g:startify_session_before_save = ['call sidebar#close_all()']
+
+" Startify
+	let g:startify_padding_left = 90
+	let g:startify_custom_header = startify#pad([
+			\ '  _____________________________________ ',
+			\ ' /                                     \',
+			\ ' |    Hi, partner, welcome_back to     |',
+			\ ' |  _ __   ___  _____   _(_)_ __ ___   |',
+			\ ' | | ''_ \ / _ \/ _ \ \ / / | ''_ ` _ \  |',
+			\ ' | | | | |  __/ (_) \ V /| | | | | | | |',
+			\ ' | |_| |_|\___|\___/ \_/ |_|_| |_| |_| |',
+			\ ' \                                     /',
+			\ '  ------------------------------------- ',
+			\ '         \   ^__^                       ',
+			\ '          \  (oo)\_______               ',
+			\ '             (__)\       )\/\           ',
+			\ '                 ||----w |              ',
+			\ '                 ||     ||              ',
+			\ ])
+	let g:startify_lists = [
+		  \ { 'type': 'sessions',  'header': startify#pad(['Sessions'])	},
+		  \ { 'type': 'files',     'header': startify#pad(['Recent'])		},
+		  \ { 'type': 'bookmarks', 'header': startify#pad(['Bookmarks'])	},
+		  \ { 'type': 'commands',  'header': startify#pad(['Commands'])	},
+		  \ ]
 
 " Airline
 	let g:airline#extensions#tabline#enabled = 1
@@ -62,7 +151,7 @@ let mapleader=","
 	let g:airline_detect_modified = 1
 	let g:airline_detect_paste = 1
 	let g:airline_detect_crypt = 1
-	let g:airline_theme = 'term'
+	let g:airline_theme = 'base16_gruvbox_dark_hard'
 	let g:airline_powerline_fonts = 1
 	let g:airline_symbols_ascii = 1
 	let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
@@ -83,10 +172,10 @@ let mapleader=","
 " Cursor mode
 	let g:airline#extensions#cursormode#enabled = 1
 	let g:cursormode_color_map = {
-	\	"i": 		"#7da9c7",
-	\	"n": 		"#eac179",
-	\	"R": 		"#bb5653",
-	\	"r": 		"#bb5653",
+	\	"i": 		"#d79921",
+	\	"n": 		"#d79921",
+	\	"R": 		"#cc241d",
+	\	"r": 		"#cc241d",
 	\	"v": 		"#b06597",
 	\	"V": 		"#b06597",
 	\	"\<C-V>":	"#b06597",
@@ -94,45 +183,6 @@ let mapleader=","
 
 " 10 buffers jump
 	let g:airline#extensions#tabline#buffer_idx_mode = 1
-	noremap <F1> :sp<CR><C-w>j:term<CR>:resize -10<CR>i
-	noremap <F2> :NERDTreeToggle<CR>
-	noremap <C-u> :UndotreeToggle<CR>
-	nmap <leader>1 <Plug>AirlineSelectTab1
-	nmap <leader>2 <Plug>AirlineSelectTab2
-	nmap <leader>3 <Plug>AirlineSelectTab3
-	nmap <leader>4 <Plug>AirlineSelectTab4
-	nmap <leader>5 <Plug>AirlineSelectTab5
-	nmap <leader>6 <Plug>AirlineSelectTab6
-	nmap <leader>7 <Plug>AirlineSelectTab7
-	nmap <leader>8 <Plug>AirlineSelectTab8
-	nmap <leader>9 <Plug>AirlineSelectTab9
-	nmap <leader>0 <Plug>AirlineSelectTab10
 
 " Disables automatic commenting on newline:
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-" Powerline
-	set laststatus=2
-	set t_Co=256
-
-" Runs a script that cleans out tex build files whenever I close out of a .tex file.
-	autocmd VimLeave *.tex !texclear %
-
-" Compile document, be it groff/LaTeX/markdown/etc.
-	"map <leader>c :w! \| !compiler <c-r>%<CR>
-	autocmd BufWritePost *.tex !compiler %
-
-" Compile C file
-	autocmd FileType * noremap <F5> :w<CR> :!clear<CR> :!make -j5 ASAN=1<CR>
-	autocmd FileType * noremap <F6> :w<CR> :!clear<CR> :!./a.out; ret=$?; echo "~>"; if [ $ret -ne 0 ]; then echo -n "$ret"; if [ $ret -eq 127 ]; then echo " - Missing a.out"; exit; elif [ $ret -eq 134 ]; then echo " - Abort\!"; elif [ $ret -eq 138 ]; then echo " - Bus error\!"; elif [ $ret -eq 139 ]; then echo " - Segmentation fault\!"; fi; fi; echo "\n\n.vimrc v3.0 Tilde Edition by Joe"<CR>
-" === Comfy ===
-" C
-	autocmd FileType c nnoremap <Leader>m o#include<space><stdio.h><CR>#include<space><string.h><CR>#include<space><stdlib.h><CR>#include<space><stddef.h><CR>int<space>main(void)<space>{<CR>return<space>0;<CR>}<up><ESC>O
-	autocmd FileType c nnoremap <Leader>M o#include<space><stdio.h><CR>#include<space><string.h><CR>#include<space><stdlib.h><CR>#include<space><stddef.h><CR>int<space>main(int<space>argc,<space>char<space>*argv[])<space>{<CR>if<space>(argc<space>!=<space>1)<space>{<CR>printf("NOT<space>ENOUGH<space>ARGS\n");<CR>return<space>1;<CR>}<CR>return<space>0;<CR>}<up><ESC>Oprintf();<left><left>
-
-" C++
-	autocmd FileType cpp nnoremap <Leader>m oint<space>main(void)<space>{<CR>return<space>0;<CR>}<up><ESC>O
-	autocmd FileType cpp nnoremap <Leader>M oint<space>main(int<space>argc,<space>char<space>*argv[])<space>{<CR>if<space>(argc<space>!=<space>1)<CR>return<space>0;<CR>if<space>(argv[])<space>{}<CR>return<space>0;<CR>}<up><ESC>O
-	autocmd FileType cpp nnoremap <Leader>M oint<space>main(int<space>argc,<space>char<space>*argv[])<space>{<CR>if<space>(argc<space>!=<space>1)<space>{<CR>cout<space><<<space>"NOT<space>ENOUGH<space>ARGS"<space><<<space>endl;<CR>return<space>1;<CR>}<CR>return<space>0;<CR>}<up><ESC>O
-
-" .vimrc 3.1 by Joe
