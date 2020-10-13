@@ -4,13 +4,12 @@
 "  _  | |/ _ \ / _ \
 " | |_| | (_) |  __/
 "  \___/ \___/ \___|
-" 
+"
 
 " Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'jreybert/vimagit'
 Plug 'preservim/nerdtree'
 Plug 'mbbill/undotree'
 Plug 'jiangmiao/auto-pairs'
@@ -25,6 +24,8 @@ Plug 'brglng/vim-sidebar-manager'
 Plug 'preservim/tagbar'
 Plug 'vifm/vifm.vim'
 Plug 'mhinz/vim-startify'
+Plug 'junegunn/fzf.vim'
+Plug 'mg979/vim-visual-multi'
 call plug#end()
 
 let mapleader=","
@@ -63,9 +64,10 @@ let mapleader=","
 	nnoremap <C-l> <C-w>l
 	nnoremap <C-o> <C-w>o
 	nnoremap <C-x>1 <C-w>o
-	nnoremap <C-x>2 :vsp<CR>
-	nnoremap <C-x>3 :sp<CR>
+	nnoremap <C-x>2 :sp<CR>
+	nnoremap <C-x>3 :vsp<CR>
 	nnoremap <C-x>0 <C-w>q
+	nnoremap <C-x>d :Vifm<CR>
 	nnoremap <C-x><C-f> :e<space>
 	nnoremap <C-x><C-s> :w<CR>
 	nnoremap <silent> <leader>w :w <BAR> :bp <BAR> :bd #<CR>
@@ -93,57 +95,62 @@ let mapleader=","
 	let g:tagbar_autofocus = 1
 	let g:undotree_SetFocusWhenToggle = 1
 	let g:undotree_SplitWidth = 40
-	
+
 	let g:sidebars = {
-			\ 'nerdtree': {
-			\     'position': 'left',
-			\     'check_win': {nr -> getwinvar(nr, '&filetype') ==# 'nerdtree'},
-			\     'open': 'NERDTree',
-			\     'close': 'NERDTreeClose'
-			\ },
-			\ 'tagbar': {
-			\     'position': 'left',
-			\     'check_win': {nr -> bufname(winbufnr(nr)) =~ '__Tagbar__'},
-			\     'open': 'TagbarOpen',
-			\     'close': 'TagbarClose'
-			\ },
-			\ 'undotree': {
-			\     'position': 'left',
-			\     'check_win': {nr -> getwinvar(nr, '&filetype') ==# 'undotree'},
-			\     'open': 'UndotreeShow',
-			\     'close': 'UndotreeHide'
-			\ }
-			\ }
+				\ 'nerdtree': {
+				\     'position': 'left',
+				\     'check_win': {nr -> getwinvar(nr, '&filetype') ==# 'nerdtree'},
+				\     'open': 'NERDTree',
+				\     'close': 'NERDTreeClose'
+				\ },
+				\ 'tagbar': {
+				\     'position': 'left',
+				\     'check_win': {nr -> bufname(winbufnr(nr)) =~ '__Tagbar__'},
+				\     'open': 'TagbarOpen',
+				\     'close': 'TagbarClose'
+				\ },
+				\ 'undotree': {
+				\     'position': 'left',
+				\     'check_win': {nr -> getwinvar(nr, '&filetype') ==# 'undotree'},
+				\     'open': 'UndotreeShow',
+				\     'close': 'UndotreeHide'
+				\ }
+				\ }
 
 	noremap <silent> <F2> :call sidebar#toggle('nerdtree')<CR>
 	noremap <silent> <F3> :call sidebar#toggle('tagbar')<CR>
 	noremap <silent> <F4> :call sidebar#toggle('undotree')<CR>
 	let g:startify_session_before_save = ['call sidebar#close_all()']
 
-" Startify
+	" Startify
 	let g:startify_padding_left = 90
 	let g:startify_custom_header = startify#pad([
-			\ '  _____________________________________ ',
-			\ ' /                                     \',
-			\ ' |    Hi, partner, welcome_back to     |',
-			\ ' |  _ __   ___  _____   _(_)_ __ ___   |',
-			\ ' | | ''_ \ / _ \/ _ \ \ / / | ''_ ` _ \  |',
-			\ ' | | | | |  __/ (_) \ V /| | | | | | | |',
-			\ ' | |_| |_|\___|\___/ \_/ |_|_| |_| |_| |',
-			\ ' \                                     /',
-			\ '  ------------------------------------- ',
-			\ '         \   ^__^                       ',
-			\ '          \  (oo)\_______               ',
-			\ '             (__)\       )\/\           ',
-			\ '                 ||----w |              ',
-			\ '                 ||     ||              ',
-			\ ])
+				\ '  _____________________________________ ',
+				\ ' /                                     \',
+				\ ' |    Hi, partner, welcome_back to     |',
+				\ ' |  _ __   ___  _____   _(_)_ __ ___   |',
+				\ ' | | ''_ \ / _ \/ _ \ \ / / | ''_ ` _ \  |',
+				\ ' | | | | |  __/ (_) \ V /| | | | | | | |',
+				\ ' | |_| |_|\___|\___/ \_/ |_|_| |_| |_| |',
+				\ ' \                                     /',
+				\ '  ------------------------------------- ',
+				\ '         \   ^__^                       ',
+				\ '          \  (oo)\_______               ',
+				\ '             (__)\       )\/\           ',
+				\ '                 ||----w |              ',
+				\ '                 ||     ||              ',
+				\ ])
 	let g:startify_lists = [
-		  \ { 'type': 'sessions',  'header': startify#pad(['Sessions'])	},
-		  \ { 'type': 'files',     'header': startify#pad(['Recent'])		},
-		  \ { 'type': 'bookmarks', 'header': startify#pad(['Bookmarks'])	},
-		  \ { 'type': 'commands',  'header': startify#pad(['Commands'])	},
-		  \ ]
+				\ { 'type': 'sessions',  'header': startify#pad(['Sessions'])	},
+				\ { 'type': 'files',     'header': startify#pad(['Recent'])		},
+				\ { 'type': 'bookmarks', 'header': startify#pad(['Bookmarks'])	},
+				\ { 'type': 'commands',  'header': startify#pad(['Commands'])	},
+				\ ]
+	let g:startify_bookmarks = [
+				\ { 'v': '~/.vimrc' },
+				\ { 'z': '~/.config/zsh/.zshrc' },
+				\ { 'b': '~/.config/bspwm/bspwmrc' },
+				\ ]
 
 " Airline
 	let g:airline#extensions#tabline#enabled = 1
