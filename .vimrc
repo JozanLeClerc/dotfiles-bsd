@@ -9,6 +9,7 @@
 " Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'brglng/vim-sidebar-manager'
+Plug 'jceb/vim-orgmode'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -195,6 +196,8 @@ let g:cursormode_color_map = {
 " 10 buffers jump
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 
+" Org-mode
+let g:org_todo_keywords = ['TODO',  '|', 'DONE', 'CANCELED']
 " Disables automatic commenting on newline:
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
