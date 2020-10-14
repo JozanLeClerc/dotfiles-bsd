@@ -9,6 +9,7 @@
 " Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'brglng/vim-sidebar-manager'
+Plug 'honza/vim-snippets'
 Plug 'jceb/vim-orgmode'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -29,6 +30,7 @@ Plug 'vifm/vifm.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/AutoComplPop'
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 call plug#end()
 
 let mapleader="\\"
@@ -78,11 +80,11 @@ nnoremap <C-x>2 :sp<CR>
 nnoremap <C-x>3 :vsp<CR>
 nnoremap <C-x>0 <C-w>q
 nnoremap <C-x>d :Vifm<CR>
-nnoremap <C-x><C-s> :w<CR>
-nnoremap <C-x><C-f> :Files<CR>
-nnoremap <C-x><C-b> :Buffers<CR>
-nnoremap <silent> <leader>w :w <BAR> :bp <BAR> :bd #<CR>
-nnoremap <silent> <C-x>k :w <BAR> :bp <BAR> :bd #<CR>
+nnoremap <leader>s :w<CR>
+nnoremap <leader>e :Files<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>w :w <BAR> :bp <BAR> :bd #<CR>
+nnoremap <leader>d :w <BAR> :bp <BAR> :bd #<CR>
 nnoremap <F1> :sp<CR><C-w>j:term<CR>:resize -10<CR>i
 nnoremap <F4> :make<space>-j5<space>
 nnoremap <C-x>u :UndotreeToggle<CR>
@@ -99,8 +101,8 @@ nmap <leader>0 <Plug>AirlineSelectTab10
 inoremap <expr> <C-j> pumvisible() ? "<C-n>" : "<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "<C-p>" : "<C-k>"
 inoremap <expr> <CR> pumvisible() ? "<C-y>" : "<CR>"
-inoremap <expr> <TAB> pumvisible() ? "<C-y>" : "<ESC>"
-inoremap <expr> <ESC> pumvisible() ? "<C-e>" : "<ESC>"
+" inoremap <expr> <TAB> pumvisible() ? "<C-y>" : "<ESC>"
+" inoremap <expr> <ESC> pumvisible() ? "<C-e>" : "<ESC>"
 
 " sidebars
 let g:NERDTreeWinPos = 'left'
@@ -227,3 +229,5 @@ augroup vimrc
 				\  setlocal com-=:# kp=perldoc\ -f
 				\| compiler perl
 augroup END
+
+source /home/jozan/.config/nvim/plug-config/coc.vim
