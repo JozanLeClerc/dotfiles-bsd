@@ -28,13 +28,17 @@ Plug 'tpope/vim-fugitive'
 Plug 'vifm/vifm.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/AutoComplPop'
 call plug#end()
 
-let mapleader=","
+let mapleader="\\"
+let maplocalleader="\\"
 
 " Some basics:
 set bg=dark
 set clipboard^=unnamedplus
+set complete+=kspell
+set completeopt=menuone,longest
 set encoding=utf-8
 set go=a
 set hidden
@@ -44,9 +48,12 @@ set nocompatible
 set nohlsearch
 set number
 set shiftwidth=4
+set shortmess+=c
 set softtabstop=4
 set ruler
 set tabstop=4
+set undodir=/tmp
+set undofile
 set wildmode=longest,list,full
 syntax on
 filetype plugin indent on
@@ -89,6 +96,11 @@ nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 nmap <leader>0 <Plug>AirlineSelectTab10
+inoremap <expr> <C-j> pumvisible() ? "<C-n>" : "<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "<C-p>" : "<C-k>"
+inoremap <expr> <CR> pumvisible() ? "<C-y>" : "<CR>"
+inoremap <expr> <TAB> pumvisible() ? "<C-y>" : "<ESC>"
+inoremap <expr> <ESC> pumvisible() ? "<C-e>" : "<ESC>"
 
 " sidebars
 let g:NERDTreeWinPos = 'left'
