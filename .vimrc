@@ -18,6 +18,7 @@ Plug 'luochen1990/rainbow'
 Plug 'mbbill/undotree'
 Plug 'mg979/vim-visual-multi'
 Plug 'mhinz/vim-startify'
+Plug 'mhinz/vim-signify'
 Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
@@ -100,7 +101,7 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 nmap <leader>0 <Plug>AirlineSelectTab10
 inoremap <expr> <C-j> pumvisible() ? "<C-n>" : "<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "<C-p>" : "<C-k>"
-inoremap <expr> <CR> pumvisible() ? "<C-y>" : "<CR>"
+" inoremap <expr> <CR> pumvisible() ? "<C-y>" : "<CR>"
 " inoremap <expr> <TAB> pumvisible() ? "<C-y>" : "<ESC>"
 " inoremap <expr> <ESC> pumvisible() ? "<C-e>" : "<ESC>"
 
