@@ -1,5 +1,6 @@
 #how-read-feeds no
 auto-reload yes
+reload-threads 5
 
 external-url-viewer "urlview"
 
@@ -29,7 +30,7 @@ color listfocus black yellow standout
 color listnormal_unread blue default bold
 color listfocus_unread yellow default bold
 color info yellow black bold
-color article white default
+color article default default
 
 browser linkhandler
 macro , open-in-browser

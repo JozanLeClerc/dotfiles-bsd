@@ -24,8 +24,8 @@ export PATH="${HOME}/.local/bin:${HOME}/.cargo/bin:/usr/local/llvm11/bin:${PATH}
 
 # Apps
 # export ZSH="/home/jozan/.oh-my-zsh"
-export EDITOR="emacsclient -c -t"
-export VISUAL="emacsclient"
+export EDITOR="nvim"
+export VISUAL="nvim"
 export PAGER="less"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
