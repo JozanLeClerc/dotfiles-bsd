@@ -53,6 +53,7 @@ sub main
 	}
 	$size = get_size();
 	if ($size != 0) {
+		print 'mpv --ytdl-format=[height<=' . $size . '] ' . $ARGV[0] . "\n";
 		exec(
 			'mpv',
 			'--ytdl-format=[height<=' . $size . ']',
@@ -60,6 +61,7 @@ sub main
 		);
 	}
 	else {
+		print 'mpv ' . $ARGV[0] . "\n";
 		exec(
 			'mpv',
 			$ARGV[0]
