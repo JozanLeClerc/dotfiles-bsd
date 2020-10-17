@@ -17,21 +17,21 @@ Plug 'junegunn/fzf.vim'
 Plug 'luochen1990/rainbow'
 Plug 'mbbill/undotree'
 Plug 'mg979/vim-visual-multi'
-Plug 'mhinz/vim-startify'
 Plug 'mhinz/vim-signify'
+Plug 'mhinz/vim-startify'
 Plug 'morhetz/gruvbox'
-Plug 'preservim/nerdtree'
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'preservim/tagbar'
 Plug 'preservim/nerdcommenter'
+Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sainnhe/gruvbox-material'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 Plug 'vifm/vifm.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/AutoComplPop'
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 call plug#end()
 
 let mapleader="\\"
@@ -210,6 +210,9 @@ let g:cursormode_color_map = {
 
 " 10 buffers jump
 let g:airline#extensions#tabline#buffer_idx_mode = 1
+
+" Semantic colors
+let g:semanticTermColors = [28,1,2,3,4,5,6,7,25,9,10,34,12,13,14,15,16,125,124,19]
 
 " Org-mode
 let g:org_todo_keywords = ['TODO',  '|', 'DONE', 'CANCELED']
