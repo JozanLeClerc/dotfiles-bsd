@@ -97,8 +97,8 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: DejaVu Sans Mono Nerd Font
-    # family: mononoki Nerd Font
+    # family: DejaVu Sans Mono Nerd Font
+    family: mononoki Nerd Font
     # family: Px437 AT&T PC6300
     # family: Px437 IBM VGA9
 
