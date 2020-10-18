@@ -65,7 +65,6 @@ colorscheme gruvbox-material
 
 " Some quick bindings
 nnoremap c "_c
-nnoremap <C-x>g :G<CR>
 nnoremap <M-;> :call NERDComment(0,"toggle")<CR>
 nnoremap <M-x> :
 nnoremap <M-1> :!
@@ -81,10 +80,11 @@ nnoremap <C-x>1 <C-w>o
 nnoremap <C-x>2 :sp<CR>
 nnoremap <C-x>3 :vsp<CR>
 nnoremap <C-x>0 <C-w>q
-nnoremap <leader>d :Vifm<CR>
+nnoremap <silent> <leader>g :G<CR>
+nnoremap <silent> <leader>d :Vifm<CR>
+nnoremap <silent> <leader>e :Files<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <leader>s :w<CR>
-nnoremap <leader>e :Files<CR>
-nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>w :w <BAR> :bp <BAR> :bd #<CR>
 nnoremap <leader>x :w <BAR> :bp <BAR> :bd #<CR>
 nmap <leader>1 <Plug>AirlineSelectTab1
@@ -137,7 +137,7 @@ let g:sidebars = {
 
 noremap <silent> <F1> :sp<CR><C-w>j:term<CR>:resize -10<CR>i
 noremap <silent> <F2> :call sidebar#toggle('nerdtree')<CR>
-noremap <silent> <F4> :make<space>-j5<space>
+noremap <F4> :make<space>-j5<space>
 noremap <silent> <F3> :call sidebar#toggle('tagbar')<CR>
 noremap <silent> <F5> :call sidebar#toggle('undotree')<CR>
 let g:startify_session_before_save = ['call sidebar#close_all()']
