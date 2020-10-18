@@ -76,16 +76,17 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-o> <C-w>o
+nnoremap <C-q> <C-w>q
 nnoremap <C-x>1 <C-w>o
 nnoremap <C-x>2 :sp<CR>
 nnoremap <C-x>3 :vsp<CR>
 nnoremap <C-x>0 <C-w>q
-nnoremap <C-x>d :Vifm<CR>
+nnoremap <leader>d :Vifm<CR>
 nnoremap <leader>s :w<CR>
 nnoremap <leader>e :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>w :w <BAR> :bp <BAR> :bd #<CR>
-nnoremap <leader>d :w <BAR> :bp <BAR> :bd #<CR>
+nnoremap <leader>x :w <BAR> :bp <BAR> :bd #<CR>
 nnoremap <F1> :sp<CR><C-w>j:term<CR>:resize -10<CR>i
 nnoremap <F4> :make<space>-j5<space>
 nnoremap <C-x>u :UndotreeToggle<CR>
