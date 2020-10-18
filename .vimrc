@@ -87,9 +87,6 @@ nnoremap <leader>e :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>w :w <BAR> :bp <BAR> :bd #<CR>
 nnoremap <leader>x :w <BAR> :bp <BAR> :bd #<CR>
-nnoremap <F1> :sp<CR><C-w>j:term<CR>:resize -10<CR>i
-nnoremap <F4> :make<space>-j5<space>
-nnoremap <C-x>u :UndotreeToggle<CR>
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
 nmap <leader>3 <Plug>AirlineSelectTab3
@@ -138,7 +135,9 @@ let g:sidebars = {
 			\ }
 			\ }
 
+noremap <silent> <F1> :sp<CR><C-w>j:term<CR>:resize -10<CR>i
 noremap <silent> <F2> :call sidebar#toggle('nerdtree')<CR>
+noremap <silent> <F4> :make<space>-j5<space>
 noremap <silent> <F3> :call sidebar#toggle('tagbar')<CR>
 noremap <silent> <F5> :call sidebar#toggle('undotree')<CR>
 let g:startify_session_before_save = ['call sidebar#close_all()']
