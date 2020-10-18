@@ -26,9 +26,9 @@ bind-key x pb-delete
 bind-key ^t next-unread
 
 color listnormal cyan default
-color listfocus black yellow standout
-color listnormal_unread blue default bold
-color listfocus_unread yellow default bold
+color listfocus black cyan standout
+color listnormal_unread yellow default bold
+color listfocus_unread yellow black bold
 color info yellow black bold
 color article default default
 

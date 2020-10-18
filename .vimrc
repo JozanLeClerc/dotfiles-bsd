@@ -211,9 +211,6 @@ let g:cursormode_color_map = {
 " 10 buffers jump
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 
-" Semantic colors
-let g:semanticTermColors = [28,1,2,3,4,5,6,7,25,9,10,34,12,13,14,15,16,125,124,19]
-
 " Org-mode
 let g:org_todo_keywords = ['TODO',  '|', 'DONE', 'CANCELED']
 " Disables automatic commenting on newline:
