@@ -11,13 +11,6 @@ use constant {
 sub main
 {
 	system(
-		NOTIFY_SEND_PATH,
-		'mbsync',
-		'-u',
-		'low',
-		'Fetching mail...'
-	);
-	system(
 		MBSYNC_PATH,
 		'-c',
 		'/usr/home/jozan/.mbsyncrc',

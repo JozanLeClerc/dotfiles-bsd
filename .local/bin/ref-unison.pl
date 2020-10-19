@@ -11,13 +11,6 @@ use constant {
 sub main
 {
 	system(
-		NOTIFY_SEND_PATH,
-		'unison',
-		'-u',
-		'low',
-		'Synchronizing files...'
-	);
-	system(
 		UNISON_PATH,
 		'-ui',
 		'text',
