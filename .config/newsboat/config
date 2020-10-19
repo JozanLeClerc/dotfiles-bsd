@@ -1,5 +1,5 @@
 #how-read-feeds no
-auto-reload yes
+auto-reload no
 reload-threads 5
 
 external-url-viewer "urlview"
