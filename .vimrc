@@ -105,14 +105,14 @@ inoremap <expr> <C-k> pumvisible() ? "<C-p>" : "<C-k>"
 
 " sidebars
 let g:NERDTreeWinPos = 'left'
-let g:NERDTreeWinSize = 40
+let g:NERDTreeWinSize = 30
 let g:NERDTreeQuitOnOpen = 0
 let g:tagbar_left = 1
-let g:tagbar_width = 40
+let g:tagbar_width = 30
 let g:tagbar_autoclose = 0
 let g:tagbar_autofocus = 1
 let g:undotree_SetFocusWhenToggle = 1
-let g:undotree_SplitWidth = 40
+let g:undotree_SplitWidth = 30
 
 let g:sidebars = {
 			\ 'nerdtree': {
