@@ -134,13 +134,13 @@ sub bspc_configs
 sub bspc_rules
 {
 	system(BSPC_PATH, 'rule', '-a', 'Emacs',			'state=tiled');
-	system(BSPC_PATH, 'rule', '-a', 'Firefox',			'desktop=08', 'follow=true');
-	system(BSPC_PATH, 'rule', '-a', 'Wine',				'desktop=07', 'state=floating');
+	system(BSPC_PATH, 'rule', '-a', 'Firefox',			'desktop=03', 'follow=true');
+	system(BSPC_PATH, 'rule', '-a', 'Wine',				'desktop=04', 'state=floating');
 	system(BSPC_PATH, 'rule', '-a', 'Dunst',			'layer=above');
 	system(BSPC_PATH, 'rule', '-a', 'Zathura',			'state=tiled');
-	system(BSPC_PATH, 'rule', '-a', 'qTox',				'desktop=12');
+	system(BSPC_PATH, 'rule', '-a', 'qTox',				'desktop=11');
 	system(BSPC_PATH, 'rule', '-a', 'DergodsRealmII',	'state=floating');
-	system(BSPC_PATH, 'rule', '-a', 'obs',				'desktop=12', 'follow=true');
+	system(BSPC_PATH, 'rule', '-a', 'obs',				'desktop=11', 'follow=true');
 	return;
 }
 
@@ -297,7 +297,7 @@ sub run_terms
 	my ($screens) = @_;
 
 	Time::HiRes::sleep(1);
-	system(BSPC_PATH, 'desktop', '-f', '09');
+	system(BSPC_PATH, 'desktop', '-f', '12');
 	if ($screens == 3) {
 		fg_on_three_screens();
 	}
