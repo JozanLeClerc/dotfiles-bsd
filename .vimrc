@@ -31,7 +31,7 @@ Plug 'tpope/vim-surround'
 Plug 'vifm/vifm.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-scripts/AutoComplPop'
+" Plug 'vim-scripts/AutoComplPop'
 call plug#end()
 
 let mapleader="\\"
@@ -40,8 +40,8 @@ let maplocalleader="\\"
 " Some basics:
 set bg=dark
 set clipboard^=unnamedplus
-set complete+=kspell
-set completeopt=menuone,longest
+"set complete+=kspell
+"set completeopt=menuone,longest
 set encoding=utf-8
 set go=a
 set hidden
