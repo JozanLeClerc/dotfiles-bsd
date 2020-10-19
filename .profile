@@ -40,6 +40,7 @@ export LANG="en_US.UTF-8"
 export LESSHISTFILE="-"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_MUSIC_DIR="$HOME/Music"
 
 # ccache
 export CCACHE_PATH="/usr/bin:/usr/local/bin:/usr/local/llvm11/bin"

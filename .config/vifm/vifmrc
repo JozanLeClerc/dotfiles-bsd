@@ -25,7 +25,7 @@ map <C-s> <C-w>s
 map <C-v> <C-w>v
 
 map R :restart<CR>
-map x :!sxiv -ft * 2>/dev/null &<CR>
+map x :!sxiv -b -ft * 2>/dev/null &<CR>
 nnoremap o :file &<cr>
 map E :!emacsclient -c %f<CR>
 map mkd :mkdir<space>
@@ -73,7 +73,7 @@ fileviewer *.[1-8] man ./%c | col -b
 filetype *.[1-8] man ./%c
 
 fileviewer *.jpg,*.jpeg,*.png,*.ico vifmimg draw %px %py %pw %ph %c %pc vifmimg clear
-filextype *.bmp,*.jpg,*.jpeg,*.png,*.ico,*.gif,*.xpm  sxiv -ia %f 2>/dev/null &
+filextype *.bmp,*.jpg,*.jpeg,*.png,*.ico,*.gif,*.xpm  sxiv -b -ia %f 2>/dev/null &
 
 filextype *.svg inkscape %f 2>/dev/null &
 filextype *.xcf gimp %f 2>/dev/null &

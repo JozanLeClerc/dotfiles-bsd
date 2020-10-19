@@ -7,37 +7,38 @@ use Time::HiRes;
 use WWW::Curl::Easy;
 
 use constant {
-	DASH_PATH			=> '/usr/local/bin/dash',
-	SXHKD_PATH			=> '/usr/local/bin/sxhkd',
-	PGREP_PATH			=> '/bin/pgrep',
-	PKILL_PATH			=> '/bin/pkill',
-	XRANDR_PATH			=> '/usr/local/bin/xrandr',
-	MAINSCREEN_PATH		=> '/usr/home/jozan/.local/bin/mainscreen',
-	DUALSCREEN_PATH		=> '/usr/home/jozan/.local/bin/dualscreen',
-	TRIPLESCREEN_PATH	=> '/usr/home/jozan/.local/bin/triplescreen',
-	BSPC_PATH			=> '/usr/local/bin/bspc',
-	COMPTON_PATH		=> '/usr/local/bin/compton',
-	XSET_PATH			=> '/usr/local/bin/xset',
-	SETXKBMAP_PATH		=> '/usr/local/bin/setxkbmap',
-	DUNST_PATH			=> '/usr/local/bin/dunst',
-	LOWBAT_PATH			=> '/usr/local/bin/lowbat',
-	EMACS_PATH			=> '/usr/local/bin/emacs',
-	NEOVIM_PATH			=> '/usr/local/bin/nvim',
-	ALACRITTY_PATH		=> '/usr/local/bin/alacritty',
-	PGREP_PATH			=> '/bin/pgrep',
-	ESPEAK_PATH			=> '/usr/local/bin/espeak',
-	SH_PATH				=> '/bin/sh',
-	ZSH_PATH			=> '/usr/local/bin/zsh',
-	COWSAY_PATH			=> '/usr/local/bin/cowsay',
-	HTOP_PATH			=> '/usr/local/bin/htop',
-	GOTOP_PATH			=> '/usr/local/bin/gotop',
-	VIFM_PATH			=> '/usr/local/bin/vifm',
-	GIT_PATH			=> '/usr/local/bin/git',
-	XSETROOT_PATH		=> '/usr/local/bin/xsetroot',
-	XINPUT_PATH			=> '/usr/local/bin/xinput',
-	SETWP_PATH			=> '/usr/home/jozan/.local/bin/setwp',
-	BSPSWALLOW_PATH		=> '/usr/home/jozan/.local/bin/bspswallow',
-	NEOMUTT_PATH		=> '/usr/local/bin/neomutt'
+	DASH_PATH				=> '/usr/local/bin/dash',
+	SXHKD_PATH				=> '/usr/local/bin/sxhkd',
+	PGREP_PATH				=> '/bin/pgrep',
+	PKILL_PATH				=> '/bin/pkill',
+	XRANDR_PATH				=> '/usr/local/bin/xrandr',
+	MAINSCREEN_PATH			=> '/usr/home/jozan/.local/bin/mainscreen',
+	DUALSCREEN_PATH			=> '/usr/home/jozan/.local/bin/dualscreen',
+	TRIPLESCREEN_PATH		=> '/usr/home/jozan/.local/bin/triplescreen',
+	BSPC_PATH				=> '/usr/local/bin/bspc',
+	COMPTON_PATH			=> '/usr/local/bin/compton',
+	XSET_PATH				=> '/usr/local/bin/xset',
+	SETXKBMAP_PATH			=> '/usr/local/bin/setxkbmap',
+	DUNST_PATH				=> '/usr/local/bin/dunst',
+	LOWBAT_PATH				=> '/usr/local/bin/lowbat',
+	EMACS_PATH				=> '/usr/local/bin/emacs',
+	NEOVIM_PATH				=> '/usr/local/bin/nvim',
+	ALACRITTY_PATH			=> '/usr/local/bin/alacritty',
+	PGREP_PATH				=> '/bin/pgrep',
+	ESPEAK_PATH				=> '/usr/local/bin/espeak',
+	SH_PATH					=> '/bin/sh',
+	ZSH_PATH				=> '/usr/local/bin/zsh',
+	COWSAY_PATH				=> '/usr/local/bin/cowsay',
+	HTOP_PATH				=> '/usr/local/bin/htop',
+	GOTOP_PATH				=> '/usr/local/bin/gotop',
+	VIFM_PATH				=> '/usr/local/bin/vifm',
+	GIT_PATH				=> '/usr/local/bin/git',
+	XSETROOT_PATH			=> '/usr/local/bin/xsetroot',
+	XINPUT_PATH				=> '/usr/local/bin/xinput',
+	SETWP_PATH				=> '/usr/home/jozan/.local/bin/setwp',
+	BSPSWALLOW_PATH			=> '/usr/home/jozan/.local/bin/bspswallow',
+	NEOMUTT_PATH			=> '/usr/local/bin/neomutt',
+	MPD_NOTIFICATION_PATH	=> '/usr/local/bin/mpd-notification'
 };
 use constant {
 	BSP_BORDER_WIDTH		=> 1,
@@ -152,6 +153,7 @@ sub run_bg_programs
 	run_if_dead(DUNST_PATH);
 	run_if_dead(LOWBAT_PATH);
 	run_if_dead(BSPSWALLOW_PATH);
+	run_if_dead(MPD_NOTIFICATION_PATH);
 	system(SETWP_PATH);
 	system(XSETROOT_PATH, '-cursor_name', 'left_ptr');
 	system(XSET_PATH, 'r', 'rate', XSET_R_RATE_DELAY, XSET_R_RATE_RATE);
