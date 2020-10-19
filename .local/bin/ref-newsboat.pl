@@ -32,7 +32,7 @@ sub main
 		system(
 			NOTIFY_SEND_PATH,
 			'-u',
-			'low',
+			'normal',
 			' newsboat',
 			$stdout . ' new articles'
 		);

@@ -36,7 +36,8 @@ use constant {
 	XSETROOT_PATH		=> '/usr/local/bin/xsetroot',
 	XINPUT_PATH			=> '/usr/local/bin/xinput',
 	SETWP_PATH			=> '/usr/home/jozan/.local/bin/setwp',
-	BSPSWALLOW_PATH		=> '/usr/home/jozan/.local/bin/bspswallow'
+	BSPSWALLOW_PATH		=> '/usr/home/jozan/.local/bin/bspswallow',
+	NEOMUTT_PATH		=> '/usr/local/bin/neomutt'
 };
 use constant {
 	BSP_BORDER_WIDTH		=> 1,
@@ -138,9 +139,9 @@ sub bspc_rules
 	system(BSPC_PATH, 'rule', '-a', 'Wine',				'desktop=04', 'state=floating');
 	system(BSPC_PATH, 'rule', '-a', 'Dunst',			'layer=above');
 	system(BSPC_PATH, 'rule', '-a', 'Zathura',			'state=tiled');
-	system(BSPC_PATH, 'rule', '-a', 'qTox',				'desktop=11');
+	system(BSPC_PATH, 'rule', '-a', 'qTox',				'desktop=10');
 	system(BSPC_PATH, 'rule', '-a', 'DergodsRealmII',	'state=floating');
-	system(BSPC_PATH, 'rule', '-a', 'obs',				'desktop=11', 'follow=true');
+	system(BSPC_PATH, 'rule', '-a', 'obs',				'desktop=10', 'follow=true');
 	return;
 }
 
@@ -307,21 +308,29 @@ sub run_terms
 	else {
 		fg_on_one_screen();
 	}
-	system(BSPC_PATH, 'desktop', '-f', '01');
 	return;
 }
 
 sub run_fg_programs
 {
 	my ($screens) = @_;
-	my $pid;
+	my @pid;
 
 	run_espeak();
 	run_terms($screens);
-	$pid = fork();
-	if (not $pid) {
+	system(BSPC_PATH, 'desktop', '-f', '11');
+	$pid[0] = fork();
+	if (not $pid[0]) {
+		exec(ALACRITTY_PATH, '-e', NEOMUTT_PATH);
+	}
+	Time::HiRes::sleep(SLEEP_TIME);
+	system(BSPC_PATH, 'desktop', '-f', '01');
+	$pid[0] = fork();
+	if (not $pid[0]) {
 		exec(ALACRITTY_PATH, '-e', NEOVIM_PATH);
 	}
+	Time::HiRes::sleep(SLEEP_TIME);
+	system(BSPC_PATH, 'desktop', '-f', '12');
 	return;
 }
 
