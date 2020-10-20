@@ -36,8 +36,10 @@ bindkey -M vicmd "j" history-beginning-search-forward
 autoload edit-command-line && zle -N edit-command-line
 bindkey "^e" edit-command-line
 
-[ -f "$XDG_CONFIG_HOME/zsh/alias.zsh" ]		&& source $ZDOTDIR/alias.zsh
-[ -f "$XDG_CONFIG_HOME/zsh/plugins.zsh" ]	&& source $ZDOTDIR/plugins.zsh
+[ -f "$ZDOTDIR/alias.zsh" ]		&& source $ZDOTDIR/alias.zsh
+[ -f "$ZDOTDIR/plugins.zsh" ]	&& source $ZDOTDIR/plugins.zsh
+[ -f "$HOME/Packages/fzf/shell/completion.zsh" ]	&& source $HOME/Packages/fzf/shell/completion.zsh
+[ -f "$HOME/Packages/fzf/shell/key-bindings.zsh" ]	&& source $HOME/Packages/fzf/shell/key-bindings.zsh
 
 globalias() {
 	if [[ $LBUFFER =~ '^[a-z0-9]+$' ]]; then
