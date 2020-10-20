@@ -18,6 +18,7 @@ nnoremap <silent> <leader>g :G<CR>
 nnoremap <silent> <leader>d :Vifm<CR>
 nnoremap <silent> <leader>e :Files<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>p :<C-u>CocList -A --normal yank<CR>
 nnoremap <leader>s :w<CR>
 nnoremap <leader>w :w<CR>:bp<CR>:bd #<CR>
 nnoremap <leader>x :w<CR>:bp<CR>:bd #<CR>
