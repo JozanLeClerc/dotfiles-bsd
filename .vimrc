@@ -216,6 +216,7 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:org_todo_keywords = ['TODO',  '|', 'DONE', 'CANCELED']
 " Disables automatic commenting on newline:
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+autocmd BufDelete * if empty(filter(tabpagebuflist(), '!buflisted(v:val)')) | Startify | endif
 
 " Filetype {{{1
 augroup vimrc
