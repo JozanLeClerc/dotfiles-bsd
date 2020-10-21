@@ -17,25 +17,29 @@ nnoremap <C-x>2 :sp<CR>
 nnoremap <C-x>3 :vsp<CR>
 nnoremap <C-x>0 <C-w>q
 nnoremap <silent> <leader> :WhichKey '\'<CR>
-nnoremap <silent> <leader>g :FloatermNew lazygit<CR>
-let g:which_key_map.g = 'lazygit'
-nnoremap <silent> <leader>d :FloatermNew vifm<CR>
-let g:which_key_map.d = 'vifm'
-nnoremap <silent> <leader>v :FloatermNew vifm<CR>
-let g:which_key_map.v = 'vifm'
-nnoremap <silent> <leader>e :Files<CR>
-let g:which_key_map.e = 'fzf-files'
 nnoremap <silent> <leader>b :Buffers<CR>
-let g:which_key_map.b = 'fzf-buffers'
+nnoremap <silent> <leader>d :FloatermNew vifm<CR>
+nnoremap <silent> <leader>e :Files<CR>
+nnoremap <silent> <leader>f :Rg<CR>
+nnoremap <silent> <leader>F :Ag<CR>
+nnoremap <silent> <leader>g :FloatermNew lazygit<CR>
 nnoremap <silent> <leader>h :Startify<CR>
-let g:which_key_map.h = 'startify'
-nnoremap <silent> <leader>p :<C-u>CocList -A --normal yank<CR>
-let g:which_key_map.p = 'coc-paste'
-nnoremap <leader>s :w<CR>
-let g:which_key_map.s = 'write-buffer'
 nnoremap <leader>k :w<CR>:bp<CR>:bd #<CR>
-let g:which_key_map.k = 'write-and-close-buffer'
+nnoremap <silent> <leader>p :<C-u>CocList -A --normal yank<CR>
+nnoremap <silent> <leader>v :FloatermNew vifm<CR>
+nnoremap <leader>w :w<CR>
 nnoremap <leader>x :w<CR>:bp<CR>:bd #<CR>
+let g:which_key_map.b = 'buffers'
+let g:which_key_map.d = 'vifm'
+let g:which_key_map.e = 'files'
+let g:which_key_map.f = 'grep'
+let g:which_key_map.F = 'the_silver_searcher'
+let g:which_key_map.g = 'lazygit'
+let g:which_key_map.h = 'startify'
+let g:which_key_map.k = 'write-and-close-buffer'
+let g:which_key_map.p = 'coc-paste'
+let g:which_key_map.v = 'vifm'
+let g:which_key_map.w = 'write-buffer'
 let g:which_key_map.x = 'write-and-close-buffer'
 nmap <M-1> <Plug>AirlineSelectTab1
 nmap <M-2> <Plug>AirlineSelectTab2
