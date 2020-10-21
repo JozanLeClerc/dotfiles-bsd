@@ -1,3 +1,5 @@
+call which_key#register('\', "g:which_key_map")
+let g:which_key_map = {}
 nnoremap c "_c
 nnoremap <M-;> :call NERDComment(0,"toggle")<CR>
 nnoremap <M-x> :
@@ -14,23 +16,39 @@ nnoremap <C-x>1 <C-w>o
 nnoremap <C-x>2 :sp<CR>
 nnoremap <C-x>3 :vsp<CR>
 nnoremap <C-x>0 <C-w>q
-nnoremap <silent> <leader>g :G<CR>
-nnoremap <silent> <leader>d :Vifm<CR>
+nnoremap <silent> <leader> :WhichKey '\'<CR>
+nnoremap <silent> <leader>g :FloatermNew lazygit<CR>
+let g:which_key_map.g = 'lazygit'
+nnoremap <silent> <leader>d :FloatermNew vifm<CR>
+let g:which_key_map.d = 'vifm'
+nnoremap <silent> <leader>v :FloatermNew vifm<CR>
+let g:which_key_map.v = 'vifm'
 nnoremap <silent> <leader>e :Files<CR>
+let g:which_key_map.e = 'fzf-files'
 nnoremap <silent> <leader>b :Buffers<CR>
+let g:which_key_map.b = 'fzf-buffers'
+nnoremap <silent> <leader>h :Startify<CR>
+let g:which_key_map.h = 'startify'
 nnoremap <silent> <leader>p :<C-u>CocList -A --normal yank<CR>
+let g:which_key_map.p = 'coc-paste'
 nnoremap <leader>s :w<CR>
-nnoremap <leader>w :w<CR>:bp<CR>:bd #<CR>
+let g:which_key_map.s = 'write-buffer'
+nnoremap <leader>k :w<CR>:bp<CR>:bd #<CR>
+let g:which_key_map.k = 'write-and-close-buffer'
 nnoremap <leader>x :w<CR>:bp<CR>:bd #<CR>
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
-nmap <leader>0 <Plug>AirlineSelectTab10
+let g:which_key_map.x = 'write-and-close-buffer'
+nmap <M-1> <Plug>AirlineSelectTab1
+nmap <M-2> <Plug>AirlineSelectTab2
+nmap <M-3> <Plug>AirlineSelectTab3
+nmap <M-4> <Plug>AirlineSelectTab4
+nmap <M-5> <Plug>AirlineSelectTab5
+nmap <M-6> <Plug>AirlineSelectTab6
+nmap <M-7> <Plug>AirlineSelectTab7
+nmap <M-8> <Plug>AirlineSelectTab8
+nmap <M-9> <Plug>AirlineSelectTab9
+nmap <M-0> <Plug>AirlineSelectTab10
 inoremap <expr> <C-j> pumvisible() ? "<C-n>" : "<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "<C-p>" : "<C-k>"
+let g:floaterm_keymap_toggle	= '<F1>'
+let g:floaterm_keymap_prev		= '<F11>'
+let g:floaterm_keymap_next		= '<F12>'

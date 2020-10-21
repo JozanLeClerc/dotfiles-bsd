@@ -30,7 +30,6 @@ let g:sidebars = {
 			\ }
 			\ }
 
-noremap <silent> <F1> :sp<CR><C-w>j:term<CR>:resize -10<CR>i
 noremap <silent> <F2> :call sidebar#toggle('nerdtree')<CR>
 noremap <F4> :make<space>-j5<space>
 noremap <silent> <F3> :call sidebar#toggle('tagbar')<CR>
