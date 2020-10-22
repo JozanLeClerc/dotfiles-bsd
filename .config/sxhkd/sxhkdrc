@@ -97,7 +97,7 @@ super + {Left,Down,Up,Right}
 super + 1
 	/usr/local/bin/alacritty -e vifm
 super + 2
-	/usr/local/bin/alacritty -e vim
+	/usr/local/bin/alacritty -e nvim
 super + 3
 	/usr/local/bin/firefox --kiosk https://start.duckduckgo.com/
 super + 4
