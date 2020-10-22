@@ -1,3 +1,5 @@
+" vim: filetype=vim
+
 " Configuration of vimpc is done using vimpc commands
 " these can include commands which require an mpd connection
 "
@@ -32,6 +34,10 @@ map <A-j> gt
 " Turn consume on when we connect
 "consume on
 
+set singlequit
+set ignorecase
+set incsearch
+
 " Ensure that the database is up to date each connect
 update
 
@@ -46,7 +52,12 @@ update
 "play 1
 
 " Color the statusline and tabs
-" highlight status blackbg
-" highlight tab blackbg
+highlight status black yellow
+highlight tab black yellow
+highlight dir default magenta
+highlight song default cyan
+highlight partial default blue
+highlight full default green
+highlight current default yellow
 
 echo Config File Complete
