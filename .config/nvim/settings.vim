@@ -13,7 +13,7 @@ set shortmess+=c
 set softtabstop=4
 set ruler
 set tabstop=4
-set timeoutlen=200
+set timeoutlen=500
 set undodir=/tmp
 set undofile
 set wildmode=longest,list,full
