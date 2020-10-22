@@ -19,8 +19,12 @@ set undofile
 set wildmode=longest,list,full
 syntax on
 filetype plugin indent on
-autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+" autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 colorscheme gruvbox-material
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
+highlight LineNr ctermbg=none
+highlight EndOfBuffer ctermbg=none
 let mapleader="\\"
 let maplocalleader="\\"
 " Disables automatic commenting on newline:
