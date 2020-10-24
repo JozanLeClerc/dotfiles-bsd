@@ -68,6 +68,7 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 
 " Org-mode
 let g:org_todo_keywords = ['TODO',  '|', 'DONE', 'CANCELED']
+let g:org_export_emacs = "/usr/local/bin/emacs"
 
 " Floaterm
 let g:floaterm_autoinsert = 1

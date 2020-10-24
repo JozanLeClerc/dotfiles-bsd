@@ -110,6 +110,8 @@
 	'org-babel-load-languages '((C . t )))
 (org-babel-do-load-languages
 	'org-babel-load-languages '((lisp . t)))
+ (eval-after-load "org"
+     '(require 'ox-md nil t))
 #+END_SRC
 
 ** Core packages
