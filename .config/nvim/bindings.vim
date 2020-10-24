@@ -30,10 +30,10 @@ nnoremap <silent> <leader>v :FloatermNew vifm<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>x :w<CR>:bp<CR>:bd #<CR>
 let g:which_key_map.b = 'buffers'
-let g:which_key_map.c = '+nerd-commenter'
+let g:which_key_map.c = { 'name': '+nerd-commenter' }
 let g:which_key_map.d = 'write-and-close-buffer'
 let g:which_key_map.e = 'files'
-let g:which_key_map.g = '+grep'
+let g:which_key_map.g = { 'name': '+grep' }
 let g:which_key_map.g.a = 'the_silver_searcher'
 let g:which_key_map.g.g = 'grep'
 let g:which_key_map.g.r = 'ripgrep'
@@ -41,6 +41,8 @@ let g:which_key_map.G = 'lazygit'
 let g:which_key_map.h = 'startify'
 let g:which_key_map.k = 'write-and-close-buffer'
 let g:which_key_map.p = 'coc-paste'
+let g:which_key_map.q = { 'name': '+coc-fix-current' }
+let g:which_key_map.r = { 'name': '+coc-rename' }
 let g:which_key_map.v = 'vifm'
 let g:which_key_map.w = 'write-buffer'
 let g:which_key_map.x = 'write-and-close-buffer'
