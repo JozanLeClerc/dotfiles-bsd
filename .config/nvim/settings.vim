@@ -21,10 +21,10 @@ syntax on
 filetype plugin indent on
 " autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 colorscheme gruvbox-material
-highlight Normal ctermbg=none
-highlight NonText ctermbg=none
-highlight LineNr ctermbg=none
-highlight EndOfBuffer ctermbg=none
+highlight Normal ctermbg=none guibg=none
+highlight NonText ctermbg=none guibg=none
+highlight LineNr ctermbg=none guibg=none
+highlight EndOfBuffer ctermbg=none guibg=none
 let mapleader="\\"
 let maplocalleader="\\"
 " Disables automatic commenting on newline:
