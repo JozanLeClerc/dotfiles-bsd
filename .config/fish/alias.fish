@@ -42,7 +42,7 @@ alias nmt='neomutt'
 alias sxiv='sxiv -b'
 alias infox='pkg info -x'
 function search
-	make -C /usr/ports search name=$argv;
+	make -C /usr/ports search name=$argv | grep 'Path:';
 end
 alias watch='cmdwatch'
 alias tsm='transmission-remote'
