@@ -7,14 +7,14 @@ use Term::ANSIColor;
 sub upgrdports {
 	my $upgrd_nbr_cmd = "/usr/sbin/pkg version -l '<' | /usr/bin/wc -l | /usr/bin/awk '{print \$1}'";
 	if (system(
-			'/usr/local/bin/sudo',
+			'/usr/local/bin/doas',
 			'/usr/sbin/pkg',
 			'update'
 		) != 0) {
 		exit;
 	}
 	if (system(
-			'/usr/local/bin/sudo',
+			'/usr/local/bin/doas',
 			'/usr/sbin/portsnap',
 			'fetch',
 			'update'
@@ -61,7 +61,7 @@ sub upgrdports {
 	}
 	if (system('/usr/local/bin/dash',
 			   '-c',
-			   '/usr/local/bin/sudo /usr/local/sbin/portmaster -dya --no-confirm') == 0) {
+			   '/usr/local/bin/doas /usr/local/sbin/portmaster -dya --no-confirm') == 0) {
 		my $failed_nbr = `$upgrd_nbr_cmd`;
 		chomp $failed_nbr;
 		my $diff_nbr = $upgrd_nbr - $failed_nbr;
@@ -90,15 +90,15 @@ sub configport {
 	my $port = $_[0];
 	my $port_basename = $_[1];
 	if (system(
-			'/usr/local/bin/sudo',
+			'/usr/local/bin/doas',
 			'/usr/bin/make',
 			'config-recursive') == 0) {
 		if (system(
-				'/usr/local/bin/sudo',
+				'/usr/local/bin/doas',
 				'/usr/bin/make',
 				'config-recursive') == 0) {
 			if (system(
-					'/usr/local/bin/sudo',
+					'/usr/local/bin/doas',
 					'/usr/bin/make',
 					'config-recursive') == 0) {
 			}
@@ -144,7 +144,7 @@ sub installport {
 	my $port = $_[0];
 	my $port_basename = $_[1];
 	if (system(
-			'/usr/local/bin/sudo',
+			'/usr/local/bin/doas',
 			'/usr/bin/make',
 			'install',
 			'clean'
