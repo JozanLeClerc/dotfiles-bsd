@@ -1,5 +1,7 @@
 let g:asmsyntax = 'asm'
 let perl_include_pod = 1
+autocmd FileType fish
+			\ compiler fish
 autocmd FileType perl
 			\  setlocal com-=:# kp=perldoc\ -f
 			\| compiler perl

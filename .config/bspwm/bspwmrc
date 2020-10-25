@@ -28,6 +28,7 @@ use constant {
 	ESPEAK_PATH				=> '/usr/local/bin/espeak',
 	SH_PATH					=> '/bin/sh',
 	ZSH_PATH				=> '/usr/local/bin/zsh',
+	FISH_PATH				=> '/usr/local/bin/fish',
 	COWSAY_PATH				=> '/usr/local/bin/cowsay',
 	HTOP_PATH				=> '/usr/local/bin/htop',
 	GOTOP_PATH				=> '/usr/local/bin/gotop',
@@ -263,7 +264,7 @@ sub fg_on_one_screen
 	if (not $term_pid[0]) {
 		exec(
 			ALACRITTY_PATH, '-e', SH_PATH, '-c',
-			COWSAY_PATH . ' "' . COWSAY_WELCOME . '"; ' . ZSH_PATH
+			COWSAY_PATH . ' "' . COWSAY_WELCOME . '"; ' . FISH_PATH
 			);
 		exit;
 	}
