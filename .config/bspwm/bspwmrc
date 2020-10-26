@@ -182,7 +182,7 @@ sub fg_on_three_screens
 	if (not $term_pid[0]) {
 		exec(
 			ALACRITTY_PATH, '-e', SH_PATH, '-c',
-			COWSAY_PATH . ' "' . COWSAY_WELCOME . '"; ' . ZSH_PATH
+			COWSAY_PATH . ' "' . COWSAY_WELCOME . '"; ' . FISH_PATH
 			);
 		exit;
 	}
@@ -223,7 +223,7 @@ sub fg_on_two_screens
 	if (not $term_pid[0]) {
 		exec(
 			ALACRITTY_PATH, '-e', SH_PATH, '-c',
-			COWSAY_PATH . ' "' . COWSAY_WELCOME . '"; ' . ZSH_PATH
+			COWSAY_PATH . ' "' . COWSAY_WELCOME . '"; ' . FISH_PATH
 			);
 		exit;
 	}
