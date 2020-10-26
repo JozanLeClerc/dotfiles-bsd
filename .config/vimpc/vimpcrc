@@ -55,9 +55,9 @@ update
 highlight status black yellow
 highlight tab black yellow
 highlight dir default magenta
-highlight song default cyan
-highlight partial default blue
+highlight song default default
+highlight partial default red
 highlight full default green
-highlight current default yellow
+highlight current default red
 
 echo Config File Complete
