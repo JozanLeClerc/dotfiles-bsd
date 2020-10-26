@@ -1,5 +1,4 @@
-set -x PATH $HOME/.local/bin /usr/local/llvm11/bin $PATH
-export PATH
+set -x PATH $HOME/.local/bin /usr/local/llvm11/bin $PATH; export PATH
 
 export EDITOR="nvim"
 export VISUAL="nvim"
@@ -19,14 +18,15 @@ export CCACHE_DIR="/var/cache/ccache-jozan"
 export CCACHE_LOGFILE="/var/log/ccache.log"
 export RUSTFLAGS="-L /usr/local/lib"
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
-export LESS="--RAW-CONTROL-CHARS"
-export LESS_TERMCAP_mb="\e[1;32m"
-export LESS_TERMCAP_md="\e[1;32m"
-export LESS_TERMCAP_me="\e[0m"
-export LESS_TERMCAP_se="\e[0m"
-export LESS_TERMCAP_so="\e[01;33m"
-export LESS_TERMCAP_ue="\e[0m"
-export LESS_TERMCAP_us="\e[1;4;31m"
+set -x LESS "-c -R"; export LESS
+set -x MANPAGER "less -M +Gg"
+# export LESS_TERMCAP_mb="\033[1;32m"
+# export LESS_TERMCAP_md="\033[1;32m"
+# export LESS_TERMCAP_me="\033[0m"
+# export LESS_TERMCAP_se="\033[0m"
+# export LESS_TERMCAP_so="\033[01;33m"
+# export LESS_TERMCAP_ue="\033[0m"
+# export LESS_TERMCAP_us="\033[1;4;31m"
 
 
 source $HOME/.config/fish/alias.fish
@@ -40,8 +40,8 @@ function fish_prompt
 	printf "\033[1;31m%s \033[1;34m%s\033[1;31m> \033[0m" (prompt_hostname) (prompt_pwd)
 end
 function fish_right_prompt
-    set -l last_pipestatus $pipestatus
+	set -l last_pipestatus $pipestatus
 	set -l last_status $status
-    set -l prompt_status (__fish_print_pipestatus " " "" "|" (set_color $fish_color_status) (set_color --bold $fish_color_status) $last_pipestatus)
+	set -l prompt_status (__fish_print_pipestatus " " "" "|" (set_color $fish_color_status) (set_color --bold $fish_color_status) $last_pipestatus)
 	printf "%s \033[1;31m%s\033[0m" (fish_vcs_prompt) $prompt_status
 end
