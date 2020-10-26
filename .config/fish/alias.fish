@@ -46,4 +46,5 @@ function search
 end
 alias watch='cmdwatch'
 alias tsm='transmission-remote'
+alias tsd='transmission-daemon'
 alias df='df -h'
