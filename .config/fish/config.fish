@@ -19,6 +19,14 @@ export CCACHE_DIR="/var/cache/ccache-jozan"
 export CCACHE_LOGFILE="/var/log/ccache.log"
 export RUSTFLAGS="-L /usr/local/lib"
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+export LESS="--RAW-CONTROL-CHARS"
+export LESS_TERMCAP_mb="\e[1;32m"
+export LESS_TERMCAP_md="\e[1;32m"
+export LESS_TERMCAP_me="\e[0m"
+export LESS_TERMCAP_se="\e[0m"
+export LESS_TERMCAP_so="\e[01;33m"
+export LESS_TERMCAP_ue="\e[0m"
+export LESS_TERMCAP_us="\e[1;4;31m"
 
 
 source $HOME/.config/fish/alias.fish

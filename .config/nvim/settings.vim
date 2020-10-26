@@ -1,5 +1,6 @@
 set bg=dark
 set clipboard^=unnamedplus
+set cursorline
 set encoding=utf-8
 set go=a
 set hidden
