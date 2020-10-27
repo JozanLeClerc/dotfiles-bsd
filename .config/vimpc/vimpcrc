@@ -14,6 +14,8 @@ set window playlist
 " Set the windows to show at startup
 set windows library,directory,playlist
 
+set songformat {%a - (%d) %b - %t}|{%f}$E$R $H[$H%l$H]$H
+
 " Stop playing music when we quit
 "set stoponquit
 
@@ -27,6 +29,7 @@ set windows library,directory,playlist
 "map @ :set add next<C-M>a:set add end<C-M>
 map <A-k> gT
 map <A-j> gt
+map i e
 
 " Connect to a specific host using the config file
 "connect somehost someport

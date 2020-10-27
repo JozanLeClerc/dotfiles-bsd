@@ -30,7 +30,7 @@ sub main {
 		chomp $curr_vol;
 		system('/usr/local/bin/dash',
 			   '-c',
-			   '/usr/local/bin/notify-send -u low -t 400 "Volume lowered - ' . $curr_vol . '%"');
+			   '/usr/local/bin/notify-send -u low -t 400 "Volume - ' . $curr_vol . '%"');
 		exit;
 	}
 	elsif ($ARGV[0] eq "raise") {
@@ -41,7 +41,7 @@ sub main {
 		chomp $curr_vol;
 		system('/usr/local/bin/dash',
 			   '-c',
-			   '/usr/local/bin/notify-send -u low -t 400 "Volume raised - ' . $curr_vol . '%"');
+			   '/usr/local/bin/notify-send -u low -t 400 "Volume - ' . $curr_vol . '%"');
 		exit;
 	}
 	elsif ($ARGV[0] eq "toggle") {
