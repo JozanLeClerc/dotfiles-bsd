@@ -30,7 +30,6 @@ alias gpo='git push origin'
 alias startdocker='sudo service vboxnet restart && docker-machine start docker-home'
 alias stopdocker='docker-machine stop docker-home'
 alias envdocker='eval `docker-machine env docker-home`'
-alias cat='bat'
 alias vimz='nvim (fzf)'
 alias v='nvim (fzf)'
 function twi

@@ -18,7 +18,7 @@ export CCACHE_DIR="/var/cache/ccache-jozan"
 export CCACHE_LOGFILE="/var/log/ccache.log"
 export RUSTFLAGS="-L /usr/local/lib"
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
-set -x LESS "-R"; export LESS
+set -x LESS "-c -R"; export LESS
 set -x MANPAGER "less -M +Gg"
 # export LESS_TERMCAP_mb="\033[1;32m"
 # export LESS_TERMCAP_md="\033[1;32m"
