@@ -1,0 +1,8 @@
+#!/usr/local/bin/dash
+
+rsync -urvP --delete-after --exclude '.*' --exclude 'README.org' \
+	"$HOME"/Documents/dev/web/jozanleclerc.xyz/	root@jozanleclerc.xyz:/usr/local/www/jozan
+rsync -urvP --exclude '.*' --exclude 'README.org' \
+	"$HOME"/Documents/dev/web/gitjoe/				root@jozanleclerc.xyz:/usr/local/www/gitjoe
+rsync -urvP --delete-after --exclude '.*' --exclude 'README.org' --exclude 'LICENSE' \
+	"$HOME"/Documents/dev/perl/serv-scripts/		root@jozanleclerc.xyz:/root/scripts
