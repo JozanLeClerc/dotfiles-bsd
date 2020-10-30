@@ -22,7 +22,7 @@ super + y
 super + g
 	/usr/local/bin/bspc node -s biggest
 
-super + {s,shift + t,space,f}
+super + {s,shift + s,space,f}
 	/usr/local/bin/bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 super + ctrl + {m,x,y,z}
