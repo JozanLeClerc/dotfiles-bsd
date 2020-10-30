@@ -39,6 +39,8 @@ use constant {
 	SETWP_PATH				=> '/usr/home/jozan/.local/bin/setwp',
 	BSPSWALLOW_PATH			=> '/usr/home/jozan/.local/bin/bspswallow',
 	NEOMUTT_PATH			=> '/usr/local/bin/neomutt',
+	SCLI_PATH				=> '/usr/local/bin/scli',
+	VIMPC_PATH				=> '/usr/local/bin/vimpc',
 	MPD_NOTIFICATION_PATH	=> '/usr/local/bin/mpd-notification'
 };
 use constant {
@@ -327,9 +329,21 @@ sub run_fg_programs
 		exec(ALACRITTY_PATH, '-e', NEOMUTT_PATH);
 	}
 	Time::HiRes::sleep(SLEEP_TIME);
+	system(BSPC_PATH, 'desktop', '-f', '10');
+	$pid[1] = fork();
+	if (not $pid[1]) {
+		exec(ALACRITTY_PATH, '-e', SCLI_PATH);
+	}
+	Time::HiRes::sleep(SLEEP_TIME);
+	system(BSPC_PATH, 'desktop', '-f', '09');
+	$pid[2] = fork();
+	if (not $pid[2]) {
+		exec(ALACRITTY_PATH, '-e', VIMPC_PATH);
+	}
+	Time::HiRes::sleep(SLEEP_TIME);
 	system(BSPC_PATH, 'desktop', '-f', '01');
-	$pid[0] = fork();
-	if (not $pid[0]) {
+	$pid[3] = fork();
+	if (not $pid[3]) {
 		exec(ALACRITTY_PATH, '-e', NEOVIM_PATH);
 	}
 	Time::HiRes::sleep(SLEEP_TIME);
