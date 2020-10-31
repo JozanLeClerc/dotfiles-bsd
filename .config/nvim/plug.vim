@@ -1,4 +1,4 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin(system('echo -n "$XDG_DATA_HOME/nvim/plugged"'))
 Plug 'brglng/vim-sidebar-manager'
 Plug 'dag/vim-fish'
 Plug 'honza/vim-snippets'

@@ -8,6 +8,12 @@
 
 set runtimepath^=/home/jozan/.config/nvim runtimepath+=/home/jozan/.config/nvim/after
 let &packpath = &runtimepath
+if ! filereadable(system('echo -n "$XDG_DATA_HOME/nvim/autoload/plug.vim"'))
+	echo "Downloading junegunn/vim-plug to manage plugins..."
+	silent !mkdir -p $XDG_DATA_HOME/nvim/autoload/
+	silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > $XDG_DATA_HOME/nvim/autoload/plug.vim
+	autocmd VimEnter * PlugInstall
+endif
 source /home/jozan/.config/nvim/plug.vim
 source /home/jozan/.config/nvim/settings.vim
 source /home/jozan/.config/nvim/bindings.vim
