@@ -48,6 +48,7 @@ export ADB_VENDOR_KEY="$XDG_CONFIG_HOME"/android
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 export MACHINE_STORAGE_PATH="$XDG_DATA_HOME"/docker-machine
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export LESSHISTFILE="-"
 
 # ccache

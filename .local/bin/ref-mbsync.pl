@@ -13,7 +13,7 @@ sub main
 	system(
 		MBSYNC_PATH,
 		'-c',
-		'/usr/home/jozan/.mbsyncrc',
+		'/usr/home/jozan/.config/mbsync/mbsyncrc',
 		'-a'
 	);
 	exit 0;
