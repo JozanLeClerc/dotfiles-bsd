@@ -40,7 +40,7 @@ alias nb='newsboat'
 alias mutt='neomutt'
 alias nmt='neomutt'
 alias sxiv='sxiv -b'
-alias infox='pkg info -x'
+alias pinfo='pkg info -x'
 function search
 	make -C /usr/ports search name=$argv | grep 'Path:';
 end
@@ -51,3 +51,4 @@ alias rsox='sox -t oss default'
 alias calcurse="calcurse -C $XDG_CONFIG_HOME/calcurse -D $XDG_DATA_HOME/calcurse"
 alias abook="abook -C $XDG_CONFIG_HOME/abook/abookrc --datafile $XDG_DATA_HOME/abook/addressbook"
 alias dosbox="dosbox -conf $XDG_CONFIG_HOME/dosbox/dosbox.conf"
+alias svn="svn --config-dir "$XDG_CONFIG_HOME"/subversion"
