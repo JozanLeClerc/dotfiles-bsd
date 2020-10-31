@@ -5,6 +5,8 @@
 # | |_| | (_) |  __/
 #  \___/ \___/ \___|
 
+source $HOME/.config/env
+
 export LESS_TERMCAP_mb=(printf '\e[1;31m')
 export LESS_TERMCAP_md=(printf '\e[1;31m')
 export LESS_TERMCAP_me=(printf '\e[0m')

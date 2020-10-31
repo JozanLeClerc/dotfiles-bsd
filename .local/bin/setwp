@@ -5,8 +5,8 @@ use warnings;
 use File::Copy;
 
 use constant {
-	WP_FILE	=> '/usr/home/jozan/Pictures/wallpaper.jpg',
-	WP_POOL	=> '/usr/home/jozan/Pictures/wallpapers/'
+	WP_FILE	=> '/usr/home/jozan/pics/wallpaper.jpg',
+	WP_POOL	=> '/usr/home/jozan/pics/wallpapers/'
 };
 use constant FEH_PATH	=> '/usr/local/bin/feh';
 
@@ -41,6 +41,7 @@ sub set_wp
 {
 	system(
 		FEH_PATH,
+		'--no-fehbg',
 		'--bg-fill',
 		WP_FILE,
 		'--bg-fill',

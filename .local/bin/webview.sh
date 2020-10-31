@@ -5,7 +5,7 @@ mpvFiles="mkv mp4 gif"
 sxivFiles="png jpg jpeg jpe xpm"
 wgetFiles="flac mp3 mp3?source=feed opus pdf doc docx"
 
-cd ~/Downloads || exit
+cd ~/dl || exit
 
 if echo "$sxivFiles" | grep -w "$ext" > /dev/null; then
 	nohup sxiv "$1" > /dev/null &

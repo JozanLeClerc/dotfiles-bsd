@@ -1,0 +1,4 @@
+#!/usr/local/bin/dash
+
+xset r rate 200 150
+setxkbmap -layout us,fr -option grp:alt_shift_toggle
