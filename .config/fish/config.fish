@@ -1,3 +1,10 @@
+# config.fish
+#      _
+#     | | ___   ___
+#  _  | |/ _ \ / _ \
+# | |_| | (_) |  __/
+#  \___/ \___/ \___|
+
 export LESS_TERMCAP_mb=(printf '\e[1;31m')
 export LESS_TERMCAP_md=(printf '\e[1;31m')
 export LESS_TERMCAP_me=(printf '\e[0m')

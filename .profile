@@ -1,3 +1,10 @@
+# .profile
+#      _
+#     | | ___   ___
+#  _  | |/ _ \ / _ \
+# | |_| | (_) |  __/
+#  \___/ \___/ \___|
+
 # $FreeBSD: releng/12.1/share/skel/dot.profile 337497 2018-08-08 19:24:20Z asomers $
 #
 # .profile - Bourne Shell startup script for login shells
@@ -59,6 +66,10 @@ export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 export SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc
 export STACK_ROOT="$XDG_DATA_HOME"/stack
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
+export VIMINIT='if !has('nvim') | source "$XDG_CONFIG_HOME/vim/vimrc" | endif'
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+export XINITRC="$XDG_CONFIG_HOME"/x11/xinitrc
+export XSERVERRC="$XDG_CONFIG_HOME"/x11/xserverrc
 
 # ccache
 export CCACHE_PATH='/usr/bin:/usr/local/bin:/usr/local/llvm11/bin'

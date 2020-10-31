@@ -36,8 +36,6 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/1"))
 
-(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e")
-(autoload 'mu4e "mu4e" "Launch mu4e and show the main window" t)
 (add-to-list 'load-path "/home/jozan/.config/emacs/sunrise-commander/")
 (autoload 'sunrise "sunrise.el" "qweqwe" t)
 (add-to-list 'load-path "/home/jozan/.config/emacs/font-lock+")
@@ -122,7 +120,6 @@
 (setq evil-want-C-u-scroll t)
 (require 'evil)
 (require 'evil-magit)
-(require 'evil-mu4e)
 ;; (require 'evil-collection)
 (evil-mode t)
 ;; (evil-collection-init)
@@ -249,141 +246,6 @@
 ;; (golden-ratio-mode 1)
 ;; (setq golden-ratio-adjust-factor		.9
 ;; 	  golden-ratio-wide-adjust-factor	.9)
-#+END_SRC
-
-*** mu4e
-#+BEGIN_SRC emacs-lisp
-(require 'org-mime)
-(require 'mu4e)
-
-(setq mu4e-maildir (expand-file-name "/home/jozan/Maildir"))
-
-(setq mu4e-get-mail-command "/usr/local/bin/mbsync -c /home/jozan/.config/emacs/mu4e/.mbsyncrc -a")
-(setq mu4e-update-interval 300)
-(setq mu4e-index-update-in-background t)
-(setq mu4e-headers-auto-update t)
-(setq mu4e-index-update-error-warning t)
-(setq mu4e-compose-signature-auto-include nil)
-(setq mu4e-compose-format-flowed t)
-(setq mu4e-view-prefer-html t)
-(add-to-list 'mu4e-view-actions
-			 '("ViewInBrowser" . mu4e-action-view-in-browser) t)
-
-;; enable inline images
-(setq mu4e-view-show-images t)
-
-;; use imagemagick, if available
-(when (fboundp 'imagemagick-register-types)
-  (imagemagick-register-types))
-
-;; every new email composition gets its own frame!
-(setq mu4e-compose-in-new-frame t)
-
-;; don't save message to Sent Messages, IMAP takes care of this
-(setq mu4e-sent-messages-behavior 'delete)
-
-(add-hook 'mu4e-view-mode-hook #'visual-line-mode)
-
-;; <tab> to navigate to links, <RET> to open them in browser
-(add-hook 'mu4e-view-mode-hook
-		  (lambda()
-			;; try to emulate some of the eww key-bindings
-			(local-set-key (kbd "<RET>") 'mu4e~view-browse-url-from-binding)
-			(local-set-key (kbd "<tab>") 'shr-next-link)
-			(local-set-key (kbd "<backtab>") 'shr-previous-link)))
-
-;; from https://www.reddit.com/r/emacs/comments/bfsck6/mu4e_for_dummies/elgoumx
-(add-hook 'mu4e-headers-mode-hook
-		  (defun my/mu4e-change-headers ()
-			(interactive)
-			(setq mu4e-headers-fields
-				  `((:human-date . 25) ;; alternatively, use :date
-					(:flags . 6)
-					(:from . 22)
-					(:thread-subject . ,(- (window-body-width) 70)) ;; alternatively, use :subject
-					(:size . 7)))))
-
-;; spell check
-(add-hook 'mu4e-compose-mode-hook
-		  (defun my-do-compose-stuff ()
-			"My settings for message composition."
-			(visual-line-mode)
-			(org-mu4e-compose-org-mode)
-			(use-hard-newlines -1)
-			(flyspell-mode)))
-
-(require 'smtpmail)
-
-;;rename files when moving
-;;NEEDED FOR MBSYNC
-(setq mu4e-change-filenames-when-moving t)
-
-;;set up queue for offline email
-;;use mu mkdir  ~/Maildir/acc/queue to set up first
-(setq smtpmail-queue-mail nil)  ;; start in normal mode
-
-;;from the info manual
-(setq mu4e-attachment-dir  "/home/jozan/Downloads")
-
-(setq message-kill-buffer-on-exit t)
-(setq mu4e-compose-dont-reply-to-self t)
-(setq mu4e-completing-read-function 'completing-read)
-
-;; (require 'org-mu4e)
-
-;; convert org mode to HTML automatically
-;; (setq org-mu4e-convert-to-html t)
-
-;;from vxlabs config
-;; show full addresses in view message (instead of just names)
-;; toggle per name with M-RET
-(setq mu4e-view-show-addresses 't)
-
-;; don't ask when quitting
-(setq mu4e-confirm-quit nil)
-
-;; mu4e-context
-(setq mu4e-context-policy 'pick-first)
-(setq mu4e-compose-context-policy 'always-ask)
-(setq mu4e-contexts
-	  (list
-	   (make-mu4e-context
-		:name "work" ;;for acc1-gmail
-		:enter-func (lambda () (mu4e-message "Entering context work"))
-		:leave-func (lambda () (mu4e-message "Leaving context work"))
-		:match-func (lambda (msg)
-					  (when msg
-						(mu4e-message-contact-field-matches
-						 msg '(:from :to :cc :bcc) "bousset.rudy@gmail.com")))
-		:vars '((user-mail-address . "bousset.rudy@gmail.com")
-				(user-full-name . "Rudy Bousset")
-				(mu4e-sent-folder . "/acc1-gmail/[acc1].Sent Mail")
-				(mu4e-drafts-folder . "/acc1-gmail/[acc1].drafts")
-				(mu4e-trash-folder . "/acc1-gmail/[acc1].Trash")
-				(mu4e-compose-signature . (concat "Formal Signature\n" " "))
-				(mu4e-compose-format-flowed . t)
-				(smtpmail-queue-dir . "~/Maildir/acc1-gmail/queue/cur")
-				;; (message-send-mail-function . smtpmail-send-it)
-				(smtpmail-smtp-user . "bousset.rudy")
-				;; (smtpmail-starttls-credentials . (("smtp.gmail.com" 587 nil nil)))
-				;; (smtpmail-auth-credentials . (expand-file-name "~/.authinfo.gpg"))
-				(smtpmail-default-smtp-server . "smtp.gmail.com")
-				(smtpmail-smtp-server . "smtp.gmail.com")
-				(smtpmail-smtp-service . 587)
-				(smtpmail-debug-info . t)
-				(smtpmail-debug-verbose . t)
-				(mu4e-maildir-shortcuts . ( ("/acc1-gmail/INBOX"            . ?i)
-											("/acc1-gmail/[acc1].Sent Mail" . ?s)
-											("/acc1-gmail/[acc1].Trash"     . ?t)
-											("/acc1-gmail/[acc1].All Mail"  . ?a)
-											("/acc1-gmail/[acc1].Starred"   . ?r)
-											("/acc1-gmail/[acc1].drafts"    . ?d)
-											))))))
-
-(require 'mu4e-alert)
-(mu4e-alert-set-default-style 'libnotify)
-(add-hook 'after-init-hook #'mu4e-alert-enable-notifications)
-(add-hook 'after-init-hook #'mu4e-alert-enable-mode-line-display)
 #+END_SRC
 
 *** w3m

@@ -1,4 +1,4 @@
-" init.vim 4.0 by Joe
+" init.vim
 "      _
 "     | | ___   ___
 "  _  | |/ _ \ / _ \

@@ -1,0 +1,3 @@
+xrdb ~/.config/x11/xresources
+source ~/.profile
+dbus-launch bspwm

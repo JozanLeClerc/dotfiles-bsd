@@ -1,3 +1,10 @@
+# alias.fish
+#      _
+#     | | ___   ___
+#  _  | |/ _ \ / _ \
+# | |_| | (_) |  __/
+#  \___/ \___/ \___|
+
 alias ls='exa -l'
 alias c='clear'
 alias less='less --tabs 4'
@@ -52,3 +59,4 @@ alias calcurse="calcurse -C $XDG_CONFIG_HOME/calcurse -D $XDG_DATA_HOME/calcurse
 alias abook="abook -C $XDG_CONFIG_HOME/abook/abookrc --datafile $XDG_DATA_HOME/abook/addressbook"
 alias dosbox="dosbox -conf $XDG_CONFIG_HOME/dosbox/dosbox.conf"
 alias svn="svn --config-dir "$XDG_CONFIG_HOME"/subversion"
+alias gpg2="gpg2 --homedir "$XDG_DATA_HOME"/gnupg"
