@@ -20,4 +20,6 @@ source /home/jozan/.config/nvim/bindings.vim
 source /home/jozan/.config/nvim/sidebars.vim
 source /home/jozan/.config/nvim/plugins.vim
 source /home/jozan/.config/nvim/langs.vim
+source /home/jozan/.config/nvim/plug-config/airline.vim
 source /home/jozan/.config/nvim/plug-config/coc.vim
+source /home/jozan/.config/nvim/plug-config/startify.vim
