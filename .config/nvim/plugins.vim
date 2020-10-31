@@ -22,9 +22,11 @@ let g:startify_lists = [
 			\ { 'type': 'commands',  'header': startify#pad(['Commands'])	},
 			\ ]
 let g:startify_bookmarks = [
+			\ { 'b': '~/.config/bspwm/bspwmrc' },
+			\ { 'fa': '~/.config/fish/alias.fish' },
+			\ { 'fc': '~/.config/fish/config.fish' },
 			\ { 'v': '~/.config/nvim/init.vim' },
 			\ { 'z': '~/.config/zsh/.zshrc' },
-			\ { 'b': '~/.config/bspwm/bspwmrc' },
 			\ ]
 
 " Airline

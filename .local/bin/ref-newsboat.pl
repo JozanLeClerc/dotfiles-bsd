@@ -32,8 +32,8 @@ sub main
 		system(
 			NOTIFY_SEND_PATH,
 			'-u',
-			'normal',
-			' newsboat',
+			'low',
+			'  newsboat',
 			$stdout . ' new articles'
 		);
 	}

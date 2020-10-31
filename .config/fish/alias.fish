@@ -48,3 +48,5 @@ alias tsm='transmission-remote'
 alias tsd='transmission-daemon'
 alias df='df -h'
 alias rsox='sox -t oss default'
+alias calcurse="calcurse -C $XDG_CONFIG_HOME/calcurse -D $XDG_DATA_HOME/calcurse"
+alias abook="abook -C $XDG_CONFIG_HOME/abook/abookrc --datafile $XDG_DATA_HOME/abook/addressbook"

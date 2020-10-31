@@ -19,11 +19,10 @@
 # set ENV to a file invoked each time sh is started for interactive use.
 ENV=$HOME/.shrc; export ENV
 
-# Path
-export PATH="${HOME}/.local/bin:${HOME}/.cargo/bin:/usr/local/llvm11/bin:${PATH}"
+# PATH
+export PATH="${HOME}/.local/bin:${PATH}"
 
 # Apps
-# export ZSH="/home/jozan/.oh-my-zsh"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export PAGER="less"
@@ -31,23 +30,26 @@ export TERMINAL="alacritty"
 export BROWSER="firefox"
 export READER="zathura"
 export FILE="vifm"
-export MPD_HOST="${HOME}/.mpd/socket"
 
 # UTF-8
 export LANG="en_US.UTF-8"
 
 # Cleanup
-export LESSHISTFILE="-"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_MUSIC_DIR="$HOME/Music"
+export XDG_MUSIC_DIR="$HOME/mu"
+export LESSHISTFILE="-"
 
 # ccache
 export CCACHE_PATH="/usr/bin:/usr/local/bin:/usr/local/llvm11/bin"
 export CCACHE_DIR="/var/cache/ccache-jozan"
 export CCACHE_LOGFILE="/var/log/ccache.log"
 
-# rust
+# Apps config
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+export LESS="-R"
+export MANPAGER="less -R -M +Gg"
+export MPD_HOST="${HOME}/.mpd/socket"
 export RUSTFLAGS="-L /usr/local/lib"
 
 # Query terminal size; useful for serial lines.
