@@ -1,0 +1,27 @@
+# vim filetype=conf
+set use_colors = true
+set autosave = true
+set mutt_command = neomutt
+set www_command = w3m
+set index_format = " {name:22} {email:30} {phone:14|workphone|mobile}"
+# colors
+set color_header_fg = yellow
+set color_header_bg = black
+set color_footer_fg = yellow
+set color_footer_bg = black
+set color_list_even_fg = white
+set color_list_even_bg = default
+set color_list_odd_fg = white
+set color_list_odd_bg = default
+set color_list_header_fg = red
+set color_list_header_bg = default
+set color_list_highlight_fg = yellow
+set color_list_highlight_bg = black
+set color_tab_border_fg = yellow
+set color_tab_border_bg = default
+set color_tab_label_fg = red
+set color_tab_label_bg = default
+set color_field_name_fg = yellow
+set color_field_name_bg = default
+set color_field_value_fg = green
+set color_field_value_bg = default
