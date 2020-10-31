@@ -34,10 +34,20 @@ export FILE="vifm"
 # UTF-8
 export LANG="en_US.UTF-8"
 
+# xdg
+export XDG_DATA_HOME="$HOME"/.local/share
+export XDG_CONFIG_HOME="$HOME"/.config
+export XDG_CACHE_HOME="$HOME"/.cache
+export XDG_MUSIC_DIR="$HOME"/mu
+
 # Cleanup
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_MUSIC_DIR="$HOME/mu"
+export ANDROID_SDK_HOME="$XDG_CONFIG_HOME"/android
+export ANDROID_AVD_HOME="$XDG_DATA_HOME"/android/
+export ANDROID_EMULATOR_HOME="$XDG_DATA_HOME"/android/
+export ADB_VENDOR_KEY="$XDG_CONFIG_HOME"/android
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+export MACHINE_STORAGE_PATH="$XDG_DATA_HOME"/docker-machine
 export LESSHISTFILE="-"
 
 # ccache
@@ -46,10 +56,11 @@ export CCACHE_DIR="/var/cache/ccache-jozan"
 export CCACHE_LOGFILE="/var/log/ccache.log"
 
 # Apps config
+export FZF_DEFAULT_COMMAND='ag -g "" --ignore dotfiles-bsd'
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export LESS="-R"
 export MANPAGER="less -R -M +Gg"
-export MPD_HOST="${HOME}/.mpd/socket"
+export MPD_HOST="${HOME}/.config/mpd/socket"
 export RUSTFLAGS="-L /usr/local/lib"
 
 # Query terminal size; useful for serial lines.
