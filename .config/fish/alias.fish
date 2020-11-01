@@ -34,6 +34,8 @@ alias envdocker='eval `docker-machine env docker-home`'
 alias vimz='nvim (fzf)'
 alias v='nvim (fzf)'
 alias pa="cd $XDG_DATA_HOME/packs && ls"
+alias co="cd $XDG_CONFIG_HOME/ && ls"
+alias bi="cd $HOME/.local/bin && ls"
 function twi
 	mpv https://twitch.tv/$argv;
 end
