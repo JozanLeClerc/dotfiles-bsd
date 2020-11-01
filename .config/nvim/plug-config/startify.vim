@@ -23,7 +23,7 @@ let g:startify_lists = [
 			\ ]
 let g:startify_bookmarks = [
 			\ { 'b': '~/.config/bspwm/bspwmrc' },
-			\ { 'e': '~/.config/env' },
+			\ { 'env': '~/.config/env' },
 			\ { 'fa': '~/.config/fish/alias.fish' },
 			\ { 'fc': '~/.config/fish/config.fish' },
 			\ { 'v': '~/.config/nvim/init.vim' },

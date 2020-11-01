@@ -17,17 +17,37 @@ sub get_og_files
 	return @og_files;
 }
 
-sub get_new_files
+sub unixize_file_names
 {
 	my @og_files = @_;
 	my @new_files;
 
 	foreach (@og_files) {
-		$_ =~ s/\ -\ /-_/g;
-		$_ =~ s/\_-\_/-_/g;
-		$_ =~ s/['"]+/_/g;
-		$_ =~ s/\ /_/g;
-		$_ =~ s/[\$#@~!&*%()\[\];,:?^`\\\/<>|]+/-/g;
+		if ($_ =~ /^[0-9]+\./) {
+			$_ =~ s/\.//;
+		}
+		$_ =~ s/ - /_/g;
+		$_ =~ s/ /_/g;
+		$_ =~ s/c\+\+/cxx/g;
+		$_ =~ s/C\+\+/CXX/g;
+		$_ =~ s/[áàåâä]/a/g;
+		$_ =~ s/[ÁÀÅÂÄ]/A/g;
+		$_ =~ s/æ/ae/g;
+		$_ =~ s/Æ/AE/g;
+		$_ =~ s/ç/c/g;
+		$_ =~ s/Ç/C/g;
+		$_ =~ s/[éèêë]/e/g;
+		$_ =~ s/[ÉÈÊË]/E/g;
+ï
+î
+ì
+		$_ =~ s/ô/o/g;
+		$_ =~ s/Ô/O/g;
+		$_ =~ s/ö/o/g;
+		$_ =~ s/Ö/O/g;
+		$_ =~ s/ü/u/g;
+		$_ =~ s/Ü/U/g;
+		$_ =~ s/[^A-Za-z0-9\._]+//g;
 		$_ = lc($_);
 		push @new_files, $_;
 	}
@@ -41,7 +61,7 @@ sub main
 	my @files;
 
 	@og_files = get_og_files();
-	@new_files = get_new_files(@og_files);
+	@new_files = unixize_file_names(@og_files);
 	while (@og_files || @new_files) {
 		$files[0] = shift @og_files;
 		$files[1] = shift @new_files;
