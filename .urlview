@@ -1,4 +1,4 @@
 REGEXP (((http|https|ftp|gopher)|mailto)[.:][^ >"\t]*|www\.[-a-z0-9.]+)[^ .,;\t>">\):]
 
-COMMAND ~/.local/bin/webview.sh
+COMMAND ~/.local/bin/linkview.pl
 QUITONLAUNCH
