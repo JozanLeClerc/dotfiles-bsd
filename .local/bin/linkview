@@ -2,6 +2,7 @@
 
 use strict;
 use warnings;
+use Scalar::Util qw(looks_like_number);
 use Term::ANSIColor;
 
 use constant {
@@ -28,16 +29,48 @@ use constant {
 # 	mpv-view.pl "$1"
 # fi
 
+sub open_link
+{
+	my ($answer) = @_;
+	return;
+}
+
+sub prompt
+{
+	my ($url) = @_;
+	my $answer;
+
+	print 'URL: ' . colored($url, 'red') . "\n\n" .
+	"Open with?\n" .
+	"0) mpv\n" .
+	"1) fetch\n" .
+	"2) sxiv\n" .
+	"3) zathura\n" .
+	"4) w3m\n" .
+	"5) firefox\n\n" .
+	"> ";
+	$answer = <STDIN>;
+	if (!looks_like_number($answer) || $answer == 0 || $answer == 1 || $answer > 6) {
+		$answer = -1;
+	}
+	return $answer;
+}
+
 sub main
 {
 	my $answer;
 
+	system('tput', 'clear');
 	if (@ARGV == 0) {
-		print STDERR "URL needed\n";
+		print STDERR "linkview: URL needed\n";
 		exit 1;
 	}
-	print colored($ARGV[0], 'bold_green') . "\n";
-	$answer = <STDIN>;
+	$answer = prompt($ARGV[0]);
+	if ($answer == -1) {
+		print STDERR "linkview: Bad answer\n";
+		exit 2;
+	}
+	open_link($answer);
 	return;
 }
 

@@ -6,6 +6,7 @@ alias mkf='gmake fclean'
 alias mkc='gmake clean'
 alias mk='gmake -j5'
 alias web='w3m https://duckduckgo.com/'
+alias mpv='mpv --audio-channels=stereo'
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -v'
@@ -37,7 +38,7 @@ alias pa="cd $XDG_DATA_HOME/packs && ls"
 alias co="cd $XDG_CONFIG_HOME/ && ls"
 alias bi="cd $HOME/.local/bin && ls"
 function twi
-	mpv https://twitch.tv/$argv;
+	mpv --really-quiet https://twitch.tv/$argv;
 end
 alias nb='newsboat'
 alias mutt='neomutt'
