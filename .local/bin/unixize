@@ -17,6 +17,9 @@ sub get_og_files
 	return @og_files;
 }
 
+use constant {
+	C_O	=> '',
+};
 sub unixize_file_names
 {
 	my @og_files = @_;
@@ -30,21 +33,19 @@ sub unixize_file_names
 		$_ =~ s/ /_/g;
 		$_ =~ s/c\+\+/cxx/g;
 		$_ =~ s/C\+\+/CXX/g;
-		$_ =~ s/[áàåâä]/a/g;
-		$_ =~ s/[ÁÀÅÂÄ]/A/g;
-		$_ =~ s/æ/ae/g;
-		$_ =~ s/Æ/AE/g;
-		$_ =~ s/ç/c/g;
-		$_ =~ s/Ç/C/g;
-		$_ =~ s/[éèêë]/e/g;
-		$_ =~ s/[ÉÈÊË]/E/g;
-ï
-î
-ì
-		$_ =~ s/ô/o/g;
-		$_ =~ s/Ô/O/g;
-		$_ =~ s/ö/o/g;
-		$_ =~ s/Ö/O/g;
+		$_ =~ s/[\x83\x84\x85\x86]/a/g; # âäàå
+		# $_ =~ s/[ÁÀÅÂÄ]/A/g;
+		$_ =~ s/\x91/ae/g; # æ
+		$_ =~ s/\x92/AE/g; # Æ
+		$_ =~ s/\x87/c/g; # ç
+		$_ =~ s/\x80/C/g; # Ç
+		# $_ =~ s/[éèêë]/e/g;
+		# $_ =~ s/[ÉÈÊË]/E/g;
+		# $_ =~ s/[ïîì]/i/g;
+		# $_ =~ s/[ÏÎÌ]/I/g;
+		# $_ =~ s/[ôöò]/o/g;
+		$_ =~ s/[\x93\x94\x95]/o/g; # ôöò
+		# $_ =~ s/[ÿ]/y/g;
 		$_ =~ s/ü/u/g;
 		$_ =~ s/Ü/U/g;
 		$_ =~ s/[^A-Za-z0-9\._]+//g;
@@ -71,7 +72,7 @@ sub main
 			chdir('../');
 		}
 		next if (-e $files[1]);
-		mv($files[0], $files[1]) or print STDERR $! . "\n";
+		# mv($files[0], $files[1]) or print STDERR $! . "\n";
 		print "'". $files[0] . "' -> '" . $files[1] . "'\n";
 	}
 	return;
