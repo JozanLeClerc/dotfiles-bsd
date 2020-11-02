@@ -4,6 +4,8 @@ use strict;
 use warnings;
 use Scalar::Util qw(looks_like_number);
 use File::HomeDir qw(home);
+use File::Basename qw(basename);
+use Cwd qw(cwd);
 use Term::ReadKey;
 use Term::ANSIColor qw(colored);
 
@@ -15,12 +17,17 @@ use constant {
 	SXIV_PATH		=> '/usr/local/bin/sxiv',
 	ZATHURA_PATH	=> '/usr/local/bin/zathura',
 	W3M_PATH		=> '/usr/local/bin/w3m',
-	FIREFOX_PATH	=> '/usr/local/bin/firefox'
+	FIREFOX_PATH	=> '/usr/local/bin/firefox',
+	NOTIFYSEND_PATH	=> '/usr/local/bin/notify-send'
 };
 
 sub open_link
 {
 	my ($a, $url) = @_;
+	my $pid;
+	my $file_name;
+	my $pwd;
+	my $ret;
 
 	if ($a == 1) {
 		exec(
@@ -29,20 +36,59 @@ sub open_link
 		);
 	}
 	elsif ($a == 2 || $a == 3) {
-		chdir home() . "/dl" or
-		chdir home() . "/Downloads" or
-		chdir home() or die $!;
-		if ($a == 2) {
-			exec(
-				YTDL_PATH,
-				$url
+		$pid = fork();
+		if ($pid == 0) {
+			chdir home() . "/dl" or
+			chdir home() . "/Downloads" or
+			chdir home() or die $!;
+			if (basename(cwd()) eq basename(home())) {
+				$pwd = '~/';
+			}
+			else {
+				$pwd = '~/' . basename(cwd());
+			}
+			$file_name = $url;
+			$file_name =~ s/.+\///g;
+			system(
+				NOTIFYSEND_PATH,
+				'-u',
+				'normal',
+				'-t',
+				'10000',
+				'  download started',
+				'<b>' . $file_name . '</b> started downloading'
 			);
-		}
-		else {
-			exec(
-				FETCH_PATH,
-				$url
-			);
+			$ret = -1;
+			if ($a == 2) {
+				$ret = system(YTDL_PATH . " -q '" . $url . "' 2>/dev/null");
+			}
+			else {
+				$ret = system(FETCH_PATH . " -q '" . $url . "' 2>/dev/null");
+			}
+			if ($ret == 0) {
+				system(
+					NOTIFYSEND_PATH,
+					'-u',
+					'normal',
+					'-t',
+					'10000',
+					'  download complete',
+					'<b>' . $file_name . '</b> downloaded successfully to '
+					. '<b>' . $pwd . '</b>'
+				);
+			}
+			else {
+				system(
+					NOTIFYSEND_PATH,
+					'-u',
+					'critical',
+					'-t',
+					'10000',
+					'  download failed',
+					'failed to download <b>' . $file_name . '</b>'
+				);
+			}
+			exit 0;
 		}
 	}
 	elsif ($a == 4) {
