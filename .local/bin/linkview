@@ -75,6 +75,7 @@ sub open_link
 	elsif ($a == 8) {
 		exec(
 			FIREFOX_PATH,
+			'--kiosk',
 			$url
 		);
 	}
