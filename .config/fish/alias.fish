@@ -34,7 +34,7 @@ alias stopdocker='docker-machine stop docker-home'
 alias envdocker='eval `docker-machine env docker-home`'
 alias vimz='nvim (fzf)'
 alias v='nvim (fzf)'
-alias pa="cd $XDG_DATA_HOME/packs && ls"
+alias pa="cd $HOME/.local/packs && ls"
 alias co="cd $XDG_CONFIG_HOME/ && ls"
 alias bi="cd $HOME/.local/bin && ls"
 function twi
