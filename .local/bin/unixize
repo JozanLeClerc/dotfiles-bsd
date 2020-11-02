@@ -20,6 +20,7 @@ sub get_og_files
 use constant {
 	C_O	=> '',
 };
+
 sub unixize_file_names
 {
 	my @og_files = @_;
