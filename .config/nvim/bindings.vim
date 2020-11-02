@@ -11,10 +11,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-o> <C-w>o
 nnoremap <C-q> <C-w>q
-nnoremap <C-x>1 <C-w>o
-nnoremap <C-x>2 :sp<CR>
-nnoremap <C-x>3 :vsp<CR>
-nnoremap <C-x>0 <C-w>q
 nnoremap <silent> <leader> :WhichKey '\'<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <leader>d :w<CR>:bp<CR>:bd #<CR>

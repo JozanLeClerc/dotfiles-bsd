@@ -3,6 +3,7 @@
 use strict;
 use warnings;
 use Scalar::Util qw(looks_like_number);
+use Term::ReadKey;
 use Term::ANSIColor;
 
 sub get_size
@@ -21,8 +22,18 @@ sub get_size
 	"6) 1080\n" .
 	"\n" .
 	"> ";
-	$answer = <STDIN>;
-	if (!looks_like_number($answer) || $answer == 0 || $answer == 1 || $answer > 6) {
+	open(TTY, "</dev/tty");
+	ReadMode "raw";
+	$answer = ReadKey 0, *TTY;
+	ReadMode "normal";
+	close(TTY);
+	print "\n";
+	if (
+		!looks_like_number($answer) ||
+		$answer == 0 ||
+		$answer == 1 ||
+		$answer > 6
+	) {
 		$size = 0;
 	}
 	elsif ($answer == 2) {
