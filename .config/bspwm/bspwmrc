@@ -46,7 +46,7 @@ use constant {
 use constant {
 	BSP_BORDER_WIDTH		=> 1,
 	BSP_WINDOW_GAP			=> 0,
-	BSP_BORDER_COLOR		=> '#cc241d',
+	BSP_BORDER_COLOR		=> '#b92121',
 	BSP_SPLIT_RATIO			=> '0.50',
 	BSP_BORDERLESS_MONOCLE	=> 'true',
 	BSP_GAPLESS_MONOCLE		=> 'true',
