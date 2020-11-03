@@ -67,6 +67,7 @@ sub main
 		print 'mpv --ytdl-format=[height<=' . $size . '] ' . $ARGV[0] . "\n";
 		exec(
 			'mpv',
+			'--really-quiet',
 			'--ytdl-format=[height<=' . $size . ']',
 			$ARGV[0]
 		);
@@ -75,6 +76,7 @@ sub main
 		print 'mpv ' . $ARGV[0] . "\n";
 		exec(
 			'mpv',
+			'--really-quiet',
 			$ARGV[0]
 		);
 	}

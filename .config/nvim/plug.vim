@@ -6,6 +6,7 @@ Plug 'jceb/vim-orgmode'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'lambdalisue/battery.vim'
 Plug 'liuchengxu/vim-which-key'
 Plug 'luochen1990/rainbow'
 Plug 'mbbill/undotree'
@@ -13,7 +14,7 @@ Plug 'mg979/vim-visual-multi'
 Plug 'mhinz/vim-signify'
 Plug 'mhinz/vim-startify'
 Plug 'morhetz/gruvbox'
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'paretje/nvim-man'
 Plug 'preservim/tagbar'
 Plug 'preservim/nerdcommenter'

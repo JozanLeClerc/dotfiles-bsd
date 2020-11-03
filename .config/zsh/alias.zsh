@@ -1,16 +1,31 @@
+# alias.zsh
+# ========================
+# =====    ===============
+# ======  ================
+# ======  ================
+# ======  ====   ====   ==
+# ======  ===     ==  =  =
+# ======  ===  =  ==     =
+# =  ===  ===  =  ==  ====
+# =  ===  ===  =  ==  =  =
+# ==     =====   ====   ==
+# ========================
+
 alias ls='exa -l'
 alias c='clear'
 alias less='less --tabs 4'
 alias bc='clear; bc -l'
-alias emacs='emacs -nw'
 alias mkf='gmake fclean'
 alias mkc='gmake clean'
 alias mk='gmake -j5'
 alias web='w3m https://duckduckgo.com/'
+alias mpv='mpv --audio-channels=stereo'
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -v'
 alias ln='ln -v'
+alias df='df -h'
+alias du='du -h'
 alias mkdir='mkdir -v'
 alias rmdir='rmdir -v'
 alias chmod='chmod -v'
@@ -20,26 +35,39 @@ alias diff='colordiff'
 alias tree='tree -C'
 alias yt='straw-viewer --api=auto'
 alias gyt='gtk-straw-viewer'
-alias dgit='git --git-dir=$HOME/Documents/dotfiles-bsd --work-tree=$HOME'
+alias dgit='git --git-dir=$HOME/docs/dotfiles-bsd --work-tree=$HOME'
 alias vim='nvim'
 alias gst='git status'
 alias ga='git add'
 alias gco='git commit -m'
 alias gpp='git push'
 alias gpo='git push origin'
-alias startdocker='doas service vboxnet restart && docker-machine start docker-home'
+alias startdocker='sudo service vboxnet restart && docker-machine start docker-home'
 alias stopdocker='docker-machine stop docker-home'
 alias envdocker='eval `docker-machine env docker-home`'
-alias cat='bat'
 alias vimz='nvim $(fzf)'
 alias v='nvim $(fzf)'
-alias twi='mpv https://twitch.tv/'
+alias pa='cd $HOME/.local/packs && ls'
+alias co='cd $XDG_CONFIG_HOME/ && ls'
+alias bi='cd $HOME/.local/bin && ls'
+twi() {
+	mpview https://twitch.tv/$1;
+}
 alias nb='newsboat'
 alias mutt='neomutt'
 alias nmt='neomutt'
 alias sxiv='sxiv -b'
-alias infox='pkg info -x'
-alias search='make -C /usr/ports search name='
+alias pinfo='pkg info -x'
+search() {
+	make -C /usr/ports search name=$1 | grep 'Path:';
+}
 alias watch='cmdwatch'
+alias tsd='transmission-daemon'
 alias tsm='transmission-remote'
-alias df='df -h'
+alias rsox='sox -t oss default'
+alias calcurse='calcurse -C $XDG_CONFIG_HOME/calcurse -D $XDG_DATA_HOME/calcurse'
+alias abook='abook -C $XDG_CONFIG_HOME/abook/abookrc --datafile $XDG_DATA_HOME/abook/addressbook'
+alias dosbox='dosbox -conf $XDG_CONFIG_HOME/dosbox/dosbox.conf'
+alias svn='svn --config-dir $XDG_CONFIG_HOME/subversion'
+alias gpg2='gpg2 --homedir $XDG_DATA_HOME/gnupg'
+alias yarn='yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config'

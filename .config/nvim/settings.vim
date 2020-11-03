@@ -30,3 +30,5 @@ let mapleader="\\"
 let maplocalleader="\\"
 " Disables automatic commenting on newline:
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+set statusline=...%{battery#component()}...
+let g:battery#update_statusline = 1 " For statusline.

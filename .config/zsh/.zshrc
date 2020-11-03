@@ -1,10 +1,22 @@
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+# .zshrc
+# ========================
+# =====    ===============
+# ======  ================
+# ======  ================
+# ======  ====   ====   ==
+# ======  ===     ==  =  =
+# ======  ===  =  ==     =
+# =  ===  ===  =  ==  ====
+# =  ===  ===  =  ==  =  =
+# ==     =====   ====   ==
+# ========================
 
 autoload -U colors && colors
 
 HISTSIZE=5000
 SAVEHIST=5000
 HISTFILE=$XDG_CONFIG_HOME/zsh/history
+
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
@@ -28,8 +40,6 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -v "^?" backward-delete-char
 bindkey -v "^[[A" history-beginning-search-backward
 bindkey -v "^[[B" history-beginning-search-forward
-# bindkey -v "^K" history-beginning-search-backward
-# bindkey -v "^J" history-beginning-search-forward
 bindkey -M vicmd "k" history-beginning-search-backward
 bindkey -M vicmd "j" history-beginning-search-forward
 
@@ -38,8 +48,8 @@ bindkey "^e" edit-command-line
 
 [ -f "$ZDOTDIR/alias.zsh" ]		&& source $ZDOTDIR/alias.zsh
 [ -f "$ZDOTDIR/plugins.zsh" ]	&& source $ZDOTDIR/plugins.zsh
-[ -f "$HOME/Packages/fzf/shell/completion.zsh" ]	&& source $HOME/Packages/fzf/shell/completion.zsh
-[ -f "$HOME/Packages/fzf/shell/key-bindings.zsh" ]	&& source $HOME/Packages/fzf/shell/key-bindings.zsh
+[ -f "$HOME/.local/packs/fzf/shell/completion.zsh" ]	&& source $HOME/.local/packs/fzf/shell/completion.zsh
+[ -f "$HOME/.local/packs/fzf/shell/key-bindings.zsh" ]	&& source $HOME/.local/packs/fzf/shell/key-bindings.zsh
 
 globalias() {
 	if [[ $LBUFFER =~ '^[a-z0-9]+$' ]]; then
@@ -56,4 +66,4 @@ bindkey -v "^ " magic-space
 bindkey -M isearch " " magic-space
 
 PROMPT="%B%{$fg[red]%}%M %{$fg[blue]%}%c%{$fg[red]%}%%%{$reset_color%} "
-RPROMPT="${RPROMPT}"'%{$fg_bold[red]%}%(?..%?)%{$reset_color%} $(gitprompt)'
+RPROMPT="%{$fg_bold[red]%}%(?..%?)%{$reset_color%}"
