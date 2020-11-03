@@ -1,3 +1,4 @@
+#!/usr/local/bin/bash
 # .zshrc
 # ========================
 # =====    ===============
@@ -17,6 +18,14 @@ HISTSIZE=5000
 SAVEHIST=5000
 HISTFILE=$XDG_CONFIG_HOME/zsh/history
 
+LESS_TERMCAP_mb=$(printf '\e[1;31m');		export LESS_TERMCAP_mb
+LESS_TERMCAP_md=$(printf '\e[1;31m');		export LESS_TERMCAP_md
+LESS_TERMCAP_me=$(printf '\e[0m');			export LESS_TERMCAP_me
+LESS_TERMCAP_so=$(printf '\e[1;33;40m');	export LESS_TERMCAP_so
+LESS_TERMCAP_se=$(printf '\e[0m');			export LESS_TERMCAP_se
+LESS_TERMCAP_us=$(printf '\e[0;4;35m');		export LESS_TERMCAP_us
+LESS_TERMCAP_ue=$(printf '\e[0m');			export LESS_TERMCAP_ue
+
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
@@ -32,7 +41,7 @@ compinit
 _comp_options+=(globdots)
 
 bindkey -v
-export KEYTIMEOUT=1
+KEYTIMEOUT=1
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'k' vi-up-line-or-history
@@ -46,13 +55,13 @@ bindkey -M vicmd "j" history-beginning-search-forward
 autoload edit-command-line && zle -N edit-command-line
 bindkey "^e" edit-command-line
 
-[ -f "$ZDOTDIR/alias.zsh" ]		&& source $ZDOTDIR/alias.zsh
-[ -f "$ZDOTDIR/plugins.zsh" ]	&& source $ZDOTDIR/plugins.zsh
-[ -f "$HOME/.local/packs/fzf/shell/completion.zsh" ]	&& source $HOME/.local/packs/fzf/shell/completion.zsh
-[ -f "$HOME/.local/packs/fzf/shell/key-bindings.zsh" ]	&& source $HOME/.local/packs/fzf/shell/key-bindings.zsh
+[ -f "$ZDOTDIR"/alias.zsh ]								&& source "$ZDOTDIR"/alias.zsh
+[ -f "$ZDOTDIR"/plugins.zsh ]							&& source "$ZDOTDIR"/plugins.zsh
+[ -f "$HOME"/.local/packs/fzf/shell/completion.zsh ]	&& source "$HOME"/.local/packs/fzf/shell/completion.zsh
+[ -f "$HOME"/.local/packs/fzf/shell/key-bindings.zsh ]	&& source "$HOME"/.local/packs/fzf/shell/key-bindings.zsh
 
 globalias() {
-	if [[ $LBUFFER =~ '^[a-z0-9]+$' ]]; then
+	if [[ $LBUFFER =~ ^[a-z0-9]+$ ]]; then
 		zle _expand_alias
 		zle expand-word
 	fi
