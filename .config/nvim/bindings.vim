@@ -13,7 +13,7 @@ nnoremap <C-o> <C-w>o
 nnoremap <C-q> <C-w>q
 nnoremap <silent> <leader> :WhichKey '\'<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <leader>d :w<CR>:bp<CR>:bd #<CR>
+nnoremap <leader>d :bd<CR>
 nnoremap <silent> <leader>e :Files<CR>
 nnoremap <silent> <leader>ga :Ag<CR>
 nnoremap <leader>gg :Grep<Space>
@@ -27,7 +27,7 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>x :w<CR>:bp<CR>:bd #<CR>
 let g:which_key_map.b = 'buffers'
 let g:which_key_map.c = { 'name': '+nerd-commenter' }
-let g:which_key_map.d = 'write-and-close-buffer'
+let g:which_key_map.d = 'close-buffer'
 let g:which_key_map.e = 'files'
 let g:which_key_map.g = { 'name': '+grep' }
 let g:which_key_map.g.a = 'the_silver_searcher'

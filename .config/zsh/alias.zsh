@@ -30,6 +30,7 @@ alias mkdir='mkdir -v'
 alias rmdir='rmdir -v'
 alias chmod='chmod -v'
 alias chown='chown -v'
+alias mount='mount -v'
 alias grep='grep --color'
 alias diff='colordiff'
 alias tree='tree -C'
@@ -58,6 +59,7 @@ alias mutt='neomutt'
 alias nmt='neomutt'
 alias sxiv='sxiv -b'
 alias pinfo='pkg info -x'
+alias psearch='pkg search'
 search() {
 	make -C /usr/ports search name=$1 | grep 'Path:';
 }

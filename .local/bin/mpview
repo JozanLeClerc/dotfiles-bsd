@@ -64,19 +64,21 @@ sub main
 	}
 	$size = get_size();
 	if ($size != 0) {
-		print 'mpv --ytdl-format=[height<=' . $size . '] ' . $ARGV[0] . "\n";
+		print 'mpv --really-quiet --audio-channels=stereo --ytdl-format=[height<=' . $size . '] ' . $ARGV[0] . "\n";
 		exec(
 			'mpv',
 			'--really-quiet',
+			'--audio-channels=stereo',
 			'--ytdl-format=[height<=' . $size . ']',
 			$ARGV[0]
 		);
 	}
 	else {
-		print 'mpv ' . $ARGV[0] . "\n";
+		print 'mpv --really-quiet --audio-channels=stereo ' . $ARGV[0] . "\n";
 		exec(
 			'mpv',
 			'--really-quiet',
+			'--audio-channels=stereo',
 			$ARGV[0]
 		);
 	}

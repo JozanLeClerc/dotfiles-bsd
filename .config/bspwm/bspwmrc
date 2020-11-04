@@ -23,7 +23,7 @@ use constant {
 	LOWBAT_PATH				=> '/usr/local/bin/lowbat',
 	EMACS_PATH				=> '/usr/local/bin/emacs',
 	NEOVIM_PATH				=> '/usr/local/bin/nvim',
-	ALACRITTY_PATH			=> '/usr/local/bin/alacritty',
+	TERM_PATH				=> '/usr/local/bin/st',
 	PGREP_PATH				=> '/bin/pgrep',
 	ESPEAK_PATH				=> '/usr/local/bin/espeak',
 	SH_PATH					=> '/bin/sh',
@@ -54,10 +54,9 @@ use constant {
 	XSET_R_RATE_DELAY		=> 200,
 	XSET_R_RATE_RATE		=> 150
 };
-use constant WALLPAPER_PATH		=> '/usr/home/jozan/Pictures/wallpaper.jpg';
 use constant COWSAY_WELCOME		=> 'Welcome back, partner! And remember to try glest!';
 use constant NETWORK_TEST_URL	=> 'https://www.freebsd.org/';
-use constant SLEEP_TIME			=> 3.2;
+use constant SLEEP_TIME			=> 1;
 
 sub run_if_dead
 {
@@ -183,28 +182,28 @@ sub fg_on_three_screens
 	$term_pid[0] = fork();
 	if (not $term_pid[0]) {
 		exec(
-			ALACRITTY_PATH, '-e', SH_PATH, '-c',
-			COWSAY_PATH . ' "' . COWSAY_WELCOME . '"; ' . FISH_PATH
+			TERM_PATH, '-e', SH_PATH, '-c',
+			COWSAY_PATH . ' "' . COWSAY_WELCOME . '"; ' . ZSH_PATH
 			);
 		exit;
 	}
 	Time::HiRes::sleep(SLEEP_TIME);
 	$term_pid[1] = fork();
 	if (not $term_pid[1]) {
-		exec(ALACRITTY_PATH, '-e', HTOP_PATH);
+		exec(TERM_PATH, '-e', HTOP_PATH);
 		exit;
 	}
 	Time::HiRes::sleep(SLEEP_TIME);
 	$term_pid[2] = fork();
 	if (not $term_pid[2]) {
-		exec(ALACRITTY_PATH, '-e', GOTOP_PATH);
+		exec(TERM_PATH, '-e', GOTOP_PATH);
 		exit;
 	}
 	Time::HiRes::sleep(SLEEP_TIME);
 	system(BSPC_PATH, 'node', '-f', 'west');
 	$term_pid[3] = fork();
 	if (not $term_pid[3]) {
-		exec(ALACRITTY_PATH, '-e', VIFM_PATH);
+		exec(TERM_PATH, '-e', VIFM_PATH);
 		exit;
 	}
 	Time::HiRes::sleep(SLEEP_TIME);
@@ -224,28 +223,28 @@ sub fg_on_two_screens
 	$term_pid[0] = fork();
 	if (not $term_pid[0]) {
 		exec(
-			ALACRITTY_PATH, '-e', SH_PATH, '-c',
-			COWSAY_PATH . ' "' . COWSAY_WELCOME . '"; ' . FISH_PATH
+			TERM_PATH, '-e', SH_PATH, '-c',
+			COWSAY_PATH . ' "' . COWSAY_WELCOME . '"; ' . ZSH_PATH
 			);
 		exit;
 	}
 	Time::HiRes::sleep(SLEEP_TIME);
 	$term_pid[1] = fork();
 	if (not $term_pid[1]) {
-		exec(ALACRITTY_PATH, '-e', HTOP_PATH);
+		exec(TERM_PATH, '-e', HTOP_PATH);
 		exit;
 	}
 	Time::HiRes::sleep(SLEEP_TIME);
 	$term_pid[2] = fork();
 	if (not $term_pid[2]) {
-		exec(ALACRITTY_PATH, '-e', GOTOP_PATH);
+		exec(TERM_PATH, '-e', GOTOP_PATH);
 		exit;
 	}
 	Time::HiRes::sleep(SLEEP_TIME);
 	system(BSPC_PATH, 'node', '-f', 'west');
 	$term_pid[3] = fork();
 	if (not $term_pid[3]) {
-		exec(ALACRITTY_PATH, '-e', VIFM_PATH);
+		exec(TERM_PATH, '-e', VIFM_PATH);
 		exit;
 	}
 	Time::HiRes::sleep(SLEEP_TIME);
@@ -265,8 +264,8 @@ sub fg_on_one_screen
 	$term_pid[0] = fork();
 	if (not $term_pid[0]) {
 		exec(
-			ALACRITTY_PATH, '-e', SH_PATH, '-c',
-			COWSAY_PATH . ' "' . COWSAY_WELCOME . '"; ' . FISH_PATH
+			TERM_PATH, '-e', SH_PATH, '-c',
+			COWSAY_PATH . ' "' . COWSAY_WELCOME . '"; ' . ZSH_PATH
 			);
 		exit;
 	}
@@ -274,19 +273,19 @@ sub fg_on_one_screen
 	system(BSPC_PATH, 'node', '-p', 'west');
 	$term_pid[1] = fork();
 	if (not $term_pid[1]) {
-		exec(ALACRITTY_PATH, '-e', HTOP_PATH);
+		exec(TERM_PATH, '-e', HTOP_PATH);
 		exit;
 	}
 	Time::HiRes::sleep(SLEEP_TIME);
 	$term_pid[2] = fork();
 	if (not $term_pid[2]) {
-		exec(ALACRITTY_PATH, '-e', GOTOP_PATH);
+		exec(TERM_PATH, '-e', GOTOP_PATH);
 	}
 	Time::HiRes::sleep(SLEEP_TIME);
 	system(BSPC_PATH, 'node', '-f', 'east');
 	$term_pid[3] = fork();
 	if (not $term_pid[3]) {
-		exec(ALACRITTY_PATH, '-e', VIFM_PATH);
+		exec(TERM_PATH, '-e', VIFM_PATH);
 	}
 	Time::HiRes::sleep(SLEEP_TIME);
 	system(BSPC_PATH, 'node', '-f', 'west');
@@ -326,25 +325,25 @@ sub run_fg_programs
 	system(BSPC_PATH, 'desktop', '-f', '11');
 	$pid[0] = fork();
 	if (not $pid[0]) {
-		exec(ALACRITTY_PATH, '-e', NEOMUTT_PATH);
+		exec(TERM_PATH, '-e', NEOMUTT_PATH);
 	}
 	Time::HiRes::sleep(SLEEP_TIME);
 	system(BSPC_PATH, 'desktop', '-f', '10');
 	$pid[1] = fork();
 	if (not $pid[1]) {
-		exec(ALACRITTY_PATH, '-e', SCLI_PATH);
+		exec(TERM_PATH, '-e', SCLI_PATH);
 	}
 	Time::HiRes::sleep(SLEEP_TIME);
 	system(BSPC_PATH, 'desktop', '-f', '09');
 	$pid[2] = fork();
 	if (not $pid[2]) {
-		exec(ALACRITTY_PATH, '-e', VIMPC_PATH);
+		exec(TERM_PATH, '-e', VIMPC_PATH);
 	}
 	Time::HiRes::sleep(SLEEP_TIME);
 	system(BSPC_PATH, 'desktop', '-f', '01');
 	$pid[3] = fork();
 	if (not $pid[3]) {
-		exec(ALACRITTY_PATH, '-e', NEOVIM_PATH);
+		exec(TERM_PATH, '-e', NEOVIM_PATH);
 	}
 	Time::HiRes::sleep(SLEEP_TIME);
 	system(BSPC_PATH, 'desktop', '-f', '12');

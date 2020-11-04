@@ -14,7 +14,7 @@ Plug 'mg979/vim-visual-multi'
 Plug 'mhinz/vim-signify'
 Plug 'mhinz/vim-startify'
 Plug 'morhetz/gruvbox'
-" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'paretje/nvim-man'
 Plug 'preservim/tagbar'
 Plug 'preservim/nerdcommenter'

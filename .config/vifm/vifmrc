@@ -73,7 +73,6 @@ filetype *.zip,*.rar,*.tar.gz ext %f
 fileviewer *.[1-8] man ./%c | col -b
 filetype *.[1-8] man ./%c
 
-fileviewer *.jpg,*.jpeg,*.png,*.ico vifmimg draw %px %py %pw %ph %c %pc vifmimg clear
 filextype *.bmp,*.jpg,*.jpeg,*.png,*.ico,*.gif,*.xpm  sxiv -b -ia %f 2>/dev/null &
 
 filextype *.svg inkscape %f 2>/dev/null &
