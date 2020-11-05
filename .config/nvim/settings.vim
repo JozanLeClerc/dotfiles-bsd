@@ -15,6 +15,7 @@ set shortmess+=c
 set softtabstop=4
 set ruler
 set tabstop=4
+set textwidth=80
 set timeoutlen=500
 set undodir=/tmp
 set undofile

@@ -8,7 +8,13 @@ let g:airline_symbols_ascii = 1
 let g:airline#parts#ffenc#skip_expected_string = 'utf-8[unix]'
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#whitespace#checks =
-			\  [ 'indent', 'trailing', 'long', 'mixed-indent-file', 'conflicts' ]
+			\  [
+			\ 'indent',
+			\ 'trailing',
+			\ 'long',
+			\ 'conflicts'
+			\ ]
+" \ 'mixed-indent-file',
 let g:airline#extensions#whitespace#max_lines = 20000
 let g:airline#extensions#whitespace#show_message = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 2
