@@ -119,11 +119,10 @@ sub open_link
 		);
 	}
 	elsif ($a == 8) {
-		exec(
-			FIREFOX_PATH,
-			'--kiosk',
-			$url
-		);
+		$pid = fork();
+		if (not $pid) {
+			exec(FIREFOX_PATH . ' --kiosk ' . $url . ' >/dev/null 2>&1');
+		}
 	}
 	return;
 }
