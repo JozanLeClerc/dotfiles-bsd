@@ -48,11 +48,42 @@ alias stopdocker='docker-machine stop docker-home'
 alias envdocker='eval `docker-machine env docker-home`'
 alias vimz='nvim $(fzf)'
 alias v='nvim $(fzf)'
-alias pa='cd $HOME/.local/packs && ls'
-alias co='cd $XDG_CONFIG_HOME/ && ls'
+pa() {
+	if [ "$1" ]; then
+		if cd "$HOME"/.local/packs/"$1"; then
+			ls
+		else
+			cd "$HOME"/.local/packs && ls
+		fi
+	else
+		cd "$HOME"/.local/packs && ls
+	fi
+}
+co() {
+	if [ "$1" ]; then
+		if cd "$XDG_CONFIG_HOME"/"$1"; then
+			ls
+		else
+			cd "$XDG_CONFIG_HOME" && ls
+		fi
+	else
+		cd "$XDG_CONFIG_HOME" && ls
+	fi
+}
+da() {
+	if [ "$1" ]; then
+		if cd "$XDG_DATA_HOME"/"$1"; then
+			ls
+		else
+			cd "$XDG_DATA_HOME" && ls
+		fi
+	else
+		cd "$XDG_DATA_HOME" && ls
+	fi
+}
 alias bi='cd $HOME/.local/bin && ls'
 twi() {
-	mpview https://twitch.tv/$1;
+	mpview https://twitch.tv/"$1";
 }
 alias nb='newsboat'
 alias mutt='neomutt'

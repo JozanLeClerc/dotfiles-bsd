@@ -1,3 +1,4 @@
+set noautochdir
 set bg=dark
 set clipboard^=unnamedplus
 set cursorline
