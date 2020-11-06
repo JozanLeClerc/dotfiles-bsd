@@ -73,6 +73,36 @@ super + {_,shift + }{F11}
 super + {_,shift + }{F12}
 	/usr/local/bin/bspc {desktop -f,node -d} 12
 
+#super + KP_{0-9,Divide,Multiply,Subtract,Add,Decimal,Enter,Separator,BackSpace}
+#    notify-send {0-9,Divide,Multiply,Subtract,Add,Decimal,Enter,Separator,BackSpace}
+
+#super + {Num_Lock,@Print,Insert,Home,Prior,Delete,End,Next,Scroll_Lock,Pause}
+#    notify-send {Num_Lock,Print,Insert,Home,Prior,Delete,End,Next,Scroll_Lock,Pause}
+
+super + KP_Enter
+	/usr/local/bin/bsp-layout remove && \
+	/usr/local/bin/notify-send -u low normal
+
+super + Home
+	/usr/local/bin/bsp-layout set rwide && \
+	/usr/local/bin/notify-send -u low rwide
+
+super + Delete
+	/usr/local/bin/bsp-layout set tall && \
+	/usr/local/bin/notify-send -u low tall
+
+super + Scroll_Lock
+	/usr/local/bin/bsp-layout set even && \
+	/usr/local/bin/notify-send -u low even
+
+super + Next
+	/usr/local/bin/bsp-layout set rtall && \
+	/usr/local/bin/notify-send -u low rtall
+
+super + End
+	/usr/local/bin/bsp-layout set wide && \
+	/usr/local/bin/notify-send -u low wide
+
 super + ctrl + {h,j,k,l}
 	/usr/local/bin/bspc node -p {west,south,north,east}
 
@@ -106,7 +136,7 @@ super + 3
 super + 4
 	/usr/local/bin/st -e /usr/local/bin/w3m https://start.duckduckgo.com/
 
-super + 0
+super + BackSpace
 	/usr/home/jozan/.local/bin/dmpc >/dev/null 2>&1
 
 {XF86AudioRaiseVolume}
