@@ -108,6 +108,7 @@ sub open_link
 		exec(
 			MPV_PATH,
 			'--really-quiet',
+			'--audio-channels=stereo',
 			'--loop',
 			$url
 		);
@@ -127,6 +128,7 @@ sub open_link
 	elsif ($a == 9) {
 		exec(
 			MPV_PATH,
+			'--audio-channels=stereo',
 			$url
 		);
 	}
