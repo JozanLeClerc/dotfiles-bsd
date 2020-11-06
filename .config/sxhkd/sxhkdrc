@@ -106,6 +106,9 @@ super + 3
 super + 4
 	/usr/local/bin/st -e /usr/local/bin/w3m https://start.duckduckgo.com/
 
+super + 0
+	/usr/home/jozan/.local/bin/dmpc >/dev/null 2>&1
+
 {XF86AudioRaiseVolume}
 	/usr/home/jozan/.local/bin/mixer-set raise >/dev/null 2>&1
 

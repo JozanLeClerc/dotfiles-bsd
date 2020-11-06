@@ -1,21 +1,33 @@
 #!/usr/local/bin/perl
 
+use strict;
+use warnings;
+
 sub main
 {
 	my $action;
 	my $current;
 	my $prompt;
+	my $queued;
 
-	$current = `mpc`;
-	if ($current =~ /volume: n\/a/) {
-		$current = "Current: Stopped";
+	$current = `mpc current`;
+	if (not $current) {
+		$current = 'Current: Stopped';
 	}
 	else {
-		$current =~ /$\.+/d;
-		$current = "Current: " . $current;
+		$current = 'Current: ' . $current;
 	}
-	$prompt = "toggle\nstop\nnext\nprev\n$current\n";
-	$action = `printf '$prompt' | dmenu`;
+	$queued = `mpc queued`;
+	if ($current eq 'Current: Stopped' || not $queued) {
+		$queued = 'Next: None';
+	}
+	else {
+		$queued = 'Next: ' . $queued;
+	}
+	chomp $current;
+	chomp $queued;
+	$prompt = "toggle\nnext\nprev\nplay\nstop\nclear\nrepeat\nrandom\n\n$current\n$queued\n";
+	$action = `printf '$prompt' | dmenu -i -l 11 -m 0`;
 	system("mpc " . $action);
 	return;
 }
