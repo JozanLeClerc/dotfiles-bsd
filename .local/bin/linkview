@@ -124,6 +124,12 @@ sub open_link
 			exec(FIREFOX_PATH . ' --kiosk ' . $url . ' >/dev/null 2>&1');
 		}
 	}
+	elsif ($a == 9) {
+		exec(
+			MPV_PATH,
+			$url
+		);
+	}
 	return;
 }
 
@@ -142,6 +148,7 @@ sub prompt
 	"6) mpv-loop\n" .
 	"7) w3m\n" .
 	"8) firefox\n" .
+	"9) mpv-verbose\n" .
 	"0) quit\n" .
 	"\n" .
 	"> ";
@@ -157,7 +164,7 @@ sub prompt
 	if (
 		!looks_like_number($answer) ||
 		$answer < 0 ||
-		$answer > 8
+		$answer > 9
 	) {
 		print "linkview:  bad answer\n";
 		return -1;

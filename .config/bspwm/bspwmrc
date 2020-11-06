@@ -102,7 +102,7 @@ use constant {
 };
 use constant COWSAY_WELCOME		=> 'Welcome back, partner! And remember to try glest!';
 use constant NETWORK_TEST_URL	=> 'https://www.freebsd.org/';
-use constant SLEEP_TIME			=> 2.5;
+use constant SLEEP_TIME			=> 3.0;
 
 sub run_if_dead
 {
