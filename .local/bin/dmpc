@@ -2,6 +2,21 @@
 
 sub main
 {
+	my $action;
+	my $current;
+	my $prompt;
+
+	$current = `mpc`;
+	if ($current =~ /volume: n\/a/) {
+		$current = "Current: Stopped";
+	}
+	else {
+		$current =~ /$\.+/d;
+		$current = "Current: " . $current;
+	}
+	$prompt = "toggle\nstop\nnext\nprev\n$current\n";
+	$action = `printf '$prompt' | dmenu`;
+	system("mpc " . $action);
 	return;
 }
 
