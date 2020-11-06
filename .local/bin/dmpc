@@ -1,0 +1,10 @@
+#!/usr/local/bin/perl
+
+sub main
+{
+	return;
+}
+
+main();
+
+__END__
