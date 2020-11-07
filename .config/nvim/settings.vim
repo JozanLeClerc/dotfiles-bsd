@@ -1,5 +1,8 @@
 set noautochdir
 set bg=dark
+set cindent
+set cinoptions=>s,e0,n0,f0,{0,}0,^0,L-1,:s,=s,l1,b0,gs,h0,N0,E0,p0,t0,i0,+s
+set cinoptions+=c1,C0,/0,(s,us,U0,w0,Ws,k0,m1,M0,)20,*70,#0
 set clipboard^=unnamedplus
 set cursorline
 set encoding=utf-8
@@ -8,6 +11,7 @@ set hidden
 set makeprg=gmake
 set mouse=a
 set nocompatible
+set noexpandtab
 set nohlsearch
 set number
 set shiftwidth=4
