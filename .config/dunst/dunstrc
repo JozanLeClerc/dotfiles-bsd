@@ -1,16 +1,15 @@
 [global]
     monitor = 0
     follow = none
-    geometry = "500x5-30+30"
+    geometry = "500x5-40+40"
     indicate_hidden = yes
     shrink = yes
     transparency = 0
     notification_height = 0
     separator_height = 4
-    padding = 0
+    padding = 2
     horizontal_padding = 10
-    frame_width = 3
-    frame_color = "#505050"
+    frame_width = 2
 
     # Define a color for the separator.
     # possible values are:
@@ -47,13 +46,13 @@
     ignore_newline = no
     stack_duplicates = true
     hide_duplicate_count = true
-    show_indicators = yes
-    icon_position = right
+	show_indicators = yes
+	icon_position = right
     max_icon_size = 100
 	# icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/:/usr/share/icons/Adwaita/256x256/status/
     sticky_history = yes
     history_length = 20
-    # dmenu = /usr/bin/dmenu -p dunst:
+	# dmenu = /usr/local/bin/dmenu -p dunst:
     # browser = /usr/bin/firefox -new-tab
 
     # Always run rule-defined scripts, even if the notification is suppressed
@@ -75,21 +74,23 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#282828"
-    foreground = "#928374"
-    timeout = 5
+    background = "#32302f"
+    foreground = "#b8a994"
+    frame_color = "#887964"
+    timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
     #icon = /path/to/icon
 
 [urgency_normal]
-    background = "#664B6A"
-    foreground = "#D0D0D0"
-    timeout = 5
+    background = "#614266"
+    foreground = "#ebdbb2"
+    frame_color = "#a89984"
+    timeout = 10
 
 [urgency_critical]
-    background = "#AC4142"
-    foreground = "#ebdbb2"
-    frame_color = "#282828"
+    background = "#cc241d"
+    foreground =  "#ebdbb2"
+    frame_color = "#b77901"
     timeout = 0
 
 # Every section that isn't one of the above is interpreted as a rules to
