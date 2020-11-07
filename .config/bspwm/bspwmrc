@@ -54,7 +54,6 @@ use constant {
 	TERM_PATH	=> '/usr/local/bin/st'
 };
 use constant {
-	DASH_PATH				=> '/usr/local/bin/dash',
 	SXHKD_PATH				=> '/usr/local/bin/sxhkd',
 	PGREP_PATH				=> '/bin/pgrep',
 	PKILL_PATH				=> '/bin/pkill',
@@ -74,6 +73,7 @@ use constant {
 	ESPEAK_PATH				=> '/usr/local/bin/espeak',
 	SH_PATH					=> '/bin/sh',
 	ZSH_PATH				=> '/usr/local/bin/zsh',
+	DASH_PATH				=> '/usr/local/bin/dash',
 	FISH_PATH				=> '/usr/local/bin/fish',
 	COWSAY_PATH				=> '/usr/local/bin/cowsay',
 	HTOP_PATH				=> '/usr/local/bin/htop',
@@ -102,7 +102,7 @@ use constant {
 };
 use constant COWSAY_WELCOME		=> 'Welcome back, partner! And remember to try glest!';
 use constant NETWORK_TEST_URL	=> 'https://www.freebsd.org/';
-use constant SLEEP_TIME			=> 3.0;
+use constant SLEEP_TIME			=> 3.5;
 
 sub run_if_dead
 {
