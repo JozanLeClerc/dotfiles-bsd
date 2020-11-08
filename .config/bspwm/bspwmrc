@@ -93,6 +93,7 @@ use constant {
 	BSP_BORDER_WIDTH		=> 1,
 	BSP_WINDOW_GAP			=> 0,
 	BSP_BORDER_COLOR		=> '#9d2121',
+	BSP_PRESEL_COLOR		=> '#9d2121',
 	BSP_SPLIT_RATIO			=> '0.50',
 	BSP_BORDERLESS_MONOCLE	=> 'true',
 	BSP_GAPLESS_MONOCLE		=> 'true',
@@ -174,6 +175,7 @@ sub bspc_configs
 	system(BSPC_PATH, 'config', 'border_width',			BSP_BORDER_WIDTH);
 	system(BSPC_PATH, 'config', 'window_gap',			BSP_WINDOW_GAP);
 	system(BSPC_PATH, 'config', 'focused_border_color',	BSP_BORDER_COLOR);
+	system(BSPC_PATH, 'config', 'focused_border_color',	BSP_PRESEL_COLOR);
 	system(BSPC_PATH, 'config', 'split_ratio',			BSP_SPLIT_RATIO);
 	system(BSPC_PATH, 'config', 'borderless_monocle',	BSP_BORDERLESS_MONOCLE);
 	system(BSPC_PATH, 'config', 'gapless_monocle',		BSP_GAPLESS_MONOCLE);

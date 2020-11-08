@@ -79,29 +79,29 @@ super + {_,shift + }{F12}
 #super + {Num_Lock,@Print,Insert,Home,Prior,Delete,End,Next,Scroll_Lock,Pause}
 #    notify-send {Num_Lock,Print,Insert,Home,Prior,Delete,End,Next,Scroll_Lock,Pause}
 
-super + KP_Enter
+super + KP_Insert
 	/usr/local/bin/bsp-layout remove && \
 	/usr/local/bin/notify-send -u low normal
 
-super + Home
-	/usr/local/bin/bsp-layout set rwide && \
-	/usr/local/bin/notify-send -u low rwide
-
-super + Delete
+super + KP_Left
 	/usr/local/bin/bsp-layout set tall && \
 	/usr/local/bin/notify-send -u low tall
 
-super + Scroll_Lock
+super + KP_Begin
 	/usr/local/bin/bsp-layout set even && \
 	/usr/local/bin/notify-send -u low even
 
-super + Next
+super + KP_Right
 	/usr/local/bin/bsp-layout set rtall && \
 	/usr/local/bin/notify-send -u low rtall
 
-super + End
+super + KP_Up
 	/usr/local/bin/bsp-layout set wide && \
 	/usr/local/bin/notify-send -u low wide
+
+super + KP_Down
+	/usr/local/bin/bsp-layout set rwide && \
+	/usr/local/bin/notify-send -u low rwide
 
 super + ctrl + {h,j,k,l}
 	/usr/local/bin/bspc node -p {west,south,north,east}
