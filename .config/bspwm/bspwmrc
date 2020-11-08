@@ -87,7 +87,8 @@ use constant {
 	NEOMUTT_PATH			=> '/usr/local/bin/neomutt',
 	SCLI_PATH				=> '/usr/local/bin/scli',
 	VIMPC_PATH				=> '/usr/local/bin/vimpc',
-	MPD_NOTIFICATION_PATH	=> '/usr/local/bin/mpd-notification'
+	MPD_NOTIFICATION_PATH	=> '/usr/local/bin/mpd-notification',
+	XMODMAP_PATH			=> '/usr/local/bin/xmodmap'
 };
 use constant {
 	BSP_BORDER_WIDTH		=> 1,
@@ -208,7 +209,8 @@ sub run_bg_programs
 	system(XSETROOT_PATH, '-cursor_name', 'left_ptr');
 	system(XSET_PATH, 'r', 'rate', XSET_R_RATE_DELAY, XSET_R_RATE_RATE);
 	system(SETXKBMAP_PATH, '-layout', 'us,fr', '-option', 'grp:alt_shift_toggle');
-	system(XINPUT_PATH, '--set-prop', '12', '273', '-1');
+	system(XMODMAP_PATH, '-e', 'keycode 9 = Tab');
+	system(XMODMAP_PATH, '-e', 'keycode 23 = Escape');
 	return;
 }
 

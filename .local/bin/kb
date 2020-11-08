@@ -2,3 +2,5 @@
 
 xset r rate 200 150
 setxkbmap -layout us,fr -option grp:alt_shift_toggle
+xmodmap -e "keycode 9 = Tab"
+xmodmap -e "keycode 23 = Escape"

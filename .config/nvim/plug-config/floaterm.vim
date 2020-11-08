@@ -8,7 +8,7 @@ let g:floaterm_position = 'bottom'
 let g:floaterm_gitcommit = 'split'
 let g:floaterm_wintype = 'floating'
 let g:floaterm_rootmarkers =
-			\ [ 
+			\ [
 			\ '.project',
 			\ '.git',
 			\ '.hg',
