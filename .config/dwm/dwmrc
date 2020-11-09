@@ -1,6 +1,9 @@
 #!/usr/local/bin/dash
 
 pkill compton
+pkill dunst
+pkill mpd-notification
+pkill lowbat
 
 /home/jozan/.local/bin/setscreens.sh
 /home/jozan/.local/bin/setwp
