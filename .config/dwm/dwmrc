@@ -4,4 +4,8 @@ pkill compton
 
 /home/jozan/.local/bin/setscreens.sh
 /home/jozan/.local/bin/setwp
-/usr/local/bin/compton &
+/home/jozan/.local/bin/kb
+/usr/local/bin/compton			>/dev/null 2>&1 &
+/usr/local/bin/dunst			>/dev/null 2>&1 &
+/usr/local/bin/mpd-notification	>/dev/null 2>&1 &
+/usr/local/bin/lowbat			>/dev/null 2>&1 &
