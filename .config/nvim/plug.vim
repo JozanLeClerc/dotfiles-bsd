@@ -1,4 +1,5 @@
 call plug#begin(system('echo -n "$XDG_DATA_HOME/nvim/plugged"'))
+Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 Plug 'ap/vim-css-color'
 Plug 'brglng/vim-sidebar-manager'
 Plug 'dag/vim-fish'
@@ -15,7 +16,7 @@ Plug 'mg979/vim-visual-multi'
 Plug 'mhinz/vim-signify'
 Plug 'mhinz/vim-startify'
 Plug 'morhetz/gruvbox'
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'paretje/nvim-man'
 Plug 'preservim/tagbar'
 Plug 'preservim/nerdcommenter'
