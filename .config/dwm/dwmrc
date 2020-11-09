@@ -1,0 +1,7 @@
+#!/usr/local/bin/dash
+
+pkill compton
+
+/home/jozan/.local/bin/setscreens.sh
+/home/jozan/.local/bin/setwp
+/usr/local/bin/compton &
