@@ -4,3 +4,13 @@ xset r rate 200 150
 setxkbmap -layout us,fr -option grp:alt_shift_toggle
 xmodmap -e "keycode 9 = Tab"
 xmodmap -e "keycode 23 = Escape"
+if ! xrandr | grep 'HDMI-1 connected'; then
+	if ! xrandr | grep 'VGA-1 connected'; then
+		xmodmap -e "remove Lock = Caps_Lock"
+		xmodmap -e "remove Control = Control_L"
+		xmodmap -e "keysym Control_L = Caps_Lock"
+		xmodmap -e "keysym Caps_Lock = Control_L"
+		xmodmap -e "add Lock = Caps_Lock"
+		xmodmap -e "add Control = Control_L"
+	fi
+fi
