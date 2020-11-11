@@ -49,6 +49,12 @@ sub open_link
 			}
 			$file_name = $url;
 			$file_name =~ s/.+\///g;
+			if ($file_name =~ m/^watch\?v=.+/) {
+				$file_name = "Your video";
+			}
+			else {
+				$file_name = '<b>' . $file_name . '</b>';
+			}
 			system(
 				NOTIFYSEND_PATH,
 				'-u',
@@ -56,7 +62,7 @@ sub open_link
 				'-t',
 				'10000',
 				'  download started',
-				'<b>' . $file_name . '</b> started downloading'
+				$file_name . ' started downloading'
 			);
 			$ret = -1;
 			if ($a == 2) {
@@ -73,7 +79,7 @@ sub open_link
 					'-t',
 					'10000',
 					'  download complete',
-					'<b>' . $file_name . '</b> downloaded successfully to '
+					$file_name . ' downloaded successfully to '
 					. '<b>' . $pwd . '</b>'
 				);
 			}
