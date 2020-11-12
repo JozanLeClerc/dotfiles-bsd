@@ -50,6 +50,12 @@ alias stopdocker='docker-machine stop docker-home'
 alias envdocker='eval `docker-machine env docker-home`'
 alias vimz='nvim $(fzf)'
 alias v='nvim $(fzf)'
+vs() {
+	p=$(pwd)
+	cd "$HOME"/.local/bin || return
+	nvim $(fzf --preview='head -$FZF_PREVIEW_LINES {}')
+	cd $p
+}
 pa() {
 	if [ "$1" ]; then
 		if cd "$HOME"/.local/packs/"$1"; then
