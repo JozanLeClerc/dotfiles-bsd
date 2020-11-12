@@ -33,8 +33,8 @@ sub main
 			NOTIFY_SEND_PATH,
 			'-u',
 			'low',
-			'  newsboat',
-			$stdout . ' new articles'
+			'newsboat',
+			'  ' . $stdout . ' new articles'
 		);
 	}
 	exit 0;

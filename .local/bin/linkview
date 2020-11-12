@@ -50,10 +50,8 @@ sub open_link
 			$file_name = $url;
 			$file_name =~ s/.+\///g;
 			if ($file_name =~ m/^watch\?v=.+/) {
-				$file_name = "Your video";
-			}
-			else {
-				$file_name = '<b>' . $file_name . '</b>';
+				$file_name = `youtube-dl -e $url`;
+				chomp $file_name;
 			}
 			system(
 				NOTIFYSEND_PATH,
@@ -61,8 +59,8 @@ sub open_link
 				'normal',
 				'-t',
 				'10000',
-				'  download started',
-				$file_name . ' started downloading'
+				'download started',
+				'  <b>'. $file_name . '</b> started downloading'
 			);
 			$ret = -1;
 			if ($a == 2) {
@@ -78,8 +76,8 @@ sub open_link
 					'normal',
 					'-t',
 					'10000',
-					'  download complete',
-					$file_name . ' downloaded successfully to '
+					' download complete',
+					'  <b>' . $file_name . '</b> downloaded successfully to '
 					. '<b>' . $pwd . '</b>'
 				);
 			}
@@ -90,8 +88,8 @@ sub open_link
 					'critical',
 					'-t',
 					'10000',
-					'  download failed',
-					'failed to download <b>' . $file_name . '</b>'
+					'download failed',
+					'  failed to download <b>' . $file_name . '</b>'
 				);
 			}
 			exit 0;
