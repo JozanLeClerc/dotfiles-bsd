@@ -27,7 +27,7 @@ sub main
 	chomp $current;
 	chomp $queued;
 	$prompt = "toggle\nnext\nprev\nplay\nstop\nclear\nrepeat\nrandom\n\n$current\n$queued\n";
-	$action = `printf '$prompt' | dmenu -i -l 11 -m 0`;
+	$action = `printf "$prompt" | dmenu -i -l 11 -m 0`;
 	system("mpc " . $action);
 	return;
 }
