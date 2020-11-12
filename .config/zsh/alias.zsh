@@ -48,8 +48,8 @@ alias gpo='git push origin'
 alias startdocker='sudo service vboxnet restart && docker-machine start docker-home'
 alias stopdocker='docker-machine stop docker-home'
 alias envdocker='eval `docker-machine env docker-home`'
-alias vimz='nvim $(fzf)'
-alias v='nvim $(fzf)'
+alias vimz='nvim $(fzf --preview="head -$FZF_PREVIEW_LINES {}")'
+alias v='nvim $(fzf --preview="head -$FZF_PREVIEW_LINES {}")'
 vs() {
 	p=$(pwd)
 	cd "$HOME"/.local/bin || return
