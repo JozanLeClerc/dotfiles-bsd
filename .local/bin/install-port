@@ -49,16 +49,6 @@ sub upgrdports {
 	system('/usr/local/bin/dash',
 		   '-c',
 		   '/usr/local/bin/notify-send "Initiating upgrade" "Ports upgrade has started\nTotal: ' . $upgrd_nbr . ' to be updated" >/dev/null 2>&1');
-	if ($upgrd_nbr == 1) {
-		system('/usr/local/bin/dash',
-			   '-c',
-			   '/usr/local/bin/espeak "Initiating ' . $upgrd_nbr . ' port upgrade" & >/dev/null 2>&1');
-	}
-	else {
-		system('/usr/local/bin/dash',
-			   '-c',
-			   '/usr/local/bin/espeak "Initiating ' . $upgrd_nbr . ' ports upgrade" & >/dev/null 2>&1');
-	}
 	if (system('/usr/local/bin/dash',
 			   '-c',
 			   '/usr/local/bin/doas /usr/local/sbin/portmaster -dya --no-confirm') == 0) {
@@ -68,9 +58,6 @@ sub upgrdports {
 		system('/usr/local/bin/dash',
 			   '-c',
 			   '/usr/local/bin/notify-send "Upgrade complete!" "Ports upgrade installed successfully\nTotal: ' . $diff_nbr . ' installed" >/dev/null 2>&1');
-		system('/usr/local/bin/dash',
-			   '-c',
-			   '/usr/local/bin/espeak "Success: $upnbr ports upgrade installed successfully" & >/dev/null 2>&1');
 	}
 	else {
 		my $failed_nbr = `$upgrd_nbr_cmd`;
@@ -79,9 +66,6 @@ sub upgrdports {
 		system('/usr/local/bin/dash',
 			   '-c',
 			   '/usr/local/bin/notify-send -u critical -t 10000 "Upgrade failed!" "Some ports failed to compile\nTotal: ' . $diff_nbr . ' installed - ' . $failed_nbr . ' failed" >/dev/null 2>&1');
-		system('/usr/local/bin/dash',
-			   '-c',
-			   '/usr/local/bin/espeak "Failure: not all ports were upgraded - $diffnbr installed - $failednbr failed" & >/dev/null 2>&1');
 	}
 	exit;
 }
@@ -107,15 +91,6 @@ sub configport {
 				'Configuration success!',
 				'Ports config - ' . $port . ' - configured successfully',
 				);
-			my $pid;
-			$pid = fork();
-			if (not $pid) {
-				exec(
-					'/usr/local/bin/espeak',
-					'Success: ' . $port_basename . ' configured successfully. Initiating compilation.'
-					);
-				exit;
-			}
 		}
 	}
 	else {
@@ -128,15 +103,6 @@ sub configport {
 			'Configuration failure!',
 			'Ports config - ' . $port . ' - failed to configure'
 			);
-		my $pid;
-		$pid = fork();
-		if (not $pid) {
-			exec(
-				'/usr/local/bin/espeak',
-				'Failure: failed to configure ' . $port_basename
-				);
-			exit;
-		}
 	}
 }
 
@@ -154,15 +120,6 @@ sub installport {
 			'Compilation success!',
 			'Ports - ' . $port . ' - installed successfully'
 			);
-		my $pid;
-		$pid = fork();
-		if (not $pid) {
-			exec(
-				'/usr/local/bin/espeak',
-				'Success: ' . $port_basename . ' installed successfully'
-				);
-			exit;
-		}
 	}
 	else {
 		system(
@@ -174,15 +131,6 @@ sub installport {
 			'Compilation failure!',
 			'Ports - ' . $port . ' - failed to install'
 			);
-		my $pid;
-		$pid = fork();
-		if (not $pid) {
-			exec(
-				'/usr/local/bin/espeak',
-				'Failure: failed to install ' . $port_basename
-				);
-			exit;
-		}
 	}
 }
 

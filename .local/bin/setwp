@@ -48,7 +48,16 @@ sub set_wp
 		WP_FILE,
 		'--bg-fill',
 		WP_FILE
-		);
+	);
+	system(
+		'notify-send',
+		'-u',
+		'low',
+		'-t',
+		'2000',
+		'setwp',
+		'  Wallpaper set'
+	);
 	return;
 }
 

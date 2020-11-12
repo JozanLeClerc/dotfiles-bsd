@@ -76,7 +76,7 @@ sub open_link
 					'normal',
 					'-t',
 					'10000',
-					' download complete',
+					'download complete',
 					'  <b>' . $file_name . '</b> downloaded successfully to '
 					. '<b>' . $pwd . '</b>'
 				);

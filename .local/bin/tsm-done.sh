@@ -3,5 +3,5 @@
 notify-send \
 	-u normal \
 	-t 10000 \
-	'  Transmission' \
-	'Torrent downloaded'
+	'Transmission' \
+	'  Torrent downloaded'
