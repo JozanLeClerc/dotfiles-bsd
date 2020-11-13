@@ -18,6 +18,8 @@ Plug 'mhinz/vim-startify'
 Plug 'morhetz/gruvbox'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'paretje/nvim-man'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
 Plug 'preservim/tagbar'
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
