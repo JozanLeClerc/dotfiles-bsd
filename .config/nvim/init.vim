@@ -20,7 +20,7 @@ source /home/jozan/.config/nvim/bindings.vim
 source /home/jozan/.config/nvim/sidebars.vim
 source /home/jozan/.config/nvim/langs.vim
 source /home/jozan/.config/nvim/plug-config/airline.vim
-source /home/jozan/.config/nvim/plug-config/vim-lsp.vim
+source /home/jozan/.config/nvim/plug-config/asyncomplete.vim
 " source /home/jozan/.config/nvim/plug-config/coc.vim
 source /home/jozan/.config/nvim/plug-config/floaterm.vim
 source /home/jozan/.config/nvim/plug-config/nerd-commenter.vim
@@ -28,3 +28,5 @@ source /home/jozan/.config/nvim/plug-config/org.vim
 source /home/jozan/.config/nvim/plug-config/quickscope.vim
 source /home/jozan/.config/nvim/plug-config/rainbow.vim
 source /home/jozan/.config/nvim/plug-config/startify.vim
+source /home/jozan/.config/nvim/plug-config/signify.vim
+source /home/jozan/.config/nvim/plug-config/vim-lsp.vim

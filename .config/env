@@ -12,7 +12,7 @@
 # ========================
 
 # PATH
-export PATH="$HOME"/.local/bin:"$PATH":/usr/local/llvm11/bin
+export PATH="$HOME"/.local/bin:"$PATH":/usr/local/llvm10/bin:/usr/local/llvm11/bin
 
 # Apps
 export EDITOR='nvim'

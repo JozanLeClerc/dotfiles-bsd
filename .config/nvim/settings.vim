@@ -4,6 +4,7 @@ set cindent
 set cinoptions=>s,e0,n0,f0,{0,}0,^0,L-1,:s,=s,l1,b0,gs,h0,N0,E0,p0,t0,i0,+s
 set cinoptions+=c1,C0,/0,(s,us,U0,w0,Ws,k0,m0,M1,)20,*70,#0
 set clipboard^=unnamedplus
+set completeopt=menuone,noinsert,noselect,preview
 set cursorline
 set encoding=utf-8
 set go=a

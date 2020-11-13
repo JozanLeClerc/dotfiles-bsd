@@ -54,6 +54,7 @@ nmap <M-9> <Plug>AirlineSelectTab9
 nmap <M-0> <Plug>AirlineSelectTab10
 inoremap <expr> <C-j> pumvisible() ? "<C-n>" : "<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "<C-p>" : "<C-k>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 let g:floaterm_keymap_toggle	= '<F1>'
 let g:floaterm_keymap_prev		= '<F11>'
 let g:floaterm_keymap_next		= '<F12>'
