@@ -28,6 +28,9 @@ sub open_link
 	my $file_name;
 	my $pwd;
 	my $ret;
+	my @wc;
+	my $word;
+	my $i;
 
 	if ($a == 1) {
 		exec(
@@ -52,6 +55,17 @@ sub open_link
 			if ($file_name =~ m/^watch\?v=.+/) {
 				$file_name = `youtube-dl -e $url`;
 				chomp $file_name;
+			}
+			@wc = split / /, $file_name;
+			print @wc . "\n";
+			if (@wc > 6) {
+				$file_name = "";
+				$i = 0;
+				while ($i < 6) {
+					$file_name .= "$wc[$i] ";
+					$i++;
+				}
+				$file_name .= "[...]";
 			}
 			system(
 				NOTIFYSEND_PATH,

@@ -6,7 +6,7 @@ use File::Copy;
 
 use constant {
 	WP_FILE	=> '/usr/home/jozan/pics/wallpaper.jpg',
-	WP_POOL	=> '/usr/home/jozan/pics/wallpapers/'
+	WP_POOL	=> '/usr/home/jozan/pics/wp/'
 };
 use constant FEH_PATH	=> '/usr/local/bin/feh';
 
