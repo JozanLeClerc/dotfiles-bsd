@@ -66,13 +66,13 @@ globalias() {
 		zle _expand_alias
 		zle expand-word
 	fi
-	zle self-insert
+	# zle self-insert
 }
 
 zle -N globalias
 
-bindkey -v " " globalias
-bindkey -v "^ " magic-space
+bindkey -v "^ " globalias
+bindkey -v " " magic-space
 bindkey -M isearch " " magic-space
 
 PROMPT="%B%{$fg[red]%}%M %{$fg[blue]%}%c%{$fg[red]%}%%%{$reset_color%} "
