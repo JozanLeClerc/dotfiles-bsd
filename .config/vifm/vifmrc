@@ -48,7 +48,7 @@ nnoremap <F2> :rename<CR>
 nnoremap <F7> :mkdir<space>
 map gh :cd ~/<CR>
 map gr :cd /<CR>
-map gm :cd /mnt<CR>
+map gm :cd /media<CR>
 
 fileview */ tree -C %c -L 1 --dirsfirst
 fileview ../ tree -C %c -L 1 --dirsfirst
