@@ -13,6 +13,8 @@ autocmd FileType fish
 autocmd FileType perl
 			\  setlocal com-=:# kp=perldoc\ -f
 			\| compiler perl
+autocmd BufNewFile,BufRead *.conf
+			\ set filetype=conf
 autocmd BufWritePost *.ms
 			\ let pdf=fnamemodify(bufname('%'), ':r') . ".pdf"
 			\| silent! execute "!nroff % -ms -Tpdf -Kutf8 > " . pdf
