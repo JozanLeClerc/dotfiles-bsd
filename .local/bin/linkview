@@ -60,10 +60,10 @@ sub open_link
 				chomp $file_name;
 			}
 			@wc = split / /, $file_name;
-			if (@wc > 6) {
+			if (@wc > 8) {
 				$file_name = "";
 				$i = 0;
-				while ($i < 6) {
+				while ($i < 8) {
 					$file_name .= "$wc[$i] ";
 					$i++;
 				}
