@@ -11,8 +11,10 @@
 # ==     =====   ====   ==
 # ========================
 
+alias exa='exa --color=always'
 alias ls='exa -l --group-directories-first'
 alias cat="sed ''"
+alias tree='exa -T | less'
 alias c='clear'
 alias less='less --tabs 4'
 alias bc='clear; bc -l'
@@ -36,7 +38,6 @@ alias grep='grep --color'
 alias rgrep='grep -R -n -H'
 alias fsl='fossil'
 alias diff='colordiff'
-alias tree='exa -T'
 alias yt='straw-viewer --api=auto'
 alias gyt='gtk-straw-viewer'
 alias ytdl='youtube-dl'
@@ -126,6 +127,7 @@ alias tsd='transmission-daemon'
 alias tsm='transmission-remote'
 alias rsox='sox -t oss default'
 alias calcurse='calcurse -C $XDG_CONFIG_HOME/calcurse -D $XDG_DATA_HOME/calcurse'
+alias open='xdg-open'
 alias abook='abook -C $XDG_CONFIG_HOME/abook/abookrc --datafile $XDG_DATA_HOME/abook/addressbook'
 alias dosbox='dosbox -conf $XDG_CONFIG_HOME/dosbox/dosbox.conf'
 alias svn='svn --config-dir $XDG_CONFIG_HOME/subversion'
