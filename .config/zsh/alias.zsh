@@ -54,7 +54,23 @@ alias v='nvim $(fzf --preview="head -$FZF_PREVIEW_LINES {}")'
 vbi() {
 	p=$(pwd)
 	cd "$HOME"/.local/bin || return
-	nvim $(fzf --preview='head -$FZF_PREVIEW_LINES {}')
+	sc=$(fzf --preview='head -$FZF_PREVIEW_LINES {}')
+	if [ ! "$sc" ]; then
+		cd $p
+		return
+	fi
+	nvim $sc
+	cd $p
+}
+vco() {
+	p=$(pwd)
+	cd "$HOME"/.config || return
+	sc=$(fzf --preview='head -$FZF_PREVIEW_LINES {}')
+	if [ ! "$sc" ]; then
+		cd $p
+		return
+	fi
+	nvim $sc
 	cd $p
 }
 pa() {

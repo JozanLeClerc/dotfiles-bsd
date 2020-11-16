@@ -8,6 +8,7 @@ use File::Basename qw(basename);
 use Cwd qw(cwd);
 use Term::ReadKey;
 use Term::ANSIColor qw(colored);
+use Capture::Tiny qw(capture);
 
 use constant {
 	MPVIEW_PATH		=> '/home/jozan/.local/bin/mpview',
@@ -80,10 +81,20 @@ sub open_link
 			);
 			$ret = -1;
 			if ($a == 2) {
-				$ret = system(YTDL_PATH . " -q '" . $url . "' 2>/dev/null");
+				(undef, undef, $ret) = capture {
+					system(
+						YTDL_PATH,
+						$url
+						);
+				};
 			}
 			else {
-				$ret = system(FETCH_PATH . " -q '" . $url . "' 2>/dev/null");
+				(undef, undef, $ret) = capture {
+					system(
+						FETCH_PATH,
+						$url
+						);
+				};
 			}
 			if ($ret == 0) {
 				system(
@@ -142,7 +153,12 @@ sub open_link
 	elsif ($a == 8) {
 		$pid = fork();
 		if (not $pid) {
-			exec(FIREFOX_PATH . ' --kiosk ' . $url . ' >/dev/null 2>&1');
+			capture {
+				exec(
+					FIREFOX_PATH,
+					'--kiosk',
+					$url);
+			};
 		}
 	}
 	elsif ($a == 9) {
