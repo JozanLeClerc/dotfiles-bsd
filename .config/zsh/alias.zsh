@@ -12,6 +12,7 @@
 # ========================
 
 alias ls='exa -l --group-directories-first'
+alias cat="sed ''"
 alias c='clear'
 alias less='less --tabs 4'
 alias bc='clear; bc -l'
