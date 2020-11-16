@@ -1,0 +1,4 @@
+#!/bin/sh
+
+umount /dev/da0.eli &&
+	geli detach da0.eli
