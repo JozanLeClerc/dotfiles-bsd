@@ -13,7 +13,6 @@
 
 alias exa='exa --color=always --group-directories-first'
 alias ls='exa -l'
-alias cat="sed ''"
 tree() {
 	exa -T $@ | less
 }
