@@ -8,6 +8,8 @@ autocmd BufNewFile,BufRead *.cxx
 			\ set filetype=cpp
 autocmd BufNewFile,BufRead *.hxx
 			\ set filetype=cpp
+autocmd BufNewFile,BufRead *.ms,*.1,*.2,*.3,*.4,*.5,*.6,*.7,*.8,*.9
+			\ set filetype=groff
 autocmd FileType fish
 			\ compiler fish
 autocmd FileType perl
