@@ -50,8 +50,8 @@ map gh :cd ~/<CR>
 map gr :cd /<CR>
 map gm :cd /media<CR>
 
-fileview */ tree -C %c -L 1 --dirsfirst
-fileview ../ tree -C %c -L 1 --dirsfirst
+fileview */ exa -L 1 -T --color=always --group-directories-first %c
+fileview ../ exa -L 1 -T --color=always --group-directories-first %c
 fileviewer *.html w3m -dump %c
 filextype *.html,*.htm firefox %f 2>/dev/null &
 

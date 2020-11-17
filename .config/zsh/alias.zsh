@@ -11,10 +11,12 @@
 # ==     =====   ====   ==
 # ========================
 
-alias exa='exa --color=always'
-alias ls='exa -l --group-directories-first'
+alias exa='exa --color=always --group-directories-first'
+alias ls='exa -l'
 alias cat="sed ''"
-alias tree='exa -T | less'
+tree() {
+	exa -T $@ | less
+}
 alias c='clear'
 alias less='less --tabs 4'
 alias bc='clear; bc -l'

@@ -1,11 +1,30 @@
 #!/usr/local/bin/dash
 
+randcol() {
+	col=$(shuf -i 1-9 -n1)
+	wei=$(shuf -i 0-1 -n1)
+	pri="[${wei};3${col}m"
+	printf "\033%s" "$pri"
+}
+
+nocol() {
+	printf "\033[0m"
+}
+
 while true; do
 	clear
-	# figlet -s -L -c -t "Joe will be right back" | lolcat -F 0.05
-	figlet -s -L -c -t "Joe will be right back"
+	randcol
+	figlet -s -L -c -t \
+		-d "$HOME"/.local/packs/figlet-fonts \
+		-f Banner3-D \
+		"Joe will be right back"
 	echo
-	# figlet -s -L -c -t "please stand by..." | lolcat -F 0.05
-	figlet -s -L -c -t "please stand by..."
-	sleep 15
+	nocol
+	icat "$HOME"/pics/profile/caco.png -w 80 -x 80
+	randcol
+	figlet -s -L -c -t \
+		-d "$HOME"/.local/packs/figlet-fonts \
+		-f broadway_kb \
+		"please stand by..."
+	sleep 5
 done
