@@ -1,3 +1,16 @@
+pkill compton
+pkill dunst
+pkill mpd-notification
+pkill lowbat
+
+/home/jozan/.local/bin/setscreens.sh
+/home/jozan/.local/bin/setwp
+/home/jozan/.local/bin/kb
+/usr/local/bin/compton	>/dev/null 2>&1 &
+/usr/local/bin/dunst	>/dev/null 2>&1 &
+/usr/local/bin/mpd-notification	>/dev/null 2>&1 &
+/usr/local/bin/lowbat	>/dev/null 2>&1 &
 cd /home/jozan
 xrdb /home/jozan/.config/x11/xresources
+/usr/local/bin/notify-send -u normal 'Welcome' "  Welcome back, partner\!"
 dbus-launch dwm
