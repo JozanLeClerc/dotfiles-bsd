@@ -35,7 +35,7 @@ keymap | PIPE_BUF
 # Tabs
 keymap t NEW_TAB
 keymap T TAB_MENU
-keymap d CLOSE_TAB
+keymap x CLOSE_TAB
 keymap J NEXT_TAB
 keymap K PREV_TAB
 # Search
