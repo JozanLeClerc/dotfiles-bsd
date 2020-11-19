@@ -1,0 +1,22 @@
+#!/usr/local/bin/dash
+
+ffmpeg -y \
+	-f x11grab -video_size 1920x1080 -framerate 24 -i $DISPLAY \
+	-f pulse -ac 2 -ar 44100 -i oss_input.dsp0 \
+	-f pulse -ac 2 -ar 44100 -i oss_output.dsp0.monitor \
+	-filter_complex '
+	anlmdn=s=1,
+	highpass=f=140, lowpass=f=16000,
+	equalizer=f=350:t=h:w=200:g=-5.5,
+	equalizer=f=600:t=h:w=200:g=0.5, equalizer=f=1000:t=h:w=100:g=-5.5,
+	equalizer=f=2500:t=h:w=1000:g=1.5,
+	deesser=i=0.5:m=0.5:f=0.5,
+	acompressor=threshold=0.1:ratio=8:attack=150:release=40:knee=1,
+	amix=inputs=2
+	' \
+	-vcodec libx264 -g 24 -b:v 1M \
+	-acodec aac -b:a 320k -ar 44100 -ac 2 \
+	-pix_fmt yuv420p \
+	screen_$(date "+%Y-%m-%d_%Hh%M").mkv
+	
+# vim: filetype=sh

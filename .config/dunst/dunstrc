@@ -1,7 +1,7 @@
 [global]
     monitor = 0
     follow = none
-    geometry = "500x5-40+40"
+    geometry = "1500x5-40+40"
     indicate_hidden = yes
     shrink = yes
     transparency = 0
@@ -23,7 +23,7 @@
     sort = yes
 
     idle_threshold = 120
-    font = NotoSans Nerd Font 14
+    font = Noto Sans Nerd Font 17
     line_height = 0
     markup = full
 
