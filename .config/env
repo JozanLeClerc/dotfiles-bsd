@@ -35,6 +35,7 @@ export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_CACHE_HOME="$HOME"/.cache
 export XDG_RUNTIME_DIR="$HOME"/.cache/tmp
 export XDG_MUSIC_DIR="$HOME"/mu
+export XDG_PACKAGE_HOME="$HOME"/.local/packs
 
 # Cleanup
 export ANDROID_SDK_HOME="$XDG_CONFIG_HOME"/android
