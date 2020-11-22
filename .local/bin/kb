@@ -6,10 +6,10 @@ setxkbmap -option caps:none
 if ! xrandr | grep 'HDMI-1 connected' >/dev/null 2>&1; then
 	if ! xrandr | grep 'VGA-1 connected' >/dev/null 2>&1; then
 		echo
+		setxkbmap -option ctrl:swapcaps
 		xmodmap -e 'keycode 9 = Tab'
 		xmodmap -e 'keycode 23 = Escape'
 		xmodmap -e 'keycode 37 = Tab'
-		xmodmap -e 'keycode 66 = Control'
 	fi
 else
 	xmodmap -e 'keycode 9 = Tab'
