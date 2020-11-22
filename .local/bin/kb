@@ -2,21 +2,17 @@
 
 xset r rate 200 150
 setxkbmap -layout us,fr -option grp:alt_shift_toggle
+setxkbmap -option caps:none
 if ! xrandr | grep 'HDMI-1 connected' >/dev/null 2>&1; then
 	if ! xrandr | grep 'VGA-1 connected' >/dev/null 2>&1; then
 		echo
-		setxkbmap -option ctrl:swapcaps
-		xmodmap -e "remove Lock = Caps_Lock"
-		xmodmap -e 'keycode 37 = Escape'
-		# setxkbmap -option caps:escape
-		# xmodmap -e "remove Control = Control_L"
-		# xmodmap -e "keysym Control_L = Caps_Lock"
-		# xmodmap -e "keysym Caps_Lock = Control_L"
-		# xmodmap -e "add Lock = Caps_Lock"
-		# xmodmap -e "add Control = Control_L"
+		xmodmap -e 'keycode 23 = Escape'
+		xmodmap -e 'keycode 37 = Tab'
+		xmodmap -e 'keycode 66 = Control'
 	fi
 else
-	setxkbmap -option caps:swapescape
+	xmodmap -e 'keycode 23 = Escape'
+	xmodmap -e 'keycode 66 = Tab'
 fi
 notify-send -u low -t 2000 'kb' '  Keyboard set'
 

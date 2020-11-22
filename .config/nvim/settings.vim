@@ -15,6 +15,7 @@ set nocompatible
 set noexpandtab
 set nohlsearch
 set number
+set path+=**
 set shiftwidth=4
 set shortmess+=c
 set softtabstop=4
