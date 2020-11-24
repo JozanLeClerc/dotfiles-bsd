@@ -9,12 +9,13 @@ if ! xrandr | grep 'HDMI-1 connected' >/dev/null 2>&1; then
 		setxkbmap -option ctrl:swapcaps
 		xmodmap -e 'keycode 9 = Tab'
 		xmodmap -e 'keycode 23 = Escape'
-		xmodmap -e 'keycode 37 = Tab'
+		xmodmap -e 'remove Lock = Caps_Lock'
+		xmodmap -e 'keycode 37 = Escape'
 	fi
 else
 	xmodmap -e 'keycode 9 = Tab'
 	xmodmap -e 'keycode 23 = Escape'
-	xmodmap -e 'keycode 66 = Tab'
+	xmodmap -e 'keycode 66 = Escape'
 fi
 notify-send -u low -t 2000 'kb' '  Keyboard set'
 
