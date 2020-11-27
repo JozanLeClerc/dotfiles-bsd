@@ -1,7 +1,0 @@
-#!/usr/local/bin/dash
-
-printf ' * '
-date
-# date "+%Y-%m-%d %H:%M"
-
-# vim: filetype=sh
