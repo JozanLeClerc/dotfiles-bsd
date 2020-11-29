@@ -144,11 +144,7 @@ sub open_link
 				'download started',
 				'  fetching <b>'. $file_name . '</b> to <b>/tmp</b>'
 				);
-			system(
-				FETCH_PATH,
-				'-q',
-				$url
-			);
+			system(FETCH_PATH, '-q', $url);
 			if ($a == "sxiv") {
 				exec(SXIV_PATH, '-b', '-a', $file_name);
 			}
