@@ -122,7 +122,7 @@ twi() {
 alias nb='newsboat'
 alias mutt='neomutt'
 alias nmt='neomutt'
-alias sxiv='sxiv -b'
+alias sxiv='sxiv -b -a'
 alias pinfo='pkg info -x'
 alias psearch='pkg search'
 search() {

@@ -9,6 +9,7 @@ use Cwd qw(cwd);
 use Term::ReadKey;
 use Term::ANSIColor qw(colored);
 use Capture::Tiny qw(capture);
+use POSIX qw(setsid);
 
 use constant {
 	MPVIEW_PATH		=> '/home/jozan/.local/bin/mpview',
@@ -40,7 +41,8 @@ sub open_link
 	}
 	elsif ($a == 2 || $a == 3) {
 		$pid = fork();
-		if ($pid == 0) {
+		if (not $pid) {
+			setsid();
 			chdir home() . "/dl" or
 			chdir home() . "/Downloads" or
 			chdir home() or die $!;
@@ -122,20 +124,45 @@ sub open_link
 			exit 0;
 		}
 	}
-	elsif ($a == 4) {
-		exec(
-			SXIV_PATH,
-			'-b',
-			$url
-		);
-	}
-	elsif ($a == 5) {
-		exec(
-			ZATHURA_PATH,
-			$url
-		);
+	elsif ($a == 4 || $a == 5) {
+		$pid = fork();
+		if (not $pid) {
+			setsid();
+			chdir '/tmp' or die $!;
+			$file_name = $url;
+			$file_name =~ s/.+\///g;
+			system(
+				NOTIFYSEND_PATH,
+				'-u',
+				'low',
+				'-t',
+				'5000',
+				'download started',
+				'  fetching <b>'. $file_name . '</b> to <b>/tmp</b>'
+			);
+			system(
+				FETCH_PATH,
+				'-q',
+				$url
+			);
+			if ($a == 4) {
+				exec(
+					SXIV_PATH,
+					'-b',
+					'-a',
+					$file_name
+				);
+			}
+			else {
+				exec(
+					ZATHURA_PATH,
+					$file_name
+				);
+			}
+		}
 	}
 	elsif ($a == 6) {
+		system('clear');
 		exec(
 			MPV_PATH,
 			'--really-quiet',
@@ -153,6 +180,7 @@ sub open_link
 	elsif ($a == 8) {
 		$pid = fork();
 		if (not $pid) {
+			setsid();
 			capture {
 				exec(
 					FIREFOX_PATH,
@@ -162,6 +190,7 @@ sub open_link
 		}
 	}
 	elsif ($a == 9) {
+		system('clear');
 		exec(
 			MPV_PATH,
 			'--audio-channels=stereo',
