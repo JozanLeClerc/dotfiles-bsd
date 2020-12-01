@@ -98,7 +98,7 @@ sub open_link
 				'  <b>'. $file_name . '</b> started downloading'
 				);
 			$ret = -1;
-			if ($a eq "fetch") {
+			if ($a eq "youtube-dl") {
 				(undef, undef, $ret) = capture {
 					system(YTDL_PATH, $url);
 				};
