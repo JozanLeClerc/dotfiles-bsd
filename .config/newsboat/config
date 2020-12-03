@@ -2,7 +2,7 @@
 auto-reload no
 reload-threads 5
 
-external-url-viewer "urlview"
+external-url-viewer "linkview"
 
 bind-key j down
 bind-key k up
