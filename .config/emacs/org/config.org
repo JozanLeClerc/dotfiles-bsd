@@ -185,8 +185,8 @@
 *** Evil numbers
 #+BEGIN_SRC emacs-lisp
   (require 'evil-numbers)
-  (define-key evil-normal-state-map (kbd "C-c a") 'evil-numbers/inc-at-pt)
-  (define-key evil-normal-state-map (kbd "C-c x") 'evil-numbers/dec-at-pt)
+  (define-key evil-normal-state-map (kbd "C-c C-a") 'evil-numbers/inc-at-pt)
+  (define-key evil-normal-state-map (kbd "C-c C-x") 'evil-numbers/dec-at-pt)
 #+END_SRC
 
 *** Centaur tabs
@@ -220,6 +220,7 @@
 			(string-prefix-p "*Helm" name)
 			(string-prefix-p "*Compile-Log*" name)
 			(string-prefix-p "*compilation*" name)
+			(string-prefix-p "*Flymake diagnostics" name)
 			(string-prefix-p "*lsp" name)
 			(string-prefix-p "*scratch*" name)
 			(string-prefix-p "*Messages*" name)
@@ -227,6 +228,7 @@
 			(string-prefix-p "*Mingus Help*" name)
 			(string-prefix-p "*Mingus*" name)
 			(string-prefix-p "*Mingus Browser*" name)
+			(string-prefix-p "TAGS" name)
 			(and (string-prefix-p "magit" name)
 				(not (file-name-extension name))))))
 
@@ -286,21 +288,21 @@
 
 *** NeoTree
 #+BEGIN_SRC emacs-lisp
-(require 'neotree)
-(setq neo-vc-integration '(face))
-(evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
-(evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
-(evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
-(evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
-(evil-define-key 'normal neotree-mode-map (kbd "g") 'neotree-refresh)
-(evil-define-key 'normal neotree-mode-map (kbd "n") 'neotree-next-line)
-(evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-previous-line)
-(evil-define-key 'normal neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
-(evil-define-key 'normal neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
-(evil-define-key 'normal neotree-mode-map (kbd "|") 'neotree-enter-vertical-split)
-(evil-define-key 'normal neotree-mode-map (kbd "S") 'neotree-enter-vertical-split)
-(evil-define-key 'normal neotree-mode-map (kbd "/") 'neotree-enter-horizontal-split)
-(evil-define-key 'normal neotree-mode-map (kbd "s") 'neotree-enter-horizontal-split)
+  (require 'neotree)
+  (setq neo-vc-integration '(face))
+  (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
+  (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
+  (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+  (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+  (evil-define-key 'normal neotree-mode-map (kbd "g") 'neotree-refresh)
+  (evil-define-key 'normal neotree-mode-map (kbd "n") 'neotree-next-line)
+  (evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-previous-line)
+  (evil-define-key 'normal neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
+  (evil-define-key 'normal neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
+  (evil-define-key 'normal neotree-mode-map (kbd "|") 'neotree-enter-vertical-split)
+  (evil-define-key 'normal neotree-mode-map (kbd "S") 'neotree-enter-vertical-split)
+  (evil-define-key 'normal neotree-mode-map (kbd "/") 'neotree-enter-horizontal-split)
+  (evil-define-key 'normal neotree-mode-map (kbd "s") 'neotree-enter-horizontal-split)
 #+END_SRC
 
 *** Helm, projectile
@@ -391,13 +393,24 @@
 ;; (require 'color-identifiers-mode)
 ;; (global-color-identifiers-mode)
 
-;; (require 'rainbow-delimiters)
-;; (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+(require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 #+END_SRC
 
 *** C default style
 #+BEGIN_SRC emacs-lisp
-(setq c-default-style "bsd")
+  (c-add-style "openbsd"
+			   '("bsd"
+				 (c-backspace-function . delete-backward-char)
+				 (c-syntactic-indentation-in-macros . nil)
+				 (c-tab-always-indent . nil)
+				 (c-hanging-braces-alist
+				  (block-close . c-snug-do-while))
+				 (c-offsets-alist
+				  (arglist-cont-nonempty . *)
+				  (statement-cont . *))
+				 (indent-tabs-mode . t)))
+  (setq c-default-style "openbsd")
 #+END_SRC
 
 *** Autopair
@@ -523,10 +536,10 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 	(quote
 	("ansi-term" "*ansi-term*"
 	(lambda nil
-	(vterm)))))
+	(ansi-term shell-pop-term-shell)))))
 
-;; (setq shell-pop-term-shell "/usr/local/bin/zsh")
-(add-to-list 'evil-emacs-state-modes 'term-mode)
+(setq shell-pop-term-shell "/usr/local/bin/zsh")
+(add-to-list 'evil-emacs-state-modes 'ansi-term-mode)
 #+END_SRC
 
 *** org-superstar
@@ -634,7 +647,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   ;; References whose filenames are under this project
   (setq company-transformers nil company-lsp-async t company-lsp-cache-candidates nil)
   (setq ccls-sem-highlight-method 'font-lock)
-  (ccls-use-default-rainbow-sem-highlight)
+  ;; (ccls-use-default-rainbow-sem-highlight)
 #+END_SRC
 
 ** Compilation
@@ -689,6 +702,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 #+BEGIN_SRC emacs-lisp
 (global-set-key [f1] 'shell-pop)
 (global-set-key [f2] 'neotree-toggle)
+(global-set-key [f3] 'flymake-show-diagnostics-buffer)
 (global-set-key [f4] 'helm-make-projectile)
 (global-set-key [f5] 'undo-tree-visualize)
 (global-set-key (kbd "C-x d") 'dired)
