@@ -7,19 +7,18 @@ Menu Internet
 
 Menu DtRootMenu
 {
-    "Workspace Menu"				f.title
-    "Internet"						f.menu    "Internet"
-    "Office"						f.menu    "Office"
-     no-label						f.separator
-     no-label						f.separator
-    "Shuffle Up"					f.circle_up
-    "Shuffle Down"					f.circle_down
-    "Refresh"						f.refresh
-    "Minimize/Restore Front Panel"	f.toggle_frontpanel
-     no-label						f.separator
-    "Restart Workspace Manager..."	f.restart
-     no-label						f.separator
-    "Log out..."					f.action ExitSession
+	"Workspace Menu"				f.title
+	"Programs"						f.menu ProgramsMenu
+	no-label						f.separator
+	"Shuffle Up"					f.circle_up
+	"Shuffle Down"					f.circle_down
+	"Refresh"						f.refresh
+	"Minimize/Restore Front Panel"	f.toggle_frontpanel
+	no-label						f.separator
+	"Restart Workspace Manager..."	f.restart
+	no-label						f.separator
+	"Suspend System..."				f.action SDTsuspend
+	"Log out..."					f.action ExitSession
 }
 
 Keys DtKeyBindings
@@ -53,11 +52,11 @@ Keys DtKeyBindings
 	Mod4<Key>s				window				f.normalize
 	Mod4<Key>m				window				f.move
 	Mod4 Shift<Key>M		window				f.resize
+	Mod4<Key>h				window				f.raise
 	Mod4<Key>l				window				f.lower
 
 	Mod4<Key>j				root|window|icon	f.next_key window
 	Mod4<Key>k				root|window|icon	f.prev_key window
-	Mod4<Key>h				root|window|icon	f.screen prev
 	Mod4<Key>p				root|window|icon	f.exec "dmenu_run -i -m 0"
 	Mod4<Key>Return			root|window|icon	f.exec "st"
 	Mod4 Shift<Key>E		root|window|icon	f.action ExitSession
