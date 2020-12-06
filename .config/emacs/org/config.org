@@ -8,6 +8,7 @@
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
   (blink-cursor-mode 0)
+  (global-hl-line-mode 1)
 
   (set-frame-font "mononoki Nerd Font:pixelsize=15" nil t)
   (add-hook 'prog-mode-hook 'display-line-numbers-mode)
@@ -20,11 +21,11 @@
   (defalias 'yes-or-no-p 'y-or-n-p)
 
   (setq backup-directory-alist '(("." . "~/.config/emacs/backup"))
-		  backup-by-copying t
-		  version-control t
-		  delete-old-versions t
-		  kept-new-versions 20
-		  kept-old-versions 5)
+		backup-by-copying t
+		version-control t
+		delete-old-versions t
+		kept-new-versions 20
+		kept-old-versions 5)
 
   (server-start)
 #+END_SRC
