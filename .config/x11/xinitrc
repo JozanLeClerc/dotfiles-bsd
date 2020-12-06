@@ -14,5 +14,5 @@ pkill lowbat
 cd /home/jozan
 xrdb /home/jozan/.config/x11/xresources
 /usr/local/bin/notify-send -u normal 'Welcome' "  Welcome back, partner\!"
-# dbus-launch dwm
-/usr/local/dt/bin/Xsession -screens 1
+dbus-launch dwm
+# /usr/local/dt/bin/Xsession -screens 1
