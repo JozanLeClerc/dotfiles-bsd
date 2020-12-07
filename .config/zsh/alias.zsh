@@ -18,7 +18,7 @@ tree() {
 }
 alias c='clear'
 alias less='less --tabs 4'
-alias bc='clear; bc -l'
+alias bc='bc -l'
 alias mkf='gmake fclean'
 alias mkc='gmake clean'
 alias mk='gmake -j5'
