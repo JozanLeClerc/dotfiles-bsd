@@ -23,24 +23,26 @@ use constant {
 	NOTIFYSEND_PATH	=> '/usr/local/bin/notify-send'
 };
 use constant PROG_LIST	=> "" .
-"mpv"			. "\n" .
-"mpv-term"		. "\n" .
-"youtube-dl"	. "\n" .
-"fetch"			. "\n" .
-"sxiv"			. "\n" .
-"zathura"		. "\n" .
-"w3m"			. "\n" .
-"firefox"		. "\n";
+"mpv"					. "\n" .
+"mpv-term"				. "\n" .
+"youtube-dl"			. "\n" .
+"youtube-dl thumbnail"	. "\n" .
+"fetch"					. "\n" .
+"sxiv"					. "\n" .
+"zathura"				. "\n" .
+"w3m"					. "\n" .
+"firefox"				. "\n";
 
 sub open_link
 {
 	my ($a, $url) = @_;
-	my $pid;
 	my $file_name;
+	my $i;
+	my $pid;
 	my $pwd;
 	my $ret;
+	my $tmp;
 	my @wc;
-	my $i;
 
 	if ($a eq "mpv") {
 		if (system(MPVIEW_PATH, $url) != 0) {
@@ -130,6 +132,52 @@ sub open_link
 			exit 0;
 		}
 	}
+	elsif ($a eq "youtube-dl thumbnail") {
+		$pid = fork();
+		if (not $pid) {
+			setsid();
+			chdir '/tmp' or die $!;
+			$file_name = $url;
+			$file_name =~ s/.+\///g;
+			if ($file_name =~ m/^watch\?v=.+/) {
+				$file_name = `youtube-dl -e $url`;
+				if (not $file_name) {
+					$file_name = "Youtube video";
+				}
+				chomp $file_name;
+			}
+			system(
+				NOTIFYSEND_PATH,
+				'-u', 'low',
+				'-t', '5000',
+				'download started',
+				'  fetching thumbnail for <b>'. $file_name .
+				'</b> to <b>/tmp</b>'
+				);
+			($tmp, undef, $ret) = capture {
+				system(YTDL_PATH, '--get-thumbnail', $url);
+			};
+			chomp $tmp;
+			if ($ret != 0) {
+				system(
+					NOTIFYSEND_PATH,
+					'-u', 'critical',
+					'-t', '10000',
+					'failed to get thumbnail',
+					'  failed to get thumbail for <b>'. $file_name .
+					'</b> to <b>/tmp</b>'
+					);
+				exit 0;
+			}
+			system(FETCH_PATH, '-q', $tmp);
+			$file_name = $tmp;
+			$file_name =~ s/.+\///g;
+			chomp $file_name;
+			system(SXIV_PATH, '-b', '-a', $file_name);
+			unlink($file_name);
+			exit 0;
+		}
+	}
 	elsif ($a eq "sxiv" || $a eq "zathura") {
 		$pid = fork();
 		if (not $pid) {
@@ -174,7 +222,7 @@ sub dmenu_prompt
 	my $answer;
 	my $list = PROG_LIST;
 
-	$answer = `printf "$list\nURL: $url\n" | dmenu -i -l 10`;
+	$answer = `printf "$list\nURL: $url\n" | dmenu -i -l 11`;
 	chomp $answer;
 	return $answer;
 }
