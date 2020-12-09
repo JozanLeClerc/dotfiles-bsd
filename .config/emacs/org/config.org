@@ -195,54 +195,56 @@
 
 *** Centaur tabs
 #+BEGIN_SRC emacs-lisp
-(require 'centaur-tabs)
-(centaur-tabs-mode t)
-(centaur-tabs-group-by-projectile-project)
+  (require 'centaur-tabs)
+  (centaur-tabs-mode t)
+  (centaur-tabs-group-by-projectile-project)
 
-(evil-define-key 'insert global-map (kbd "M-k") 'centaur-tabs-backward)
-(evil-define-key 'insert global-map (kbd "M-j") 'centaur-tabs-forward)
-(evil-define-key 'normal global-map (kbd "M-k") 'centaur-tabs-backward)
-(evil-define-key 'normal global-map (kbd "M-j") 'centaur-tabs-forward)
-(global-set-key (kbd "M-k") 'centaur-tabs-backward)
-(global-set-key (kbd "M-j") 'centaur-tabs-forward)
+  (evil-define-key 'insert global-map (kbd "M-k") 'centaur-tabs-backward)
+  (evil-define-key 'insert global-map (kbd "M-j") 'centaur-tabs-forward)
+  (evil-define-key 'replace global-map (kbd "M-k") 'centaur-tabs-backward)
+  (evil-define-key 'replace global-map (kbd "M-j") 'centaur-tabs-forward)
+  (evil-define-key 'normal global-map (kbd "M-k") 'centaur-tabs-backward)
+  (evil-define-key 'normal global-map (kbd "M-j") 'centaur-tabs-forward)
+  (global-set-key (kbd "M-k") 'centaur-tabs-backward)
+  (global-set-key (kbd "M-j") 'centaur-tabs-forward)
 
-(setq centaur-tabs-set-icons			t
-	  centaur-tabs-gray-out-icons		'buffer
-	  centaur-tabs-set-close-button		nil
-	  centaur-tabs-set-modified-marker	t
-	  centaur-tabs-modified-marker		"[+]"
-	  centaur-tabs-height				1
-	  centaur-tabs-style				"bar"
-	  centaur-tabs-set-bar				'left
-	  centaur-tabs-change-fonts			"mononoki Nerd Font")
+  (setq centaur-tabs-set-icons				t
+		centaur-tabs-gray-out-icons			'buffer
+		centaur-tabs-set-close-button		nil
+		centaur-tabs-set-modified-marker	t
+		centaur-tabs-modified-marker		"[+]"
+		centaur-tabs-height					32
+		centaur-tabs-style					"bar"
+		centaur-tabs-set-bar				'left
+		centaur-tabs-change-fonts			"mononoki Nerd Font:pixelsize=15")
 
-(defun centaur-tabs-hide-tab (x)
-	(let ((name (format "%s" x)))
-		(or
-			(string-prefix-p "*epc" name)
-			(string-prefix-p "*helm" name)
-			(string-prefix-p "*Helm" name)
-			(string-prefix-p "*Compile-Log*" name)
-			(string-prefix-p "*compilation*" name)
-			(string-prefix-p "*Flymake diagnostics" name)
-			(string-prefix-p "*lsp" name)
-			(string-prefix-p "*scratch*" name)
-			(string-prefix-p "*Messages*" name)
-			(string-prefix-p "todo.org" name)
-			(string-prefix-p "*Mingus Help*" name)
-			(string-prefix-p "*Mingus*" name)
-			(string-prefix-p "*Mingus Browser*" name)
-			(string-prefix-p "TAGS" name)
-			(string-prefix-p "*lsp-ui-doc" name)
-			(and (string-prefix-p "magit" name)
-				(not (file-name-extension name))))))
+  (defun centaur-tabs-hide-tab (x)
+	  (let ((name (format "%s" x)))
+		  (or
+			  (string-prefix-p "*epc" name)
+			  (string-prefix-p "*helm" name)
+			  (string-prefix-p "*Helm" name)
+			  (string-prefix-p "*Compile-Log*" name)
+			  (string-prefix-p "*compilation*" name)
+			  (string-prefix-p "*Flymake diagnostics" name)
+			  (string-prefix-p "*lsp" name)
+			  (string-prefix-p "*scratch*" name)
+			  (string-prefix-p "*Messages*" name)
+			  (string-prefix-p "todo.org" name)
+			  (string-prefix-p "*Mingus Help*" name)
+			  (string-prefix-p "*Mingus*" name)
+			  (string-prefix-p "*Mingus Browser*" name)
+			  (string-prefix-p "TAGS" name)
+			  (string-prefix-p "*lsp-ui-doc" name)
+			  (and (string-prefix-p "magit" name)
+				  (not (file-name-extension name))))))
 
-(add-hook 'dashboard-mode-hook #'centaur-tabs-local-mode)
-(add-hook 'neotree-mode-hook #'centaur-tabs-local-mode)
-(add-hook 'calendar-mode-hook #'centaur-tabs-local-mode)
-(add-hook 'org-agenda-mode-hook #'centaur-tabs-local-mode)
-(add-hook 'helpful-mode-hook #'centaur-tabs-local-mode)
-(add-hook 'term-mode-hook #'centaur-tabs-local-mode)
+  (add-hook 'dashboard-mode-hook #'centaur-tabs-local-mode)
+  (add-hook 'neotree-mode-hook #'centaur-tabs-local-mode)
+  (add-hook 'calendar-mode-hook #'centaur-tabs-local-mode)
+  (add-hook 'org-agenda-mode-hook #'centaur-tabs-local-mode)
+  (add-hook 'helpful-mode-hook #'centaur-tabs-local-mode)
+  (add-hook 'term-mode-hook #'centaur-tabs-local-mode)
 #+END_SRC
 
 *** Dashboard
@@ -311,41 +313,45 @@
 #+END_SRC
 
 *** Helm, projectile
-#+BEGIN_SRC emacs-lisp
-(require 'helm-config)
-(require 'helm-misc)
-(require 'helm-projectile)
-(require 'helm-locate)
+	#+BEGIN_SRC emacs-lisp
+	  (require 'helm-config)
+	  (require 'helm-misc)
+	  (require 'helm-projectile)
+	  (require 'helm-locate)
 
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x C-f") #'helm-find-files)
-(global-set-key (kbd "M-p") #'helm-projectile-switch-project)
-(global-set-key (kbd "C-x C-b") #'helm-buffers-list)
-(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
-(define-key helm-map (kbd "C-z") 'helm-select-action)
+	  (global-set-key (kbd "M-x") 'helm-M-x)
+	  (global-set-key (kbd "C-x C-f") #'helm-find-files)
+	  (global-set-key (kbd "M-p") #'helm-projectile-switch-project)
+	  (global-set-key (kbd "C-x C-b") #'helm-buffers-list)
+	  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+	  (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
+	  (define-key helm-map (kbd "C-z") 'helm-select-action)
+	  (define-key helm-map (kbd "C-j") 'helm-next-line)
+	  (define-key helm-map (kbd "C-k") 'helm-previous-line)
+	  (define-key helm-find-files-map (kbd "C-h") 'helm-find-files-up-one-level)
+	  (define-key helm-find-files-map (kbd "C-l") 'helm-execute-persistent-action)
 
-(setq helm-quick-update					t
-	  helm-bookmark-show-location		t
-	  helm-buffers-fuzzy-matching		t
-	  helm-make-executable				"/usr/local/bin/gmake"
-	  helm-make-nproc					5
-	  helm-split-window-in-side-p		t)
+	  (setq helm-quick-update				t
+			helm-bookmark-show-location		t
+			helm-buffers-fuzzy-matching		t
+			helm-make-executable			"/usr/local/bin/gmake"
+			helm-make-nproc					5
+			helm-split-window-in-side-p		t)
 
-(defun helm-my-buffers ()
-  (interactive)
-  (let ((helm-ff-transformer-show-only-basename nil))
-	(helm-other-buffer '(helm-c-source-buffers-list
-			 helm-c-source-elscreen
-			 helm-c-source-projectile-files-list
-			 helm-c-source-ctags
-			 helm-c-source-recentf
-			 helm-c-source-locate)
-			   "*helm-my-buffers*")))
+	  (defun helm-my-buffers ()
+		(interactive)
+		(let ((helm-ff-transformer-show-only-basename nil))
+		  (helm-other-buffer '(helm-c-source-buffers-list
+							   helm-c-source-elscreen
+							   helm-c-source-projectile-files-list
+							   helm-c-source-ctags
+							   helm-c-source-recentf
+							   helm-c-source-locate)
+							 "*helm-my-buffers*")))
 
-(helm-mode 1)
-(projectile-mode +1)
-#+END_SRC
+	  (helm-mode 1)
+	  (projectile-mode +1)
+	#+END_SRC
 
 *** DOOM Modeline
 #+BEGIN_SRC emacs-lisp
@@ -661,7 +667,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (setq company-transformers nil company-lsp-async t company-lsp-cache-candidates nil)
   (setq ccls-sem-highlight-method 'font-lock)
   (setq lsp-enable-indentation nil)
-  (setq lsp-enable-completion-at-point t)
+  (setq lsp-completion-enable t)
   ;; (ccls-use-default-rainbow-sem-highlight)
 #+END_SRC
 

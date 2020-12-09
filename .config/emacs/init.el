@@ -73,6 +73,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(centaur-tabs-active-bar-face ((t (:background "red"))))
+ '(centaur-tabs-selected-modified ((t (:background "#31343E" :foreground "white"))))
  '(tab-bar-tab ((t (:background "#504945" :foreground "#fdf4c1"))))
  '(tab-line ((t (:inherit variable-pitch :background "#1d2021" :foreground "black" :height 0.9)))))
 
