@@ -572,29 +572,34 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 *** company
 	#+BEGIN_SRC emacs-lisp
-	(require 'company)
-	(require 'company-irony)
-	;; (add-to-list 'company-backends 'company-irony)
-	;; (add-to-list 'company-backends 'company-yasnippet)
-	(add-hook 'after-init-hook 'global-company-mode)
-	(global-company-mode)
-	;; company delay until suggestions are shown
-	(setq company-idle-delay 0)
-	
-	;; weight by frequency
-	(setq company-transformers '(company-sort-by-occurrence))
-	
-	;; Add yasnippet support for all company backends
-	;; https://github.com/syl20bnr/spacemacs/pull/179
-	(defvar company-mode/enable-yas t "Enable yasnippet for all backends.")
-	
-	(defun company-mode/backend-with-yas (backend)
-	  (if (or (not company-mode/enable-yas) (and (listp backend)    (member 'company-yasnippet backend)))
-	  backend
-	(append (if (consp backend) backend (list backend))
-	        '(:with company-yasnippet))))
-	
-	(setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
+	  (require 'company)
+	  (require 'company-irony)
+	  ;; (add-to-list 'company-backends 'company-irony)
+	  ;; (add-to-list 'company-backends 'company-yasnippet)
+	  (add-hook 'after-init-hook 'global-company-mode)
+	  (global-company-mode)
+	  ;; company delay until suggestions are shown
+	  (setq company-idle-delay 0)
+
+	  ;; weight by frequency
+	  (setq company-transformers '(company-sort-by-occurrence))
+
+	  ;; Add yasnippet support for all company backends
+	  ;; https://github.com/syl20bnr/spacemacs/pull/179
+	  (defvar company-mode/enable-yas t "Enable yasnippet for all backends.")
+
+	  (defun company-mode/backend-with-yas (backend)
+		(if (or (not company-mode/enable-yas) (and (listp backend)    (member 'company-yasnippet backend)))
+			backend
+		  (append (if (consp backend) backend (list backend))
+				  '(:with company-yasnippet))))
+
+	  (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
+	  (define-key company-active-map (kbd "C-j") 'company-select-next)
+	  (define-key company-active-map (kbd "C-k") 'company-select-previous)
+	  (define-key company-search-map (kbd "C-j") 'company-select-next)
+	  (define-key company-search-map (kbd "C-k") 'company-select-previous)
+	  (define-key company-search-map (kbd "C-t") 'company-search-toggle-filtering)
 	#+END_SRC
 
 *** lsp, ccls
@@ -648,7 +653,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   ;; (ccls/vars 3) => field or local variable. 3 = 1 | 2
   ;; (ccls/vars 4) => parameter
 
-  (setq lsp-ui-doc-header t)
+  (setq lsp-ui-doc-header nil)
   (setq lsp-ui-doc-position 'top)
   (setq lsp-ui-sideline-enable t)
 
@@ -658,6 +663,14 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (setq lsp-enable-indentation nil)
   (setq lsp-enable-completion-at-point t)
   ;; (ccls-use-default-rainbow-sem-highlight)
+#+END_SRC
+
+*** diff-hl
+#+BEGIN_SRC emacs-lisp
+  (require 'diff-hl)
+  (global-diff-hl-mode)
+  (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
+  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 #+END_SRC
 
 ** Compilation
