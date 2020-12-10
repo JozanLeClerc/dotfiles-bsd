@@ -1,35 +1,54 @@
 * My emacs config
 ** Basic configs
-#+BEGIN_SRC emacs-lisp
-  (setq x-alt-keysym 'meta)
-  (set-keyboard-coding-system 'utf-8)
+   #+BEGIN_SRC emacs-lisp
+	 (setq x-alt-keysym 'meta)
+	 (set-keyboard-coding-system 'utf-8)
 
-  (menu-bar-mode -1)
-  (tool-bar-mode -1)
-  (scroll-bar-mode -1)
-  (blink-cursor-mode 0)
-  (global-hl-line-mode 1)
+	 (menu-bar-mode -1)
+	 (tool-bar-mode -1)
+	 (scroll-bar-mode -1)
+	 (blink-cursor-mode 0)
+	 (global-hl-line-mode 1)
+	 (global-auto-revert-mode t)
 
-  (set-frame-font "mononoki Nerd Font:pixelsize=15" nil t)
-  (add-hook 'prog-mode-hook 'display-line-numbers-mode)
-  (add-hook 'text-mode-hook 'display-line-numbers-mode)
+	 (set-frame-font "mononoki Nerd Font:pixelsize=15" nil t)
+	 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+	 (add-hook 'text-mode-hook 'display-line-numbers-mode)
 
-  (setq scroll-step 1)
-  ;; (setq scroll-margin 1)
-  (setq echo-keystrokes 0.1)
-  (setq initial-scratch-message nil)
-  (defalias 'yes-or-no-p 'y-or-n-p)
+	 (setq scroll-step 1)
+	 ;; (setq scroll-margin 1)
+	 (setq echo-keystrokes 0.1)
+	 (setq initial-scratch-message nil)
+	 (defalias 'yes-or-no-p 'y-or-n-p)
 
-  (setq backup-directory-alist '(("." . "~/.config/emacs/backup"))
-		backup-by-copying t
-		version-control t
-		delete-old-versions t
-		kept-new-versions 20
-		kept-old-versions 5)
+	 (setq backup-directory-alist '(("." . "~/.config/emacs/backup"))
+		   backup-by-copying t
+		   version-control t
+		   delete-old-versions t
+		   kept-new-versions 20
+		   kept-old-versions 5)
 
-  (server-start)
-#+END_SRC
+	 (server-start)
+   #+END_SRC
 
+** Desktop-save
+   #+BEGIN_SRC emacs-lisp
+	 (setq desktop-dirname "~/.config/emacs/desktop"
+		   desktop-base-file-name "emacs.desktop"
+		   desktop-base-lock-name "lock"
+		   desktop-path (list desktop-dirname)
+		   desktop-save t
+		   desktop-files-not-to-save "^$"
+		   desktop-load-locked-desktop nil
+		   desktop-auto-save-timeout 60)
+	 (desktop-save-mode 1)
+   #+END_SRC
+** GC
+   #+BEGIN_SRC emacs-lisp
+	 (add-hook 'focus-out-hook 'garbage-collect)
+	 (add-hook 'minibuffer-setup-hook 'my/set-max-gc-cons-threshold) ;; defined in early-init.el
+	 (add-hook 'minibuffer-exit-hook 'my/set-default-gc-cons-threshold)
+   #+END_SRC
 ** MELPA and non-MELPA
 #+BEGIN_SRC emacs-lisp
 (require 'package)
@@ -37,16 +56,9 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/1"))
 
-(add-to-list 'load-path "/home/jozan/.config/emacs/sunrise-commander/")
-(autoload 'sunrise "sunrise.el" "qweqwe" t)
-(add-to-list 'load-path "/home/jozan/.config/emacs/font-lock+")
-(add-to-list 'load-path "/home/jozan/.config/emacs/all-the-icons/")
-(add-to-list 'load-path "/home/jozan/.config/emacs/all-the-icons-dired/")
-(add-to-list 'load-path "/home/jozan/.config/emacs/icons-in-terminal.el/")
-(add-to-list 'load-path "/home/jozan/.config/emacs/gas-mode/")
-(autoload 'gas-mode "gas-mode" "AT&T syntax for assembly code" t)
-(add-to-list 'load-path "/home/jozan/.config/emacs/monk-8/")
-(autoload 'monk "monk" "Cool CD player" t)
+(add-to-list 'load-path "~/.config/emacs/font-lock+")
+(add-to-list 'load-path "~/.config/emacs/all-the-icons/")
+(add-to-list 'load-path "~/.config/emacs/all-the-icons-dired/")
 
 (setq package-enable-at-startup nil)
 (setq package-check-signature nil)
@@ -81,7 +93,7 @@
     ;;capture todo items using C-c C-t t
     ;; (define-key global-map (kbd "C-c C-t") 'org-capture)
     ;; (setq org-capture-templates
-    ;;	  '(("t" "todo" entry (file+headline "/home/jozan/.config/emacs/org/todo.org" "Tasks")
+    ;;	  '(("t" "todo" entry (file+headline "~/.config/emacs/org/todo.org" "Tasks")
     ;;		 "* TODO [#A] %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n")))
 
     ;;open agenda in current window
@@ -249,25 +261,24 @@
 
 *** Dashboard
 #+BEGIN_SRC emacs-lisp
-(require 'dashboard)
-(dashboard-setup-startup-hook)
+	(require 'dashboard)
+	(dashboard-setup-startup-hook)
 
-(setq dashboard-banner-logo-title	"Welcome back to Emacs, partner!"
-	  dashboard-startup-banner		"/home/jozan/pics/profile/caco.png"
-	  dashboard-set-init-info		nil
-	  dashboard-set-footer			nil
-	  dashboard-center-content		t
-	  dashboard-show-shortcuts		nil
-	  dashboard-set-heading-icons	t
-	  dashboard-set-file-icons		nil
-	  dashboard-set-navigator		t
-	  show-week-agenda-p			t)
-	  
-(setq dashboard-items '((projects . 10)
-						(recents . 5)
-						(agenda . 5)))
+	(setq dashboard-banner-logo-title	(concat "Welcome back to Emacs " emacs-version ", partner!")
+		  dashboard-startup-banner		"~/pics/profile/caco.png"
+		  dashboard-set-init-info		nil
+		  dashboard-set-footer			nil
+		  dashboard-center-content		t
+		  dashboard-show-shortcuts		nil
+		  dashboard-set-heading-icons	t
+		  dashboard-set-file-icons		nil
+		  dashboard-set-navigator		t
+		  show-week-agenda-p			t)
 
-(add-to-list 'evil-emacs-state-modes 'dashboard-mode)
+	(setq dashboard-items '((projects . 10)
+							(recents . 10)))
+
+	(add-to-list 'evil-emacs-state-modes 'dashboard-mode)
 #+END_SRC
 
 *** w3m
@@ -678,6 +689,19 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
   (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 #+END_SRC
+
+*** Saveplace, savehist
+	#+BEGIN_SRC emacs-lisp
+	  (require 'saveplace)
+	  (add-hook 'after-init-hook 'save-place-mode)
+	  (require 'savehist)
+	  (setq history-length 1000
+			savehist-additional-variables '(search-ring
+											regexp-search-ring
+											extended-command-history)
+			savehist-autosave-interval 60)
+	  (add-hook 'after-init-hook 'savehist-mode)
+	#+END_SRC
 
 ** Compilation
 *** Close window after errorless compilation

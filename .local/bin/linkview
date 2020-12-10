@@ -151,8 +151,7 @@ sub open_link
 				'-u', 'low',
 				'-t', '5000',
 				'download started',
-				'  fetching thumbnail for <b>'. $file_name .
-				'</b> to <b>/tmp</b>'
+				'  fetching thumbnail for <b>'. $file_name . '</b>'
 				);
 			($tmp, undef, $ret) = capture {
 				system(YTDL_PATH, '--get-thumbnail', $url);
@@ -164,8 +163,7 @@ sub open_link
 					'-u', 'critical',
 					'-t', '10000',
 					'failed to get thumbnail',
-					'  failed to get thumbail for <b>'. $file_name .
-					'</b> to <b>/tmp</b>'
+					'  failed to get thumbail for <b>'. $file_name . '</b>'
 					);
 				exit 0;
 			}
