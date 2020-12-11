@@ -94,7 +94,7 @@ sub open_link
 			$file_name =~ s/^[0-9]+/\[\.\.\.\]/;
 			system(
 				NOTIFYSEND_PATH,
-				'-u', 'normal',
+				'-u', 'low',
 				'-t', '10000',
 				'download started',
 				'  <b>'. $file_name . '</b> started downloading'

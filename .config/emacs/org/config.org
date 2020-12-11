@@ -67,63 +67,69 @@
 
 ** Some org
 #+BEGIN_SRC emacs-lisp
-    ;; set key for agenda
-    ;; (require 'org)
-    ;; (global-set-(kbd "C-c a") 'org-agenda)
+	;; set key for agenda
+	;; (require 'org)
+	;; (global-set-(kbd "C-c a") 'org-agenda)
 
-    ;;file to save todo items
-    ;; (setq org-agenda-files (quote ("~/.config/emacs/org/todo.org")))
-    (setq org-log-done 'time)
+	;;file to save todo items
+	;; (setq org-agenda-files (quote ("~/.config/emacs/org/todo.org")))
+	(setq org-log-done 'time)
 
-    ;;set priority range from A to C with default A
-     (setq org-highest-priority ?A)
-     (setq org-lowest-priority ?C)
-     (setq org-default-priority ?A)
+	;;set priority range from A to C with default A
+	 (setq org-highest-priority ?A)
+	 (setq org-lowest-priority ?C)
+	 (setq org-default-priority ?A)
 
-    ;;set colours for priorities
-    (setq org-priority-faces '((?A . (:foreground "#F0DFAF" :weight bold))
-						       (?B . (:foreground "LightSteelBlue"))
-						       (?C . (:foreground "OliveDrab"))))
+	;;set colours for priorities
+	(setq org-priority-faces '((?A . (:foreground "#F0DFAF" :weight bold))
+							   (?B . (:foreground "LightSteelBlue"))
+							   (?C . (:foreground "OliveDrab"))))
+
+ (setq org-todo-keywords
+  '((sequence "TODO"
+      "|"
+      "DONE"
+      "CANCELLED")))
 
   (setq org-log-done 'time)
 
-    ;;open agenda in current window
-    ;; (setq org-agenda-window-setup (quote current-window))
+	;;open agenda in current window
+	;; (setq org-agenda-window-setup (quote current-window))
 
-    ;;capture todo items using C-c C-t t
-    ;; (define-key global-map (kbd "C-c C-t") 'org-capture)
-    ;; (setq org-capture-templates
-    ;;	  '(("t" "todo" entry (file+headline "~/.config/emacs/org/todo.org" "Tasks")
-    ;;		 "* TODO [#A] %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n")))
+	;;capture todo items using C-c C-t t
+	;; (define-key global-map (kbd "C-c C-t") 'org-capture)
+	;; (setq org-capture-templates
+	;;	  '(("t" "todo" entry (file+headline "~/.config/emacs/org/todo.org" "Tasks")
+	;;		 "* TODO [#A] %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n")))
 
-    ;;open agenda in current window
-    ;; (setq org-agenda-window-setup (quote current-window))
-    ;;warn me of any deadlines in next 7 days
-    ;; (setq org-deadline-warning-days 7)
-    ;;show me tasks scheduled or due in next fortnight
-    ;; (setq org-agenda-span (quote fortnight))
-    ;;don't show tasks as scheduled if they are already shown as a deadline
-    ;; (setq org-agenda-skip-scheduled-if-deadline-is-shown t)
-    ;;don't give awarning colour to tasks with impending deadlines
-    ;;if they are scheduled to be done
-    ;; (setq org-agenda-skip-deadline-prewarning-if-scheduled (quote pre-scheduled))
-    ;;don't show tasks that are scheduled or have deadlines in the
-    ;;normal todo list
-    ;; (setq org-agenda-todo-ignore-deadlines (quote all))
-    ;; (setq org-agenda-todo-ignore-scheduled (quote all))
-    ;;sort tasks in order of when they are due and then by priority
-    ;; (setq org-agenda-sorting-strategy
-    ;;  (quote
-    ;;   ((agenda deadline-up priority-down)
-    ;;	(todo priority-down category-keep)
-    ;;	(tags priority-down category-keep)
-    ;;	(search category-keep))))
+	;;open agenda in current window
+	;; (setq org-agenda-window-setup (quote current-window))
+	;;warn me of any deadlines in next 7 days
+	;; (setq org-deadline-warning-days 7)
+	;;show me tasks scheduled or due in next fortnight
+	;; (setq org-agenda-span (quote fortnight))
+	;;don't show tasks as scheduled if they are already shown as a deadline
+	;; (setq org-agenda-skip-scheduled-if-deadline-is-shown t)
+	;;don't give awarning colour to tasks with impending deadlines
+	;;if they are scheduled to be done
+	;; (setq org-agenda-skip-deadline-prewarning-if-scheduled (quote pre-scheduled))
+	;;don't show tasks that are scheduled or have deadlines in the
+	;;normal todo list
+	;; (setq org-agenda-todo-ignore-deadlines (quote all))
+	;; (setq org-agenda-todo-ignore-scheduled (quote all))
+	;;sort tasks in order of when they are due and then by priority
+	;; (setq org-agenda-sorting-strategy
+	;;  (quote
+	;;   ((agenda deadline-up priority-down)
+	;;	(todo priority-down category-keep)
+	;;	(tags priority-down category-keep)
+	;;	(search category-keep))))
 
-    (org-babel-do-load-languages
-	    'org-babel-load-languages '((C . t )))
-    (org-babel-do-load-languages
-	    'org-babel-load-languages '((lisp . t)))
-     (eval-after-load "org"
+	(org-babel-do-load-languages
+		'org-babel-load-languages '((C . t )))
+	(org-babel-do-load-languages
+		'org-babel-load-languages '((lisp . t)))
+	 (eval-after-load "org"
 	 '(require 'ox-md nil t))
 #+END_SRC
 
@@ -560,7 +566,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 	(ansi-term shell-pop-term-shell)))))
 
 (setq shell-pop-term-shell "/usr/local/bin/zsh")
-(add-to-list 'evil-emacs-state-modes 'ansi-term-mode)
+(add-to-list 'evil-emacs-state-modes 'term-mode)
 #+END_SRC
 
 *** org-superstar
@@ -702,6 +708,21 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 			savehist-autosave-interval 60)
 	  (add-hook 'after-init-hook 'savehist-mode)
 	#+END_SRC
+	
+*** Eyebrowse
+	#+BEGIN_SRC emacs-lisp
+	  (require 'eyebrowse)
+	  (define-key eyebrowse-mode-map (kbd "M-1") 'eyebrowse-switch-to-window-config-1)
+	  (define-key eyebrowse-mode-map (kbd "M-2") 'eyebrowse-switch-to-window-config-2)
+	  (define-key eyebrowse-mode-map (kbd "M-3") 'eyebrowse-switch-to-window-config-3)
+	  (define-key eyebrowse-mode-map (kbd "M-4") 'eyebrowse-switch-to-window-config-4)
+	  (define-key eyebrowse-mode-map (kbd "M-5") 'eyebrowse-switch-to-window-config-5)
+	  (define-key eyebrowse-mode-map (kbd "M-6") 'eyebrowse-switch-to-window-config-6)
+	  (define-key eyebrowse-mode-map (kbd "M-7") 'eyebrowse-switch-to-window-config-7)
+	  (define-key eyebrowse-mode-map (kbd "M-8") 'eyebrowse-switch-to-window-config-8)
+	  (eyebrowse-mode t)
+	  (setq eyebrowse-new-workspace t)
+	#+END_SRC
 
 ** Compilation
 *** Close window after errorless compilation
@@ -733,8 +754,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (global-set-key [f4] 'helm-make-projectile)
 (global-set-key [f5] 'undo-tree-visualize)
 (global-set-key (kbd "C-x d") 'dired)
-(global-set-key (kbd "M-1") 'shell-command)
-(global-set-key (kbd "M-7") 'async-shell-command)
+(global-set-key (kbd "M-9") 'shell-command)
+(global-set-key (kbd "M-0") 'async-shell-command)
 
 (shell-pop--set-shell-type 'my/shell-pop-shell-type my/shell-pop-shell-type)
 #+END_SRC
