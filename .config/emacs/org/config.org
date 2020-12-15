@@ -141,9 +141,9 @@
   (setq evil-want-C-u-scroll t)
   (require 'evil)
   (require 'evil-magit)
-  ;; (require 'evil-collection)
+  (require 'evil-collection)
   (evil-mode t)
-  ;; (evil-collection-init)
+  (evil-collection-init 'ibuffer)
 
 
   (setq evil-emacs-state-cursor '("#b16286" box))
@@ -213,56 +213,56 @@
 
 *** Centaur tabs
 #+BEGIN_SRC emacs-lisp
-  (require 'centaur-tabs)
-  (centaur-tabs-mode t)
-  (centaur-tabs-group-by-projectile-project)
+  ;; (require 'centaur-tabs)
+  ;; (centaur-tabs-mode t)
+  ;; (centaur-tabs-group-by-projectile-project)
 
-  (evil-define-key 'insert global-map (kbd "M-k") 'centaur-tabs-backward)
-  (evil-define-key 'insert global-map (kbd "M-j") 'centaur-tabs-forward)
-  (evil-define-key 'replace global-map (kbd "M-k") 'centaur-tabs-backward)
-  (evil-define-key 'replace global-map (kbd "M-j") 'centaur-tabs-forward)
-  (evil-define-key 'normal global-map (kbd "M-k") 'centaur-tabs-backward)
-  (evil-define-key 'normal global-map (kbd "M-j") 'centaur-tabs-forward)
-  (global-set-key (kbd "M-k") 'centaur-tabs-backward)
-  (global-set-key (kbd "M-j") 'centaur-tabs-forward)
+  ;; (evil-define-key 'insert global-map (kbd "M-k") 'centaur-tabs-backward)
+  ;; (evil-define-key 'insert global-map (kbd "M-j") 'centaur-tabs-forward)
+  ;; (evil-define-key 'replace global-map (kbd "M-k") 'centaur-tabs-backward)
+  ;; (evil-define-key 'replace global-map (kbd "M-j") 'centaur-tabs-forward)
+  ;; (evil-define-key 'normal global-map (kbd "M-k") 'centaur-tabs-backward)
+  ;; (evil-define-key 'normal global-map (kbd "M-j") 'centaur-tabs-forward)
+  ;; (global-set-key (kbd "M-k") 'centaur-tabs-backward)
+  ;; (global-set-key (kbd "M-j") 'centaur-tabs-forward)
 
-  (setq centaur-tabs-set-icons				t
-		centaur-tabs-gray-out-icons			'buffer
-		centaur-tabs-set-close-button		nil
-		centaur-tabs-set-modified-marker	t
-		centaur-tabs-modified-marker		"[+]"
-		centaur-tabs-height					32
-		centaur-tabs-style					"bar"
-		centaur-tabs-set-bar				'left
-		centaur-tabs-change-fonts			"mononoki Nerd Font:pixelsize=15")
+  ;; (setq centaur-tabs-set-icons				t
+  ;; 		centaur-tabs-gray-out-icons			'buffer
+  ;; 		centaur-tabs-set-close-button		nil
+  ;; 		centaur-tabs-set-modified-marker	t
+  ;; 		centaur-tabs-modified-marker		"[+]"
+  ;; 		centaur-tabs-height					32
+  ;; 		centaur-tabs-style					"bar"
+  ;; 		centaur-tabs-set-bar				'left
+  ;; 		centaur-tabs-change-fonts			"mononoki Nerd Font:pixelsize=15")
 
-  (defun centaur-tabs-hide-tab (x)
-	  (let ((name (format "%s" x)))
-		  (or
-			  (string-prefix-p "*epc" name)
-			  (string-prefix-p "*helm" name)
-			  (string-prefix-p "*Helm" name)
-			  (string-prefix-p "*Compile-Log*" name)
-			  (string-prefix-p "*compilation*" name)
-			  (string-prefix-p "*Flymake diagnostics" name)
-			  (string-prefix-p "*lsp" name)
-			  (string-prefix-p "*scratch*" name)
-			  (string-prefix-p "*Messages*" name)
-			  (string-prefix-p "todo.org" name)
-			  (string-prefix-p "*Mingus Help*" name)
-			  (string-prefix-p "*Mingus*" name)
-			  (string-prefix-p "*Mingus Browser*" name)
-			  (string-prefix-p "TAGS" name)
-			  (string-prefix-p "*lsp-ui-doc" name)
-			  (and (string-prefix-p "magit" name)
-				  (not (file-name-extension name))))))
+  ;; (defun centaur-tabs-hide-tab (x)
+  ;; 	  (let ((name (format "%s" x)))
+  ;; 		  (or
+  ;; 			  (string-prefix-p "*epc" name)
+  ;; 			  (string-prefix-p "*helm" name)
+  ;; 			  (string-prefix-p "*Helm" name)
+  ;; 			  (string-prefix-p "*Compile-Log*" name)
+  ;; 			  (string-prefix-p "*compilation*" name)
+  ;; 			  (string-prefix-p "*Flymake diagnostics" name)
+  ;; 			  (string-prefix-p "*lsp" name)
+  ;; 			  (string-prefix-p "*scratch*" name)
+  ;; 			  (string-prefix-p "*Messages*" name)
+  ;; 			  (string-prefix-p "todo.org" name)
+  ;; 			  (string-prefix-p "*Mingus Help*" name)
+  ;; 			  (string-prefix-p "*Mingus*" name)
+  ;; 			  (string-prefix-p "*Mingus Browser*" name)
+  ;; 			  (string-prefix-p "TAGS" name)
+  ;; 			  (string-prefix-p "*lsp-ui-doc" name)
+  ;; 			  (and (string-prefix-p "magit" name)
+  ;; 				  (not (file-name-extension name))))))
 
-  (add-hook 'dashboard-mode-hook #'centaur-tabs-local-mode)
-  (add-hook 'neotree-mode-hook #'centaur-tabs-local-mode)
-  (add-hook 'calendar-mode-hook #'centaur-tabs-local-mode)
-  (add-hook 'org-agenda-mode-hook #'centaur-tabs-local-mode)
-  (add-hook 'helpful-mode-hook #'centaur-tabs-local-mode)
-  (add-hook 'term-mode-hook #'centaur-tabs-local-mode)
+  ;; (add-hook 'dashboard-mode-hook #'centaur-tabs-local-mode)
+  ;; (add-hook 'neotree-mode-hook #'centaur-tabs-local-mode)
+  ;; (add-hook 'calendar-mode-hook #'centaur-tabs-local-mode)
+  ;; (add-hook 'org-agenda-mode-hook #'centaur-tabs-local-mode)
+  ;; (add-hook 'helpful-mode-hook #'centaur-tabs-local-mode)
+  ;; (add-hook 'term-mode-hook #'centaur-tabs-local-mode)
 #+END_SRC
 
 *** Dashboard
@@ -282,7 +282,8 @@
 		  show-week-agenda-p			t)
 
 	(setq dashboard-items '((projects . 10)
-							(recents . 10)))
+							(recents . 10)
+							(bookmarks . 10)))
 
 	(add-to-list 'evil-emacs-state-modes 'dashboard-mode)
 #+END_SRC
@@ -724,6 +725,17 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 	  (setq eyebrowse-new-workspace t)
 	#+END_SRC
 
+*** ibuffer
+	#+BEGIN_SRC emacs-lisp
+	  (require 'ibuffer)
+	  (require 'ibuffer-vc)
+	  (require 'ibuffer-projectile)
+	  (add-hook 'ibuffer-hook
+				(lambda ()
+				  (ibuffer-projectile-set-filter-groups)
+				  (unless (eq ibuffer-sorting-mode 'alphabetic)
+					(ibuffer-do-sort-by-alphabetic))))
+	#+END_SRC
 ** Compilation
 *** Close window after errorless compilation
 #+BEGIN_SRC emacs-lisp
@@ -747,15 +759,17 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 #+END_SRC
 
 ** Other key bindings
-#+BEGIN_SRC emacs-lisp
-(global-set-key [f1] 'shell-pop)
-(global-set-key [f2] 'neotree-toggle)
-(global-set-key [f3] 'flymake-show-diagnostics-buffer)
-(global-set-key [f4] 'helm-make-projectile)
-(global-set-key [f5] 'undo-tree-visualize)
-(global-set-key (kbd "C-x d") 'dired)
-(global-set-key (kbd "M-9") 'shell-command)
-(global-set-key (kbd "M-0") 'async-shell-command)
+   #+BEGIN_SRC emacs-lisp
+	 (global-set-key [f1] 'shell-pop)
+	 (global-set-key [f2] 'neotree-toggle)
+	 (global-set-key [f3] 'flymake-show-diagnostics-buffer)
+	 (global-set-key [f4] 'helm-make-projectile)
+	 (global-set-key [f5] 'undo-tree-visualize)
+	 (global-set-key (kbd "C-x d") 'dired)
+	 (global-set-key (kbd "C-x b") 'helm-buffers-list)
+	 (global-set-key (kbd "C-x C-b") 'ibuffer)
+	 (global-set-key (kbd "M-9") 'shell-command)
+	 (global-set-key (kbd "M-0") 'async-shell-command)
 
-(shell-pop--set-shell-type 'my/shell-pop-shell-type my/shell-pop-shell-type)
-#+END_SRC
+	 (shell-pop--set-shell-type 'my/shell-pop-shell-type my/shell-pop-shell-type)
+   #+END_SRC
