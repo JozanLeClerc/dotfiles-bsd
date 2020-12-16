@@ -144,6 +144,7 @@
   (require 'evil-collection)
   (evil-mode t)
   (evil-collection-init 'ibuffer)
+  (evil-collection-init 'flymake)
 
 
   (setq evil-emacs-state-cursor '("#b16286" box))
@@ -760,16 +761,19 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ** Other key bindings
    #+BEGIN_SRC emacs-lisp
+	 (defun my/nothing ())
 	 (global-set-key [f1] 'shell-pop)
 	 (global-set-key [f2] 'neotree-toggle)
 	 (global-set-key [f3] 'flymake-show-diagnostics-buffer)
 	 (global-set-key [f4] 'helm-make-projectile)
 	 (global-set-key [f5] 'undo-tree-visualize)
 	 (global-set-key (kbd "C-x d") 'dired)
-	 (global-set-key (kbd "C-x b") 'helm-buffers-list)
-	 (global-set-key (kbd "C-x C-b") 'ibuffer)
+	 (global-set-key (kbd "C-x b") 'ibuffer)
+	 (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
 	 (global-set-key (kbd "M-9") 'shell-command)
 	 (global-set-key (kbd "M-0") 'async-shell-command)
+	 (global-set-key (kbd "M-j") 'next-buffer)
+	 (global-set-key (kbd "M-k") 'previous-buffer)
 
 	 (shell-pop--set-shell-type 'my/shell-pop-shell-type my/shell-pop-shell-type)
    #+END_SRC
