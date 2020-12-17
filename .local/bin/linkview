@@ -19,7 +19,7 @@ use constant {
 	SXIV_PATH		=> '/usr/local/bin/sxiv',
 	ZATHURA_PATH	=> '/usr/local/bin/zathura',
 	W3M_PATH		=> '/usr/local/bin/w3m',
-	FIREFOX_PATH	=> '/usr/local/bin/firefox',
+	BROWSER_PATH	=> '/usr/local/bin/iridium',
 	NOTIFYSEND_PATH	=> '/usr/local/bin/notify-send'
 };
 use constant PROG_LIST	=> "" .
@@ -31,7 +31,7 @@ use constant PROG_LIST	=> "" .
 "sxiv"					. "\n" .
 "zathura"				. "\n" .
 "w3m"					. "\n" .
-"firefox"				. "\n";
+"iridium"				. "\n";
 
 sub open_link
 {
@@ -102,7 +102,7 @@ sub open_link
 			$ret = -1;
 			if ($a eq "youtube-dl") {
 				(undef, undef, $ret) = capture {
-					system(YTDL_PATH, $url);
+					system(YTDL_PATH, '--add-metadata', $url);
 				};
 			}
 			else {
@@ -202,12 +202,12 @@ sub open_link
 	elsif ($a eq "w3m") {
 		exec(TERMINAL_PATH, '-e', W3M_PATH, $url);
 	}
-	elsif ($a eq "firefox") {
+	elsif ($a eq "iridium") {
 		$pid = fork();
 		if (not $pid) {
 			setsid();
 			capture {
-				exec(FIREFOX_PATH, '--kiosk', $url);
+				exec(BROWSER_PATH, $url);
 			};
 		}
 	}
