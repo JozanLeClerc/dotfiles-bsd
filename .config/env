@@ -19,7 +19,7 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 export PAGER='less'
 export TERMINAL='st'
-export BROWSER='firefox'
+export BROWSER='iridium'
 export READER='zathura'
 export FILE='vifm'
 
