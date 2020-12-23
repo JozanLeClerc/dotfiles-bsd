@@ -42,12 +42,14 @@
 		   desktop-auto-save-timeout 60)
 	 (desktop-save-mode 1)
    #+END_SRC
+
 ** GC
    #+BEGIN_SRC emacs-lisp
 	 (add-hook 'focus-out-hook 'garbage-collect)
 	 (add-hook 'minibuffer-setup-hook 'my/set-max-gc-cons-threshold) ;; defined in early-init.el
 	 (add-hook 'minibuffer-exit-hook 'my/set-default-gc-cons-threshold)
    #+END_SRC
+
 ** MELPA and non-MELPA
 #+BEGIN_SRC emacs-lisp
 (require 'package)
@@ -313,22 +315,30 @@
 
 *** NeoTree
 #+BEGIN_SRC emacs-lisp
-  (require 'neotree)
-  (setq neo-vc-integration '(face))
-  (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
-  (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
-  (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
-  (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
-  (evil-define-key 'normal neotree-mode-map (kbd "g") 'neotree-refresh)
-  (evil-define-key 'normal neotree-mode-map (kbd "n") 'neotree-next-line)
-  (evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-previous-line)
-  (evil-define-key 'normal neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
-  (evil-define-key 'normal neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
-  (evil-define-key 'normal neotree-mode-map (kbd "|") 'neotree-enter-vertical-split)
-  (evil-define-key 'normal neotree-mode-map (kbd "S") 'neotree-enter-vertical-split)
-  (evil-define-key 'normal neotree-mode-map (kbd "/") 'neotree-enter-horizontal-split)
-  (evil-define-key 'normal neotree-mode-map (kbd "s") 'neotree-enter-horizontal-split)
+ ;; (require 'neotree)
+ ;; (setq neo-vc-integration '(face))
+ ;; (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
+ ;; (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
+ ;; (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+ ;; (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+ ;; (evil-define-key 'normal neotree-mode-map (kbd "g") 'neotree-refresh)
+ ;; (evil-define-key 'normal neotree-mode-map (kbd "n") 'neotree-next-line)
+ ;; (evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-previous-line)
+ ;; (evil-define-key 'normal neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
+ ;; (evil-define-key 'normal neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
+ ;; (evil-define-key 'normal neotree-mode-map (kbd "|") 'neotree-enter-vertical-split)
+ ;; (evil-define-key 'normal neotree-mode-map (kbd "S") 'neotree-enter-vertical-split)
+ ;; (evil-define-key 'normal neotree-mode-map (kbd "/") 'neotree-enter-horizontal-split)
+ ;; (evil-define-key 'normal neotree-mode-map (kbd "s") 'neotree-enter-horizontal-split)
 #+END_SRC
+
+*** Treemacs
+	#+BEGIN_SRC emacs-lisp
+(require 'treemacs)
+(require 'treemacs-evil)
+(require 'treemacs-magit)
+(require 'treemacs-projectile)
+	#+END_SRC
 
 *** Helm, projectile
 	#+BEGIN_SRC emacs-lisp
@@ -686,7 +696,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (setq ccls-sem-highlight-method 'font-lock)
   (setq lsp-enable-indentation nil)
   (setq lsp-completion-enable t)
-  ;; (ccls-use-default-rainbow-sem-highlight)
+  (setq lsp-headerline-breadcrumb-enable nil)
 #+END_SRC
 
 *** diff-hl
@@ -736,6 +746,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 				  (unless (eq ibuffer-sorting-mode 'alphabetic)
 					(ibuffer-do-sort-by-alphabetic))))
 	#+END_SRC
+
 ** Compilation
 *** Close window after errorless compilation
 #+BEGIN_SRC emacs-lisp
@@ -762,7 +773,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
    #+BEGIN_SRC emacs-lisp
 	 (defun my/nothing ())
 	 (global-set-key [f1] 'shell-pop)
-	 (global-set-key [f2] 'neotree-toggle)
+	 (global-set-key [f2] 'treemacs)
 	 (global-set-key [f3] 'flymake-show-diagnostics-buffer)
 	 (global-set-key [f4] 'helm-make-projectile)
 	 (global-set-key [f5] 'undo-tree-visualize)
