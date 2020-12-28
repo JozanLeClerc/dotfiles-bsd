@@ -273,7 +273,8 @@
 	(dashboard-setup-startup-hook)
 
 	(setq dashboard-banner-logo-title	(concat "Welcome back to Emacs " emacs-version ", partner!")
-		  dashboard-startup-banner		"~/pics/profile/caco.png"
+		  ;; dashboard-startup-banner		"~/pics/profile/caco.png"
+		  dashboard-startup-banner		'official
 		  dashboard-set-init-info		nil
 		  dashboard-set-footer			nil
 		  dashboard-center-content		t
