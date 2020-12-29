@@ -121,10 +121,13 @@ twi() {
 }
 alias nb='newsboat'
 alias mutt='neomutt'
-alias nmt='neomutt'
 alias sxiv='sxiv -b -a'
 alias pinfo='pkg info -x'
 alias psearch='pkg search'
+alias highlight='highlight -Oxterm256'
+hil() {
+	highlight -Oxterm256 "$1" | less
+}
 search() {
 	make -C /usr/ports search name=$1 | grep 'Path:';
 }
