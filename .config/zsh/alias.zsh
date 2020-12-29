@@ -125,6 +125,7 @@ alias sxiv='sxiv -b -a'
 alias pinfo='pkg info -x'
 alias psearch='pkg search'
 alias highlight='highlight -Oxterm256 -t4'
+alias hi='highlight'
 hil() {
 	highlight -Oxterm256 -t4 "$1" | less
 }
