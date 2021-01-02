@@ -60,7 +60,7 @@ alias stopdocker='docker-machine stop docker-home'
 alias envdocker='eval `docker-machine env docker-home`'
 alias vimz='nvim $(fzf --preview="head -$FZF_PREVIEW_LINES {}")'
 alias v='nvim $(fzf --preview="head -$FZF_PREVIEW_LINES {}")'
-alias tohex='printf "%x\n"'
+alias tohex='printf "0x%x\n"'
 vbi() {
 	p=$(pwd)
 	cd "$HOME"/.local/bin || return
