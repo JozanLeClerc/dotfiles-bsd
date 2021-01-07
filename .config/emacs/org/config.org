@@ -143,6 +143,8 @@
   (require 'evil)
   (require 'evil-magit)
   (require 'evil-collection)
+  (require 'evil-leader)
+  (require 'evil-search-highlight-persist)
   (evil-mode t)
   (evil-collection-init 'ibuffer)
   (evil-collection-init 'flymake)
@@ -168,7 +170,7 @@
   (evil-define-key 'normal global-map (kbd "C-l") 'windmove-right)
 
   (global-evil-leader-mode)
-  (evil-leader/set-leader ",")
+  (evil-leader/set-leader "\\")
   (setq evil-leader/in-all-states 1)
 
   (require 'evil-search-highlight-persist)
@@ -352,6 +354,7 @@
 	  (global-set-key (kbd "C-x C-f") #'helm-find-files)
 	  (global-set-key (kbd "M-p") #'helm-projectile-switch-project)
 	  (global-set-key (kbd "C-x C-b") #'helm-buffers-list)
+	  (global-set-key (kbd "C-x p") #'helm-projectile)
 	  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
 	  (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
 	  (define-key helm-map (kbd "C-z") 'helm-select-action)
@@ -746,6 +749,11 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 				  (ibuffer-projectile-set-filter-groups)
 				  (unless (eq ibuffer-sorting-mode 'alphabetic)
 					(ibuffer-do-sort-by-alphabetic))))
+	#+END_SRC
+
+*** undo-tree
+	#+BEGIN_SRC emacs-lisp
+	(require 'undo-tree)
 	#+END_SRC
 
 ** Compilation
