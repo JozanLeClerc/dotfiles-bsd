@@ -135,6 +135,24 @@
 #+END_SRC
 
 ** Core packages
+*** Autopair
+#+BEGIN_SRC emacs-lisp
+(require 'autopair)
+(autopair-global-mode)
+#+END_SRC
+
+*** Paredit
+#+BEGIN_SRC emacs-lisp
+(require 'paredit)
+(defadvice paredit-mode (around disable-autopairs-around (arg))
+  ad-do-it
+  (if (null ad-return-value)
+	(autopair-mode 1)
+  (autopair-mode -1)
+))
+(ad-activate 'paredit-mode)
+#+END_SRC
+
 *** Evil mode
 #+BEGIN_SRC emacs-lisp
   (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
@@ -454,24 +472,6 @@
 				  (statement-cont . *))
 				 (indent-tabs-mode . t)))
   (setq c-default-style "openbsd")
-#+END_SRC
-
-*** Autopair
-#+BEGIN_SRC emacs-lisp
-(require 'autopair)
-(autopair-global-mode)
-#+END_SRC
-
-*** Paredit
-#+BEGIN_SRC emacs-lisp
-(require 'paredit)
-(defadvice paredit-mode (around disable-autopairs-around (arg))
-  ad-do-it
-  (if (null ad-return-value)
-	(autopair-mode 1)
-  (autopair-mode -1)
-))
-(ad-activate 'paredit-mode)
 #+END_SRC
 
 *** Magit
