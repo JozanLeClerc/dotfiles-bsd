@@ -121,7 +121,7 @@ alias bi='cd $HOME/.local/bin && ls'
 twi() {
 	mpview https://twitch.tv/"$1";
 }
-alias nb='newsboat'
+alias nb='torify newsboat'
 alias mutt='neomutt'
 alias sxiv='sxiv -b -a'
 alias pinfo='pkg info -x'
