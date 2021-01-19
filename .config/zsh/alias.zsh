@@ -45,10 +45,17 @@ alias fetch='torify fetch'
 alias fsl='fossil'
 alias diff='colordiff'
 alias ctags='uctags "--exclude=.ccls*"'
-alias yt='straw-viewer --api=auto'
+alias yt='straw-viewer --api=auto -C -f'
+alias yta='straw-viewer --api=auto -C -n'
 alias gyt='gtk-straw-viewer'
 alias ytdl='youtube-dl --add-metadata'
 alias dgit='git --git-dir=$HOME/docs/dotfiles-bsd --work-tree=$HOME'
+confgit() {
+	p=$(pwd)
+	cd /
+	git --git-dir=$HOME/docs/conffiles-bsd --work-tree=/ $@
+	cd $p
+}
 alias vim='nvim'
 alias gst='git status'
 alias ga='git add'

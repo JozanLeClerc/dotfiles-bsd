@@ -558,7 +558,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 *** all the icons
 #+BEGIN_SRC emacs-lisp
-(require 'font-lock)
 (require 'font-lock+)
 (require 'all-the-icons)
 (load "all-the-icons-dired.el")
@@ -697,7 +696,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
   ;; References whose filenames are under this project
   (setq company-transformers nil company-lsp-async t company-lsp-cache-candidates nil)
-  (setq ccls-sem-highlight-method 'font-lock)
+  (setq ccls-sem-highlight-method 'overlay)
+  (ccls-use-default-rainbow-sem-highlight)
   (setq lsp-enable-indentation nil)
   (setq lsp-completion-enable t)
   (setq lsp-headerline-breadcrumb-enable nil)
