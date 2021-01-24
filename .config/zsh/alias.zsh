@@ -49,6 +49,8 @@ alias yt='straw-viewer --api=auto -C -f'
 alias yta='straw-viewer --api=auto -C -n'
 alias gyt='gtk-straw-viewer'
 alias ytdl='youtube-dl --add-metadata'
+alias ytdlist='youtube-dl -F'
+alias ytdl1080="youtube-dl --add-metadata -f '[height<=1080]'"
 alias dgit='git --git-dir=$HOME/docs/dotfiles-bsd --work-tree=$HOME'
 confgit() {
 	p=$(pwd)
