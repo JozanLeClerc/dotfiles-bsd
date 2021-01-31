@@ -159,13 +159,13 @@
   (setq evil-want-keybinding nil)
   (setq evil-want-C-u-scroll t)
   (require 'evil)
-  (require 'evil-magit)
   (require 'evil-collection)
   (require 'evil-leader)
   (require 'evil-search-highlight-persist)
   (evil-mode t)
   (evil-collection-init 'ibuffer)
-  (evil-collection-init 'flymake)
+  (evil-collection-init 'magit)
+  ;; (evil-collection-init 'flymake)
 
 
   (setq evil-emacs-state-cursor '("#b16286" box))
@@ -355,10 +355,11 @@
 
 *** Treemacs
 	#+BEGIN_SRC emacs-lisp
-(require 'treemacs)
-(require 'treemacs-evil)
-(require 'treemacs-magit)
-(require 'treemacs-projectile)
+	  (require 'treemacs)
+	  (require 'treemacs-evil)
+	  (require 'treemacs-magit)
+	  (require 'treemacs-projectile)
+	  (setq treemacs-python-executable "/usr/local/bin/python3.7")
 	#+END_SRC
 
 *** Helm, projectile

@@ -166,7 +166,7 @@ bind l focus right
 # bind y eval "writebuf" "exec sh -c 'pbcopy < /tmp/screen-exchange'"
 
 # hardcopydir:  The directory which contains all hardcopies.
-hardcopydir ~/.screen
+hardcopydir ~/.config/screen
 
 msgwait 10
 setenv DISPLAY ':0'
