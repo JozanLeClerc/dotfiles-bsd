@@ -87,6 +87,13 @@ emoji_favicons = false
 
 
 [keybindings]
+bind_bottom   = ":"
+bind_back     = "H"
+bind_forward  = "L"
+bind_next_tab = "J"
+bind_prev_tab = "K"
+bind_edit     = "o"
+bind_new_tab  = "O"
 # In the future there will be more settings here.
 
 # Hold down shift and press the numbers on your keyboard (1,2,3,4,5,6,7,8,9,0) to set this up.
