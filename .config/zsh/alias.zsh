@@ -71,7 +71,7 @@ alias envdocker='eval $(docker-machine env docker-home)'
 alias vimz='nvim $(fzf --preview="head -$FZF_PREVIEW_LINES {}")'
 alias v='nvim $(fzf --preview="head -$FZF_PREVIEW_LINES {}")'
 alias tohex='printf "0x%x\n"'
-vbi() {
+vimbin() {
 	p=$(pwd)
 	cd "$HOME"/.local/bin || return
 	sc=$(fzf --preview='head -$FZF_PREVIEW_LINES {}')
@@ -82,7 +82,7 @@ vbi() {
 	nvim $sc
 	cd $p
 }
-vco() {
+vimconf() {
 	p=$(pwd)
 	cd "$HOME"/.config || return
 	sc=$(fzf --preview='head -$FZF_PREVIEW_LINES {}')
