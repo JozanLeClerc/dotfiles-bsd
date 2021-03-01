@@ -36,24 +36,17 @@ sub main {
 		}
 		$curr_vol = `$curr_vol_cmd`;
 		chomp $curr_vol;
-		my $icon;
-		if ($curr_vol <= 33) {
-			$icon = '奄';
-		}
-		elsif ($curr_vol <= 66) {
-			$icon = '奔';
-		}
-		else {
-			$icon = '墳';
-		}
+		my $icon = '墳';
 		system(
 			'/usr/local/bin/notify-send',
+			'-h',
+			'int:value:' . $curr_vol,
 			'-u',
 			'low',
 			'-t',
-			'400',
+			'1000',
 			'mixer-set',
-			$icon . ' Volume - ' . $curr_vol . '%'
+			$icon . ' Volume'
 		);
 		exit;
 	}
