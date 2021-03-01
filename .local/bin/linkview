@@ -42,6 +42,8 @@ sub open_link
 	my $pwd;
 	my $ret;
 	my $tmp;
+	my $tmpfile;
+	my $val;
 	my @wc;
 
 	if ($a eq "mpv") {
@@ -97,13 +99,34 @@ sub open_link
 				'-u', 'low',
 				'-t', '10000',
 				'download started',
-				'  <b>'. $file_name . '</b> started downloading'
+				'  <b>' . $file_name . '</b> started downloading'
 				);
 			$ret = -1;
 			if ($a eq "youtube-dl") {
+				$tmpfile = `mktemp`;
+				chomp $tmpfile;
 				(undef, undef, $ret) = capture {
-					system(YTDL_PATH, '--add-metadata', $url);
+					system(YTDL_PATH . ' --newline --add-metadata ' . $url . ' >' . $tmpfile . ' &');
 				};
+				while (1) {
+					$val = `tail -n 1 "$tmpfile" | awk '{print \$2}' | tr -d '%'`;
+					if (looks_like_number($val) != 0) {
+						system( 
+							NOTIFYSEND_PATH,
+							'-h',
+							'int:value:' . $val,
+							'-u', 'low',
+							'-t', '5000',
+							'downloading',
+							'  downloading <b>' . $file_name . '</b>'
+						);
+						if ($val == 100 || system('pgrep python >/dev/null 2>&1') != 0) {
+							last;
+						}
+					}
+					sleep 2;
+				}
+				unlink $tmpfile;
 			}
 			else {
 				(undef, undef, $ret) = capture {
