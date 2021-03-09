@@ -1,0 +1,35 @@
+#!/usr/local/bin/perl
+
+use warnings;
+use strict;
+
+use constant FLAC_PATH	=> '/usr/local/bin/flac';
+
+sub main
+{
+	opendir(DIR, '.') or die "Cannot open directory: $!";
+	# my @files = readdir(DIR);
+	my @files = grep(/\.wav$/, readdir(DIR));
+	closedir(DIR);
+	foreach (@files) {
+		if (
+			system(
+				FLAC_PATH,
+				'--warnings-as-errors',
+				'--compression-level-0',
+				'--verify',
+				$_
+				) != 0
+			) {
+			exit 1;
+		}
+		else {
+			unlink($_);
+		}
+	}
+	return;
+}
+
+main();
+
+__END__

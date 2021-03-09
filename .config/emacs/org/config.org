@@ -52,18 +52,59 @@
 
 ** MELPA and non-MELPA
 #+BEGIN_SRC emacs-lisp
-(require 'package)
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/1"))
+  (require 'package)
+  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+  (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+  (package-initialize)
 
-(add-to-list 'load-path "~/.config/emacs/font-lock+")
-(add-to-list 'load-path "~/.config/emacs/all-the-icons/")
-(add-to-list 'load-path "~/.config/emacs/all-the-icons-dired/")
+  (add-to-list 'load-path "~/.config/emacs/font-lock+")
+  (add-to-list 'load-path "~/.config/emacs/all-the-icons/")
+  (add-to-list 'load-path "~/.config/emacs/all-the-icons-dired/")
 
-(setq package-enable-at-startup nil)
-(setq package-check-signature nil)
-(package-initialize)
+  (setq package-selected-packages '(
+            evil evil-collection evil-leader
+            evil-search-highlight-persist evil-mc evil-surround evil-ediff
+            evil-visual-mark-mode evil-nerd-commenter evil-vimish-fold
+            evil-numbers
+            lsp-mode lsp-treemacs lsp-ui
+            ccls
+            yasnippet yasnippet-classic-snippets yasnippet-snippets auto-yasnippet el-autoyas
+            helm helm-xref helm-lsp helm-etags-plus helm-fuzzy helm-themes helm-make helm-projectile
+            projectile
+            company company-box
+            which-key dap-mode
+            magit
+            undo-tree
+            shell-pop
+            treemacs treemacs-projectile treemacs-magit treemacs-evil
+            autopair paredit
+            rainbow-delimiters
+            color-identifiers-mode
+            ibuffer-vc ibuffer-projectile
+            eyebrowse
+            diff-hl
+            fzf
+            font-utils
+            restart-emacs
+            string-utils
+            dired-icon
+            kaolin-themes gruvbox-theme doom-themes spacemacs-theme
+            doom-modeline
+            dashboard
+            org-superstar toc-org
+            pdf-tools
+            dockerfile-mode
+            web-mode
+            ssh sudo-ext
+            vimish-fold
+            bind-key
+            all-the-icons all-the-icons-dired all-the-icons-ibuffer
+            ))
+
+  (when (cl-find-if-not #'package-installed-p package-selected-packages)
+  (package-refresh-contents)
+  (mapc #'package-install package-selected-packages))
 #+END_SRC
 
 ** Some org
@@ -89,8 +130,7 @@
  (setq org-todo-keywords
   '((sequence "TODO"
       "|"
-      "DONE"
-      "CANCELLED")))
+      "DONE")))
 
   (setq org-log-done 'time)
 
@@ -143,14 +183,14 @@
 
 *** Paredit
 #+BEGIN_SRC emacs-lisp
-(require 'paredit)
-(defadvice paredit-mode (around disable-autopairs-around (arg))
-  ad-do-it
-  (if (null ad-return-value)
-	(autopair-mode 1)
-  (autopair-mode -1)
-))
-(ad-activate 'paredit-mode)
+;; (require 'paredit)
+;; (defadvice paredit-mode (around disable-autopairs-around (arg))
+;;   ad-do-it
+;;   (if (null ad-return-value)
+;; 	(autopair-mode 1)
+;;   (autopair-mode -1)
+;; ))
+;; (ad-activate 'paredit-mode)
 #+END_SRC
 
 *** Evil mode
@@ -313,9 +353,9 @@
 
 *** w3m
 #+BEGIN_SRC emacs-lisp
-(require 'w3m-load)
-(setq w3m-home-page "https://start.duckduckgo.com/")
-(setq w3m-default-display-inline-images t)
+;; (require 'w3m-load)
+;; (setq w3m-home-page "https://start.duckduckgo.com/")
+;; (setq w3m-default-display-inline-images t)
 ;; (define-key w3m-mode-map "w" 'right-word)
 ;; (define-key w3m-mode-map "b" 'left-word)
 ;; (define-key w3m-mode-map "<" 'scroll-left)
@@ -334,25 +374,6 @@
 ;; (define-key w3m-mode-map "t" 'w3m-copy-buffer)
 #+END_SRC
 
-*** NeoTree
-#+BEGIN_SRC emacs-lisp
- ;; (require 'neotree)
- ;; (setq neo-vc-integration '(face))
- ;; (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
- ;; (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
- ;; (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
- ;; (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
- ;; (evil-define-key 'normal neotree-mode-map (kbd "g") 'neotree-refresh)
- ;; (evil-define-key 'normal neotree-mode-map (kbd "n") 'neotree-next-line)
- ;; (evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-previous-line)
- ;; (evil-define-key 'normal neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
- ;; (evil-define-key 'normal neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
- ;; (evil-define-key 'normal neotree-mode-map (kbd "|") 'neotree-enter-vertical-split)
- ;; (evil-define-key 'normal neotree-mode-map (kbd "S") 'neotree-enter-vertical-split)
- ;; (evil-define-key 'normal neotree-mode-map (kbd "/") 'neotree-enter-horizontal-split)
- ;; (evil-define-key 'normal neotree-mode-map (kbd "s") 'neotree-enter-horizontal-split)
-#+END_SRC
-
 *** Treemacs
 	#+BEGIN_SRC emacs-lisp
 	  (require 'treemacs)
@@ -368,11 +389,12 @@
 	  (require 'helm-misc)
 	  (require 'helm-projectile)
 	  (require 'helm-locate)
+	  (require 'helm-lsp)
 
 	  (global-set-key (kbd "M-x") 'helm-M-x)
 	  (global-set-key (kbd "C-x C-f") #'helm-find-files)
 	  (global-set-key (kbd "M-p") #'helm-projectile-switch-project)
-	  (global-set-key (kbd "C-x C-b") #'helm-buffers-list)
+	  (global-set-key (kbd "C-x C-b") #'helm-mini)
 	  (global-set-key (kbd "C-x p") #'helm-projectile)
 	  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
 	  (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
@@ -508,22 +530,6 @@ buffer in current window."
 (global-set-key (kbd "C-c t") 'my/toggle-window-dedicated)
 #+END_SRC
 
-*** cargo
-#+BEGIN_SRC emacs-lisp
-(require 'cargo)
-(add-hook 'rust-mode-hook 'cargo-minor-mode)
-#+END_SRC
-
-*** yasnippet
-#+BEGIN_SRC emacs-lisp
-(require 'yasnippet)
-(require 'yasnippet-snippets)
-(require 'yasnippet-classic-snippets)
-(require 'helm-c-yasnippet)
-(yas-reload-all)
-(add-hook 'prog-mode-hook #'yas-minor-mode)
-#+END_SRC
-
 *** Tabs and stuff
 #+BEGIN_SRC emacs-lisp
 (defun minibuffer-keyboard-quit ()
@@ -557,12 +563,27 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (setq-default cperl-indent-level my/tab-stop)
 #+END_SRC
 
+*** ibuffer
+	#+BEGIN_SRC emacs-lisp
+	  (require 'ibuffer)
+	  (require 'ibuffer-vc)
+	  (require 'ibuffer-projectile)
+	  (add-hook 'ibuffer-hook
+				(lambda ()
+				  (ibuffer-projectile-set-filter-groups)
+				  (unless (eq ibuffer-sorting-mode 'alphabetic)
+					(ibuffer-do-sort-by-alphabetic))))
+	#+END_SRC
+
 *** all the icons
 #+BEGIN_SRC emacs-lisp
 (require 'font-lock+)
 (require 'all-the-icons)
+(require 'all-the-icons-dired)
+(require 'all-the-icons-ibuffer)
 (load "all-the-icons-dired.el")
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+(all-the-icons-ibuffer-mode 1)
 #+END_SRC
 
 *** which-key
@@ -599,57 +620,52 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (define-key markdown-mode-map (kbd "\C-c\C-o") 'toc-org-markdown-follow-thing-at-point)
 #+END_SRC
 
-*** irony
-	#+BEGIN_SRC emacs-lisp
-	(require 'irony)
-	(add-hook 'c++-mode-hook 'irony-mode)
-	(add-hook 'c-mode-hook 'irony-mode)
-	(add-hook 'objc-mode-hook 'irony-mode)
-	(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-	#+END_SRC
-
-*** company
-	#+BEGIN_SRC emacs-lisp
-	  (require 'company)
-	  (require 'company-irony)
-	  ;; (add-to-list 'company-backends 'company-irony)
-	  ;; (add-to-list 'company-backends 'company-yasnippet)
-	  (add-hook 'after-init-hook 'global-company-mode)
-	  (global-company-mode)
-	  ;; company delay until suggestions are shown
-	  (setq company-idle-delay 0)
-
-	  ;; weight by frequency
-	  (setq company-transformers '(company-sort-by-occurrence))
-
-	  ;; Add yasnippet support for all company backends
-	  ;; https://github.com/syl20bnr/spacemacs/pull/179
-	  (defvar company-mode/enable-yas t "Enable yasnippet for all backends.")
-
-	  (defun company-mode/backend-with-yas (backend)
-		(if (or (not company-mode/enable-yas) (and (listp backend)    (member 'company-yasnippet backend)))
-			backend
-		  (append (if (consp backend) backend (list backend))
-				  '(:with company-yasnippet))))
-
-	  (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
-	  (define-key company-active-map (kbd "C-j") 'company-select-next)
-	  (define-key company-active-map (kbd "C-k") 'company-select-previous)
-	  (define-key company-search-map (kbd "C-j") 'company-select-next)
-	  (define-key company-search-map (kbd "C-k") 'company-select-previous)
-	  (define-key company-search-map (kbd "C-t") 'company-search-toggle-filtering)
-	#+END_SRC
-
-*** lsp, ccls
+*** lsp, ccls, company, yasnippet
 #+BEGIN_SRC emacs-lisp
   (require 'lsp-mode)
   (require 'lsp-ui)
-  (require 'company-lsp)
   (require 'ccls)
-  (add-hook 'c-mode-hook (lambda () (lsp)))
-  (add-hook 'c++-mode-hook (lambda () (lsp)))
-  (add-hook 'objc-mode-hook (lambda () (lsp)))
-  (add-hook 'cuda-mode-hook (lambda () (lsp)))
+  (require 'company)
+  (require 'company-box)
+  (require 'yasnippet)
+  (require 'yasnippet-snippets)
+  (require 'yasnippet-classic-snippets)
+  (yas-reload-all)
+  (yas-global-mode)
+  (add-hook 'c-mode-hook 'lsp)
+  (add-hook 'c++-mode-hook 'lsp)
+
+  (setq lsp-ui-doc-header nil
+		lsp-ui-doc-position 'top
+		lsp-ui-sideline-enable t)
+
+  (setq lsp-enable-indentation nil
+		lsp-completion-enable t
+		lsp-headerline-breadcrumb-enable nil)
+  (setq gc-cons-threshold (* 100 1024 1024)
+		read-process-output-max (* 1024 1024)
+		treemacs-space-between-root-nodes nil
+		company-idle-delay 0.0
+		company-minimum-prefix-length 1
+		lsp-idle-delay 0.1)
+
+  (with-eval-after-load 'lsp-mode
+	(add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
+	(require 'dap-cpptools)
+	(yas-global-mode))
+
+  (add-hook 'after-init-hook 'global-company-mode)
+  (global-company-mode)
+
+  (define-key company-active-map (kbd "C-j") 'company-select-next)
+  (define-key company-active-map (kbd "C-k") 'company-select-previous)
+  (define-key company-search-map (kbd "C-j") 'company-select-next)
+  (define-key company-search-map (kbd "C-k") 'company-select-previous)
+  (define-key company-search-map (kbd "C-t") 'company-search-toggle-filtering)
+  ;; (push 'company-lsp company-backends)
+  ;; (setq company-transformers nil company-lsp-async t company-lsp-cache-candidates nil)
+  (add-hook 'company-mode-hook 'company-box-mode)
+
   (setq ccls-executable "/usr/local/bin/ccls")
 
   (defun ccls/callee () (interactive) (lsp-ui-peek-find-custom "$ccls/call" '(:callee t)))
@@ -691,17 +707,9 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   ;; (ccls/vars 3) => field or local variable. 3 = 1 | 2
   ;; (ccls/vars 4) => parameter
 
-  (setq lsp-ui-doc-header nil)
-  (setq lsp-ui-doc-position 'top)
-  (setq lsp-ui-sideline-enable t)
-
   ;; References whose filenames are under this project
-  (setq company-transformers nil company-lsp-async t company-lsp-cache-candidates nil)
   (setq ccls-sem-highlight-method 'overlay)
   (ccls-use-default-rainbow-sem-highlight)
-  (setq lsp-enable-indentation nil)
-  (setq lsp-completion-enable t)
-  (setq lsp-headerline-breadcrumb-enable nil)
 #+END_SRC
 
 *** diff-hl
@@ -738,18 +746,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 	  (define-key eyebrowse-mode-map (kbd "M-8") 'eyebrowse-switch-to-window-config-8)
 	  (eyebrowse-mode t)
 	  (setq eyebrowse-new-workspace t)
-	#+END_SRC
-
-*** ibuffer
-	#+BEGIN_SRC emacs-lisp
-	  (require 'ibuffer)
-	  (require 'ibuffer-vc)
-	  (require 'ibuffer-projectile)
-	  (add-hook 'ibuffer-hook
-				(lambda ()
-				  (ibuffer-projectile-set-filter-groups)
-				  (unless (eq ibuffer-sorting-mode 'alphabetic)
-					(ibuffer-do-sort-by-alphabetic))))
 	#+END_SRC
 
 *** undo-tree
@@ -789,7 +785,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 	 (global-set-key [f5] 'undo-tree-visualize)
 	 (global-set-key (kbd "C-x d") 'dired)
 	 (global-set-key (kbd "C-x b") 'ibuffer)
-	 (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
 	 (global-set-key (kbd "M-9") 'shell-command)
 	 (global-set-key (kbd "M-0") 'async-shell-command)
 	 (global-set-key (kbd "M-j") 'next-buffer)
@@ -797,3 +792,4 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 	 (shell-pop--set-shell-type 'my/shell-pop-shell-type my/shell-pop-shell-type)
    #+END_SRC
+
