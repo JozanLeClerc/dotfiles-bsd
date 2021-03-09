@@ -12,8 +12,8 @@ use constant LIST => [
 	'Lock screen',
 	'Sleep',
 	'Logout',
-	'Reboot'
-	'Shutdown',
+	'Reboot',
+	'Shutdown'
 	];
 use constant CONFIRM => [
 	"No",
