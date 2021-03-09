@@ -3,6 +3,7 @@
 use strict;
 use warnings;
 use File::HomeDir qw(home);
+use constant KILL_PATH => '/bin/kill';
 use constant CONFIRM => [
 	"No",
 	"Yes"
@@ -36,10 +37,9 @@ sub action
 	@split = split / $user /, $var;
 	$pid = $split[0];
 	$pid =~ s/\D//g;
-	print $pid . "\n";
 	$proc = (split / /, $split[1])[0];
-	print $proc . "\n";
 	if (confirm($pid, $proc) == 1) {
+		exec(KILL_PATH, '-9', $pid);
 	}
 	return;
 }
@@ -47,10 +47,11 @@ sub action
 sub main
 {
 	my $choice;
+	my $ps;
 	my $user;
 
 	$user = getlogin();
-	$choice = `ps -U "$user" -o pid,user,command | dmenu -i -l 30 -m 0`;
+	$choice = `ps -U "$user" -o pid,user,command | cut -c -128 | dmenu -i -l 30 -m 0`;
 	action($choice, $user);
 	return (0);
 }
