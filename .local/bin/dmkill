@@ -34,6 +34,9 @@ sub action
 	my $proc;
 
 	chomp $var;
+	if (not $var) {
+		return;
+	}
 	@split = split / $user /, $var;
 	$pid = $split[0];
 	$pid =~ s/\D//g;
@@ -51,7 +54,7 @@ sub main
 	my $user;
 
 	$user = getlogin();
-	$choice = `ps -U "$user" -o pid,user,command | cut -c -128 | dmenu -i -l 30 -m 0`;
+	$choice = `ps -U "$user" -o pid,user,comm,time,%cpu,%mem | dmenu -i -l 32 -m 0`;
 	action($choice, $user);
 	return (0);
 }
