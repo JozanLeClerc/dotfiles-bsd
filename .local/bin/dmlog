@@ -12,8 +12,8 @@ use constant LIST => [
 	'Lock screen',
 	'Sleep',
 	'Logout',
-	'Shutdown',
 	'Reboot'
+	'Shutdown',
 	];
 use constant CONFIRM => [
 	"No",
@@ -62,12 +62,12 @@ sub action
 	}
 	elsif ($var eq ${+LIST}[3]) {
 		if (confirm($var) == 1) {
-			exec(SHUTDOWN_PATH, '-p', 'now');
+			exec(SHUTDOWN_PATH, '-r', 'now');
 		}
 	}
 	elsif ($var eq ${+LIST}[4]) {
 		if (confirm($var) == 1) {
-			exec(SHUTDOWN_PATH, '-r', 'now');
+			exec(SHUTDOWN_PATH, '-p', 'now');
 		}
 	}
 	return;
