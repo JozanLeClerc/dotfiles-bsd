@@ -9,11 +9,11 @@ use constant {
 	SHUTDOWN_PATH	=> '/sbin/shutdown'
 };
 use constant LIST => [
-	"Lock screen",
-	"Sleep",
-	"Logout",
-	"Shutdown",
-	"Reboot"
+	'Lock screen',
+	'Sleep',
+	'Logout',
+	'Shutdown',
+	'Reboot'
 	];
 use constant CONFIRM => [
 	"No",
@@ -29,7 +29,7 @@ sub confirm
 	for (@{+CONFIRM}) {
 		$list .= $_ . "\n";
 	}
-	$choice = `printf "%s" "$list" | dmenu -p "$var:"`;
+	$choice = `printf "%s" "$list" | dmenu -i -p "$var?" -l 2 -m 0`;
 	chomp $choice;
 	if ($choice eq ${+CONFIRM}[1]) {
 		return (1);
@@ -51,7 +51,7 @@ sub action
 		if (not $pid) {
 			exec(SLOCK_PATH);
 		}
-		els{
+		else {
 			exec(ACPI_PATH, '-s', '3');
 		}
 	}
@@ -81,7 +81,7 @@ sub main
 	for (@{+LIST}) {
 		$list .= $_ . "\n";
 	}
-	$choice = `printf "%s" "$list" | dmenu`;
+	$choice = `printf "%s" "$list" | dmenu -i -l 5 -m 0`;
 	action($choice);
 	return (0);
 }

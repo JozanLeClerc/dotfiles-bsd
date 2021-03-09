@@ -1,0 +1,118 @@
+#!/usr/local/bin/perl
+
+use strict;
+use warnings;
+use File::HomeDir qw(home);
+use constant {
+	SAVE_PATH		=> 'pics/scrot/',
+	SCREENSHOT_PATH	=> '/usr/local/bin/scrot',
+	IMGVIEW_PATH	=> '/usr/local/bin/sxiv',
+	XCLIP_PATH		=> '/usr/local/bin/xclip'
+};
+use constant LIST => [
+	'Select region',
+	'Window',
+	'Fullscreen',
+	'Monitor 1',
+	'Monitor 2'
+	];
+
+sub show_img
+{
+	my ($file) = @_;
+	my $pid;
+
+	$pid = fork();
+	if (not $pid) {
+		exec(IMGVIEW_PATH, '-b', $file);
+	}
+	return;
+}
+
+sub file_name
+{
+	my $file_name;
+
+	$file_name = home() . '/' . SAVE_PATH . 'screen_';
+	$file_name .= `date "+%Y-%m-%d_%H-%M-%S"`;
+	chomp $file_name;
+	$file_name .= '.png';
+	return ($file_name);
+}
+
+sub action
+{
+	my ($var) = @_;
+	my $pid;
+	my $file_name;
+
+	chomp $var;
+	if ($var eq ${+LIST}[0]) {
+		$file_name = file_name();
+		system(
+			SCREENSHOT_PATH,
+			$file_name,
+			'-q', '100',
+			'-s',
+			'-l', 'mode=classic,style=dash,width=2,color=#990000'
+			);
+		show_img($file_name);
+	}
+	elsif ($var eq ${+LIST}[1]) {
+		$file_name = file_name();
+		system(
+			SCREENSHOT_PATH,
+			$file_name,
+			'-q', '100',
+			'-u'
+			);
+		show_img($file_name);
+	}
+	elsif ($var eq ${+LIST}[2]) {
+		$file_name = file_name();
+		system(
+			SCREENSHOT_PATH,
+			$file_name,
+			'-q', '100'
+			);
+		show_img($file_name);
+	}
+	elsif ($var eq ${+LIST}[3]) {
+		$file_name = file_name();
+		system(
+			SCREENSHOT_PATH,
+			$file_name,
+			'-q', '100',
+			'-a', '0,0,1920,1080'
+			);
+		show_img($file_name);
+	}
+	elsif ($var eq ${+LIST}[4]) {
+		$file_name = file_name();
+		system(
+			SCREENSHOT_PATH,
+			$file_name,
+			'-q', '100',
+			'-a', '1920,180,1440,900'
+			);
+		show_img($file_name);
+	}
+	return;
+}
+
+sub main
+{
+	my $list;
+	my $choice;
+
+	for (@{+LIST}) {
+		$list .= $_ . "\n";
+	}
+	$choice = `printf "%s" "$list" | dmenu -i -l 10 -m 0`;
+	action($choice);
+	return (0);
+}
+
+main();
+
+__END__

@@ -243,7 +243,7 @@ sub dmenu_prompt
 	my $answer;
 	my $list = PROG_LIST;
 
-	$answer = `printf "$list\nURL: $url\n" | dmenu -i -l 11`;
+	$answer = `printf "$list\nURL: $url\n" | dmenu -i -l 11 -m 0`;
 	chomp $answer;
 	return $answer;
 }

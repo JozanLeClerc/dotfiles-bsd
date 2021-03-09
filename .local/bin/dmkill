@@ -1,0 +1,60 @@
+#!/usr/local/bin/perl
+
+use strict;
+use warnings;
+use File::HomeDir qw(home);
+use constant CONFIRM => [
+	"No",
+	"Yes"
+	];
+
+sub confirm
+{
+	my ($pid, $proc) = @_;
+	my $list;
+	my $choice;
+
+	for (@{+CONFIRM}) {
+		$list .= $_ . "\n";
+	}
+	$choice = `printf "%s" "$list" | dmenu -i -p "Kill $proc ($pid)?" -l 2 -m 0`;
+	chomp $choice;
+	if ($choice eq ${+CONFIRM}[1]) {
+		return (1);
+	}
+	return (0);
+}
+
+sub action
+{
+	my ($var, $user) = @_;
+	my @split;
+	my $pid;
+	my $proc;
+
+	chomp $var;
+	@split = split / $user /, $var;
+	$pid = $split[0];
+	$pid =~ s/\D//g;
+	print $pid . "\n";
+	$proc = (split / /, $split[1])[0];
+	print $proc . "\n";
+	if (confirm($pid, $proc) == 1) {
+	}
+	return;
+}
+
+sub main
+{
+	my $choice;
+	my $user;
+
+	$user = getlogin();
+	$choice = `ps -U "$user" -o pid,user,command | dmenu -i -l 30 -m 0`;
+	action($choice, $user);
+	return (0);
+}
+
+main();
+
+__END__
