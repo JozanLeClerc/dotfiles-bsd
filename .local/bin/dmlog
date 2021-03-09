@@ -1,0 +1,91 @@
+#!/usr/local/bin/perl
+
+use strict;
+use warnings;
+use constant {
+	SLOCK_PATH		=> '/usr/local/bin/slock',
+	ACPI_PATH		=> '/usr/sbin/acpiconf',
+	KILL_PATH		=> '/usr/bin/killall',
+	SHUTDOWN_PATH	=> '/sbin/shutdown'
+};
+use constant LIST => [
+	"Lock screen",
+	"Sleep",
+	"Logout",
+	"Shutdown",
+	"Reboot"
+	];
+use constant CONFIRM => [
+	"No",
+	"Yes"
+	];
+
+sub confirm
+{
+	my ($var) = @_;
+	my $list;
+	my $choice;
+
+	for (@{+CONFIRM}) {
+		$list .= $_ . "\n";
+	}
+	$choice = `printf "%s" "$list" | dmenu -p "$var:"`;
+	chomp $choice;
+	if ($choice eq ${+CONFIRM}[1]) {
+		return (1);
+	}
+	return (0);
+}
+
+sub action
+{
+	my ($var) = @_;
+	my $pid;
+
+	chomp $var;
+	if ($var eq ${+LIST}[0]) {
+		exec(SLOCK_PATH);
+	}
+	elsif ($var eq ${+LIST}[1]) {
+		$pid = fork();
+		if (not $pid) {
+			exec(SLOCK_PATH);
+		}
+		els{
+			exec(ACPI_PATH, '-s', '3');
+		}
+	}
+	elsif ($var eq ${+LIST}[2]) {
+		if (confirm($var) == 1) {
+			exec(KILL_PATH, 'dwm');
+		}
+	}
+	elsif ($var eq ${+LIST}[3]) {
+		if (confirm($var) == 1) {
+			exec(SHUTDOWN_PATH, '-p', 'now');
+		}
+	}
+	elsif ($var eq ${+LIST}[4]) {
+		if (confirm($var) == 1) {
+			exec(SHUTDOWN_PATH, '-r', 'now');
+		}
+	}
+	return;
+}
+
+sub main
+{
+	my $list;
+	my $choice;
+
+	for (@{+LIST}) {
+		$list .= $_ . "\n";
+	}
+	$choice = `printf "%s" "$list" | dmenu`;
+	action($choice);
+	return (0);
+}
+
+main();
+
+__END__
