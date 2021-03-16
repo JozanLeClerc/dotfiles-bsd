@@ -19,7 +19,7 @@ use constant {
 	SXIV_PATH		=> '/usr/local/bin/sxiv',
 	ZATHURA_PATH	=> '/usr/local/bin/zathura',
 	W3M_PATH		=> '/usr/local/bin/w3m',
-	BROWSER_PATH	=> '/usr/local/bin/iridium',
+	BROWSER_PATH	=> '/usr/local/bin/firefox',
 	NOTIFYSEND_PATH	=> '/usr/local/bin/notify-send'
 };
 use constant PROG_LIST	=> "" .
@@ -31,7 +31,7 @@ use constant PROG_LIST	=> "" .
 "sxiv"					. "\n" .
 "zathura"				. "\n" .
 "w3m"					. "\n" .
-"iridium"				. "\n";
+"firefox"				. "\n";
 
 sub open_link
 {
