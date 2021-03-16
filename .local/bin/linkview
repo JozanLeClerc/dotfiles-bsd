@@ -225,7 +225,7 @@ sub open_link
 	elsif ($a eq "w3m") {
 		exec(TERMINAL_PATH, '-e', W3M_PATH, $url);
 	}
-	elsif ($a eq "iridium") {
+	elsif ($a eq "firefox") {
 		$pid = fork();
 		if (not $pid) {
 			setsid();
