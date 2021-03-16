@@ -1,0 +1,28 @@
+#!/usr/local/bin/perl
+
+use strict;
+use warnings;
+use constant BROWSER_PATH => '/usr/local/bin/firefox';
+
+sub main
+{
+	my $choice;
+	my $url;
+	my $pid;
+
+	$choice = `printf "" | dmenu -i -m 0 -p 'Search:'`;
+	if (not $choice) {
+		return (0);
+	}
+	$choice =~ s/ /+/g;
+	$url = 'https://duckduckgo.com/?q=' . $choice;
+	$pid = fork();
+	if (not $pid) {
+		exec(BROWSER_PATH, '--kiosk', $url);
+	}
+	return (0);
+}
+
+main();
+
+__END__
