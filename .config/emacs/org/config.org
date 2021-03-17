@@ -130,7 +130,8 @@
  (setq org-todo-keywords
   '((sequence "TODO"
       "|"
-      "DONE")))
+      "DONE"
+      "CANCELED")))
 
   (setq org-log-done 'time)
 
