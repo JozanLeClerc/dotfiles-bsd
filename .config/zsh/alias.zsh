@@ -12,7 +12,7 @@
 # ========================
 
 alias exa='exa --color=always --group-directories-first' \
-	ls='lsd -l --date relative --group-dirs first'
+	ls='exa -l'
 tree() {
 	exa -T $@ | less
 }

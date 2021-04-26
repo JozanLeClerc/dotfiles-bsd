@@ -17,6 +17,8 @@ else
 	xmodmap -e 'keycode 23 = Escape'
 	xmodmap -e 'keycode 66 = Escape'
 fi
+mouse=$(xinput list | grep 'USB Optical Mouse' | awk '{print $8}' | sed 's/id=//')
+xinput --set-prop $mouse 'libinput Accel Speed' -0.75
 notify-send -u low -t 2000 'kb' '  Keyboard set'
 
 # vim: filetype=sh
