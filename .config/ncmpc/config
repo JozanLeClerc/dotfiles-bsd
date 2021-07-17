@@ -1,0 +1,14 @@
+auto-center = yes
+visible-bitrate = yes
+library-page-tags = genre artist album
+enable-colors = yes
+color title = yellow/black
+color background = black
+color line = /black
+color list = /none
+color list-bold = red
+color browser-playlist = red/none
+color progressbar = red/black
+color status-state = yellow/black
+color status-song = yellow/black
+color status-time = yellow/black
