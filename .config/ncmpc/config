@@ -1,6 +1,7 @@
 auto-center = yes
 visible-bitrate = yes
 library-page-tags = genre artist album
+text-editor = nvim
 enable-colors = yes
 color title = yellow/black
 color background = black
