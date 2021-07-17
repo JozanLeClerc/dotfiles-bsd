@@ -5,7 +5,6 @@ use warnings;
 use Capture::Tiny qw(capture);
 
 use constant {
-	TORIFY_PATH			=> '/usr/local/bin/torify',
 	NEWSBOAT_PATH		=> '/usr/local/bin/newsboat',
 	NOTIFY_SEND_PATH	=> '/usr/local/bin/notify-send'
 };
@@ -14,7 +13,6 @@ sub main
 {
 	my $stdout;
 	if (system(
-		TORIFY_PATH,
 		NEWSBOAT_PATH,
 		'-x',
 		'reload'

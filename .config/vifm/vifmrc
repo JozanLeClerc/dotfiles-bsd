@@ -81,4 +81,4 @@ filextype *.xcf gimp %f 2>/dev/null &
 
 set vifminfo=dhistory,chistory,tui,shistory,phistory,fhistory,dirstack,registers,bookmarks,bmarks
 
-" source /home/jozan/.local/packs/vifm_devicons/favicons.vifm
+source /home/jozan/.local/packs/vifm_devicons/favicons.vifm

@@ -41,13 +41,13 @@ alias c='clear' \
 	grep='grep --color=always' \
 	rgrep='grep -R -n -H' \
 	vifm='TERM=xterm-256color vifm' \
-	fetch='torify fetch' \
+	fetch='fetch' \
 	fsl='fossil' \
 	diff='colordiff' \
 	ctags='uctags "--exclude=.ccls*"' \
-	yt='straw-viewer --api=auto -C -f' \
-	yta='straw-viewer --api=auto -C -n' \
-	gyt='gtk-straw-viewer' \
+	yt='pipe-viewer -f' \
+	yta='pipe-viewer -n' \
+	gyt='gtk-pipe-viewer' \
 	ytdl='youtube-dl --add-metadata' \
 	ytdlist='youtube-dl -F' \
 	ytdl1080="youtube-dl --add-metadata -f '[height<=1080]'" \
@@ -58,6 +58,15 @@ confgit() {
 	git --git-dir=$HOME/docs/conffiles-bsd --work-tree=/ $@
 	cd $p
 }
+upsrc() {
+	doas git -C /usr/src pull --ff-only
+}
+upports() {
+	doas pkg update &&
+		doas git -C /usr/ports pull --ff-only &&
+		doas portmaster -a
+}
+alias realupdate='doas portmaster -dya --no-confirm'
 alias vim='nvim' \
 	gst='git status' \
 	ga='git add' \
@@ -65,9 +74,6 @@ alias vim='nvim' \
 	gpp='git push' \
 	gpo='git push origin' \
 	srcnt='find . -type f -name "*.c" -exec cat {} \; | sed "/^\//d" | sed "/^\*/d" | sed "/^ \*/d" | sed "/^\/\//d" | sed "/^$/d" | wc -l | tr -d " "' \
-	startdocker='sudo service vboxnet onerestart && docker-machine start docker-home' \
-	stopdocker='docker-machine stop docker-home' \
-	envdocker='eval $(docker-machine env docker-home)' \
 	vimz='nvim $(fzf --preview="head -$FZF_PREVIEW_LINES {}")' \
 	v='nvim $(fzf --preview="head -$FZF_PREVIEW_LINES {}")' \
 	tohex='printf "0x%x\n"'
@@ -130,7 +136,7 @@ alias bi='cd $HOME/.local/bin && ls'
 twi() {
 	mpview https://twitch.tv/"$1";
 }
-alias nb='torify newsboat' \
+alias nb='newsboat' \
 	mutt='neomutt' \
 	sxiv='sxiv -b -a' \
 	pinfo='pkg info -x' \

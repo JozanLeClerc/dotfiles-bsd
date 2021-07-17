@@ -1,5 +1,5 @@
-#!/bin/sh
+#!/usr/local/bin/dash
 
 geli attach -k /root/geli_keys/hdd_ext.key /dev/da0 &&
-	mount /dev/da0.eli /media &&
-	chown -R jozan:jozan /media
+	mkdir -p "$HOME"/hdd &&
+	mount /dev/da0.eli "$HOME"/hdd

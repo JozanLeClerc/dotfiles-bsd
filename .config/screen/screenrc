@@ -62,14 +62,15 @@ logfile $HOME/tmp/screen-%Y%m%d-%n.log
 #caption always "%{=u .G} %-w%<%{=ub .y}%n %t%{=u .G}%+w "
 #caption always "%{=u kC} %= %-w%L>%{=b G}[:%n %t:]%{-}%52<%+w %L="
 #caption always "%{= KW}%-w%{= ky} [%n] %t %{-}%+w %-= %{= Kk}[%l] %{= Kk}[%Y/%m/%d %c]"
-caption always "%{= KW}%-w%{= kc} [%n] %t %{-}%+w %-= %{= Kk}[%H | %l | %m/%d %c]"
+
+# caption always "%{= KW}%-w%{= kc} [%n] %t %{-}%+w %-= %{= Kk}[%H | %l | %m/%d %c]"
 
 # hardstatus style
-hardstatus alwaysignore
+# hardstatus alwaysignore
 #hardstatus alwayslastline "%{= .K} [%l]%<%=%{= .W}@%H %=%{= .y} %Y/%m/%d%{= .m} %C %A"
 #hardstatus alwayslastline '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
 #hardstatus alwayslastline "%{R}[ %{w}%1` %{R}]%=%{M}%e %{G}%H %{Y} %c %{R} %d/%m/%Y %{K} Load: %l %{w}"
-#hardstatus alwayslastline "%{= wk} %{by} %H %{wk} | %-Lw%{kw}◣%{= g}%n%f* %t%{wk}◤%{wk}%+Lw%< %= %{kw}◣%{= R} [%m/%d %c] %{-}"
+# hardstatus alwayslastline "%{= wk} %{by} %H %{wk} | %-Lw%{kw}◣%{= g}%n%f* %t%{wk}◤%{wk}%+Lw%< %= %{kw}◣%{= R} [%m/%d %c] %{-}"
 
 # Ctrl + left : prev
 # Ctrl + right : next
@@ -140,7 +141,7 @@ bindkey -k k; detach
 
 # Start at window 1
 bind c screen 1
-bind 0 select 10
+# bind 0 select 10
 select 1
 
 #backtick 1 60 60 $HOME/Tools/get_freemem

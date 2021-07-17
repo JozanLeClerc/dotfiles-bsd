@@ -8,5 +8,3 @@ xrandr --output HDMI-2 --off
 xrandr --output HDMI-3 --off
 xrandr --output DP-2 --off
 xrandr --output DP-3 --off
-
-bspc monitor LVDS-1 -d 01 02 03 04 05 06 07 08 09 10 11 12

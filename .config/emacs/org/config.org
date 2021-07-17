@@ -203,6 +203,7 @@
   (require 'evil-collection)
   (require 'evil-leader)
   (require 'evil-search-highlight-persist)
+  (require 'org-evil)
   (evil-mode t)
   (evil-collection-init 'ibuffer)
   (evil-collection-init 'magit)
