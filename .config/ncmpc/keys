@@ -6,6 +6,12 @@ key pause = 'P',  32
 ## Select/deselect song in queue
 key select = 'a'
 
+## Delete song from queue
+key delete = 330,  'd',  'x'
+
+## Toggle crossfade mode
+key crossfade = 0
+
 ## Append song to queue
 key add = 0
 
