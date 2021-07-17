@@ -32,14 +32,26 @@ use constant PROG_LIST	=> "" .
 "zathura"				. "\n" .
 "w3m"					. "\n" .
 "firefox"				. "\n";
+use constant QUAL_LIST	=> "" .
+"1080"					. "\n" .
+"720"					. "\n" .
+"480"					. "\n" .
+"360"					. "\n" .
+"240"					. "\n" .
+"144"					. "\n" .
+"uncap"					. "\n";
 
 sub open_link
 {
 	my ($a, $url) = @_;
+	my $count;
 	my $file_name;
 	my $i;
+	my $list;
 	my $pid;
+	my $pid2;
 	my $pwd;
+	my $quality;
 	my $ret;
 	my $tmp;
 	my $tmpfile;
@@ -65,93 +77,187 @@ sub open_link
 		$pid = fork();
 		if (not $pid) {
 			setsid();
-			chdir home() . "/dl" or
-			chdir home() . "/Downloads" or
-			chdir home() or die $!;
-			if (basename(cwd()) eq basename(home())) {
-				$pwd = '~/';
-			}
-			else {
-				$pwd = '~/' . basename(cwd());
-			}
-			$file_name = $url;
-			$file_name =~ s/.+\///g;
-			if ($file_name =~ m/^watch\?v=.+/) {
-				$file_name = `youtube-dl -e $url`;
-				if (not $file_name) {
-					$file_name = "Youtube video";
-				}
-				chomp $file_name;
-			}
-			@wc = split / /, $file_name;
-			if (@wc > 8) {
-				$file_name = "";
-				$i = 0;
-				while ($i < 8) {
-					$file_name .= "$wc[$i] ";
-					$i++;
-				}
-				$file_name .= "[...]";
-			}
-			$file_name =~ s/^[0-9]+/\[\.\.\.\]/;
-			system(
-				NOTIFYSEND_PATH,
-				'-u', 'low',
-				'-t', '10000',
-				'download started',
-				'  <b>' . $file_name . '</b> started downloading'
-				);
 			$ret = -1;
 			if ($a eq "youtube-dl") {
+				$list = QUAL_LIST;
+				$quality = `printf "$list" | dmenu -i -l 7 -m 0`;
+				if (not $quality) {
+					exit 0;
+				}
+				chomp $quality;
+				chdir home() . "/dl" or
+				chdir home() . "/Downloads" or
+				chdir home() or die $!;
+				if (basename(cwd()) eq basename(home())) {
+					$pwd = '~/';
+				}
+				else {
+					$pwd = '~/' . basename(cwd());
+				}
+				$file_name = $url;
+				$file_name =~ s/.+\///g;
+				$file_name = `youtube-dl -e $url`;
+				if (not $file_name) {
+					$file_name = "YouTube video";
+				}
+				chomp $file_name;
+				@wc = split / /, $file_name;
+				if (@wc > 8) {
+					$file_name = "";
+					$i = 0;
+					while ($i < 8) {
+						$file_name .= "$wc[$i] ";
+						$i++;
+					}
+					$file_name .= "[...]";
+				}
+				$file_name =~ s/^[0-9]+/\[\.\.\.\]/;
+				system(
+					NOTIFYSEND_PATH,
+					'-u', 'low',
+					'-t', '2000',
+					'download started',
+					'  <b>' . $file_name . '</b> started downloading'
+				);
 				$tmpfile = `mktemp`;
 				chomp $tmpfile;
-				(undef, undef, $ret) = capture {
-					system(YTDL_PATH . ' --newline --add-metadata ' . $url . ' >' . $tmpfile . ' &');
-				};
-				while (1) {
-					$val = `tail -n 1 "$tmpfile" | awk '{print \$2}' | tr -d '%'`;
-					if (looks_like_number($val) != 0) {
-						system( 
-							NOTIFYSEND_PATH,
-							'-h',
-							'int:value:' . $val,
-							'-u', 'low',
-							'-t', '5000',
-							'downloading',
-							'  downloading <b>' . $file_name . '</b>'
-						);
-						if ($val == 100 || system('pgrep python >/dev/null 2>&1') != 0) {
-							last;
+				$pid2 = fork();
+				if (not $pid2) {
+					(undef, undef, $ret) = capture {
+						if ($quality eq 'uncap') {
+							system(YTDL_PATH . ' --newline --add-metadata ' . $url . ' >' . $tmpfile);
 						}
+						else {
+							system(YTDL_PATH . " -f '[height<=" . $quality . "]' --newline --add-metadata " . $url . ' >' . $tmpfile);
+						}
+					};
+					if ($ret == 0) {
+						system(
+							NOTIFYSEND_PATH,
+							'-u', 'normal',
+							'-t', '10000',
+							'download complete',
+							'  <b>' . $file_name . '</b> downloaded successfully to ' .
+							'<b>' . $pwd . '</b>'
+							);
 					}
-					sleep 2;
+					else {
+						system(
+							NOTIFYSEND_PATH,
+							'-u', 'critical',
+							'-t', '10000',
+							'download failed',
+							'  failed to download <b>' . $file_name . '</b>'
+							);
+					}
+					exit 0;
 				}
-				unlink $tmpfile;
+				elsif ($pid2 < 0) {
+					system(
+						NOTIFYSEND_PATH,
+						'-u', 'critical',
+						'-t', '10000',
+						'download failed',
+						'  failed to <b>fork(2)</b>'
+						);
+					exit 0;
+				}
+				else {
+					$count = 0;
+					while (1) {
+						$val = `tail -n 1 "$tmpfile" | awk '{print \$2}' | tr -d '%'`;
+						if (looks_like_number($val) != 0) {
+							system( 
+								NOTIFYSEND_PATH,
+								'-h',
+								'int:value:' . $val,
+								'-u', 'low',
+								'-t', '5000',
+								'downloading',
+								'  downloading <b>' . $file_name . '</b>'
+							);
+							if ($val == 100 || system('pgrep python >/dev/null 2>&1') != 0) {
+								last;
+							}
+						}
+						else {
+							if ($count == 10) {
+								last;
+							}
+							$count += 1;
+						}
+						sleep 2;
+					}
+					unlink $tmpfile;
+				}
+				exit 0;
 			}
 			else {
+				chdir home() . "/dl" or
+				chdir home() . "/Downloads" or
+				chdir home() or die $!;
+				if (basename(cwd()) eq basename(home())) {
+					$pwd = '~/';
+				}
+				else {
+					$pwd = '~/' . basename(cwd());
+				}
+				$file_name = $url;
+				$file_name =~ s/.+\///g;
+				@wc = split / /, $file_name;
+				if (@wc > 8) {
+					$file_name = "";
+					$i = 0;
+					while ($i < 8) {
+						$file_name .= "$wc[$i] ";
+						$i++;
+					}
+					$file_name .= "[...]";
+				}
+				$file_name =~ s/^[0-9]+/\[\.\.\.\]/;
+				system(
+					NOTIFYSEND_PATH,
+					'-u', 'low',
+					'-t', '10000',
+					'download started',
+					'  <b>' . $file_name . '</b> started downloading'
+				);
 				(undef, undef, $ret) = capture {
 					system(FETCH_PATH, $url);
 				};
+				if ($ret == 0) {
+					system(
+						NOTIFYSEND_PATH,
+						'-u', 'normal',
+						'-t', '10000',
+						'download complete',
+						'  <b>' . $file_name . '</b> downloaded successfully to ' .
+						'<b>' . $pwd . '</b>'
+						);
+				}
+				else {
+					system(
+						NOTIFYSEND_PATH,
+						'-u', 'critical',
+						'-t', '10000',
+						'download failed',
+						'  failed to download <b>' . $file_name . '</b>'
+						);
+				}
 			}
-			if ($ret == 0) {
-				system(
-					NOTIFYSEND_PATH,
-					'-u', 'normal',
-					'-t', '10000',
-					'download complete',
-					'  <b>' . $file_name . '</b> downloaded successfully to ' .
-					'<b>' . $pwd . '</b>'
-					);
-			}
-			else {
-				system(
-					NOTIFYSEND_PATH,
-					'-u', 'critical',
-					'-t', '10000',
-					'download failed',
-					'  failed to download <b>' . $file_name . '</b>'
-					);
-			}
+			exit 0;
+		}
+		elsif ($pid < 0) {
+			system(
+				NOTIFYSEND_PATH,
+				'-u', 'critical',
+				'-t', '10000',
+				'download failed',
+				'  failed to <b>fork(2)</b>'
+				);
+			exit 0;
+		}
+		else {
 			exit 0;
 		}
 	}
