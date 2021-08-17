@@ -100,15 +100,9 @@ vimconf() {
 	cd $p
 }
 pa() {
-	if [ "$1" ]; then
-		if cd "$HOME"/.local/packs/"$1"; then
-			ls
-		else
-			cd "$HOME"/.local/packs && ls
-		fi
-	else
-		cd "$HOME"/.local/packs && ls
-	fi
+	if [ -d $HOME/.local/packs ] && cd $HOME/.local/packs || return 1
+	dir=$(\ls $HOME/.local/packs | fzf)
+	[ -z $dir ] && return || cd $dir
 }
 co() {
 	if [ "$1" ]; then
