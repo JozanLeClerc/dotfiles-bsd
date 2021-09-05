@@ -33,6 +33,7 @@ use constant PROG_LIST	=> "" .
 "w3m"					. "\n" .
 "firefox"				. "\n";
 use constant QUAL_LIST	=> "" .
+"1440"					. "\n" .
 "1080"					. "\n" .
 "720"					. "\n" .
 "480"					. "\n" .
@@ -80,7 +81,7 @@ sub open_link
 			$ret = -1;
 			if ($a eq "youtube-dl") {
 				$list = QUAL_LIST;
-				$quality = `printf "$list" | dmenu -i -l 7 -m 0`;
+				$quality = `printf "$list" | dmenu -i -l 8 -m 0`;
 				if (not $quality) {
 					exit 0;
 				}

@@ -1,0 +1,3 @@
+#!/usr/local/bin/dash
+
+doas pkill wpa_supplicant

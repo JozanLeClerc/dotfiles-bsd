@@ -1,0 +1,4 @@
+#!/usr/local/bin/dash
+
+doas bsdsetsid wpa_supplicant -c /etc/wpa_supplicant.conf -i wlan0
+doas dhclient wlan0
