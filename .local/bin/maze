@@ -1,4 +1,0 @@
-#!/usr/local/bin/bash
-
-cols=$(tput cols)
-grep -ao "[/\\]" /dev/urandom | sed -e 's,\\,╲,' -e 's,/,╱,'| tr -d \\n | while read -r -n"$cols" input; do echo "$input"; done | lolcat -F 0.01
