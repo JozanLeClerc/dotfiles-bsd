@@ -5,7 +5,6 @@ use warnings;
 use File::Copy;
 
 use constant {
-	WP_FILE	=> '/usr/home/jozan/pics/wallpaper.jpg',
 	WP_POOL	=> '/usr/home/jozan/pics/wp/'
 };
 use constant FEH_PATH	=> '/usr/local/bin/feh';
@@ -13,43 +12,40 @@ use constant FEH_PATH	=> '/usr/local/bin/feh';
 sub get_pool_files
 {
 	my @files;
-	my $i;
 
-	$i = 0;
 	opendir(DIR, WP_POOL) or die "Couldn't open directory " . WP_POOL . ": $!";
-	while ($files[$i] = readdir(DIR)) {
-		next if $files[$i] =~ /^\./;
-		$i++;
-	}
+	@files = grep { !/^\./ } readdir(DIR);
 	closedir(DIR);
 	return @files;
 }
 
-sub choose_and_copy
+sub choose_wp
 {
 	my @files = (@_);
 	my $rand;
-	my $i;
+	my $wp;
 
-	$rand = int(rand(@files - 1));
-	unlink(WP_FILE);
-	copy(WP_POOL . $files[$rand], WP_FILE);
-	return;
+	$rand = int(rand(@files));
+	$wp = WP_POOL . $files[$rand];
+	return $wp;
 }
 
 sub set_wp
 {
+	my ($wp) = @_;
+
+	return 1 if !(-r $wp) || !(-f $wp);
 	system(
 		FEH_PATH,
 		'--no-fehbg',
 		'--bg-fill',
-		WP_FILE,
+		$wp,
 		'--bg-fill',
-		WP_FILE,
+		$wp,
 		'--bg-fill',
-		WP_FILE
+		$wp
 	);
-	return;
+	return 0;
 }
 
 sub notify
@@ -66,12 +62,30 @@ sub notify
 	return;
 }
 
+sub notify_error
+{
+	system(
+		'notify-send',
+		'-u',
+		'critical',
+		'-t',
+		'4000',
+		'setwp',
+		'  Wallpaper does not exist or is not a valid file'
+	);
+	return;
+}
+
 sub main
 {
-	choose_and_copy(get_pool_files());
-	set_wp();
+	my $wp;
+	my $ret;
+
+	$wp = choose_wp(get_pool_files());
+	$ret = set_wp($wp);
 	if (@ARGV == 0 || $ARGV[0] ne "-nw") {
-		notify();
+		notify() if ($ret == 0);
+		notify_error() if ($ret != 0);
 	}
 	return;
 }
