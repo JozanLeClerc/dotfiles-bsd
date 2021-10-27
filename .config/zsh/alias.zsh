@@ -45,8 +45,8 @@ alias c='clear' \
 	fsl='fossil' \
 	diff='colordiff' \
 	ctags='uctags "--exclude=.ccls*"' \
-	yt='pipe-viewer -f' \
-	yta='pipe-viewer -n' \
+	yt='pipe-viewer -f --ytdl-cmd=yt-dlp' \
+	yta='pipe-viewer -n --ytdl-cmd=yt-dlp' \
 	gyt='gtk-pipe-viewer' \
 	ytdl='youtube-dl --add-metadata' \
 	ytdlist='youtube-dl -F' \
