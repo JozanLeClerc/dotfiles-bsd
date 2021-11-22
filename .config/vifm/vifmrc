@@ -28,9 +28,10 @@ map <C-v> <C-w>v
 map R :restart<CR>
 map x :!sxiv -b -ft * 2>/dev/null &<CR>
 nnoremap o :file &<cr>
+map l :file <cr><cr>
 map E :!nvim %f<CR>
 map mkd :mkdir<space>
-map bg :!setbg %f &<CR>
+map bg :!setwp %f &<CR>
 map X :!ext %f &<CR>
 nnoremap S :shell<cr>
 nnoremap w :view<cr>
@@ -50,31 +51,32 @@ map gh :cd ~/<CR>
 map gr :cd /<CR>
 map gm :cd /media<CR>
 
-fileview */ exa -L 1 -T --color=always --group-directories-first %c
-fileview ../ exa -L 1 -T --color=always --group-directories-first %c
+fileviewer */ exa -L 1 -T --color=always --group-directories-first %c
+fileviewer ../ exa -L 1 -T --color=always --group-directories-first %c
 fileviewer *.html w3m -dump %c
-filextype *.html,*.htm firefox %f 2>/dev/null &
+filextype *.html,*.htm {firefox} firefox %f >/dev/null 2>&1 &,
+filextype *.html,*.htm {w3m} st -e w3m %f >/dev/null 2>&1 &,
 
 fileviewer *.docx docx2txt %c -
 fileviewer *.odt odt2txt %c -
 
-filetype *.csv,*.xlsx sc-im %c
 fileviewer *.csv sed "s/,,,,/,,-,,/g;s/,,/ /g" %c | column -t | sed "s/ - /  /g" | cut -c -%pw
+filetype *.csv,*.xlsx sc-im %c
 
-filetype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus st -e mpv --no-audio-display --audio-channels=stereo %c &,
-fileviewer *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus file
-filextype *.pdf,*.ps,*.eps,*.ps.gz,*.djvu,*.epub zathura %f 2>/dev/null &,
 fileviewer *.pdf pdftotext -l 1 -nopgbrk %c -
-fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.qt,*.divx,*.as[fx],*mp3,*.flac file
-filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,*.as[fx] mpv --fullscreen --really-quiet --audio-channels=stereo %f 2>/dev/null &,
+filextype *.pdf,*.ps,*.eps,*.ps.gz,*.djvu,*.epub zathura %f 2>/dev/null &,
+fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.qt,*.divx,*.as[fx],*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus file %c
+filextype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus {mpv} st -e mpv --no-audio-display --audio-channels=stereo %f &,
+filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,*.as[fx] {mpv} mpv --fullscreen --really-quiet --audio-channels=stereo %f 2>/dev/null &,
 
-fileview *.zip,*.rar,*.tar.gz atool -l %f
+fileviewer *.zip,*.rar,*.tar.gz atool -l %f
 filetype *.zip,*.rar,*.tar.gz ext %f
 
 fileviewer *.[1-8] man ./%c | col -b
 filetype *.[1-8] man ./%c
 
-filextype *.bmp,*.jpg,*.jpeg,*.png,*.ico,*.gif,*.xpm  sxiv -b -ia %f 2>/dev/null &
+fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.ico,*.gif,*.xpm file &c
+filextype *.bmp,*.jpg,*.jpeg,*.png,*.ico,*.gif,*.xpm sxiv -b -ia %f 2>/dev/null &
 
 filextype *.svg inkscape %f 2>/dev/null &
 filextype *.xcf gimp %f 2>/dev/null &
