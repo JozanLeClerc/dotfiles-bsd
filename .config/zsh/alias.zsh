@@ -53,7 +53,8 @@ alias c='clear' \
 	ytdl1080="youtube-dl --add-metadata -f '[height<=1080]'" \
 	irssi='irssi --config="$XDG_CONFIG_HOME"/irssi/config --home="$XDG_DATA_HOME"/irssi' \
 	irc='irssi' \
-	dgit='git --git-dir=$HOME/docs/dotfiles-bsd --work-tree=$HOME'
+	dgit='git --git-dir=$HOME/docs/dotfiles-bsd --work-tree=$HOME' \
+	vpsdo='/usr/home/jozan/dev/perl/serv-scripts/vps-do.pl'
 confgit() {
 	p=$(pwd)
 	cd /
