@@ -87,13 +87,27 @@ emoji_favicons = false
 
 
 [keybindings]
-bind_bottom   = ":"
-bind_back     = "H"
-bind_forward  = "L"
-bind_next_tab = "J"
-bind_prev_tab = "K"
-bind_edit     = "o"
-bind_new_tab  = "O"
+bind_bottom    = ":"
+bind_moveup    = "k"
+bind_movedown  = "j"
+bind_back      = "H"
+bind_forward   = "L"
+bind_next_tab  = "J"
+bind_prev_tab  = "K"
+bind_edit      = "o"
+bind_new_tab   = "O"
+bind_close_tab = "x"
+bind_home      = "T"
+bind_tab1      = "!"
+bind_tab2      = "@"
+bind_tab3      = "#"
+bind_tab4      = "$"
+bind_tab5      = "%"
+bind_tab6      = "^"
+bind_tab7      = "&"
+bind_tab8      = "*"
+bind_tab9      = "("
+bind_tab0      = ")"
 # In the future there will be more settings here.
 
 # Hold down shift and press the numbers on your keyboard (1,2,3,4,5,6,7,8,9,0) to set this up.
