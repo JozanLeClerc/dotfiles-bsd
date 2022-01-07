@@ -3,9 +3,9 @@
 xset r rate 200 150
 setxkbmap -layout us,fr -option grp:alt_shift_toggle
 setxkbmap -option caps:none
-if ! xrandr | grep 'HDMI-1 connected' >/dev/null 2>&1; then
-	if ! xrandr | grep 'VGA-1 connected' >/dev/null 2>&1; then
-		echo
+screens=$(xrandr | grep ' connected' | awk '{print $1}')
+if ! echo "$screens" | grep 'HDMI-1' >/dev/null 2>&1; then
+	if ! echo "$screens" | grep 'VGA-1' >/dev/null 2>&1; then
 		setxkbmap -option ctrl:swapcaps
 		xmodmap -e 'keycode 9 = Tab'
 		xmodmap -e 'keycode 23 = Escape'
@@ -18,7 +18,7 @@ else
 	xmodmap -e 'keycode 66 = Escape'
 fi
 mouse=$(xinput list | grep 'HARPOON' | awk '{print $10}' | sed 's/id=//')
-xinput --set-prop $mouse 'libinput Accel Speed' -0.40
+xinput --set-prop "$mouse" 'libinput Accel Speed' -0.40
 notify-send -u low -t 2000 'kb' '  Keyboard set'
 
 # vim: filetype=sh
