@@ -88,7 +88,7 @@ vimbin() {
 		cd $p
 		return
 	fi
-	$VISUAL $sc
+	${VISUAL} $sc
 	cd $p
 }
 vimconf() {
