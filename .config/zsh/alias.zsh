@@ -88,7 +88,7 @@ vimbin() {
 		cd $p
 		return
 	fi
-	nvim $sc
+	$VISUAL $sc
 	cd $p
 }
 vimconf() {
@@ -99,7 +99,7 @@ vimconf() {
 		cd $p
 		return
 	fi
-	nvim $sc
+	$VISUAL $sc
 	cd $p
 }
 pa() {

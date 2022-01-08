@@ -15,7 +15,7 @@
 export PATH="$HOME"/.local/bin:"$PATH":/usr/local/llvm10/bin:/usr/local/llvm11/bin
 
 # Apps
-export EDITOR='emacsclient -t -a nvim'
+export EDITOR="emacsclient -c -a nvim"
 export VISUAL="$EDITOR"
 export PAGER='less'
 export TERMINAL='st'
