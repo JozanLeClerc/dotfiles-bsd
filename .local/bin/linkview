@@ -14,7 +14,7 @@ use constant {
 	TERMINAL_PATH	=> '/usr/local/bin/st',
 	MPVIEW_PATH		=> '/home/jozan/.local/bin/mpview',
 	MPV_PATH		=> '/usr/local/bin/mpv',
-	YTDL_PATH		=> '/usr/local/bin/youtube-dl',
+	YTDL_PATH		=> '/usr/local/bin/yt-dlp',
 	FETCH_PATH		=> '/usr/bin/fetch',
 	SXIV_PATH		=> '/usr/local/bin/sxiv',
 	ZATHURA_PATH	=> '/usr/local/bin/zathura',
