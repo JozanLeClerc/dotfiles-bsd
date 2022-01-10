@@ -1,0 +1,15 @@
+#!/usr/local/bin/dash -e
+
+[ -z "$1" ] && echo 'Thought needed' && exit 1
+
+nl='
+'
+date=$(date)
+
+gsed -i '15i '"\\${nl}\\${nl}"'## '"\\${date}"' '"\\${nl}\\${nl}\\${1}" "$HOME"/dev/web/jozan_gemini/thoughts.gmi
+
+git -C "$HOME"/dev/web/jozan_gemini add -u
+git -C "$HOME"/dev/web/jozan_gemini commit -m "Thought: ${date}"
+git -C "$HOME"/dev/web/jozan_gemini push
+
+vps-update
