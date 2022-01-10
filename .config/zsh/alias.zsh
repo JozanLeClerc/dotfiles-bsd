@@ -45,12 +45,12 @@ alias c='clear' \
 	fsl='fossil' \
 	diff='colordiff' \
 	ctags='uctags "--exclude=.ccls*"' \
-	yt='pipe-viewer -f --ytdl-cmd=yt-dlp' \
-	yta='pipe-viewer -n --ytdl-cmd=yt-dlp' \
+	yt='pipe-viewer -f' \
+	yta='pipe-viewer -n' \
 	gyt='gtk-pipe-viewer' \
-	ytdl='youtube-dl --add-metadata' \
-	ytdlist='youtube-dl -F' \
-	ytdl1080="youtube-dl --add-metadata -f '[height<=1080]'" \
+	ytdl='yt-dlp --add-metadata' \
+	ytdlist='yt-dlp -F' \
+	ytdl1080="yt-dlp --add-metadata -f '[height<=1080]'" \
 	irssi='irssi --config="$XDG_CONFIG_HOME"/irssi/config --home="$XDG_DATA_HOME"/irssi' \
 	irc='irssi' \
 	dgit='git --git-dir=$HOME/docs/dotfiles-bsd --work-tree=$HOME' \
