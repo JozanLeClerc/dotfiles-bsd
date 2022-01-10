@@ -63,44 +63,45 @@
   (add-to-list 'load-path "~/.config/emacs/all-the-icons-dired/")
 
   (setq package-selected-packages '(
-            evil evil-collection evil-leader
-            evil-search-highlight-persist evil-mc evil-surround evil-ediff
-            evil-visual-mark-mode evil-nerd-commenter evil-vimish-fold
-            evil-numbers
-            lsp-mode lsp-treemacs lsp-ui
-            ccls
-            yasnippet yasnippet-classic-snippets yasnippet-snippets auto-yasnippet el-autoyas
-            helm helm-xref helm-lsp helm-etags-plus helm-fuzzy helm-themes helm-make helm-projectile
-            projectile
-            company company-box
-            which-key dap-mode
-            magit
-            undo-tree
-            shell-pop
-            treemacs treemacs-projectile treemacs-magit treemacs-evil
-            autopair paredit
-            rainbow-delimiters
-            color-identifiers-mode
-            ibuffer-vc ibuffer-projectile
-            eyebrowse
-            diff-hl
-            fzf
-            font-utils
-            restart-emacs
-            string-utils
-            dired-icon
-            kaolin-themes gruvbox-theme doom-themes spacemacs-theme
-            doom-modeline
-            dashboard
-            org-superstar toc-org
-            pdf-tools
-            dockerfile-mode
-            web-mode
-            ssh sudo-ext
-            vimish-fold
-            bind-key
-            all-the-icons all-the-icons-dired all-the-icons-ibuffer
-            ))
+			evil evil-collection evil-leader
+			evil-search-highlight-persist evil-mc evil-surround evil-ediff
+			evil-visual-mark-mode evil-nerd-commenter evil-vimish-fold
+			evil-numbers
+			lsp-mode lsp-treemacs lsp-ui
+			ccls
+			yasnippet yasnippet-classic-snippets yasnippet-snippets auto-yasnippet el-autoyas
+			helm helm-xref helm-lsp helm-etags-plus helm-fuzzy helm-themes helm-make helm-projectile
+			projectile
+			company company-box
+			which-key dap-mode
+			magit
+			undo-tree
+			shell-pop
+			treemacs treemacs-projectile treemacs-magit treemacs-evil
+			autopair paredit
+			rainbow-delimiters
+			color-identifiers-mode
+			ibuffer-vc ibuffer-projectile
+			eyebrowse
+			diff-hl
+			fzf
+			font-utils
+			restart-emacs
+			string-utils
+			dired-icon
+			kaolin-themes gruvbox-theme doom-themes spacemacs-theme
+			doom-modeline
+			dashboard
+			org-superstar toc-org
+			pdf-tools
+			dockerfile-mode
+			web-mode
+			ssh sudo-ext
+			vimish-fold
+			bind-key
+			all-the-icons all-the-icons-dired all-the-icons-ibuffer
+			w3m helm-w3m
+			))
 
   (when (cl-find-if-not #'package-installed-p package-selected-packages)
   (package-refresh-contents)
@@ -636,6 +637,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (yas-global-mode)
   (add-hook 'c-mode-hook 'lsp)
   (add-hook 'c++-mode-hook 'lsp)
+  (add-hook 'lsp-mode-hook 'lsp-enable-which-key-integration)
 
   (setq lsp-ui-doc-header nil
 		lsp-ui-doc-position 'top
@@ -668,7 +670,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   ;; (setq company-transformers nil company-lsp-async t company-lsp-cache-candidates nil)
   (add-hook 'company-mode-hook 'company-box-mode)
 
-  (setq ccls-executable "/usr/local/bin/ccls")
+  (setq ccls-executable "ccls")
 
   (defun ccls/callee () (interactive) (lsp-ui-peek-find-custom "$ccls/call" '(:callee t)))
   (defun ccls/caller () (interactive) (lsp-ui-peek-find-custom "$ccls/call"))

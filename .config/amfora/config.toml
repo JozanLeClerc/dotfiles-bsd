@@ -11,7 +11,7 @@
 
 [a-general]
 # Press Ctrl-H to access it
-home = "gemini://gemini.circumlunar.space"
+home = "gemini://geminispace.info/"
 
 # Follow up to 5 Gemini redirects without prompting.
 # A prompt is always shown after the 5th redirect and for redirects to protocols other than Gemini.
@@ -51,7 +51,7 @@ bullets = true
 show_link = false
 
 # A number from 0 to 1, indicating what percentage of the terminal width the left margin should take up.
-left_margin = 0.15
+left_margin = 0.10
 
 # The max number of columns to wrap a page's text to. Preformatted blocks are not wrapped.
 max_width = 150
@@ -68,7 +68,7 @@ page_max_size = 2097152  # 2 MiB
 page_max_time = 10
 
 # Whether to replace tab numbers with emoji favicons, which are cached.
-emoji_favicons = false
+emoji_favicons = true
 
 
 [auth]
