@@ -100,7 +100,7 @@
 			vimish-fold
 			bind-key
 			all-the-icons all-the-icons-dired all-the-icons-ibuffer
-			w3m helm-w3m
+			mutt-mode
 			))
 
   (when (cl-find-if-not #'package-installed-p package-selected-packages)
