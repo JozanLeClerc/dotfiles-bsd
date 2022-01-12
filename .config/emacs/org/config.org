@@ -639,7 +639,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (add-hook 'c++-mode-hook 'lsp)
   (add-hook 'lsp-mode-hook 'lsp-enable-which-key-integration)
 
-  (setq lsp-ui-doc-header nil
+  (setq lsp-ui-doc-header t
 		lsp-ui-doc-position 'top
 		lsp-ui-sideline-enable t)
 
