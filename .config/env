@@ -73,3 +73,4 @@ export LESSHISTFILE='-'
 export MANPAGER="less -R -M +Gg"
 export MPD_HOST="$HOME"/.local/share/mpd/socket
 export RUSTFLAGS="-L /usr/local/lib"
+export WWW_HOME="https://start.duckduckgo.com/"
