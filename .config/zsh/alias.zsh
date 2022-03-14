@@ -16,7 +16,10 @@ alias exa='exa --color=always --group-directories-first' \
 tree() {
 	exa -T $@ | less
 }
-alias c='clear' \
+alias \
+	e='editorcmd' \
+	vim='editorcmd' \
+	c='clear' \
 	less='less --tabs 4' \
 	bc='bc -l' \
 	mkf='gmake fclean' \
@@ -70,7 +73,7 @@ upports() {
 		doas portmaster -a
 }
 alias realupdate='doas portmaster -dya --no-confirm'
-alias vim='nvim' \
+alias \
 	gst='git status' \
 	ga='git add' \
 	gco='git commit -m' \
