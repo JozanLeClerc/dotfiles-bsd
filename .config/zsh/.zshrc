@@ -66,6 +66,10 @@ add-zsh-hook chpwd exa_after_cd
 [ -f "$ZDOTDIR"/plugins.zsh ]							&& source "$ZDOTDIR"/plugins.zsh
 [ -f "$XDG_PACKAGE_HOME"/fzf/shell/completion.zsh ]		&& source "$XDG_PACKAGE_HOME"/fzf/shell/completion.zsh
 [ -f "$XDG_PACKAGE_HOME"/fzf/shell/key-bindings.zsh ]	&& source "$XDG_PACKAGE_HOME"/fzf/shell/key-bindings.zsh
+[ -f "$XDG_CONFIG_HOME"/lf/icons ] && {
+	LF_ICONS="$(tr '\n' ':' <"$XDG_CONFIG_HOME"/lf/icons)" \
+		&& export LF_ICONS
+}
 
 globalias() {
 	if [[ $LBUFFER =~ ^[a-z0-9]+$ ]]; then
