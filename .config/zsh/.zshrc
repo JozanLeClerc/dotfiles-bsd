@@ -56,6 +56,12 @@ bindkey -M vicmd "j" history-beginning-search-forward
 autoload edit-command-line && zle -N edit-command-line
 bindkey "^e" edit-command-line
 
+autoload -U add-zsh-hook
+exa_after_cd() {
+	exa -l --icons --color=always --group-directories-first
+}
+add-zsh-hook chpwd exa_after_cd
+
 [ -f "$ZDOTDIR"/alias.zsh ]											&& source "$ZDOTDIR"/alias.zsh
 [ -f "$ZDOTDIR"/plugins.zsh ]										&& source "$ZDOTDIR"/plugins.zsh
 [ -f "$XDG_PACKAGE_HOME"/fzf/shell/completion.zsh ]					&& source "$XDG_PACKAGE_HOME"/fzf/shell/completion.zsh

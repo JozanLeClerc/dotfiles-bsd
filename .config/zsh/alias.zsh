@@ -11,7 +11,7 @@
 # ==     =====   ====   ==
 # ========================
 
-alias exa='exa --color=always --group-directories-first' \
+alias exa='exa --color=always --group-directories-first --icons' \
 	ls='exa -l'
 tree() {
 	exa -T $@ | less
