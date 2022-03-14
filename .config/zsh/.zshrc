@@ -62,10 +62,10 @@ exa_after_cd() {
 }
 add-zsh-hook chpwd exa_after_cd
 
-[ -f "$ZDOTDIR"/alias.zsh ]											&& source "$ZDOTDIR"/alias.zsh
-[ -f "$ZDOTDIR"/plugins.zsh ]										&& source "$ZDOTDIR"/plugins.zsh
-[ -f "$XDG_PACKAGE_HOME"/fzf/shell/completion.zsh ]					&& source "$XDG_PACKAGE_HOME"/fzf/shell/completion.zsh
-[ -f "$XDG_PACKAGE_HOME"/fzf/shell/key-bindings.zsh ]				&& source "$XDG_PACKAGE_HOME"/fzf/shell/key-bindings.zsh
+[ -f "$ZDOTDIR"/alias.zsh ]								&& source "$ZDOTDIR"/alias.zsh
+[ -f "$ZDOTDIR"/plugins.zsh ]							&& source "$ZDOTDIR"/plugins.zsh
+[ -f "$XDG_PACKAGE_HOME"/fzf/shell/completion.zsh ]		&& source "$XDG_PACKAGE_HOME"/fzf/shell/completion.zsh
+[ -f "$XDG_PACKAGE_HOME"/fzf/shell/key-bindings.zsh ]	&& source "$XDG_PACKAGE_HOME"/fzf/shell/key-bindings.zsh
 
 globalias() {
 	if [[ $LBUFFER =~ ^[a-z0-9]+$ ]]; then
