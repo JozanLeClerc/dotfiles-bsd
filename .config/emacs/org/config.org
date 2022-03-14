@@ -754,7 +754,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 *** undo-tree
 	#+BEGIN_SRC emacs-lisp
-	(require 'undo-tree)
+	  (require 'undo-tree)
+	(setq undo-tree-auto-save-history nil)
 	#+END_SRC
 
 ** Compilation

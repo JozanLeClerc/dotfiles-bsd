@@ -1,0 +1,62 @@
+# Basic vars
+set shellopts '-eu'
+set ifs "\n"
+set scrolloff 10
+set icons
+set period 1
+set previewer '~/.config/lf/scope'
+set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
+
+# cmds/functions
+cmd open ${{
+    case $(file --mime-type "$(readlink -f $f)" -b) in
+	application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) localc $fx ;;
+	image/vnd.djvu|application/pdf|application/octet-stream|application/postscript) bsdsetsid zathura $fx >/dev/null 2>&1 ;;
+        text/*|application/json|inode/x-empty) $EDITOR $fx;;
+	image/x-xcf) bsdsetsid gimp $f >/dev/null 2>&1 ;;
+	image/svg+xml) display -- $f ;;
+	image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|tif\|ico\)\(_large\)*$" |
+		bsdsetsid sxiv -aibo 2>/dev/null | while read -r file; do
+			[ -z "$file" ] && continue
+			lf -remote "send select \"$file\""
+			lf -remote "send toggle"
+		done &
+		;;
+	audio/*) bsdsetsid st -e mpv --no-audio-display --audio-channels=stereo $f ;;
+	video/*) bsdsetsid mpv --fullscreen --really-quiet --audio-channels=stereo $f >/dev/null 2>&1 ;;
+	application/pdf|application/vnd*|application/epub*) bsdsetsid zathura $fx >/dev/null 2>&1 ;;
+	application/pgp-encrypted) $EDITOR $fx ;;
+        *) for f in $fx; do bsdsetsid xdg-open $f >/dev/null 2>&1; done;;
+    esac
+}}
+
+cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
+cmd bulkrename $vidir $fx
+
+map gr cd /
+map gm cd ~/hdd
+map za set hidden!
+map zh set info size:time
+map <c-f> $lf -remote "send $id select '$(fzf)'"
+map <enter> open
+map D delete
+map S $$SHELL
+map <c-n> push :mkdir<space>
+map <f-7> push :mkdir<space>
+map <c-r> reload
+map x $$f
+map X !$f
+map o &mimeopen $f
+map O $mimeopen --ask $f
+
+map A rename # at the very end
+map c push A<c-u> # new rename
+map I push A<c-a> # at the very beginning
+map i push A<a-b><a-b><a-f> # before extention
+map a push A<a-b> # after extention
+map B bulkrename
+map <f-2> bulkrename
+
+map <c-e> down
+map <c-y> up
+map V push :!nvim<space>
