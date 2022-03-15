@@ -5,6 +5,10 @@ set scrolloff 10
 set shell "/usr/local/bin/dash"
 set icons
 set period 1
+set dirfirst on
+set drawbox on
+set preview on
+set ratios 1:1
 set previewer '~/.config/lf/scope'
 set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
 
