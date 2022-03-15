@@ -35,11 +35,17 @@ cmd bulkrename $vidir $fx
 
 map gr cd /
 map gm cd ~/hdd
+map gc cd ~/.config
+map gb cd ~/.local/bin
+map gs cd ~/.local/share
+map gM cd /mnt
+map gt cd /tmp
 map za set hidden!
 map zh set info size:time
 map <c-f> $lf -remote "send $id select '$(fzf)'"
 map <enter> open
 map D delete
+map W $$SHELL
 map S $$SHELL
 map <c-n> push :mkdir<space>
 map <f-7> push :mkdir<space>
