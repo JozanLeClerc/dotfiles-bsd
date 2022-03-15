@@ -2,6 +2,7 @@
 set shellopts '-eu'
 set ifs "\n"
 set scrolloff 10
+set shell "/usr/local/bin/dash"
 set icons
 set period 1
 set previewer '~/.config/lf/scope'
@@ -30,7 +31,7 @@ cmd open ${{
     esac
 }}
 
-cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
+cmd mkdir $mkdir -p "$(gecho $* | tr ' ' '\ ')"
 cmd bulkrename $vidir $fx
 
 map gr cd /
@@ -47,6 +48,7 @@ map <enter> open
 map D delete
 map W $$SHELL
 map S $$SHELL
+map <c-s> $$SHELL
 map <c-n> push :mkdir<space>
 map <f-7> push :mkdir<space>
 map <c-r> reload
