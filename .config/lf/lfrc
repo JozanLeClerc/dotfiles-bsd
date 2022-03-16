@@ -15,23 +15,24 @@ set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
 
 # cmds/functions
 cmd open ${{
-    case $(file --mime-type "$(readlink -f $f)" -b) in
-	application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) localc $fx ;;
-	image/vnd.djvu|application/pdf|application/octet-stream|application/postscript) bsdsetsid zathura $fx >/dev/null 2>&1 ;;
-        text/*|application/json|inode/x-empty) $EDITOR $fx;;
-	image/x-xcf) bsdsetsid gimp $f >/dev/null 2>&1 ;;
-	image/svg+xml) display -- $f ;;
-	image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|tif\|ico\)\(_large\)*$" |
-		bsdsetsid sxiv -aibo 2>/dev/null | while read -r file; do
-			[ -z "$file" ] && continue
-			lf -remote "send select \"$file\""
-			lf -remote "send toggle"
-		done &
-		;;
-	audio/*) bsdsetsid st -e mpv --no-audio-display --audio-channels=stereo $f ;;
-	video/*) bsdsetsid mpv --fullscreen --really-quiet --audio-channels=stereo $f >/dev/null 2>&1 ;;
-	application/pdf|application/vnd*|application/epub*) bsdsetsid zathura $fx >/dev/null 2>&1 ;;
-	application/pgp-encrypted) $EDITOR $fx ;;
+	case $(file --mime-type "$(readlink -f $f)" -b) in
+		application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) localc $fx ;;
+		image/vnd.djvu|application/pdf|application/octet-stream|application/postscript) bsdsetsid zathura $fx >/dev/null 2>&1 ;;
+		text/*|application/json|inode/x-empty) bat --style=plain --tabs 4 --paging=always -f $fx ;;
+		image/x-xcf) bsdsetsid gimp $f >/dev/null 2>&1 ;;
+		image/svg+xml) display -- $f ;;
+		image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|tif\|ico\)\(_large\)*$" |
+			bsdsetsid sxiv -aibo 2>/dev/null | while read -r file; do
+				[ -z "$file" ] && continue
+				lf -remote "send select \"$file\""
+				lf -remote "send toggle"
+			done &
+			;;
+		audio/*) bsdsetsid st -e mpv --no-audio-display --audio-channels=stereo $f ;;
+		video/*) bsdsetsid mpv --fullscreen --really-quiet --audio-channels=stereo $f >/dev/null 2>&1 ;;
+		*opendocument*) odt2txt $f | bat --style=plain --tabs 4 --paging=always -f ;;
+		application/pdf|application/vnd*|application/epub*) bsdsetsid zathura $fx >/dev/null 2>&1 ;;
+		application/pgp-encrypted) $EDITOR $fx ;;
         *) for f in $fx; do bsdsetsid xdg-open $f >/dev/null 2>&1; done;;
     esac
 }}
