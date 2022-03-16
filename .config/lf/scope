@@ -33,6 +33,7 @@ case "$(file --dereference --brief --mime-type -- "$1")" in
 	video/* ) mediainfo "$1" || exit 1 ;;
 	*/pdf) pdftotext "$1" - || exit 1 ;;
 	*opendocument*) odt2txt "$1" || exit 1;;
+	application/vnd.openxmlformats-officedocument.wordprocessingml.document) docx2txt "$1" ;;
 	application/pgp-encrypted) gpg -d -- "$1" ;;
 esac
 exit 1
