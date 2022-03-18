@@ -40,14 +40,17 @@ cmd open ${{
 
 cmd mkdir $mkdir -p "$(gecho $* | tr ' ' '\ ')"
 cmd bulkrename $vidir $fx
+cmd showallpics $exa *.png *.jpg *.jpeg *.gif *.webp *.tif *.ico 2>/dev/null | sxiv -taib &
 
 map gr cd /
 map gm cd ~/hdd
 map gc cd ~/.config
 map gb cd ~/.local/bin
 map gs cd ~/.local/share
+map gp cd ~/.local/packs
 map gM cd /mnt
 map gt cd /tmp
+
 map za set hidden!
 map zh set info size:time
 map <c-f> $lf -remote "send $id select '$(fzf)'"
@@ -59,10 +62,11 @@ map <c-s> $$SHELL
 map <c-n> push :mkdir<space>
 map <f-7> push :mkdir<space>
 map <c-r> reload
-map x $$f
-map X !$f
+map X $$f
 map o &mimeopen $f
 map O $mimeopen --ask $f
+map V showallpics
+map x showallpics
 
 map A rename # at the very end
 map c push A<c-u> # new rename
@@ -75,4 +79,3 @@ map <f-2> bulkrename
 map <c-e> down
 map <c-y> up
 map E push :$$EDITOR<space>
-map V push :$$EDITOR<space>
