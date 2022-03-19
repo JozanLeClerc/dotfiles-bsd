@@ -67,6 +67,7 @@ map o &mimeopen $f
 map O $mimeopen --ask $f
 map V showallpics
 map x showallpics
+map @ !clear; du -sh .
 
 map A rename # at the very end
 map c push A<c-u> # new rename
