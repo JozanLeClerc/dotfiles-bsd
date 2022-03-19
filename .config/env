@@ -15,8 +15,13 @@
 export XDG_DATA_HOME="$HOME"/.local/share
 export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_CACHE_HOME="$HOME"/.cache
-export XDG_MUSIC_DIR="$HOME"/mu
 export XDG_PACKAGE_HOME="$HOME"/.local/packs
+export XDG_DESKTOP_DIR="$HOME"
+export XDG_DOCUMENTS_DIR="$HOME"/docs
+export XDG_DOWNLOAD_DIR="$HOME"/dl
+export XDG_MUSIC_DIR="$HOME"/mu
+export XDG_PICTURES_DIR="$HOME"/pics
+export XDG_VIDEOS_DIR="$HOME"/vids
 
 # PATH
 export PATH="$HOME"/.local/bin:"$XDG_PACKAGE_HOME"/fzf-zsh-plugin/bin:"$PATH":/usr/local/llvm10/bin:/usr/local/llvm11/bin
