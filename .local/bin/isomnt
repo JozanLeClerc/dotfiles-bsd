@@ -1,0 +1,8 @@
+#!/usr/local/bin/dash -e
+
+echo qwe
+
+[ -z "$1" ] && exit 1
+doas mdconfig -a -t vnode -f "$1" -u 1
+mkdir -p "$HOME"/dvd
+mount -t cd9660 /dev/md1 "$HOME"/dvd

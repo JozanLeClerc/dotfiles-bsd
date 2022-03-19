@@ -1,0 +1,5 @@
+#!/usr/local/bin/dash -e
+
+umount /dev/md1
+rmdir "$HOME"/dvd
+doas mdconfig -d -u 1

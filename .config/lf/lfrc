@@ -44,6 +44,7 @@ cmd showallpics $exa *.png *.jpg *.jpeg *.gif *.webp *.tif *.ico 2>/dev/null | s
 
 map gr cd /
 map gm cd ~/hdd
+map gd cd ~/dvd
 map gc cd ~/.config
 map gb cd ~/.local/bin
 map gs cd ~/.local/share
@@ -62,11 +63,11 @@ map <c-s> $$SHELL
 map <c-n> push :mkdir<space>
 map <f-7> push :mkdir<space>
 map <c-r> reload
+map x !$f
 map X $$f
 map o &mimeopen $f
 map O $mimeopen --ask $f
 map V showallpics
-map x showallpics
 map @ !clear; du -sh .
 
 map A rename # at the very end
