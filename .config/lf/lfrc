@@ -69,8 +69,11 @@ map o &mimeopen $f
 map O $mimeopen --ask $f
 map V showallpics
 map @ !clear; du -sh .
-map _ set ratios 1
+map ( set ratios 1
+map ) set ratios 1:1
+map _ set ratios 1:2
 map + set ratios 1:3:5
+map = set ratios 1:3:5
 map P set preview!
 
 map A rename # at the very end
