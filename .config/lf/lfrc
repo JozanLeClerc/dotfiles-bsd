@@ -41,6 +41,7 @@ cmd open ${{
 cmd mkdir $mkdir -p "$(echo $* | sed 's/ /\ /g')"
 cmd bulkrename $vidir $fx
 cmd showallpics $exa *.png *.jpg *.jpeg *.gif *.webp *.tif *.ico 2>/dev/null | sxiv -taib &
+cmd newtermedit $EDITOR $fx
 
 map gr cd /
 map gm cd ~/hdd
@@ -87,4 +88,5 @@ map <f-2> bulkrename
 map <c-e> down
 map <c-y> up
 map e $$EDITOR $fx
-map E push :$$EDITOR<space>
+map E $st -e $EDITOR $fx &
+map <insert> push :$$EDITOR<space>
