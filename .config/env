@@ -23,9 +23,6 @@ export XDG_MUSIC_DIR="$HOME"/mu
 export XDG_PICTURES_DIR="$HOME"/pics
 export XDG_VIDEOS_DIR="$HOME"/vids
 
-# PATH
-export PATH="$HOME"/.local/bin:"$XDG_PACKAGE_HOME"/fzf-zsh-plugin/bin:"$PATH":/usr/local/llvm10/bin:/usr/local/llvm11/bin
-
 # Apps
 export EDITOR="editorcmd"
 export VISUAL="${EDITOR}"
@@ -53,6 +50,7 @@ export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 export DVDCSS_CACHE="$XDG_DATA_HOME"/dvdcss
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export GOPATH="$XDG_DATA_HOME"/go
+export GOBIN="$GOPATH"/bin
 export MACHINE_STORAGE_PATH="$XDG_DATA_HOME"/docker-machine
 export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME"/notmuch/notmuchrc
@@ -81,3 +79,6 @@ export MPD_HOST="$HOME"/.local/share/mpd/socket
 export RUSTFLAGS="-L /usr/local/lib"
 export WWW_HOME="https://start.duckduckgo.com/"
 export BAT_THEME="gruvbox-dark"
+
+# PATH
+export PATH="$HOME"/.local/bin:"$GOBIN":"$XDG_PACKAGE_HOME"/fzf-zsh-plugin/bin:"$PATH":/usr/local/llvm10/bin:/usr/local/llvm11/bin
