@@ -81,4 +81,4 @@ export WWW_HOME="https://start.duckduckgo.com/"
 export BAT_THEME="gruvbox-dark"
 
 # PATH
-export PATH="$HOME"/.local/bin:"$GOBIN":"$XDG_PACKAGE_HOME"/fzf-zsh-plugin/bin:"$PATH":/usr/local/llvm10/bin:/usr/local/llvm11/bin
+export PATH="$HOME"/.local/bin:"$GOBIN":"$XDG_PACKAGE_HOME"/fzf-zsh-plugin/bin:"$PATH":/usr/local/llvm13/bin:/usr/local/llvm12/bin
