@@ -301,7 +301,7 @@ sub open_link
 			$file_name = $tmp;
 			$file_name =~ s/.+\///g;
 			chomp $file_name;
-			system(SXIV_PATH, '-b', '-a', $file_name);
+			system(SXIV_PATH, '-f', '-b', '-a', $file_name);
 			unlink($file_name);
 			exit 0;
 		}
