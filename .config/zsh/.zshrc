@@ -62,6 +62,11 @@ exa_after_cd() {
 }
 add-zsh-hook chpwd exa_after_cd
 
+autoload -Uz url-quote-magic
+zle -N self-insert url-quote-magic
+autoload -Uz bracketed-paste-magic
+zle -N bracketed-paste bracketed-paste-magic
+
 [ -f "$ZDOTDIR"/alias.zsh ]								&& source "$ZDOTDIR"/alias.zsh
 [ -f "$ZDOTDIR"/plugins.zsh ]							&& source "$ZDOTDIR"/plugins.zsh
 [ -f "$XDG_PACKAGE_HOME"/fzf/shell/completion.zsh ]		&& source "$XDG_PACKAGE_HOME"/fzf/shell/completion.zsh
