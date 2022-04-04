@@ -13,8 +13,8 @@
 
 autoload -U colors && colors
 
-HISTSIZE=5000
-SAVEHIST=5000
+HISTSIZE=25000
+SAVEHIST=25000
 HISTFILE=$XDG_CONFIG_HOME/zsh/history
 
 LESS_TERMCAP_mb=$(printf '\e[1;31m');		export LESS_TERMCAP_mb
