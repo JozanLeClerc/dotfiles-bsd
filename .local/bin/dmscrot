@@ -6,7 +6,7 @@ use File::HomeDir qw(home);
 use constant {
 	SAVE_PATH		=> 'pics/scrot/',
 	SCREENSHOT_PATH	=> '/usr/local/bin/scrot',
-	IMGVIEW_PATH	=> '/usr/local/bin/sxiv',
+	IMGVIEW_PATH	=> '/usr/local/bin/nsxiv',
 	XCLIP_PATH		=> '/usr/local/bin/xclip'
 };
 use constant LIST => [

@@ -22,7 +22,7 @@ cmd open ${{
 		image/x-xcf) bsdsetsid gimp $f >/dev/null 2>&1 ;;
 		image/svg+xml) display -- $f ;;
 		image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|tif\|ico\)\(_large\)*$" |
-			bsdsetsid sxiv -aibof 2>/dev/null | while read -r file; do
+			bsdsetsid nsxiv -aibof 2>/dev/null | while read -r file; do
 				[ -z "$file" ] && continue
 				lf -remote "send select \"$file\""
 				lf -remote "send toggle"
@@ -39,7 +39,7 @@ cmd open ${{
 
 cmd mkdir $mkdir -p "$(echo $* | sed 's/ /\ /g')"
 cmd bulkrename $vidir $fx
-cmd showallpics $exa *.png *.jpg *.jpeg *.gif *.webp *.tif *.ico 2>/dev/null | sxiv -taib &
+cmd showallpics $exa *.png *.jpg *.jpeg *.gif *.webp *.tif *.ico 2>/dev/null | nsxiv -taib &
 cmd newtermedit $EDITOR $fx
 
 map gr cd /

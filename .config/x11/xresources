@@ -7,6 +7,6 @@ Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 Xcursor.theme: redglass
 Xcursor.size: 18
-Sxiv.background: #1d2021
-Sxiv.foreground: #ebdbb2
-Sxiv.font: UbuntuMono Nerd Font-11
+Nsxiv.window.background: #1d2021
+Nsxiv.window.foreground: #ebdbb2
+Nsxiv.bar.font: UbuntuMono Nerd Font-11

@@ -16,7 +16,7 @@ use constant {
 	MPV_PATH		=> '/usr/local/bin/mpv',
 	YTDL_PATH		=> '/usr/local/bin/yt-dlp',
 	FETCH_PATH		=> '/usr/bin/fetch',
-	SXIV_PATH		=> '/usr/local/bin/sxiv',
+	IMGVIEW_PATH	=> '/usr/local/bin/nsxiv',
 	ZATHURA_PATH	=> '/usr/local/bin/zathura',
 	W3M_PATH		=> '/usr/local/bin/w3m',
 	BROWSER_PATH	=> '/usr/local/bin/firefox',
@@ -28,7 +28,7 @@ use constant PROG_LIST	=> "" .
 "youtube-dl"			. "\n" .
 "youtube-dl thumbnail"	. "\n" .
 "fetch"					. "\n" .
-"sxiv"					. "\n" .
+"nsxiv"					. "\n" .
 "zathura"				. "\n" .
 "w3m"					. "\n" .
 "firefox"				. "\n";
@@ -301,12 +301,12 @@ sub open_link
 			$file_name = $tmp;
 			$file_name =~ s/.+\///g;
 			chomp $file_name;
-			system(SXIV_PATH, '-f', '-b', '-a', $file_name);
+			system(IMGVIEW_PATH, '-f', '-b', '-a', $file_name);
 			unlink($file_name);
 			exit 0;
 		}
 	}
-	elsif ($a eq "sxiv" || $a eq "zathura") {
+	elsif ($a eq "nsxiv" || $a eq "zathura") {
 		$pid = fork();
 		if (not $pid) {
 			setsid();
@@ -321,8 +321,8 @@ sub open_link
 				'  fetching <b>'. $file_name . '</b> to <b>/tmp</b>'
 				);
 			system(FETCH_PATH, '-q', $url);
-			if ($a == "sxiv") {
-				exec(SXIV_PATH, '-b', '-a', $file_name);
+			if ($a == "nsxiv") {
+				exec(IMGVIEW_PATH, '-b', '-a', $file_name);
 			}
 			else {
 				exec(ZATHURA_PATH, $file_name);
