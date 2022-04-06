@@ -44,7 +44,6 @@ alias \
 	grep='grep --color=always' \
 	rgrep='grep -R -n -H' \
 	vifm='TERM=xterm-256color vifm' \
-	fetch='fetch' \
 	fsl='fossil' \
 	diff='colordiff' \
 	ctags='uctags "--exclude=.ccls*"' \
