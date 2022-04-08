@@ -1,3 +1,3 @@
 #!/bin/sh
 
-/usr/local/bin/chrome discord.com/app
+exec /usr/local/bin/chrome discord.com/app
