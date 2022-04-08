@@ -1,0 +1,19 @@
+#!/usr/local/bin/perl
+
+use strict;
+use warnings;
+use File::HomeDir qw(home)
+
+use constant {
+	DUNSTRC_PATH	=> home() . '/.config/dunst/dunstrc'
+	NOTIFYSEND_PATH	=> '/usr/local/bin/notify-send'
+}
+
+sub main()
+{
+	return;
+}
+
+main();
+
+__END__

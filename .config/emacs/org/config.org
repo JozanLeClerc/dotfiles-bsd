@@ -59,6 +59,7 @@
   (package-initialize)
 
   (add-to-list 'load-path "~/.config/emacs/font-lock+")
+  (add-to-list 'load-path "~/.config/emacs/header2/")
   (add-to-list 'load-path "~/.config/emacs/all-the-icons/")
   (add-to-list 'load-path "~/.config/emacs/all-the-icons-dired/")
 
@@ -176,21 +177,9 @@
 	 '(require 'ox-md nil t))
 #+END_SRC
 
-** Time stamps
+** header2
 #+BEGIN_SRC emacs-lisp
-  (add-hook 'before-save-hook 'time-stamp)
-  (add-hook 'go-mode-hook (lambda()
-						   (setq (make-local-variable 'time-stamp-pattern)
-								"50/ \\* +%3a %3b %02H:%02M:%02S %Z %:y")
-						   (setq (make-local-variable 'time-stamp-time-zone)
-								"CEST")
-								))
-  (add-hook 'c-mode-hook (lambda()
-						   (setq (make-local-variable 'time-stamp-pattern)
-								"50/ \\* +%3a %3b %02H:%02M:%02S %Z %:y")
-						   (setq (make-local-variable 'time-stamp-time-zone)
-								"CEST")
-								))
+  (add-hook 'c-mode-hook 'auto-make-header)
 #+END_SRC
 
 ** Core packages
