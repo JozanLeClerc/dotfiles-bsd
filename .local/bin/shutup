@@ -7,43 +7,96 @@ use File::HomeDir qw(home);
 use constant {
 	BSDSETSID_PATH			=> '/usr/local/bin/bsdsetsid',
 	DUNSTRC_PATH			=> home() . '/.config/dunst/dunstrc',
-	DUNSTRC_PATH			=> '/usr/local/bin/dunst',
-	MPD_NOTIFICATION_PATH	=> '/usr/local/bin/mpd-notification',
+	DUNST_PATH				=> '/usr/local/bin/dunst',
+	MPDNOTIFICATION_PATH	=> '/usr/local/bin/mpd-notification',
 	NOTIFYSEND_PATH			=> '/usr/local/bin/notify-send',
 	PKILL_PATH				=> '/bin/pkill'
 };
 
-sub kill_programs() {
+sub kill_programs
+{
 	system(PKILL_PATH, 'espeak');
 	system(PKILL_PATH, 'mpd-notification');
 	system(PKILL_PATH, 'dunst');
 }
 
-sub start_programs() {
+sub start_programs
+{
 	system(BSDSETSID_PATH, DUNST_PATH);
-	system(BSDSETSID_PATH, MPD_NOTIFICATION_PATH);
+	system(BSDSETSID_PATH, MPDNOTIFICATION_PATH);
 }
 
-sub main()
+sub get_buffer
 {
-	my $i;
 	my @lines;
 
-	kill_programs();
 	open(FH, '<', DUNSTRC_PATH) or die $!;
-	@lines = do {
-		local $/;
-		<FH>
-	};
+	@lines = <FH>;
 	close(FH);
-	for ($i = 0; $i < @lines, $i++) {
-		last if $lines[$i];
+	return @lines;
+}
+
+sub notify
+{
+	my ($notif) = @_;
+
+	if ($notif) {
+		system(NOTIFYSEND_PATH,
+			   '-u', 'normal',
+			   '-t', '1750',
+			   'espeak', '墳 espeak restored');
 	}
-	print $lines[$i];
-	open(FH, '>', home() . '/tmp') or die $!;
+	else {
+		system(NOTIFYSEND_PATH,
+			   '-u', 'normal',
+			   '-t', '1750',
+			   'espeak', '婢 espeak silenced');
+	}
+}
+
+sub write_config
+{
+	my (@lines) = @_;
+
+	open(FH, '>', DUNSTRC_PATH) or die $!;
 	print FH @lines;
 	close(FH);
+}
+
+sub toggle_config
+{
+	my (@lines) = @_;
+	my $ret;
+	my $i;
+	my $j;
+
+	for ($i = 0; $i < @lines; $i++) {
+		last if $lines[$i] =~ m/# >shutup/;
+	}
+	$j = 0;
+	while ($j < 2) {
+		if ($lines[$i + $j] =~ m/^#/) {
+			$lines[$i + $j] =~ s/^#//;
+			$ret = 1;
+		}
+		else {
+			$lines[$i + $j] =~ s/^/#/;
+			$ret = 0;
+		}
+		$j++;
+	}
+	write_config(@lines);
+	return $ret;
+}
+
+sub main
+{
+	my $notif;
+
+	kill_programs();
+	$notif = toggle_config(get_buffer());
 	start_programs();
+	notify($notif);
 	return;
 }
 
