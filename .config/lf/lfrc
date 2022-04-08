@@ -45,6 +45,7 @@ cmd newtermedit $EDITOR $fx
 map gr cd /
 map gm cd ~/hdd
 map gd cd ~/dvd
+map gw cd ~/docs/work
 map gc cd ~/.config
 map gb cd ~/.local/bin
 map gs cd ~/.local/share
