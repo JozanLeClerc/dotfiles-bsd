@@ -176,6 +176,23 @@
 	 '(require 'ox-md nil t))
 #+END_SRC
 
+** Time stamps
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'before-save-hook 'time-stamp)
+  (add-hook 'go-mode-hook (lambda()
+						   (setq (make-local-variable 'time-stamp-pattern)
+								"50/ \\* +%3a %3b %02H:%02M:%02S %Z %:y")
+						   (setq (make-local-variable 'time-stamp-time-zone)
+								"CEST")
+								))
+  (add-hook 'c-mode-hook (lambda()
+						   (setq (make-local-variable 'time-stamp-pattern)
+								"50/ \\* +%3a %3b %02H:%02M:%02S %Z %:y")
+						   (setq (make-local-variable 'time-stamp-time-zone)
+								"CEST")
+								))
+#+END_SRC
+
 ** Core packages
 *** Autopair
 #+BEGIN_SRC emacs-lisp
