@@ -113,7 +113,7 @@
 # to find fitting options for rules.
 
 [espeak]
-   summary = "*"
+   summary = "*" # shutup
    script = /home/jozan/.local/bin/dunst_espeak.sh
 
 #[script-test]

@@ -179,7 +179,6 @@
 
 ** header2
 #+BEGIN_SRC emacs-lisp
-  (add-hook 'c-mode-hook 'auto-make-header)
 #+END_SRC
 
 ** Core packages
