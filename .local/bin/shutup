@@ -5,23 +5,45 @@ use warnings;
 use File::HomeDir qw(home);
 
 use constant {
-	DUNSTRC_PATH	=> home() . '/.config/dunst/dunstrc',
-	NOTIFYSEND_PATH	=> '/usr/local/bin/notify-send'
+	BSDSETSID_PATH			=> '/usr/local/bin/bsdsetsid',
+	DUNSTRC_PATH			=> home() . '/.config/dunst/dunstrc',
+	DUNSTRC_PATH			=> '/usr/local/bin/dunst',
+	MPD_NOTIFICATION_PATH	=> '/usr/local/bin/mpd-notification',
+	NOTIFYSEND_PATH			=> '/usr/local/bin/notify-send',
+	PKILL_PATH				=> '/bin/pkill'
 };
+
+sub kill_programs() {
+	system(PKILL_PATH, 'espeak');
+	system(PKILL_PATH, 'mpd-notification');
+	system(PKILL_PATH, 'dunst');
+}
+
+sub start_programs() {
+	system(BSDSETSID_PATH, DUNST_PATH);
+	system(BSDSETSID_PATH, MPD_NOTIFICATION_PATH);
+}
 
 sub main()
 {
+	my $i;
 	my @lines;
 
+	kill_programs();
 	open(FH, '<', DUNSTRC_PATH) or die $!;
 	@lines = do {
 		local $/;
 		<FH>
 	};
 	close(FH);
+	for ($i = 0; $i < @lines, $i++) {
+		last if $lines[$i];
+	}
+	print $lines[$i];
 	open(FH, '>', home() . '/tmp') or die $!;
 	print FH @lines;
 	close(FH);
+	start_programs();
 	return;
 }
 
