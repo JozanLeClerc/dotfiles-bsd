@@ -74,7 +74,7 @@ sub toggle_config
 		last if $lines[$i] =~ m/# >shutup/;
 	}
 	$j = 0;
-	while ($j < 2) {
+	while ($j <= 2) {
 		if ($lines[$i + $j] =~ m/^#/) {
 			$lines[$i + $j] =~ s/^#//;
 			$ret = 1;
