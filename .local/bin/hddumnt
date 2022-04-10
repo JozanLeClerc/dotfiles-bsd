@@ -1,5 +1,5 @@
 #!/usr/local/bin/dash
 
-umount /dev/da0.eli &&
-	geli detach da0.eli &&
-	rmdir "$HOME"/hdd
+umount /dev/da0.eli
+geli detach da0.eli
+rmdir "$HOME"/hdd

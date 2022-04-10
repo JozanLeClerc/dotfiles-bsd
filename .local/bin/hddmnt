@@ -1,5 +1,9 @@
-#!/usr/local/bin/dash
+#!/usr/local/bin/dash -e
 
-geli attach -k /root/geli_keys/hdd_ext.key /dev/da0 &&
-	mkdir -p "$HOME"/hdd &&
-	mount /dev/da0.eli "$HOME"/hdd
+tmp=$(mktemp)
+
+dmenu -p "Enter password: " -nb '#1d2021' -nf '#1d2021' <&- >$tmp
+geli attach -k /root/geli_keys/hdd_ext.key -j $tmp /dev/da0
+rm $tmp
+mkdir -p "$HOME"/hdd
+mount /dev/da0.eli "$HOME"/hdd
