@@ -1,23 +1,68 @@
-#!/usr/local/bin/dash
+#!/bin/sh
+# ========================
+# =====    ===============
+# ======  ================
+# ======  ================
+# ======  ====   ====   ==
+# ======  ===     ==  =  =
+# ======  ===  =  ==     =
+# =  ===  ===  =  ==  ====
+# =  ===  ===  =  ==  =  =
+# ==     =====   ====   ==
+# ========================
+#
+# SPDX-License-Identifier: BSD-3-Clause
+#
+# Copyright (c) 2022 Joe
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+# 3. Neither the name of the organization nor the
+#    names of its contributors may be used to endorse or promote products
+#    derived from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY JOE ''AS IS'' AND ANY
+# EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL JOE BE LIABLE FOR ANY
+# DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+# (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+# ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+# SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+# setscreens.sh
+# Mon Apr 11 19:57:50 CEST 2022
+# Joe
+#
+# Script to set the keyboard correctly
 
 xset r rate 200 150
 setxkbmap -layout us,fr -option grp:alt_shift_toggle
 setxkbmap -option caps:none
-screens=$(xrandr | grep ' connected' | awk '{print $1}')
-echo $screens
-if echo "$screens" | grep 'HDMI-1' >/dev/null 2>&1; then
-	if echo "$screens" | grep 'VGA-1' >/dev/null 2>&1; then
-		xmodmap -e 'keycode 9 = Tab'
-		xmodmap -e 'keycode 23 = Escape'
-		xmodmap -e 'remove Lock = Caps_Lock'
-		# xmodmap -e 'keycode 37 = Escape'
-	fi
-else
-	setxkbmap -option ctrl:swapcaps
-	xmodmap -e 'keycode 9 = Tab'
-	xmodmap -e 'keycode 23 = Escape'
-	# xmodmap -e 'keycode 66 = Escape'
-fi
+xmodmap -e 'keycode 9 = Tab'
+xmodmap -e 'keycode 23 = Escape'
+# screens=$(xrandr | grep ' connected' | awk '{print $1}')
+# if echo "$screens" | grep 'HDMI-1' >/dev/null 2>&1; then
+# 	if echo "$screens" | grep 'VGA-1' >/dev/null 2>&1; then
+# 		xmodmap -e 'keycode 9 = Tab'
+# 		xmodmap -e 'keycode 23 = Escape'
+# 		xmodmap -e 'remove Lock = Caps_Lock'
+# 		# xmodmap -e 'keycode 37 = Escape'
+# 	fi
+# else
+# 	setxkbmap -option ctrl:swapcaps
+# 	xmodmap -e 'keycode 9 = Tab'
+# 	xmodmap -e 'keycode 23 = Escape'
+# 	# xmodmap -e 'keycode 66 = Escape'
+# fi
 mouse=$(xinput list | grep 'HARPOON' | awk '{print $10}' | sed 's/id=//')
 xinput --set-prop "$mouse" 'libinput Accel Speed' -0.40
 notify-send -u low -t 2000 'kb' '  Keyboard set'
