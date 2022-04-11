@@ -52,61 +52,62 @@
 
 ** MELPA and non-MELPA
 #+BEGIN_SRC emacs-lisp
-  (require 'package)
-  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-  (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-  (package-initialize)
+    (require 'package)
+    (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+    (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+    (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+    (package-initialize)
 
-  (add-to-list 'load-path "~/.config/emacs/font-lock+")
-  (add-to-list 'load-path "~/.config/emacs/header2/")
-  (add-to-list 'load-path "~/.config/emacs/all-the-icons/")
-  (add-to-list 'load-path "~/.config/emacs/all-the-icons-dired/")
+    (add-to-list 'load-path "~/.config/emacs/font-lock+")
+    (add-to-list 'load-path "~/.config/emacs/header2/")
+    (add-to-list 'load-path "~/.config/emacs/all-the-icons/")
+    (add-to-list 'load-path "~/.config/emacs/all-the-icons-dired/")
 
-  (setq package-selected-packages '(
-			evil evil-collection evil-leader
-			evil-search-highlight-persist evil-mc evil-surround evil-ediff
-			evil-visual-mark-mode evil-nerd-commenter evil-vimish-fold
-			evil-numbers
-			lsp-mode lsp-treemacs lsp-ui
-			ccls
-			yasnippet yasnippet-classic-snippets yasnippet-snippets auto-yasnippet el-autoyas
-			helm helm-xref helm-lsp helm-etags-plus helm-fuzzy helm-themes helm-make helm-projectile
-			projectile
-			company company-box
-			which-key dap-mode
-			magit
-			undo-tree
-			shell-pop
-			treemacs treemacs-projectile treemacs-magit treemacs-evil
-			autopair paredit
-			rainbow-delimiters
-			color-identifiers-mode
-			ibuffer-vc ibuffer-projectile
-			eyebrowse
-			diff-hl
-			fzf
-			font-utils
-			restart-emacs
-			string-utils
-			dired-icon
-			kaolin-themes gruvbox-theme doom-themes spacemacs-theme
-			doom-modeline
-			dashboard
-			org-superstar toc-org
-			pdf-tools
-			dockerfile-mode
-			web-mode
-			ssh sudo-ext
-			vimish-fold
-			bind-key
-			all-the-icons all-the-icons-dired all-the-icons-ibuffer
-			mutt-mode
-			))
+    (setq package-selected-packages '(
+			  evil evil-collection evil-leader
+			  evil-search-highlight-persist evil-mc evil-surround evil-ediff
+			  evil-visual-mark-mode evil-nerd-commenter evil-vimish-fold
+			  evil-numbers
+			  lsp-mode lsp-treemacs lsp-ui
+			  ccls
+			  yasnippet yasnippet-classic-snippets yasnippet-snippets auto-yasnippet el-autoyas
+			  helm helm-xref helm-lsp helm-etags-plus helm-fuzzy helm-themes helm-make helm-projectile
+			  projectile
+			  org-evil
+			  company company-box
+			  which-key dap-mode
+			  magit
+			  undo-tree
+			  shell-pop
+			  treemacs treemacs-projectile treemacs-magit treemacs-evil
+			  smartparens
+			  rainbow-delimiters
+			  color-identifiers-mode
+			  ibuffer-vc ibuffer-projectile
+			  eyebrowse
+			  diff-hl
+			  fzf
+			  font-utils
+			  restart-emacs
+			  string-utils
+			  dired-icon
+			  kaolin-themes gruvbox-theme doom-themes spacemacs-theme
+			  doom-modeline
+			  dashboard
+			  org-superstar toc-org
+			  pdf-tools
+			  dockerfile-mode
+			  web-mode
+			  ssh sudo-ext
+			  vimish-fold
+			  bind-key
+			  all-the-icons all-the-icons-dired all-the-icons-ibuffer
+			  mutt-mode
+			  ))
 
-  (when (cl-find-if-not #'package-installed-p package-selected-packages)
-  (package-refresh-contents)
-  (mapc #'package-install package-selected-packages))
+    (when (cl-find-if-not #'package-installed-p package-selected-packages)
+    (package-refresh-contents)
+    (mapc #'package-install package-selected-packages))
 #+END_SRC
 
 ** Some org
@@ -181,11 +182,18 @@
 #+BEGIN_SRC emacs-lisp
 #+END_SRC
 
+** Other configs
+#+BEGIN_SRC emacs-lisp
+(setq evil-want-integration t) ;; This is optional since it's already set to t by default.
+(setq evil-want-keybinding nil)
+(setq evil-want-C-u-scroll t)
+#+END_SRC
+
 ** Core packages
 *** Autopair
 #+BEGIN_SRC emacs-lisp
-(require 'autopair)
-(autopair-global-mode)
+;; (require 'autopair)
+;; (autopair-global-mode)
 #+END_SRC
 
 *** Paredit
@@ -200,11 +208,14 @@
 ;; (ad-activate 'paredit-mode)
 #+END_SRC
 
+*** Smartparens
+#+BEGIN_SRC emacs-lisp
+  (require 'smartparens-config)
+(smartparens-global-strict-mode)
+#+END_SRC
+
 *** Evil mode
 #+BEGIN_SRC emacs-lisp
-  (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
-  (setq evil-want-keybinding nil)
-  (setq evil-want-C-u-scroll t)
   (require 'evil)
   (require 'evil-collection)
   (require 'evil-leader)
@@ -804,3 +815,4 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 	 (shell-pop--set-shell-type 'my/shell-pop-shell-type my/shell-pop-shell-type)
    #+END_SRC
 
+   
