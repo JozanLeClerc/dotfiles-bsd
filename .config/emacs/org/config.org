@@ -189,6 +189,11 @@
 (setq evil-want-C-u-scroll t)
 #+END_SRC
 
+** Files types attribution
+   #+BEGIN_SRC emacs-lisp
+	  (add-to-list 'auto-mode-alist '("xinitrc$" . shell-script-mode))
+   #+END_SRC
+
 ** Core packages
 *** Autopair
 #+BEGIN_SRC emacs-lisp
@@ -767,6 +772,24 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 	  (define-key eyebrowse-mode-map (kbd "M-8") 'eyebrowse-switch-to-window-config-8)
 	  (eyebrowse-mode t)
 	  (setq eyebrowse-new-workspace t)
+	#+END_SRC
+
+*** web-mode
+	#+BEGIN_SRC emacs-lisp
+	  (defun my-setup-php ()
+		;; enable web mode
+		(web-mode)
+
+		;; make these variables local
+		(make-local-variable 'web-mode-code-indent-offset)
+		(make-local-variable 'web-mode-markup-indent-offset)
+		(make-local-variable 'web-mode-css-indent-offset)
+
+		;; set indentation, can set different indentation level for different code type
+		(setq web-mode-code-indent-offset 4)
+		(setq web-mode-css-indent-offset 4)
+		(setq web-mode-markup-indent-offset 4))
+	  (add-to-list 'auto-mode-alist '("\\.php$" . my-setup-php))
 	#+END_SRC
 
 *** undo-tree
