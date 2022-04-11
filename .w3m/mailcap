@@ -1,4 +1,4 @@
-image/*; sxiv -b %s
-audio/*; mpv %s
-video/*; mpv %s
-application/pdf; zathura %s
+image/*; nsxiv -abif %s
+video/*; mpv --quiet %s &; copiousoutput
+audio/*; mpv %s ;
+application/pdf; zathura %s ;
