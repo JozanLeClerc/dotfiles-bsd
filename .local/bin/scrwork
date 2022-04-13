@@ -39,12 +39,12 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 # scrwork
-# Tue Apr 12 14:47:59 CEST 2022
+# Wed Apr 13 14:26:44 CEST 2022
 # Joe
 #
 # Screen setup when I'm at work
 
-xrandr --output LVDS-1 --primary --mode 1366x768 --pos 0x649 --rotate normal
+xrandr --output LVDS-1 --primary --mode 1366x768 --pos 0x750 --rotate normal
 xrandr --output VGA-1 --off
 xrandr --output HDMI-1 --mode 1920x1080 --pos 1366x0 --rotate normal
 xrandr --output DP-1 --off
