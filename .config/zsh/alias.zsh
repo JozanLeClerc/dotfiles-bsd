@@ -29,6 +29,7 @@ alias \
 	bmk='make -j5' \
 	web='w3m https://duckduckgo.com/' \
 	mpv='mpv --audio-channels=stereo' \
+	bat='bat --style=plain --tabs 4 --paging=always -f' \
 	cp='cp -iv' \
 	mv='mv -iv' \
 	rm='rm -v' \

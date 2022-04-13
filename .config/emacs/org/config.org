@@ -102,7 +102,7 @@
 			  vimish-fold
 			  bind-key
 			  all-the-icons all-the-icons-dired all-the-icons-ibuffer
-			  mutt-mode
+			  mutt-mode vimrc-mode
 			  ))
 
     (when (cl-find-if-not #'package-installed-p package-selected-packages)
@@ -192,6 +192,8 @@
 ** Files types attribution
    #+BEGIN_SRC emacs-lisp
 	  (add-to-list 'auto-mode-alist '("xinitrc$" . shell-script-mode))
+	  (add-to-list 'auto-mode-alist '("env$" . shell-script-mode))
+	  (add-to-list 'auto-mode-alist '("lfrc$" . vimrc-mode))
    #+END_SRC
 
 ** Core packages
