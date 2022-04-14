@@ -102,7 +102,7 @@
 									vimish-fold
 									bind-key
 									all-the-icons all-the-icons-dired all-the-icons-ibuffer
-									mutt-mode vimrc-mode
+									mutt-mode vimrc-mode nginx-mode
 									))
 
   (when (cl-find-if-not #'package-installed-p package-selected-packages)
