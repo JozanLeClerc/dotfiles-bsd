@@ -52,62 +52,62 @@
 
 ** MELPA and non-MELPA
 #+BEGIN_SRC emacs-lisp
-    (require 'package)
-    (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-    (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-    (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-    (package-initialize)
+  (require 'package)
+  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+  (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+  (package-initialize)
 
-    (add-to-list 'load-path "~/.config/emacs/font-lock+")
-    (add-to-list 'load-path "~/.config/emacs/header2/")
-    (add-to-list 'load-path "~/.config/emacs/all-the-icons/")
-    (add-to-list 'load-path "~/.config/emacs/all-the-icons-dired/")
+  (add-to-list 'load-path "~/.config/emacs/font-lock+")
+  (add-to-list 'load-path "~/.config/emacs/header2/")
+  (add-to-list 'load-path "~/.config/emacs/all-the-icons/")
+  (add-to-list 'load-path "~/.config/emacs/all-the-icons-dired/")
 
-    (setq package-selected-packages '(
-			  evil evil-collection evil-leader
-			  evil-search-highlight-persist evil-mc evil-surround evil-ediff
-			  evil-visual-mark-mode evil-nerd-commenter evil-vimish-fold
-			  evil-numbers
-			  lsp-mode lsp-treemacs lsp-ui
-			  ccls
-			  yasnippet yasnippet-classic-snippets yasnippet-snippets auto-yasnippet el-autoyas
-			  helm helm-xref helm-lsp helm-etags-plus helm-fuzzy helm-themes helm-make helm-projectile
-			  projectile
-			  org-evil
-			  company company-box
-			  which-key dap-mode
-			  magit
-			  undo-tree
-			  shell-pop
-			  treemacs treemacs-projectile treemacs-magit treemacs-evil
-			  smartparens
-			  rainbow-delimiters
-			  color-identifiers-mode
-			  ibuffer-vc ibuffer-projectile
-			  eyebrowse
-			  diff-hl
-			  fzf
-			  font-utils
-			  restart-emacs
-			  string-utils
-			  dired-icon
-			  kaolin-themes gruvbox-theme doom-themes spacemacs-theme
-			  doom-modeline
-			  dashboard
-			  org-superstar toc-org
-			  pdf-tools
-			  dockerfile-mode
-			  web-mode
-			  ssh sudo-ext
-			  vimish-fold
-			  bind-key
-			  all-the-icons all-the-icons-dired all-the-icons-ibuffer
-			  mutt-mode vimrc-mode
-			  ))
+  (setq package-selected-packages '(
+									evil evil-collection evil-leader
+									evil-search-highlight-persist evil-mc evil-surround evil-ediff
+									evil-visual-mark-mode evil-nerd-commenter evil-vimish-fold
+									evil-numbers evil-quickscope
+									lsp-mode lsp-treemacs lsp-ui
+									ccls
+									yasnippet yasnippet-classic-snippets yasnippet-snippets auto-yasnippet el-autoyas
+									helm helm-xref helm-lsp helm-etags-plus helm-fuzzy helm-themes helm-make helm-projectile
+									projectile
+									org-evil
+									company company-box
+									which-key dap-mode
+									magit
+									undo-tree
+									shell-pop
+									treemacs treemacs-projectile treemacs-magit treemacs-evil
+									smartparens
+									rainbow-delimiters
+									color-identifiers-mode
+									ibuffer-vc ibuffer-projectile
+									eyebrowse
+									diff-hl
+									fzf
+									font-utils
+									restart-emacs
+									string-utils
+									dired-icon
+									kaolin-themes gruvbox-theme doom-themes spacemacs-theme
+									doom-modeline
+									dashboard
+									org-superstar toc-org
+									pdf-tools
+									dockerfile-mode
+									web-mode
+									ssh sudo-ext
+									vimish-fold
+									bind-key
+									all-the-icons all-the-icons-dired all-the-icons-ibuffer
+									mutt-mode vimrc-mode
+									))
 
-    (when (cl-find-if-not #'package-installed-p package-selected-packages)
-    (package-refresh-contents)
-    (mapc #'package-install package-selected-packages))
+  (when (cl-find-if-not #'package-installed-p package-selected-packages)
+	(package-refresh-contents)
+	(mapc #'package-install package-selected-packages))
 #+END_SRC
 
 ** Some org
@@ -299,59 +299,11 @@
   (define-key evil-normal-state-map (kbd "C-c C-x") 'evil-numbers/dec-at-pt)
 #+END_SRC
 
-*** Centaur tabs
-#+BEGIN_SRC emacs-lisp
-  ;; (require 'centaur-tabs)
-  ;; (centaur-tabs-mode t)
-  ;; (centaur-tabs-group-by-projectile-project)
-
-  ;; (evil-define-key 'insert global-map (kbd "M-k") 'centaur-tabs-backward)
-  ;; (evil-define-key 'insert global-map (kbd "M-j") 'centaur-tabs-forward)
-  ;; (evil-define-key 'replace global-map (kbd "M-k") 'centaur-tabs-backward)
-  ;; (evil-define-key 'replace global-map (kbd "M-j") 'centaur-tabs-forward)
-  ;; (evil-define-key 'normal global-map (kbd "M-k") 'centaur-tabs-backward)
-  ;; (evil-define-key 'normal global-map (kbd "M-j") 'centaur-tabs-forward)
-  ;; (global-set-key (kbd "M-k") 'centaur-tabs-backward)
-  ;; (global-set-key (kbd "M-j") 'centaur-tabs-forward)
-
-  ;; (setq centaur-tabs-set-icons				t
-  ;; 		centaur-tabs-gray-out-icons			'buffer
-  ;; 		centaur-tabs-set-close-button		nil
-  ;; 		centaur-tabs-set-modified-marker	t
-  ;; 		centaur-tabs-modified-marker		"[+]"
-  ;; 		centaur-tabs-height					32
-  ;; 		centaur-tabs-style					"bar"
-  ;; 		centaur-tabs-set-bar				'left
-  ;; 		centaur-tabs-change-fonts			"mononoki Nerd Font:pixelsize=15")
-
-  ;; (defun centaur-tabs-hide-tab (x)
-  ;; 	  (let ((name (format "%s" x)))
-  ;; 		  (or
-  ;; 			  (string-prefix-p "*epc" name)
-  ;; 			  (string-prefix-p "*helm" name)
-  ;; 			  (string-prefix-p "*Helm" name)
-  ;; 			  (string-prefix-p "*Compile-Log*" name)
-  ;; 			  (string-prefix-p "*compilation*" name)
-  ;; 			  (string-prefix-p "*Flymake diagnostics" name)
-  ;; 			  (string-prefix-p "*lsp" name)
-  ;; 			  (string-prefix-p "*scratch*" name)
-  ;; 			  (string-prefix-p "*Messages*" name)
-  ;; 			  (string-prefix-p "todo.org" name)
-  ;; 			  (string-prefix-p "*Mingus Help*" name)
-  ;; 			  (string-prefix-p "*Mingus*" name)
-  ;; 			  (string-prefix-p "*Mingus Browser*" name)
-  ;; 			  (string-prefix-p "TAGS" name)
-  ;; 			  (string-prefix-p "*lsp-ui-doc" name)
-  ;; 			  (and (string-prefix-p "magit" name)
-  ;; 				  (not (file-name-extension name))))))
-
-  ;; (add-hook 'dashboard-mode-hook #'centaur-tabs-local-mode)
-  ;; (add-hook 'neotree-mode-hook #'centaur-tabs-local-mode)
-  ;; (add-hook 'calendar-mode-hook #'centaur-tabs-local-mode)
-  ;; (add-hook 'org-agenda-mode-hook #'centaur-tabs-local-mode)
-  ;; (add-hook 'helpful-mode-hook #'centaur-tabs-local-mode)
-  ;; (add-hook 'term-mode-hook #'centaur-tabs-local-mode)
-#+END_SRC
+*** Evil quickscope
+	#+BEGIN_SRC emacs-lisp
+	  (require 'evil-quickscope)
+	  (global-evil-quickscope-mode 1)
+	#+END_SRC
 
 *** Dashboard
 #+BEGIN_SRC emacs-lisp
