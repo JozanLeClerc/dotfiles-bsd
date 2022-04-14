@@ -1,0 +1,51 @@
+#!/usr/local/bin/perl
+
+use strict;
+use warnings;
+use Capture::Tiny qw(capture);
+
+use constant {
+	MIXER_PATH	=> '/usr/sbin/mixer',
+	NOTIF_PATH	=> '/usr/local/bin/notify-send'
+};
+
+sub main
+{
+	my $rec_vol;
+
+	$rec_vol = `mixer rec | awk -F ':' '{print \$2}'`;
+	chomp $rec_vol;
+	if ($rec_vol == 0) {
+		capture {
+			system(MIXER_PATH, 'rec', '100');
+			system(
+				NOTIF_PATH,
+				'-u',
+				'low',
+				'-t',
+				'1750',
+				'mixer-set',
+				' Microphone restored'
+			);
+		};
+	}
+	else {
+		capture {
+			system(MIXER_PATH, 'rec', '0');
+			system(
+				NOTIF_PATH,
+				'-u',
+				'low',
+				'-t',
+				'1750',
+				'mixer-set',
+				' Microphone muted'
+			);
+		};
+	}
+	return;
+}
+
+main();
+
+__END__
