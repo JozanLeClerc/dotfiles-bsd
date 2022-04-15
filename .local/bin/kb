@@ -39,12 +39,13 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 # kb
-# Mon Apr 11 19:57:50 CEST 2022
+# Thu Apr 14 21:12:19 CEST 2022
 # Joe
 #
-# Script to set the keyboard correctly
+# Script to set the internal keyboard correctly
 
 xset r rate 200 150
+setxkbmap -option
 setxkbmap -layout us,fr -option grp:alt_shift_toggle
 setxkbmap -option ctrl:swapcaps
 setxkbmap -option caps:none
@@ -64,8 +65,8 @@ xmodmap -e 'keycode 23 = Escape'
 # 	xmodmap -e 'keycode 23 = Escape'
 # 	# xmodmap -e 'keycode 66 = Escape'
 # fi
-mouse=$(xinput list | grep 'HARPOON' | awk '{print $10}' | sed 's/id=//')
-xinput --set-prop "$mouse" 'libinput Accel Speed' -0.40
-notify-send -u low -t 2000 'kb' '  Keyboard set'
+# mouse=$(xinput list | grep 'HARPOON' | awk '{print $10}' | sed 's/id=//')
+# xinput --set-prop "$mouse" 'libinput Accel Speed' -0.40
+notify-send -u low -t 2000 'kb' '  ThinkPad keyboard set'
 
 # vim: filetype=sh

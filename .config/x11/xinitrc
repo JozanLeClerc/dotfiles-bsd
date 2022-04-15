@@ -4,8 +4,7 @@ pkill dunst
 pkill mpd-notification
 pkill lowbat
 
-/home/jozan/.local/bin/setscreens.sh
-/home/jozan/.local/bin/setwp
+/home/jozan/.local/bin/scrmain
 /home/jozan/.local/bin/kb
 /usr/local/bin/musicpd	>/dev/null 2>&1
 /usr/local/bin/compton	>/dev/null 2>&1 &
