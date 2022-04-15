@@ -6,7 +6,8 @@ use constant {
 	SLOCK_PATH		=> '/usr/local/bin/slock',
 	ACPI_PATH		=> '/usr/sbin/acpiconf',
 	KILL_PATH		=> '/usr/bin/killall',
-	SHUTDOWN_PATH	=> '/sbin/shutdown'
+	SHUTDOWN_PATH	=> '/sbin/shutdown',
+	NOTIF_PATH		=> '/usr/local/bin/notify-send'
 };
 use constant LIST => [
 	'Lock screen',
@@ -67,6 +68,13 @@ sub action
 	}
 	elsif ($var eq ${+LIST}[4]) {
 		if (confirm($var) == 1) {
+			system(
+				NOTIF_PATH,
+				'-u',
+				'normal',
+				'shutdown',
+				'Farwell, partner!'
+				);
 			exec(SHUTDOWN_PATH, '-p', 'now');
 		}
 	}
