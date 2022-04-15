@@ -141,6 +141,7 @@ alias nb='newsboat' \
 	sxiv='sxiv -b -a' \
 	pinfo='pkg info -x' \
 	psearch='pkg search' \
+	pinstall='doas pkg install' \
 	highlight='highlight -Oxterm256 -t4' \
 	hi='highlight'
 hil() {
