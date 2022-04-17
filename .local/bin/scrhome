@@ -38,35 +38,18 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-# kb
-# Sun Apr 17 00:44:51 CEST 2022
+# scrhome
+# Sun Apr 17 02:07:55 CEST 2022
 # Joe
 #
-# Script to set the internal keyboard correctly
+# Screen setup when I'm at home
 
-xset r rate 200 150
-setxkbmap -option
-setxkbmap -layout us,fr -option grp:alt_shift_toggle
-setxkbmap -option ctrl:swapcaps
-setxkbmap -option caps:none
-xmodmap -e 'keycode 9 = Tab'
-xmodmap -e 'keycode 23 = Escape'
-notify-send -u low -t 2000 'kb' '  ThinkPad keyboard set'
-# screens=$(xrandr | grep ' connected' | awk '{print $1}')
-# if echo "$screens" | grep 'HDMI-1' >/dev/null 2>&1; then
-# 	if echo "$screens" | grep 'VGA-1' >/dev/null 2>&1; then
-# 		xmodmap -e 'keycode 9 = Tab'
-# 		xmodmap -e 'keycode 23 = Escape'
-# 		xmodmap -e 'remove Lock = Caps_Lock'
-# 		# xmodmap -e 'keycode 37 = Escape'
-# 	fi
-# else
-# 	setxkbmap -option ctrl:swapcaps
-# 	xmodmap -e 'keycode 9 = Tab'
-# 	xmodmap -e 'keycode 23 = Escape'
-# 	# xmodmap -e 'keycode 66 = Escape'
-# fi
-# mouse=$(xinput list | grep 'HARPOON' | awk '{print $10}' | sed 's/id=//')
-# xinput --set-prop "$mouse" 'libinput Accel Speed' -0.40
-
-# vim: filetype=sh
+xrandr	--output LVDS-1 --mode 1366x768 --pos 1920x657 --rotate normal
+xrandr	--output HDMI-1 --primary --mode 1920x1080 --pos 3286x0 --rotate normal
+xrandr	--output VGA-1 --mode 1440x900 --pos 0x0 --rotate normal
+xrandr	--output DP-1 --off
+xrandr	--output HDMI-2 --off
+xrandr	--output HDMI-3 --off
+xrandr	--output DP-2 --off
+xrandr	--output DP-3 --off
+setwp
