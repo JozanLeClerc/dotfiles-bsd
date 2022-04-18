@@ -6,10 +6,10 @@
 set mailcap_path = /usr/home/jozan/.config/mutt/mailcap
 set date_format="%d/%m/%y %I:%M%p"
 set index_format="%2C %Z %?X?A& ? %D %-15.15F %s (%-4.4c)"
-set new_mail_command = "notify-send -u normal 'NeoMutt' '  %n new mail(s)' &"
+set new_mail_command = "notify-send -u normal 'NeoMutt' '  %n new mail(s)'"
 set sort = 'reverse-date'
 set smtp_authenticators = 'gssapi:login'
-set query_command = "abook --mutt-query '%s'"
+set query_command = "abook -C $XDG_CONFIG_HOME/abook/abookrc --datafile $XDG_DATA_HOME/abook/addressbook --mutt-query '%s'"
 set rfc2047_parameters = yes
 set sleep_time = 0		# Pause 0 seconds for informational messages
 set markers = no		# Disables the `+` displayed at line wraps

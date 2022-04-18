@@ -199,6 +199,7 @@
 	  (add-to-list 'auto-mode-alist '("xinitrc$" . shell-script-mode))
 	  (add-to-list 'auto-mode-alist '("env$" . shell-script-mode))
 	  (add-to-list 'auto-mode-alist '("lfrc$" . vimrc-mode))
+	  (add-to-list 'auto-mode-alist '("muttrc$" . mutt-mode))
    #+END_SRC
 
 ** Core packages
