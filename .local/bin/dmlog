@@ -73,8 +73,9 @@ sub action
 				'-u',
 				'normal',
 				'shutdown',
-				'Farwell, partner!'
+				'  Farwell, partner!'
 				);
+			sleep 2;
 			exec(SHUTDOWN_PATH, '-p', 'now');
 		}
 	}

@@ -84,7 +84,7 @@ alias \
 	vimz='nvim $(fzf --preview="head -$FZF_PREVIEW_LINES {}")' \
 	v='nvim $(fzf --preview="head -$FZF_PREVIEW_LINES {}")' \
 	tohex='printf "0x%x\n"'
-vimbin() {
+ebin() {
 	p=$(pwd)
 	cd "$HOME"/.local/bin || return
 	sc=$(fzf --preview='head -$FZF_PREVIEW_LINES {}')
@@ -95,7 +95,7 @@ vimbin() {
 	${VISUAL} $sc
 	cd $p
 }
-vimconf() {
+econf() {
 	p=$(pwd)
 	cd "$HOME"/.config || return
 	sc=$(fzf --preview='head -$FZF_PREVIEW_LINES {}')
