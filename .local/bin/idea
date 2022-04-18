@@ -12,4 +12,4 @@ git -C "$HOME"/dev/web/jozan_gemini add -u
 git -C "$HOME"/dev/web/jozan_gemini commit -m "Thought: ${date}"
 git -C "$HOME"/dev/web/jozan_gemini push
 
-vps-update
+vps
