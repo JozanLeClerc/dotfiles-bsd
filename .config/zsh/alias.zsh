@@ -44,7 +44,6 @@ alias \
 	rsync='rsync -v -h -P' \
 	grep='grep --color=always' \
 	rgrep='grep -R -n -H' \
-	vifm='TERM=xterm-256color vifm' \
 	fsl='fossil' \
 	diff='colordiff' \
 	ctags='uctags "--exclude=.ccls*"' \
@@ -139,7 +138,7 @@ twi() {
 }
 alias nb='newsboat' \
 	mutt='neomutt' \
-	sxiv='sxiv -b -a' \
+	sxiv='nsxiv -b -a' \
 	pinfo='pkg info -x' \
 	psearch='pkg search' \
 	pinstall='doas pkg install' \

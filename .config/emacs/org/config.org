@@ -200,6 +200,7 @@
 	  (add-to-list 'auto-mode-alist '("env$" . shell-script-mode))
 	  (add-to-list 'auto-mode-alist '("lfrc$" . vimrc-mode))
 	  (add-to-list 'auto-mode-alist '("muttrc$" . mutt-mode))
+	  (add-to-list 'auto-mode-alist '("loader.conf$" . conf-mode))
    #+END_SRC
 
 ** Core packages
