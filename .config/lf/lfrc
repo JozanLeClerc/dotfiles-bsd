@@ -18,6 +18,7 @@ cmd open ${{
 		application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) localc $fx ;;
 		application/vnd.openxmlformats-officedocument.wordprocessingml.document) docx2txt $f | less ;;
 		image/vnd.djvu|application/pdf|application/octet-stream|application/postscript) bsdsetsid zathura $fx >/dev/null 2>&1 ;;
+		text/html) firefox $fx ;;
 		text/*|application/json|inode/x-empty) bat --style=plain --tabs 4 --paging=always -f $fx ;;
 		image/x-xcf) bsdsetsid gimp $f >/dev/null 2>&1 ;;
 		image/svg+xml) display -- $f ;;
