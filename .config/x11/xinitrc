@@ -6,7 +6,7 @@ pkill lowbat
 
 /home/jozan/.local/bin/scrmain
 /home/jozan/.local/bin/kb
-# /usr/local/bin/musicpd	>/dev/null 2>&1
+/usr/local/bin/musicpd	>/dev/null 2>&1
 /usr/local/bin/compton	>/dev/null 2>&1 &
 /usr/local/bin/dunst	>/dev/null 2>&1 &
 /usr/local/bin/mpd-notification	>/dev/null 2>&1 &

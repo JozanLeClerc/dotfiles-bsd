@@ -57,3 +57,4 @@ xrandr \
 	--output DP-2 --off \
 	--output DP-3 --off
 setwp
+ekb

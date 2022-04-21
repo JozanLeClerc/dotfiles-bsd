@@ -6,8 +6,20 @@ key home = 262,  Ctrl-A,  'g'
 ## Move cursor to the bottom of the list
 key end = 360,  Ctrl-E,  'G'
 
+## Select currently playing song
+key select-playing = 'o'
+
+## Help screen
+key screen-help = '1',  F1
+
+## Play/Enter directory
+key play = Ctrl-M,  'l'
+
 ## Pause
 key pause = 'P',  32
+
+## Crop
+key crop = 'X'
 
 ## Select/deselect song in queue
 key select = 'a'
@@ -18,8 +30,15 @@ key delete = 330,  'd',  'x'
 ## Toggle crossfade mode
 key crossfade = 0
 
+## Save queue
+key save = 0
+
 ## Append song to queue
 key add = 0
 
+## Go to parent directory
+key go-parent-directory = 'h',  34
+
 ## Locate song in browser
 key locate = 0
+
