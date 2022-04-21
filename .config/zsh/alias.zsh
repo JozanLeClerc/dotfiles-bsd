@@ -142,6 +142,8 @@ alias nb='newsboat' \
 	pinfo='pkg info -x' \
 	psearch='pkg search' \
 	pinstall='doas pkg install' \
+	update='doas pkg update && doas pkg upgrade' \
+	pstree='dtpstree' \
 	highlight='highlight -Oxterm256 -t4' \
 	hi='highlight'
 hil() {
