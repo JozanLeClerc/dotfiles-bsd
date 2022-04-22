@@ -7,7 +7,8 @@ use constant {
 	ACPI_PATH		=> '/usr/sbin/acpiconf',
 	KILL_PATH		=> '/usr/bin/killall',
 	SHUTDOWN_PATH	=> '/sbin/shutdown',
-	NOTIF_PATH		=> '/usr/local/bin/notify-send'
+	NOTIF_PATH		=> '/usr/local/bin/notify-send',
+	EMACS_PATH		=> '/usr/local/bin/emacsclient'
 };
 use constant LIST => [
 	'Lock screen',
@@ -58,16 +59,19 @@ sub action
 	}
 	elsif ($var eq ${+LIST}[2]) {
 		if (confirm($var) == 1) {
+			system(EMACS_PATH, '-e', '(save-buffers-kill-terminal)');
 			exec(KILL_PATH, 'dwm');
 		}
 	}
 	elsif ($var eq ${+LIST}[3]) {
 		if (confirm($var) == 1) {
+			system(EMACS_PATH, '-e', '(save-buffers-kill-terminal)');
 			exec(SHUTDOWN_PATH, '-r', 'now');
 		}
 	}
 	elsif ($var eq ${+LIST}[4]) {
 		if (confirm($var) == 1) {
+			system(EMACS_PATH, '-e', '(save-buffers-kill-terminal)');
 			system(
 				NOTIF_PATH,
 				'-u',

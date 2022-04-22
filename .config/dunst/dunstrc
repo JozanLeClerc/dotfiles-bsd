@@ -1,7 +1,7 @@
 [global]
     monitor = 0
     follow = none
-    geometry = "750-40+40"
+    geometry = "1500x5-40+40"
     indicate_hidden = yes
     shrink = yes
     transparency = 0

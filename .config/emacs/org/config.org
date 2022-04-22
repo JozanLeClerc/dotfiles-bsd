@@ -1,6 +1,7 @@
 * My emacs config
 ** Basic configs
    #+BEGIN_SRC emacs-lisp
+	 (server-start)
 	 (setq x-alt-keysym 'meta)
 	 (set-keyboard-coding-system 'utf-8)
 
@@ -10,8 +11,14 @@
 	 (blink-cursor-mode 0)
 	 (global-hl-line-mode 1)
 	 (global-auto-revert-mode t)
+	 (defun my/disable-scroll-bars (frame)
+	   (modify-frame-parameters frame
+								'((vertical-scroll-bars . nil)
+								  (horizontal-scroll-bars . nil))))
+	 (add-hook 'after-make-frame-functions 'my/disable-scroll-bars)
 
-	 (set-frame-font "mononoki Nerd Font:pixelsize=15" nil t)
+	 (setq default-frame-alist '((font . "mononoki Nerd Font:pixelsize=15")))
+	 ;; (set-frame-font "mononoki Nerd Font:pixelsize=15" nil t)
 	 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 	 (add-hook 'text-mode-hook 'display-line-numbers-mode)
 
@@ -27,8 +34,6 @@
 		   delete-old-versions t
 		   kept-new-versions 20
 		   kept-old-versions 5)
-
-	 (server-start)
    #+END_SRC
 
 ** Desktop-save
@@ -200,6 +205,7 @@
 	  (add-to-list 'auto-mode-alist '("env$" . shell-script-mode))
 	  (add-to-list 'auto-mode-alist '("lfrc$" . vimrc-mode))
 	  (add-to-list 'auto-mode-alist '("muttrc$" . mutt-mode))
+	  (add-to-list 'auto-mode-alist '("dunstrc$" . conf-mode))
 	  (add-to-list 'auto-mode-alist '("loader.conf$" . conf-mode))
    #+END_SRC
 
@@ -798,5 +804,3 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 	 (shell-pop--set-shell-type 'my/shell-pop-shell-type my/shell-pop-shell-type)
    #+END_SRC
-
-   

@@ -1,17 +1,21 @@
 # vim: filetype=sh
-pkill compton
-pkill dunst
-pkill mpd-notification
-pkill lowbat
+
+startif() {
+	if ! pgrep "$1"; then
+		bsdsetsid "$@" >/dev/null 2>&1
+	fi
+}
 
 /home/jozan/.local/bin/scrmain
 /home/jozan/.local/bin/kb
-/usr/local/bin/musicpd	>/dev/null 2>&1
-/usr/local/bin/compton	>/dev/null 2>&1 &
-/usr/local/bin/dunst	>/dev/null 2>&1 &
-/usr/local/bin/mpd-notification	>/dev/null 2>&1 &
-/usr/local/bin/lowbat	>/dev/null 2>&1 &
+startif dunst
+startif compton
+startif musicpd
+startif mpd-notification
+startif lowbat
+startif emacs --daemon
+notify-send  -u low -t 2000 'emacs' '  Emacs daemonized'
 cd /home/jozan
 xrdb /home/jozan/.config/x11/xresources
-/usr/local/bin/notify-send -u normal 'Welcome' "  Welcome back, partner\!"
-dbus-launch dwm
+notify-send -u normal 'Welcome' "  Welcome back, partner\!"
+exec dwm
