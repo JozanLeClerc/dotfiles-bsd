@@ -161,7 +161,5 @@ alias watch='cmdwatch' \
 	open='xdg-open' \
 	abook='abook -C $XDG_CONFIG_HOME/abook/abookrc --datafile $XDG_DATA_HOME/abook/addressbook' \
 	dosbox='dosbox -conf $XDG_CONFIG_HOME/dosbox/dosbox.conf' \
-	svn='svn --config-dir $XDG_CONFIG_HOME/subversion' \
 	gpg2='gpg2 --homedir $XDG_DATA_HOME/gnupg' \
-	yarn='yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config' \
 	wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
