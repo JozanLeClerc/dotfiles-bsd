@@ -1,21 +1,19 @@
 # vim: filetype=sh
 
 startif() {
-	if ! pgrep "$1" >/dev/null; then
-		bsdsetsid "$@" >/dev/null 2>&1
-	fi
+	pgrep "$1" >/dev/null || "$@" >/dev/null 2>&1 &
 }
 
-/home/jozan/.local/bin/scrmain
-/home/jozan/.local/bin/kb
+"$HOME"/.local/bin/scrmain
+"$HOME"/.local/bin/kb
 startif dunst
 startif compton
-startif musicpd
+pgrep musicpd >/dev/null || musicpd >/dev/null 2>&1
 startif mpd-notification
 startif lowbat
 startif emacs --daemon
 notify-send -u low -t 2000 'emacs' '  Emacs daemonized'
-cd /home/jozan
-xrdb /home/jozan/.config/x11/xresources
+cd "$HOME"
+xrdb "$HOME"/.config/x11/xresources
 notify-send -u normal 'Welcome' "  Welcome back, partner\!"
 exec dwm
