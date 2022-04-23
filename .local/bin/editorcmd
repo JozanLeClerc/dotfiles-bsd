@@ -1,3 +1,4 @@
-#!/usr/local/bin/dash
+#!/bin/sh
 
-exec bsdsetsid emacsclient -c -a /usr/local/bin/nvim "$@"
+pgrep emacs >/dev/null && exec bsdsetsid emacsclient -c "$@" >/dev/null
+exec nvim "$@"

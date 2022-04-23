@@ -1,7 +1,7 @@
 # vim: filetype=sh
 
 startif() {
-	if ! pgrep "$1"; then
+	if ! pgrep "$1" >/dev/null; then
 		bsdsetsid "$@" >/dev/null 2>&1
 	fi
 }
@@ -14,7 +14,7 @@ startif musicpd
 startif mpd-notification
 startif lowbat
 startif emacs --daemon
-notify-send  -u low -t 2000 'emacs' '  Emacs daemonized'
+notify-send -u low -t 2000 'emacs' '  Emacs daemonized'
 cd /home/jozan
 xrdb /home/jozan/.config/x11/xresources
 notify-send -u normal 'Welcome' "  Welcome back, partner\!"
