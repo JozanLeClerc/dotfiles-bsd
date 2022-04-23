@@ -13,3 +13,4 @@ color progressbar = red/black
 color status-state = yellow/black
 color status-song = yellow/black
 color status-time = yellow/black
+list-format = "%artist% - %album% - %title%"
