@@ -1,9 +1,9 @@
 # vim: filetype=neomuttrc
-# muttrc file for account bousset.rudy@gmail.com
+# muttrc file for account olsen.oyvind.nor@gmail.com
 set realname = "Joe"
 set from = "olsen.oyvind.nor@gmail.com"
 set sendmail = "msmtp -a olsen.oyvind.nor@gmail.com"
-alias me Rudy Bousset <olsen.oyvind.nor@gmail.com>
+alias me Joe <olsen.oyvind.nor@gmail.com>
 set folder = "/home/jozan/.local/share/mail/olsen.oyvind.nor@gmail.com"
 set header_cache = /home/jozan/.cache/mutt-wizard/olsen.oyvind.nor@gmail.com/headers
 set message_cachedir = /home/jozan/.cache/mutt-wizard/olsen.oyvind.nor@gmail.com/bodies

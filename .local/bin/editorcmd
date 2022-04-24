@@ -1,4 +1,3 @@
 #!/bin/sh
 
-pgrep emacs >/dev/null && exec bsdsetsid emacsclient -c "$@" >/dev/null
-exec nvim "$@"
+exec emacsclient -nw -a nvim "$@"
