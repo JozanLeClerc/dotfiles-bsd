@@ -1,12 +1,33 @@
-#!/usr/local/bin/dash -e
+#!/bin/sh -e
 
-[ -z "$1" ] && echo 'Thought needed' && exit 1
+if [ -z "$1" ]; then
+	read -r thought
+elif [ -f "$1" ]; then
+	thought=$(cat "$1")
+else
+	thought="$*"
+fi
 
-nl='
-'
 date=$(date)
+html_fmt='\t\t\t\t<h3>'"${date}"'<\/h3>\
+\t\t\t\t<p>\
+\t\t\t\t\t'"${thought}"'\
+\t\t\t\t<\/p>\
+'
+gmi_fmt='\
+\
+## '"${date}"'\
+\
+'"${thought}"
 
-sed -i '' -e '15i '"\\${nl}\\${nl}"'## '"\\${date}"' '"\\${nl}\\${nl}\\${1}" "$HOME"/dev/web/jozan_gemini/thoughts.gmi
+sed -i '' -e '/<!-- thoughts here -->$/{n;s/^/'"${html_fmt}"'/;}' \
+	"$HOME"/dev/web/jozanofastora.xyz/thoughts.html
+git -C "$HOME"/dev/web/jozanofastora.xyz add -u
+git -C "$HOME"/dev/web/jozanofastora.xyz commit -m "Thought: ${date}"
+git -C "$HOME"/dev/web/jozanofastora.xyz push
+
+sed -i '' -e '15i '"${gmi_fmt}" \
+	"$HOME"/dev/web/jozan_gemini/thoughts.gmi
 git -C "$HOME"/dev/web/jozan_gemini add -u
 git -C "$HOME"/dev/web/jozan_gemini commit -m "Thought: ${date}"
 git -C "$HOME"/dev/web/jozan_gemini push
