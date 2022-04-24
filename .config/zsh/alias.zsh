@@ -18,8 +18,7 @@ tree() {
 }
 alias \
 	e='editorcmd' \
-	et='editermcmd' \
-	vim='editermcmd' \
+	vim='editorcmd' \
 	c='clear' \
 	less='less --tabs 4' \
 	bc='bc -l' \

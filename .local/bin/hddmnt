@@ -1,4 +1,4 @@
-#!/usr/local/bin/dash -e
+#!/bin/sh -e
 
 tmp=$(mktemp)
 
