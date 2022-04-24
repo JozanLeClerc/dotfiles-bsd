@@ -3,6 +3,6 @@
 tmp=$(mktemp)
 
 dmenu -p "Enter password: " -nb '#1d2021' -nf '#1d2021' <&- >"$tmp"
-geli attach -k /root/geli_keys/hdd_ext.key -j "$tmp" /dev/da0
+geli attach -k /root/geli_keys/fathdd_ext.key -j "$tmp" /dev/da0p1
 mkdir -p "$HOME"/hdd
-mount /dev/da0.eli "$HOME"/hdd
+mount /dev/da0p1.eli "$HOME"/hdd

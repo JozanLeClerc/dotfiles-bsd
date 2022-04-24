@@ -1,0 +1,5 @@
+#!/bin/sh -e
+
+umount /dev/da0p1.eli
+geli detach da0p1.eli
+rmdir "$HOME"/hdd
