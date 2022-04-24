@@ -1,11 +1,13 @@
 [global]
     monitor = 0
     follow = none
-    geometry = "1500x5-40+40"
+	width = (0, 600)
+	height = 500
+	origin = top-right
+	offset = 40x40
     indicate_hidden = yes
     shrink = yes
     transparency = 0
-    notification_height = 0
     separator_height = 4
     padding = 2
     horizontal_padding = 10
@@ -46,7 +48,7 @@
     ignore_newline = no
     stack_duplicates = true
     hide_duplicate_count = true
-	show_indicators = yes
+	show_indicators = no
 	icon_position = right
     max_icon_size = 300
 	# icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/:/usr/share/icons/Adwaita/256x256/status/
@@ -60,16 +62,15 @@
 
     title = Dunst
     class = Dunst
-    startup_notification = false
     force_xinerama = false
 [experimental]
     per_monitor_dpi = false
 
-[shortcuts]
-    close = ctrl+space
-    close_all = ctrl+shift+space
-    history = ctrl+grave
-    context = ctrl+shift+period
+# [shortcuts]
+#     close = ctrl+space
+#     close_all = ctrl+shift+space
+#     history = ctrl+grave
+#     context = ctrl+shift+period
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
