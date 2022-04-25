@@ -15,4 +15,4 @@ notify-send -u low -t 2000 'emacs' '  Emacs daemonized'
 cd "$HOME"
 xrdb "$HOME"/.config/x11/xresources
 notify-send -u normal 'Welcome' "  Welcome back, partner\!"
-exec dwm
+dbus-launch dwm
