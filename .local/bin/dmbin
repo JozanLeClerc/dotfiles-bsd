@@ -1,6 +1,0 @@
-#!/bin/sh -e
-
-file=$(find "$HOME"/.local/bin -type f | dmenu -i -l 20 -m 0)
-bsdsetsid emacsclient -c "$file"
-kill -9 "$(ps -p $$ -oppid=)"
-exit

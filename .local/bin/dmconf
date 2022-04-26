@@ -1,6 +1,0 @@
-#!/bin/sh -e
-
-file=$(find "$XDG_CONFIG_HOME" -type f | dmenu -i -l 30 -m 0)
-bsdsetsid emacsclient -c "$file"
-kill -9 "$(ps -p $$ -oppid=)"
-exit

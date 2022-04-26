@@ -107,21 +107,21 @@ econf() {
 }
 eebin() {
 	file=$(find "$HOME"/.local/bin -type f | fzf)
+	[ $? -ne 0 ] && return
 	bsdsetsid emacsclient -c "$file"
 	kill -9 "$(ps -p $$ -oppid=)"
-	exit
 }
 eeconf() {
 	file=$(find "$HOME"/.config -type f | fzf)
+	[ $? -ne 0 ] && return
 	bsdsetsid emacsclient -c "$file"
 	kill -9 "$(ps -p $$ -oppid=)"
-	exit
 }
 ee() {
 	file=$(find . -type f | fzf)
+	[ $? -ne 0 ] && return
 	bsdsetsid emacsclient -c "$file"
 	kill -9 "$(ps -p $$ -oppid=)"
-	exit
 }
 pa() {
 	if [ -d $HOME/.local/packs ] && cd $HOME/.local/packs || return 1
