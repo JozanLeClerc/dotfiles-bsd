@@ -80,7 +80,7 @@
 									projectile
 									org-evil
 									company company-box
-									which-key dap-mode
+									which-key
 									magit
 									undo-tree
 									shell-pop
@@ -633,7 +633,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
   (with-eval-after-load 'lsp-mode
 	(add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
-	(require 'dap-cpptools)
 	(yas-global-mode))
 
   (add-hook 'after-init-hook 'global-company-mode)
