@@ -56,13 +56,8 @@ alias \
 	irssi='irssi --config="$XDG_CONFIG_HOME"/irssi/config --home="$XDG_DATA_HOME"/irssi' \
 	irc='irssi' \
 	dgit='git --git-dir=$HOME/docs/dotfiles-bsd --work-tree=$HOME' \
+	confgit='git --git-dir=$HOME/docs/conffiles-bsd --work-tree=/'
 	vpsdo='/usr/home/jozan/dev/perl/serv-scripts/vps-do.pl'
-confgit() {
-	p=$(pwd)
-	cd /
-	git --git-dir=$HOME/docs/conffiles-bsd --work-tree=/ $@
-	cd $p
-}
 upsrc() {
 	doas git -C /usr/src pull --ff-only
 }
