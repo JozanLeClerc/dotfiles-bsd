@@ -1,13 +1,27 @@
-#!/usr/local/bin/dash
+#!/bin/sh
 
 serv_addr="root@jozanofastora.xyz"
 
-rsync -urvhP --delete-after --exclude '.*' --exclude 'README.org' \
-	"$HOME"/dev/web/jozanofastora.xyz/	$serv_addr:/usr/local/www/jozan
-rsync -urvhP --exclude '.*' --exclude 'README.org' \
-	"$HOME"/dev/web/gitjoe/				$serv_addr:/usr/local/www/gitjoe
-rsync -urvhP --delete-after --exclude '.*' --exclude 'README.org' \
-	"$HOME"/dev/web/jozan_gemini/		$serv_addr:/usr/local/gemini
-rsync -urvhP --delete-after --exclude '.*' --exclude 'README.org' --exclude 'LICENSE' \
-	"$HOME"/dev/perl/serv-scripts/		$serv_addr:/root/scripts
+rsync -urvhP --delete-after \
+	  --exclude '.*' \
+	  --exclude 'README.org' \
+	  "$HOME"/dev/web/jozanofastora.xyz/ \
+	  $serv_addr:/usr/local/www/jozan
+rsync -urvhP --delete-after \
+	  --exclude '.*' \
+	  --exclude 'README.org' \
+	  --exclude 'users' \
+	  "$HOME"/dev/web/gitjoe/ \
+	  $serv_addr:/usr/local/www/gitjoe
+rsync -urvhP --delete-after \
+	  --exclude '.*' \
+	  --exclude 'README.org' \
+	  "$HOME"/dev/web/jozan_gemini/ \
+	  $serv_addr:/usr/local/gemini
+rsync -urvhP --delete-after \
+	  --exclude '.*' \
+	  --exclude 'README.org' \
+	  --exclude 'LICENSE' \
+	  "$HOME"/dev/perl/serv-scripts/ \
+	  $serv_addr:/root/scripts
 rsync -urvhP "$HOME/.config/newsboat/urls" $serv_addr:/root/backup/apps/newsboat
