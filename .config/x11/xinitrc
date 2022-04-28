@@ -11,7 +11,6 @@ startif compton
 pgrep musicpd >/dev/null || musicpd >/dev/null 2>&1
 startif mpd-notification
 startif lowbat
-notify-send -u low -t 2000 'emacs' '  Emacs daemonized'
 cd "$HOME"
 xrdb "$HOME"/.config/x11/xresources
 notify-send -u normal 'Welcome' "  Welcome back, partner\!"
