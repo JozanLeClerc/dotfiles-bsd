@@ -5,13 +5,13 @@ serv_addr="root@jozanofastora.xyz"
 rsync -urvhP --delete-after \
 	  --exclude '.*' \
 	  --exclude 'README.org' \
-	  "$HOME"/dev/web/jozanofastora.xyz/ \
+	  "$HOME"/dev/web/jozanofastora-www/ \
 	  $serv_addr:/usr/local/www/jozan
 rsync -urvhP --delete-after \
 	  --exclude '.*' \
 	  --exclude 'README.org' \
 	  --exclude 'users' \
-	  "$HOME"/dev/web/gitjoe/ \
+	  "$HOME"/dev/web/gitjoe-www/ \
 	  $serv_addr:/usr/local/www/gitjoe
 rsync -urvhP --delete-after \
 	  --exclude '.*' \
@@ -22,6 +22,6 @@ rsync -urvhP --delete-after \
 	  --exclude '.*' \
 	  --exclude 'README.org' \
 	  --exclude 'LICENSE' \
-	  "$HOME"/dev/perl/serv-scripts/ \
+	  "$HOME"/dev/perl/jozanofastora-scripts/ \
 	  $serv_addr:/root/scripts
 rsync -urvhP "$HOME/.config/newsboat/urls" $serv_addr:/root/backup/apps/newsboat
