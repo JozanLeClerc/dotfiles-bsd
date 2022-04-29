@@ -56,7 +56,7 @@ alias \
 	irssi='irssi --config="$XDG_CONFIG_HOME"/irssi/config --home="$XDG_DATA_HOME"/irssi' \
 	irc='irssi' \
 	dgit='git --git-dir=$HOME/docs/dotfiles-bsd --work-tree=$HOME' \
-	confgit='git --git-dir=$HOME/docs/conffiles-bsd --work-tree=/'
+	confgit='git --git-dir=$HOME/docs/conffiles-bsd --work-tree=/' \
 	vpsdo='/usr/home/jozan/dev/perl/serv-scripts/vps-do.pl'
 upsrc() {
 	doas git -C /usr/src pull --ff-only
@@ -171,7 +171,7 @@ alias watch='cmdwatch' \
 	rsox='sox -t oss default' \
 	pstree='dtpstree -U' \
 	open='xdg-open' \
-	speedtest='speedtest --bytes'
+	speedtest='speedtest --bytes' \
 	calcurse='calcurse -C $XDG_CONFIG_HOME/calcurse -D $XDG_DATA_HOME/calcurse' \
 	abook='abook -C $XDG_CONFIG_HOME/abook/abookrc --datafile $XDG_DATA_HOME/abook/addressbook' \
 	dosbox='dosbox -conf $XDG_CONFIG_HOME/dosbox/dosbox.conf' \
