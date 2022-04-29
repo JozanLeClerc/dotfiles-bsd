@@ -1,0 +1,18 @@
+#!/bin/csh
+
+set cmd = 'sysctl hw.snd.default_unit'
+
+if ($#argv > 0) then
+	$cmd=$1 >&/dev/null
+else if (`$cmd | rev | cut -d ' ' -f 1` == 0) then
+	$cmd=4 >&/dev/null
+else
+	$cmd=0 >&/dev/null
+endif
+exec notify-send \
+	-u low \
+	-t 2000 \
+	'swsnd' \
+	"Switched to `grep default /dev/sndstat | \
+		sed -e 's/.*<\(.*\)>.*/\1/' | \
+		sed -e 's/.*(\(.*\)).*/\1/'`"
