@@ -16,7 +16,7 @@ rsync -urvhP --delete-after \
 rsync -urvhP --delete-after \
 	  --exclude '.*' \
 	  --exclude 'README.org' \
-	  "$HOME"/dev/web/jozan_gemini/ \
+	  "$HOME"/dev/web/jozanofastora-gemini/ \
 	  $serv_addr:/usr/local/gemini
 rsync -urvhP --delete-after \
 	  --exclude '.*' \
