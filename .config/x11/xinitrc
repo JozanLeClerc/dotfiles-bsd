@@ -7,7 +7,7 @@ startif() {
 "$HOME"/.local/bin/scrmain
 "$HOME"/.local/bin/kb
 startif dunst
-startif compton
+startif picom
 pgrep musicpd >/dev/null || musicpd >/dev/null 2>&1
 startif mpd-notification
 startif lowbat
