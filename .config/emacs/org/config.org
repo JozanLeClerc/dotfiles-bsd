@@ -79,7 +79,7 @@
 									helm helm-xref helm-lsp helm-etags-plus helm-fuzzy helm-themes helm-make helm-projectile
 									projectile
 									org-evil
-									company company-box
+									company company-box company-go company-fuzzy company-nginx
 									which-key
 									magit
 									undo-tree
@@ -101,6 +101,7 @@
 									org-superstar toc-org
 									pdf-tools
 									dockerfile-mode
+									go-mode
 									web-mode
 									ssh sudo-ext
 									vimish-fold
@@ -643,6 +644,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (define-key company-search-map (kbd "C-j") 'company-select-next)
   (define-key company-search-map (kbd "C-k") 'company-select-previous)
   (define-key company-search-map (kbd "C-t") 'company-search-toggle-filtering)
+  (define-key company-search-map (kbd "C-i") 'company-complete-common)
   ;; (push 'company-lsp company-backends)
   ;; (setq company-transformers nil company-lsp-async t company-lsp-cache-candidates nil)
   (add-hook 'company-mode-hook 'company-box-mode)
