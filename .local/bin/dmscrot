@@ -34,7 +34,7 @@ sub file_name
 	my $file_name;
 
 	$file_name = home() . '/' . SAVE_PATH . 'screen_';
-	$file_name .= `date "+%Y-%m-%d_%H-%M-%S"`;
+	$file_name .= `date +%s`;
 	chomp $file_name;
 	$file_name .= '.png';
 	return ($file_name);
