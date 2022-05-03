@@ -20,7 +20,7 @@ while true; do
 		"Stream starting soon"
 	printf "\n\n"
 	nocol
-	icat "$HOME"/pics/profile/caco.png -w 52 -x 62
+	icat "$HOME"/pics/profile/caco.png -w 52 -x 62 -m 24bit
 	printf "\033[1;36m\n"
 	figlet -s -L -c -t \
 		-d "$XDG_PACKAGE_HOME"/stream_figfonts \
