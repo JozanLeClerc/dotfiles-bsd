@@ -7,7 +7,8 @@ use constant {
 	SAVE_PATH		=> 'pics/scrot/',
 	SCREENSHOT_PATH	=> '/usr/local/bin/scrot',
 	IMGVIEW_PATH	=> '/usr/local/bin/nsxiv',
-	XCLIP_PATH		=> '/usr/local/bin/xclip'
+	XCLIP_PATH		=> '/usr/local/bin/xclip',
+	NOTIFY_PATH		=> '/usr/local/bin/notify-send'
 };
 use constant LIST => [
 	'Select region',
@@ -26,6 +27,30 @@ sub show_img
 	if (not $pid) {
 		exec(IMGVIEW_PATH, '-b', $file);
 	}
+	return;
+}
+
+sub notify_img
+{
+	my ($file) = @_;
+
+	system(
+		NOTIFY_PATH,
+		'-u', 'low',
+		'-t', '2000',
+		'scrot',
+		'a Screenshot captured to ' . "\n" .
+		'<b>' . $file . '</b>'
+		);
+	return;
+}
+
+sub clip_img
+{
+	my ($file) = @_;
+
+	chomp $file;
+	system('echo -n ' . $file . ' | ' . XCLIP_PATH);
 	return;
 }
 
@@ -56,7 +81,6 @@ sub action
 			'-s',
 			'-l', 'mode=classic,style=dash,width=2,color=#990000'
 			);
-		show_img($file_name);
 	}
 	elsif ($var eq ${+LIST}[1]) {
 		$file_name = file_name();
@@ -66,7 +90,6 @@ sub action
 			'-q', '100',
 			'-u'
 			);
-		show_img($file_name);
 	}
 	elsif ($var eq ${+LIST}[2]) {
 		$file_name = file_name();
@@ -75,7 +98,6 @@ sub action
 			$file_name,
 			'-q', '100'
 			);
-		show_img($file_name);
 	}
 	elsif ($var eq ${+LIST}[3]) {
 		$file_name = file_name();
@@ -85,7 +107,6 @@ sub action
 			'-q', '100',
 			'-a', '0,0,1920,1080'
 			);
-		show_img($file_name);
 	}
 	elsif ($var eq ${+LIST}[4]) {
 		$file_name = file_name();
@@ -95,8 +116,10 @@ sub action
 			'-q', '100',
 			'-a', '1920,180,1440,900'
 			);
-		show_img($file_name);
 	}
+	show_img($file_name);
+	notify_img($file_name);
+	clip_img($file_name);
 	return;
 }
 
