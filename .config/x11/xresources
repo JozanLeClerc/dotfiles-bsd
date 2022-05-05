@@ -10,3 +10,5 @@ Xcursor.size: 18
 Nsxiv.window.background: #1d2021
 Nsxiv.window.foreground: #ebdbb2
 Nsxiv.bar.font: UbuntuMono Nerd Font-11
+Vncviewer.grabKeyboard: true
+Vncviewer.FullScreen: 1

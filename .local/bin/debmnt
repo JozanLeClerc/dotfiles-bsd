@@ -1,0 +1,17 @@
+#!/bin/sh
+
+echo "devfs /compat/debian/dev devfs rw 0 0" >> /etc/fstab
+echo "fdescfs /compat/debian/dev/fd fdescfs rw,linrdlnk 0 1" >> /etc/fstab
+echo "linsys /compat/debian/sys linsysfs rw 0 0" >> /etc/fstab
+echo "linproc /compat/debian/proc linprocfs rw 0 0" >> /etc/fstab
+
+mount /compat/debian/dev
+mount /compat/debian/dev/fd
+mount /compat/debian/proc
+mount /compat/debian/sys
+
+sysctl compat.linux.osrelease=4.19.0
+kldload linux
+kldload linux64
+
+chroot /compat/debian /bin/bash

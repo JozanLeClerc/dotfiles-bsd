@@ -74,7 +74,7 @@ export CCACHE_LOGFILE='/var/log/ccache.log'
 # Apps config
 export FZF_DEFAULT_COMMAND='ag -g "" --ignore dotfiles-bsd'
 export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border=left --tabstop=4'
-export LESS="-R"
+export LESS="-R -c"
 export LESSHISTFILE='-'
 export MANPAGER="less -R -M +Gg"
 export MPD_HOST="$HOME"/.local/share/mpd/socket

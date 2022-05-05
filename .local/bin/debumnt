@@ -1,0 +1,10 @@
+#!/bin/sh
+
+umount /compat/debian/dev
+umount /compat/debian/dev/fd
+umount /compat/debian/proc
+umount /compat/debian/sys
+
+sed -i '' '/debian/d' /etc/fstab
+
+kldunload linux
