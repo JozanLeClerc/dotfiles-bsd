@@ -1,10 +1,11 @@
 #!/bin/sh
 
-umount /compat/debian/dev
-umount /compat/debian/dev/fd
-umount /compat/debian/proc
-umount /compat/debian/sys
+umount /usr/loacal/jails/devuan/dev
+umount /usr/loacal/jails/devuan/dev/fd
+umount /usr/loacal/jails/devuan/proc
+umount /usr/loacal/jails/devuan/sys
 
-sed -i '' '/debian/d' /etc/fstab
+sed -i '' '/devuan/d' /etc/fstab
 
 kldunload linux
+kldunload linux64
