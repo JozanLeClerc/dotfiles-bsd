@@ -77,7 +77,7 @@ sub action
 				'-u',
 				'normal',
 				'shutdown',
-				'  Farwell, partner!'
+				'  Farewell, partner!'
 				);
 			sleep 2;
 			exec(SHUTDOWN_PATH, '-p', 'now');
