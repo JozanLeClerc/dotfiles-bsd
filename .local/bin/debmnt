@@ -1,17 +1,21 @@
 #!/bin/sh
 
-echo "devfs /usr/loacal/jails/devuan/dev devfs rw 0 0" >> /etc/fstab
-echo "fdescfs /usr/loacal/jails/devuan/dev/fd fdescfs rw,linrdlnk 0 1" >> /etc/fstab
-echo "linsys /usr/loacal/jails/devuan/sys linsysfs rw 0 0" >> /etc/fstab
-echo "linproc /usr/loacal/jails/devuan/proc linprocfs rw 0 0" >> /etc/fstab
+# echo "devfs /usr/local/jails/devuan/dev devfs rw 0 0" >> /etc/fstab
+# echo "fdescfs /usr/local/jails/devuan/dev/fd fdescfs rw,linrdlnk 0 1" >> /etc/fstab
+# echo "linsys /usr/local/jails/devuan/sys linsysfs rw 0 0" >> /etc/fstab
+# echo "linproc /usr/local/jails/devuan/proc linprocfs rw 0 0" >> /etc/fstab
+# echo "tmpfs /usr/local/jails/devuan/tmp tmpfs rw,late,mode=1777 0 0" >> /etc/fstab
 
-mount /usr/loacal/jails/devuan/dev
-mount /usr/loacal/jails/devuan/dev/fd
-mount /usr/loacal/jails/devuan/proc
-mount /usr/loacal/jails/devuan/sys
-
-sysctl compat.linux.osrelease=4.19.0
 kldload linux
 kldload linux64
 
-chroot /compat/devuan /bin/bash
+# mount /usr/local/jails/devuan/dev
+# mount /usr/local/jails/devuan/dev/fd
+mount -F /etc/fstab.devuan /usr/local/jails/devuan/proc
+mount -F /etc/fstab.devuan /usr/local/jails/devuan/sys
+mount -F /etc/fstab.devuan /usr/local/jails/devuan/tmp
+mount -t devfs none /usr/local/jails/devuan/dev
+
+# sysctl compat.linux.osrelease=4.19.0
+
+chroot /usr/local/jails/devuan /bin/bash
