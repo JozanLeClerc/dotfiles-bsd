@@ -58,7 +58,7 @@ bindkey "^e" edit-command-line
 
 autoload -U add-zsh-hook
 exa_after_cd() {
-	exa -l --icons --color=always --group-directories-first
+	exa -l --icons --color=always --group-directories-first --no-permissions --no-user --no-time
 }
 add-zsh-hook chpwd exa_after_cd
 
