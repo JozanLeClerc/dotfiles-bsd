@@ -4,7 +4,7 @@ startif() {
 	pgrep "$1" >/dev/null || "$@" >/dev/null 2>&1 &
 }
 
-"$HOME"/.local/bin/scrmain
+"$HOME"/.local/bin/setwp
 "$HOME"/.local/bin/kb
 startif dunst
 startif picom

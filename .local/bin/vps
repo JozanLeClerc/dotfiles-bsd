@@ -1,15 +1,22 @@
 #!/bin/sh
 
-serv_addr="root@jozanofastora.xyz"
+serv_addr="root@95.179.223.82"
 
-# jozanofastora-www
+# joe-www
 rsync -urvhP --delete-after \
 	  --exclude '.*' \
 	  --exclude 'README.org' \
 	  --exclude 'LICENSE' \
 	  --exclude 'asm-example.cgi' \
-	  "$HOME"/dev/web/jozanofastora-www/ \
+	  "$HOME"/dev/web/joe-www/ \
 	  $serv_addr:/usr/local/www/jozan
+# joe-gemini
+rsync -urvhP --delete-after \
+	  --exclude '.*' \
+	  --exclude 'README.org' \
+	  --exclude 'LICENSE' \
+	  "$HOME"/dev/web/joe-gemini/ \
+	  $serv_addr:/usr/local/gemini
 # gitjoe-cgit
 rsync -urvhP \
 	  --exclude '.*' \
@@ -17,19 +24,21 @@ rsync -urvhP \
 	  --exclude 'LICENSE' \
 	  "$HOME"/dev/web/gitjoe-cgit/ \
 	  $serv_addr:/usr/local/www/gitjoe
-# jozanofastora-gemini
+# joe-scripts
 rsync -urvhP --delete-after \
 	  --exclude '.*' \
 	  --exclude 'README.org' \
 	  --exclude 'LICENSE' \
-	  "$HOME"/dev/web/jozanofastora-gemini/ \
-	  $serv_addr:/usr/local/gemini
-# jozanofastora-scripts
+	  "$HOME"/dev/perl/joe-scripts/ \
+	  $serv_addr:/root/bin/joe
+
+# gitjoe-scripts
 rsync -urvhP --delete-after \
 	  --exclude '.*' \
 	  --exclude 'README.org' \
 	  --exclude 'LICENSE' \
-	  "$HOME"/dev/perl/jozanofastora-scripts/ \
-	  $serv_addr:/root/scripts
+	  "$HOME"/dev/perl/gitjoe-scripts/src/ \
+	  $serv_addr:/root/bin/gitjoe
 # backups
-rsync -urvhP "$HOME/.config/newsboat/urls" $serv_addr:/root/backup/apps/newsboat
+rsync -uvhP "$XDG_CONFIG_HOME"/newsboat/urls $serv_addr:/root/backup/apps/newsboat
+rsync -uvhP "$HOME"/.mozilla/firefox/jozan_privacy.tar.xz $serv_addr:/root/backup/apps/firefox

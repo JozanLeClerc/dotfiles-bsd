@@ -57,7 +57,7 @@ alias \
 	irc='irssi' \
 	dgit='git --git-dir=$HOME/docs/dotfiles-bsd --work-tree=$HOME' \
 	confgit='git --git-dir=$HOME/docs/conffiles-bsd --work-tree=/' \
-	vpsdo='/usr/home/jozan/dev/perl/jozanofastora-scripts/vps-do.pl'
+	gjdo='/usr/home/jozan/dev/perl/gitjoe-scripts/gitjoe-do.pl'
 upsrc() {
 	doas git -C /usr/src pull --ff-only
 }
