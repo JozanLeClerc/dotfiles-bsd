@@ -2,12 +2,12 @@
 
 # umount /usr/local/jails/devuan/dev
 # umount /usr/local/jails/devuan/dev/fd
-umount /usr/local/jails/devuan/proc
-umount /usr/local/jails/devuan/sys
-umount /usr/local/jails/devuan/tmp
-umount /usr/local/jails/devuan/dev
+# umount /usr/local/jails/devuan/proc
+# umount /usr/local/jails/devuan/sys
+# umount /usr/local/jails/devuan/tmp
+# umount /usr/local/jails/devuan/dev
 
-sed -i '' '/devuan/d' /etc/fstab
+jail -r devuan
 
 kldunload linux
 kldunload linux64

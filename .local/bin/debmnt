@@ -9,13 +9,17 @@
 kldload linux
 kldload linux64
 
+jail -c devuan
+jexec -l devuan /bin/bash
+
 # mount /usr/local/jails/devuan/dev
 # mount /usr/local/jails/devuan/dev/fd
-mount -F /etc/fstab.devuan /usr/local/jails/devuan/proc
-mount -F /etc/fstab.devuan /usr/local/jails/devuan/sys
-mount -F /etc/fstab.devuan /usr/local/jails/devuan/tmp
-mount -t devfs none /usr/local/jails/devuan/dev
+
+# mount -F /etc/fstab.devuan /usr/local/jails/devuan/proc
+# mount -F /etc/fstab.devuan /usr/local/jails/devuan/sys
+# mount -F /etc/fstab.devuan /usr/local/jails/devuan/tmp
+# mount -t devfs none /usr/local/jails/devuan/dev
 
 # sysctl compat.linux.osrelease=4.19.0
 
-chroot /usr/local/jails/devuan /bin/bash
+# chroot /usr/local/jails/devuan /bin/bash
