@@ -18,7 +18,7 @@ tree() {
 }
 alias \
 	e='editorcmd' \
-	vim='editorcmd' \
+	vim='nvim' \
 	c='clear' \
 	less='less --tabs 4' \
 	bc='bc -l' \
@@ -127,26 +127,27 @@ pa() {
 co() {
 	if [ "$1" ]; then
 		if cd "$XDG_CONFIG_HOME"/"$1"; then
-			ls
+			:
 		else
-			cd "$XDG_CONFIG_HOME" && ls
+			cd "$XDG_CONFIG_HOME"
 		fi
 	else
-		cd "$XDG_CONFIG_HOME" && ls
+		cd "$XDG_CONFIG_HOME"
 	fi
 }
 da() {
 	if [ "$1" ]; then
 		if cd "$XDG_DATA_HOME"/"$1"; then
-			ls
+			:
 		else
-			cd "$XDG_DATA_HOME" && ls
+			cd "$XDG_DATA_HOME"
 		fi
 	else
-		cd "$XDG_DATA_HOME" && ls
+		cd "$XDG_DATA_HOME"
 	fi
 }
-alias bi='cd $HOME/.local/bin && ls'
+alias bi='cd $HOME/.local/bin' \
+	  sss='cd $HOME/docs/work/secuserve/scripts'
 twi() {
 	mpview https://twitch.tv/"$1";
 }

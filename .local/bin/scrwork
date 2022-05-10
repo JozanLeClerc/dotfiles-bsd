@@ -44,14 +44,13 @@
 #
 # Screen setup when I'm at work
 
-xrandr \
-	--output LVDS-1 --mode 1366x768 --pos 0x600 --rotate normal \
-	--output VGA-1 --mode 1920x1080 --pos 3286x0 --rotate normal \
-	--output HDMI-1 --primary --mode 1920x1080 --pos 1366x0 --rotate normal \
-	--output DP-1 --off \
-	--output HDMI-2 --off \
-	--output HDMI-3 --off \
-	--output DP-2 --off \
-	--output DP-3 --off
+xrandr --output LVDS-1 --off
+xrandr --output VGA-1 --mode 1280x1024 --pos 0x0 --rotate normal
+xrandr --output HDMI-1 --off
+xrandr --output DP-1 --off
+xrandr --output HDMI-2 --primary --mode 1920x1080 --pos 1280x0 --rotate normal
+xrandr --output HDMI-3 --off
+xrandr --output DP-2 --off
+xrandr --output DP-3 --off
 sysctl hw.snd.default_unit=0 >/dev/null
 setwp
