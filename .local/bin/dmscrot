@@ -72,18 +72,17 @@ sub action
 	my $file_name;
 
 	chomp $var;
+	$file_name = file_name();
 	if ($var eq ${+LIST}[0]) {
-		$file_name = file_name();
 		system(
 			SCREENSHOT_PATH,
 			$file_name,
 			'-q', '100',
 			'-s',
-			'-l', 'mode=classic,style=dash,width=2,color=#990000'
+			'-l', 'mode=edge,width=2,color=#990000'
 			);
 	}
 	elsif ($var eq ${+LIST}[1]) {
-		$file_name = file_name();
 		system(
 			SCREENSHOT_PATH,
 			$file_name,
@@ -92,7 +91,6 @@ sub action
 			);
 	}
 	elsif ($var eq ${+LIST}[2]) {
-		$file_name = file_name();
 		system(
 			SCREENSHOT_PATH,
 			$file_name,
@@ -100,7 +98,6 @@ sub action
 			);
 	}
 	elsif ($var eq ${+LIST}[3]) {
-		$file_name = file_name();
 		system(
 			SCREENSHOT_PATH,
 			$file_name,
@@ -109,7 +106,6 @@ sub action
 			);
 	}
 	elsif ($var eq ${+LIST}[4]) {
-		$file_name = file_name();
 		system(
 			SCREENSHOT_PATH,
 			$file_name,
