@@ -231,7 +231,7 @@
 *** Smartparens
 #+BEGIN_SRC emacs-lisp
   (require 'smartparens-config)
-(smartparens-global-strict-mode)
+(smartparens-global-mode)
 #+END_SRC
 
 *** Evil mode
