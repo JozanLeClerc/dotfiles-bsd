@@ -1,7 +1,7 @@
 call which_key#register('\', "g:which_key_map")
 let g:which_key_map = {}
 nnoremap c "_c
-nnoremap <M-;> :call NERDComment(0,"toggle")<CR>
+nnoremap <M-;> :call nerdcommenter#Comment(0,"toggle")<CR>
 nnoremap <M-x> :
 nnoremap <silent> <M-k> :bprevious<CR>
 nnoremap <silent> <M-j> :bnext<CR>
