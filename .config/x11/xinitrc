@@ -4,6 +4,7 @@ startif() {
 	pgrep "$1" >/dev/null || "$@" >/dev/null 2>&1 &
 }
 
+xset s off
 "$HOME"/.local/bin/setwp
 "$HOME"/.local/bin/kb
 startif dunst
