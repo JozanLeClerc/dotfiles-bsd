@@ -113,6 +113,9 @@ sub action
 			'-a', '1920,180,1440,900'
 			);
 	}
+	else {
+		return;
+	}
 	show_img($file_name);
 	notify_img($file_name);
 	clip_img($file_name);

@@ -10,7 +10,7 @@ sub main
 	my $prompt;
 	my $queued;
 
-	$current = `mpc -h localhost current`;
+	$current = `mpc current`;
 	if (not $current) {
 		$current = 'Current: Stopped';
 	}
@@ -28,7 +28,7 @@ sub main
 	chomp $queued;
 	$prompt = "toggle\nnext\nprev\nplay\nstop\nclear\nrepeat\nrandom\n\n$current\n$queued\n";
 	$action = `printf "$prompt" | dmenu -i -l 11 -m 0`;
-	system("mpc -h localhost " . $action);
+	system("mpc " . $action);
 	return;
 }
 

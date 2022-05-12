@@ -1,0 +1,31 @@
+#!/bin/sh
+
+typeit=0
+if [ "$1" = "--type" ]; then
+	typeit=1
+	shift
+fi
+
+if [ -n "$WAYLAND_DISPLAY" ]; then
+	dmenu=dmenu-wl
+	xdotool="ydotool type --file -"
+elif [ -n "$DISPLAY" ]; then
+	dmenu=dmenu
+	xdotool="xdotool type --delay 25 --clearmodifiers --file -"
+else
+	echo "Error: No Wayland or X11 display detected" >&2
+	exit 1
+fi
+
+prefix=${PASSWORD_STORE_DIR-~/.local/share/pass}
+rprefix=$(printf "%s" $prefix | sed 's/\//\\\//g')
+password_files=$(ls "$prefix"/**/*.gpg | sed 's/^'${rprefix}'\///g' | sed 's/\.gpg//g')
+password=$(printf "%s\n" "${password_files}" | "$dmenu" -i -l 15 -m 0)
+
+[ -n "$password" ] || exit
+
+if [ $typeit -eq 0 ]; then
+	pass show -c "$password" >/dev/null 2>&1
+else
+	pass show "$password" | { IFS= read -r pass; printf %s "$pass"; } | $xdotool
+fi
