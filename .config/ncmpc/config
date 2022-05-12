@@ -1,3 +1,5 @@
+host = localhost
+port = 6600
 auto-center = yes
 visible-bitrate = yes
 library-page-tags = genre artist album
