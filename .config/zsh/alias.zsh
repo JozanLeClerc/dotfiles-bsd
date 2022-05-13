@@ -41,7 +41,7 @@ alias \
 	chmod='chmod -v' \
 	chown='chown -v' \
 	mount='mount -v' \
-	rsync='rsync -v -h --progress' \
+	rsync='rsync -v -h' \
 	grep='grep --color=always' \
 	rgrep='grep -R -n -H' \
 	fsl='fossil' \
