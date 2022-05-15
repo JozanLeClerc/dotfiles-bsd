@@ -128,6 +128,15 @@ sub open_link
 						if ($quality eq 'uncap') {
 							system(YTDL_PATH . ' --newline --add-metadata ' . $url . ' >' . $tmpfile);
 						}
+						elsif ($quality eq '1440') {
+							system(YTDL_PATH . " -f '308+140' --newline --add-metadata " . $url . ' >' . $tmpfile);
+						}
+						elsif ($quality eq '1080') {
+							system(YTDL_PATH . " -f '299+140' --newline --add-metadata " . $url . ' >' . $tmpfile);
+						}
+						elsif ($quality eq '720') {
+							system(YTDL_PATH . " -f '298+140' --newline --add-metadata " . $url . ' >' . $tmpfile);
+						}
 						else {
 							system(YTDL_PATH . " -f '[height<=" . $quality . "]' --newline --add-metadata " . $url . ' >' . $tmpfile);
 						}

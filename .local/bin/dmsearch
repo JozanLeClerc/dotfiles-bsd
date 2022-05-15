@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use constant BROWSER_PATH => '/usr/local/bin/firefox';
+use constant BROWSER_PATH => '/usr/local/bin/iridium';
 
 sub main
 {
@@ -12,15 +12,15 @@ sub main
 
 	$choice = `printf "" | dmenu -i -m 0 -p 'Search:'`;
 	if (not $choice) {
-		return (0);
+		return;
 	}
 	$choice =~ s/ /+/g;
 	$url = 'https://duckduckgo.com/?q=' . $choice;
 	$pid = fork();
 	if (not $pid) {
-		exec(BROWSER_PATH, '--kiosk', $url);
+		exec(BROWSER_PATH, $url);
 	}
-	return (0);
+	return;
 }
 
 main();
