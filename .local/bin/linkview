@@ -19,7 +19,7 @@ use constant {
 	IMGVIEW_PATH	=> '/usr/local/bin/nsxiv',
 	ZATHURA_PATH	=> '/usr/local/bin/zathura',
 	W3M_PATH		=> '/usr/local/bin/w3m',
-	BROWSER_PATH	=> '/usr/local/bin/firefox',
+	BROWSER_PATH	=> '/usr/local/bin/iridium',
 	NOTIFYSEND_PATH	=> '/usr/local/bin/notify-send'
 };
 use constant PROG_LIST	=> "" .
@@ -31,7 +31,7 @@ use constant PROG_LIST	=> "" .
 "nsxiv"					. "\n" .
 "zathura"				. "\n" .
 "w3m"					. "\n" .
-"firefox"				. "\n";
+"browser"				. "\n";
 use constant QUAL_LIST	=> "" .
 "1440"					. "\n" .
 "1080"					. "\n" .
@@ -332,7 +332,7 @@ sub open_link
 	elsif ($a eq "w3m") {
 		exec(TERMINAL_PATH, '-e', W3M_PATH, $url);
 	}
-	elsif ($a eq "firefox") {
+	elsif ($a eq "browser") {
 		$pid = fork();
 		if (not $pid) {
 			setsid();
