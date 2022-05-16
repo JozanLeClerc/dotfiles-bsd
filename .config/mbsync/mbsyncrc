@@ -1,0 +1,130 @@
+# vim filetype=conf
+IMAPStore bousset.rudy@gmail.com-remote
+Host imap.gmail.com
+Port 993
+User bousset.rudy@gmail.com
+PassCmd "pass show mutt/bousset.rudy@gmail.com"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/cert.pem
+
+MaildirStore bousset.rudy@gmail.com-local
+Subfolders Verbatim
+Path /home/jozan/.local/share/mail/bousset.rudy@gmail.com/
+Inbox /home/jozan/.local/share/mail/bousset.rudy@gmail.com/INBOX
+Flatten .
+
+Channel bousset.rudy@gmail.com
+Expunge Both
+Far :bousset.rudy@gmail.com-remote:
+Near :bousset.rudy@gmail.com-local:
+Patterns *
+Create Both
+SyncState *
+MaxMessages 0
+ExpireUnread no
+# End profile
+
+IMAPStore olsen.oyvind.nor@gmail.com-remote
+Host imap.gmail.com
+Port 993
+User olsen.oyvind.nor@gmail.com
+PassCmd "pass show mutt/olsen.oyvind.nor@gmail.com"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/cert.pem
+
+MaildirStore olsen.oyvind.nor@gmail.com-local
+Subfolders Verbatim
+Path /home/jozan/.local/share/mail/olsen.oyvind.nor@gmail.com/
+Inbox /home/jozan/.local/share/mail/olsen.oyvind.nor@gmail.com/INBOX
+Flatten .
+
+Channel olsen.oyvind.nor@gmail.com
+Expunge Both
+Far :olsen.oyvind.nor@gmail.com-remote:
+Near :olsen.oyvind.nor@gmail.com-local:
+Patterns *
+Create Both
+SyncState *
+MaxMessages 0
+ExpireUnread no
+# End profile
+
+IMAPStore towerofsilence777@gmail.com-remote
+Host imap.gmail.com
+Port 993
+User towerofsilence777@gmail.com
+PassCmd "pass show mutt/towerofsilence777@gmail.com"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/cert.pem
+
+MaildirStore towerofsilence777@gmail.com-local
+Subfolders Verbatim
+Path /home/jozan/.local/share/mail/towerofsilence777@gmail.com/
+Inbox /home/jozan/.local/share/mail/towerofsilence777@gmail.com/INBOX
+Flatten .
+
+Channel towerofsilence777@gmail.com
+Expunge Both
+Far :towerofsilence777@gmail.com-remote:
+Near :towerofsilence777@gmail.com-local:
+Patterns *
+Create Both
+SyncState *
+MaxMessages 0
+ExpireUnread no
+# End profile
+
+IMAPStore rbousset@secuserve.com-remote
+Host next.optimails.com
+Port 993
+User rbousset@secuserve.com
+PassCmd "pass show mutt/rbousset@secuserve.com"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/cert.pem
+
+MaildirStore rbousset@secuserve.com-local
+Subfolders Verbatim
+Path /home/jozan/.local/share/mail/rbousset@secuserve.com/
+Inbox /home/jozan/.local/share/mail/rbousset@secuserve.com/INBOX
+Flatten .
+
+Channel rbousset@secuserve.com
+Expunge Both
+Far :rbousset@secuserve.com-remote:
+Near :rbousset@secuserve.com-local:
+Patterns *
+Create Both
+SyncState *
+MaxMessages 0
+ExpireUnread no
+# End profile
+
+IMAPStore exploitation@secuserve.com-remote
+Host next.optimails.com
+Port 993
+User exploitation@secuserve.com
+PassCmd "pass show mutt/exploitation@secuserve.com"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/cert.pem
+
+MaildirStore exploitation@secuserve.com-local
+Subfolders Verbatim
+Path /home/jozan/.local/share/mail/exploitation@secuserve.com/
+Inbox /home/jozan/.local/share/mail/exploitation@secuserve.com/INBOX
+Flatten .
+
+Channel exploitation@secuserve.com
+Expunge Both
+Far :exploitation@secuserve.com-remote:
+Near :exploitation@secuserve.com-local:
+Patterns *
+Create Both
+SyncState *
+MaxMessages 0
+ExpireUnread no
+# End profile
