@@ -1,7 +1,8 @@
 text/plain; $EDITOR %s ;
 text/html; w3m -o display_link_number=1 -I %{charset} -T text/html; copiousoutput;
+text/calendar; vcal -all %s; copiousoutput;
 image/*; nsxiv -abf %s ;
-video/*; mpv --quiet %s &; copiousoutput
+video/*; mpv --quiet %s &; copiousoutput;
 audio/*; mpv %s ;
 application/pdf; zathura %s ;
 application/pgp-encrypted; gpg -d '%s'; copiousoutput;
