@@ -44,4 +44,4 @@ rsync -rlptDvh --progress --delete-after \
 	  root@$serv_addr:/root/bin/gitjoe
 # backups
 rsync -lptDvh --progress "$XDG_CONFIG_HOME"/newsboat/urls root@$serv_addr:/root/backup/apps/newsboat
-rsync -lptDvh --progress "$HOME"/.mozilla/firefox/jozan_privacy.tar.xz root@$serv_addr:/root/backup/apps/firefox
+rsync -rlptDvh --progress --delete-after "$XDG_DATA_HOME"/calcurse/ root@$serv_addr:/root/backup/apps/calcurse
