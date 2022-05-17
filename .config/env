@@ -72,7 +72,8 @@ export CCACHE_DIR='/var/cache/ccache-jozan'
 export CCACHE_LOGFILE='/var/log/ccache.log'
 
 # Apps config
-export FZF_DEFAULT_COMMAND='ag -g "" --ignore dotfiles-bsd --ignore .ccls-cache --ignore GIMP --ignore iridium --ignore google-chrome --ignore chromium --ignore elpa --ignore Gpredict'
+export FZF_DEFAULT_COMMAND='ag -g "" -a --hidden --nocolor --ignore dotfiles-bsd --ignore .ccls-cache --ignore GIMP --ignore iridium --ignore google-chrome --ignore chromium --ignore elpa --ignore Gpredict --ignore .cache'
+# export FZF_DEFAULT_COMMAND='rg --color never --files --hidden'
 export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border=left --tabstop=4'
 export LESS="-R -c"
 export LESSHISTFILE='-'
