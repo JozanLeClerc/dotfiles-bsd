@@ -107,7 +107,7 @@
 									vimish-fold
 									bind-key
 									all-the-icons all-the-icons-dired all-the-icons-ibuffer
-									mutt-mode vimrc-mode nginx-mode gemini-mode yaml-mode
+									mutt-mode vimrc-mode nginx-mode gemini-mode yaml-mode crontab-mode
 									))
 
   (when (cl-find-if-not #'package-installed-p package-selected-packages)
