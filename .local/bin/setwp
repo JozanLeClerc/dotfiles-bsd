@@ -88,7 +88,7 @@ sub main
 		$wp = choose_wp(get_pool_files());
 		$ret = set_wp($wp);
 	}
-	if (@ARGV != 0 && $ARGV[0] eq "-nw") {
+	if (@ARGV == 0 || (@ARGV != 0 && $ARGV[0] ne "-nw")) {
 		notify() if ($ret == 0);
 		notify_error() if ($ret != 0);
 	}
