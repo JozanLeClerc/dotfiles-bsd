@@ -75,7 +75,13 @@ alias \
 	gpp='git push' \
 	gpo='git push origin' \
 	gl="git log --graph --format=format:'%C(yellow)%h %C(bold blue)%ah %C(bold green)(%ar)%C(bold yellow)%d%C(reset)%n%s %C(dim white)- %an <%ae>%C(reset)' --all" \
-	dgl="dgit log --graph --format=format:'%C(yellow)%h %C(bold blue)%ah %C(bold green)(%ar)%C(bold yellow)%d%C(reset)%n%s %C(dim white)- %an <%ae>%C(reset)' --all" \
+	dgl="dgit log --graph --format=format:'%C(yellow)%h %C(bold blue)%ah %C(bold green)(%ar)%C(bold yellow)%d%C(reset)%n%s %C(dim white)- %an <%ae>%C(reset)' --all"
+gg() {
+	git add .
+	git commit -m "$*"
+	git push
+}
+alias \
 	srcnt='find . -type f -name "*.c" -exec cat {} \; | sed "/^\//d" | sed "/^\*/d" | sed "/^ \*/d" | sed "/^\/\//d" | sed "/^$/d" | wc -l | tr -d " "' \
 	v='nvim $(fzf --preview="head -$FZF_PREVIEW_LINES {}")' \
 	tohex='printf "0x%x\n"'
