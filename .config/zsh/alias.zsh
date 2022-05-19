@@ -75,11 +75,17 @@ alias \
 	gpp='git push' \
 	gpo='git push origin' \
 	gl="git log --graph --format=format:'%C(yellow)%h %C(bold blue)%ah %C(bold green)(%ar)%C(bold yellow)%d%C(reset)%n%s %C(dim white)- %an <%ae>%C(reset)' --all" \
-	dgl="dgit log --graph --format=format:'%C(yellow)%h %C(bold blue)%ah %C(bold green)(%ar)%C(bold yellow)%d%C(reset)%n%s %C(dim white)- %an <%ae>%C(reset)' --all"
+	dgl="dgit log --graph --format=format:'%C(yellow)%h %C(bold blue)%ah %C(bold green)(%ar)%C(bold yellow)%d%C(reset)%n%s %C(dim white)- %an <%ae>%C(reset)' --all" \
+	dgst="dgit status"
 gg() {
 	git add .
-	git commit -m "$*"
+	git commit -m "$*" || return 1
 	git push
+}
+dgg() {
+	dgit add -u
+	dgit commit -m "$*" || return 1
+	dgit push
 }
 alias \
 	srcnt='find . -type f -name "*.c" -exec cat {} \; | sed "/^\//d" | sed "/^\*/d" | sed "/^ \*/d" | sed "/^\/\//d" | sed "/^$/d" | wc -l | tr -d " "' \
