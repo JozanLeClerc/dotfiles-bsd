@@ -39,7 +39,7 @@ sub notify_img
 		'-u', 'low',
 		'-t', '2000',
 		'scrot',
-		'a Screenshot captured to ' . "\n" .
+		' Screenshot captured to ' . "\n" .
 		'<b>' . $file . '</b>'
 		);
 	return;
