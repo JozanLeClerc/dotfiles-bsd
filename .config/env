@@ -49,6 +49,7 @@ export CCACHE_DIR="$XDG_CACHE_HOME"/ccache
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 export DVDCSS_CACHE="$XDG_DATA_HOME"/dvdcss
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export GPG_TUI_CONFIG="$XDG_CONFIG_HOME"/gpg-tui/gpg-tui.toml
 export GOPATH="$XDG_DATA_HOME"/go
 export GOBIN="$GOPATH"/bin
 export FOSSGIT="$XDG_DATA_HOME"/fossil/git_exports

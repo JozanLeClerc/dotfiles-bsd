@@ -1,0 +1,4 @@
+#!/bin/sh -e
+
+umount "$HOME"/sd
+rmdir "$HOME"/sd

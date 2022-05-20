@@ -1,0 +1,4 @@
+#!/bin/sh -e
+
+mkdir -p "$HOME"/sd
+mount -t msdos /dev/mmcsd0s1 "$HOME"/sd

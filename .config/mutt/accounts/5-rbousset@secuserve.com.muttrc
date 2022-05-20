@@ -14,7 +14,7 @@ bind index,pager g noop
 bind index,pager M noop
 bind index,pager C noop
 bind index gg first-entry
-macro index o "<shell-escape>mbsync -c /usr/home/jozan/.config/mbsync/mbsyncrc -a<enter>" "run mbsync to sync rbousset@secuserve.com"
+macro index o "<shell-escape>mbsync -c /usr/home/jozan/.config/mbsync/mbsyncrc rbousset@secuserve.com<enter>" "run mbsync to sync rbousset@secuserve.com"
 unmailboxes *
 
 mailboxes "=INBOX" "=Sent" "=Drafts" "=Trash" "=NEWS"

@@ -21,15 +21,15 @@ gmi_fmt='\
 '"${thought}"
 
 sed -i '' -e '/<!-- thoughts here -->$/{n;s/^/'"${html_fmt}"'/;}' \
-	"$HOME"/dev/web/jozanofastora.xyz/thoughts.html
-git -C "$HOME"/dev/web/jozanofastora-www add -u
-git -C "$HOME"/dev/web/jozanofastora-www commit -m "Thought: ${date}"
-git -C "$HOME"/dev/web/jozanofastora-www push
+	"$HOME"/dev/web/joe-www/thoughts.html
+git -C "$HOME"/dev/web/joe-www add -u
+git -C "$HOME"/dev/web/joe-www commit -m "Thought: ${date}"
+git -C "$HOME"/dev/web/joe-www push
 
 sed -i '' -e '15i '"${gmi_fmt}" \
-	"$HOME"/dev/web/jozan_gemini/thoughts.gmi
-git -C "$HOME"/dev/web/jozanofastora-gemini add -u
-git -C "$HOME"/dev/web/jozanofastora-gemini commit -m "Thought: ${date}"
-git -C "$HOME"/dev/web/jozanofastora-gemini push
+	"$HOME"/dev/web/joe-gemini/thoughts.gmi
+git -C "$HOME"/dev/web/joe-gemini add -u
+git -C "$HOME"/dev/web/joe-gemini commit -m "Thought: ${date}"
+git -C "$HOME"/dev/web/joe-gemini push
 
 vps

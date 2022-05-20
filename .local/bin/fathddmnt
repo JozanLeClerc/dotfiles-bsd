@@ -5,4 +5,5 @@ tmp=$(mktemp)
 dmenu -p "Enter password: " -nb '#1d2021' -nf '#1d2021' <&- >"$tmp"
 geli attach -k /root/geli_keys/fathdd_ext.key -j "$tmp" /dev/da0p1
 mkdir -p "$HOME"/hdd
+rm "$tmp"
 mount /dev/da0p1.eli "$HOME"/hdd
