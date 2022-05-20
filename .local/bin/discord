@@ -1,3 +1,4 @@
 #!/bin/sh
 
+xdotool key super+8
 exec /usr/local/bin/chrome discord.com/app
