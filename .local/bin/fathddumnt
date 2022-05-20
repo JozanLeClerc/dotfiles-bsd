@@ -1,5 +1,13 @@
 #!/bin/sh -e
 
-umount /dev/da0p1.eli
+if ! mount | grep -F /dev/da0p1; then
+	notify-send -u critical 'fathdd' '  HDD not mounted'
+	exit 1
+fi
+if ! umount /dev/da0p1.eli; then 
+	notify-send -u critical 'fathdd' '  Failed to dismount HDD'
+	exit 1
+fi
 geli detach da0p1.eli
 rmdir "$HOME"/hdd
+notify-send -t 5000 'fathdd' '  HDD dismounted from <b>~/hdd</b>'
