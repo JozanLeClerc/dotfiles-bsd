@@ -4,7 +4,7 @@ if ! mount | grep -F /dev/da0p1; then
 	notify-send -u critical 'fathdd' '  HDD not mounted'
 	exit 1
 fi
-if ! umount /dev/da0p1.eli; then 
+if ! umount /dev/da0p1.eli; then
 	notify-send -u critical 'fathdd' '  Failed to dismount HDD'
 	exit 1
 fi
