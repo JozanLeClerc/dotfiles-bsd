@@ -38,7 +38,7 @@
 
 ** Desktop-save
    #+BEGIN_SRC emacs-lisp
-	 (setq desktop-dirname "~/.config/emacs/desktop"
+	 (setq desktop-dirname (expand-file-name "desktop" user-emacs-directory)
 		   desktop-base-file-name "emacs.desktop"
 		   desktop-base-lock-name "lock"
 		   desktop-path (list desktop-dirname)
@@ -58,15 +58,16 @@
 ** MELPA and non-MELPA
 #+BEGIN_SRC emacs-lisp
   (require 'package)
+  (push (expand-file-name "elpa" user-emacs-directory) package-directory-list)
   (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
   (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
   (package-initialize)
 
-  (add-to-list 'load-path "~/.config/emacs/font-lock+")
-  (add-to-list 'load-path "~/.config/emacs/header2/")
-  (add-to-list 'load-path "~/.config/emacs/all-the-icons/")
-  (add-to-list 'load-path "~/.config/emacs/all-the-icons-dired/")
+  (add-to-list 'load-path (expand-file-name "font-lock+" user-emacs-directory))
+  (add-to-list 'load-path (expand-file-name "header2/" user-emacs-directory))
+  (add-to-list 'load-path (expand-file-name "all-the-icons/" user-emacs-directory))
+  (add-to-list 'load-path (expand-file-name "all-the-icons-dired/" user-emacs-directory))
 
   (setq package-selected-packages '(
 									evil evil-collection evil-leader
