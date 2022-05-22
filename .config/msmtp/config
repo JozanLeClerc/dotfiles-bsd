@@ -7,34 +7,27 @@ logfile /home/jozan/.config/msmtp/msmtp.log
 account bousset.rudy@gmail.com
   host smtp.gmail.com
   port 587
-  from bousset.rudy@gmail.com
+  from Rudy Bousset
   user bousset.rudy@gmail.com
   passwordeval "pass show mutt/bousset.rudy@gmail.com"
 
 account olsen.oyvind.nor@gmail.com
   host smtp.gmail.com
   port 587
-  from olsen.oyvind.nor@gmail.com
+  from Joe
   user olsen.oyvind.nor@gmail.com
   passwordeval "pass show mutt/olsen.oyvind.nor@gmail.com"
 
 account towerofsilence777@gmail.com
   host smtp.gmail.com
   port 587
-  from towerofsilence777@gmail.com
+  from Tower Of Silence
   user towerofsilence777@gmail.com
   passwordeval "pass show mutt/towerofsilence777@gmail.com"
 
 account rbousset@secuserve.com
   host next.optimails.com
   port 587
-  from rbousset@secuserve.com
+  from Rudy Bousset
   user rbousset@secuserve.com
   passwordeval "pass show mutt/rbousset@secuserve.com"
-
-account exploitation@secuserve.com
-  host next.optimails.com
-  port 587
-  from exploitation@secuserve.com
-  user exploitation@secuserve.com
-  passwordeval "pass show mutt/exploitation@secuserve.com"
