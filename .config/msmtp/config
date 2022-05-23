@@ -28,6 +28,6 @@ account towerofsilence777@gmail.com
 account rbousset@secuserve.com
   host next.optimails.com
   port 587
-  from Rudy Bousset
+  from rbousset@secuserve.com
   user rbousset@secuserve.com
   passwordeval "pass show mutt/rbousset@secuserve.com"
