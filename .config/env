@@ -76,7 +76,7 @@ export CCACHE_LOGFILE='/var/log/ccache.log'
 export FZF_DEFAULT_COMMAND="ag -g '' -i --hidden --nocolor --ignore .git --ignore dotfiles-bsd --ignore .ccls-cache --ignore GIMP --ignore iridium --ignore google-chrome --ignore chromium --ignore elpa --ignore Gpredict --ignore .cache"
 # export FZF_DEFAULT_COMMAND='rg --color never --files --hidden'
 export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border=left --tabstop=4'
-export LESS="-R -c"
+export LESS="-R -c -S"
 export LESSHISTFILE='-'
 export MANPAGER="less -R -M +Gg"
 export MPD_HOST="$HOME"/.local/share/mpd/socket
