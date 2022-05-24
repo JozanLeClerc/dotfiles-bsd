@@ -1,0 +1,7 @@
+#!/bin/sh
+
+host="jozanofastora.xyz"
+
+rsync -avh --delete-after \
+	$host:backup/apps/calcurse/ \
+	$XDG_DATA_HOME/calcurse
