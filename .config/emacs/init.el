@@ -1,4 +1,5 @@
 (require 'org)
+(setenv "HOME" "/usr/home/jozan")
 (org-babel-load-file
  (expand-file-name "org/config.org"
 				   user-emacs-directory))

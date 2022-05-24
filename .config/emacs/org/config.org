@@ -322,26 +322,27 @@
 
 *** Dashboard
 #+BEGIN_SRC emacs-lisp
-	(require 'dashboard)
-	(dashboard-setup-startup-hook)
+  (require 'dashboard)
+  (dashboard-setup-startup-hook)
 
-	(setq dashboard-banner-logo-title	(concat "Welcome back to Emacs " emacs-version ", partner!")
-		  dashboard-startup-banner		"~/pics/profile/caco.png"
-		  ;; dashboard-startup-banner		'official
-		  dashboard-set-init-info		nil
-		  dashboard-set-footer			nil
-		  dashboard-center-content		t
-		  dashboard-show-shortcuts		nil
-		  dashboard-set-heading-icons	t
-		  dashboard-set-file-icons		nil
-		  dashboard-set-navigator		t
-		  show-week-agenda-p			t)
+  (setq dashboard-banner-logo-title	(concat "Welcome back to Emacs " emacs-version ", partner!")
 
-	(setq dashboard-items '((projects . 10)
-							(recents . 10)
-							(bookmarks . 10)))
+		dashboard-startup-banner		"~/pics/profile/caco.png"
+		;; dashboard-startup-banner		'official
+		dashboard-set-init-info		nil
+		dashboard-set-footer			nil
+		dashboard-center-content		t
+		dashboard-show-shortcuts		nil
+		dashboard-set-heading-icons	t
+		dashboard-set-file-icons		nil
+		dashboard-set-navigator		t
+		show-week-agenda-p			t)
 
-	(add-to-list 'evil-emacs-state-modes 'dashboard-mode)
+  (setq dashboard-items '((projects . 10)
+						  (recents . 10)
+						  (bookmarks . 10)))
+
+  (add-to-list 'evil-emacs-state-modes 'dashboard-mode)
 #+END_SRC
 
 *** w3m
