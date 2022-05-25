@@ -5,3 +5,6 @@ host="jozanofastora.xyz"
 rsync -avh --delete-after \
 	$host:backup/apps/calcurse/ \
 	$XDG_DATA_HOME/calcurse
+rsync -avh --delete-after \
+	$host:backup/apps/abook/ \
+	$XDG_DATA_HOME/abook
