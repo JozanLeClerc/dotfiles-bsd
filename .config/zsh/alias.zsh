@@ -74,8 +74,8 @@ alias \
 	gco='git commit -m' \
 	gpp='git push' \
 	gpo='git push origin' \
-	gl="git log --graph --format=format:'%C(yellow)%h %C(bold blue)%ah %C(bold green)(%ar)%C(bold yellow)%d%C(reset)%n%s %C(dim white)- %an <%ae>%C(reset)' --all" \
-	dgl="dgit log --graph --format=format:'%C(yellow)%h %C(bold blue)%ah %C(bold green)(%ar)%C(bold yellow)%d%C(reset)%n%s %C(dim white)- %an <%ae>%C(reset)' --all" \
+	gl="git log --graph --format=format:'%C(yellow)%h %C(bold blue)%ah %C(bold green)(%ar)%C(bold yellow)%d%C(reset) %s %C(dim white)- %an <%ae>%C(reset)' --all" \
+	dgl="dgit log --graph --format=format:'%C(yellow)%h %C(bold blue)%ah %C(bold green)(%ar)%C(bold yellow)%d%C(reset) %s %C(dim white)- %an <%ae>%C(reset)' --all" \
 	dgst="dgit status"
 gg() {
 	git add .
