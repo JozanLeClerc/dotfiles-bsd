@@ -4,14 +4,14 @@ startif() {
 	pgrep "$1" >/dev/null || "$@" >/dev/null 2>&1 &
 }
 
+pgrep musicpd >/dev/null || musicpd >/dev/null 2>&1
 "$HOME"/.local/bin/setwp
 "$HOME"/.local/bin/kb
 xset s off
 startif dunst
 startif picom
-pgrep musicpd >/dev/null || musicpd >/dev/null 2>&1
-startif mpd-notification
 startif lowbat
+startif mpd-notification
 cd "$HOME"
 xrdb "$HOME"/.config/x11/xresources
 notify-send -u normal 'Welcome' "  Welcome back, partner\!"
