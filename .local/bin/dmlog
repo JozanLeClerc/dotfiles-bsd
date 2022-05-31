@@ -54,6 +54,13 @@ sub action
 			exec(SLOCK_PATH);
 		}
 		else {
+			system(
+				NOTIF_PATH,
+				'-u',
+				'normal',
+				'shutdown',
+				'  G\'night, partner!'
+				);
 			exec(ACPI_PATH, '-s', '3');
 		}
 	}
