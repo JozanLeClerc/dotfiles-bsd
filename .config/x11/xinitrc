@@ -8,6 +8,7 @@ pgrep musicpd >/dev/null || musicpd >/dev/null 2>&1
 "$HOME"/.local/bin/setwp
 "$HOME"/.local/bin/kb
 xset s off
+xset -dpms
 startif dunst
 startif picom
 startif lowbat
