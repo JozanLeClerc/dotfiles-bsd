@@ -8,6 +8,8 @@ rsync -avh --no-o --no-g --progress --delete-after \
 	  --exclude 'README.org' \
 	  --exclude 'LICENSE' \
 	  --exclude 'asm-example.cgi' \
+	  --exclude 'shit' \
+	  --exclude 'bon_concert' \
 	  "$HOME"/dev/web/joe-www/ \
 	  root@$serv_addr:/usr/local/www/jozan
 # joe-gemini
