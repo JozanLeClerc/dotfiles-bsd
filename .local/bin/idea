@@ -8,7 +8,7 @@ else
 	thought="$*"
 fi
 
-date=$(date)
+date=$(date '+%a, %d %b %Y %T')
 html_fmt='\t\t\t\t<h3>'"${date}"'<\/h3>\
 \t\t\t\t<p>\
 \t\t\t\t\t'"${thought}"'\

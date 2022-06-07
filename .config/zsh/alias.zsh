@@ -24,9 +24,9 @@ alias \
 	bc='bc -l' \
 	mkf='gmake fclean' \
 	mkc='gmake clean' \
-	mk='gmake -j5' \
+	mk='gmake -j9' \
 	bmkc='make clean' \
-	bmk='make -j5' \
+	bmk='make -j9' \
 	web='w3m https://duckduckgo.com/' \
 	mpv='mpv --audio-channels=stereo' \
 	bat='bat --style=plain --tabs 4 --paging=always -f' \

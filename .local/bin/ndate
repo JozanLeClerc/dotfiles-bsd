@@ -59,7 +59,7 @@ sub main
 	my $ret;
 
 	($date, undef, $ret) = capture {
-		system(DATE_PATH, '+%a %d %b %Y %H:%M');
+		system(DATE_PATH, '+%a, %d %b %Y %H:%M');
 	};
 	if ($ret) {
 		return 1;
