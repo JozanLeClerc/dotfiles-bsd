@@ -1,0 +1,13 @@
+[general]
+  splash = false
+  tick_rate = 250
+  color = "grey"
+  style = "colored"
+  file_explorer = "xplr"
+
+[gpg]
+  armor = false
+  # homedir = "~/.gnupg"
+  # outdir = "~/.gnupg/out"
+  # outfile = "{type}_{query}.{ext}"
+  # default_key = "0xA1B2C3XY"
