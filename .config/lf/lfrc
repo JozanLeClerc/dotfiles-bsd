@@ -2,7 +2,7 @@
 set shellopts '-eu'
 set ifs "\n"
 set scrolloff 10
-set shell "/usr/local/bin/dash"
+set shell "/bin/sh"
 set icons
 set period 1
 set dirfirst on
