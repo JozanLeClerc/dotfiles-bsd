@@ -188,6 +188,5 @@ alias watch='cmdwatch' \
 	calcurse='calcurse -C $XDG_CONFIG_HOME/calcurse -D $XDG_DATA_HOME/calcurse' \
 	abook='abook -C $XDG_CONFIG_HOME/abook/abookrc --datafile $XDG_DATA_HOME/abook/addressbook' \
 	dosbox='dosbox -conf $XDG_CONFIG_HOME/dosbox/dosbox.conf' \
-	gpg2='gpg2 --homedir $XDG_DATA_HOME/gnupg' \
 	gpg='gpg2'
 	wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
