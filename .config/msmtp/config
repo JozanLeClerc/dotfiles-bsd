@@ -31,3 +31,10 @@ account rbousset@secuserve.com
   from rbousset@secuserve.com
   user rbousset@secuserve.com
   passwordeval "pass show mutt/rbousset@secuserve.com"
+
+account diff-mx@secuserve.com
+  host next.optimails.com
+  port 587
+  from diff-mx@secuserve.com
+  user diff-mx@secuserve.com
+  passwordeval "pass show secuserve/diffmx___diff-mx@secuserve.com"
