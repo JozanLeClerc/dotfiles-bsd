@@ -74,16 +74,17 @@ export CCACHE_DIR='/var/cache/ccache-jozan'
 export CCACHE_LOGFILE='/var/log/ccache.log'
 
 # Apps config
+export BAT_THEME="gruvbox-dark"
 export FZF_DEFAULT_COMMAND="ag -g '' -i --hidden --nocolor --ignore .git --ignore dotfiles-bsd --ignore .ccls-cache --ignore GIMP --ignore iridium --ignore google-chrome --ignore chromium --ignore elpa --ignore Gpredict --ignore .cache"
 # export FZF_DEFAULT_COMMAND='rg --color never --files --hidden'
 export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border=left --tabstop=4'
 export LESS="-R -c -S"
 export LESSHISTFILE='-'
 export MANPAGER="less -R -M +Gg"
-export MPD_HOST="$HOME"/.local/share/mpd/socket
+export MPD_HOST="$XDG_DATA_HOME"/mpd/socket
 export RUSTFLAGS="-L /usr/local/lib"
 export WWW_HOME="https://start.duckduckgo.com/"
-export BAT_THEME="gruvbox-dark"
+YTFZF_HIST='0'
 
 # PATH
 export PATH="$HOME"/.local/bin:"$GOBIN":"$XDG_PACKAGE_HOME"/fzf-zsh-plugin/bin:"$XDG_DATA_HOME"/cargo/bin:"$PATH":/usr/local/llvm13/bin:/usr/local/llvm12/bin
