@@ -1,8 +1,21 @@
 #!/bin/sh -e
 
-tmp=$(mktemp)
-
-dmenu -p "Enter password: " -nb '#1d2021' -nf '#1d2021' <&- >"$tmp"
-geli attach -k /root/geli_keys/hdd_ext.key -j "$tmp" /dev/da0
+if ! diskinfo da0 >/dev/null; then
+	notify-send -u critical 'fathdd' '  HDD not detected'
+	exit 1
+fi
+if mount | grep -F /dev/da0p1; then
+	notify-send -u critical \
+		'fathdd' \
+		"  HDD already mounted to \
+<b>$(mount | grep -F '/dev/da0p1' | awk '{print $3}')</b>"
+	exit 1
+fi
+if ! dmenu -p 'Enter password: ' -P |
+	geli attach -k /root/geli_keys/fathdd_ext.key -j - da0p1; then
+	notify-send -u critical 'fathdd' '  Failed to mount HDD'
+	exit 1
+fi
 mkdir -p "$HOME"/hdd
-mount /dev/da0.eli "$HOME"/hdd
+mount /dev/da0p1.eli "$HOME"/hdd
+notify-send -t 5000 'fathdd' '  HDD mounted to <b>~/hdd</b>'
