@@ -1,0 +1,18 @@
+#!/bin/csh -e
+
+[ -d $HOME/hdd ] || exit 1
+# books
+rsync -avh --delete-after \
+	$HOME/books $HOME/hdd
+# docs
+rsync -avh --delete-after \
+	--exclude 'dotfiles-*' \
+	--exclude 'conffiles-bsd' \
+	--exclude 'phone_mu' \
+	$HOME/docs $HOME/hdd
+# mu
+rsync -avhk --delete-after \
+	$HOME/mu $HOME/hdd
+# pics
+rsync -avh --delete-after \
+	$HOME/pics $HOME/hdd
