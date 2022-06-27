@@ -654,6 +654,9 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (add-hook 'company-mode-hook 'company-box-mode)
 
   (require 'lsp-clangd)
+  (setq lsp-clangd-executable "/usr/local/llvm13/bin/clangd")
+  (add-hook 'c-mode-hook 'lsp-clangd-c-enable)
+  (add-hook 'c++-mode-hook 'lsp-clangd-c++-enable)
 
   ;; (setq ccls-executable "ccls")
 
