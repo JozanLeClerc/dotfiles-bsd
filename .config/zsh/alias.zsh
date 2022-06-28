@@ -188,5 +188,6 @@ alias watch='cmdwatch' \
 	calcurse='calcurse -C $XDG_CONFIG_HOME/calcurse -D $XDG_DATA_HOME/calcurse' \
 	abook='abook -C $XDG_CONFIG_HOME/abook/abookrc --datafile $XDG_DATA_HOME/abook/addressbook' \
 	dosbox='dosbox -conf $XDG_CONFIG_HOME/dosbox/dosbox.conf' \
-	gpg='gpg2'
+	gpg='gpg2' \
+	mysql='mycli -u root -h' \
 	wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'

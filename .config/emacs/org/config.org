@@ -76,7 +76,7 @@
 									evil-visual-mark-mode evil-nerd-commenter evil-vimish-fold
 									evil-numbers evil-quickscope
 									lsp-mode lsp-ui
-									ccls
+									;; ccls
 									yasnippet yasnippet-classic-snippets yasnippet-snippets auto-yasnippet el-autoyas
 									helm helm-xref helm-lsp helm-etags-plus helm-fuzzy helm-themes helm-make helm-projectile
 									projectile
@@ -247,7 +247,7 @@
   (evil-mode t)
   (evil-collection-init 'ibuffer)
   (evil-collection-init 'magit)
-  ;; (evil-collection-init 'flymake)
+  (evil-collection-init 'flymake)
 
 
   (setq evil-emacs-state-cursor '("#b16286" box))
@@ -610,7 +610,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 #+BEGIN_SRC emacs-lisp
   (require 'lsp-mode)
   (require 'lsp-ui)
-  (require 'ccls)
+  ;; (require 'ccls)
   (require 'company)
   (require 'company-box)
   (require 'yasnippet)
@@ -655,8 +655,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
   (require 'lsp-clangd)
   (setq lsp-clangd-executable "/usr/local/llvm13/bin/clangd")
-  (add-hook 'c-mode-hook 'lsp-clangd-c-enable)
-  (add-hook 'c++-mode-hook 'lsp-clangd-c++-enable)
 
   ;; (setq ccls-executable "ccls")
 
