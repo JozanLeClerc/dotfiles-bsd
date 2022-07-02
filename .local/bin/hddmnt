@@ -11,7 +11,7 @@ if mount | grep -F /dev/da0p1; then
 <b>$(mount | grep -F '/dev/da0p1' | awk '{print $3}')</b>"
 	exit 1
 fi
-if ! dmenu -p 'Enter password: ' -P |
+if ! dmenu -m 0 -p 'Enter password: ' -P |
 	geli attach -k /root/geli_keys/fathdd_ext.key -j - da0p1; then
 	notify-send -u critical 'fathdd' '  Failed to mount HDD'
 	exit 1
