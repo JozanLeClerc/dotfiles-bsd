@@ -23,9 +23,10 @@ set ruler
 set tabstop=4
 set textwidth=80
 set timeoutlen=500
-set undodir=/tmp
+set undodir=/tmp/nvim_undo
 set undofile
 set wildmode=longest,list,full
+set directory=/tmp/nvim_swap
 syntax on
 filetype plugin indent on
 " autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
