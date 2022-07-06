@@ -77,7 +77,7 @@ macro index \Cf "<enter-command>unset wait_key<enter><shell-escape>printf 'Enter
 macro index A "<limit>all\n" "show all messages (undo limit)"
 macro compose Y "<first-entry>\
 <pipe-entry>mutt_md2html.sh<enter>\
-<enter-command>source /tmp/neomutt-attach-macro<enter>"
+<enter-command>source /tmp/neomutt-commands<enter>"
 
 # Sidebar mappings
 set sidebar_visible = yes

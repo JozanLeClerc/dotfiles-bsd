@@ -2,7 +2,7 @@
 
 commandsFile="/tmp/neomutt-commands"
 markdownFile="/tmp/neomutt-markdown"
-htmlFile="/tmp/neomutt.html"
+htmlFile="/tmp/neomutt-$(hostname -s)-$(id -u)-$(date +%s).html"
 
 cat - > "$markdownFile"
 echo -n "push " > "$commandsFile"
