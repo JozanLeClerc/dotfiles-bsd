@@ -56,6 +56,7 @@ alias \
 	irssi='irssi --config="$XDG_CONFIG_HOME"/irssi/config --home="$XDG_DATA_HOME"/irssi' \
 	irc='irssi' \
 	free='freecolor' \
+	gt='gpg-tui' \
 	dgit='git --git-dir=$HOME/docs/dotfiles-bsd --work-tree=$HOME' \
 	confgit='git --git-dir=$HOME/docs/conffiles-bsd --work-tree=/' \
 	gjdo='/usr/home/jozan/dev/perl/gitjoe-scripts/gitjoe-do.pl'
