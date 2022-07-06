@@ -1,6 +1,6 @@
 #!/bin/sh
 
-commands_file="/tmp/neomutt-commands"
+commands_file="/tmp/neomutt_commands"
 markdown_file="/tmp/neomutt-$(hostname -s)-$(id -u)-$(date +%s)"
 html_file="/tmp/neomutt-$(hostname -s)-$(id -u)-$(date +%s).html"
 
@@ -17,7 +17,14 @@ if [ "$img_count" -gt 0 ]; then
 			real_file=$(echo "$file" | sed "s#~#$HOME#g")
 			id="cid:$(md5 "$real_file" | rev | cut -d ' ' -f 1 | rev)"
 			sed -i '.orig' "s#$file#$id#g" "$markdown_file"
+			{
+				printf '<attach-file>"%s"<enter>' "$real_file"
+				printf '<toggle-disposition>'
+				printf '<edit-content-id>^u"%s"<enter>' "$id" 
+				printf '<tag-entry>' 
+			} >>"$commands_file"
 		done
+	printf '<first-entry><tag-entry><group-related>' >>"$commands_file"
 	printf '<attach-file>"%s"<enter><first-entry><detach-file>' \
 		"$markdown_file" >>"$commands_file"
 fi
@@ -32,18 +39,11 @@ pandoc -f markdown -t html5 --standalone "$markdown_file" >"$html_file"
 	printf '<group-alternatives>'
 } >>"$commands_file"
 
-if [ "$img_count" -gt 0 ]; then
-	grep -Eo '!\[[^]]*\]\([^)]+' "${markdown_file}.orig" | cut -d '(' -f 2 |
-		grep -Ev '^(cid:|https?://)' |
-		while read -r file; do
-			real_file=$(echo "$file" | sed "s#~#$HOME#g")
-			id="cid:$(md5 "$real_file" | rev | cut -d ' ' -f 1 | rev)"
-			{
-				printf '<attach-file>"%s"<enter>' "$real_file"
-				printf '<toggle-disposition>'
-				printf '<edit-content-id>^u"%s"<enter>' "$id" 
-				printf '<tag-entry>' 
-			} >>"$commands_file"
-	printf '<first-entry><tag-entry><group-related>' >>"$commands_file"
-	done
-fi
+# if [ "$img_count" -gt 0 ]; then
+# 	grep -Eo '!\[[^]]*\]\([^)]+' "${markdown_file}.orig" | cut -d '(' -f 2 |
+# 		grep -Ev '^(cid:|https?://)' |
+# 		while read -r file; do
+# 			real_file=$(echo "$file" | sed "s#~#$HOME#g")
+# 			id="cid:$(md5 "$real_file" | rev | cut -d ' ' -f 1 | rev)"
+# 	done
+# fi
