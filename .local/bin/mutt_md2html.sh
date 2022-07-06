@@ -1,25 +1,49 @@
 #!/bin/sh
 
-commandsFile="/tmp/neomutt-commands"
-markdownFile="/tmp/neomutt-markdown"
-htmlFile="/tmp/neomutt-$(hostname -s)-$(id -u)-$(date +%s).html"
+commands_file="/tmp/neomutt-commands"
+markdown_file="/tmp/neomutt-$(hostname -s)-$(id -u)-$(date +%s)"
+html_file="/tmp/neomutt-$(hostname -s)-$(id -u)-$(date +%s).html"
 
-cat - > "$markdownFile"
-echo -n "push " > "$commandsFile"
+cat - >"$markdown_file"
+printf 'push ' >"$commands_file"
 
-pandoc -f markdown -t html5 --standalone "$markdownFile" > "$htmlFile"
+img_count=$(grep -Eo '!\[[^]]*\]\([^)]+' "$markdown_file" |
+		  cut -d '(' -f 2 |
+		  grep -Evc '^(cid:|https?://)')
+if [ "$img_count" -gt 0 ]; then
+	grep -Eo '!\[[^]]*\]\([^)]+' "$markdown_file" | cut -d '(' -f 2 |
+		grep -Ev '^(cid:|https?://)' |
+		while read -r file; do
+			real_file=$(echo "$file" | sed "s#~#$HOME#g")
+			id="cid:$(md5 "$real_file" | rev | cut -d ' ' -f 1 | rev)"
+			sed -i '.orig' "s#$file#$id#g" "$markdown_file"
+		done
+	printf '<attach-file>"%s"<enter><first-entry><detach-file>' \
+		"$markdown_file" >>"$commands_file"
+fi
 
-# Attach the html file
-echo -n "<attach-file>\"$htmlFile\"<enter>" >> "$commandsFile"
+pandoc -f markdown -t html5 --standalone "$markdown_file" >"$html_file"
 
-# Set it as inline
-echo -n "<toggle-disposition>" >> "$commandsFile"
+{
+	printf '<attach-file>"%s"<enter>' "$html_file"
+	printf '<toggle-disposition>'
+	printf '<toggle-unlink>'
+	printf '<tag-entry><previous-entry><tag-entry>'
+	printf '<group-alternatives>'
+} >>"$commands_file"
 
-# Tell neomutt to delete it after sending
-echo -n "<toggle-unlink>" >> "$commandsFile"
-
-# Select both the html and markdown files
-echo -n "<tag-entry><previous-entry><tag-entry>" >> "$commandsFile"
-
-# Group the selected messages as alternatives
-echo -n "<group-alternatives>" >> "$commandsFile"
+if [ "$img_count" -gt 0 ]; then
+	grep -Eo '!\[[^]]*\]\([^)]+' "${markdown_file}.orig" | cut -d '(' -f 2 |
+		grep -Ev '^(cid:|https?://)' |
+		while read -r file; do
+			real_file=$(echo "$file" | sed "s#~#$HOME#g")
+			id="cid:$(md5 "$real_file" | rev | cut -d ' ' -f 1 | rev)"
+			{
+				printf '<attach-file>"%s"<enter>' "$real_file"
+				printf '<toggle-disposition>'
+				printf '<edit-content-id>^u"%s"<enter>' "$id" 
+				printf '<tag-entry>' 
+			} >>"$commands_file"
+	printf '<first-entry><tag-entry><group-related>' >>"$commands_file"
+	done
+fi
