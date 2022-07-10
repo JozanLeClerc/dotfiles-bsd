@@ -57,9 +57,9 @@ alias \
 	irc='irssi' \
 	free='freecolor' \
 	gt='gpg-tui' \
+	gjdo='/usr/home/jozan/dev/perl/gitjoe-scripts/gitjoe-do.pl' \
 	dgit='git --git-dir=$HOME/docs/dotfiles-bsd --work-tree=$HOME' \
-	confgit='git --git-dir=$HOME/docs/conffiles-bsd --work-tree=/' \
-	gjdo='/usr/home/jozan/dev/perl/gitjoe-scripts/gitjoe-do.pl'
+	confgit='git --git-dir=$HOME/docs/conffiles-bsd --work-tree=/'
 upsrc() {
 	doas git -C /usr/src pull --ff-only
 }
@@ -77,7 +77,8 @@ alias \
 	gpo='git push origin' \
 	gl="git log --graph --format=format:'%C(yellow)%h %C(bold blue)%ah %C(bold green)(%ar)%C(bold yellow)%d%C(reset) %s %C(dim white)- %an <%ae>%C(reset)' --all" \
 	dgl="dgit log --graph --format=format:'%C(yellow)%h %C(bold blue)%ah %C(bold green)(%ar)%C(bold yellow)%d%C(reset) %s %C(dim white)- %an <%ae>%C(reset)' --all" \
-	dgst="dgit status"
+	dgst="dgit status" \
+	pgl="pass git log --graph --format=format:'%C(yellow)%h %C(bold blue)%ah %C(bold green)(%ar)%C(bold yellow)%d%C(reset) %s %C(dim white)- %an <%ae>%C(reset)' --all"
 gg() {
 	git add .
 	git commit -m "$*" || return 1
