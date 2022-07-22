@@ -2,12 +2,13 @@
 
 use strict;
 use warnings;
+use File::HomeDir qw(home);
 use File::Copy;
 
 use constant {
-	WP_POOL	=> '/usr/home/jozan/pics/wp/'
+	WP_POOL	=> home() . '/pics/wp/'
 };
-use constant FEH_PATH	=> '/usr/local/bin/feh';
+use constant FEH_PATH	=> 'feh';
 
 sub get_pool_files
 {
