@@ -12,7 +12,7 @@ use POSIX qw(setsid);
 
 use constant {
 	TERMINAL_PATH	=> '/usr/local/bin/st',
-	MPVIEW_PATH		=> '/home/jozan/.local/bin/mpview',
+	MPVIEW_PATH		=> home() . '/.local/bin/mpview',
 	MPV_PATH		=> '/usr/local/bin/mpv',
 	YTDL_PATH		=> '/usr/local/bin/yt-dlp',
 	FETCH_PATH		=> '/usr/bin/fetch',

@@ -57,7 +57,7 @@ alias \
 	irc='irssi' \
 	free='freecolor' \
 	gt='gpg-tui' \
-	gjdo='/usr/home/jozan/dev/perl/gitjoe-scripts/gitjoe-do.pl' \
+	gjdo='/home/jozan/dev/perl/gitjoe-scripts/gitjoe-do.pl' \
 	dgit='git --git-dir=$HOME/docs/dotfiles-bsd --work-tree=$HOME' \
 	confgit='git --git-dir=$HOME/docs/conffiles-bsd --work-tree=/'
 upsrc() {
