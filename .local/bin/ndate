@@ -49,8 +49,8 @@ use warnings;
 use Capture::Tiny qw(capture);
 
 use constant {
-	DATE_PATH		=> '/bin/date',
-	NOTIFYSEND_PATH	=> '/usr/local/bin/notify-send'
+	DATE_PATH		=> 'date',
+	NOTIFYSEND_PATH	=> 'notify-send'
 };
 
 sub main
