@@ -3,12 +3,12 @@
 use strict;
 use warnings;
 use constant {
-	SLOCK_PATH		=> '/usr/local/bin/slock',
-	ACPI_PATH		=> '/usr/sbin/acpiconf',
-	KILL_PATH		=> '/usr/bin/killall',
-	SHUTDOWN_PATH	=> '/sbin/shutdown',
-	NOTIF_PATH		=> '/usr/local/bin/notify-send',
-	EMACS_PATH		=> '/usr/local/bin/emacsclient'
+	SLOCK_PATH		=> 'slock',
+	ACPI_PATH		=> 'acpiconf',
+	KILL_PATH		=> 'killall',
+	SHUTDOWN_PATH	=> 'shutdown',
+	NOTIF_PATH		=> 'notify-send',
+	EMACS_PATH		=> 'emacsclient'
 };
 use constant LIST => [
 	'Lock screen',
@@ -87,7 +87,7 @@ sub action
 				'  Farewell, partner!'
 				);
 			sleep 2;
-			exec(SHUTDOWN_PATH, '-p', 'now');
+			exec(SHUTDOWN_PATH, '-h', 'now');
 		}
 	}
 	return;
