@@ -35,6 +35,7 @@ export FILE='lf'
 # UTF-8
 export CHARSET='UTF-8'
 export LANG='en_US.UTF-8'
+# export LANG='C'
 export LC_COLLATE='C'
 export LC_ALL=''
 
@@ -86,4 +87,4 @@ export WWW_HOME="https://start.duckduckgo.com/"
 YTFZF_HIST='0'
 
 # PATH
-export PATH="$HOME"/.local/bin:"$GOBIN":"$XDG_PACKAGE_HOME"/fzf-zsh-plugin/bin:"$XDG_DATA_HOME"/cargo/bin:"$PATH":/usr/local/llvm13/bin:/usr/local/llvm12/bin
+export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:"$HOME"/bin:"$HOME"/.local/bin:"$GOBIN":"$XDG_PACKAGE_HOME"/fzf-zsh-plugin/bin:"$XDG_DATA_HOME"/cargo/bin:"$PATH":/usr/local/llvm13/bin:/usr/local/llvm12/bin

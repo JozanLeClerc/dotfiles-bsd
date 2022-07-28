@@ -3,12 +3,13 @@
 use strict;
 use warnings;
 use constant {
-	SLOCK_PATH		=> 'slock',
-	ACPI_PATH		=> 'acpiconf',
-	KILL_PATH		=> 'killall',
-	SHUTDOWN_PATH	=> 'shutdown',
-	NOTIF_PATH		=> 'notify-send',
-	EMACS_PATH		=> 'emacsclient'
+	SLOCK_PATH			=> 'slock',
+	XSCREENSAVER_PATH	=> 'xscreensaver-command',
+	ACPI_PATH			=> 'acpiconf',
+	KILL_PATH			=> 'killall',
+	SHUTDOWN_PATH		=> 'shutdown',
+	NOTIF_PATH			=> 'notify-send',
+	EMACS_PATH			=> 'emacsclient'
 };
 use constant LIST => [
 	'Lock screen',
@@ -46,12 +47,12 @@ sub action
 
 	chomp $var;
 	if ($var eq ${+LIST}[0]) {
-		exec(SLOCK_PATH);
+		exec(XSCREENSAVER_PATH, '-lock');
 	}
 	elsif ($var eq ${+LIST}[1]) {
 		$pid = fork();
 		if (not $pid) {
-			exec(SLOCK_PATH);
+			exec(XSCREENSAVER_PATH, '-lock');
 		}
 		else {
 			system(

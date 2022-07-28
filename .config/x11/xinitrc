@@ -13,6 +13,7 @@ startif dunst
 startif picom
 startif lowbat
 startif mpd-notification
+startif xscreensaver --no-splash
 ekb
 cd "$HOME"
 xrdb "$HOME"/.config/x11/xresources

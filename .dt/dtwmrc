@@ -1,0 +1,76 @@
+Keys DtKeyBindings
+{
+	Mod4<Key>1			root|window|icon	f.goto_workspace "ws0"
+	Mod4<Key>2			root|window|icon	f.goto_workspace "ws1"
+	Mod4<Key>3			root|window|icon	f.goto_workspace "ws2"
+	Mod4<Key>4			root|window|icon	f.goto_workspace "ws3"
+	Mod4<Key>5			root|window|icon	f.goto_workspace "ws4"
+	Mod4<Key>6			root|window|icon	f.goto_workspace "ws5"
+	Mod4<Key>7			root|window|icon	f.goto_workspace "ws6"
+	Mod4<Key>8			root|window|icon	f.goto_workspace "ws7"
+
+	Mod4 Shift<Key>1	window|icon	f.workspace_presence "ws0"
+	Mod4 Shift<Key>2	window|icon	f.workspace_presence "ws1"
+	Mod4 Shift<Key>3	window|icon	f.workspace_presence "ws2"
+	Mod4 Shift<Key>4	window|icon	f.workspace_presence "ws3"
+	Mod4 Shift<Key>5	window|icon	f.workspace_presence "ws4"
+	Mod4 Shift<Key>6	window|icon	f.workspace_presence "ws5"
+	Mod4 Shift<Key>7	window|icon	f.workspace_presence "ws6"
+	Mod4 Shift<Key>8	window|icon	f.workspace_presence "ws7"
+
+	Mod4<Key>F1		root|window|icon	f.exec "dtfile"
+	Mod4<Key>F2		root|window|icon	f.exec "emacsclient -c"
+	Mod4<Key>F3		root|window|icon	f.exec "iridium"
+	Mod4<Key>F4		root|window|icon	f.exec "alacritty -e w3m"
+	Mod4<Key>F5		root|window|icon	f.exec "alacritty -e ncmpc"
+	Mod4<Key>F6		root|window|icon	f.exec "alacritty -e newsboat"
+	Mod4<Key>F7		root|window|icon	f.exec "alacritty -e calcurse -C /home/jozan/.config/calcurse -D /home/jozan/.local/share/calcurse"
+	Mod4<Key>F8		root|window|icon	f.exec "alacritty -e scli"
+	Mod4<Key>F9		root|window|icon	f.exec "alacritty -e neomutt"
+	Mod4<Key>F10	root|window|icon	f.exec "alacritty -e gotop"
+	Mod4<Key>F11	root|window|icon	f.exec "alacritty -e htop"
+	Mod4<Key>F12	root|window|icon	f.exec "alacritty -e top"
+
+	Mod4 Shift<Key>F3		root|window|icon	f.exec "torify iridium"
+	Mod4 Shift<Key>F6		root|window|icon	f.exec "mpc prev"
+	Mod4 Shift<Key>F7		root|window|icon	f.exec "mpc toggle"
+	Mod4 Shift<Key>F8		root|window|icon	f.exec "mpc next"
+	Mod4 Shift<Key>F9		root|window|icon	f.exec "mpc stop"
+	Mod4 Shift<Key>F10		root|window|icon	f.exec "mixer-set toggle"
+	Mod4 Shift<Key>F11		root|window|icon	f.exec "mixer-set lower"
+	Mod4 Shift<Key>F12		root|window|icon	f.exec "mixer-set raise"
+	Mod4 Shift<Key>Delete	root|window|icon	f.exec "mic"
+
+	Mod4 Ctrl<Key>F9		root|window|icon	f.exec "dmkill"
+	Mod4 Ctrl<Key>F10	root|window|icon	f.exec "dmscrot"
+	Mod4 Ctrl<Key>F11	root|window|icon	f.exec "dmsearch"
+	Mod4 Ctrl<Key>F12	root|window|icon	f.exec "dmlog"
+
+	Mod4 Ctrl<Key>p		root|window|icon	f.exec "dmpass"
+	Mod4 Shift Ctrl<Key>p	root|window|icon	f.exec "dmpass --full"
+	Mod4 <Key>End			root|window|icon	f.exec "ndate"
+	Mod4 <Key>Delete		root|window|icon	f.exec "shutup"
+	Mod4 Shift<Key>Delete	root|window|icon	f.exec "mic"
+	Mod4<Key>BackSpace		root|window|icon	f.exec "dmpc"
+	Mod4 Ctrl<Key>BackSpace	root|window|icon	f.exec "dmlog"
+
+	Mod4<Key>Return	root|window|icon	f.exec "alacritty"
+
+	Meta<Key>Escape		root|window|icon	f.next_key window
+	Mod4<Key>q			window				f.kill
+	Mod4<Key>f			window				f.maximize
+	Mod4<Key>s			window				f.normalize
+	Mod4<Key>w			window				f.move
+	Mod4<Key>m			window				f.move
+	Mod4 Shift<Key>w	window				f.resize
+	Mod4 Shift<Key>m	window				f.resize
+	Mod4 Shift<Key>H	window				f.raise
+	Mod4 Shift<Key>L	window				f.lower
+	Mod4<Key>h			root|window|icon	f.screen prev
+	Mod4<Key>l			root|window|icon	f.screen next
+	Mod4<Key>j			root|window|icon	f.next_key window
+	Mod4<Key>k			root|window|icon	f.prev_key window
+	Mod4<Key>p			root|window|icon	f.exec "dmenu_run -i -m 0"
+	Mod4 Shift<Key>E	root|window|icon	f.quit_dtwm
+    Mod4 Shift<Key>R	root|window|icon	f.restart
+}
