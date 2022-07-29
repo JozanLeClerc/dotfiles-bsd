@@ -20,7 +20,7 @@ Keys DtKeyBindings
 
 	Mod4<Key>F1		root|window|icon	f.exec "dtfile"
 	Mod4<Key>F2		root|window|icon	f.exec "emacsclient -c"
-	Mod4<Key>F3		root|window|icon	f.exec "iridium"
+	Mod4<Key>F3		root|window|icon	f.exec "iridium --force-dark-mode"
 	Mod4<Key>F4		root|window|icon	f.exec "alacritty -e w3m"
 	Mod4<Key>F5		root|window|icon	f.exec "alacritty -e ncmpc"
 	Mod4<Key>F6		root|window|icon	f.exec "alacritty -e newsboat"
@@ -31,7 +31,7 @@ Keys DtKeyBindings
 	Mod4<Key>F11	root|window|icon	f.exec "alacritty -e htop"
 	Mod4<Key>F12	root|window|icon	f.exec "alacritty -e top"
 
-	Mod4 Shift<Key>F3		root|window|icon	f.exec "torify iridium"
+	Mod4 Shift<Key>F3		root|window|icon	f.exec "torify iridium --force-dark-mode"
 	Mod4 Shift<Key>F6		root|window|icon	f.exec "mpc prev"
 	Mod4 Shift<Key>F7		root|window|icon	f.exec "mpc toggle"
 	Mod4 Shift<Key>F8		root|window|icon	f.exec "mpc next"
