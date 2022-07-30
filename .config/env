@@ -33,6 +33,12 @@ export BROWSER='iridium'
 export READER='zathura'
 export FILE='lf'
 
+# CDE
+export DTOPEN_VIMAGE="xv nsxiv display gimp"
+export DTOPEN_VVIDEO="mpv"
+export DTOPEN_VPS="gv"
+export DTOPEN_VPDF="xpdf zathura"
+
 # UTF-8
 export CHARSET='UTF-8'
 # export LANG='en_US.UTF-8'
