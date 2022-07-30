@@ -22,6 +22,7 @@ export XDG_DOWNLOAD_DIR="$HOME"/dl
 export XDG_MUSIC_DIR="$HOME"/mu
 export XDG_PICTURES_DIR="$HOME"/pics
 export XDG_VIDEOS_DIR="$HOME"/vids
+export XDG_RUNTIME_DIR=/tmp/xdg_runtime
 
 # Apps
 export EDITOR="editorcmd"
