@@ -1,0 +1,27 @@
+*0*ColorPalette:	dtB250bq.dp
+Dtwm*0*ws4*title:       Five
+Dtwm*0*ws5*backdrop*image:      WaterDrops
+Dtwm*0*ws5*title:       Six
+Dtwm*0*FrontPanel*geometry:     -323-0
+Dtwm*0*ws1*backdrop*image:      Ankh
+Dtwm*0*ws1*title:       Two
+Dtwm*0*ws0*backdrop*image:      BrickWall
+Dtwm*0*ws2*title:       Three
+Dtwm*0*ws6*backdrop*image:      Toronto
+Dtwm*0*ws6*title:       Seven
+Dtwm*0*ws3*title:       Four
+Dtwm*0*ws7*backdrop*image:      Concave
+Dtwm*0*ws7*title:       Eight
+Dtwm*0*helpResources:	\n\
+
+Dtwm*moveOpaque:	True
+Dtwm*secondariesOnTop:	False
+Dtwm*useIconBox:	True
+
+Dtwm*0*initialWorkspace:	ws0
+Dtwm*0*workspaceCount:  8
+Dtwm*0*workspaceList:   "ws0" "ws1" "ws2" "ws3" "ws4" "ws5" "ws6" "ws7"
+dtsession*sessionLanguage:	C
+*background:	#C6C6B2B2A8A8
+*foreground:	#000000000000
+

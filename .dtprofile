@@ -143,10 +143,17 @@ export dtstart_sessionlogfile="/dev/null"
 #
 # DTSOURCEPROFILE=true
 
+export DTOPEN_VIMAGE="xv nsxiv display gimp"
+export DTOPEN_VVIDEO="mpv"
+export DTOPEN_VPS="gv"
+export DTOPEN_VPDF="xpdf zathura"
+
 startif() {
 	pgrep "$1" >/dev/null || "$@" >/dev/null 2>&1 &
 }
 
+
+sysctl hw.snd.default_unit=4
 pgrep musicpd >/dev/null || musicpd >/dev/null 2>&1
 "$HOME"/.local/bin/kb
 xset s off

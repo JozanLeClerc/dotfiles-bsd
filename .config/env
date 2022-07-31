@@ -33,12 +33,6 @@ export BROWSER='iridium'
 export READER='zathura'
 export FILE='lf'
 
-# CDE
-export DTOPEN_VIMAGE="xv nsxiv display gimp"
-export DTOPEN_VVIDEO="mpv"
-export DTOPEN_VPS="gv"
-export DTOPEN_VPDF="xpdf zathura"
-
 # UTF-8
 export CHARSET='UTF-8'
 # export LANG='en_US.UTF-8'
@@ -56,12 +50,13 @@ export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME"/ccache.conf
 export CCACHE_DIR="$XDG_CACHE_HOME"/ccache
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 export DVDCSS_CACHE="$XDG_DATA_HOME"/dvdcss
+export FOSSGIT="$XDG_DATA_HOME"/fossil/git_exports
+export FOSSIL="$XDG_DATA_HOME"/fossil/repos
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export GPG_TUI_CONFIG="$XDG_CONFIG_HOME"/gpg-tui/gpg-tui.toml
 export GOPATH="$XDG_DATA_HOME"/go
 export GOBIN="$GOPATH"/bin
-export FOSSGIT="$XDG_DATA_HOME"/fossil/git_exports
-export FOSSIL="$XDG_DATA_HOME"/fossil/repos
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_DATA_HOME"/java
 export MACHINE_STORAGE_PATH="$XDG_DATA_HOME"/docker-machine
 export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME"/notmuch/notmuchrc

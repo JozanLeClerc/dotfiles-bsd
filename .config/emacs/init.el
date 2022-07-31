@@ -10,8 +10,6 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
- '(ansi-color-names-vector
-   ["#292D3E" "#ff5370" "#c3e88d" "#ffcb6b" "#82aaff" "#c792ea" "#89DDFF" "#EEFFFF"])
  '(auth-source-save-behavior nil)
  '(ccls-sem-function-colors '("#e5b124"))
  '(ccls-sem-parameter-faces
@@ -41,8 +39,7 @@
  '(jdee-db-spec-breakpoint-face-colors (cons "#1c1f2b" "#676E95"))
  '(objed-cursor-color "#ff5370")
  '(package-selected-packages
-   '(neotree color-theme doom-modeline-now-playing treemacs-icons-dired edit-indirect yaml-mode lua-mode company-nginx company-fuzzy company-go company-shell helm-ag rainbow-identifiers nginx-mode evil-quickscope vc-fossil crontab-mode go-mode mutt-mode pacmacs gemini-mode org-evil glsl-mode vimrc-mode windresize evil evil-collection evil-leader evil-search-highlight-persist evil-mc evil-surround evil-ediff evil-visual-mark-mode evil-nerd-commenter evil-vimish-fold evil-numbers yasnippet yasnippet-classic-snippets yasnippet-snippets auto-yasnippet el-autoyas helm helm-xref helm-etags-plus helm-fuzzy helm-themes helm-make helm-projectile projectile company company-box which-key magit undo-tree shell-pop autopair paredit rainbow-delimiters color-identifiers-mode ibuffer-vc ibuffer-projectile eyebrowse diff-hl fzf font-utils restart-emacs string-utils dired-icon kaolin-themes doom-themes spacemacs-theme dashboard org-superstar toc-org pdf-tools dockerfile-mode web-mode ssh sudo-ext vimish-fold bind-key all-the-icons all-the-icons-dired all-the-icons-ibuffer))
- '(pdf-view-midnight-colors (cons "#EEFFFF" "#292D3E"))
+   '(helm-fuzzy-find helm-fuzzier fuzzy fuzzy-finder neotree color-theme doom-modeline-now-playing treemacs-icons-dired edit-indirect yaml-mode lua-mode company-nginx company-fuzzy company-go company-shell helm-ag rainbow-identifiers nginx-mode evil-quickscope vc-fossil crontab-mode go-mode mutt-mode pacmacs gemini-mode org-evil glsl-mode vimrc-mode windresize evil evil-collection evil-leader evil-search-highlight-persist evil-mc evil-surround evil-ediff evil-visual-mark-mode evil-nerd-commenter evil-vimish-fold evil-numbers yasnippet yasnippet-classic-snippets yasnippet-snippets auto-yasnippet el-autoyas helm helm-xref helm-etags-plus helm-fuzzy helm-themes helm-make helm-projectile projectile company company-box which-key magit undo-tree shell-pop autopair paredit rainbow-delimiters color-identifiers-mode ibuffer-vc ibuffer-projectile eyebrowse diff-hl fzf font-utils restart-emacs string-utils dired-icon kaolin-themes doom-themes spacemacs-theme dashboard org-superstar toc-org pdf-tools dockerfile-mode web-mode ssh sudo-ext vimish-fold bind-key all-the-icons all-the-icons-dired all-the-icons-ibuffer))
  '(pos-tip-background-color "#2E2A29")
  '(pos-tip-foreground-color "#d4d4d6")
  '(rustic-ansi-faces
