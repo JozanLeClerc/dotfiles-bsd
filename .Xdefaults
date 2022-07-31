@@ -12,7 +12,7 @@ Dtwm*0*ws6*title:       Seven
 Dtwm*0*ws3*title:       Four
 Dtwm*0*ws7*backdrop*image:      Concave
 Dtwm*0*ws7*title:       Eight
-Dtwm*0*helpResources:	\n\
+! Dtwm*0*helpResources:	\n\
 
 Dtwm*moveOpaque:	True
 Dtwm*secondariesOnTop:	False
