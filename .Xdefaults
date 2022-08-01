@@ -14,7 +14,7 @@ Dtwm*0*ws7*backdrop*image:      Concave
 Dtwm*0*ws7*title:       Eight
 ! Dtwm*0*helpResources:	\n\
 
-Dtwm*moveOpaque:	True
+Dtwm*moveOpaque:	False
 Dtwm*secondariesOnTop:	False
 Dtwm*useIconBox:	True
 
