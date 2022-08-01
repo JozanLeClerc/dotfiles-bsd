@@ -66,11 +66,11 @@ Keys DtKeyBindings
 	Mod4 Shift<Key>m	window				f.resize
 	Mod4 Shift<Key>H	window				f.raise
 	Mod4 Shift<Key>L	window				f.lower
-	Mod4<Key>h			root|window|icon	f.screen prev
-	Mod4<Key>l			root|window|icon	f.screen next
+	Mod4<Key>h			window				f.raise
+	Mod4<Key>l			window				f.lower
 	Mod4<Key>j			root|window|icon	f.next_key window
 	Mod4<Key>k			root|window|icon	f.prev_key window
 	Mod4<Key>p			root|window|icon	f.exec "dmenu_run -i -m 0"
-	Mod4 Shift<Key>E	root|window|icon	f.quit_dtwm
+	Mod4 Shift<Key>E	root|window|icon	f.action ExitSession
     Mod4 Shift<Key>R	root|window|icon	f.restart
 }
