@@ -16,7 +16,7 @@ Dtwm*0*ws7*title:       Eight
 
 Dtwm*moveOpaque:	False
 Dtwm*secondariesOnTop:	False
-Dtwm*useIconBox:	True
+Dtwm*useIconBox:	False
 
 Dtwm*0*initialWorkspace:	ws0
 Dtwm*0*workspaceCount:  8
