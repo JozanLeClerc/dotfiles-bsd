@@ -1,0 +1,22 @@
+#!/bin/sh
+
+startif() {
+	pgrep "$1" >/dev/null || "$@" >/dev/null 2>&1 &
+}
+
+sysctl hw.snd.default_unit=4
+pgrep musicpd >/dev/null || musicpd >/dev/null 2>&1
+# "$HOME"/.local/bin/setwp
+"$HOME"/.local/bin/kb
+xset s off
+xset -dpms
+startif dunst
+startif picom
+startif lowbat
+startif mpd-notification
+startif xscreensaver --no-splash
+# ekb
+cd "$HOME"
+xrdb "$HOME"/.config/x11/xresources
+notify-send -u normal 'Welcome' "  Welcome back, partner\!"
+# dbus-launch dwm

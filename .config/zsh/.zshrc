@@ -102,5 +102,7 @@ bindkey -v "^ " globalias
 bindkey -v " " magic-space
 bindkey -M isearch " " magic-space
 
+export LANG='en_US.UTF-8'
+
 PROMPT="%B%{$fg[red]%}%M %{$fg[blue]%}%c%{$fg[red]%}%#%{$reset_color%} "
 RPROMPT="%{$fg_bold[red]%}%(?..%?)%{$reset_color%}"
