@@ -56,6 +56,7 @@ Keys DtKeyBindings
 
 	Mod4<Key>Return			root|window|icon	f.exec "alacritty"
 	Mod4 Shift<Key>Return	root|window|icon	f.exec "cool-retro-term"
+	Mod4 Ctrl<Key>Return	root|window|icon	f.exec "cool-retro-term"
 
 	Meta<Key>Escape		root|window|icon	f.next_key window
 	Mod4<Key>q			window				f.kill
