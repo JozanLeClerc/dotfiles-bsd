@@ -47,7 +47,7 @@ alias \
 	fsl='fossil' \
 	diff='colordiff' \
 	ctags='uctags "--exclude=.ccls*"' \
-	yt='pipe-viewer -f' \
+	yt='pipe-viewer' \
 	yta='pipe-viewer -n' \
 	gyt='gtk-pipe-viewer' \
 	ytdl='yt-dlp --add-metadata' \

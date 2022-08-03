@@ -42,11 +42,11 @@ Keys DtKeyBindings
 	Mod4 Shift<Key>Delete	root|window|icon	f.exec "mic"
 
 	Mod4 Ctrl<Key>F9		root|window|icon	f.exec "dmkill"
-	Mod4 Ctrl<Key>F10	root|window|icon	f.exec "dmscrot"
-	Mod4 Ctrl<Key>F11	root|window|icon	f.exec "dmsearch"
-	Mod4 Ctrl<Key>F12	root|window|icon	f.exec "dmlog"
+	Mod4 Ctrl<Key>F10		root|window|icon	f.exec "dmscrot"
+	Mod4 Ctrl<Key>F11		root|window|icon	f.exec "dmsearch"
+	Mod4 Ctrl<Key>F12		root|window|icon	f.exec "dmlog"
 
-	Mod4 Ctrl<Key>p		root|window|icon	f.exec "dmpass"
+	Mod4 Ctrl<Key>p			root|window|icon	f.exec "dmpass"
 	Mod4 Shift Ctrl<Key>p	root|window|icon	f.exec "dmpass --full"
 	Mod4 <Key>End			root|window|icon	f.exec "ndate"
 	Mod4 <Key>Delete		root|window|icon	f.exec "shutup"
@@ -54,7 +54,8 @@ Keys DtKeyBindings
 	Mod4<Key>BackSpace		root|window|icon	f.exec "dmpc"
 	Mod4 Ctrl<Key>BackSpace	root|window|icon	f.exec "dmlog"
 
-	Mod4<Key>Return	root|window|icon	f.exec "alacritty"
+	Mod4<Key>Return			root|window|icon	f.exec "alacritty"
+	Mod4 Shift<Key>Return	root|window|icon	f.exec "cool-retro-term"
 
 	Meta<Key>Escape		root|window|icon	f.next_key window
 	Mod4<Key>q			window				f.kill
