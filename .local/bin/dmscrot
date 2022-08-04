@@ -106,11 +106,12 @@ sub action
 			);
 	}
 	elsif ($var eq ${+LIST}[4]) {
+		sleep(1);
 		system(
 			SCREENSHOT_PATH,
 			$file_name,
 			'-q', '100',
-			'-a', '1920,180,1440,900'
+			'-a', '1920,0,2560,1440'
 			);
 	}
 	else {
