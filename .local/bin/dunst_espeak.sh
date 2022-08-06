@@ -1,4 +1,4 @@
-#!/usr/local/bin/dash
+#!/bin/sh
 
 [ "$5" = "LOW" ] && exit
 [ "$3" ] || exit
