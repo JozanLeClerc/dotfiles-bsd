@@ -5,10 +5,10 @@ use warnings;
 use File::HomeDir qw(home);
 use constant {
 	SAVE_PATH		=> 'pics/scrot/',
-	SCREENSHOT_PATH	=> '/usr/local/bin/scrot',
-	IMGVIEW_PATH	=> '/usr/local/bin/nsxiv',
-	XCLIP_PATH		=> '/usr/local/bin/xclip',
-	NOTIFY_PATH		=> '/usr/local/bin/notify-send'
+	SCREENSHOT_PATH	=> 'scrot',
+	IMGVIEW_PATH	=> 'nsxiv',
+	XCLIP_PATH		=> 'xclip',
+	NOTIFY_PATH		=> 'notify-send'
 };
 use constant LIST => [
 	'Select region',
