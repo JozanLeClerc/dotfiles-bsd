@@ -102,3 +102,29 @@ SyncState *
 MaxMessages 0
 ExpireUnread no
 # End profile
+
+IMAPStore support@secuserve.com-remote
+Host next.optimails.com
+Port 993
+User support@secuserve.com
+PassCmd "pass show mutt/support@secuserve.com"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/cert.pem
+
+MaildirStore support@secuserve.com-local
+Subfolders Verbatim
+Path /home/jozan/.local/share/mail/support@secuserve.com/
+Inbox /home/jozan/.local/share/mail/support@secuserve.com/INBOX
+Flatten .
+
+Channel support@secuserve.com
+Expunge Both
+Far :support@secuserve.com-remote:
+Near :support@secuserve.com-local:
+Patterns *
+Create Both
+SyncState *
+MaxMessages 0
+ExpireUnread no
+# End profile

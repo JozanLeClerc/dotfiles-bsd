@@ -4,6 +4,7 @@ startif() {
 	pgrep "$1" >/dev/null || "$@" >/dev/null 2>&1 &
 }
 
+export LANG='en_US.UTF-8'
 pgrep musicpd >/dev/null || musicpd >/dev/null 2>&1
 "$HOME"/.local/bin/setwp
 "$HOME"/.local/bin/kb

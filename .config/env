@@ -35,8 +35,8 @@ export FILE='lf'
 
 # UTF-8
 export CHARSET='UTF-8'
-# export LANG='en_US.UTF-8'
-export LANG='C'
+export LANG='en_US.UTF-8'
+# export LANG='C'
 export LC_COLLATE='C'
 export LC_ALL=''
 
