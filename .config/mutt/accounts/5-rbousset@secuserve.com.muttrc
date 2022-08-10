@@ -4,7 +4,7 @@ set realname = "Rudy Bousset"
 set from = "rbousset@secuserve.com"
 set sendmail = "msmtp -a rbousset@secuserve.com"
 alias me Rudy Bousset <rbousset@secuserve.com>
-set folder = "/home/jozan/.local/share/mail/rbousset@secuserve.com"
+set folder = "/var/mail/jozan/rbousset@secuserve.com"
 set header_cache = /home/jozan/.cache/mutt-wizard/rbousset@secuserve.com/headers
 set message_cachedir = /home/jozan/.cache/mutt-wizard/rbousset@secuserve.com/bodies
 set mbox_type = Maildir

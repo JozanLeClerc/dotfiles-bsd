@@ -9,10 +9,9 @@ SSLType IMAPS
 CertificateFile /etc/ssl/cert.pem
 
 MaildirStore bousset.rudy@gmail.com-local
-Subfolders Verbatim
-Path /home/jozan/.local/share/mail/bousset.rudy@gmail.com/
-Inbox /home/jozan/.local/share/mail/bousset.rudy@gmail.com/INBOX
-Flatten .
+SubFolders Verbatim
+Path /var/mail/jozan/bousset.rudy@gmail.com/
+Inbox /var/mail/jozan/bousset.rudy@gmail.com/INBOX
 
 Channel bousset.rudy@gmail.com
 Expunge Both
@@ -35,10 +34,9 @@ SSLType IMAPS
 CertificateFile /etc/ssl/cert.pem
 
 MaildirStore olsen.oyvind.nor@gmail.com-local
-Subfolders Verbatim
-Path /home/jozan/.local/share/mail/olsen.oyvind.nor@gmail.com/
-Inbox /home/jozan/.local/share/mail/olsen.oyvind.nor@gmail.com/INBOX
-Flatten .
+SubFolders Verbatim
+Path /var/mail/jozan/olsen.oyvind.nor@gmail.com/
+Inbox /var/mail/jozan/olsen.oyvind.nor@gmail.com/INBOX
 
 Channel olsen.oyvind.nor@gmail.com
 Expunge Both
@@ -61,10 +59,9 @@ SSLType IMAPS
 CertificateFile /etc/ssl/cert.pem
 
 MaildirStore towerofsilence777@gmail.com-local
-Subfolders Verbatim
-Path /home/jozan/.local/share/mail/towerofsilence777@gmail.com/
-Inbox /home/jozan/.local/share/mail/towerofsilence777@gmail.com/INBOX
-Flatten .
+SubFolders Verbatim
+Path /var/mail/jozan/towerofsilence777@gmail.com/
+Inbox /var/mail/jozan/towerofsilence777@gmail.com/INBOX
 
 Channel towerofsilence777@gmail.com
 Expunge Both
@@ -87,10 +84,9 @@ SSLType IMAPS
 CertificateFile /etc/ssl/cert.pem
 
 MaildirStore rbousset@secuserve.com-local
-Subfolders Verbatim
-Path /home/jozan/.local/share/mail/rbousset@secuserve.com/
-Inbox /home/jozan/.local/share/mail/rbousset@secuserve.com/INBOX
-Flatten .
+SubFolders Verbatim
+Path /var/mail/jozan/rbousset@secuserve.com/
+Inbox /var/mail/jozan/rbousset@secuserve.com/INBOX
 
 Channel rbousset@secuserve.com
 Expunge Both
@@ -103,31 +99,30 @@ MaxMessages 0
 ExpireUnread no
 # End profile
 
-IMAPStore exploitation@secuserve.com-remote
-Host next.optimails.com
-Port 993
-User exploitation@secuserve.com
-PassCmd "pass show mutt/exploitation@secuserve.com"
-AuthMechs LOGIN
-SSLType IMAPS
-CertificateFile /etc/ssl/cert.pem
-
-MaildirStore exploitation@secuserve.com-local
-Subfolders Verbatim
-Path /home/jozan/.local/share/mail/exploitation@secuserve.com/
-Inbox /home/jozan/.local/share/mail/exploitation@secuserve.com/INBOX
-Flatten .
-
-Channel exploitation@secuserve.com
-Expunge Both
-Far :exploitation@secuserve.com-remote:
-Near :exploitation@secuserve.com-local:
-Patterns *
-Create Both
-SyncState *
-MaxMessages 0
-ExpireUnread no
-# End profile
+# IMAPStore exploitation@secuserve.com-remote
+# Host next.optimails.com
+# Port 993
+# User exploitation@secuserve.com
+# PassCmd "pass show mutt/exploitation@secuserve.com"
+# AuthMechs LOGIN
+# SSLType IMAPS
+# CertificateFile /etc/ssl/cert.pem
+# 
+# MaildirStore exploitation@secuserve.com-local
+# SubFolders Verbatim
+# Path /var/mail/jozan/exploitation@secuserve.com/
+# Inbox /var/mail/jozan/exploitation@secuserve.com/INBOX
+# 
+# Channel exploitation@secuserve.com
+# Expunge Both
+# Far :exploitation@secuserve.com-remote:
+# Near :exploitation@secuserve.com-local:
+# Patterns *
+# Create Both
+# SyncState *
+# MaxMessages 0
+# ExpireUnread no
+# # End profile
 
 IMAPStore support@secuserve.com-remote
 Host next.optimails.com
@@ -139,10 +134,9 @@ SSLType IMAPS
 CertificateFile /etc/ssl/cert.pem
 
 MaildirStore support@secuserve.com-local
-Subfolders Verbatim
-Path /home/jozan/.local/share/mail/support@secuserve.com/
-Inbox /home/jozan/.local/share/mail/support@secuserve.com/INBOX
-Flatten .
+SubFolders Verbatim
+Path /var/mail/jozan/support@secuserve.com/
+Inbox /var/mail/jozan/support@secuserve.com/INBOX
 
 Channel support@secuserve.com
 Expunge Both
