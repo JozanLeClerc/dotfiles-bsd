@@ -3,14 +3,14 @@
 # is set to 'true'
 files = [
 	# '/usr/home/jozan/mu/rock/grunge/alice_in_chains/1992_dirt/01_them_bones.flac',
-	'/usr/local/hdd/jozan/dl/Songs Of Anarchy/2015 Songs of Anarchy：Vol. 4 (US, 88875 06146 2)/05 Billy Valentine & The Forest Rangers - All Along The Watchtower.flac',
+	# '/usr/local/hdd/jozan/dl/Songs Of Anarchy/2015 Songs of Anarchy：Vol. 4 (US, 88875 06146 2)/05 Billy Valentine & The Forest Rangers - All Along The Watchtower.flac',
 	# 'dl/Songs Of Anarchy/2011 Songs of Anarchy：Music From Sons of Anarchy Seasons 1-4 (US, 88691 91432 2)/09 Paul Brady & The Forest Rangers - Gimme Shelter.flac',
 #'/usr/home/jozan/mu/ost/mick_gordon/2020_doom_eternal_original_game_soundtrack/02_cultist_base.flac',
 #	'/usr/home/jozan/mu/progressive/progressive_black_metal/deathspell_omega/2010_paracletus/02_wings_of_predation.flac',
 #	'/usr/home/jozan/mu/metal/technical_death_metal/gojira/2016_magma/04_stranded.flac',
 #	'/usr/home/jozan/mu/metal/technical_death_metal/gojira/2005_form_mars_to_sirius/02_backbone.flac',
 #	'/usr/home/jozan/mu/metal/technical_death_metal/ulcerate/2011_the_destroyers_of_all/07_the_destroyers_of_all.flac',
-#	'/usr/home/jozan/mu/rock/grunge/nirvana/2009_bleach_20th_anniversary_deluxe_edition/04_school.flac',
+	'/usr/home/jozan/mu/rock/grunge/nirvana/2009_bleach_20th_anniversary_deluxe_edition/04_school.flac',
 ]
 # The program used to play the music files
 # Default: 'mpv'
