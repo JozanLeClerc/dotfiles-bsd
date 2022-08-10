@@ -32,9 +32,16 @@ account rbousset@secuserve.com
   user rbousset@secuserve.com
   passwordeval "pass show mutt/rbousset@secuserve.com"
 
+account exploitation@secuserve.com
+  host next.optimails.com
+  port 587
+  from Team Exploitation SecuServe
+  user exploitation@secuserve.com
+  passwordeval "pass show mutt/exploitation@secuserve.com"
+
 account support@secuserve.com
   host next.optimails.com
   port 587
-  from support@secuserve.com
+  from Support SecuServe
   user support@secuserve.com
   passwordeval "pass show mutt/support@secuserve.com"
