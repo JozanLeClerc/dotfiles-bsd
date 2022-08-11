@@ -81,10 +81,10 @@ macro compose Y "<first-entry>\
 
 # Sidebar mappings
 set sidebar_visible = yes
-set sidebar_width = 20
+set sidebar_width = 25
 set sidebar_short_path = yes
 set sidebar_next_new_wrap = yes
-set sidebar_delim_chars = '/.'
+set sidebar_delim_chars = '/'
 set mail_check_stats
 set sidebar_format = '%D%?F? [%F]?%* %?N?%N/? %?S?%S?'
 set sidebar_indent_string = ' '
@@ -172,11 +172,12 @@ mono underline underline
 mono indicator reverse
 mono error bold
 color normal default default
-color indicator brightwhite black
-color sidebar_highlight red default
+color indicator default black
+color sidebar_ordinary white default
+color sidebar_highlight brightyellow black
 color sidebar_divider brightblack black
-color sidebar_flagged red black
-color sidebar_new green black
+color sidebar_flagged red default
+color sidebar_new green default
 color normal brightyellow default
 color error red default
 color tilde black default
@@ -196,6 +197,7 @@ color signature brightgreen default
 color bold black default
 color underline black default
 color normal default default
+color progress brightblack red
 
 # Regex highlighting:
 color header blue default ".*"
