@@ -177,7 +177,6 @@ color sidebar_indicator brightyellow default
 color sidebar_ordinary white default
 color sidebar_highlight default black
 color sidebar_divider brightblack black
-color sidebar_flagged red default
 color sidebar_new green default
 color normal brightyellow default
 color error red default
