@@ -99,30 +99,30 @@ MaxMessages 0
 ExpireUnread no
 # End profile
 
-# IMAPStore exploitation@secuserve.com-remote
-# Host next.optimails.com
-# Port 993
-# User exploitation@secuserve.com
-# PassCmd "pass show mutt/exploitation@secuserve.com"
-# AuthMechs LOGIN
-# SSLType IMAPS
-# CertificateFile /etc/ssl/cert.pem
-# 
-# MaildirStore exploitation@secuserve.com-local
-# SubFolders Verbatim
-# Path /var/mail/jozan/exploitation@secuserve.com/
-# Inbox /var/mail/jozan/exploitation@secuserve.com/INBOX
-# 
-# Channel exploitation@secuserve.com
-# Expunge Both
-# Far :exploitation@secuserve.com-remote:
-# Near :exploitation@secuserve.com-local:
-# Patterns *
-# Create Both
-# SyncState *
-# MaxMessages 0
-# ExpireUnread no
-# # End profile
+IMAPStore exploitation@secuserve.com-remote
+Host next.optimails.com
+Port 993
+User exploitation@secuserve.com
+PassCmd "pass show mutt/exploitation@secuserve.com"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/cert.pem
+
+MaildirStore exploitation@secuserve.com-local
+SubFolders Verbatim
+Path /var/mail/jozan/exploitation@secuserve.com/
+Inbox /var/mail/jozan/exploitation@secuserve.com/INBOX
+
+Channel exploitation@secuserve.com
+Expunge Both
+Far :exploitation@secuserve.com-remote:
+Near :exploitation@secuserve.com-local:
+Patterns *
+Create Both
+SyncState *
+MaxMessages 0
+ExpireUnread no
+# End profile
 
 IMAPStore support@secuserve.com-remote
 Host next.optimails.com

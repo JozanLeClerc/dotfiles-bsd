@@ -765,6 +765,12 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (setq neo-window-width 35)
 #+END_SRC
 
+** Custom funcs
+#+BEGIN_SRC emacs-lisp
+  (defun my/wide-font ()
+	(interactive))
+#+END_SRC
+
 ** Compilation
 *** Close window after errorless compilation
 #+BEGIN_SRC emacs-lisp

@@ -1,4 +1,4 @@
 #!/bin/sh
 
-xdotool key super+8
+xdotool key super+9
 exec /usr/local/bin/chrome trello.com
