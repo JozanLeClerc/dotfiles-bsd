@@ -4,9 +4,9 @@ set realname = "Rudy Bousset"
 set from = "rbousset@secuserve.com"
 set sendmail = "msmtp -a rbousset@secuserve.com"
 alias me Rudy Bousset <rbousset@secuserve.com>
-set folder = "/var/mail/jozan/rbousset@secuserve.com"
-set header_cache = /home/jozan/.cache/mutt-wizard/rbousset@secuserve.com/headers
-set message_cachedir = /home/jozan/.cache/mutt-wizard/rbousset@secuserve.com/bodies
+set folder = "$MAIL/rbousset@secuserve.com"
+set header_cache = $XDG_CACHE_HOME/mutt-wizard/rbousset@secuserve.com/headers
+set message_cachedir = $XDG_CACHE_HOME/mutt-wizard/rbousset@secuserve.com/bodies
 set mbox_type = Maildir
 
 bind index,pager gg noop
@@ -14,7 +14,7 @@ bind index,pager g noop
 bind index,pager M noop
 bind index,pager C noop
 bind index gg first-entry
-macro index o "<shell-escape>mbsync -c /usr/home/jozan/.config/mbsync/mbsyncrc rbousset@secuserve.com<enter>" "run mbsync to sync rbousset@secuserve.com"
+macro index o "<shell-escape>mbsync -c $XDG_CONFIG_HOME/mbsync/mbsyncrc rbousset@secuserve.com<enter>" "run mbsync to sync rbousset@secuserve.com"
 unmailboxes *
 
 mailboxes "=INBOX" "=Sent" "=Drafts" "=Trash" "=Calendrier" "=NEWS"

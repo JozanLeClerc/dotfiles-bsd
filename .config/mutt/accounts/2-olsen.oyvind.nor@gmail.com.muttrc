@@ -4,9 +4,9 @@ set realname = "Joe"
 set from = "olsen.oyvind.nor@gmail.com"
 set sendmail = "msmtp -a olsen.oyvind.nor@gmail.com"
 alias me Joe <olsen.oyvind.nor@gmail.com>
-set folder = "/var/mail/jozan/olsen.oyvind.nor@gmail.com"
-set header_cache = /home/jozan/.cache/mutt-wizard/olsen.oyvind.nor@gmail.com/headers
-set message_cachedir = /home/jozan/.cache/mutt-wizard/olsen.oyvind.nor@gmail.com/bodies
+set folder = "$MAIL/olsen.oyvind.nor@gmail.com"
+set header_cache = $XDG_CACHE_HOME/mutt-wizard/olsen.oyvind.nor@gmail.com/headers
+set message_cachedir = $XDG_CACHE_HOME/mutt-wizard/olsen.oyvind.nor@gmail.com/bodies
 set mbox_type = Maildir
 
 bind index,pager gg noop
@@ -14,7 +14,7 @@ bind index,pager g noop
 bind index,pager M noop
 bind index,pager C noop
 bind index gg first-entry
-macro index o "<shell-escape>mbsync -c /usr/home/jozan/.config/mbsync/mbsyncrc olsen.oyvind.nor@gmail.com<enter>" "run mbsync to sync olsen.oyvind.nor@gmail.com"
+macro index o "<shell-escape>mbsync -c $XDG_CONFIG_HOME/mbsync/mbsyncrc olsen.oyvind.nor@gmail.com<enter>" "run mbsync to sync olsen.oyvind.nor@gmail.com"
 unmailboxes *
 
 mailboxes "=INBOX" "=[Gmail]/Sent Mail" "=[Gmail]/Drafts" "=[Gmail]/Spam" "=[Gmail]/Trash"
