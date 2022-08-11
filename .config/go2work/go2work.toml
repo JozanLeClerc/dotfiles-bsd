@@ -10,7 +10,8 @@ files = [
 #	'/usr/home/jozan/mu/metal/technical_death_metal/gojira/2016_magma/04_stranded.flac',
 #	'/usr/home/jozan/mu/metal/technical_death_metal/gojira/2005_form_mars_to_sirius/02_backbone.flac',
 #	'/usr/home/jozan/mu/metal/technical_death_metal/ulcerate/2011_the_destroyers_of_all/07_the_destroyers_of_all.flac',
-	'/usr/home/jozan/mu/rock/grunge/nirvana/2009_bleach_20th_anniversary_deluxe_edition/04_school.flac',
+	'/usr/home/jozan/mu/rock/grunge/nirvana/2011_nevermind_20th_anniversary_deluxe_edition/cd_1/04_breed.flac',
+	# '/usr/home/jozan/mu/rock/grunge/nirvana/2009_bleach_20th_anniversary_deluxe_edition/04_school.flac',
 ]
 # The program used to play the music files
 # Default: 'mpv'
