@@ -14,7 +14,7 @@ bind index,pager g noop
 bind index,pager M noop
 bind index,pager C noop
 bind index gg first-entry
-macro index o "<shell-escape>mbsync -c $XDG_CONFIG_HOME/mbsync/mbsyncrc support@secuserve.com<enter>" "run mbsync to sync support@secuserve.com"
+macro index o "<shell-escape>killall mbsync >/dev/null 2>&1; mbsync -c $XDG_CONFIG_HOME/mbsync/mbsyncrc support@secuserve.com<enter>" "run mbsync to sync support@secuserve.com"
 unmailboxes *
 
 mailboxes "=INBOX" "=INBOX/ALFRESCO" "=INBOX/FIN EVAL" "=INBOX/NAS" "=INBOX/Owentis notif" \
