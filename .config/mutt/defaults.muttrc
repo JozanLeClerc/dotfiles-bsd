@@ -6,7 +6,7 @@
 set editor = "emacsclient -nw -a nvim"
 set mailcap_path = $XDG_CONFIG_HOME/mutt/mailcap
 set date_format="%d/%m/%y %H:%M"
-set index_format="%2C %Z %?X?A& ? %D %-16.16F %s (%-4.4c)"
+set index_format="%S %?X?A& ? %D %-24.24F %s (%c)"
 set new_mail_command = "notify-send -u normal 'NeoMutt' '  %n new mail(s)'"
 set sort = reverse-threads
 set sort_aux = last-date-received
@@ -164,7 +164,6 @@ macro compose Y "<first-entry>\
 # Default index colors:
 color index white default '.*'
 color index_author brightblue default '.*'
-color index_number white default
 color index_subject white default '.*'
 
 # New mail is boldened:
@@ -173,9 +172,9 @@ color index_author brightblue default "~N"
 color index_subject brightred default "~N"
 
 # Tagged mail is highlighted:
-color index brightwhite blue "~T"
-color index_author brightyellow blue "~T"
-color index_subject brightwhite blue "~T"
+color index brightwhite color088 "~T"
+color index_author brightyellow default "~T"
+color index_subject brightwhite default "~T"
 
 # Other colors and aesthetic settings:
 mono bold bold
