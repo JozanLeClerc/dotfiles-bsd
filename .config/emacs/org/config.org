@@ -767,8 +767,10 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ** Custom funcs
 #+BEGIN_SRC emacs-lisp
-  (defun my/wide-font ()
-	(interactive))
+(defadvice text-scale-increase (around all-buffers (arg) activate)
+  (dolist (buffer (buffer-list))
+    (with-current-buffer buffer
+      ad-do-it)))
 #+END_SRC
 
 ** Compilation
