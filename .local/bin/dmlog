@@ -73,7 +73,7 @@ sub action
 	}
 	elsif ($var eq ${+LIST}[2]) {
 		if (confirm($var) == 1) {
-			system(EMACS_PATH, '-e', '(save-buffers-kill-terminal)');
+			system(EMACS_PATH, '-e', '"(save-buffers-kill-terminal)"');
 			if (OS eq 'Linux') {
 				exec(LOGINCTL_PATH, 'terminate-session', 'self');
 			}
@@ -82,7 +82,7 @@ sub action
 	}
 	elsif ($var eq ${+LIST}[3]) {
 		if (confirm($var) == 1) {
-			system(EMACS_PATH, '-e', '(save-buffers-kill-terminal)');
+			system(EMACS_PATH, '-e', '"(save-buffers-kill-terminal)"');
 			if (OS eq 'Linux') {
 				exec(LOGINCTL_PATH, 'reboot');
 			}
@@ -91,7 +91,7 @@ sub action
 	}
 	elsif ($var eq ${+LIST}[4]) {
 		if (confirm($var) == 1) {
-			system(EMACS_PATH, '-e', '(save-buffers-kill-terminal)');
+			system(EMACS_PATH, '-e', '"(save-buffers-kill-terminal)"');
 			system(
 				NOTIF_PATH,
 				'-u',
