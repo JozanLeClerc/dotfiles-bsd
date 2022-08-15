@@ -1,6 +1,5 @@
 #!/bin/sh
 
-. "$HOME"/.config/env
 export GNUPGHOME=/home/jozan/.local/share/gnupg
 export PASSWORD_STORE_DIR=/home/jozan/.local/share/pass 
 
