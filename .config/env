@@ -29,7 +29,7 @@ export XDG_RUNTIME_DIR=/tmp/xdg_runtime
 export EDITOR="editorcmd"
 export VISUAL="${EDITOR}"
 export PAGER='less'
-export TERMINAL='st'
+export TERMINAL='alacritty'
 export BROWSER='iridium'
 export READER='zathura'
 export FILE='lf'
@@ -90,4 +90,4 @@ export WWW_HOME="https://start.duckduckgo.com/"
 YTFZF_HIST='0'
 
 # PATH
-export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:"$HOME"/bin:"$HOME"/.local/bin:"$GOBIN":"$XDG_PACKAGE_HOME"/fzf-zsh-plugin/bin:"$XDG_DATA_HOME"/cargo/bin:"$PATH":/usr/local/llvm13/bin:/usr/local/llvm12/bin
+export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:"$HOME"/bin:"$HOME"/.local/bin:"$HOME"/.local/bin/status:"$GOBIN":"$XDG_PACKAGE_HOME"/fzf-zsh-plugin/bin:"$XDG_DATA_HOME"/cargo/bin:"$PATH":/usr/local/llvm13/bin:/usr/local/llvm12/bin
