@@ -20,4 +20,4 @@ else
 	micon=""
 fi
 
-echo "$icon  | $micon"
+echo "$micon  $icon "
