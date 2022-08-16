@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo -n "" $(sysctl -n dev.cpu.0.temperature | cut -d '.' -f1)"°C"
