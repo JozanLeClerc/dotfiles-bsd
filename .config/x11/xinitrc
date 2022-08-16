@@ -15,6 +15,7 @@ startif picom
 startif lowbat
 startif mpd-notification
 startif xscreensaver --no-splash
+startif dwmblocks
 # ekb
 cd "$HOME"
 xrdb "$HOME"/.config/x11/xresources
