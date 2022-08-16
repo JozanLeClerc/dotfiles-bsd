@@ -3,6 +3,7 @@
 ncpu=$(sysctl -n hw.ncpu)
 ncpu=$((ncpu - 1))
 cpu=""
+printf "  "
 for i in $(seq 0 $ncpu); do
 	case $(sysctl -n dev.cpu.$i.cx_usage | cut -d'.' -f1 | awk '{printf "%d\n", $1 / 12.5}') in
 		"0") printf "▁";;
@@ -16,4 +17,3 @@ for i in $(seq 0 $ncpu); do
 		"8") printf "█";;
 	esac;
 done
-# top | sed -n 3p | awk '{print $10}' | cut -d '.' -f1 | awk '{print " " 100 - $1 "%"}'
