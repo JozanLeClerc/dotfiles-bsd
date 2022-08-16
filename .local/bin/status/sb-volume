@@ -1,0 +1,23 @@
+#!/bin/sh
+
+vol="$(mixer vol | awk '{print $7}' | cut -d ':' -f1)"
+
+if [ "$vol" -gt "70" ]; then
+	icon=""
+elif [ "$vol" -gt "30" ]; then
+	icon=""
+elif [ "$vol" -gt "0" ]; then
+	icon=""
+else
+	icon="婢"
+fi
+
+mic="$(mixer rec | awk '{print $7}' | cut -d ':' -f1)"
+
+if [ "$mic" -gt "0" ]; then
+	micon=""
+else
+	micon=""
+fi
+
+echo "$icon  | $micon"

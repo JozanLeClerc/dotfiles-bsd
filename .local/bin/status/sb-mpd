@@ -3,8 +3,8 @@
 mp=$(mpc status)
 icon=$(echo "$mp" | sed -n 2p | sed -E 's/(^|\])[^[]*($|\[)//g')
 case $icon in
-	"playing") icon="契" ;;
-	"paused")  icon="" ;;
+	"playing") icon="" ;;
+	"paused")  icon="" ;;
 	*)         return   ;;
 esac
 printf "%s %s" "$icon" "$(echo "$mp" | head -n1)"

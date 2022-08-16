@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if ifconfig | grep -F ' active' >/dev/null; then
+	echo " "
+	return
+fi
+
+echo " "
