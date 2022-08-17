@@ -7,7 +7,6 @@ set editor = "emacsclient -nw -a nvim"
 set mailcap_path = $XDG_CONFIG_HOME/mutt/mailcap
 set date_format="%d/%m/%y %H:%M"
 set index_format="%S %?X?A& ? %D %-24.24F %s (%c)"
-set new_mail_command = "notify-send -u normal 'NeoMutt' '  %n new mail(s)'"
 set sort = reverse-threads
 set sort_aux = last-date-received
 set smtp_authenticators = 'gssapi:login'
