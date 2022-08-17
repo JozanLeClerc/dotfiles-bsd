@@ -17,17 +17,17 @@ icon=""
 
 mb_a="$(ls "${MAIL:-/var/mail/jozan}"/bousset.rudy@gmail.com/INBOX/new/ | wc -l 2>/dev/null)"
 if [ "$mb_a" -gt 0 ]; then
-	echo -n " $icon A:" $mb_a
+	echo -n " $icon  A:" $mb_a
 fi
 
 mb_b="$(ls "${MAIL:-/var/mail/jozan}"/olsen.oyvind.nor@gmail.com/INBOX/new/ | wc -l 2>/dev/null)"
 if [ "$mb_b" -gt 0 ]; then
-	echo -n " $icon B:" $mb_b
+	echo -n " $icon  B:" $mb_b
 fi
 
 mb_c="$(ls "${MAIL:-/var/mail/jozan}"/rbousset@secuserve.com/INBOX/new/ | wc -l 2>/dev/null)"
 if [ "$mb_c" -gt 0 ]; then
-	echo -n " $icon C:" $mb_c
+	echo -n " $icon  C:" $mb_c
 fi
 
 pidof mbsync >/dev/null 2>&1 && echo " "
