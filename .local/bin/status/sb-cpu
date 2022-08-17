@@ -4,16 +4,17 @@ ncpu=$(sysctl -n hw.ncpu)
 ncpu=$((ncpu - 1))
 cpu=""
 printf "  "
-for i in $(seq 0 $ncpu); do
-	case $(sysctl -n dev.cpu.$i.cx_usage | cut -d'.' -f1 | awk '{printf "%d\n", $1 / 12.5}') in
-		"0") printf "▁";;
-		"1") printf "▂";;
-		"2") printf "▃";;
-		"3") printf "▄";;
-		"4") printf "▅";;
-		"5") printf "▆";;
-		"6") printf "▇";;
-		"7") printf "█";;
-		"8") printf "█";;
-	esac;
-done
+w | head -n1 | awk '{print $8}' | cut -d',' -f1
+# for i in $(seq 0 $ncpu); do
+# 	case $(sysctl -n dev.cpu.$i.cx_usage | cut -d'.' -f1 | awk '{printf "%d\n", $1 / 12.5}') in
+# 		"0") printf "▁";;
+# 		"1") printf "▂";;
+# 		"2") printf "▃";;
+# 		"3") printf "▄";;
+# 		"4") printf "▅";;
+# 		"5") printf "▆";;
+# 		"6") printf "▇";;
+# 		"7") printf "█";;
+# 		"8") printf "█";;
+# 	esac;
+# done
