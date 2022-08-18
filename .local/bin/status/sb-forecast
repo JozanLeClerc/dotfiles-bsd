@@ -2,21 +2,21 @@
 
 weatherreport="/tmp/weatherreport"
 weatherglyph="/tmp/weatherglyph"
-moonreport="/tmp/moonglyph"
+moonglyph="/tmp/moonglyph"
 
 getweather() {
 	curl -sf "wttr.in/Lyon" >$weatherreport || exit 1
 	curl -sf "wttr.in/Lyon?format=%c" >$weatherglyph || exit 1
-	curl -sf "wttr.in/Lyon?format=%m" >$moonglyph || exit 1
+	curl -sf "wttr.in/?format=%m" >$moonglyph || exit 1
 }
 
 [ -f $weatherreport ] && [ "$(gnustat -c %y "$weatherreport" 2>/dev/null | cut -d' ' -f1)" = "$(date '+%Y-%m-%d')" ] || getweather
 
-printf "%s  %s" \
+printf "%s%s  %s" \
 	"$(cat $weatherglyph)" \
-	"$(sed '16q;d' "$weatherreport" | grep -wo "[0-9]*%" | sort -rn | sed "s/^/ /g;1q" | tr -d '\n')"
+	"$(cat $moonglyph)" \
+	"$(sed '16q;d' "$weatherreport" | grep -wo "[0-9]*%" | sort -rn | sed "s/^//g;1q" | tr -d '\n')"
 
-moon=$(cat $moonreport)
 sed '13q;d' "$weatherreport" | grep -o "m\\([-+]\\)*[0-9]\\+" | sed 's/+//g' |
 	sort -n -t 'm' -k 2n | sed -e 1b -e '$!d' | tr '\n|m' ' ' |
-	awk -v moon=$moon '{print " ﰕ " $1 "°C","  " $2 "°C " moon}'
+	awk '{print " " $1 "/" $2 "°C" moon}'
