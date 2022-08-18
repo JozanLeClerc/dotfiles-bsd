@@ -14,7 +14,7 @@
 alias exa='exa --color=always --group-directories-first --icons' \
 	ls='exa -l'
 tree() {
-	exa -T $@ | less
+	exa -T $@ | $PAGER
 }
 alias \
 	e='editorcmd' \
@@ -175,7 +175,7 @@ alias nb='newsboat' \
 	highlight='highlight -Oxterm256 -t4' \
 	hi='highlight'
 hil() {
-	highlight -Oxterm256 -t4 "$1" | less
+	highlight -Oxterm256 -t4 "$1" | $PAGER
 }
 search() {
 	make -C /usr/ports search name=$1 | grep 'Path:';
