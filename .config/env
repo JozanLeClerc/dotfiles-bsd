@@ -24,7 +24,6 @@ export XDG_MUSIC_DIR="$HOME"/mu
 export XDG_PICTURES_DIR="$HOME"/pics
 export XDG_VIDEOS_DIR="$HOME"/vids
 export XDG_RUNTIME_DIR=/tmp/xdg_runtime
-
 # Apps
 export EDITOR="editorcmd"
 export VISUAL="${EDITOR}"
@@ -58,7 +57,9 @@ export GPG_TUI_CONFIG="$XDG_CONFIG_HOME"/gpg-tui/gpg-tui.toml
 export GOPATH="$XDG_DATA_HOME"/go
 export GOBIN="$GOPATH"/bin
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_DATA_HOME"/java
+export LESSHISTFILE=-
 export MACHINE_STORAGE_PATH="$XDG_DATA_HOME"/docker-machine
+export MOST_INITFILE="$XDG_CONFIG_HOME"/mostrc
 export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME"/notmuch/notmuchrc
 export NMBGIT="$XDG_DATA_HOME"/notmuch/nmbug
