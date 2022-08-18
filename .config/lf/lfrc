@@ -69,8 +69,7 @@ map <c-r> reload
 cmap <c-g> cmd-escape
 map x !$f
 map X $$f
-map o &mimeopen $f
-map O $mimeopen --ask $f
+map o $$PAGER $f
 map V showallpics
 map @ !clear; du -sh .
 map ( set ratios 1
