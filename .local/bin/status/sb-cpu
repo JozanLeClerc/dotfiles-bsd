@@ -7,7 +7,7 @@ else
 	ncpu=$(sysctl -n hw.ncpu | tee $ncpu_file)
 fi
 
-printf "  "
+printf " "
 # for i in $(top -P -d 1 | sed -n 3,${topline}p | rev | cut -d' ' -f2 | rev | cut -d'.' -f1 | awk '{print (100 - $1)}'); do
 for i in $(top -P -d 2 -s 0.2 | grep '^CPU' | tail -n$ncpu | sed '{s/% idle$//;s/.*[[:blank:]]//;s/\..*//;s/^/100 - /;}' | bc); do
 	case $(echo $i / 12.5 | bc) in
