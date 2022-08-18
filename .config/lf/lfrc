@@ -16,10 +16,10 @@ set previewer '~/.config/lf/scope'
 cmd open ${{
 	case $(file --mime-type "$(readlink -f $f)" -b) in
 		application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) localc $fx ;;
-		application/vnd.openxmlformats-officedocument.wordprocessingml.document) docx2txt $f | less ;;
+		application/vnd.openxmlformats-officedocument.wordprocessingml.document) docx2txt $f | $PAGER ;;
 		image/vnd.djvu|application/pdf|application/octet-stream|application/postscript) bsdsetsid zathura $fx >/dev/null 2>&1 ;;
 		text/html) firefox $fx ;;
-		text/plain) less $fx ;;
+		text/plain) $PAGER $fx ;;
 		text/*|application/json|inode/x-empty) bat --style=plain --tabs 4 --paging=always -f $fx ;;
 		image/x-xcf) bsdsetsid gimp $f >/dev/null 2>&1 ;;
 		image/svg+xml) display -- $f ;;
@@ -32,7 +32,7 @@ cmd open ${{
 			;;
 		audio/*) bsdsetsid st -e mpv --no-audio-display --audio-channels=stereo $fx ;;
 		video/*) bsdsetsid mpv --fullscreen --really-quiet --audio-channels=stereo $fx >/dev/null 2>&1 ;;
-		*opendocument*) odt2txt $f | less ;;
+		*opendocument*) odt2txt $f | $PAGER ;;
 		application/pdf|application/vnd*|application/epub*) bsdsetsid zathura $fx >/dev/null 2>&1 ;;
 		application/pgp-encrypted) $EDITOR $fx ;;
         *) for f in $fx; do bsdsetsid xdg-open $f >/dev/null 2>&1; done;;
