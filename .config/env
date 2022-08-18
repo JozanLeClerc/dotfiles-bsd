@@ -23,11 +23,12 @@ export XDG_DOWNLOAD_DIR="$HOME"/dl
 export XDG_MUSIC_DIR="$HOME"/mu
 export XDG_PICTURES_DIR="$HOME"/pics
 export XDG_VIDEOS_DIR="$HOME"/vids
-export XDG_RUNTIME_DIR=/tmp/xdg_runtime
+export XDG_RUNTIME_DIR=/var/run/"$USER"
 # Apps
-export EDITOR="editorcmd"
+export EDITOR='editorcmd'
 export VISUAL="${EDITOR}"
 export PAGER='most'
+export MANPAGER='most'
 export TERMINAL='alacritty'
 export BROWSER='iridium'
 export READER='zathura'
@@ -63,7 +64,7 @@ export MOST_INITFILE="$XDG_CONFIG_HOME"/mostrc
 export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME"/notmuch/notmuchrc
 export NMBGIT="$XDG_DATA_HOME"/notmuch/nmbug
-export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
 export SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc
 export STACK_ROOT="$XDG_DATA_HOME"/stack
@@ -78,15 +79,14 @@ export CCACHE_DIR='/var/cache/ccache-jozan'
 export CCACHE_LOGFILE='/var/log/ccache.log'
 
 # Apps config
-export BAT_THEME="gruvbox-dark"
-export FZF_DEFAULT_COMMAND="fd -i -H -c never -j9 -E .git -E dotfiles-bsd -E .ccls-cache -E GIMP -E iridium -E google-chrome -E chromium -E elpa -E Gpredict -E .cache"
+export BAT_THEME='gruvbox-dark'
+export FZF_DEFAULT_COMMAND='fd -i -H -c never -j9 -E .git -E dotfiles-bsd -E .ccls-cache -E GIMP -E iridium -E google-chrome -E chromium -E elpa -E Gpredict -E .cache'
 # export FZF_DEFAULT_COMMAND='rg --color never --files --hidden'
 export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border=left --tabstop=4'
-export LESS="-R -c -S"
-export MANPAGER="less -R -M +Gg"
+export LESS='-R -c -S'
 export MPD_HOST="$XDG_DATA_HOME"/mpd/socket
-export RUSTFLAGS="-L /usr/local/lib"
-export WWW_HOME="https://start.duckduckgo.com/"
+export RUSTFLAGS='-L /usr/local/lib'
+export WWW_HOME='https://start.duckduckgo.com/'
 export YTFZF_HIST='0'
 
 # PATH

@@ -3,7 +3,7 @@
 echo -n " "
 df=$(df -h -T | grep '/$')
 if echo "$df" | grep zfs >/dev/null 2>&1; then
-	zpool list $(echo $df | sed 's/\/.*//')| tail -n1 | awk '{print "$3"/"$2}'
+	zpool list $(echo $df | sed 's/\/.*//') | tail -n1 | awk '{print $3"/"$2}'
 else
 	echo "$df" | awk '{print $4"/"$3}'
 fi
