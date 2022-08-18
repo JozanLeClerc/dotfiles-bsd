@@ -10,6 +10,7 @@ pgrep musicpd >/dev/null || musicpd >/dev/null 2>&1
 "$HOME"/.local/bin/kb
 xset s off
 xset -dpms
+xsetroot -name 'Loading bar...'
 startif dunst
 startif picom
 startif lowbat
