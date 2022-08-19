@@ -14,6 +14,8 @@ bind index,pager g noop
 bind index,pager M noop
 bind index,pager C noop
 bind index gg first-entry
+bind pager gg top
+bind pager G bottom
 macro index o "<shell-escape>killall mbsync >/dev/null 2>&1; mbsync -c $XDG_CONFIG_HOME/mbsync/mbsyncrc towerofsilence777@gmail.com<enter>" "run mbsync to sync towerofsilence777@gmail.com"
 unmailboxes *
 

@@ -14,10 +14,12 @@ bind index,pager g noop
 bind index,pager M noop
 bind index,pager C noop
 bind index gg first-entry
+bind pager gg top
+bind pager G bottom
 macro index o "<shell-escape>killall mbsync >/dev/null 2>&1; mbsync -c $XDG_CONFIG_HOME/mbsync/mbsyncrc rbousset@secuserve.com<enter>" "run mbsync to sync rbousset@secuserve.com"
 unmailboxes *
 
-mailboxes "=INBOX" "=Sent" "=Drafts" "=Junk" "=Trash" "=NEWS" "=Calendrier" "=T&AOI-ches" "=Notes" 
+mailboxes "=INBOX" "=Sent" "=Drafts" "=Junk" "=Trash" "=NEWS" "=Calendrier" "=T&AOI-ches" "=Notes" "=Reports" "=Reports/Unimus" 
 
 macro index,pager gi "<change-folder>=INBOX<enter>" "go to inbox"
 macro index,pager Mi ";<save-message>=INBOX<enter>" "move mail to inbox"
