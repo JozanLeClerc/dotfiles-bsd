@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -f
+set +f
 set -m
 
 export GNUPGHOME=/home/jozan/.local/share/gnupg
@@ -14,7 +16,7 @@ else
 	pre_count="$((pre_count + tmp))"
 fi
 killall mbsync >/dev/null 2>&1
-notify-send -u low -t 3000 'mbsync' '  fetching mail...' >/dev/null 2>&1
+# notify-send -u low -t 3000 'mbsync' '  fetching mail...' >/dev/null 2>&1
 {
 	mbsync -a -c /usr/home/jozan/.config/mbsync/mbsyncrc ||
 		notify-send -u low -t 6000 'mbsync' '  failed to fetch mail' >/dev/null 2>&1

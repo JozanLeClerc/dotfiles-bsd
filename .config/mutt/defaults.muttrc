@@ -57,11 +57,16 @@ bind index,pager \Cj sidebar-next
 bind index,pager \Co sidebar-open
 bind index,pager \Cp sidebar-prev-new
 bind index,pager \Cn sidebar-next-new
+bind index,pager \Cb sidebar-toggle-visible
 bind index,pager B sidebar-toggle-visible
 
 # General rebindings
 bind index,pager i noop
 bind index,pager g noop
+bind pager gg noop
+bind pager G noop
+bind pager gg top
+bind pager G bottom
 bind index \Cf noop
 bind index j next-entry
 bind index k previous-entry

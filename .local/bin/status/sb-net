@@ -1,8 +1,9 @@
 #!/bin/sh
 
-if ifconfig | grep -F ' active' >/dev/null; then
-	echo " "
+# if ifconfig | grep -F ' active' >/dev/null; then
+if ! ping -q -c1 -t1 8.8.8.8 >/dev/null 2>&1; then
+	echo " "
 	return
 fi
 
-echo " "
+echo " "
