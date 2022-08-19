@@ -17,7 +17,7 @@ bind index gg first-entry
 macro index o "<shell-escape>killall mbsync >/dev/null 2>&1; mbsync -c $XDG_CONFIG_HOME/mbsync/mbsyncrc rbousset@secuserve.com<enter>" "run mbsync to sync rbousset@secuserve.com"
 unmailboxes *
 
-mailboxes "=INBOX" "=Sent" "=Drafts" "=Trash" "=Calendrier" "=NEWS"
+mailboxes "=INBOX" "=Sent" "=Drafts" "=Junk" "=Trash" "=NEWS" "=Calendrier" "=T&AOI-ches" "=Notes" 
 
 macro index,pager gi "<change-folder>=INBOX<enter>" "go to inbox"
 macro index,pager Mi ";<save-message>=INBOX<enter>" "move mail to inbox"
@@ -31,6 +31,9 @@ macro index,pager gd "<change-folder>=Drafts<enter>" "go to drafts"
 macro index,pager Md ";<save-message>=Drafts<enter>" "move mail to drafts"
 macro index,pager Cd ";<copy-message>=Drafts<enter>" "copy mail to drafts"
 set postponed = "+Drafts"
+macro index,pager gS "<change-folder>=Junk<enter>" "go to junk"
+macro index,pager MS ";<save-message>=Junk<enter>" "move mail to junk"
+macro index,pager CS ";<copy-message>=Junk<enter>" "copy mail to junk"
 macro index,pager gt "<change-folder>=Trash<enter>" "go to trash"
 macro index,pager Mt ";<save-message>=Trash<enter>" "move mail to trash"
 macro index,pager Ct ";<copy-message>=Trash<enter>" "copy mail to trash"
