@@ -19,7 +19,7 @@ bind pager G bottom
 macro index o "<shell-escape>killall mbsync >/dev/null 2>&1; mbsync -c $XDG_CONFIG_HOME/mbsync/mbsyncrc olsen.oyvind.nor@gmail.com<enter>" "run mbsync to sync olsen.oyvind.nor@gmail.com"
 unmailboxes *
 
-mailboxes "=INBOX" "=[Gmail]/Sent Mail" "=[Gmail]/Drafts" "=[Gmail]/Spam" "=[Gmail]/Trash"
+mailboxes "=INBOX" "=[Gmail]/Sent Mail" "=[Gmail]/Drafts" "=[Gmail]/Spam" "=[Gmail]/Trash" "=Keep"
 
 macro index,pager gi "<change-folder>=INBOX<enter>" "go to inbox"
 macro index,pager Mi ";<save-message>=INBOX<enter>" "move mail to inbox"
