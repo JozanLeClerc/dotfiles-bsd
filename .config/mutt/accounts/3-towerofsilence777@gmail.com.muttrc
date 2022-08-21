@@ -5,8 +5,8 @@ set from = "towerofsilence777@gmail.com"
 set sendmail = "msmtp -a towerofsilence777@gmail.com"
 alias me Tower Of Silence <towerofsilence777@gmail.com>
 set folder = "$MAIL/towerofsilence777@gmail.com"
-set header_cache = $XDG_CACHE_HOME/mutt-wizard/towerofsilence777@gmail.com/headers
-set message_cachedir = $XDG_CACHE_HOME/mutt-wizard/towerofsilence777@gmail.com/bodies
+set header_cache = $XDG_CACHE_HOME/mutt/towerofsilence777@gmail.com/headers
+set message_cachedir = $XDG_CACHE_HOME/mutt/towerofsilence777@gmail.com/bodies
 set mbox_type = Maildir
 
 bind index,pager gg noop

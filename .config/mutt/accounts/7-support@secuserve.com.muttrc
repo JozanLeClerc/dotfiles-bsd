@@ -5,8 +5,8 @@ set from = "support@secuserve.com"
 set sendmail = "msmtp -a support@secuserve.com"
 alias me Support SecuServe <support@secuserve.com>
 set folder = "$MAIL/support@secuserve.com"
-set header_cache = $XDG_CACHE_HOME/mutt-wizard/support@secuserve.com/headers
-set message_cachedir = $XDG_CACHE_HOME/mutt-wizard/support@secuserve.com/bodies
+set header_cache = $XDG_CACHE_HOME/mutt/support@secuserve.com/headers
+set message_cachedir = $XDG_CACHE_HOME/mutt/support@secuserve.com/bodies
 set mbox_type = Maildir
 
 bind index,pager gg noop
