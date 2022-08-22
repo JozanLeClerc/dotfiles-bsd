@@ -5,14 +5,14 @@ weatherglyph="/tmp/weatherglyph"
 moonglyph="/tmp/moonglyph"
 
 getweather() {
-	curl -sf "wttr.in/Lyon" >$weatherreport || exit 1
+	curl -sf "wttr.in/Lyon" >$weatherreport || (rm -f $weatherreport && exit 1)
 	curl -sf "wttr.in/Lyon?format=%c" >$weatherglyph || exit 1
 	curl -sf "wttr.in/?format=%m" >$moonglyph || exit 1
 }
 
 [ -f $weatherreport ] && [ "$(gnustat -c %y "$weatherreport" 2>/dev/null | cut -d' ' -f1)" = "$(date '+%Y-%m-%d')" ] || getweather
 
-printf "%s%s  %s" \
+printf "%s%s   %s" \
 	"$(cat $weatherglyph)" \
 	"$(cat $moonglyph)" \
 	"$(sed '16q;d' "$weatherreport" | grep -wo "[0-9]*%" | sort -rn | sed "s/^/ /g;1q" | tr -d '\n')"
