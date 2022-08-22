@@ -28,8 +28,7 @@
     sort = yes
 
     idle_threshold = 0
-    # font = "NotoSans Nerd Font 14"
-	font = "Ac437 AT&T PC6300 17"
+	font = "NotoSans Nerd Font 14"
     line_height = 0
     markup = full
 
