@@ -19,6 +19,8 @@
 
 # set ENV to a file invoked each time sh is started for interactive use.
 export ENV=$HOME/.config/env
+# export PATH="$HOME"/.local/bin:"$HOME"/.local/bin/status:"$GOBIN":"$XDG_PACKAGE_HOME"/fzf-zsh-plugin/bin:"$XDG_DATA_HOME"/cargo/bin:"$PATH"
+
 
 # Let sh(1) know it's at home, despite /home being a symlink.
 if [ "$PWD" != "$HOME" ] && [ "$PWD" -ef "$HOME" ] ; then cd ; fi

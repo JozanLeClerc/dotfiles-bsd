@@ -44,6 +44,7 @@ alias \
 	rsync='rsync -v -h' \
 	grep='grep --color=always' \
 	rgrep='grep -R -n -H' \
+	most='most -t4' \
 	fsl='fossil' \
 	diff='colordiff' \
 	ctags='uctags "--exclude=.ccls*"' \

@@ -92,4 +92,4 @@ export WWW_HOME='https://start.duckduckgo.com/'
 export YTFZF_HIST='0'
 
 # PATH
-export PATH=/usr/local/bin:"$HOME"/bin:"$HOME"/.local/bin:"$HOME"/.local/bin/status:"$GOBIN":"$XDG_PACKAGE_HOME"/fzf-zsh-plugin/bin:"$XDG_DATA_HOME"/cargo/bin:"$PATH"
+# export PATH="$PATH"
