@@ -2,12 +2,8 @@
 
 vol="$(mixer vol | awk '{print $7}' | cut -d ':' -f1)"
 
-if [ "$vol" -gt "70" ]; then
+if [ "$vol" -gt "0" ]; then
 	icon=""
-elif [ "$vol" -gt "30" ]; then
-	icon=""
-elif [ "$vol" -gt "0" ]; then
-	icon=""
 else
 	icon="婢"
 fi
@@ -20,4 +16,16 @@ else
 	micon=""
 fi
 
-echo "$micon  $icon "
+echo -n "$micon  $icon "
+
+case $(echo $vol / 12.5 | bc) in
+	"0") printf "[        ]";;
+	"1") printf "[=       ]";;
+	"2") printf "[==      ]";;
+	"3") printf "[===     ]";;
+	"4") printf "[====    ]";;
+	"5") printf "[=====   ]";;
+	"6") printf "[======  ]";;
+	"7") printf "[======= ]";;
+	"8") printf "[========]";;
+esac

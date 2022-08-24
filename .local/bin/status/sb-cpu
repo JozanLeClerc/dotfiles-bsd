@@ -1,24 +1,22 @@
 #!/bin/sh
 
-ncpu_file="/tmp/ncpu"
-if [ -f $ncpu_file ]; then
-	ncpu=$(cat $ncpu_file)
-else
-	ncpu=$(sysctl -n hw.ncpu | tee $ncpu_file)
-fi
+# ncpu_file="/tmp/ncpu"
+# if [ -f $ncpu_file ]; then
+# 	ncpu=$(cat $ncpu_file)
+# else
+# 	ncpu=$(sysctl -n hw.ncpu | tee $ncpu_file)
+# fi
 
 printf " "
-# for i in $(top -P -d 1 | sed -n 3,${topline}p | rev | cut -d' ' -f2 | rev | cut -d'.' -f1 | awk '{print (100 - $1)}'); do
-for i in $(top -P -d 2 -s 0.2 | grep '^CPU' | tail -n$ncpu | sed '{s/% idle$//;s/.*[[:blank:]]//;s/\..*//;s/^/100 - /;}' | bc); do
-	case $(echo $i / 12.5 | bc) in
-		"0") printf "▁";;
-		"1") printf "▂";;
-		"2") printf "▃";;
-		"3") printf "▄";;
-		"4") printf "▅";;
-		"5") printf "▆";;
-		"6") printf "▇";;
-		"7") printf "█";;
-		"8") printf "█";;
-	esac;
-done
+# for i in $(top -P -d 2 -s 0.2 | grep '^CPU' | tail -n$ncpu | sed '{s/% idle$//;s/.*[[:blank:]]//;s/\..*//;s/^/100 - /;}' | bc); do
+case $(top -d 2 -s 0.2 | grep '^CPU' | sed '{1d;s/% idle$//;s/.*[[:blank:]]//;s/\..*//;s/^/(100 - /;s/$/) \/ 12\.5/;}' | bc) in
+		"0") printf "[        ]";;
+		"1") printf "[=       ]";;
+		"2") printf "[==      ]";;
+		"3") printf "[===     ]";;
+		"4") printf "[====    ]";;
+		"5") printf "[=====   ]";;
+		"6") printf "[======  ]";;
+		"7") printf "[======= ]";;
+		"8") printf "[========]";;
+esac
