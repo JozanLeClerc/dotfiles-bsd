@@ -24,7 +24,7 @@ set forward_format = "Fwd: %s"	# format of subject when forwarding
 set forward_quote		# include message in forwards
 set reverse_name		# reply as whomever it was to
 set include			# include message in replies
-set mail_check = 60 # to avoid lags using IMAP with some email providers (yahoo for example)
+set mail_check = 30 # to avoid lags using IMAP with some email providers (yahoo for example)
 set mail_check_stats
 set nobeep
 set charset = utf-8
@@ -48,7 +48,6 @@ set sidebar_width = 32
 set sidebar_short_path = yes
 set sidebar_next_new_wrap = yes
 set sidebar_delim_chars = '/'
-set mail_check_stats
 set sidebar_format = '%D%?F? [%F]?%* %?N?%N/? %?S?%S?'
 set sidebar_indent_string = '  '
 set sidebar_folder_indent = yes
@@ -173,12 +172,12 @@ color index_subject white default '.*'
 # New mail is boldened:
 color index brightyellow default "~N"
 color index_author brightblue default "~N"
-color index_subject brightwhite default "~N"
+# color index_subject brightred default "~N"
 
 # Tagged mail is highlighted:
-color index brightwhite color088 "~T"
-color index_author brightblue default "~T"
-color index_subject brightwhite default "~T"
+color index default color088 "~T"
+color index_author default default "~T"
+color index_subject default default "~T"
 
 # Shaded for deleted
 color index brightblack default '~D'
@@ -196,7 +195,7 @@ color sidebar_indicator brightyellow black
 color sidebar_ordinary white default
 color sidebar_highlight default black
 color sidebar_divider brightblack black
-color sidebar_new green default
+color sidebar_new brightwhite default
 color normal brightyellow default
 color error red default
 color tilde black default
