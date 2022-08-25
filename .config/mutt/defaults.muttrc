@@ -173,12 +173,17 @@ color index_subject white default '.*'
 # New mail is boldened:
 color index brightyellow default "~N"
 color index_author brightblue default "~N"
-color index_subject brightred default "~N"
+color index_subject brightwhite default "~N"
 
 # Tagged mail is highlighted:
 color index brightwhite color088 "~T"
-color index_author brightyellow default "~T"
+color index_author brightblue default "~T"
 color index_subject brightwhite default "~T"
+
+# Shaded for deleted
+color index brightblack default '~D'
+color index_author brightblue default '~D'
+color index_subject brightblack default '~D'
 
 # Other colors and aesthetic settings:
 mono bold bold
