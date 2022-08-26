@@ -5,8 +5,8 @@ set from = "rbousset@secuserve.com"
 set sendmail = "msmtp -a rbousset@secuserve.com"
 alias me Rudy Bousset <rbousset@secuserve.com>
 set folder = "$MAIL/rbousset@secuserve.com"
-set header_cache = $XDG_CACHE_HOME/mutt/rbousset@secuserve.com/headers
-set message_cachedir = $XDG_CACHE_HOME/mutt/rbousset@secuserve.com/bodies
+set header_cache = $XDG_RUNTIME_DIR/mutt/rbousset@secuserve.com/headers
+set message_cachedir = $XDG_RUNTIME_DIR/mutt/rbousset@secuserve.com/bodies
 set mbox_type = Maildir
 
 bind index,pager gg noop
