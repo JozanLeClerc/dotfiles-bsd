@@ -92,4 +92,4 @@ export WWW_HOME='https://start.duckduckgo.com/'
 export YTFZF_HIST='0'
 
 # PATH
-# export PATH="$PATH"
+export PATH="$HOME"/.local/bin:"$HOME"/.local/bin/status:/usr/local/llvm13/bin:"$PATH"
