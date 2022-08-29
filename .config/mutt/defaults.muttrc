@@ -167,12 +167,12 @@ macro compose Y "<first-entry>\
 
 # Default index colors:
 color index white default '.*'
-color index_author brightblue default '.*'
+color index_author red default '.*'
 color index_subject white default '.*'
 
 # New mail is boldened:
 color index brightyellow default "~N"
-color index_author brightblue default "~N"
+color index_author brightred default "~N"
 # color index_subject brightred default "~N"
 
 # Tagged mail is highlighted:
@@ -182,7 +182,7 @@ color index_subject default default "~T"
 
 # Shaded for deleted
 color index brightblack default '~D'
-color index_author brightblue default '~D'
+color index_author brightred default '~D'
 color index_subject brightblack default '~D'
 
 # Other colors and aesthetic settings:
