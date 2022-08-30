@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/local/bin/dash
 
 clock=$(date '+%I')
 
@@ -18,11 +18,11 @@ case "$clock" in
 	"12") icon="" ;;
 esac
 
-case $BLOCK_BUTTON in
-	1) notify-send -u low "This Month" "$(cal | sed "s/..7m/<b><span color=\"red\">/;s|..27m|</span></b>|")" && notify-send "Appointments" "$(calcurse -d3)" ;;
-	2) bsdsetsid -f "$TERMINAL" -e calcurse -C $XDG_CONFIG_HOME/calcurse -D $XDG_DATA_HOME/calcurse ;;
-	3) notify-send -u low "📅 Time/date module" "\- Left click to show upcoming appointments for the next three days via \`calcurse -d3\` and show the month via \`cal\` - Middle click opens calcurse if installed" ;;
-	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
-esac
+# case $BLOCK_BUTTON in
+# 	1) notify-send -u low "This Month" "$(cal | sed "s/..7m/<b><span color=\"red\">/;s|..27m|</span></b>|")" && notify-send "Appointments" "$(calcurse -d3)" ;;
+# 	2) bsdsetsid -f "$TERMINAL" -e calcurse -C $XDG_CONFIG_HOME/calcurse -D $XDG_DATA_HOME/calcurse ;;
+# 	3) notify-send -u low "📅 Time/date module" "\- Left click to show upcoming appointments for the next three days via \`calcurse -d3\` and show the month via \`cal\` - Middle click opens calcurse if installed" ;;
+# 	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+# esac
 
 date "+$icon %H:%M"
