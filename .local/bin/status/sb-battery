@@ -2,7 +2,7 @@
 
 status=$(apm -b)
 
-[ "$status" -eq 3 ] && echo ""
+[ "$status" -eq 3 ] && echo "ﮣ "
 
 case $(echo $(apm -l) / 20 | bc) in
 	"0") printf "";;
