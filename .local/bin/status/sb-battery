@@ -2,16 +2,12 @@
 
 status=$(apm -b)
 
-[ "$status" -eq 3 ] && exit
+[ "$status" -eq 3 ] && echo ""
 
-case $(echo $(apm -l) / 12.5 | bc) in
-	"0") printf "[        ]";;
-	"1") printf "[=       ]";;
-	"2") printf "[==      ]";;
-	"3") printf "[===     ]";;
-	"4") printf "[====    ]";;
-	"5") printf "[=====   ]";;
-	"6") printf "[======  ]";;
-	"7") printf "[======= ]";;
-	"8") printf "[========]";;
+case $(echo $(apm -l) / 20 | bc) in
+	"0") printf "";;
+	"1") printf " ";;
+	"2") printf " ";;
+	"3") printf " ";;
+	"4") printf " ";;
 esac
