@@ -2,8 +2,14 @@
 source $XDG_CONFIG_HOME/mutt/defaults.muttrc
 source $XDG_CONFIG_HOME/mutt/accounts/1-bousset.rudy@gmail.com.muttrc
 macro index,pager <f1> '<sync-mailbox><enter-command>source $XDG_CONFIG_HOME/mutt/accounts/1-bousset.rudy@gmail.com.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to bousset.rudy@gmail.com"
+macro index,pager 1 '<sync-mailbox><enter-command>source $XDG_CONFIG_HOME/mutt/accounts/1-bousset.rudy@gmail.com.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to bousset.rudy@gmail.com"
 macro index,pager <f2> '<sync-mailbox><enter-command>source $XDG_CONFIG_HOME/mutt/accounts/2-olsen.oyvind.nor@gmail.com.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to olsen.oyvind.nor@gmail.com"
+macro index,pager 2 '<sync-mailbox><enter-command>source $XDG_CONFIG_HOME/mutt/accounts/2-olsen.oyvind.nor@gmail.com.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to olsen.oyvind.nor@gmail.com"
 # macro index,page <f3> '<sync-mailbox><enter-command>source $XDG_CONFIG_HOME/mutt/accounts/3-towerofsilence777@gmail.com.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to towerofsilence777@gmail.com"
+# macro index,page 3 '<sync-mailbox><enter-command>source $XDG_CONFIG_HOME/mutt/accounts/3-towerofsilence777@gmail.com.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to towerofsilence777@gmail.com"
 macro index,pager <f5> '<sync-mailbox><enter-command>source $XDG_CONFIG_HOME/mutt/accounts/5-rbousset@secuserve.com.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to rbousset@secuserve.com"
+macro index,pager 5 '<sync-mailbox><enter-command>source $XDG_CONFIG_HOME/mutt/accounts/5-rbousset@secuserve.com.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to rbousset@secuserve.com"
 macro index,pager <f6> '<sync-mailbox><enter-command>source $XDG_CONFIG_HOME/mutt/accounts/6-exploitation@secuserve.com.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to exploitation@secuserve.com"
+macro index,pager 6 '<sync-mailbox><enter-command>source $XDG_CONFIG_HOME/mutt/accounts/6-exploitation@secuserve.com.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to exploitation@secuserve.com"
 macro index,pager <f7> '<sync-mailbox><enter-command>source $XDG_CONFIG_HOME/mutt/accounts/7-support@secuserve.com.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to support@secuserve.com"
+macro index,pager 7 '<sync-mailbox><enter-command>source $XDG_CONFIG_HOME/mutt/accounts/7-support@secuserve.com.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to support@secuserve.com"
