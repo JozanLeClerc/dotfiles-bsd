@@ -9,9 +9,9 @@ weatherglyph=$(curl -sf "wttr.in/Lyon?format=%c" 2>&1 || exit 1) # >$weatherglyp
 moonglyph=$(curl -sf "wttr.in/?format=%m" 2>&1 || exit 1) # >$moonglyph || exit 1
 
 printf "%s%s" \
-	"$(cat $weatherglyph)" \
-	"$(sed '16q;d' "$weatherreport" | grep -wo "[0-9]*%" | sort -rn | sed "s/^/ /g;1q" | tr -d '\n')"
+	"$(echo "$weatherglyph ")" \
+	"$(echo "$weatherreport" | sed '16q;d' | grep -wo "[0-9]*%" | sort -rn | sed "s/^/ /g;1q" | tr -d '\n')"
 
-sed '13q;d' "$weatherreport" | grep -o "m\\([-+]\\)*[0-9]\\+" | sed 's/+//g' |
+echo "$weatherreport" | sed '13q;d' | grep -o "m\\([-+]\\)*[0-9]\\+" | sed 's/+//g' |
 	sort -n -t 'm' -k 2n | sed -e 1b -e '$!d' | tr '\n|m' ' ' |
-	awk -v moon="$(cat $moonglyph)" '{print "  " $1 "/" $2 "°C " moon}'
+	awk -v moon="$(echo "$moonglyph")" '{print "  " $1 "/" $2 "°C " moon}'
