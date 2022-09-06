@@ -185,6 +185,11 @@ color index brightblack default '~D'
 color index_author brightred default '~D'
 color index_subject brightblack default '~D'
 
+# flagged colors:
+color index lightwhite default '~F'
+color index_author lightred default '~F'
+color index_subject lightwhite default '~F'
+
 # Other colors and aesthetic settings:
 mono bold bold
 mono underline underline
