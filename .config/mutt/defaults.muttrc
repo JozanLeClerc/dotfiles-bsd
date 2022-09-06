@@ -187,7 +187,7 @@ color index_subject brightblack default '~D'
 
 # flagged colors:
 color index lightwhite default '~F'
-color index_author lightred default '~F'
+color index_author red default '~F'
 color index_subject lightwhite default '~F'
 
 # Other colors and aesthetic settings:
