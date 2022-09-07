@@ -42,6 +42,6 @@ account exploitation@secuserve.com
 account support@secuserve.com
   host next.optimails.com
   port 587
-  from Support SecuServe
+  from support@secuserve.com
   user support@secuserve.com
   passwordeval "pass show mutt/support@secuserve.com"
