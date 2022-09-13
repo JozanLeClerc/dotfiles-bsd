@@ -9,7 +9,7 @@ wtf:
     rows: [5, 10, 12, 3, 4, 90]
   refreshInterval: 1
   mods:
-    clocks_a:
+    clocks:
       colors:
         rows:
           even: "lightblue"
@@ -75,8 +75,20 @@ wtf:
       enabled: true
       position:
         top: 3
-        left: 1
+        left: 0
         height: 1
         width: 2
       refreshInterval: 30
       type: cmdrunner
+    resourceusage:
+      cpuCombined: false
+      enabled: true
+      position:
+        top: 0
+        left: 0
+        height: 2
+        width: 1
+      refreshInterval: 1
+      showCPU: true
+      showMem: true
+      showSwp: true
