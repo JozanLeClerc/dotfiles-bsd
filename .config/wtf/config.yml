@@ -6,28 +6,22 @@ wtf:
       normal: gray
   grid:
     columns: [50, 50, 50, 50, 90]
-    rows: [5, 10, 12, 3, 4, 90]
+    rows: [8, 10, 12, 3, 4, 90]
   refreshInterval: 1
   mods:
-    clocks:
-      colors:
-        rows:
-          even: "lightblue"
-          odd: "white"
+    digitalclock:
+      color: orange
       enabled: true
-      locations:
-        Paris: "Europe/Paris"
-        New York: "America/New York"
-        Hong Kong: "Asia/Hong Kong"
+      font: digitalfont
+      hourFormat: 24
       position:
         top: 0
         left: 1
         height: 1
         width: 1
-      refreshInterval: 15
-      sort: "alphabetical"
-      title: "Clocks A"
-      type: "clocks"
+      refreshInterval: 1
+      title: "big clock"
+      type: "digitalclock"
     ipinfo:
       colors:
         name: "lightblue"
