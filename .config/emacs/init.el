@@ -15,7 +15,7 @@
  '(ccls-sem-parameter-faces
    [ccls-sem-parameter-face-0 ccls-sem-parameter-face-1 ccls-sem-parameter-face-2 ccls-sem-parameter-face-3 ccls-sem-parameter-face-4 ccls-sem-parameter-face-5 ccls-sem-parameter-face-6 ccls-sem-parameter-face-7 ccls-sem-parameter-face-8 ccls-sem-parameter-face-9])
  '(custom-safe-themes
-   '("f028e1985041fd072fa9063221ee9c9368a570d26bd6660edbd00052d112e8bb" "969a67341a68becdccc9101dc87f5071b2767b75c0b199e0ded35bd8359ecd69" "147fcba1e6277e4b9a3d07ba90d822dabc0510d6576514967a55afd71393000d" "6b5c518d1c250a8ce17463b7e435e9e20faa84f3f7defba8b579d4f5925f60c1" default))
+   '("d80952c58cf1b06d936b1392c38230b74ae1a2a6729594770762dc0779ac66b7" "f028e1985041fd072fa9063221ee9c9368a570d26bd6660edbd00052d112e8bb" "969a67341a68becdccc9101dc87f5071b2767b75c0b199e0ded35bd8359ecd69" "147fcba1e6277e4b9a3d07ba90d822dabc0510d6576514967a55afd71393000d" "6b5c518d1c250a8ce17463b7e435e9e20faa84f3f7defba8b579d4f5925f60c1" default))
  '(fci-rule-color "#676E95")
  '(hl-todo-keyword-faces
    '(("TODO" . "#dc752f")
