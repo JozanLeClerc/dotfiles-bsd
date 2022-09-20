@@ -4,7 +4,7 @@
 if ifconfig | grep '^tun' >/dev/null 2>&1; then
 	echo -n "歷  "
 fi
-if ! ping -q -c1 -t1 8.8.8.8 >/dev/null 2>&1; then
+if ! ping -q -c1 -t1 1.1.1.1 >/dev/null 2>&1; then
 	echo " "
 	return
 fi
