@@ -31,6 +31,10 @@ if [ "$mb_a" -gt 0 ]; then
 	echo -n "A:" $mb_a
 fi
 
+if [ "$mb_a" -gt 0 ] && [ "$mb_a" -gt 0 ]; then
+	echo -n " "
+fi
+
 if [ "$mb_b" -gt 0 ]; then
 	echo -n "B:" $mb_b
 fi
