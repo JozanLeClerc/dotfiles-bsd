@@ -1,13 +1,14 @@
 # vim: filetype=neomuttrc
-# muttrc file for account rbousset@secuserve.com
+# muttrc file for account bousset.rudy@gmail.com
 set realname = "Rudy Bousset"
-set from = "rbousset@secuserve.com"
-set sendmail = "msmtp -a rbousset@secuserve.com"
-alias me Rudy Bousset <rbousset@secuserve.com>
-set folder = "$MAIL/rbousset@secuserve.com"
-set header_cache = $XDG_RUNTIME_DIR/mutt/rbousset@secuserve.com/headers
-set message_cachedir = $XDG_RUNTIME_DIR/mutt/rbousset@secuserve.com/bodies
+set from = "rrbo@proton.me"
+set sendmail = "msmtp --tls-certcheck=off -a main"
+alias me Rudy Bousset <rrbo@proton.me>
+set folder = "$MAIL/main"
+set header_cache = $XDG_RUNTIME_DIR/mutt/main/headers
+set message_cachedir = $XDG_RUNTIME_DIR/mutt/main/bodies
 set mbox_type = Maildir
+set crypt_autosign = no
 
 bind index,pager gg noop
 bind index,pager g noop
@@ -16,10 +17,10 @@ bind index,pager C noop
 bind index gg first-entry
 bind pager gg top
 bind pager G bottom
-macro index o "<shell-escape>killall mbsync >/dev/null 2>&1; mbsync -c $XDG_CONFIG_HOME/mbsync/mbsyncrc rbousset@secuserve.com<enter>" "run mbsync to sync rbousset@secuserve.com"
+macro index o "<shell-escape>killall mbsync >/dev/null 2>&1; mbsync -c $XDG_CONFIG_HOME/mbsync/mbsyncrc main<enter>" "run mbsync to sync rrbo@proton.me"
 unmailboxes *
 
-mailboxes "=INBOX" "=Sent" "=Drafts" "=Junk" "=Trash" "=Keep" "=NEWS" "=Calendrier" "=T&AOI-ches" "=Notes" "=Reports" "=Reports/OTRS" "=Reports/Trello" "=Reports/Teams" "=Reports/Unimus" "=Reports/vzdump"
+mailboxes "=INBOX" "=Sent" "=Drafts" "=Spam" "=Trash" "=Archive" "=All Mail" "=Folders/Keep" "=Folders/Work"
 
 macro index,pager gi "<change-folder>=INBOX<enter>" "go to inbox"
 macro index,pager Mi ";<save-message>=INBOX<enter>" "move mail to inbox"
@@ -33,13 +34,10 @@ macro index,pager gd "<change-folder>=Drafts<enter>" "go to drafts"
 macro index,pager Md ";<save-message>=Drafts<enter>" "move mail to drafts"
 macro index,pager Cd ";<copy-message>=Drafts<enter>" "copy mail to drafts"
 set postponed = "+Drafts"
-macro index,pager gS "<change-folder>=Junk<enter>" "go to junk"
-macro index,pager MS ";<save-message>=Junk<enter>" "move mail to junk"
-macro index,pager CS ";<copy-message>=Junk<enter>" "copy mail to junk"
+macro index,pager gS "<change-folder>=Spam<enter>" "go to spam"
+macro index,pager MS ";<save-message>=Spam<enter>" "move mail to spam"
+macro index,pager CS ";<copy-message>=Spam<enter>" "copy mail to spam"
 macro index,pager gt "<change-folder>=Trash<enter>" "go to trash"
 macro index,pager Mt ";<save-message>=Trash<enter>" "move mail to trash"
 macro index,pager Ct ";<copy-message>=Trash<enter>" "copy mail to trash"
 set trash = "+Trash"
-macro index,pager gn "<change-folder>=NEWS<enter>" "go to news"
-macro index,pager Mn ";<save-message>=NEWS<enter>" "move mail to news"
-macro index,pager Cn ";<copy-message>=NEWS<enter>" "copy mail to news"

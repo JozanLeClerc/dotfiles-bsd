@@ -1,5 +1,30 @@
 # vim filetype=conf
-IMAPStore bousset.rudy@gmail.com-remote
+IMAPStore main-remote
+Host 127.0.0.1
+Port 1143
+User rrbo@proton.me
+PassCmd "pass show mutt/rrbo@proton.me"
+# AuthMechs LOGIN
+SSLType None
+# CertificateFile /etc/ssl/cert.pem
+
+MaildirStore main-local
+SubFolders Verbatim
+Path /var/mail/jozan/main/
+Inbox /var/mail/jozan/main/INBOX
+
+Channel main
+Far :main-remote:
+Near :main-local:
+Patterns *
+Create Both
+Expunge Both
+SyncState *
+MaxMessages 0
+ExpireUnread no
+# End profile
+
+IMAPStore gmail_br-remote
 Host imap.gmail.com
 Port 993
 User bousset.rudy@gmail.com
@@ -8,15 +33,15 @@ AuthMechs LOGIN
 SSLType IMAPS
 CertificateFile /etc/ssl/cert.pem
 
-MaildirStore bousset.rudy@gmail.com-local
+MaildirStore gmail_br-local
 SubFolders Verbatim
-Path /var/mail/jozan/bousset.rudy@gmail.com/
-Inbox /var/mail/jozan/bousset.rudy@gmail.com/INBOX
+Path /var/mail/jozan/gmail_br/
+Inbox /var/mail/jozan/gmail_br/INBOX
 
-Channel bousset.rudy@gmail.com
+Channel gmail_br
 Expunge Both
-Far :bousset.rudy@gmail.com-remote:
-Near :bousset.rudy@gmail.com-local:
+Far :gmail_br-remote:
+Near :gmail_br-local:
 Patterns *
 Create Both
 SyncState *
@@ -24,7 +49,7 @@ MaxMessages 0
 ExpireUnread no
 # End profile
 
-IMAPStore olsen.oyvind.nor@gmail.com-remote
+IMAPStore gmail_oon-remote
 Host imap.gmail.com
 Port 993
 User olsen.oyvind.nor@gmail.com
@@ -33,15 +58,15 @@ AuthMechs LOGIN
 SSLType IMAPS
 CertificateFile /etc/ssl/cert.pem
 
-MaildirStore olsen.oyvind.nor@gmail.com-local
+MaildirStore gmail_oon-local
 SubFolders Verbatim
-Path /var/mail/jozan/olsen.oyvind.nor@gmail.com/
-Inbox /var/mail/jozan/olsen.oyvind.nor@gmail.com/INBOX
+Path /var/mail/jozan/gmail_oon/
+Inbox /var/mail/jozan/gmail_oon/INBOX
 
-Channel olsen.oyvind.nor@gmail.com
+Channel gmail_oon
 Expunge Both
-Far :olsen.oyvind.nor@gmail.com-remote:
-Near :olsen.oyvind.nor@gmail.com-local:
+Far :gmail_oon-remote:
+Near :gmail_oon-local:
 Patterns *
 Create Both
 SyncState *
@@ -49,7 +74,7 @@ MaxMessages 0
 ExpireUnread no
 # End profile
 
-# IMAPStore towerofsilence777@gmail.com-remote
+# IMAPStore gmail_tos-remote
 # Host imap.gmail.com
 # Port 993
 # User towerofsilence777@gmail.com
@@ -58,15 +83,15 @@ ExpireUnread no
 # SSLType IMAPS
 # CertificateFile /etc/ssl/cert.pem
 # 
-# MaildirStore towerofsilence777@gmail.com-local
+# MaildirStore gmail_tos-local
 # SubFolders Verbatim
-# Path /var/mail/jozan/towerofsilence777@gmail.com/
-# Inbox /var/mail/jozan/towerofsilence777@gmail.com/INBOX
+# Path /var/mail/jozan/gmail_tos/
+# Inbox /var/mail/jozan/gmail_tos/INBOX
 # 
-# Channel towerofsilence777@gmail.com
+# Channel gmail_tos
 # Expunge Both
-# Far :towerofsilence777@gmail.com-remote:
-# Near :towerofsilence777@gmail.com-local:
+# Far :gmail_tos-remote:
+# Near :gmail_tos-local:
 # Patterns *
 # Create Both
 # SyncState *
@@ -74,7 +99,7 @@ ExpireUnread no
 # ExpireUnread no
 # # End profile
 
-IMAPStore rbousset@secuserve.com-remote
+IMAPStore ss_perso-remote
 Host next.optimails.com
 Port 993
 User rbousset@secuserve.com
@@ -83,15 +108,15 @@ AuthMechs LOGIN
 SSLType IMAPS
 CertificateFile /etc/ssl/cert.pem
 
-MaildirStore rbousset@secuserve.com-local
+MaildirStore ss_perso-local
 SubFolders Verbatim
-Path /var/mail/jozan/rbousset@secuserve.com/
-Inbox /var/mail/jozan/rbousset@secuserve.com/INBOX
+Path /var/mail/jozan/ss_perso/
+Inbox /var/mail/jozan/ss_perso/INBOX
 
-Channel rbousset@secuserve.com
+Channel ss_perso
 Expunge Both
-Far :rbousset@secuserve.com-remote:
-Near :rbousset@secuserve.com-local:
+Far :ss_perso-remote:
+Near :ss_perso-local:
 Patterns *
 Create Both
 SyncState *
@@ -99,7 +124,7 @@ MaxMessages 0
 ExpireUnread no
 # End profile
 
-IMAPStore exploitation@secuserve.com-remote
+IMAPStore ss_exploit-remote
 Host next.optimails.com
 Port 993
 User exploitation@secuserve.com
@@ -108,15 +133,15 @@ AuthMechs LOGIN
 SSLType IMAPS
 CertificateFile /etc/ssl/cert.pem
 
-MaildirStore exploitation@secuserve.com-local
+MaildirStore ss_exploit-local
 SubFolders Verbatim
-Path /var/mail/jozan/exploitation@secuserve.com/
-Inbox /var/mail/jozan/exploitation@secuserve.com/INBOX
+Path /var/mail/jozan/ss_exploit/
+Inbox /var/mail/jozan/ss_exploit/INBOX
 
-Channel exploitation@secuserve.com
+Channel ss_exploit
 Expunge Both
-Far :exploitation@secuserve.com-remote:
-Near :exploitation@secuserve.com-local:
+Far :ss_exploit-remote:
+Near :ss_exploit-local:
 Patterns *
 Create Both
 SyncState *
@@ -124,7 +149,7 @@ MaxMessages 0
 ExpireUnread no
 # End profile
 
-IMAPStore support@secuserve.com-remote
+IMAPStore ss_support-remote
 Host next.optimails.com
 Port 993
 User support@secuserve.com
@@ -133,15 +158,15 @@ AuthMechs LOGIN
 SSLType IMAPS
 CertificateFile /etc/ssl/cert.pem
 
-MaildirStore support@secuserve.com-local
+MaildirStore ss_support-local
 SubFolders Verbatim
-Path /var/mail/jozan/support@secuserve.com/
-Inbox /var/mail/jozan/support@secuserve.com/INBOX
+Path /var/mail/jozan/ss_support/
+Inbox /var/mail/jozan/ss_support/INBOX
 
-Channel support@secuserve.com
+Channel ss_support
 Expunge Both
-Far :support@secuserve.com-remote:
-Near :support@secuserve.com-local:
+Far :ss_support-remote:
+Near :ss_support-local:
 Patterns *
 Create Both
 SyncState *

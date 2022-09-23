@@ -1,7 +1,7 @@
 # vim: filetype=sh
 
 startif() {
-	pgrep "$1" >/dev/null || "$@" >/dev/null 2>&1 &
+	pgrep "$(basename "$1")" >/dev/null || "$@" >/dev/null 2>&1 &
 }
 
 export LANG='en_US.UTF-8'
@@ -18,6 +18,7 @@ startif mpd-notification
 startif xscreensaver --no-splash
 startif dwmblocks
 startif sb-updatempd
+startif /compat/linux/usr/lib/protonmail/bridge/proton-bridge --noninteractive
 # ekb
 cd "$HOME"
 xrdb "$HOME"/.config/x11/xresources

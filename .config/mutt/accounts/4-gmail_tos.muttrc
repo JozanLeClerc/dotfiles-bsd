@@ -2,12 +2,13 @@
 # muttrc file for account towerofsilence777@gmail.com
 set realname = "Tower Of Silence"
 set from = "towerofsilence777@gmail.com"
-set sendmail = "msmtp -a towerofsilence777@gmail.com"
+set sendmail = "msmtp -a gmail_tos"
 alias me Tower Of Silence <towerofsilence777@gmail.com>
-set folder = "$MAIL/towerofsilence777@gmail.com"
-set header_cache = $XDG_RUNTIME_DIR/mutt/towerofsilence777@gmail.com/headers
-set message_cachedir = $XDG_RUNTIME_DIR/mutt/towerofsilence777@gmail.com/bodies
+set folder = "$MAIL/gmail_tos"
+set header_cache = $XDG_RUNTIME_DIR/mutt/gmail_tos/headers
+set message_cachedir = $XDG_RUNTIME_DIR/mutt/gmail_tos/bodies
 set mbox_type = Maildir
+set crypt_autosign = yes
 
 bind index,pager gg noop
 bind index,pager g noop
@@ -16,7 +17,7 @@ bind index,pager C noop
 bind index gg first-entry
 bind pager gg top
 bind pager G bottom
-macro index o "<shell-escape>killall mbsync >/dev/null 2>&1; mbsync -c $XDG_CONFIG_HOME/mbsync/mbsyncrc towerofsilence777@gmail.com<enter>" "run mbsync to sync towerofsilence777@gmail.com"
+macro index o "<shell-escape>killall mbsync >/dev/null 2>&1; mbsync -c $XDG_CONFIG_HOME/mbsync/mbsyncrc gmail_tos<enter>" "run mbsync to sync towerofsilence777@gmail.com"
 unmailboxes *
 
 mailboxes "=INBOX" "=[Gmail].Messages envoy&AOk-s" "=[Gmail].Brouillons" "=[Gmail].Spam" "=[Gmail].Corbeille" "=[Gmail].Important" "=[Gmail].Suivis"

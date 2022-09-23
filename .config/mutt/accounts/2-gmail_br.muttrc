@@ -2,12 +2,13 @@
 # muttrc file for account bousset.rudy@gmail.com
 set realname = "Rudy Bousset"
 set from = "bousset.rudy@gmail.com"
-set sendmail = "msmtp -a bousset.rudy@gmail.com"
+set sendmail = "msmtp -a gmail_br"
 alias me Rudy Bousset <bousset.rudy@gmail.com>
-set folder = "$MAIL/bousset.rudy@gmail.com"
-set header_cache = $XDG_RUNTIME_DIR/mutt/bousset.rudy@gmail.com/headers
-set message_cachedir = $XDG_RUNTIME_DIR/mutt/bousset.rudy@gmail.com/bodies
+set folder = "$MAIL/gmail_br"
+set header_cache = $XDG_RUNTIME_DIR/mutt/gmail_br/headers
+set message_cachedir = $XDG_RUNTIME_DIR/mutt/gmail_br/bodies
 set mbox_type = Maildir
+set crypt_autosign = yes
 
 bind index,pager gg noop
 bind index,pager g noop
@@ -16,7 +17,7 @@ bind index,pager C noop
 bind index gg first-entry
 bind pager gg top
 bind pager G bottom
-macro index o "<shell-escape>killall mbsync >/dev/null 2>&1; mbsync -c $XDG_CONFIG_HOME/mbsync/mbsyncrc bousset.rudy@gmail.com<enter>" "run mbsync to sync bousset.rudy@gmail.com"
+macro index o "<shell-escape>killall mbsync >/dev/null 2>&1; mbsync -c $XDG_CONFIG_HOME/mbsync/mbsyncrc gmail_br<enter>" "run mbsync to sync bousset.rudy@gmail.com"
 unmailboxes *
 
 mailboxes "=INBOX" "=[Gmail]/Sent Mail" "=[Gmail]/Drafts" "=[Gmail]/Spam" "=[Gmail]/Trash" "=Keep"
