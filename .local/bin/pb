@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/compat/linux/usr/lib/protonmail/bridge/proton-bridge --noninteractive
