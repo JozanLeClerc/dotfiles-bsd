@@ -16,6 +16,7 @@ esac
 mb_a="$(ls "${MAIL:-/var/mail/jozan}"/main/INBOX/new/     | wc -l 2>/dev/null)"
 mb_b="$(ls "${MAIL:-/var/mail/jozan}"/gmail_br/INBOX/new/ | wc -l 2>/dev/null)"
 mb_c="$(ls "${MAIL:-/var/mail/jozan}"/gmail_oon/INBOX/new/ | wc -l 2>/dev/null)"
+mb_d="$(ls "${MAIL:-/var/mail/jozan}"/gmail_tos/INBOX/new/ | wc -l 2>/dev/null)"
 
 sync=0
 if pidof mbsync >/dev/null 2>&1; then
@@ -29,7 +30,7 @@ case "$sync" in
 esac	
 
 if [ "$mb_a" -gt 0 ]; then
-	echo -n "A:" $mb_a
+	echo -n "main:" $mb_a
 fi
 
 if [ "$mb_a" -gt 0 ] && [ "$mb_b" -gt 0 ]; then
@@ -37,7 +38,7 @@ if [ "$mb_a" -gt 0 ] && [ "$mb_b" -gt 0 ]; then
 fi
 
 if [ "$mb_b" -gt 0 ]; then
-	echo -n "B:" $mb_b
+	echo -n "br:" $mb_b
 fi
 
 if [ "$mb_b" -gt 0 ] && [ "$mb_c" -gt 0 ]; then
@@ -47,5 +48,17 @@ elif [ "$mb_a" -gt 0 ] && [ "$mb_c" -gt 0 ]; then
 fi
 
 if [ "$mb_c" -gt 0 ]; then
-	echo -n "C:" $mb_c
+	echo -n "oon:" $mb_c
+fi
+
+if [ "$mb_c" -gt 0 ] && [ "$mb_d" -gt 0 ]; then
+	echo -n " "
+elif [ "$mb_b" -gt 0 ] && [ "$mb_d" -gt 0 ]; then
+	echo -n " "
+elif [ "$mb_a" -gt 0 ] && [ "$mb_d" -gt 0 ]; then
+	echo -n " "
+fi
+
+if [ "$mb_d" -gt 0 ]; then
+	echo -n "tos:" $mb_d
 fi
