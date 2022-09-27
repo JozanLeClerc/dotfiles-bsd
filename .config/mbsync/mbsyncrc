@@ -3,7 +3,7 @@ IMAPStore main-remote
 Host 127.0.0.1
 Port 1143
 User rrbo@proton.me
-PassCmd "pass show mutt/rrbo@proton.me"
+PassCmd "pass show mutt/main"
 # AuthMechs LOGIN
 SSLType None
 # CertificateFile /etc/ssl/cert.pem
@@ -28,7 +28,7 @@ IMAPStore gmail_br-remote
 Host imap.gmail.com
 Port 993
 User bousset.rudy@gmail.com
-PassCmd "pass show mutt/bousset.rudy@gmail.com"
+PassCmd "pass show mutt/gmail_br"
 AuthMechs LOGIN
 SSLType IMAPS
 CertificateFile /etc/ssl/cert.pem
@@ -53,7 +53,7 @@ IMAPStore gmail_oon-remote
 Host imap.gmail.com
 Port 993
 User olsen.oyvind.nor@gmail.com
-PassCmd "pass show mutt/olsen.oyvind.nor@gmail.com"
+PassCmd "pass show mutt/gmail_oon"
 AuthMechs LOGIN
 SSLType IMAPS
 CertificateFile /etc/ssl/cert.pem
@@ -74,36 +74,36 @@ MaxMessages 0
 ExpireUnread no
 # End profile
 
-# IMAPStore gmail_tos-remote
-# Host imap.gmail.com
-# Port 993
-# User towerofsilence777@gmail.com
-# PassCmd "pass show mutt/towerofsilence777@gmail.com"
-# AuthMechs LOGIN
-# SSLType IMAPS
-# CertificateFile /etc/ssl/cert.pem
-# 
-# MaildirStore gmail_tos-local
-# SubFolders Verbatim
-# Path /var/mail/jozan/gmail_tos/
-# Inbox /var/mail/jozan/gmail_tos/INBOX
-# 
-# Channel gmail_tos
-# Expunge Both
-# Far :gmail_tos-remote:
-# Near :gmail_tos-local:
-# Patterns *
-# Create Both
-# SyncState *
-# MaxMessages 0
-# ExpireUnread no
-# # End profile
+IMAPStore gmail_tos-remote
+Host imap.gmail.com
+Port 993
+User towerofsilence777@gmail.com
+PassCmd "pass show mutt/gmail_tos"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/cert.pem
+
+MaildirStore gmail_tos-local
+SubFolders Verbatim
+Path /var/mail/jozan/gmail_tos/
+Inbox /var/mail/jozan/gmail_tos/INBOX
+
+Channel gmail_tos
+Expunge Both
+Far :gmail_tos-remote:
+Near :gmail_tos-local:
+Patterns *
+Create Both
+SyncState *
+MaxMessages 0
+ExpireUnread no
+# End profile
 
 IMAPStore ss_perso-remote
 Host next.optimails.com
 Port 993
 User rbousset@secuserve.com
-PassCmd "pass show mutt/rbousset@secuserve.com"
+PassCmd "pass show mutt/ss_perso"
 AuthMechs LOGIN
 SSLType IMAPS
 CertificateFile /etc/ssl/cert.pem
@@ -128,7 +128,7 @@ IMAPStore ss_exploit-remote
 Host next.optimails.com
 Port 993
 User exploitation@secuserve.com
-PassCmd "pass show mutt/exploitation@secuserve.com"
+PassCmd "pass show mutt/ss_exploit"
 AuthMechs LOGIN
 SSLType IMAPS
 CertificateFile /etc/ssl/cert.pem
@@ -153,7 +153,7 @@ IMAPStore ss_support-remote
 Host next.optimails.com
 Port 993
 User support@secuserve.com
-PassCmd "pass show mutt/support@secuserve.com"
+PassCmd "pass show mutt/ss_support"
 AuthMechs LOGIN
 SSLType IMAPS
 CertificateFile /etc/ssl/cert.pem

@@ -9,46 +9,46 @@ account main
   port 1025
   from rrbo@proton.me
   user rrbo@proton.me
-  passwordeval "pass show mutt/rrbo@proton.me"
+  passwordeval "pass show mutt/main"
 
 account gmail_br
   host smtp.gmail.com
   port 587
   from Rudy Bousset
   user bousset.rudy@gmail.com
-  passwordeval "pass show mutt/bousset.rudy@gmail.com"
+  passwordeval "pass show mutt/gmail_br"
 
 account gmail_oon
   host smtp.gmail.com
   port 587
   from Joe
   user olsen.oyvind.nor@gmail.com
-  passwordeval "pass show mutt/olsen.oyvind.nor@gmail.com"
+  passwordeval "pass show mutt/gmail_oon"
 
-# account gmail_tos
-#   host smtp.gmail.com
-#   port 587
-#   from Tower Of Silence
-#   user towerofsilence777@gmail.com
-#   passwordeval "pass show mutt/towerofsilence777@gmail.com"
+account gmail_tos
+  host smtp.gmail.com
+  port 587
+  from Tower Of Silence
+  user towerofsilence777@gmail.com
+  passwordeval "pass show mutt/gmail_tos"
 
 account ss_perso
   host next.optimails.com
   port 587
   from rbousset@secuserve.com
   user rbousset@secuserve.com
-  passwordeval "pass show mutt/rbousset@secuserve.com"
+  passwordeval "pass show mutt/ss_perso"
 
 account ss_exploit
   host next.optimails.com
   port 587
   from Team Exploitation SecuServe
   user exploitation@secuserve.com
-  passwordeval "pass show mutt/exploitation@secuserve.com"
+  passwordeval "pass show mutt/ss_exploit"
 
 account ss_support
   host next.optimails.com
   port 587
   from support@secuserve.com
   user support@secuserve.com
-  passwordeval "pass show mutt/support@secuserve.com"
+  passwordeval "pass show mutt/ss_support"
