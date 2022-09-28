@@ -33,6 +33,7 @@ set noallow_8bit
 set uncollapse_jump
 set pager_index_lines = 10
 set text_flowed = yes
+set sig_on_top = yes
 
 #set crypt_opportunistic_encrypt = yes
 #set pgp_self_encrypt = yes
