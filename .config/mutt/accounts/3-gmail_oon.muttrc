@@ -9,7 +9,7 @@ set header_cache = $XDG_RUNTIME_DIR/mutt/gmail_oon/headers
 set message_cachedir = $XDG_RUNTIME_DIR/mutt/gmail_oon/bodies
 set mbox_type = Maildir
 set crypt_autosign = yes
-set signature = $XDG_CONFIG_HOME/mutt/sig_gmail_oon
+set signature = $XDG_CONFIG_HOME/mutt/sig/3-gmail_oon
 
 bind index,pager gg noop
 bind index,pager g noop

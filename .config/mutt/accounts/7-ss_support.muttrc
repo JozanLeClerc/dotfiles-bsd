@@ -9,7 +9,7 @@ set header_cache = $XDG_RUNTIME_DIR/mutt/ss_support/headers
 set message_cachedir = $XDG_RUNTIME_DIR/mutt/ss_support/bodies
 set mbox_type = Maildir
 set crypt_autosign = no
-set signature = $XDG_CONFIG_HOME/mutt/sig_ss_support
+set signature = $XDG_CONFIG_HOME/mutt/sig/7-ss_support
 
 bind index,pager gg noop
 bind index,pager g noop
