@@ -1,9 +1,9 @@
 # vim: filetype=neomuttrc
 # muttrc file for account towerofsilence777@gmail.com
-set realname = "Tower Of Silence"
+set realname = "Tower Of Silence - Joe"
 set from = "towerofsilence777@gmail.com"
 set sendmail = "msmtp -a gmail_tos"
-alias me Tower Of Silence <towerofsilence777@gmail.com>
+alias me Tower Of Silence - Joe <towerofsilence777@gmail.com>
 set folder = "$MAIL/gmail_tos"
 set header_cache = $XDG_RUNTIME_DIR/mutt/gmail_tos/headers
 set message_cachedir = $XDG_RUNTIME_DIR/mutt/gmail_tos/bodies
