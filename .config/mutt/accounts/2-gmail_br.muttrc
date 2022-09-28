@@ -9,6 +9,7 @@ set header_cache = $XDG_RUNTIME_DIR/mutt/gmail_br/headers
 set message_cachedir = $XDG_RUNTIME_DIR/mutt/gmail_br/bodies
 set mbox_type = Maildir
 set crypt_autosign = yes
+set signature = $XDG_CONFIG_HOME/mutt/sig_gmail_br
 
 bind index,pager gg noop
 bind index,pager g noop
@@ -20,8 +21,7 @@ bind pager G bottom
 macro index o "<shell-escape>killall mbsync >/dev/null 2>&1; mbsync -c $XDG_CONFIG_HOME/mbsync/mbsyncrc gmail_br<enter>" "run mbsync to sync bousset.rudy@gmail.com"
 unmailboxes *
 
-mailboxes "=INBOX" "=[Gmail]/Sent Mail" "=[Gmail]/Drafts" "=[Gmail]/Spam" "=[Gmail]/Trash" "=Keep" \
-	"=[Gmail]/All Mail" "=[Gmail]/Chats" "=[Gmail]/Important" "=[Gmail]/Starred"
+mailboxes "=INBOX" "=[Gmail]/Sent Mail" "=[Gmail]/Drafts" "=[Gmail]/Spam" "=[Gmail]/Trash" "=Keep"
 
 macro index,pager gi "<change-folder>=INBOX<enter>" "go to inbox"
 macro index,pager Mi ";<save-message>=INBOX<enter>" "move mail to inbox"

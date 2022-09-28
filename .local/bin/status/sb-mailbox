@@ -24,7 +24,7 @@ if pidof mbsync >/dev/null 2>&1; then
 fi
 
 case "$sync" in
-	0) [ "$mb_a" -gt 0 ] || [ "$mb_b" -gt 0 ] && echo -n " " ;;
+	0) ([ "$mb_a" -gt 0 ] || [ "$mb_b" -gt 0 ] || [ "$mb_c" -gt 0 ] || [ "$mb_d" -gt 0 ]) && echo -n " " ;;
 	1) echo -n " " ;;
 	*) ;;
 esac	
@@ -34,7 +34,7 @@ if [ "$mb_a" -gt 0 ]; then
 fi
 
 if [ "$mb_a" -gt 0 ] && [ "$mb_b" -gt 0 ]; then
-	echo -n " "
+	echo -n " - "
 fi
 
 if [ "$mb_b" -gt 0 ]; then
@@ -42,9 +42,9 @@ if [ "$mb_b" -gt 0 ]; then
 fi
 
 if [ "$mb_b" -gt 0 ] && [ "$mb_c" -gt 0 ]; then
-	echo -n " "
+	echo -n " - "
 elif [ "$mb_a" -gt 0 ] && [ "$mb_c" -gt 0 ]; then
-	echo -n " "
+	echo -n " - "
 fi
 
 if [ "$mb_c" -gt 0 ]; then
@@ -52,11 +52,11 @@ if [ "$mb_c" -gt 0 ]; then
 fi
 
 if [ "$mb_c" -gt 0 ] && [ "$mb_d" -gt 0 ]; then
-	echo -n " "
+	echo -n " - "
 elif [ "$mb_b" -gt 0 ] && [ "$mb_d" -gt 0 ]; then
-	echo -n " "
+	echo -n " - "
 elif [ "$mb_a" -gt 0 ] && [ "$mb_d" -gt 0 ]; then
-	echo -n " "
+	echo -n " - "
 fi
 
 if [ "$mb_d" -gt 0 ]; then
