@@ -211,6 +211,7 @@
 	  (add-to-list 'auto-mode-alist '("dunstrc$" . conf-mode))
 	  (add-to-list 'auto-mode-alist '("loader.conf$" . conf-mode))
 	  (add-to-list 'auto-mode-alist '("mailcap$" . conf-mode))
+	  (add-to-list 'auto-mode-alist '("/tmp/neomutt-*" . mail-mode))
    #+END_SRC
 
 ** Core packages
