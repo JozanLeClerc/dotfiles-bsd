@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if pgrep gpg-agent >/dev/null 2>&1; then
+	echo -n " "
+else
+	echo -n " "
+fi
+if pidof gdbus >/dev/null 2>&1; then
+	echo -n "ﬗ "
+fi

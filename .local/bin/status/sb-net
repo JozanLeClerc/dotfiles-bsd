@@ -1,12 +1,11 @@
 #!/bin/sh
 
-# if ifconfig | grep -F ' active' >/dev/null; then
 if ifconfig | grep '^tun' >/dev/null 2>&1; then
 	echo -n " "
 fi
 if ! ping -q -c1 -t1 1.1.1.1 >/dev/null 2>&1; then
-	echo "轢 "
+	echo "ﰸ "
 	return
 fi
 
-echo "歷 "
+echo " "

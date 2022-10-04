@@ -13,7 +13,7 @@ xset -dpms
 xsetroot -name 'Loading bar...'
 startif dunst
 startif picom
-startif lowbat
+# startif lowbat
 startif mpd-notification
 startif xscreensaver --no-splash
 startif dwmblocks
