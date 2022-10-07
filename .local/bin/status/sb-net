@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if ifconfig | grep '^tun' >/dev/null 2>&1; then
-	echo -n " "
+	echo -n "  "
 fi
 if ! ping -q -c1 -t1 1.1.1.1 >/dev/null 2>&1; then
 	echo "ﰸ "
