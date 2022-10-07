@@ -15,6 +15,8 @@ bind index,pager gg noop
 bind index,pager g noop
 bind index,pager M noop
 bind index,pager C noop
+bind pager gg top
+bind pager G bottom
 bind index gg first-entry
 macro index o "<shell-escape>killall mbsync >/dev/null 2>&1; mbsync -c $XDG_CONFIG_HOME/mbsync/mbsyncrc ss_support<enter>" "run mbsync to sync support@secuserve.com"
 unmailboxes *
