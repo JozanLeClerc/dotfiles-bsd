@@ -21,7 +21,7 @@ bind pager G bottom
 macro index o "<shell-escape>killall mbsync >/dev/null 2>&1; mbsync -c $XDG_CONFIG_HOME/mbsync/mbsyncrc main<enter>" "run mbsync to sync rrbo@proton.me"
 unmailboxes *
 
-mailboxes "=INBOX" "=Sent" "=Drafts" "=Spam" "=Trash" "=Archive" "=All Mail" "=Folders/Keep" "=Folders/Work" "=Folders/Tower"
+mailboxes "=INBOX" "=Sent" "=Drafts" "=Spam" "=Trash" "=Archive" "=All Mail" "=Folders/Keep" "=Folders/Work" "=Folders/Tower" "=Folders/Circle"
 
 macro index,pager gi "<change-folder>=INBOX<enter>" "go to inbox"
 macro index,pager Mi ";<save-message>=INBOX<enter>" "move mail to inbox"
