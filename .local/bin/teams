@@ -1,4 +1,4 @@
 #!/bin/sh
 
-xdotool key super+9
+xdotool key super+8
 exec /usr/local/bin/chrome teams.live.com
