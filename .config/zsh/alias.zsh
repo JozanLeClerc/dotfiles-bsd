@@ -61,8 +61,20 @@ alias \
 	lg='lazygit' \
 	gjdo='/home/jozan/dev/perl/gitjoe-scripts/gitjoe-do.pl' \
 	dgit='git --git-dir=$HOME/docs/dotfiles-bsd --work-tree=$HOME' \
-	confgit='git --git-dir=$HOME/docs/conffiles-bsd --work-tree=/' \
-	bssh='ssh rbousset@bastion -t -- '
+	confgit='git --git-dir=$HOME/docs/conffiles-bsd --work-tree=/'
+bssh() {
+	if [ "$1" != "--osh" ]; then
+		tmp="$1"
+		shift 1
+		if ! grep -F '@' <<< "$tmp" >/dev/null 2>&1; then
+			ssh rbousset@bastion -t -- root@"$tmp" $*
+		else
+			ssh rbousset@bastion -t -- "$tmp" $*
+		fi
+	else
+		ssh rbousset@bastion -t -- $*
+	fi
+}
 upsrc() {
 	doas git -C /usr/src pull --ff-only
 }
