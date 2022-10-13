@@ -61,7 +61,8 @@ alias \
 	lg='lazygit' \
 	gjdo='/home/jozan/dev/perl/gitjoe-scripts/gitjoe-do.pl' \
 	dgit='git --git-dir=$HOME/docs/dotfiles-bsd --work-tree=$HOME' \
-	confgit='git --git-dir=$HOME/docs/conffiles-bsd --work-tree=/'
+	confgit='git --git-dir=$HOME/docs/conffiles-bsd --work-tree=/' \
+	bssh='ssh rbousset@bastion -t -- '
 upsrc() {
 	doas git -C /usr/src pull --ff-only
 }
