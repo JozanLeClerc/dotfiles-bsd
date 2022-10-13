@@ -63,16 +63,18 @@ alias \
 	dgit='git --git-dir=$HOME/docs/dotfiles-bsd --work-tree=$HOME' \
 	confgit='git --git-dir=$HOME/docs/conffiles-bsd --work-tree=/'
 bssh() {
+	user='rbousset'
+	host='bastion'
 	if [ "$1" != "--osh" ]; then
 		tmp="$1"
 		shift 1
 		if ! grep -F '@' <<< "$tmp" >/dev/null 2>&1; then
-			ssh rbousset@bastion -t -- root@"$tmp" $*
+			ssh $user@$host -t -- root@"$tmp" $*
 		else
-			ssh rbousset@bastion -t -- "$tmp" $*
+			ssh $user@$host -t -- "$tmp" $*
 		fi
 	else
-		ssh rbousset@bastion -t -- $*
+		ssh $user@$host -t -- $*
 	fi
 }
 upsrc() {
