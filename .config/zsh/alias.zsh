@@ -84,21 +84,7 @@ bssh() {
 assh() {
 	user='admin'
 	host='bastion'
-	if [ -z "$1" ]; then
-		ssh $user@$host -- --osh
-		return
-	fi
-	if [ "$1" != "--osh" ]; then
-		tmp="$1"
-		shift 1
-		if ! grep -F '@' <<< "$tmp" >/dev/null 2>&1; then
-			ssh $user@$host -t -- root@"$tmp" $*
-		else
-			ssh $user@$host -t -- "$tmp" $*
-		fi
-	else
-		ssh $user@$host -t -- $*
-	fi
+	ssh $user@$host -- --osh $*
 }
 upsrc() {
 	doas git -C /usr/src pull --ff-only
