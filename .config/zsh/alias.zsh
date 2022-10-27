@@ -47,6 +47,7 @@ alias \
 	most='most -t4' \
 	fsl='fossil' \
 	diff='colordiff' \
+	xclip='xclip -selection clipboard' \
 	ctags='uctags "--exclude=.ccls*"' \
 	yt='pipe-viewer' \
 	yta='pipe-viewer -n' \
