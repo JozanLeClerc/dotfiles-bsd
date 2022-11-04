@@ -350,7 +350,7 @@ hints:
      command: linkview
      post_processing: true
      binding:
-       key: U
+       key: I
        mods: Control|Shift
 
 mouse:
