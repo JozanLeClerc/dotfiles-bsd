@@ -343,6 +343,16 @@ live_config_reload: false
 # Send ESC (\x1b) before characters when alt is pressed.
 #alt_send_esc: true
 
+hints:
+  # enabled:
+  enabled:
+   - regex: "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:..|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+     command: linkview
+     post_processing: true
+     binding:
+       key: U
+       mods: Control|Shift
+
 mouse:
   # Click settings
   #
@@ -355,7 +365,7 @@ mouse:
   # If this is `true`, the cursor is temporarily hidden when typing.
   hide_when_typing: true
 
-  urls:
+    #      urls:
     # URL launcher
     #
     # This program is executed when clicking on a text which is recognized as a URL.
@@ -367,9 +377,9 @@ mouse:
     #   - (macOS) open
     #   - (Linux/BSD) xdg-open
     #   - (Windows) explorer
-    launcher:
-      program: linkview
-    #  args: []
+    # launcher:
+    #  program: linkview
+      # args: []
 
     # URL modifiers
     #
