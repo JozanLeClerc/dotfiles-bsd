@@ -7,7 +7,7 @@ startif() {
 export LANG='en_US.UTF-8'
 pgrep musicpd >/dev/null || musicpd >/dev/null 2>&1
 xrandr --output HDMI-1 --primary --mode 2560x1440 --pos 1920x347 --rotate normal --output eDP-1 --mode 1920x1080 --pos 0x1024 --rotate normal --output DP-1 --mode 1280x1024 --pos 640x0 --rotate normal --output DP-2 --mode 2560x1440 --pos 4480x347 --rotate normal
-"$HOME"/.local/bin/setwp
+"$HOME"/.local/bin/setwp /usr/home/jozan/pics/wp/44.jpg
 "$HOME"/.local/bin/kb
 xset s off
 xset -dpms
