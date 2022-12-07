@@ -245,10 +245,8 @@
 
 
   (evil-define-key 'insert global-map (kbd "C-o") 'delete-other-windows)
-  (evil-define-key 'insert global-map (kbd "C-k") 'windmove-up)
-  (evil-define-key 'insert global-map (kbd "C-j") 'windmove-down)
-  (evil-define-key 'insert global-map (kbd "C-h") 'windmove-left)
-  (evil-define-key 'insert global-map (kbd "C-l") 'windmove-right)
+  (evil-define-key 'insert global-map (kbd "C-u") 'evil-delete-backward-word)
+  (evil-define-key 'insert global-map (kbd "C-h") 'evil-delete-backward-char)
   (evil-define-key 'normal global-map (kbd "C-o") 'delete-other-windows)
   (evil-define-key 'normal global-map (kbd "C-k") 'windmove-up)
   (evil-define-key 'normal global-map (kbd "C-j") 'windmove-down)
