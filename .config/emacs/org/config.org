@@ -355,7 +355,6 @@
 
 *** Helm, projectile
 	#+BEGIN_SRC emacs-lisp
-	  (require 'helm-config)
 	  (require 'helm-misc)
 	  (require 'helm-projectile)
 	  (require 'helm-locate)
