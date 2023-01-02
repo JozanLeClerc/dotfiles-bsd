@@ -1,0 +1,86 @@
+# vim: filetype=neomuttrc
+# muttrc file for account support@secuserve.com
+set realname = "Support SecuServe"
+set from = "support@secuserve.com"
+set sendmail = "msmtp -a ss_support"
+alias me Support SecuServe <support@secuserve.com>
+set folder = "$MAIL/ss_support"
+set header_cache = $XDG_RUNTIME_DIR/mutt/ss_support/headers
+set message_cachedir = $XDG_RUNTIME_DIR/mutt/ss_support/bodies
+set mbox_type = Maildir
+set crypt_autosign = no
+set signature = $XDG_CONFIG_HOME/mutt/sig/7-ss_support
+
+bind index,pager gg noop
+bind index,pager g noop
+bind index,pager M noop
+bind index,pager C noop
+bind pager gg top
+bind pager G bottom
+bind index gg first-entry
+macro index o "<shell-escape>killall mbsync >/dev/null 2>&1; mbsync -c $XDG_CONFIG_HOME/mbsync/mbsyncrc ss_support<enter>" "run mbsync to sync support@secuserve.com"
+unmailboxes *
+
+mailboxes "=INBOX" "=INBOX/ALFRESCO" "=INBOX/FIN EVAL" "=INBOX/NAS" "=INBOX/Owentis notif" \
+		  "=INBOX/WEBSITE" "=INBOX/infonews" "=INBOX/mdp Ofii" "=INBOX/retour_fic2020" "=INBOX/support-zammad" \
+		  "=Sent" "=Drafts" "=SPAM" "=Trash" \
+		  "=&AMk-l&AOk-ments envoy&AOk-s" "=Brouillons" "=A FAIRE" "=A-NEWS" "=ACT! Support" "=ALERT SMS" \
+		  "=ALTV2" "=Alerte" "=Archive" "=Archive/2012-07" "=Archive/2012-08" \
+		  "=Archive/2012-09" "=Archive/2012-10" "=Archive/2012-11" "=Archive/2012-12" "=Archive/2013-01" \
+		  "=Archive/2013-02" "=Archive/2013-03" "=Archive/2013-04" "=Archive/2013-05" "=Archive/2013-06" \
+		  "=Archive/2013-07" "=Archive/2013-08" "=Archive/2013-09" "=Archive/2013-10" "=Archive/2013-11" \
+		  "=Archive/2013-12" "=Archive/2014-01" "=Archive/2014-02" "=Archive/2014-03" "=Archive/2014-04" \
+		  "=Archive/2014-05" "=Archive/2014-06" "=Archive/2014-07" "=Archive/2014-08" "=Archive/2014-09" \
+		  "=Archive/2014-10" "=Archive/2014-11" "=Archive/2014-12" "=Archive/2015-01" "=Archive/2015-02" \
+		  "=Archive/2015-03" "=Archive/2015-04" "=Archive/2015-05" "=Archive/2015-06" "=Archive/2015-07" \
+		  "=Archive/2015-08" "=Archive/2015-09" "=Archive/2015-10" "=Archive/2015-11" "=Archive/2015-12" \
+		  "=Archive/2016-01" "=Archive/2016-02" "=Archive/2016-03" "=Archive/2016-04" "=Archive/2016-05" \
+		  "=Archive/2016-06" "=Archive/2016-07" "=Archive/2016-08" "=Archive/2016-09" "=Archive/2016-10" \
+		  "=Archive/2016-11" "=Archive/2016-12" "=Archive/2017-01" "=Archive/2017-02" "=Archive/2017-03" \
+		  "=Archive/2017-04" "=Archive/2017-05" "=Archive/2017-06" "=Archive/2017-07" "=Archive/2017-08" \
+		  "=Archive/2017-09" "=Archive/2017-10" "=Archive/2017-11" "=Archive/2017-12" "=Archive/2018-01" \
+		  "=Archives" "=Archives/2020" "=Archives/2021" "=BUG" \
+		  "=C FAIT" "=CAMPAGNE RETOUR" "=CAMPAGNE RETOUR/Enqu&AOo-te de satisfaction e-securemail" "=CAMPAGNE RETOUR/Infonews@secuserve.com" "=CAMPAGNE RETOUR/feedbackcommunication" \
+		  "=CAMPAGNE RETOUR/feedbackmails" "=CAMPAGNE RETOUR/feedbackmails-ng" "=Calendrier" "=Commandes" "=Contacts" \
+		  "=Contacts sugg&AOk-r&AOk-s" "=Contacts/Agenda Secuserve" "=Contacts/Client_test" "=Contacts/TEST CONTACT" \
+		  "=ESET Antispam" "=ESET Antispam/El&AOk-ments infect&AOk-s" "=El&AOk-ments d&AOk-tect&AOk-s" "=Faux-Negatifs/non_traites.2018" "=Faux-Negatifs/non_traites.2019" \
+		  "=Faux-Negatifs/non_traites.2020" "=Faux-Negatifs/non_traites.2021" "=Faux-Negatifs/non_traites.2022" "=Faux-Negatifs/traites.2018" "=Faux-Negatifs/traites.2019" \
+		  "=Faux-Negatifs/traites.2020" "=Faux-Negatifs/traites.2021" "=Faux-Negatifs/traites.2022" "=Faux-Positifs/non_traites.2018" "=Faux-Positifs/non_traites.2019" \
+		  "=Faux-Positifs/non_traites.2020" "=Faux-Positifs/non_traites.2021" "=Faux-Positifs/non_traites.2022" "=Faux-Positifs/traites.2018" "=Faux-Positifs/traites.2019" \
+		  "=Faux-Positifs/traites.2020" "=Faux-Positifs/traites.2021" "=Faux-Positifs/traites.2022" "=Flux RSS" "=Flux d&IBk-informations" \
+		  "=IRD SLA" "=IRD Sympa" "=IRD Sympa/NOTIFICATION" "=Infected Items" "=Informations technique" \
+		  "=Journal" "=Junk" "=MX out" "=Microsoft Support" "=Migrations" \
+		  "=NEWS" "=Notes" "=PROJETS" "=PROJETS/AEFE" "=PROJETS/Amplivia" \
+		  "=PROJETS/Amplivia/GrandLyon" "=PROJETS/CC Erdre Gesvres" "=PROJETS/Chateau de Versailles" "=PROJETS/IRD" "=PROJETS/Lardy" \
+		  "=PROJETS/MTDS (Maroc)" "=PROJETS/SITTI" "=PROJETS/Secuserve" "=PROJETS/Secuserve/AltermimeV2" "=PROJETS/Secuserve/Bandeau de feedback" \
+		  "=PROJETS/Secuserve/Captcha" "=PROJETS/Secuserve/Certificats" "=PROJETS/Secuserve/Documentations" "=PROJETS/Secuserve/Gestion des droits" "=PROJETS/Secuserve/Sharecan" \
+		  "=Param&AOg-tres d&IBk-action de conversation" "=Param&AOg-tres des &AOk-tapes rapides" "=Partenaires" "=Partenaires/BoostMymailSupport" "=Partenaires/Globalsp" \
+		  "=Partenaires/Globalsp/Ofii" "=Partenaires/Iroquois" "=RAPPORT quarantaine" "=RAPPORT quarantaine/Licences" "=Restaurations GSP" \
+		  "=SAGE" "=SOCIAL" "=Support" \
+		  "=Support.CG" "=Support/Formation console d'administration" "=Support_client_secuserve_communigate" "=T&AOI-ches"
+ 
+macro index,pager gi "<change-folder>=INBOX<enter>" "go to inbox"
+macro index,pager Mi ";<save-message>=INBOX<enter>" "move mail to inbox"
+macro index,pager Ci ";<copy-message>=INBOX<enter>" "copy mail to inbox"
+set spoolfile = "+INBOX"
+macro index,pager gs "<change-folder>=Sent<enter>" "go to sent"
+macro index,pager Ms ";<save-message>=Sent<enter>" "move mail to sent"
+macro index,pager Cs ";<copy-message>=Sent<enter>" "copy mail to sent"
+set record = "+Sent"
+macro index,pager gd "<change-folder>=Drafts<enter>" "go to drafts"
+macro index,pager Md ";<save-message>=Drafts<enter>" "move mail to drafts"
+macro index,pager Cd ";<copy-message>=Drafts<enter>" "copy mail to drafts"
+set postponed = "+Drafts"
+macro index,pager gS "<change-folder>=SPAM<enter>" "go to spam"
+macro index,pager MS ";<save-message>=SPAM<enter>" "move mail to spam"
+macro index,pager CS ";<copy-message>=SPAM<enter>" "copy mail to spam"
+macro index,pager gt "<change-folder>=Trash<enter>" "go to trash"
+macro index,pager Mt ";<save-message>=Trash<enter>" "move mail to trash"
+macro index,pager Ct ";<copy-message>=Trash<enter>" "copy mail to trash"
+set trash = "+Trash"
+macro index,pager gn "<change-folder>=NEWS<enter>" "go to news"
+macro index,pager Mn ";<save-message>=NEWS<enter>" "move mail to news"
+macro index,pager Cn ";<copy-message>=NEWS<enter>" "copy mail to news"
+macro index,pager gc "<change-folder>=Calendrier<enter>" "go to calendar"
+macro index,pager Mc ";<save-message>=Calendrier<enter>" "move mail to calendar"
+macro index,pager Cc ";<copy-message>=Calendrier<enter>" "copy mail to calendar"
