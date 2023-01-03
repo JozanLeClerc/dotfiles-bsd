@@ -1,6 +1,6 @@
 # vim: filetype=neomuttrc
 source $XDG_CONFIG_HOME/mutt/defaults.muttrc
-source $XDG_CONFIG_HOME/mutt/accounts/1-main.muttrc
+source $XDG_CONFIG_HOME/mutt/accounts/1-gmail_br.muttrc
 macro index,pager <f1> '<sync-mailbox><enter-command>source $XDG_CONFIG_HOME/mutt/accounts/1-gmail_br.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to bousset.rudy@gmail.com"
 macro index,pager 1    '<sync-mailbox><enter-command>source $XDG_CONFIG_HOME/mutt/accounts/1-gmail_br.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to bousset.rudy@gmail.com"
 macro index,pager <f2> '<sync-mailbox><enter-command>source $XDG_CONFIG_HOME/mutt/accounts/2-gmail_oon.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to olsen.oyvind.nor@gmail.com"
