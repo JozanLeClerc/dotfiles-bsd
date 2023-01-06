@@ -66,7 +66,6 @@ Mod4 Shift Tab :PrevTab
 
 # current window commands
 Mod1 F4 :Close
-Mod1 F5 :Kill
 Mod1 F9 :Minimize
 Mod1 F10 :Maximize
 Mod4 f :Fullscreen
@@ -76,6 +75,7 @@ Mod4 Shift q :Kill
 Mod4 Shift e :Exit
 Mod4 p :Exec dmenu_run
 Mod4 Return :Exec alacritty
+Mod4 Control F12 :Exec dmlog
 
 # change to previous/next workspace
 Control Mod1 Left :PrevWorkspace
