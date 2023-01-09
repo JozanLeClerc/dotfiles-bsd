@@ -175,9 +175,37 @@
 		<item label="Reload">
 			<action name="Reconfigure" />
 		</item>
+		<item label="Lock screen">
+			<action name="Execute">
+				<command>xscreensaver-command -lock</command>
+			</action>
+		</item>
+		<item label="Sleep">
+			<action name="Execute">
+				<command>notify-send -u normal reboot "  G'night, partner!"</command>
+				<command>sleep 2</command>
+				<command>acpiconf -s 3</command>
+			</action>
+		</item>
 		<item label="Log Out">
 			<action name="Exit">
 				<prompt>yes</prompt>
+			</action>
+		</item>
+		<item label="Reboot">
+			<action name="Execute">
+				<command>emacsclient -e '"(save-buffers-kill-emacs)"'</command>
+				<command>notify-send -u normal reboot "  Rebootin' now!"</command>
+				<command>sleep 2</command>
+				<command>shutdown -r now</command>
+			</action>
+		</item>
+		<item label="Shutdown">
+			<action name="Execute">
+				<command>emacsclient -e '"(save-buffers-kill-emacs)"'</command>
+				<command>notify-send -u normal shutdown '  Farewell, partner!'</command>
+				<command>sleep 2</command>
+				<command>shutdown -p now</command>
 			</action>
 		</item>
 	</menu>

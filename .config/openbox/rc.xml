@@ -369,37 +369,19 @@
       </action>
     </keybind>
     <!-- Keybindings for running applications -->
-    <keybind key="W-C-S-p">
-      <action name="Execute">
-        <command>/home/jozan/.local/bin/dmpass --full</command>
-      </action>
-    </keybind>
-    <keybind key="W-C-p">
-      <action name="Execute">
-        <command>/home/jozan/.local/bin/dmpass</command>
-      </action>
-    </keybind>
     <keybind key="W-p">
       <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>dmenu</name>
-        </startupnotify>
         <command>dmenu_run</command>
       </action>
     </keybind>
     <keybind key="W-Return">
       <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>alacritty</name>
-        </startupnotify>
         <command>alacritty</command>
       </action>
     </keybind>
-    <keybind key="W-BackSpace">
+    <keybind key="W-S-Return">
       <action name="Execute">
-        <command>/home/jozan/.local/bin/dmpc</command>
+        <command>cool-retro-term</command>
       </action>
     </keybind>
     <keybind key="W-F1">
@@ -410,19 +392,54 @@
         </startupnotify>
       </action>
     </keybind>
+    <keybind key="W-F2">
+      <action name="Execute">
+        <command>emacsclient -c</command>
+      </action>
+    </keybind>
     <keybind key="W-F3">
       <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>iridium</name>
-        </startupnotify>
         <command>iridium-browser --force-dark-mode</command>
       </action>
     </keybind>
-    <!-- Other -->
+    <keybind key="W-S-F3">
+      <action name="Execute">
+        <command>torify iridium-browser --force-dark-mode</command>
+      </action>
+    </keybind>
+    <keybind key="W-F4">
+      <action name="Execute">
+        <command>alacritty -e w3m https://start.duckduckgo.com/</command>
+      </action>
+    </keybind>
+    <keybind key="W-F5">
+      <action name="Execute">
+        <command>alacritty -e ncmpc</command>
+      </action>
+    </keybind>
+    <keybind key="W-F6">
+      <action name="Execute">
+        <command>alacritty -e newsboat</command>
+      </action>
+    </keybind>
     <keybind key="W-C-F12">
       <action name="Execute">
         <command>/home/jozan/.local/bin/dmlog</command>
+      </action>
+    </keybind>
+    <keybind key="W-C-S-p">
+      <action name="Execute">
+        <command>/home/jozan/.local/bin/dmpass --full</command>
+      </action>
+    </keybind>
+    <keybind key="W-C-p">
+      <action name="Execute">
+        <command>/home/jozan/.local/bin/dmpass</command>
+      </action>
+    </keybind>
+    <keybind key="W-BackSpace">
+      <action name="Execute">
+        <command>/home/jozan/.local/bin/dmpc</command>
       </action>
     </keybind>
     <keybind key="W-C-BackSpace">
