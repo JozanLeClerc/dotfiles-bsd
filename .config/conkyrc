@@ -27,7 +27,7 @@ conky.config = {
     minimum_width = 365,
     minimum_height = 1030,
     maximum_width = 365,
-    gap_x = 05,
+    gap_x = 2565,
     gap_y = 350,
     net_avg_samples = 2,
     cpu_avg_samples = 4,
@@ -76,7 +76,7 @@ ${color grey}IP LAN : ${font Hack:bold:size=12}${color white}${addr re0}${font}
 ${color grey}---------
 ${color grey}IP VPN : ${font Hack:bold:size=12}${color white}${addr proton0}${font}
 ${hr}
-${color grey}Down: ${color white}${downspeed re0} - ${font}${color grey}Up: ${font Hack:bold:size=12}${upspeed re0}${font}
+${color grey}Down: ${color white}${font Hack:bold:size=12}${downspeed re0} ${font}${color grey}- Up: ${color white}${font Hack:bold:size=12}${upspeed re0}${font}
 ${color grey}Down: ${color white}${downspeedgraph re0 bfbfbf c0c0c0  125829120}
 ${color grey}Up:   ${color white}${upspeedgraph   re0 bfbfbf c0c0c0  125829120}
 ${hr}
