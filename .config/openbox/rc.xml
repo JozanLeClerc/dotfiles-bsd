@@ -42,7 +42,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Clearlooks</name>
+    <name>Clearlooks-Joe</name>
     <titleLayout>SNLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -371,12 +371,12 @@
     <!-- Keybindings for running applications -->
     <keybind key="W-C-S-p">
       <action name="Execute">
-		  <command>/home/jozan/.local/bin/dmpass --full</command>
+        <command>/home/jozan/.local/bin/dmpass --full</command>
       </action>
     </keybind>
     <keybind key="W-C-p">
       <action name="Execute">
-		  <command>/home/jozan/.local/bin/dmpass</command>
+        <command>/home/jozan/.local/bin/dmpass</command>
       </action>
     </keybind>
     <keybind key="W-p">
