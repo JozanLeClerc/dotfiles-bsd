@@ -14,14 +14,16 @@ xset -dpms
 xsetroot -name 'Loading bar...'
 startif dunst
 startif picom
-# startif lowbat
+startif lowbat
 startif mpd-notification
 startif xscreensaver --no-splash
 startif dwmblocks
 startif sb-updatempd
+startif tint2
+startif conky -d -c "$HOME"/.config/conkyrc
 # /compat/linux/usr/lib/protonmail/bridge/proton-bridge --noninteractive
 # ekb
 cd "$HOME"
 xrdb "$HOME"/.config/x11/xresources
 notify-send -u normal 'Welcome' "  Welcome back, partner\!"
-dbus-launch fluxbox
+dbus-launch openbox
