@@ -42,7 +42,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Clearlooks-Phenix</name>
+    <name>Clearlooks</name>
     <titleLayout>SNLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -133,7 +133,7 @@
        desktops.  Set this to 0 to disable the popup. -->
   </desktops>
   <resize>
-    <drawContents>yes</drawContents>
+    <drawContents>no</drawContents>
     <popupShow>Nonpixel</popupShow>
     <!-- 'Always', 'Never', or 'Nonpixel' (xterms and such) -->
     <popupPosition>Center</popupPosition>
@@ -432,6 +432,15 @@
       <action name="ShowMenu">
         <menu>root-menu</menu>
       </action>
+    </keybind>
+    <keybind key="W-w">
+      <action name="Move"/>
+    </keybind>
+    <keybind key="W-C-w">
+      <action name="Move"/>
+    </keybind>
+    <keybind key="W-S-w">
+      <action name="Resize"/>
     </keybind>
   </keyboard>
   <mouse>
