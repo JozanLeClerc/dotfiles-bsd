@@ -422,6 +422,11 @@
         <command>alacritty -e newsboat</command>
       </action>
     </keybind>
+    <keybind key="W-F7">
+      <action name="Execute">
+        <command>alacritty -e calcurse -C /home/jozan/.config/calcurse -D /home/jozan/.local/share/calcurse</command>
+      </action>
+    </keybind>
     <keybind key="W-C-F12">
       <action name="Execute">
         <command>/home/jozan/.local/bin/dmlog</command>
