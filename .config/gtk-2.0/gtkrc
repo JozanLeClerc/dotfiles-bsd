@@ -5,7 +5,6 @@ include "/home/jozan/.gtkrc-2.0.mine"
 gtk-theme-name="Clearlooks-Joe"
 gtk-icon-theme-name="Faenza"
 gtk-font-name="sans-serif 12"
-gtk-cursor-theme-name="dmz-aa"
 gtk-cursor-theme-size=0
 gtk-toolbar-style=GTK_TOOLBAR_BOTH
 gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
