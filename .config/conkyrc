@@ -27,8 +27,8 @@ conky.config = {
     minimum_width = 365,
     minimum_height = 1030,
     maximum_width = 365,
-    gap_x = 2565,
-    gap_y = 350,
+    gap_x = 0,
+    gap_y = 0,
     net_avg_samples = 2,
     cpu_avg_samples = 4,
     short_units = true,
@@ -43,7 +43,16 @@ conky.config = {
 conky.text = [[
 ${color grey}${alignc}${time %A %e %B %Y : %Hh%M}
 ${hr}
+${color grey}${alignc}MPD
+${font Hack:bold:size=12}${color white}${if_mpd_playing}${mpd_status}: ${mpd_artist} - ${mpd_title}
+${hr}
+${mpd_elapsed}/${mpd_length} ${mpd_bar}${else}Stopped${endif}${font}
+${hr}
+${font Hack Nerd Font Mono:bold:size=10}${color white}${alignc}${execpi 1800 curl wttr.in/Lyon?T0 --silent --max-time 3}
+${hr}
 ${color grey}Uptime: ${font Hack:bold:size=12}${color white}${uptime}${font}
+${hr}
+${color grey}Battery: ${font Hack:bold:size=12}${color white}${if_match ${battery_percent}<15}${color red}${endif}${battery_percent}% ${battery_bar}${font}
 ${hr}
 ${color grey}CPU: ${font Hack:bold:size=12}${color white} ${freq_g} GHz ${color white}${if_match ${cpu}>80}${color red}${else}${endif}${cpu}% ${cpubar 6}
 ${offset 4}${cpugraph bfbfbf c0c0c0}${color white}
@@ -78,9 +87,9 @@ ${color grey}Down: ${color white}${font Hack:bold:size=12}${downspeed re0} ${fon
 ${color grey}Down: ${color white}${downspeedgraph re0 bfbfbf c0c0c0  125829120}
 ${color grey}Up:   ${color white}${upspeedgraph   re0 bfbfbf c0c0c0  125829120}
 ${hr}
-${color grey}Dns:
-${font Hack:bold:size=12}${color white}${exec cat /etc/resolv.conf}${font}
+${color grey}${alignc}DNS
+${font Hack:bold:size=12}${color white}${execi 300 cat /etc/resolv.conf}${font}
 ${hr}
-${color grey}IP Public:${color white}${alignc}${font Hack:bold:size=12}${exec curl -s https://ifconfig.me}${font}${color grey}
+${color grey}Public IP: ${color white}${font Hack:bold:size=12}${exec curl -s https://ifconfig.me}${font}${color grey}
 ${hr}
 ]]
