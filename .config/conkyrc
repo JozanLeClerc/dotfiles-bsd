@@ -43,8 +43,6 @@ conky.config = {
 conky.text = [[
 ${color grey}${alignc}${time %A %e %B %Y : %Hh%M}
 ${hr}
-${color grey}Fête du jour: ${font Hack:bold:size=12}${color white}${texeci 1000 wget -O - -q  http://fetedujour.fr/  --user-agent="Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0" | grep "<span>Fête du jour" | head -1 | cut -d">" -f4 | cut -d"<" -f1 | sed -e 's/Nativité/jozan/' }${font}
-${hr}
 ${color grey}Uptime: ${font Hack:bold:size=12}${color white}${uptime}${font}
 ${hr}
 ${color grey}CPU: ${font Hack:bold:size=12}${color white} ${freq_g} GHz ${color white}${if_match ${cpu}>80}${color red}${else}${endif}${cpu}% ${cpubar 6}

@@ -96,6 +96,11 @@
 	</menu>
 
 	<menu id="apps-multimedia-menu" label="Multimedia">
+		<item label="Ario">
+			<action name="Execute">
+				<command>ario</command>
+			</action>
+		</item>
 	</menu>
 
 	<menu id="apps-graphics-menu" label="Graphics">
