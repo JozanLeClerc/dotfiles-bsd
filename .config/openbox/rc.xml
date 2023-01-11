@@ -387,9 +387,6 @@
     <keybind key="W-F1">
       <action name="Execute">
         <command>pcmanfm</command>
-        <startupnotify>
-          <enabled>yes</enabled>
-        </startupnotify>
       </action>
     </keybind>
     <keybind key="W-F2">
@@ -414,7 +411,8 @@
     </keybind>
     <keybind key="W-F5">
       <action name="Execute">
-        <command>alacritty -e ncmpc</command>
+        <!-- <command>alacritty -e ncmpc</command> -->
+        <command>ario</command>
       </action>
     </keybind>
     <keybind key="W-F6">
@@ -427,19 +425,89 @@
         <command>alacritty -e calcurse -C /home/jozan/.config/calcurse -D /home/jozan/.local/share/calcurse</command>
       </action>
     </keybind>
+    <keybind key="W-F8">
+      <action name="Execute">
+        <command>alacritty -e scli</command>
+      </action>
+    </keybind>
+    <keybind key="W-F9">
+      <action name="Execute">
+        <command>alacritty -e neomutt</command>
+      </action>
+    </keybind>
+    <keybind key="W-F10">
+      <action name="Execute">
+        <command>alacritty -e gotop</command>
+      </action>
+    </keybind>
+    <keybind key="W-F11">
+      <action name="Execute">
+        <command>alacritty -e htop</command>
+      </action>
+    </keybind>
+    <keybind key="W-F12">
+      <action name="Execute">
+        <command>alacritty -e top</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-F6">
+      <action name="Execute">
+        <command>mpc prev</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-F7">
+      <action name="Execute">
+        <command>mpc toggle</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-F8">
+      <action name="Execute">
+        <command>mpc next</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-F9">
+      <action name="Execute">
+        <command>mpc stop</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-F10">
+      <action name="Execute">
+		  <command>/home/jozan/.local/bin/mixer-set toggle</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-F11">
+      <action name="Execute">
+		  <command>/home/jozan/.local/bin/mixer-set lower</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-F12">
+      <action name="Execute">
+		  <command>/home/jozan/.local/bin/mixer-set raise</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-Delete">
+      <action name="Execute">
+		  <command>/home/jozan/.local/bin/mic</command>
+      </action>
+    </keybind>
+    <keybind key="W-C-F9">
+      <action name="Execute">
+		  <command>/home/jozan/.local/bin/dmkill</command>
+      </action>
+    </keybind>
+    <keybind key="W-C-F10">
+      <action name="Execute">
+		  <command>/home/jozan/.local/bin/dmscrot</command>
+      </action>
+    </keybind>
+    <keybind key="W-C-F11">
+      <action name="Execute">
+		  <command>/home/jozan/.local/bin/dmsearch</command>
+      </action>
+    </keybind>
     <keybind key="W-C-F12">
       <action name="Execute">
         <command>/home/jozan/.local/bin/dmlog</command>
-      </action>
-    </keybind>
-    <keybind key="W-C-S-p">
-      <action name="Execute">
-        <command>/home/jozan/.local/bin/dmpass --full</command>
-      </action>
-    </keybind>
-    <keybind key="W-C-p">
-      <action name="Execute">
-        <command>/home/jozan/.local/bin/dmpass</command>
       </action>
     </keybind>
     <keybind key="W-BackSpace">
@@ -450,6 +518,21 @@
     <keybind key="W-C-BackSpace">
       <action name="Execute">
         <command>/home/jozan/.local/bin/dmlog</command>
+      </action>
+    </keybind>
+    <keybind key="W-C-p">
+      <action name="Execute">
+        <command>/home/jozan/.local/bin/dmpass</command>
+      </action>
+    </keybind>
+    <keybind key="W-C-S-p">
+      <action name="Execute">
+        <command>/home/jozan/.local/bin/dmpass --full</command>
+      </action>
+    </keybind>
+    <keybind key="W-C-o">
+      <action name="Execute">
+        <command>/home/jozan/.local/bin/dmotp</command>
       </action>
     </keybind>
     <keybind key="W-S-e">
