@@ -535,6 +535,16 @@
         <command>/home/jozan/.local/bin/dmotp</command>
       </action>
     </keybind>
+    <keybind key="W-End">
+      <action name="Execute">
+        <command>/home/jozan/.local/bin/ndate</command>
+      </action>
+    </keybind>
+    <keybind key="W-Delete">
+      <action name="Execute">
+        <command>/home/jozan/.local/bin/killespeak</command>
+      </action>
+    </keybind>
     <keybind key="W-S-e">
       <action name="Exit">
         <prompt>yes</prompt>
