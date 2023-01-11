@@ -187,7 +187,7 @@
 		</item>
 		<item label="Sleep">
 			<action name="Execute">
-				<command>notify-send -u normal reboot "  G'night, partner!"; sleep 2; acpiconf -s 3</command>
+				<command>sh -c "notify-send -u normal reboot \"  G'night, partner!\"; sleep 2; acpiconf -s 3"</command>
 			</action>
 		</item>
 		<item label="Log Out">
@@ -197,12 +197,12 @@
 		</item>
 		<item label="Reboot">
 			<action name="Execute">
-				<command>emacsclient -e '"(save-buffers-kill-emacs)"'; notify-send -u normal reboot "  Rebootin' now!"; sleep 2; shutdown -r now</command>
+				<command>sh -c "emacsclient -e '\"(save-buffers-kill-emacs)\"'; notify-send -u normal reboot \"  Rebootin' now!\"; sleep 2; shutdown -r now"</command>
 			</action>
 		</item>
 		<item label="Shutdown">
 			<action name="Execute">
-				<command>emacsclient -e '"(save-buffers-kill-emacs)"'; notify-send -u normal shutdown '  Farewell, partner!'; sleep 2; shutdown -p now</command>
+				<command>sh -c "emacsclient -e '\"(save-buffers-kill-emacs)\"'; notify-send -u normal shutdown '  Farewell, partner!'; sleep 2; shutdown -p now"</command>
 			</action>
 		</item>
 	</menu>
