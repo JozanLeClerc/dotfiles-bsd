@@ -11,7 +11,10 @@ conky.config = {
     use_spacer = 'none',
     use_xft = true,
     xftalpha = 1,
-    font = 'hack nerd font:regular:size=12',
+    font  = 'Cantarell Mono:size=14',
+	font1 = 'Hack Nerd Font Mono:bold:size=11',
+	font2 = 'Hack Nerd Font Mono:bold:size=10',
+	format_human_readable = true,
     update_interval = 1.5,
     uppercase = false,
     override_utf8_locale = true,
@@ -44,17 +47,18 @@ conky.text = [[
 ${color grey}${alignc}${time %A %e %B %Y : %Hh%M}
 ${hr}
 ${color grey}${alignc}MPD
-${font Hack:bold:size=12}${color white}${if_mpd_playing}${mpd_status}: ${mpd_artist} - ${mpd_title}
-${hr}
+${font1}${color white}${if_mpd_playing}${mpd_status}: ${mpd_artist} - ${mpd_title}
 ${mpd_elapsed}/${mpd_length} ${mpd_bar}${else}Stopped${endif}${font}
 ${hr}
-${font Hack Nerd Font Mono:bold:size=10}${color white}${alignc}${execpi 1800 curl wttr.in/Lyon?T0 --silent --max-time 3}
+${font font2}${color white}${alignc}${execpi 1800 curl wttr.in/Lyon?T0 --silent --max-time 3}${font}
 ${hr}
-${color grey}Uptime: ${font Hack:bold:size=12}${color white}${uptime}${font}
+${color grey}Mails: ${font1}${color white}${execi 300 cat /tmp/newmailcount}${font}
 ${hr}
-${color grey}Battery: ${font Hack:bold:size=12}${color white}${if_match ${battery_percent}<15}${color red}${endif}${battery_percent}% ${battery_bar}${font}
+${color grey}Uptime: ${font1}${color white}${uptime}${font}
 ${hr}
-${color grey}CPU: ${font Hack:bold:size=12}${color white} ${freq_g} GHz ${color white}${if_match ${cpu}>80}${color red}${else}${endif}${cpu}% ${cpubar 6}
+${color grey}Battery: ${font1}${color white}${if_match ${battery_percent}<15}${color red}${endif}${battery_percent}% ${battery_bar}${font}
+${hr}
+${color grey}CPU: ${font1}${color white} ${freq_g} GHz ${color white}${if_match ${cpu}>80}${color red}${else}${endif}${cpu}% ${cpubar 6}
 ${offset 4}${cpugraph bfbfbf c0c0c0}${color white}
 ${color grey}1:${color white} ${if_match ${cpu cpu0}>80}${color red}${else}${endif}${cpu cpu0}% ${cpubar cpu0}${color white}
 ${color grey}2:${color white} ${if_match ${cpu cpu1}>80}${color red}${else}${endif}${cpu cpu1}% ${cpubar cpu1}${color white}
@@ -65,31 +69,31 @@ ${color grey}6:${color white} ${if_match ${cpu cpu5}>80}${color red}${else}${end
 ${color grey}7:${color white} ${if_match ${cpu cpu6}>80}${color red}${else}${endif}${cpu cpu6}% ${cpubar cpu6}${color white}
 ${color grey}8:${color white} ${if_match ${cpu cpu7}>80}${color red}${else}${endif}${cpu cpu7}% ${cpubar cpu7}${color white}${font}
 ${hr}
-${color grey}RAM:  ${font Hack:bold:size=12}${color white}${mem} / ${memmax} ${color white}${if_match ${memperc}>80}${color red}${else}${endif}${memperc}% ${membar 4}${font}
+${color grey}RAM:  ${font1}${color white}${mem} / ${memmax} ${color white}${if_match ${memperc}>80}${color red}${else}${endif}${memperc}% ${membar 4}${font}
 ${offset 4}${memgraph bfbfbf c0c0c0}${color white}
-${color grey}SWAP:  ${font Hack:bold:size=12}${color white}${swap} / ${swapmax} ${color white}${if_match ${swapperc}>80}${color red}${else}${endif}${swapperc}% ${swapbar 4}${font}
+${color grey}SWAP:  ${font1}${color white}${swap} / ${swapmax} ${color white}${if_match ${swapperc}>80}${color red}${else}${endif}${swapperc}% ${swapbar 4}${font}
 ${hr}
-${color grey}SSD: ${font Hack:bold:size=12}${color white}${if_match ${fs_free_perc /}<20}${color red}${else}${endif}${fs_free_perc /}% ${fs_bar 6 /}${font}
+${color grey}SSD: ${font1}${color white}${if_match ${fs_free_perc /}<20}${color red}${else}${endif}${fs_free_perc /}% ${fs_bar 6 /}${font}
 ${hr}
 ${color grey}Process:             ${color grey}${alignr} PID  CPU  MEM
-${font Hack:bold:size=12}${color white} ${top name 1} ${alignr}${top pid 1}     ${top cpu 1}    ${top mem 1}
+${font1}${color white} ${top name 1} ${alignr}${top pid 1}     ${top cpu 1}    ${top mem 1}
 ${color grey} ${top name 2} ${alignr}${top pid 2}     ${top cpu 2}    ${top mem 2}
 ${color white} ${top name 3} ${alignr}${top pid 3}     ${top cpu 3}    ${top mem 3}
 ${color grey} ${top name 4} ${alignr}${top pid 4}     ${top cpu 4}    ${top mem 4}${font}
 ${color grey}---------
 ${color grey}Processes: ${color white}${processes}
 ${hr}
-${color grey}IP LAN : ${font Hack:bold:size=12}${color white}${addr re0}${font}
+${color grey}IP LAN : ${font1}${color white}${addr re0}${font}
 ${color grey}---------
-${color grey}IP VPN : ${font Hack:bold:size=12}${color white}${addr proton0}${font}
+${color grey}IP VPN : ${font1}${color white}${addr proton0}${font}
 ${hr}
-${color grey}Down: ${color white}${font Hack:bold:size=12}${downspeed re0} ${font}${color grey}- Up: ${color white}${font Hack:bold:size=12}${upspeed re0}${font}
+${color grey}Down: ${color white}${font1}${downspeed re0} ${font}${color grey}- Up: ${color white}${font1}${upspeed re0}${font}
 ${color grey}Down: ${color white}${downspeedgraph re0 bfbfbf c0c0c0  125829120}
 ${color grey}Up:   ${color white}${upspeedgraph   re0 bfbfbf c0c0c0  125829120}
 ${hr}
 ${color grey}${alignc}DNS
-${font Hack:bold:size=12}${color white}${execi 300 cat /etc/resolv.conf}${font}
+${font1}${color white}${execi 300 cat /etc/resolv.conf}${font}
 ${hr}
-${color grey}Public IP: ${color white}${font Hack:bold:size=12}${exec curl -s https://ifconfig.me}${font}${color grey}
+${color grey}Public IP: ${color white}${font1}${exec curl -s https://ifconfig.me}${font}${color grey}
 ${hr}
 ]]
