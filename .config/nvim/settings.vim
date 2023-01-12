@@ -27,6 +27,8 @@ set undodir=/tmp/nvim_undo
 set undofile
 set wildmode=longest,list,full
 set directory=/tmp/nvim_swap
+set wrap
+set textwidth=0
 syntax on
 filetype plugin indent on
 " autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
