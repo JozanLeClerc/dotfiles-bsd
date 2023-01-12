@@ -1,11 +1,11 @@
 table Icon
   Caption: Ario
-  ToolTip.Caption: Google's OSS Web Browser
-  Icon: /usr/local/share/icons/hicolor/32x32/apps/ario.png
-  Width: 32
-  Height: 32
-  X: 3672
-  Y: 920
+  ToolTip.Caption: GTK MPD client
+  Icon: /usr/local/share/icons/hicolor/48x48/apps/ario.png
+  Width: 48
+  Height: 48
+  X: 704
+  Y: 240
   Command[0]: ario
 end
 

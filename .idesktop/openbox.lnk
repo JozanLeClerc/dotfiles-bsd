@@ -1,0 +1,11 @@
+table Icon
+  Caption: Openbox
+  ToolTip.Caption: Openbox menu
+  Icon: /usr/local/share/icons/matefaenza/apps/48/mate-panel-launcher.png
+  Width: 48
+  Height: 48
+  X: 696
+  Y: 56
+  Command[0]: xdotool key super+space
+end
+

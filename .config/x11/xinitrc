@@ -20,6 +20,7 @@ startif xscreensaver --no-splash
 # startif dwmblocks
 # startif sb-updatempd
 startif tint2
+startif idesk
 startif conky -d -c "$HOME"/.config/conkyrc
 # /compat/linux/usr/lib/protonmail/bridge/proton-bridge --noninteractive
 # ekb
