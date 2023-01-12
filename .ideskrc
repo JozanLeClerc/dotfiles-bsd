@@ -16,19 +16,19 @@ table Config
   ShadowY: 1 
   Bold: false
   ClickDelay: 300
-  IconSnap: false
+  IconSnap: true
   SnapWidth: 48
   SnapHeight: 48
   SnapOrigin: TopRight
   SnapShadow: false
   SnapShadowTrans: 200
-  CaptionOnHover: false
+  CaptionOnHover: true
   CaptionPlacement: bottom
   FillStyle: FillHLine
-  Background.Delay: 0
-  Background.Source: None
-  Background.File: None 
-  Background.Mode: Center 
+  Background.Delay: 1
+  Background.Source: ~/pics
+  Background.File: ~/pics/wp.jpg
+  Background.Mode: Stretch
   Background.Color: #C2CCFF
   CursorOver: left_ptr
 end
