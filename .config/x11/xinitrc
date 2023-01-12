@@ -21,6 +21,8 @@ startif xscreensaver --no-splash
 # startif sb-updatempd
 startif tint2
 startif idesk
+startif cairo-clock -x 900 -y 20 --width 300 --height 300 --theme zen &
+startif cairo-dock
 startif conky -d -c "$HOME"/.config/conkyrc
 # /compat/linux/usr/lib/protonmail/bridge/proton-bridge --noninteractive
 # ekb
