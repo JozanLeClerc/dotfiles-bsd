@@ -17,11 +17,9 @@ else
 	pre_count="$((pre_count + mb1 + mb2))"
 fi
 
-if [ $TERM == "dump" ]; then
-	if ! echo test | gpg2 --sign --batch --no-tty --pinentry-mode error -o /dev/null >/dev/null 2>&1; then
-		notify-send -u low -t 6000 'mbsync' '  GPG locked'
-		exit 1
-	fi
+if ! echo test | gpg2 --sign --batch --no-tty --pinentry-mode error -o /dev/null >/dev/null 2>&1; then
+	notify-send -u low -t 6000 'mbsync' '  GPG locked'
+	exit 1
 fi
 killall mbsync >/dev/null 2>&1
 notify-send -u low -t 3000 'mbsync' '  fetching mail...' >/dev/null 2>&1
