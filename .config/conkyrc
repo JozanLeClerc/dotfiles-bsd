@@ -51,9 +51,9 @@ ${hr}
 ${color grey}${alignc}MPD
 ${font1}${color white}${if_mpd_playing}${mpd_status}: ${mpd_artist} - ${mpd_title}
 ${mpd_elapsed}/${mpd_length} ${mpd_bar}${else}Stopped${endif}${font}
-${hr}
+${hr}${if_up re0}
 ${font2}${color white}${alignc}${execi 1800 curl wttr.in/Lyon?T0 --silent --max-time 3}${font}
-${hr}
+${hr}${endif}
 ${color grey}${alignc}New mails${template0}\
 ${if_match ${new_mails /var/mail/jozan/gmail_br/INBOX}>0}${color grey}GMail BR:  ${font1}${color white}${new_mails /var/mail/jozan/gmail_br/INBOX}${font}${template0}${endif}\
 ${if_match ${new_mails /var/mail/jozan/gmail_oon/INBOX}>0}${color grey}${color grey}GMail OON: ${font1}${color white}${new_mails /var/mail/jozan/gmail_oon/INBOX}${font}${template0}${endif}\
