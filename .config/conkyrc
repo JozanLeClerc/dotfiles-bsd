@@ -47,11 +47,11 @@ conky.config = {
 
 conky.text = [[
 ${color grey}${alignc}${time %A %e %B %Y : %Hh%M}
-${hr}
+${hr}${if_mpd_playing}
 ${color grey}${alignc}MPD
-${font1}${color white}${if_mpd_playing}${mpd_status}: ${mpd_artist} - ${mpd_title}
-${mpd_elapsed}/${mpd_length} ${mpd_bar}${else}Stopped${endif}${font}
-${hr}${if_up re0}
+${font1}${color white}${mpd_status}: ${mpd_artist} - ${mpd_title}
+${mpd_elapsed}/${mpd_length} ${mpd_bar}${font}
+${hr}${endif}${if_up re0}
 ${font2}${color white}${alignc}${execi 1800 curl wttr.in/Lyon?T0 --silent --max-time 3}${font}
 ${hr}${endif}
 ${color grey}${alignc}New mails${template0}\
