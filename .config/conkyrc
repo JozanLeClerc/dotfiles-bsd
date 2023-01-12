@@ -14,6 +14,8 @@ conky.config = {
     font  = 'Cantarell Mono:size=14',
 	font1 = 'Hack Nerd Font Mono:bold:size=11',
 	font2 = 'Hack Nerd Font Mono:bold:size=10',
+	template0 = '\\n',
+	if_up_strictness = address,
 	format_human_readable = true,
     update_interval = 1.5,
     uppercase = false,
@@ -52,11 +54,10 @@ ${mpd_elapsed}/${mpd_length} ${mpd_bar}${else}Stopped${endif}${font}
 ${hr}
 ${font2}${color white}${alignc}${execi 1800 curl wttr.in/Lyon?T0 --silent --max-time 3}${font}
 ${hr}
-${color grey}${alignc}New mails
-${if_match ${new_mails /var/mail/jozan/gmail_br/INBOX}>0}${color grey}GMail BR:  ${font1}${color white}${new_mails /var/mail/jozan/gmail_br/INBOX}${font}${endif}
-${if_match ${new_mails /var/mail/jozan/gmail_br/INBOX}>0}${color grey}${color grey}GMail OON: ${font1}${color white}${new_mails /var/mail/jozan/gmail_oon/INBOX}${font}${endif}
-${if_match ${new_mails /var/mail/jozan/gmail_br/INBOX}>0}${color grey}${color grey}GMail TOS: ${font1}${color white}${new_mails /var/mail/jozan/gmail_tos/INBOX}${font}${endif}
-${hr}
+${color grey}${alignc}New mails${template0}\
+${if_match ${new_mails /var/mail/jozan/gmail_br/INBOX}>0}${color grey}GMail BR:  ${font1}${color white}${new_mails /var/mail/jozan/gmail_br/INBOX}${font}${template0}${endif}\
+${if_match ${new_mails /var/mail/jozan/gmail_oon/INBOX}>0}${color grey}${color grey}GMail OON: ${font1}${color white}${new_mails /var/mail/jozan/gmail_oon/INBOX}${font}${template0}${endif}\
+${if_match ${new_mails /var/mail/jozan/gmail_tos/INBOX}>0}${color grey}${color grey}GMail TOS: ${font1}${color white}${new_mails /var/mail/jozan/gmail_tos/INBOX}${font}${template0}${endif}${hr}
 ${color grey}Uptime: ${font1}${color white}${uptime}${font}
 ${hr}
 ${color grey}Battery: ${font1}${color white}${if_match ${battery_percent}<15}${color red}${endif}${battery_percent}% ${battery_bar}${font}
@@ -78,19 +79,19 @@ ${color grey}SWAP:  ${font1}${color white}${swap} / ${swapmax} ${color white}${i
 ${hr}
 ${color grey}SSD: ${font1}${color white}${if_match ${fs_free_perc /}<20}${color red}${else}${endif}${fs_free_perc /}% ${fs_bar 6 /}${font}
 ${hr}
-${color grey}Process:             ${color grey}${alignr} PID  CPU  MEM
-${font1}${color white} ${top name 1} ${alignr}${top pid 1}     ${top cpu 1}    ${top mem 1}
-${color grey} ${top name 2} ${alignr}${top pid 2}     ${top cpu 2}    ${top mem 2}
-${color white} ${top name 3} ${alignr}${top pid 3}     ${top cpu 3}    ${top mem 3}
-${color grey} ${top name 4} ${alignr}${top pid 4}     ${top cpu 4}    ${top mem 4}${font}
+${color grey}Process:${color grey}${alignr}PID     CPU     MEM
+${font1}${color white}${top name 1} ${alignr}${top pid 1}  ${top cpu 1}  ${top mem 1}
+${font1}${color  grey}${top name 2} ${alignr}${top pid 2}  ${top cpu 2}  ${top mem 2}
+${font1}${color white}${top name 3} ${alignr}${top pid 3}  ${top cpu 3}  ${top mem 3}
+${font1}${color  grey}${top name 4} ${alignr}${top pid 4}  ${top cpu 4}  ${top mem 4}${font}
 ${color grey}---------
 ${color grey}Processes: ${color white}${processes}
-${hr}
+${hr}${if_up re0}
 ${color grey}LAN IP:    ${font1}${color white}${addr re0}${font}
 ${color grey}---------
 ${color grey}VPN IP:    ${font1}${color white}${addr proton0}${font}
 ${color grey}---------
-${color grey}Public IP: ${color white}${font1}${execi 300 curl -s https://ifconfig.me}${font}${color grey}
+${color grey}Public IP: ${color white}${font1}${execi 300 curl -s https://ifconfig.me || echo No Address}${font}${color grey}
 ${hr}
 ${color grey}Down: ${color white}${font1}${downspeed re0} ${font}${color grey}- Up: ${color white}${font1}${upspeed re0}${font}
 ${color grey}Down: ${color white}${downspeedgraph re0 bfbfbf c0c0c0  125829120}
@@ -98,5 +99,5 @@ ${color grey}Up:   ${color white}${upspeedgraph   re0 bfbfbf c0c0c0  125829120}
 ${hr}
 ${color grey}${alignc}DNS
 ${font1}${color white}${execi 300 cat /etc/resolv.conf}${font}
-${hr}
+${hr}${endif}
 ]]
