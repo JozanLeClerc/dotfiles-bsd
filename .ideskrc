@@ -16,7 +16,7 @@ table Config
   ShadowY: 1 
   Bold: false
   ClickDelay: 300
-  IconSnap: true
+  IconSnap: false
   SnapWidth: 48
   SnapHeight: 48
   SnapOrigin: TopRight

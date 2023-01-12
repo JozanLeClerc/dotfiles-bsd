@@ -4,8 +4,8 @@ table Icon
   Icon: /usr/local/share/icons/Faenza/places/48/folder-home.png
   Width: 48
   Height: 48
-  X: 696
-  Y: 152
+  X: 693
+  Y: 169
   Command[0]: pcmanfm ~/
 end
 

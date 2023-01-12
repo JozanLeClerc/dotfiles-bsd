@@ -4,8 +4,8 @@ table Icon
   Icon: /usr/local/share/icons/hicolor/48x48/apps/ario.png
   Width: 48
   Height: 48
-  X: 704
-  Y: 240
+  X: 694
+  Y: 271
   Command[0]: ario
 end
 
