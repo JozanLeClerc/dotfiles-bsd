@@ -16,11 +16,18 @@ else
 	mb2="$(ls "${MAIL:-/var/mail/jozan}"/gmail_tos/INBOX/new | wc -l 2>/dev/null)"
 	pre_count="$((pre_count + mb1 + mb2))"
 fi
+
+if [ $TERM == "dump" ]; then
+	if ! echo test | gpg2 --sign --batch --no-tty --pinentry-mode error -o /dev/null >/dev/null 2>&1; then
+		notify-send -u low -t 6000 'mbsync' '  GPG locked'
+		exit 1
+	fi
+fi
 killall mbsync >/dev/null 2>&1
 notify-send -u low -t 3000 'mbsync' '  fetching mail...' >/dev/null 2>&1
 # {
-	mbsync -a -c /usr/home/jozan/.config/mbsync/mbsyncrc ||
-		notify-send -u low -t 6000 'mbsync' '  failed to fetch mail' >/dev/null 2>&1
+mbsync -a -c /usr/home/jozan/.config/mbsync/mbsyncrc ||
+	notify-send -u low -t 6000 'mbsync' '  failed to fetch mail' >/dev/null 2>&1
 # }&
 # gsleep 0.2
 # kill -74 $(pidof dwmblocks) >/dev/null 2>&1
@@ -33,5 +40,5 @@ if [ $post_count -gt $pre_count ]; then
 	notify-send -u normal 'NeoMutt' '  '$post_count' new mail(s)'
 fi
 echo $post_count >$mc_file
-sleep 1
+# sleep 1
 # kill -74 $(pidof dwmblocks) >/dev/null 2>&1
