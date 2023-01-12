@@ -3,12 +3,17 @@
 <openbox_menu xmlns="http://openbox.org/3.4/menu">
 
 	<menu id="apps-accessories-menu" label="Accessories">
+		<item label="Alacritty">
+			<action name="Execute">
+				<command>alacritty</command>
+			</action>
+		</item>
+		<item label="st">
+			<action name="Execute"><command>st</command></action>
+		</item>
 		<item label="PCMan File Manager">
 			<action name="Execute">
 				<command>pcmanfm</command>
-				<startupnotify>
-					<enabled>yes</enabled>
-				</startupnotify>
 			</action>
 		</item>
 	</menu>
@@ -17,43 +22,17 @@
 		<item label="NeoVim">
 			<action name="Execute">
 				<command>alacritty -e nvim</command>
-				<startupnotify>
-					<enabled>yes</enabled>
-					<wmclass>NeoVim</wmclass>
-				</startupnotify>
 			</action>
 		</item>
 		<item label="Emacs">
 			<action name="Execute">
 				<command>emacs</command>
-				<startupnotify>
-					<enabled>yes</enabled>
-					<wmclass>Emacs</wmclass>
-				</startupnotify>
 			</action>
 		</item>
 		<item label="Emacs-NoX">
 			<action name="Execute">
 				<command>alacritty -e emacs-nw</command>
-				<startupnotify>
-					<enabled>yes</enabled>
-					<wmclass>Emacs</wmclass>
-				</startupnotify>
 			</action>
-		</item>
-	</menu>
-
-	<menu id="apps-term-menu" label="Terminals">
-		<item label="Alacritty">
-			<action name="Execute">
-				<command>alacritty</command>
-				<startupnotify>
-					<enabled>yes</enabled>
-				</startupnotify>
-			</action>
-		</item>
-		<item label="st">
-			<action name="Execute"><command>st</command></action>
 		</item>
 	</menu>
 
@@ -70,27 +49,16 @@
 		<item label="Iridium">
 			<action name="Execute">
 				<command>iridium --force-dark-mode</command>
-				<startupnotify>
-					<enabled>yes</enabled>
-					<wmclass>iridium</wmclass>
-				</startupnotify>
 			</action>
 		</item>
 		<item label="Firefox">
 			<action name="Execute">
 				<command>firefox</command>
-				<startupnotify>
-					<enabled>yes</enabled>
-					<wmclass>Firefox</wmclass>
-				</startupnotify>
 			</action>
 		</item>
 		<item label="Discord">
 			<action name="Execute">
 				<command>discord</command>
-				<startupnotify>
-					<enabled>yes</enabled>
-				</startupnotify>
 			</action>
 		</item>
 	</menu>
@@ -107,9 +75,6 @@
 		<item label="Gimp">
 			<action name="Execute">
 				<command>gimp</command>
-				<startupnotify>
-					<enabled>yes</enabled>
-				</startupnotify>
 			</action>
 		</item>
 	</menu>
@@ -118,19 +83,16 @@
 		<item label="Openbox Configuration Manager">
 			<action name="Execute">
 				<command>obconf</command>
-				<startupnotify><enabled>yes</enabled></startupnotify>
 			</action>
 		</item>
 		<item label="tint2 Configuration Manager">
 			<action name="Execute">
 				<command>tint2conf</command>
-				<startupnotify><enabled>yes</enabled></startupnotify>
 			</action>
 		</item>
 		<item label="Theme Manager">
 			<action name="Execute">
 				<command>lxappearance</command>
-				<startupnotify><enabled>yes</enabled></startupnotify>
 			</action>
 		</item>
 		<separator />
@@ -144,26 +106,16 @@
 		<item label="Alacritty">
 			<action name="Execute">
 				<command>alacritty</command>
-				<startupnotify>
-					<enabled>yes</enabled>
-				</startupnotify>
 			</action>
 		</item>
 		<item label="PCMan File Manager">
 			<action name="Execute">
 				<command>pcmanfm</command>
-				<startupnotify>
-					<enabled>yes</enabled>
-				</startupnotify>
 			</action>
 		</item>
 		<item label="Iridium">
 			<action name="Execute">
 				<command>iridium-browser --force-dark-mode</command>
-				<startupnotify>
-					<enabled>yes</enabled>
-					<wmclass>iridium</wmclass>
-				</startupnotify>
 			</action>
 		</item>
 		<separator />
@@ -173,7 +125,6 @@
 		<menu id="apps-net-menu"/>
 		<menu id="apps-multimedia-menu"/>
 		<menu id="apps-games-menu"/>
-		<menu id="apps-term-menu"/>
 		<separator label="System" />
 		<menu id="system-menu"/>
 		<separator />
