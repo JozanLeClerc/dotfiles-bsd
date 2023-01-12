@@ -1,6 +1,6 @@
 table Config
   FontName: Cantarell
-  FontSize: 10
+  FontSize: 11
   FontColor: #ebdbb2
   ToolTip.FontSize: 10
   ToolTip.FontName: Cantarell
@@ -10,15 +10,15 @@ table Config
   ToolTip.CaptionPlacement: Right
   Locked: false
   Transparency: 75
-  Shadow: false
-  ShadowColor: #FFFFFF
+  Shadow: true
+  ShadowColor: #9d0000
   ShadowX: 1
   ShadowY: 1 
   Bold: false
   ClickDelay: 300
   IconSnap: true
-  SnapWidth: 48
-  SnapHeight: 48
+  SnapWidth: 64
+  SnapHeight: 64
   SnapOrigin: TopRight
   SnapShadow: false
   SnapShadowTrans: 200
@@ -26,8 +26,6 @@ table Config
   CaptionPlacement: bottom
   FillStyle: None
   Background.Delay: 0
-  Background.Source: ~/pics
-  Background.File: ~/pics/wp.jpg
   Background.Mode: Stretch
   Background.Color: #C2CCFF
   CursorOver: left_ptr
@@ -36,8 +34,9 @@ end
 table Actions
   Lock: control right doubleClk
   Reload: middle doubleClk
-  Drag: left hold
-  EndDrag: left singleClk
+  Drag: right hold
+  EndDrag: right singleClk
   Execute[0]: left singleClk
   Execute[1]: right doubleClk
 end
+
