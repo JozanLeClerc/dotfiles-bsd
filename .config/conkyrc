@@ -49,10 +49,10 @@ conky.text = [[
 ${color grey}${alignc}${time %A %e %B %Y : %Hh%M}
 ${hr}${if_mpd_playing}
 ${color grey}${alignc}MPD
-${font1}${color white}${goto 140}$mpd_artist
-${goto 140}$mpd_album
+${font1}${color white}${goto 140}${mpd_artist}
+${goto 140}${mpd_title}
 ${goto 140}${mpd_elapsed}/${mpd_length} ${mpd_bar}
-${execi 5 ~/.local/bin/conky_cover.sh >/dev/null 2>&1}${image /tmp/conkyCover.png -p 10,30 -n}
+${execi 5 ~/.local/bin/conky_cover.sh >/dev/null 2>&1}${image /tmp/conkyCover.png -p 20,40 -n}
 ${hr}${endif}${if_up re0}
 ${font2}${color white}${alignc}${execi 1800 curl wttr.in/Lyon?T0 --silent --max-time 3}${font}
 ${hr}${endif}

@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/bin/sh
 #
 # cover.sh - Download cover from Last.fm and overlay with image
 #
@@ -49,16 +49,17 @@ if [ ! -f "$COVER" ]; then
 fi
 # Copy cache for processing
 echo "Copying $COVER." >> $LOG
-cp "$COVER" /tmp/cover.jpg
+# cp "$COVER" /tmp/cover.jpg
 # Downscale to fit overlay
-convert /tmp/cover.jpg -resize 366 /tmp/cover.png >> $LOG
-# Enlarge canvas to fit overlay
-convert /tmp/cover.png -background none -extent 500x455-84-44 /tmp/cover.png >> $LOG
-# Overlay overlay over cover
-convert /tmp/cover.png $HOME/.config/conky-mpd/case.png -composite /tmp/cover.png >> $LOG
-# Resize for immediate use
-convert /tmp/cover.png -resize 120 /tmp/conkyCover.png >> $LOG
-# Set current artist
+# convert /tmp/cover.jpg -resize 366 /tmp/cover.png >> $LOG
+## Enlarge canvas to fit overlay
+#convert /tmp/cover.png -background none -extent 500x455-84-44 /tmp/cover.png >> $LOG
+## Overlay overlay over cover
+#convert /tmp/cover.png $HOME/.config/conky-mpd/case.png -composite /tmp/cover.png >> $LOG
+## Resize for immediate use
+# convert /tmp/cover.png -resize 120 /tmp/conkyCover.png >> $LOG
+convert "$COVER" -resize 100 /tmp/conkyCover.png >> $LOG
+## Set current artist
 echo "$ARTIST+$ALBUM" > $TMP
 #rm /tmp/cover.jpg /tmp/cover.png
 
