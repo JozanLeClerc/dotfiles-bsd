@@ -46,7 +46,7 @@ conky.config = {
 }
 
 conky.text = [[
-${color grey}${alignc}${time %A %e %B %Y : %Hh%M}
+${color grey}${alignc}${time %A %e %B %Y - %Hh%M}
 ${hr}
 ${color grey}Terminal: ${font1}${color white}${nodename_short}${font}
 ${color grey}OS:       ${font1}${color white}${sysname}${font}
