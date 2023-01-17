@@ -55,7 +55,7 @@ ${color grey}Uptime:   ${font1}${color white}${uptime}${font}
 ${hr}${if_mpd_playing}
 ${color grey}${alignc}MPD
 ${font1}${color white}${goto 140}${mpd_artist}
-${goto 140}${mpd_title}
+${goto 140}${scroll wait 25 3 1 ${mpd_title}}
 ${goto 140}${mpd_elapsed}/${mpd_length} ${mpd_bar}
 ${execi 5 ~/.local/bin/conky_cover.sh >/dev/null 2>&1}${image /tmp/conkyCover.png -p 20,150 -n}
 ${hr}${endif}${if_up re0}
