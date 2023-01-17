@@ -24,7 +24,7 @@ LOG=/tmp/conky-mpd.log
 
 ARTIST="$(mpc --format %artist% | head -1)"
 ALBUM="$(mpc --format %album% | head -1)"
-FILEDIR="$XDG_MUSIC_DIR/$(mpc --format %file% | head -n1)"
+FILEDIR="$(dirname "$XDG_MUSIC_DIR/$(mpc --format %file% | head -n1)")"
 
 TMP=/tmp/conkympd.tmp
 [ ! -f $TMP ] && touch $TMP
@@ -35,21 +35,22 @@ echo "Artist/album changed: $ALBUM by $ARTIST" >> $LOG
 cp $HOME/.config/conky-mpd/nocover.png /tmp/conkyCover.png
 echo "NoCover" >> $LOG
 
-COVER="$CACHE/$ARTIST - $ALBUM.jpg"
-# Is cover cached?
-if [ ! -f "$COVER" ]; then
-# Nope. Download.
-	echo "Downloading cover for $ARTIST - $ALBUM" >> $LOG
-	# Download XML info
-	curl --data-urlencode artist="$ARTIST" --data-urlencode album="$ALBUM" "http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=$APIKEY" -o /tmp/lastfm.xml &> /dev/null
-	echo "Exit: $?. Downloaded $(wc -l /tmp/lastfm.xml | cut -d' ' -f1) bytes." >> $LOG
-	# Strip XML and download mega large cover to cache
-	curl $(sed -n 's|<image size="mega">\(.*\)<\/image>|\1|p' /tmp/lastfm.xml) -o "$COVER" &> /dev/null
-	echo "Exit: $?" >> $LOG
-	echo "Downloaded to $COVER." >> $LOG
-fi
+coverfile="$(find "$FILEDIR" -maxdepth 1 -type f \( -iname 'cover.jpg' -o -iname 'cover.png' -o -iname 'folder.jpg' -o -iname 'folder.png' -o -iname '*.jpg' -o -iname '*.png' \) -print -quit)"
+#COVER="$CACHE/$ARTIST - $ALBUM.jpg"
+## Is cover cached?
+#if [ ! -f "$COVER" ]; then
+## Nope. Download.
+#	echo "Downloading cover for $ARTIST - $ALBUM" >> $LOG
+#	# Download XML info
+#	curl --data-urlencode artist="$ARTIST" --data-urlencode album="$ALBUM" "http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=$APIKEY" -o /tmp/lastfm.xml &> /dev/null
+#	echo "Exit: $?. Downloaded $(wc -l /tmp/lastfm.xml | cut -d' ' -f1) bytes." >> $LOG
+#	# Strip XML and download mega large cover to cache
+#	curl $(sed -n 's|<image size="mega">\(.*\)<\/image>|\1|p' /tmp/lastfm.xml) -o "$COVER" &> /dev/null
+#	echo "Exit: $?" >> $LOG
+#	echo "Downloaded to $COVER." >> $LOG
+#fi
 # Copy cache for processing
-echo "Copying $COVER." >> $LOG
+echo "Copying $coverfile." >> $LOG
 # cp "$COVER" /tmp/cover.jpg
 # Downscale to fit overlay
 # convert /tmp/cover.jpg -resize 366 /tmp/cover.png >> $LOG
@@ -59,7 +60,7 @@ echo "Copying $COVER." >> $LOG
 #convert /tmp/cover.png $HOME/.config/conky-mpd/case.png -composite /tmp/cover.png >> $LOG
 ## Resize for immediate use
 # convert /tmp/cover.png -resize 120 /tmp/conkyCover.png >> $LOG
-convert "$COVER" -resize 100 /tmp/conkyCover.png >> $LOG
+convert "$coverfile" -resize 100 /tmp/conkyCover.png >> $LOG
 ## Set current artist
 echo "$ARTIST+$ALBUM" > $TMP
 #rm /tmp/cover.jpg /tmp/cover.png
