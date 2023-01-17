@@ -24,11 +24,12 @@ LOG=/tmp/conky-mpd.log
 
 ARTIST="$(mpc --format %artist% | head -1)"
 ALBUM="$(mpc --format %album% | head -1)"
+FILEDIR="$XDG_MUSIC_DIR/$(mpc --format %file% | head -n1)"
 
 TMP=/tmp/conkympd.tmp
 [ ! -f $TMP ] && touch $TMP
-[ "$(cat $TMP)" == "$ARTIST+$ALBUM" ] && echo "Same artist." >> $LOG && exit 0
-echo "Artist changed: $ALBUM by $ARTIST" >> $LOG
+[ "$(cat $TMP)" == "$ARTIST+$ALBUM" ] && echo "Same artist/album." >> $LOG && exit 0
+echo "Artist/album changed: $ALBUM by $ARTIST" >> $LOG
 
 #[ -f "/tmp/conkyCover.png" ] && rm "/tmp/conkyCover.png"
 cp $HOME/.config/conky-mpd/nocover.png /tmp/conkyCover.png
