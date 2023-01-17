@@ -4,6 +4,15 @@ startif() {
 	pgrep "$(basename "$1")" >/dev/null || "$@" >/dev/null 2>&1 &
 }
 
+delay_desktop() {
+	sleep 5
+	startif conky -d -c "$HOME"/.config/conkyrc
+	startif tint2
+	startif cairo-clock -x 900 -y 20 --width 300 --height 300 --theme zen
+	startif cairo-dock
+	startif idesk
+}
+
 export LANG='en_US.UTF-8'
 pgrep musicpd >/dev/null || musicpd >/dev/null 2>&1
 xrandr --output HDMI-1 --primary --mode 2560x1440 --pos 1920x347 --rotate normal --output eDP-1 --mode 1920x1080 --pos 0x1024 --rotate normal --output DP-1 --mode 1280x1024 --pos 640x0 --rotate normal --output DP-2 --mode 2560x1440 --pos 4480x347 --rotate normal
@@ -17,13 +26,9 @@ startif picom
 startif lowbat
 startif mpd-notification
 startif xscreensaver --no-splash
+delay_desktop &
 # startif dwmblocks
 # startif sb-updatempd
-startif tint2
-startif idesk
-startif cairo-clock -x 900 -y 20 --width 300 --height 300 --theme zen &
-startif cairo-dock
-startif conky -d -c "$HOME"/.config/conkyrc
 # /compat/linux/usr/lib/protonmail/bridge/proton-bridge --noninteractive
 # ekb
 cd "$HOME"

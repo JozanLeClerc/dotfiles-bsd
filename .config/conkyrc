@@ -33,7 +33,7 @@ conky.config = {
     minimum_height = 1030,
     maximum_width = 365,
     gap_x = 0,
-    gap_y = 0,
+    gap_y = 40,
     net_avg_samples = 2,
     cpu_avg_samples = 4,
     short_units = true,
@@ -47,6 +47,11 @@ conky.config = {
 
 conky.text = [[
 ${color grey}${alignc}${time %A %e %B %Y : %Hh%M}
+${hr}
+${color grey}Terminal: ${font1}${color white}${nodename_short}${font}
+${color grey}OS:       ${font1}${color white}${sysname}${font}
+${color grey}Kernel:   ${font1}${color white}${kernel}${font}
+${color grey}Uptime:   ${font1}${color white}${uptime}${font}
 ${hr}${if_mpd_playing}
 ${color grey}${alignc}MPD
 ${font1}${color white}${goto 140}${mpd_artist}
@@ -60,11 +65,9 @@ ${color grey}${alignc}New mails${template0}\
 ${if_match ${new_mails /var/mail/jozan/gmail_br/INBOX}>0}${color grey}GMail BR:  ${font1}${color white}${new_mails /var/mail/jozan/gmail_br/INBOX}${font}${template0}${endif}\
 ${if_match ${new_mails /var/mail/jozan/gmail_oon/INBOX}>0}${color grey}${color grey}GMail OON: ${font1}${color white}${new_mails /var/mail/jozan/gmail_oon/INBOX}${font}${template0}${endif}\
 ${if_match ${new_mails /var/mail/jozan/gmail_tos/INBOX}>0}${color grey}${color grey}GMail TOS: ${font1}${color white}${new_mails /var/mail/jozan/gmail_tos/INBOX}${font}${template0}${endif}${hr}
-${color grey}Uptime: ${font1}${color white}${uptime}${font}
-${hr}
 ${color grey}Battery: ${font1}${color white}${if_match ${battery_percent}<15}${color red}${endif}${battery_percent}% ${battery_bar}${font}
 ${hr}
-${color grey}CPU: ${font1}${color white} ${freq_g} GHz ${color white}${if_match ${cpu}>80}${color red}${else}${endif}${cpu}% ${cpubar 6}
+${color grey}CPU: ${font1}${color white} ${freq_g} GHz ${color white}${if_match ${cpu}>80}${color red}${else}${endif}${cpu}%
 ${offset 4}${cpugraph bfbfbf c0c0c0}${color white}
 ${color grey}1:${color white} ${if_match ${cpu cpu0}>80}${color red}${else}${endif}${cpu cpu0}% ${cpubar cpu0}${color white}
 ${color grey}2:${color white} ${if_match ${cpu cpu1}>80}${color red}${else}${endif}${cpu cpu1}% ${cpubar cpu1}${color white}
@@ -100,6 +103,7 @@ ${color grey}Down: ${color white}${downspeedgraph re0 bfbfbf c0c0c0  125829120}
 ${color grey}Up:   ${color white}${upspeedgraph   re0 bfbfbf c0c0c0  125829120}
 ${hr}
 ${color grey}${alignc}DNS
-${font1}${color white}${execi 300 cat /etc/resolv.conf}${font}
+${font1}${color white}${nameserver 0}${font}
+${font1}${color white}${nameserver 1}${font}
 ${hr}${endif}
 ]]
