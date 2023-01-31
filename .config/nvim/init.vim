@@ -11,7 +11,7 @@
 " ==     =====   ====   ==
 " ========================
 
-set runtimepath^=/home/jozan/.config/nvim runtimepath+=/home/jozan/.config/nvim/after
+set runtimepath^=/home/r_bousset/.config/nvim runtimepath+=/home/jozan/.config/nvim/after
 let &packpath = &runtimepath
 if ! filereadable(system('echo -n "$XDG_DATA_HOME/nvim/autoload/plug.vim"'))
 	echo "Downloading junegunn/vim-plug to manage plugins..."

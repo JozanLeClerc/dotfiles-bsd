@@ -1,0 +1,57 @@
+#
+# These things are run when an Openbox X Session is started.
+# You may place a similar script in $HOME/.config/openbox/autostart
+# to run user-specific things.
+#
+
+# If you want to use GNOME config tools...
+#
+#if test -x /usr/lib/openbox/gnome-settings-daemon >/dev/null; then
+#  /usr/lib/openbox/gnome-settings-daemon &
+#elif which gnome-settings-daemon >/dev/null 2>&1; then
+#  gnome-settings-daemon &
+#fi
+
+# If you want to use XFCE config tools...
+#
+#xfce-mcs-manager &
+startif() {
+	pgrep "$(basename "$1")" >/dev/null || "$@" >/dev/null 2>&1 &
+}
+
+delay_desktop() {
+	sleep 5
+	startif conky -d -c "$HOME"/.config/conkyrc
+	startif tint2
+	# startif cairo-clock -x 900 -y 20 --width 300 --height 300 --theme zen
+	# startif cairo-dock
+	startif plank
+	startif idesk
+}
+
+export LANG='en_US.UTF-8'
+pgrep musicpd >/dev/null || musicpd >/dev/null 2>&1
+"$HOME"/.local/bin/setwp "$HOME"/pics/wp.jpg
+"$HOME"/.local/bin/kb
+xset s off
+xset -dpms
+if xrandr | grep -F 'DisplayPort-0 connected' >/dev/null 2>&1; then
+	"$HOME"/.local/bin/scr
+else
+	"$HOME"/.local/bin/dscr
+fi
+# xsetroot -name 'Loading bar...'
+startif dunst
+startif picom
+# startif lowbat
+# startif mpd-notification
+startif xscreensaver
+delay_desktop &
+# startif dwmblocks
+# startif sb-updatempd
+# /compat/linux/usr/lib/protonmail/bridge/proton-bridge --noninteractive
+# ekb
+cd "$HOME"
+xrdb "$HOME"/.config/x11/xresources
+notify-send -u normal 'Welcome' "  Welcome back, partner\!"
+# dbus-launch openbox

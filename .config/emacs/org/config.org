@@ -18,7 +18,7 @@
 								  (horizontal-scroll-bars . nil))))
 	 (add-hook 'after-make-frame-functions 'my/disable-scroll-bars)
 
-	 (setq default-frame-alist '((font . "mononoki Nerd Font:pixelsize=15")))
+	 (setq default-frame-alist '((font . "mononoki Nerd Font:pixelsize=17")))
 	 ;; (set-frame-font "mononoki Nerd Font:pixelsize=15" nil t)
 	 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 	 (add-hook 'text-mode-hook 'display-line-numbers-mode)
@@ -72,7 +72,7 @@
 
   (setq package-selected-packages '(
 									evil evil-collection evil-leader
-									evil-search-highlight-persist evil-mc evil-surround evil-ediff
+									evil-search-highlight-persist evil-mc evil-surround
 									evil-visual-mark-mode evil-nerd-commenter evil-vimish-fold
 									evil-numbers evil-quickscope
 									lsp-mode lsp-ui
@@ -245,10 +245,8 @@
 
 
   (evil-define-key 'insert global-map (kbd "C-o") 'delete-other-windows)
-  (evil-define-key 'insert global-map (kbd "C-k") 'windmove-up)
-  (evil-define-key 'insert global-map (kbd "C-j") 'windmove-down)
-  (evil-define-key 'insert global-map (kbd "C-h") 'windmove-left)
-  (evil-define-key 'insert global-map (kbd "C-l") 'windmove-right)
+  (evil-define-key 'insert global-map (kbd "C-u") 'evil-delete-backward-word)
+  (evil-define-key 'insert global-map (kbd "C-h") 'evil-delete-backward-char)
   (evil-define-key 'normal global-map (kbd "C-o") 'delete-other-windows)
   (evil-define-key 'normal global-map (kbd "C-k") 'windmove-up)
   (evil-define-key 'normal global-map (kbd "C-j") 'windmove-down)
@@ -357,7 +355,6 @@
 
 *** Helm, projectile
 	#+BEGIN_SRC emacs-lisp
-	  (require 'helm-config)
 	  (require 'helm-misc)
 	  (require 'helm-projectile)
 	  (require 'helm-locate)

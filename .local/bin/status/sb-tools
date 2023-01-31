@@ -1,5 +1,8 @@
 #!/bin/sh
 
+if pidof emacs-28.2 >/dev/null 2>&1; then
+	echo -n "  "
+fi
 if pgrep gpg-agent >/dev/null 2>&1; then
 	echo -n " "
 else

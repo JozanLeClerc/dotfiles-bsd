@@ -1,0 +1,12 @@
+table Icon
+  Caption: Firefox
+  ToolTip.Caption: Firefox Web Browser
+  Icon: /usr/share/icons/hicolor/64x64/apps/firefox.png
+  Width: 64
+  Height: 64
+  X: 1984
+  Y: 320
+  Command[0]: firefox
+  Command[1]: torify firefox
+end
+

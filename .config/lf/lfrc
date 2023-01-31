@@ -24,7 +24,7 @@ cmd open ${{
 		image/x-xcf) bsdsetsid gimp $f >/dev/null 2>&1 ;;
 		image/svg+xml) display -- $f ;;
 		image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|tif\|ico\)\(_large\)*$" |
-			bsdsetsid nsxiv -aibof 2>/dev/null | while read -r file; do
+			nsxiv -aibof 2>/dev/null | while read -r file; do
 				[ -z "$file" ] && continue
 				lf -remote "send select \"$file\""
 				lf -remote "send toggle"

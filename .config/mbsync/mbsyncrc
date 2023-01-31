@@ -8,22 +8,6 @@ PassCmd "pass show mutt/main"
 SSLType None
 # CertificateFile /etc/ssl/cert.pem
 
-MaildirStore main-local
-SubFolders Verbatim
-Path /var/mail/jozan/main/
-Inbox /var/mail/jozan/main/INBOX
-
-Channel main
-Far :main-remote:
-Near :main-local:
-Patterns *
-Create Both
-Expunge Both
-SyncState *
-MaxMessages 0
-ExpireUnread no
-# End profile
-
 IMAPStore gmail_br-remote
 Host imap.gmail.com
 Port 993
