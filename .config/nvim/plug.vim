@@ -34,4 +34,5 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/grep.vim'
 Plug 'voldikss/fzf-floaterm'
 Plug 'voldikss/vim-floaterm'
+Plug 'chrisbra/csv.vim'
 call plug#end()

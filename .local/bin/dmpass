@@ -23,13 +23,15 @@ password=$(printf "%s\n" "${password_files}" | "$dmenu" -i -l 15 -m 0)
 
 [ -n "$password" ] || exit
 
+p="$(pass show "$password")"
+
 if [ $full -eq 1 ]; then
 	id=$(printf "%s" "$password" | sed 's/.*___//')
 	printf "%s\n" $id | { IFS= read -r pass; printf %s "$id"; } | $xdotool
 	xdotool key Tab
-	pass show "$password" | { IFS= read -r pass; printf %s "$pass"; } | $xdotool
+	printf "%s\n" "$p" | { IFS= read -r pass; printf %s "$pass"; } | $xdotool
 	xdotool key Return
 	exit
 fi
 
-pass show "$password" | { IFS= read -r pass; printf %s "$pass"; } | $xdotool
+printf "%s\n" "$p" | { IFS= read -r pass; printf %s "$pass"; } | $xdotool

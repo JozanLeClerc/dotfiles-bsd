@@ -42,7 +42,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Clearlooks-Joe</name>
+    <name>Clearlooks</name>
     <titleLayout>SNLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -57,7 +57,7 @@
     <keepBorder>yes</keepBorder>
     <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
-      <name>Cantarell Medium</name>
+      <name>NotoSans Nerd Font</name>
       <size>11</size>
       <!-- font size in points -->
       <weight>Normal</weight>
@@ -66,7 +66,7 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="InactiveWindow">
-      <name>Cantarell Medium</name>
+      <name>NotoSans Nerd Font</name>
       <size>11</size>
       <!-- font size in points -->
       <weight>Normal</weight>
@@ -75,7 +75,7 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="MenuHeader">
-      <name>Cantarell Medium</name>
+      <name>NotoSans Nerd Font</name>
       <size>14</size>
       <!-- font size in points -->
       <weight>Normal</weight>
@@ -84,7 +84,7 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="MenuItem">
-      <name>Cantarell Medium</name>
+      <name>NotoSans Nerd Font</name>
       <size>14</size>
       <!-- font size in points -->
       <weight>Normal</weight>
@@ -93,7 +93,7 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="ActiveOnScreenDisplay">
-      <name>Cantarell Medium</name>
+      <name>NotoSans Nerd Font</name>
       <size>11</size>
       <!-- font size in points -->
       <weight>Normal</weight>
@@ -102,7 +102,7 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="InactiveOnScreenDisplay">
-      <name>Cantarell Medium</name>
+      <name>NotoSans Nerd Font</name>
       <size>11</size>
       <!-- font size in points -->
       <weight>Normal</weight>
@@ -122,18 +122,13 @@
        and back in -->
     <number>4</number>
     <firstdesk>1</firstdesk>
-    <names>
-      <!-- set names up here if you want to, like this:
-    <name>desktop 1</name>
-    <name>desktop 2</name>
-    -->
-    </names>
+    <names/>
     <popupTime>500</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
        desktops.  Set this to 0 to disable the popup. -->
   </desktops>
   <resize>
-    <drawContents>yes</drawContents>
+    <drawContents>no</drawContents>
     <popupShow>Nonpixel</popupShow>
     <!-- 'Always', 'Never', or 'Nonpixel' (xterms and such) -->
     <popupPosition>Center</popupPosition>
@@ -229,11 +224,6 @@
         <to>9</to>
       </action>
     </keybind>
-    <keybind key="W-0">
-      <action name="GoToDesktop">
-        <to>10</to>
-      </action>
-    </keybind>
     <keybind key="W-S-1">
       <action name="SendToDesktop">
         <to>1</to>
@@ -289,9 +279,28 @@
       </action>
     </keybind>
     <keybind key="W-S-0">
+		<action name="ToggleOmnipresent"/>
+    </keybind>
+    <keybind key="W-S-h">
       <action name="SendToDesktop">
-        <to>10</to>
+        <to>previous</to>
         <wrap>no</wrap>
+      </action>
+    </keybind>
+    <keybind key="W-S-l">
+      <action name="SendToDesktop">
+        <to>next</to>
+        <wrap>no</wrap>
+      </action>
+    </keybind>
+    <keybind key="W-C-h">
+      <action name="MoveResizeTo">
+        <monitor>next</monitor>
+      </action>
+    </keybind>
+    <keybind key="W-C-l">
+      <action name="MoveResizeTo">
+        <monitor>prev</monitor>
       </action>
     </keybind>
     <!-- <keybind key="W-d"> -->
@@ -396,7 +405,7 @@
     </keybind>
     <keybind key="W-F3">
       <action name="Execute">
-        <command>iridium-browser --force-dark-mode</command>
+        <command>firefox</command>
       </action>
     </keybind>
     <keybind key="W-S-F3">
@@ -422,7 +431,7 @@
     </keybind>
     <keybind key="W-F7">
       <action name="Execute">
-        <command>alacritty -e calcurse -C /home/jozan/.config/calcurse -D /home/jozan/.local/share/calcurse</command>
+        <command>alacritty -e calcurse -C ~/.config/calcurse -D ~/.local/share/calcurse</command>
       </action>
     </keybind>
     <keybind key="W-F8">
@@ -472,77 +481,77 @@
     </keybind>
     <keybind key="W-S-F10">
       <action name="Execute">
-		  <command>/home/jozan/.local/bin/mixer-set toggle</command>
+        <command>~/.local/bin/mixer-set toggle</command>
       </action>
     </keybind>
     <keybind key="W-S-F11">
       <action name="Execute">
-		  <command>/home/jozan/.local/bin/mixer-set lower</command>
+        <command>~/.local/bin/mixer-set lower</command>
       </action>
     </keybind>
     <keybind key="W-S-F12">
       <action name="Execute">
-		  <command>/home/jozan/.local/bin/mixer-set raise</command>
+        <command>~/.local/bin/mixer-set raise</command>
       </action>
     </keybind>
     <keybind key="W-S-Delete">
       <action name="Execute">
-		  <command>/home/jozan/.local/bin/mic</command>
+        <command>~/.local/bin/mic</command>
       </action>
     </keybind>
     <keybind key="W-C-F9">
       <action name="Execute">
-		  <command>/home/jozan/.local/bin/dmkill</command>
+        <command>~/.local/bin/dmkill</command>
       </action>
     </keybind>
     <keybind key="W-C-F10">
       <action name="Execute">
-		  <command>/home/jozan/.local/bin/dmscrot</command>
+        <command>~/.local/bin/dmscrot</command>
       </action>
     </keybind>
     <keybind key="W-C-F11">
       <action name="Execute">
-		  <command>/home/jozan/.local/bin/dmsearch</command>
+        <command>~/.local/bin/dmsearch</command>
       </action>
     </keybind>
     <keybind key="W-C-F12">
       <action name="Execute">
-        <command>/home/jozan/.local/bin/dmlog</command>
+        <command>~/.local/bin/dmlog</command>
       </action>
     </keybind>
     <keybind key="W-BackSpace">
       <action name="Execute">
-        <command>/home/jozan/.local/bin/dmpc</command>
+        <command>~/.local/bin/dmpc</command>
       </action>
     </keybind>
     <keybind key="W-C-BackSpace">
       <action name="Execute">
-        <command>/home/jozan/.local/bin/dmlog</command>
+        <command>~/.local/bin/dmlog</command>
       </action>
     </keybind>
     <keybind key="W-C-p">
       <action name="Execute">
-        <command>/home/jozan/.local/bin/dmpass</command>
+        <command>~/.local/bin/dmpass</command>
       </action>
     </keybind>
     <keybind key="W-C-S-p">
       <action name="Execute">
-        <command>/home/jozan/.local/bin/dmpass --full</command>
+        <command>~/.local/bin/dmpass --full</command>
       </action>
     </keybind>
     <keybind key="W-C-o">
       <action name="Execute">
-        <command>/home/jozan/.local/bin/dmotp</command>
+        <command>~/.local/bin/dmotp</command>
       </action>
     </keybind>
     <keybind key="W-End">
       <action name="Execute">
-        <command>/home/jozan/.local/bin/ndate</command>
+        <command>~/.local/bin/ndate</command>
       </action>
     </keybind>
     <keybind key="W-Delete">
       <action name="Execute">
-        <command>/home/jozan/.local/bin/shutup</command>
+        <command>~/.local/bin/shutup</command>
       </action>
     </keybind>
     <keybind key="W-S-e">
@@ -557,6 +566,11 @@
       <action name="ShowMenu">
         <menu>root-menu</menu>
       </action>
+    </keybind>
+    <keybind key="W-o">
+	  <action name="ShowMenu">
+	    <menu>client-list-combined-menu</menu>
+	  </action>
     </keybind>
     <keybind key="W-w">
       <action name="Move"/>

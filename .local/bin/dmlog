@@ -62,11 +62,11 @@ sub action
 				'-u',
 				'normal',
 				'shutdown',
-				'  G\'night, partner!'
+				'  G\'night, partner!'
 			);
 			sleep 2;
 			if (OS eq 'Linux') {
-				exec(LOGINCTL_PATH, 'suspend');
+				exec('systemctl', 'suspend');
 			}
 			exec(ACPI_PATH, '-s', '3');
 		}
@@ -84,8 +84,15 @@ sub action
 		if (confirm($var) == 1) {
 			system(EMACS_PATH, '-e', '"(save-buffers-kill-terminal)"');
 			if (OS eq 'Linux') {
-				exec(LOGINCTL_PATH, 'reboot');
+				exec('systemctl', 'reboot');
 			}
+			system(
+				NOTIF_PATH,
+				'-u',
+				'normal',
+				'shutdown',
+				'  Rebootin\', partner!'
+				);
 			exec(SHUTDOWN_PATH, '-r', 'now');
 		}
 	}
@@ -97,11 +104,11 @@ sub action
 				'-u',
 				'normal',
 				'shutdown',
-				'  Farewell, partner!'
+				'  Farewell, partner!'
 				);
 			sleep 2;
 			if (OS eq 'Linux') {
-				exec(LOGINCTL_PATH, 'poweroff');
+				exec('systemctl', 'poweroff');
 			}
 			exec(SHUTDOWN_PATH, '-p', 'now');
 		}

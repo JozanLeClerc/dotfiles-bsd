@@ -61,6 +61,7 @@ alias \
 	gt='gpg-tui' \
 	lg='lazygit' \
 	gjdo='/home/jozan/dev/perl/gitjoe-scripts/gitjoe-do.pl' \
+	ddgit='git --git-dir=$HOME/docs/redot --work-tree=$HOME' \
 	dgit='git --git-dir=$HOME/docs/dotfiles-bsd --work-tree=$HOME' \
 	confgit='git --git-dir=$HOME/docs/conffiles-bsd --work-tree=/'
 bssh() {
@@ -195,6 +196,7 @@ twi() {
 alias nb='newsboat' \
 	mutt='neomutt' \
 	sxiv='nsxiv -b -a' \
+	nsxiv='nsxiv -b -a' \
 	pinfo='pkg info -x' \
 	psearch='pkg search' \
 	pinstall='doas pkg install' \

@@ -1,10 +1,10 @@
 table Icon
   Caption: Home
   ToolTip.Caption: Open PCManFM in the home directory
-  Icon: /usr/local/share/icons/Faenza/places/64/folder-home.png
+  Icon: /usr/share/icons/Faenza/places/64/folder-home.png
   Width: 64
   Height: 64
-  X: 704
+  X: 1984
   Y: 192
   Command[0]: pcmanfm ~/
 end
