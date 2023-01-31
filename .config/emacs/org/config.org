@@ -18,7 +18,7 @@
 								  (horizontal-scroll-bars . nil))))
 	 (add-hook 'after-make-frame-functions 'my/disable-scroll-bars)
 
-	 (setq default-frame-alist '((font . "mononoki Nerd Font:pixelsize=15")))
+	 (setq default-frame-alist '((font . "mononoki Nerd Font:pixelsize=17")))
 	 ;; (set-frame-font "mononoki Nerd Font:pixelsize=15" nil t)
 	 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 	 (add-hook 'text-mode-hook 'display-line-numbers-mode)

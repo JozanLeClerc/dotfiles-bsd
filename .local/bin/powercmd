@@ -1,12 +1,13 @@
 #!/bin/sh
 
-# [ -z "$1" ] && echo "no arg" && exit 1
+[ -z "$1" ] && echo "no arg" && exit 1
 
 os="$(uname)"
 
-if [ $os -eq "Linux" ]; then
+if [ "$os" = "Linux" ]; then
 	grep "Artix" /etc/issue >/dev/null 2>&1 && os=1 || os=2
-elif [ $os -eq "FreeBSD" ]; then
+elif [ "$os" = "FreeBSD" ]; then
+	os=3
 else
 	echo "unknown OS"
 	exit 1
@@ -17,7 +18,46 @@ fi
 # 3: FreeBSD
 
 case $os in
-	1) icon="" ;;
-	2) icon="" ;;
-	3) icon="" ;;
+	1) icon=" " ;;
+	2) icon=" " ;;
+	3) icon=" " ;;
+esac
+
+case $1 in
+	"lock")		xscreensaver-command -lock ;;
+	"sleep")
+		notify-send -u normal "sleep" "$icon G'night, partner!"
+		sleep 1
+		xscreensaver-command -lock
+		sleep 5
+		case $os in
+			1) loginctl hibernate ;;
+			2) systemctl hibernate ;;
+			3) acpiconf -s 4 ;;
+		esac
+		;;
+	"reboot")
+		emacsclient -e '"(save-buffers-kill-emacs)"' >/dev/null 2>&1
+		notify-send -u normal reboot "$icon Rebootin' now!"
+		sleep 2
+		case $os in
+			1) loginctl reboot ;;
+			2) systemctl reboot ;;
+			3) shutdown -r now ;;
+		esac
+		;;
+	"poweroff")
+		emacsclient -e '"(save-buffers-kill-emacs)"' >/dev/null 2>&1
+		notify-send -u normal poweroff "$icon Farewell, partner!"
+		sleep 2
+		case $os in
+			1) loginctl poweroff ;;
+			2) systemctl poweroff ;;
+			3) shutdown -p now ;;
+		esac
+		;;
+	*)
+		echo "wrong arg"
+		exit 1
+		;;
 esac

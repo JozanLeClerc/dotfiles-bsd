@@ -148,12 +148,12 @@
 		</item>
 		<item label="Lock screen">
 			<action name="Execute">
-				<command>xscreensaver-command -lock</command>
+				<command>~/.local/bin/powercmd lock</command>
 			</action>
 		</item>
 		<item label="Sleep">
 			<action name="Execute">
-				<command>sh -c "notify-send -u normal reboot \"  G'night, partner!\"; sleep 2; acpiconf -s 3"</command>
+				<command>~/.local/bin/powercmd sleep</command>
 			</action>
 		</item>
 		<item label="Log Out">
@@ -163,12 +163,12 @@
 		</item>
 		<item label="Reboot">
 			<action name="Execute">
-				<command>sh -c "emacsclient -e '\"(save-buffers-kill-emacs)\"'; notify-send -u normal reboot \"  Rebootin' now!\"; sleep 2; systemctl reboot</command>
+				<command>~/.local/bin/powercmd reboot</command>
 			</action>
 		</item>
 		<item label="Shutdown">
 			<action name="Execute">
-				<command>sh -c "emacsclient -e '\"(save-buffers-kill-emacs)\"'; notify-send -u normal shutdown '  Farewell, partner!'; sleep 2; systemctl poweroff</command>
+				<command>~/.local/bin/powercmd poweroff</command>
 			</action>
 		</item>
 	</menu>
