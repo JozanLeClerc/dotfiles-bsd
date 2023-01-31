@@ -32,8 +32,8 @@ case $1 in
 		sleep 5
 		case $os in
 			1) loginctl hibernate ;;
-			2) systemctl hibernate ;;
-			3) acpiconf -s 4 ;;
+			2) systemctl suspend ;;
+			3) acpiconf -s 3 ;;
 		esac
 		;;
 	"reboot")
