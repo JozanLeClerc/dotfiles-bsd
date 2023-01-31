@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# [ -z "$1" ] && echo "no arg" && exit 1
+
+os="$(uname)"
+
+if [ $os -eq "Linux" ]; then
+	grep "Artix" /etc/issue >/dev/null 2>&1 && os=1 || os=2
+elif [ $os -eq "FreeBSD" ]; then
+else
+	echo "unknown OS"
+	exit 1
+fi
+
+# 1: Artix
+# 2: Pop OS
+# 3: FreeBSD
+
+case $os in
+	1) icon="" ;;
+	2) icon="" ;;
+	3) icon="" ;;
+esac
