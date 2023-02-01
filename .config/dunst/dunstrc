@@ -1,10 +1,10 @@
 [global]
     monitor = 0
     follow = none
-	geometry = 800x500-40+40
-	# width = 200
-	# height = 500
-	# origin = top-right
+	width = (200, 800)
+	height = 500
+	origin = top-center
+	offset = 0x50
     indicate_hidden = yes
     shrink = yes
     transparency = 15

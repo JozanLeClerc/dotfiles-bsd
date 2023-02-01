@@ -28,7 +28,7 @@ export XDG_RUNTIME_DIR=/var/run/"$USER"
 export EDITOR='editorcmd'
 export VISUAL="${EDITOR}"
 export PAGER='less'
-export MANPAGER='most'
+export MANPAGER='less'
 export TERMINAL='alacritty'
 export BROWSER='iridium'
 export READER='zathura'
@@ -81,7 +81,7 @@ export CCACHE_LOGFILE='/var/log/ccache.log'
 
 # Apps config
 export BAT_THEME='gruvbox-dark'
-export BAT_PAGER='most'
+export BAT_PAGER='less'
 export FZF_DEFAULT_COMMAND='fd -i -H -c never -j9 -E .git -E dotfiles-bsd -E .ccls-cache -E GIMP -E iridium -E google-chrome -E chromium -E elpa -E Gpredict -E .cache'
 # export FZF_DEFAULT_COMMAND='rg --color never --files --hidden'
 export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border=left --tabstop=4'
