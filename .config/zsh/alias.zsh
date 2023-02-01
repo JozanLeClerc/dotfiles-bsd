@@ -200,7 +200,13 @@ alias nb='newsboat' \
 	pinfo='pkg info -x' \
 	psearch='pkg search' \
 	pinstall='doas pkg install' \
-	update='doas pkg update && doas pkg upgrade' \
+	update='doas pkg update && doas pkg upgrade'
+nixi() {
+	nix-env -iA $(for i in $@; do printf "nixpkgs.%s " "$i"; done)
+}
+alias nixdel='nix-env -e' \
+	nixd='nixdel' \
+	nixs='nix search nixpkgs' \
 	highlight='highlight -Oxterm256 -t4' \
 	hi='highlight'
 hil() {

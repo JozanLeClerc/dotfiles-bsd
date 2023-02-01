@@ -9,7 +9,9 @@
 			</action>
 		</item>
 		<item label="st">
-			<action name="Execute"><command>st</command></action>
+			<action name="Execute">
+				<command>st</command>
+			</action>
 		</item>
 		<item label="PCMan File Manager">
 			<action name="Execute">
@@ -48,6 +50,12 @@
 		<item label="Lutris">
 			<action name="Execute"><command>lutris</command></action>
 		</item>
+		<item label="GZDoom">
+			<action name="Execute"><command>gzdoom</command></action>
+		</item>
+		<item label="DOSBox">
+			<action name="Execute"><command>dosbox</command></action>
+		</item>
 	</menu>
 
 	<menu id="apps-net-menu" label="Internet">
@@ -64,6 +72,11 @@
 		<item label="Discord">
 			<action name="Execute">
 				<command>discord</command>
+			</action>
+		</item>
+		<item label="Signal">
+			<action name="Execute">
+				<command>signal-desktop</command>
 			</action>
 		</item>
 	</menu>
