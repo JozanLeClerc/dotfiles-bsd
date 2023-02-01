@@ -27,7 +27,7 @@ export XDG_RUNTIME_DIR=/var/run/"$USER"
 # Apps
 export EDITOR='editorcmd'
 export VISUAL="${EDITOR}"
-export PAGER='most'
+export PAGER='less'
 export MANPAGER='most'
 export TERMINAL='alacritty'
 export BROWSER='iridium'
