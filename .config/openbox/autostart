@@ -15,6 +15,7 @@
 # If you want to use XFCE config tools...
 #
 #xfce-mcs-manager &
+
 startif() {
 	pgrep "$(basename "$1")" >/dev/null || "$@" >/dev/null 2>&1 &
 }
@@ -44,12 +45,9 @@ fi
 startif dunst
 startif picom
 # startif lowbat
-# startif mpd-notification
+startif mpd-notification
 startif xscreensaver
 delay_desktop &
-# startif dwmblocks
-# startif sb-updatempd
-# /compat/linux/usr/lib/protonmail/bridge/proton-bridge --noninteractive
 # ekb
 cd "$HOME"
 xrdb "$HOME"/.config/x11/xresources

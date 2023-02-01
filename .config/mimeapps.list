@@ -40,6 +40,7 @@ text/x-makefile=emacs.desktop
 text/x-readme=emacs.desktop
 text/x-tcl=emacs.desktop
 x-scheme-handler/msteams=teams.desktop
+video/mp4=mpv.desktop
 
 [Added Associations]
 x-scheme-handler/https=userapp-Firefox-NVLWI0.desktop;
@@ -55,3 +56,4 @@ application/x-extension-xht=userapp-Firefox-NVLWI0.desktop;
 application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
 video/webm=mpv.desktop;
 text/plain=nvim.desktop;vim.desktop;org.gnome.gedit.desktop;
+video/mp4=mpv.desktop;

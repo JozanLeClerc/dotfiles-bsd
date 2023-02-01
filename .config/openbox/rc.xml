@@ -279,7 +279,7 @@
       </action>
     </keybind>
     <keybind key="W-S-0">
-		<action name="ToggleOmnipresent"/>
+      <action name="ToggleOmnipresent"/>
     </keybind>
     <keybind key="W-S-h">
       <action name="SendToDesktop">
@@ -568,9 +568,9 @@
       </action>
     </keybind>
     <keybind key="W-o">
-	  <action name="ShowMenu">
-	    <menu>client-list-combined-menu</menu>
-	  </action>
+      <action name="ShowMenu">
+        <menu>client-list-combined-menu</menu>
+      </action>
     </keybind>
     <keybind key="W-w">
       <action name="Move"/>

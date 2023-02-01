@@ -31,7 +31,7 @@ case $1 in
 		xscreensaver-command -lock
 		sleep 5
 		case $os in
-			1) loginctl hibernate ;;
+			1) loginctl suspend ;;
 			2) systemctl suspend ;;
 			3) acpiconf -s 3 ;;
 		esac
