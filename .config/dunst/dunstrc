@@ -3,8 +3,8 @@
     follow = none
 	width = (200, 800)
 	height = 500
-	origin = top-center
-	offset = 0x50
+	origin = top-right
+	offset = 50x50
     indicate_hidden = yes
     shrink = yes
     transparency = 15
