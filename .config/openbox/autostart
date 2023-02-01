@@ -30,14 +30,14 @@ delay_desktop() {
 
 export LANG='en_US.UTF-8'
 pgrep musicpd >/dev/null || musicpd >/dev/null 2>&1
-"$HOME"/.local/bin/setwp "$HOME"/pics/wp.jpg
-"$HOME"/.local/bin/kb
-xset s off
-xset -dpms
 startif dunst
 startif picom
 startif mpd-notification
 # startif xscreensaver
+"$HOME"/.local/bin/setwp "$HOME"/pics/wp.jpg
+"$HOME"/.local/bin/kb
+xset s off
+xset -dpms
 if xrandr | grep -F 'DisplayPort-0 connected' >/dev/null 2>&1; then
 	"$HOME"/.local/bin/scr
 else
