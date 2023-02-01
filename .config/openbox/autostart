@@ -34,15 +34,15 @@ pgrep musicpd >/dev/null || musicpd >/dev/null 2>&1
 "$HOME"/.local/bin/kb
 xset s off
 xset -dpms
+startif dunst
+startif picom
+startif mpd-notification
+# startif xscreensaver
 if xrandr | grep -F 'DisplayPort-0 connected' >/dev/null 2>&1; then
 	"$HOME"/.local/bin/scr
 else
 	"$HOME"/.local/bin/dscr
 fi
-startif dunst
-startif picom
-startif mpd-notification
-startif xscreensaver
 delay_desktop &
 cd "$HOME"
 xrdb "$HOME"/.config/x11/xresources
