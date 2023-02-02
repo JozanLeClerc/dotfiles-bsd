@@ -1,7 +1,7 @@
 table Config
   FontName: Cantarell
   FontSize: 11
-  FontColor: #ebdbb2
+  FontColor: #ffffff
   ToolTip.FontSize: 10
   ToolTip.FontName: Cantarell
   ToolTip.ForeColor: #000000
