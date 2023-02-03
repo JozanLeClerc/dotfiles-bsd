@@ -41,12 +41,10 @@ else
 	exit
 fi
 
-echo '${hr}
-${color grey}Interface: ${font1}${color white}'$if_main'${font}
+echo '${color grey}Interface: ${font1}${color white}'$if_main'${font}
 ${color grey}---------
 ${color grey}LAN IP:    ${font1}${color white}${addr '$if_main'}${font}
 ${color grey}Public IP: ${color white}${font1}${execi 300 curl -s https://ifconfig.me || echo No Address}${font}${color grey}
-${color grey}Public IP: ${color white}${font1}${execi 300 echo '$if_main'}${font}${color grey}
 ${hr}
 ${color grey}Speed: ${font1}down: ${color white}${font1}${downspeed '$if_main'} ${color grey}- up: ${color white}${font1}${upspeed '$if_main'}${font}
 ${color grey}Down: ${color white}${downspeedgraph '$if_main' bfbfbf c0c0c0  125829120}
