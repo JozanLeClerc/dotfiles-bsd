@@ -16,6 +16,22 @@
 #
 #xfce-mcs-manager &
 
+# select OS
+# 1: Artix
+# 2: Pop OS
+# 3: FreeBSD
+
+os="$(uname)"
+
+if [ "$os" = "Linux" ]; then
+	grep "Artix" /etc/issue >/dev/null 2>&1 && os=1 || os=2
+elif [ "$os" = "FreeBSD" ]; then
+	os=3
+else
+	echo "unknown OS"
+	exit 1
+fi
+
 startif() {
 	pgrep "$(basename "$1")" >/dev/null || "$@" >/dev/null 2>&1 &
 }
@@ -25,11 +41,15 @@ delay_desktop() {
 	startif conky -d -c "$HOME"/.config/conkyrc
 	startif tint2
 	startif plank
-	startif idesk
 }
 
 export LANG='en_US.UTF-8'
-pgrep musicpd >/dev/null || musicpd >/dev/null 2>&1
+case $os in
+	1) icon=" " ;;
+	2) icon=" " ;;
+	3) icon=" " ;;
+esac
+
 startif dunst
 startif picom
 startif mpd-notification
@@ -46,5 +66,6 @@ fi
 delay_desktop &
 cd "$HOME"
 xrdb "$HOME"/.config/x11/xresources
+
 notify-send -u normal 'Welcome' "  Welcome back, partner\!"
 # dbus-launch openbox
