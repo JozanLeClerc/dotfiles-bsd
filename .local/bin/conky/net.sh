@@ -43,16 +43,13 @@ fi
 
 echo '${color grey}Interface: ${font1}${color white}'$if_main'${font}
 ${color grey}---------
-${color grey}LAN IP:    ${font1}${color white}${addr '$if_main'}${font}
-${color grey}Public IP: ${color white}${font1}${execi 300 curl -s https://ifconfig.me || echo No Address}${font}${color grey}
+${color grey}LAN IP: ${font1}${color white}${addr '$if_main'}${font}
+${color grey}DNS IP: ${font1}${color white}${nameserver 0}${font}
+${color grey}WAN IP: ${color white}${font1}${execi 300 curl -s https://ifconfig.me || echo No WAN}${font}
 ${hr}
 ${color grey}Speed: ${font1}down: ${color white}${font1}${downspeed '$if_main'} ${color grey}- up: ${color white}${font1}${upspeed '$if_main'}${font}
 ${color grey}Down: ${color white}${downspeedgraph '$if_main' bfbfbf c0c0c0  125829120}
 ${color grey}Up:   ${color white}${upspeedgraph   '$if_main' bfbfbf c0c0c0  125829120}
-${hr}
-${color grey}DNS:
-${font1}${color white}${nameserver 0}${font}
-${font1}${color white}${nameserver 1}${font}
 ${hr}'
 
 # ${color grey}VPN IP:    ${font1}${color white}${addr proton0}${font}
