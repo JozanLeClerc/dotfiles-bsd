@@ -3,7 +3,9 @@
 os="$(uname)"
 tmpfile="/tmp/os"
 
-if ! [ -e "/tmp/os" ]; then
+if [ -e "/tmp/os" ]; then
+	os=$(cat $tmpfile)
+else
 	if [ "$os" = "Linux" ]; then
 		grep "Artix" /etc/issue >/dev/null 2>&1 && os=1 || os=2
 	elif [ "$os" = "FreeBSD" ]; then
@@ -13,32 +15,16 @@ if ! [ -e "/tmp/os" ]; then
 		exit 1
 	fi
 	echo $os >$tmpfile
-else
-	os=$(cat $tmpfile)
 fi
 
 case $os in
 	1)
 		if_main="eth1"
 		if_alt="eth0"
-		if grep up "/sys/class/net/$if_main/operstate" >/dev/null 2>&1; then
-			:
-		elif grep up "/sys/class/net/$if_alt/operstate" >/dev/null 2>&1; then
-			if_main=$if_alt
-		else
-			exit
-		fi
 		;;
 	2)
 		if_main="enx4ce1734c425a"
 		if_alt="wlp1s0"
-		if grep up "/sys/class/net/$if_main/operstate" >/dev/null 2>&1; then
-			:
-		elif grep up "/sys/class/net/$if_alt/operstate" >/dev/null 2>&1; then
-			if_main=$if_alt
-		else
-			exit
-		fi
 		;;
 	3)
 		if_main="em0"
@@ -46,6 +32,14 @@ case $os in
 		exit
 		;;
 esac
+
+if grep up "/sys/class/net/$if_main/operstate" >/dev/null 2>&1 && ! [ -z $(ifconfig $if_main 2>/dev/null | awk '/inet / {print $2}') ]; then
+	:
+elif grep up "/sys/class/net/$if_alt/operstate" >/dev/null 2>&1 && ! [ -z $(ifconfig $if_alt 2>/dev/null | awk '/inet / {print $2}') ]; then
+	if_main=$if_alt
+else
+	exit
+fi
 
 echo '${hr}
 ${color grey}Interface: ${font1}${color white}'$if_main'${font}
