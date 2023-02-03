@@ -14,7 +14,7 @@ if ! [ -e "/tmp/os" ]; then
 	fi
 	echo $os >$tmpfile
 else
-	$os=$(cat $tmpfile)
+	os=$(cat $tmpfile)
 fi
 
 case $os in
@@ -47,19 +47,18 @@ case $os in
 		;;
 esac
 
-echo '${color grey}Net'
-# ${hr}${if_up enx4ce1734c425a}
-# ${color grey}LAN IP:    ${font1}${color white}${addr enx4ce1734c425a}${font}
-# ${color grey}---------
-# ${color grey}VPN IP:    ${font1}${color white}${addr proton0}${font}
-# ${color grey}---------
-# ${color grey}Public IP: ${color white}${font1}${execi 300 curl -s https://ifconfig.me || echo No Address}${font}${color grey}
-# ${hr}
-# ${color grey}Down: ${color white}${font1}${downspeed enx4ce1734c425a} ${font}${color grey}- Up: ${color white}${font1}${upspeed enx4ce1734c425a}${font}
-# ${color grey}Down: ${color white}${downspeedgraph enx4ce1734c425a bfbfbf c0c0c0  125829120}
-# ${color grey}Up:   ${color white}${upspeedgraph   enx4ce1734c425a bfbfbf c0c0c0  125829120}
-# ${hr}
-# ${color grey}DNS:
-# ${font1}${color white}${nameserver 0}${font}
-# ${font1}${color white}${nameserver 1}${font}
-# ${hr}${endif}
+echo '${hr}
+${color grey}Interface: ${font1}${color white}'$if_main'${font}
+${color grey}---------
+${color grey}LAN IP:    ${font1}${color white}${addr '$if_main'}${font}
+${color grey}VPN IP:    ${font1}${color white}${addr proton0}${font}
+${color grey}Public IP: ${color white}${font1}${execi 300 curl -s https://ifconfig.me || echo No Address}${font}${color grey}
+${hr}
+${color grey}Down: ${color white}${font1}${downspeed '$if_main'} ${font}${color grey}- Up: ${color white}${font1}${upspeed '$if_main'}${font}
+${color grey}Down: ${color white}${downspeedgraph '$if_main' bfbfbf c0c0c0  125829120}
+${color grey}Up:   ${color white}${upspeedgraph   '$if_main' bfbfbf c0c0c0  125829120}
+${hr}
+${color grey}DNS:
+${font1}${color white}${nameserver 0}${font}
+${font1}${color white}${nameserver 1}${font}
+${hr}'
