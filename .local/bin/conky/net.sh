@@ -1,20 +1,50 @@
 #!/bin/sh
 
 os="$(uname)"
+tmpfile="/tmp/os"
 
-if [ "$os" = "Linux" ]; then
-	grep "Artix" /etc/issue >/dev/null 2>&1 && os=1 || os=2
-elif [ "$os" = "FreeBSD" ]; then
-	os=3
+if ! [ -e "/tmp/os" ]; then
+	if [ "$os" = "Linux" ]; then
+		grep "Artix" /etc/issue >/dev/null 2>&1 && os=1 || os=2
+	elif [ "$os" = "FreeBSD" ]; then
+		os=3
+	else
+		echo "unknown OS"
+		exit 1
+	fi
+	echo $os >$tmpfile
 else
-	echo "unknown OS"
-	exit 1
+	$os=$(cat $tmpfile)
 fi
 
 case $os in
-	1) icon=" " ;;
-	2) icon=" " ;;
-	3) icon=" " ;;
+	1)
+		if_main="eth1"
+		if_alt="eth0"
+		if grep up "/sys/class/net/$if_main/operstate" >/dev/null 2>&1; then
+			:
+		elif grep up "/sys/class/net/$if_alt/operstate" >/dev/null 2>&1; then
+			if_main=$if_alt
+		else
+			exit
+		fi
+		;;
+	2)
+		if_main="enx4ce1734c425a"
+		if_alt="wlp1s0"
+		if grep up "/sys/class/net/$if_main/operstate" >/dev/null 2>&1; then
+			:
+		elif grep up "/sys/class/net/$if_alt/operstate" >/dev/null 2>&1; then
+			if_main=$if_alt
+		else
+			exit
+		fi
+		;;
+	3)
+		if_main="em0"
+		if_alt="wlan0"
+		exit
+		;;
 esac
 
 echo '${color grey}Net'
