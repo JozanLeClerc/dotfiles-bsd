@@ -17,55 +17,53 @@
 #xfce-mcs-manager &
 
 # select OS
-# 1: Artix
-# 2: Pop OS
-# 3: FreeBSD
 
 os="$(uname)"
 
-if [ "$os" = "Linux" ]; then
-	grep "Artix" /etc/issue >/dev/null 2>&1 && os=1 || os=2
-elif [ "$os" = "FreeBSD" ]; then
-	os=3
-else
-	echo "unknown OS"
-	exit 1
-fi
+case $os in
+	"Linux") grep "Artix" /etc/issue >/dev/null 2>&1 && os=1 || os=2 ;;
+	"FreeBSD") os=3 ;;
+esac
+case $os in
+	1)
+		icon=" "
+		mpd="mpd"
+		xscr="xscreensaver --no-splash"
+		;;
+	2)
+		icon=" "
+		mpd="mpd"
+		xscr="xscreensaver"
+		;;
+	3)
+		icon=" "
+		mpd="musicpd"
+		xscr="xscreensaver --no-splash"
+		;;
+esac
 
 startif() {
 	pgrep "$(basename "$1")" >/dev/null || "$@" >/dev/null 2>&1 &
 }
 
-delay_desktop() {
-	sleep 5
-	startif conky -d -c "$HOME"/.config/conkyrc
-	startif tint2
-	startif plank
-}
-
 export LANG='en_US.UTF-8'
-case $os in
-	1) icon=" " ;;
-	2) icon=" " ;;
-	3) icon=" " ;;
-esac
-
 startif dunst
 startif picom
 startif mpd-notification
-# startif xscreensaver
+pgrep $mpd >/dev/null || $mpd >/dev/null 2>&1
+startif $xscr
 "$HOME"/.local/bin/setwp "$HOME"/pics/wp.jpg
 "$HOME"/.local/bin/kb
 xset s off
 xset -dpms
-if xrandr | grep -F 'DisplayPort-0 connected' >/dev/null 2>&1; then
-	"$HOME"/.local/bin/scr
-else
-	"$HOME"/.local/bin/dscr
-fi
-delay_desktop &
+# if xrandr | grep -F 'DisplayPort-0 connected' >/dev/null 2>&1; then
+# 	"$HOME"/.local/bin/scr
+# else
+# 	"$HOME"/.local/bin/dscr
+# fi
+startif conky -d -c "$HOME"/.config/conkyrc
+startif tint2
+startif plank
 cd "$HOME"
 xrdb "$HOME"/.config/x11/xresources
-
-notify-send -u normal 'Welcome' "  Welcome back, partner\!"
-# dbus-launch openbox
+notify-send -u normal 'Welcome' "$icon Welcome back, partner!"

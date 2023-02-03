@@ -295,12 +295,12 @@
     </keybind>
     <keybind key="W-C-h">
       <action name="MoveResizeTo">
-        <monitor>next</monitor>
+        <monitor>prev</monitor>
       </action>
     </keybind>
     <keybind key="W-C-l">
       <action name="MoveResizeTo">
-        <monitor>prev</monitor>
+        <monitor>next</monitor>
       </action>
     </keybind>
     <!-- <keybind key="W-d"> -->

@@ -53,11 +53,10 @@ ${color grey}OS:       ${font1}${color white}${sysname}${font}
 ${color grey}Kernel:   ${font1}${color white}${kernel}${font}
 ${color grey}Uptime:   ${font1}${color white}${uptime}${font}
 ${hr}${if_mpd_playing}
-${color grey}${alignc}MPD
 ${font1}${color white}${goto 140}${mpd_artist}
 ${goto 140}${scroll wait 25 3 1 ${mpd_title}}
 ${goto 140}${mpd_elapsed}/${mpd_length} ${mpd_bar}
-${execi 5 ~/.local/bin/conky_cover.sh >/dev/null 2>&1}${image /tmp/conkyCover.png -p 20,150 -n}
+${execi 5 ~/.local/bin/conky/cover.sh >/dev/null 2>&1}${image /tmp/conkyCover.png -p 20,150 -n}
 ${hr}${endif}${if_up enx4ce1734c425a}
 ${font2}${color white}${alignc}${execi 1800 curl wttr.in/Lyon?T0 --silent --max-time 3}${font}
 ${hr}${endif}
@@ -83,19 +82,6 @@ ${font1}${color white}${top_mem name 3} ${alignr}${top_mem pid 3}  ${top_mem cpu
 ${font1}${color  grey}${top_mem name 4} ${alignr}${top_mem pid 4}  ${top_mem cpu 4}  ${top_mem mem_res 4}${font}
 ${color grey}---------
 ${color grey}Processes: ${color white}${processes}
-${hr}${if_up enx4ce1734c425a}
-${color grey}LAN IP:    ${font1}${color white}${addr enx4ce1734c425a}${font}
-${color grey}---------
-${color grey}VPN IP:    ${font1}${color white}${addr proton0}${font}
-${color grey}---------
-${color grey}Public IP: ${color white}${font1}${execi 300 curl -s https://ifconfig.me || echo No Address}${font}${color grey}
 ${hr}
-${color grey}Down: ${color white}${font1}${downspeed enx4ce1734c425a} ${font}${color grey}- Up: ${color white}${font1}${upspeed enx4ce1734c425a}${font}
-${color grey}Down: ${color white}${downspeedgraph enx4ce1734c425a bfbfbf c0c0c0  125829120}
-${color grey}Up:   ${color white}${upspeedgraph   enx4ce1734c425a bfbfbf c0c0c0  125829120}
-${hr}
-${color grey}${alignc}DNS
-${font1}${color white}${nameserver 0}${font}
-${font1}${color white}${nameserver 1}${font}
-${hr}${endif}
+${execp ~/.local/bin/conky/net.sh}
 ]]
