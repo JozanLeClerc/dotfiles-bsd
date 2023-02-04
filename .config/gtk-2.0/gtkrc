@@ -3,7 +3,7 @@
 
 include "/home/jozan/.gtkrc-2.0.mine"
 gtk-theme-name="Clearlooks"
-gtk-icon-theme-name="Faenza"
+gtk-icon-theme-name="Mist"
 gtk-font-name="sans-serif 12"
 gtk-cursor-theme-name="Adwaita"
 gtk-cursor-theme-size=0

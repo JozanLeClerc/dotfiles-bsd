@@ -42,6 +42,7 @@ text/x-tcl=emacs.desktop
 x-scheme-handler/msteams=teams.desktop
 video/mp4=mpv.desktop
 application/zip=xarchiver.desktop
+video/x-matroska=mpv.desktop
 
 [Added Associations]
 x-scheme-handler/https=userapp-Firefox-NVLWI0.desktop;
@@ -59,3 +60,4 @@ video/webm=mpv.desktop;
 text/plain=nvim.desktop;vim.desktop;org.gnome.gedit.desktop;
 video/mp4=mpv.desktop;
 application/zip=xarchiver.desktop;org.gnome.Nautilus.desktop;
+video/x-matroska=mpv.desktop;
