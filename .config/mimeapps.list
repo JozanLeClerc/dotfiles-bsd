@@ -43,6 +43,7 @@ x-scheme-handler/msteams=teams.desktop
 video/mp4=mpv.desktop
 application/zip=xarchiver.desktop
 video/x-matroska=mpv.desktop
+video/x-ms-wmv=mpv.desktop
 
 [Added Associations]
 x-scheme-handler/https=userapp-Firefox-NVLWI0.desktop;
@@ -61,3 +62,5 @@ text/plain=nvim.desktop;vim.desktop;org.gnome.gedit.desktop;
 video/mp4=mpv.desktop;
 application/zip=xarchiver.desktop;org.gnome.Nautilus.desktop;
 video/x-matroska=mpv.desktop;
+application/x-partial-download=mpv.desktop;
+video/x-ms-wmv=mpv.desktop;
