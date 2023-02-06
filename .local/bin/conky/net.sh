@@ -31,10 +31,9 @@ ${color #928374}---------
 ${color #928374}LAN IP: ${font1}${color #ebdbb2}${addr '$if_main'}${font}
 ${color #928374}DNS IP: ${font1}${color #ebdbb2}${nameserver 0}${font}
 ${color #928374}WAN IP: ${color #ebdbb2}${font1}${execi 300 curl -s https://ifconfig.me || echo No WAN}${font}
-${hr}
+${color #928374}---------
 ${color #928374}Speed: ${font1}down: ${color #ebdbb2}${font1}${downspeed '$if_main'} ${color #928374}- up: ${color #ebdbb2}${font1}${upspeed '$if_main'}${font}
 ${color #928374}Down: ${color #ebdbb2}${downspeedgraph '$if_main' bfbfbf c0c0c0  125829120}
-${color #928374}Up:   ${color #ebdbb2}${upspeedgraph   '$if_main' bfbfbf c0c0c0  125829120}
-${hr}'
+${color #928374}Up:   ${color #ebdbb2}${upspeedgraph   '$if_main' bfbfbf c0c0c0  125829120}'
 
 # ${color #928374}VPN IP:    ${font1}${color #ebdbb2}${addr proton0}${font}
