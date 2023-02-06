@@ -117,7 +117,7 @@
 		</item>
 	</menu>
 
-	<menu id="system-menu" label="System">
+	<menu id="system-menu" label="Settings">
 		<item label="Openbox configuration">
 			<action name="Execute">
 				<command>obconf</command>
