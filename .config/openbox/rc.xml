@@ -43,7 +43,7 @@
   </placement>
   <theme>
     <name>gruvbox-material-dark-blocks</name>
-    <titleLayout>SNLIMC</titleLayout>
+    <titleLayout>SDNLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
       N: window icon
@@ -122,7 +122,12 @@
        and back in -->
     <number>4</number>
     <firstdesk>1</firstdesk>
-    <names/>
+	<names>
+      <name>work</name>
+      <name>play</name>
+      <name>dull</name>
+      <name>boy</name>
+	</names>
     <popupTime>500</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
        desktops.  Set this to 0 to disable the popup. -->
