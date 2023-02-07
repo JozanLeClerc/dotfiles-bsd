@@ -60,9 +60,8 @@ ${goto 130}${scroll wait 30 3 1 ${mpd_title}}
 ${goto 130}${mpd_elapsed}/${mpd_length} ${mpd_bar}
 ${execi 5 ~/.local/bin/conky/cover.sh >/dev/null 2>&1}${image /tmp/conkyCover.png -p 0,150 -n}${font}
 
-${endif}${if_up enx4ce1734c425a}${font1}WEATHER ${hr}${font}
-${font3}${color #ebdbb2}${alignc}${execi 1800 curl wttr.in/Lyon?T0 --silent --max-time 3}${font}${endif}
-${font1}CPU ${hr}${font}
+${endif}${execpi 1800 ~/.local/bin/conky/weather.sh}
+CPU ${hr}
 ${color #928374}CPU: ${font2}${color #ebdbb2} ${freq_g} GHz ${color #ebdbb2}${cpu}%
 ${offset 4}${cpugraph bfbfbf c0c0c0}
 ${color #928374}1:${color #ebdbb2} ${cpu cpu0}% ${cpubar cpu0}${color #ebdbb2}

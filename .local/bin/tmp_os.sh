@@ -1,5 +1,6 @@
 #!/bin/sh
 
+tmpfile=/tmp/os
 os="$(uname)"
 
 if [ "$os" = "Linux" ]; then
@@ -10,4 +11,4 @@ else
 	echo "unknown OS"
 	exit 1
 fi
-echo $os >$tmpfile
+echo -n $os >$tmpfile
