@@ -89,16 +89,6 @@
 				<command>hexchat</command>
 			</action>
 		</item>
-		<item label="irssi">
-			<action name="Execute">
-				<command>alacritty -e irssi</command>
-			</action>
-		</item>
-		<item label="newsboat">
-			<action name="Execute">
-				<command>alacritty -e newsboat</command>
-			</action>
-		</item>
 	</menu>
 
 	<menu id="apps-multimedia-menu" label="Multimedia">
