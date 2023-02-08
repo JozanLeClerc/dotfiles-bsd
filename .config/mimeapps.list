@@ -10,8 +10,8 @@ application/x-extension-shtml=iridium-browser.desktop
 application/xhtml+xml=iridium-browser.desktop
 application/x-extension-xhtml=iridium-browser.desktop
 application/x-extension-xht=iridium-browser.desktop
-application/pdf=org.pwmt.zathura-pdf-mupdf.desktop
-image/png=nsxiv.desktop
+application/pdf=org.pwmt.zathura-pdf-poppler.desktop
+image/png=userapp-nsxiv -b -a-8PYC01.desktop
 image/jpeg=nsxiv.desktop
 image/gif=nsxiv.desktop
 audio/mpeg=mpv.desktop
@@ -56,7 +56,7 @@ application/x-extension-shtml=userapp-Firefox-NVLWI0.desktop;
 application/xhtml+xml=userapp-Firefox-NVLWI0.desktop;
 application/x-extension-xhtml=userapp-Firefox-NVLWI0.desktop;
 application/x-extension-xht=userapp-Firefox-NVLWI0.desktop;
-application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;org.pwmt.zathura-pdf-poppler.desktop;
 video/webm=mpv.desktop;
 text/plain=nvim.desktop;vim.desktop;org.gnome.gedit.desktop;
 video/mp4=mpv.desktop;
@@ -64,3 +64,6 @@ application/zip=xarchiver.desktop;org.gnome.Nautilus.desktop;
 video/x-matroska=mpv.desktop;
 application/x-partial-download=mpv.desktop;
 video/x-ms-wmv=mpv.desktop;
+image/png=userapp-nsxiv -b -a-8PYC01.desktop;sxiv.desktop;userapp-nsxiv -b -a-25V8Z1.desktop;
+
+[Removed Associations]
