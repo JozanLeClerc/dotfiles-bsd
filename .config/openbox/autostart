@@ -44,11 +44,6 @@ startif() {
 	pgrep "$(basename "$1")" >/dev/null || "$@" >/dev/null 2>&1 &
 }
 
-conkies() {
-	conky -d -c "$HOME"/.config/conky/conkyrc
-	$sleep
-	conky -d -c "$HOME"/.config/conky/conkyrss
-}
 
 export LANG='en_US.UTF-8'
 startif dunst
@@ -69,7 +64,8 @@ startif tint2
 $sleep
 startif plank
 $sleep
-conkies &
+startif conky -d -c "$HOME"/.config/conky/conkyrc
+$sleep
 cd "$HOME"
 xrdb "$HOME"/.config/x11/xresources
 notify-send -u normal 'Welcome' "$icon Welcome back, partner!"
