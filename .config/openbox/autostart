@@ -46,6 +46,11 @@ startif() {
 	pgrep "$(basename "$1")" >/dev/null || "$@" >/dev/null 2>&1 &
 }
 
+conkies() {
+	startif conky -d -c "$HOME"/.config/conky/conkyrc
+	conky -d -c "$HOME"/.config/conky/conkyrss
+}
+
 export LANG='en_US.UTF-8'
 startif dunst
 startif picom
@@ -61,7 +66,7 @@ xset -dpms
 # else
 # 	"$HOME"/.local/bin/dscr
 # fi
-startif conky -d -c "$HOME"/.config/conkyrc
+conkies
 startif tint2
 startif plank
 cd "$HOME"

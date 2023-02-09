@@ -14,7 +14,6 @@ conky.config = {
     font  = 'NotoSansMono Nerd Font:size=10',
     font1 = 'NotoSansMono Nerd Font:bold:size=10',
 	font2 = 'Hack Nerd Font Mono:bold:size=10',
-	font3 = 'Hack Nerd Font Mono:bold:size=9',
 	template0 = '\\n',
 	if_up_strictness = address,
 	format_human_readable = true,

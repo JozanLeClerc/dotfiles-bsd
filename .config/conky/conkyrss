@@ -1,0 +1,58 @@
+conky.config = {
+	alignment = 'left',
+    background = false,
+    own_window = true,
+    own_window_class = 'Desktop',
+    own_window_transparent = true,
+    own_window_type = 'desktop',
+    own_window_argb_visual = true,
+    own_window_argb_value = 255,
+    double_buffer = true,
+    use_spacer = 'none',
+    use_xft = true,
+    xftalpha = 1,
+    font  = 'NotoSansMono Nerd Font:size=10',
+    font1 = 'NotoSansMono Nerd Font:bold:size=10',
+	font2 = 'Hack Nerd Font Mono:bold:size=10',
+	font3 = 'Hack Nerd Font Mono:bold:size=9',
+	template0 = '\\n',
+	if_up_strictness = address,
+	format_human_readable = true,
+    update_interval = 1.5,
+    uppercase = false,
+    override_utf8_locale = true,
+    stippled_borders = 0,
+    border_width = 2,
+    draw_borders = false,
+    draw_graph_borders = true,
+    draw_outline = false,
+    draw_shades = false,
+    show_graph_scale = false,
+    show_graph_range = false,
+    alignment = 'top_left',
+    minimum_width = 400,
+    minimum_height = 200,
+    maximum_width = 400,
+    gap_x = 420,
+    gap_y = 40,
+    net_avg_samples = 2,
+    cpu_avg_samples = 4,
+    short_units = true,
+    pad_percents = 2,
+    text_buffer_size = 8192,
+    out_to_console = false,
+    out_to_stderr = false,
+    extra_newline = false,
+    default_color = 'red',
+}
+
+conky.text = [[
+${color #ebdbb2}${font1}HACKER NEWS ${hr}${font2}${color #928374}
+${rss https://hnrss.org/frontpage 900 item_titles 10}
+
+${color #ebdbb2}${font1}BBC NEWS WORLD ${hr}${font2}${color #928374}
+${rss https://feeds.bbci.co.uk/news/rss.xml 900 item_titles 10}
+
+${color #ebdbb2}${font1}BBC NEWS EUROPE ${hr}${font2}${color #928374}
+${rss http://feeds.bbci.co.uk/news/world/europe/rss.xml 900 item_titles 10}
+]]
