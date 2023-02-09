@@ -29,9 +29,9 @@ conky.config = {
     show_graph_scale = false,
     show_graph_range = false,
     alignment = 'top_left',
-    minimum_width = 400,
     minimum_height = 1440,
-    maximum_width = 400,
+    minimum_width = 320,
+    maximum_width = 320,
     gap_x = 10,
     gap_y = 40,
     net_avg_samples = 2,
@@ -75,6 +75,7 @@ ${offset 4}${memgraph bfbfbf c0c0c0}
 ${color #928374}SWAP:  ${font2}${color #ebdbb2}${swap} / ${swapmax} ${color #ebdbb2}${swapperc}% ${swapbar 4}${font}
 ${font1}DISK ${hr}${font}
 ${color #928374}SSD: ${font2}${color #ebdbb2}${fs_free_perc /}% ${fs_bar 6 /}${font}
+${color #928374}HDD: ${font2}${color #ebdbb2}${fs_free_perc /var/hdd}% ${fs_bar 6 /var/hdd}${font}
 ${font1}PROC ${hr}${font}
 ${color #928374}Process:${color #928374}${alignr}PID     CPU   MEM
 ${font2}${color #ebdbb2}${top_mem name 1} ${alignr}${top_mem pid 1}  ${top_mem cpu 1}  ${top_mem mem_res 1}
