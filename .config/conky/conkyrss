@@ -47,12 +47,5 @@ conky.config = {
 }
 
 conky.text = [[
-${color #ebdbb2}${font1}HACKER NEWS ${hr}${font2}${color #928374}
-${rss https://hnrss.org/frontpage 900 item_titles 10}
-
-${color #ebdbb2}${font1}BBC NEWS WORLD ${hr}${font2}${color #928374}
-${rss https://feeds.bbci.co.uk/news/rss.xml 900 item_titles 10}
-
-${color #ebdbb2}${font1}BBC NEWS EUROPE ${hr}${font2}${color #928374}
-${rss http://feeds.bbci.co.uk/news/world/europe/rss.xml 900 item_titles 10}
+	${execp ~/.local/bin/conky/rss.sh}
 ]]

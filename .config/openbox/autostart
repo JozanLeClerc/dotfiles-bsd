@@ -18,27 +18,25 @@
 
 # select OS
 
-os="$(uname)"
-
-case $os in
-	"Linux") grep "Artix" /etc/issue >/dev/null 2>&1 && os=1 || os=2 ;;
-	"FreeBSD") os=3 ;;
-esac
+os=$(cat /tmp/os)
 case $os in
 	1)
 		icon=" "
 		mpd="mpd"
 		xscr="xscreensaver --no-splash"
+		sleep="sleep 0.5"
 		;;
 	2)
 		icon=" "
 		mpd="mpd"
 		xscr="xscreensaver"
+		sleep="sleep 0.5"
 		;;
 	3)
 		icon=" "
 		mpd="musicpd"
 		xscr="xscreensaver --no-splash"
+		sleep="gsleep 0.5"
 		;;
 esac
 
@@ -47,7 +45,8 @@ startif() {
 }
 
 conkies() {
-	startif conky -d -c "$HOME"/.config/conky/conkyrc
+	conky -d -c "$HOME"/.config/conky/conkyrc
+	$sleep
 	conky -d -c "$HOME"/.config/conky/conkyrss
 }
 
@@ -66,9 +65,11 @@ xset -dpms
 # else
 # 	"$HOME"/.local/bin/dscr
 # fi
-conkies
 startif tint2
+$sleep
 startif plank
+$sleep
+conkies &
 cd "$HOME"
 xrdb "$HOME"/.config/x11/xresources
 notify-send -u normal 'Welcome' "$icon Welcome back, partner!"
