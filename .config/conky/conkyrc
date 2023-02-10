@@ -65,7 +65,7 @@ ${execi 5 ~/.local/bin/conky/cover.sh >/dev/null 2>&1}${image /tmp/conkyCover.pn
 ${endif}${execpi 1800 ~/.local/bin/conky/weather.sh}
 CPU ${hr}
 ${color #928374}CPU: ${font2}${color #ebdbb2} ${freq_g} GHz ${color #ebdbb2}${cpu}%
-${cpugraph ebdbb2 c0c0c0 -t}
+${cpugraph 40,380 ebdbb2 928374 -t}
 ${color #928374}1: ${color #ebdbb2}${cpubar cpu0}${color #ebdbb2}
 ${color #928374}2: ${color #ebdbb2}${cpubar cpu1}${color #ebdbb2}
 ${color #928374}3: ${color #ebdbb2}${cpubar cpu2}${color #ebdbb2}
@@ -74,12 +74,12 @@ ${color #928374}5: ${color #ebdbb2}${cpubar cpu4}${color #ebdbb2}
 ${color #928374}6: ${color #ebdbb2}${cpubar cpu5}${color #ebdbb2}${font}
 ${font1}RAM ${hr}${font}
 ${color #928374}RAM:  ${font2}${color #ebdbb2}${mem} / ${memmax} ${color #ebdbb2}${membar}${font}
-${memgraph ebdbb2 c0c0c0 -t}
+${memgraph 40,380 ebdbb2 928374 -t}
 ${color #928374}SWAP: ${font2}${color #ebdbb2}${swap} / ${swapmax} ${color #ebdbb2}${swapbar}${font}
 ${font1}DISK ${hr}${font}
 ${color #928374}SSD: ${font2}${color #ebdbb2}${fs_bar /}${font}
 ${color #928374}HDD: ${font2}${color #ebdbb2}${fs_bar /var/hdd}${font}
-${diskiograph nvme0n1 30,372 ebdbb2 c0c0c0 -t}
+${diskiograph nvme0n1 40,380 ebdbb2 928374 -t}
 ${font1}PROC ${hr}${font}
 ${color #928374}Process:${color #928374}${alignr}PID     CPU   MEM
 ${font2}${color #ebdbb2}${top_mem name 1} ${alignr}${top_mem pid 1}  ${top_mem cpu 1}  ${top_mem mem_res 1}
