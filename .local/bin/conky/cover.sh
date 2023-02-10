@@ -60,7 +60,6 @@ coverfile="$(find "$filedir" -maxdepth 1 -type f \( -iname 'cover.jpg' -o -iname
 #convert /tmp/cover.png $HOME/.config/conky-mpd/case.png -composite /tmp/cover.png >> $LOG
 ## Resize for immediate use
 # convert /tmp/cover.png -resize 120 /tmp/conkyCover.png >> $LOG
-echo "$coverfile" >/tmp/asd
 convert "$coverfile" -resize 100 /tmp/conkyCover.png # >> $LOG
 ## Set current artist
 echo "$playing" > $TMP

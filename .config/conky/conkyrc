@@ -28,7 +28,6 @@ conky.config = {
 	default_shade_color = AAAAAA,
 	default_outline_color = AAAAAA,
 	draw_graph_borders = false,
-	default_graph_size = 30,80,
     show_graph_scale = false,
     show_graph_range = false,
     alignment = 'top_left',
