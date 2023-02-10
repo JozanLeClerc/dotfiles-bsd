@@ -35,7 +35,8 @@ ${color #928374}LAN IP: ${font2}${color #ebdbb2}${addr '$if_main'}${font}
 ${color #928374}DNS IP: ${font2}${color #ebdbb2}${nameserver 0}${font}
 ${color #928374}WAN IP: ${color #ebdbb2}${font2}${execi 300 curl -s https://ifconfig.me || echo No WAN}${font}
 ${color #928374}---------
-${color #928374}Speed: ${font2}down: ${color #ebdbb2}${font2}${downspeed '$if_main'} ${color #928374}- up: ${color #ebdbb2}${font2}${upspeed '$if_main'}${font}
-${offset 4}${color #ebdbb2}${downspeedgraph '$if_main' 30,182 bfbfbf c0c0c0 125829120 -t}${goto 198}${color #ebdbb2}${upspeedgraph '$if_main' 30,182 bfbfbf c0c0c0 125829120 -t}'
+${color #928374}${font}Down: ${color #ebdbb2}${font2}${downspeed '$if_main'}${goto 195}${color #928374}${font}Up: ${color #ebdbb2}${font2}${upspeed '$if_main'}${font}
+${color #928374}${font}Sent: ${color #ebdbb2}${font2}${totalup '$if_main'}${goto 195}${color #928374}${font}Received: ${color #ebdbb2}${font2}${totaldown '$if_main'}
+${color #ebdbb2}${downspeedgraph '$if_main' 50,185 bfbfbf c0c0c0 125829120 -t}${goto 195}${color #ebdbb2}${upspeedgraph '$if_main' 50,185 bfbfbf c0c0c0 125829120 -t}'
 
 # ${color #928374}VPN IP:    ${font2}${color #ebdbb2}${addr proton0}${font}
