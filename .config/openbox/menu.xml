@@ -89,6 +89,11 @@
 				<command>hexchat</command>
 			</action>
 		</item>
+		<item label="Google Earth">
+			<action name="Execute">
+				<command>google-earth-pro</command>
+			</action>
+		</item>
 	</menu>
 
 	<menu id="apps-multimedia-menu" label="Multimedia">
