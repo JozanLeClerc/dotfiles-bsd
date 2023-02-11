@@ -23,6 +23,11 @@
 				<command>qalculate-gtk</command>
 			</action>
 		</item>
+		<item label="Google Earth">
+			<action name="Execute">
+				<command>google-earth-pro</command>
+			</action>
+		</item>
 	</menu>
 
 	<menu id="apps-editors-menu" label="Editors">
@@ -87,11 +92,6 @@
 		<item label="HexChat">
 			<action name="Execute">
 				<command>hexchat</command>
-			</action>
-		</item>
-		<item label="Google Earth">
-			<action name="Execute">
-				<command>google-earth-pro</command>
 			</action>
 		</item>
 	</menu>
