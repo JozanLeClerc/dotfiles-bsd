@@ -17,7 +17,7 @@ conky.config = {
 	template0 = '\\n',
 	if_up_strictness = address,
 	format_human_readable = true,
-    update_interval = 1.5,
+    update_interval = 1,
     uppercase = false,
     override_utf8_locale = true,
     stippled_borders = 0,
@@ -70,7 +70,9 @@ ${color #928374}2: ${color #ebdbb2}${cpubar cpu1}${color #ebdbb2}
 ${color #928374}3: ${color #ebdbb2}${cpubar cpu2}${color #ebdbb2}
 ${color #928374}4: ${color #ebdbb2}${cpubar cpu3}${color #ebdbb2}
 ${color #928374}5: ${color #ebdbb2}${cpubar cpu4}${color #ebdbb2}
-${color #928374}6: ${color #ebdbb2}${cpubar cpu5}${color #ebdbb2}${font}
+${color #928374}6: ${color #ebdbb2}${cpubar cpu5}${color #ebdbb2}${if_match "${nodename_short}" == "mother"}
+${color #928374}7: ${color #ebdbb2}${cpubar cpu6}${color #ebdbb2}
+${color #928374}8: ${color #ebdbb2}${cpubar cpu7}${color #ebdbb2}${endif}${font}
 ${font1}RAM ${hr}${font}
 ${color #928374}RAM:  ${font2}${color #ebdbb2}${mem} / ${memmax} ${color #ebdbb2}${membar}${font}
 ${memgraph 50,380 ebdbb2 928374 -t}
@@ -88,6 +90,6 @@ ${font2}${color #928374}${top_mem name 4} ${alignr}${top_mem pid 4}  ${top_mem c
 ${color #928374}---------
 ${color #928374}Processes: ${font2}${color #ebdbb2}${processes}${font}
 ${execpi 5 ~/.local/bin/conky/net.sh}
-${if_match "${nodename_short}" == "mother"}${color #ebdbb2}${downspeedgraph eth1 50,160 bfbfbf c0c0c0 125829120 -t}${goto 195}${color #ebdbb2}${upspeedgraph eth1 50,185 bfbfbf c0c0c0 125829120 -t}${endif}${if_match "${nodename_short}" == "po-rbo"}${color #ebdbb2}${downspeedgraph enx4ce1734c425a 50,160 bfbfbf c0c0c0 125829120 -t}${goto 195}${color #ebdbb2}${upspeedgraph enx4ce1734c425 50,185 bfbfbf c0c0c0 125829120 -t}${endif}
-#${if_match "${nodename_short}" == "mother"}${color #ebdbb2}${downspeedgraph eth1 50,160 bfbfbf c0c0c0 125829120 -t}${goto 195}${color #ebdbb2}${upspeedgraph eth1 50,185 bfbfbf c0c0c0 125829120 -t}${endif}${if_match "${nodename_short}" == "po-rbo"}${color #ebdbb2}${downspeedgraph enx4ce1734c425a50,160 bfbfbf c0c0c0 125829120 -t}${goto 195}${color #ebdbb2}${upspeedgraph wlp1s0 50,185 bfbfbf c0c0c0 125829120 -t}${endif}
+${if_match "${nodename_short}" == "mother"}${color #ebdbb2}${downspeedgraph eth1 50,160 ebdbb2 928374 256000000 -t}${goto 195}${color #ebdbb2}${upspeedgraph eth1 50,185 ebdbb2 928374 256000000 -t}${endif}${if_match "${nodename_short}" == "po-rbo"}${color #ebdbb2}${downspeedgraph enx4ce1734c425a 50,160 ebdbb2 928374 128000000 -t}${goto 195}${color #ebdbb2}${upspeedgraph enx4ce1734c425a 50,185 ebdbb2 928374 128000000 -t}${endif}
+#${if_match "${nodename_short}" == "mother"}${color #ebdbb2}${downspeedgraph eth1 50,160 ebdbb2 928374 256000000 -t}${goto 195}${color #ebdbb2}${upspeedgraph eth1 50,185 ebdbb2 928374 256000000 -t}${endif}${if_match "${nodename_short}" == "po-rbo"}${color #ebdbb2}${downspeedgraph wlp1s0 50,160 ebdbb2 928374 128000000 -t}${goto 195}${color #ebdbb2}${upspeedgraph wlp1s0 50,185 ebdbb2 928374 128000000 -t}${endif}
 ]]
