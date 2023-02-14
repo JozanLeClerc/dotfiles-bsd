@@ -199,8 +199,22 @@ alias nb='newsboat' \
 	nsxiv='nsxiv -b -a' \
 	pinfo='pkg info -x' \
 	psearch='pkg search' \
-	pinstall='doas pkg install' \
-	update='doas pkg update && doas pkg upgrade'
+	pinstall='doas pkg install'
+update() {
+	case $(hostname -s) in
+		mother)
+			yay
+			;;
+		po-rbo)
+			doas apt update && doas apt upgrade
+			nix-channel --update
+			nix-env -u
+			;;
+		fbsd-tp)
+			doas pkg update && doas pkg upgrade
+			;;
+	esac
+}
 nixi() {
 	nix-env -iA $(for i in $@; do printf "nixpkgs.%s " "$i"; done)
 }
