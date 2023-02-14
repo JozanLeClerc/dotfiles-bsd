@@ -1,7 +1,5 @@
 #!/bin/sh
 
-os=$(cat /tmp/os)
-
 case "$(hostname -s)" in
 	mother | po-rbo)
 		ping -c1 -w1 1.1.1.1 >/dev/null 2>&1 || exit

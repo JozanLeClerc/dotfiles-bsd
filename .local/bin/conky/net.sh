@@ -1,17 +1,15 @@
 #!/bin/sh
 
-os=$(cat "/tmp/os")
-
-case $os in
-	1)
+case "$(hostname -s)" in
+	mother)
 		if_main="eth1"
 		if_alt="eth0"
 		;;
-	2)
+	po-rbo)
 		if_main="enx4ce1734c425a"
 		if_alt="wlp1s0"
 		;;
-	3)
+	fbsd-tp)
 		if_main="em0"
 		if_alt="wlan0"
 		exit
