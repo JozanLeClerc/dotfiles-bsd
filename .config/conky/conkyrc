@@ -62,7 +62,7 @@ ${goto 130}${mpd_elapsed}/${mpd_length} ${mpd_bar}
 ${execi 5 ~/.local/bin/conky/cover.sh >/dev/null 2>&1}${image /tmp/conkyCover.png -p 0,150 -n}${font}
 
 ${endif}${execpi 1800 ~/.local/bin/conky/weather.sh}
-CPU ${hr}
+${font1}CPU ${hr}
 ${color #928374}CPU: ${font2}${color #ebdbb2} ${freq_g} GHz ${color #ebdbb2}${cpu}%
 ${cpugraph 50,380 ebdbb2 928374 -t}
 ${color #928374}1: ${color #ebdbb2}${cpubar cpu0}${color #ebdbb2}
