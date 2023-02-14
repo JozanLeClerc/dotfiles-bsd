@@ -35,7 +35,7 @@ ${color #928374}LAN IP: ${font2}${color #ebdbb2}${addr '$if_main'}${font}
 ${color #928374}DNS IP: ${font2}${color #ebdbb2}${nameserver 0}${font}
 ${color #928374}WAN IP: ${color #ebdbb2}${font2}${execi 300 curl -s https://ifconfig.me || echo No WAN}${font}
 ${color #928374}---------
-${color #928374}${font}Down: ${color #ebdbb2}${font2}${downspeed '$if_main'}${goto 195}${color #928374}${font}Up: ${color #ebdbb2}${font2}${upspeed '$if_main'}${font}
-${color #928374}${font}Received: ${color #ebdbb2}${font2}${totaldown '$if_main'}${goto 195}${color #928374}${font}Sent: ${color #ebdbb2}${font2}${totalup '$if_main'}${font}'
+${color #928374}${font}Down:  ${color #ebdbb2}${font2}${downspeed '$if_main'}${goto 195}${color #928374}${font}Up:    ${color #ebdbb2}${font2}${upspeed '$if_main'}${font}
+${color #928374}${font}Total: ${color #ebdbb2}${font2}${totaldown '$if_main'}${goto 195}${color #928374}${font}Total: ${color #ebdbb2}${font2}${totalup '$if_main'}${font}'
 
 # ${color #928374}VPN IP:    ${font2}${color #ebdbb2}${addr proton0}${font}
