@@ -9,5 +9,5 @@ case "$(hostname -s)" in
 		;;
 esac
 
-echo '${font1}WEATHER ${hr}
+echo '${font1}WEAT ${hr 2}
 ${font2}${color #ebdbb2}${alignc}${execi 1800 curl wttr.in/Lyon?T0 --silent --max-time 3}${font}'
