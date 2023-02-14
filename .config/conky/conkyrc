@@ -62,7 +62,7 @@ ${execi 5 ~/.local/bin/conky/cover.sh >/dev/null 2>&1}${image /tmp/conkyCover.pn
 
 ${endif}${execpi 300 ~/.local/bin/conky/weather.sh}
 ${font1}CPU ${hr 2}${font}
-${color #928374}Freq: ${font2}${color #ebdbb2}${freq_g} GHz ${color #ebdbb2}${font}${alignr}${if_match "${nodename_short}" == "po-rbo"}${color #928374}${font2}Temp: ${color #ebdbb2}${hwmon 4 temp 1}°C${endif}${font}
+${color #928374}Freq: ${font2}${color #ebdbb2}${freq_g} GHz ${color #ebdbb2}${font}${alignr}${if_match "${nodename_short}" == "po-rbo"}${color #928374}Temp: ${font2}${color #ebdbb2}${hwmon 4 temp 1}°C${endif}${font}
 ${cpugraph 50,380 ebdbb2 928374 -t}
 ${voffset -25}${hr}
 ${color #928374}1: ${color #ebdbb2}${cpubar cpu0 8,150}${color #ebdbb2}${color #928374}${alignr}2: ${color #ebdbb2}${cpubar cpu1 8,150}${color #ebdbb2}
