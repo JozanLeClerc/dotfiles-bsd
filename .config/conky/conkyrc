@@ -58,7 +58,8 @@ ${if_mpd_playing}${font1}MPD ${hr 2}${font}
 ${font2}${color #ebdbb2}${goto 130}${mpd_artist}
 ${goto 130}${scroll wait 30 3 1 ${mpd_title}}
 ${goto 130}${mpd_elapsed}/${mpd_length} ${mpd_bar}
-${execi 5 ~/.local/bin/conky/cover.sh >/dev/null 2>&1}${image /tmp/conkyCover.png -p 0,150 -n}${font}
+${execi 5 ~/.local/bin/conky/cover.sh >/dev/null 2>&1}${image /tmp/conkyCover.png -p 0,145 -n}${font}
+
 
 ${endif}${execpi 300 ~/.local/bin/conky/weather.sh}
 ${font1}CPU ${hr 2}${font}
