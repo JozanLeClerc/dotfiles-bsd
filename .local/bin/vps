@@ -10,7 +10,7 @@ rsync -e "ssh -p$serv_port" -avh --no-o --no-g --progress --delete-after \
 	  --exclude 'LICENSE' \
 	  --exclude 'asm-example.cgi' \
 	  "$HOME"/dev/web/joe-www/ \
-	  root@$serv_addr:/var/jail/var/www/joe
+	  root@$serv_addr:/var/jail/www/var/www/joe
 # gitjoe-cgit
 rsync -e "ssh -p$serv_port" -avh --no-o --no-g --progress --delete-after \
 	  --exclude 'cgit.cgi' \
