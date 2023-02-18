@@ -65,7 +65,7 @@ ${endif}${execpi 300 ~/.local/bin/conky/weather.sh}
 ${font1}CPU ${hr 2}${font}
 ${color #928374}Freq: ${font2}${color #ebdbb2}${freq_g} GHz ${color #ebdbb2}${font}${alignr}${if_match "${nodename_short}" == "mother"}${color #928374}Temp: ${font2}${color #ebdbb2}${hwmon 2 temp 1}°C${endif}${if_match "${nodename_short}" == "po-rbo"}${color #928374}Temp: ${font2}${color #ebdbb2}${hwmon 4 temp 1}°C${endif}${font}
 ${cpugraph 50,380 ebdbb2 928374 -t}
-${voffset -25}${hr}
+${voffset -24}${hr}
 ${color #928374}1: ${color #ebdbb2}${cpubar cpu0 8,150}${color #ebdbb2}${color #928374}${alignr}2: ${color #ebdbb2}${cpubar cpu1 8,150}${color #ebdbb2}
 ${color #928374}3: ${color #ebdbb2}${cpubar cpu2 8,150}${color #ebdbb2}${color #928374}${alignr}4: ${color #ebdbb2}${cpubar cpu3 8,150}${color #ebdbb2}
 ${color #928374}5: ${color #ebdbb2}${cpubar cpu4 8,150}${color #ebdbb2}${color #928374}${alignr}6: ${color #ebdbb2}${cpubar cpu5 8,150}${color #ebdbb2}${if_match "${nodename_short}" == "mother"}
@@ -73,12 +73,12 @@ ${color #928374}7: ${color #ebdbb2}${cpubar cpu6 8,150}${color #ebdbb2}${color #
 ${font1}MEM ${hr 2}${font}
 ${color #928374}RAM:  ${font2}${color #ebdbb2}${mem} / ${memmax} ${color #ebdbb2}${membar 8}${font}
 ${memgraph 50,380 ebdbb2 928374 -t}
-${voffset -25}${hr}
+${voffset -24}${hr}
 ${color #928374}SWAP: ${font2}${color #ebdbb2}${swap} / ${swapmax} ${color #ebdbb2}${swapbar 8}${font}
 ${font1}DISK ${hr 2}${font}
 ${alignr}${if_match "${nodename_short}" == "mother"}${color #928374}NVMe temp: ${font2}${color #ebdbb2}${hwmon 1 temp 1}°C${endif}${font}
 ${diskiograph nvme0n1 50,380 ebdbb2 928374 -t}
-${voffset -25}${hr}
+${voffset -24}${hr}
 ${color #928374}NVMe: ${font2}${color #ebdbb2}${fs_bar 8 /}${font}
 ${color #928374}HDD:  ${font2}${color #ebdbb2}${fs_bar 8 /var/hdd}${font}
 ${font1}PROC ${hr 2}${font}
