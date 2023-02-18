@@ -14,13 +14,12 @@ html_fmt='\t\t\t\t<h3>'"${date}"'<\/h3>\
 \t\t\t\t\t'"${thought}"'\
 \t\t\t\t<\/p>\
 '
-gmi_fmt='\
-\
-## '"${date}"'\
-\
-'"${thought}"
+case $(hostname -s) in
+	mother|po-rbo) sed="sed -i" ;;
+	fbsd-tp) sed="sed -i ''" ;;
+esac
 
-sed -i '' -e '/<!-- thoughts here -->$/{n;s/^/'"${html_fmt}"'/;}' \
+$sed -e '/<!-- thoughts here -->$/{n;s/^/'"${html_fmt}"'/;}' \
 	"$HOME"/dev/web/joe-www/thoughts.html
 git -C "$HOME"/dev/web/joe-www add -u
 git -C "$HOME"/dev/web/joe-www commit -m "Thought: ${date}"
