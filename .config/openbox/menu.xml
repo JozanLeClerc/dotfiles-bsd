@@ -113,6 +113,11 @@
 	</menu>
 
 	<menu id="system-menu" label="Settings">
+		<item label="Network settings">
+			<action name="Execute">
+				<command>connman-gtk</command>
+			</action>
+		</item>
 		<item label="Openbox configuration">
 			<action name="Execute">
 				<command>obconf</command>
