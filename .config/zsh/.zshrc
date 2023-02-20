@@ -17,8 +17,21 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 HISTFILE=$XDG_CONFIG_HOME/zsh/history
 
-LESS_TERMCAP_mb=$(printf '\e[1;31m');		export LESS_TERMCAP_mb
-LESS_TERMCAP_md=$(printf '\e[1;31m');		export LESS_TERMCAP_md
+case $(hostname -s) in
+	mother|po-rbo)
+		os_color='\e[1;34m'
+		prompt_main="blue"
+		prompt_alt="cyan"
+		;;
+	fbsd-tp)
+		os_color='\e[1;31m'
+		prompt_main="red"
+		prompt_alt="blue"
+		;;
+esac
+
+LESS_TERMCAP_mb=$(printf $os_color);		export LESS_TERMCAP_mb
+LESS_TERMCAP_md=$(printf $os_color);		export LESS_TERMCAP_md
 LESS_TERMCAP_me=$(printf '\e[0m');			export LESS_TERMCAP_me
 LESS_TERMCAP_so=$(printf '\e[1;33;40m');	export LESS_TERMCAP_so
 LESS_TERMCAP_se=$(printf '\e[0m');			export LESS_TERMCAP_se
@@ -102,5 +115,5 @@ bindkey -v "^ " globalias
 bindkey -v " " magic-space
 bindkey -M isearch " " magic-space
 
-PROMPT="%B%{$fg[blue]%}%m %{$fg[cyan]%}%c%{$fg[blue]%}%#%{$reset_color%} "
+PROMPT="%B%{$fg[$prompt_main]%}%m %{$fg[$prompt_alt]%}%c%{$fg[$prompt_main]%}%#%{$reset_color%} "
 RPROMPT="%{$fg_bold[red]%}%(?..%?)%{$reset_color%}"
