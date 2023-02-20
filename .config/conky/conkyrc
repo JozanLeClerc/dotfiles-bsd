@@ -54,14 +54,14 @@ ${color #928374}Terminal: ${font2}${color #ebdbb2}${nodename_short}${font}
 ${color #928374}OS:       ${font2}${color #ebdbb2}${sysname}${font}
 ${color #928374}Kernel:   ${font2}${color #ebdbb2}${kernel}${font}
 ${color #928374}Uptime:   ${font2}${color #ebdbb2}${uptime}${font}
-${if_mpd_playing}${font1}MPD ${hr 2}${font}
+${if_match "${nodename_short}" == "mother"}${if_mpd_playing}${font1}MPD ${hr 2}${font}
 ${font2}${color #ebdbb2}${goto 130}${mpd_artist}
 ${goto 130}${scroll wait 30 3 1 ${mpd_title}}
 ${goto 130}${mpd_elapsed}/${mpd_length} ${mpd_bar}
 ${execi 5 ~/.local/bin/conky/cover.sh >/dev/null 2>&1}${image /tmp/conkyCover.png -p 5,145 -n}${font}
 
 
-${endif}${execpi 300 ~/.local/bin/conky/weather.sh}
+${endif}${endif}${execpi 300 ~/.local/bin/conky/weather.sh}
 ${font1}CPU ${hr 2}${font}
 ${color #928374}Freq: ${font2}${color #ebdbb2}${freq_g} GHz ${color #ebdbb2}${font}${alignr}${if_match "${nodename_short}" == "mother"}${color #928374}Temp: ${font2}${color #ebdbb2}${hwmon 2 temp 1}°C${endif}${if_match "${nodename_short}" == "po-rbo"}${color #928374}Temp: ${font2}${color #ebdbb2}${hwmon 4 temp 1}°C${endif}${font}
 ${cpugraph 50,380 ebdbb2 928374 -t}
@@ -79,8 +79,8 @@ ${font1}DISK ${hr 2}${font}
 ${alignr}${if_match "${nodename_short}" == "mother"}${color #928374}NVMe temp: ${font2}${color #ebdbb2}${hwmon 1 temp 1}°C${endif}${font}
 ${diskiograph nvme0n1 50,380 ebdbb2 928374 -t}
 ${voffset -24}${hr}
-${color #928374}NVMe: ${font2}${color #ebdbb2}${fs_bar 8 /}${font}
-${color #928374}HDD:  ${font2}${color #ebdbb2}${fs_bar 8 /var/hdd}${font}
+${color #928374}NVMe: ${font2}${color #ebdbb2}${fs_bar 8 /}${font}${if_match "${nodename_short}" == "mother"}
+${color #928374}HDD:  ${font2}${color #ebdbb2}${fs_bar 8 /var/hdd}${font}${endif}
 ${font1}PROC ${hr 2}${font}
 ${color #928374}Process:${color #928374}${alignr}PID     CPU   MEM
 ${font2}${color #ebdbb2}${top_mem name 1} ${alignr}${top_mem pid 1}  ${top_mem cpu 1}  ${top_mem mem_res 1}
