@@ -91,5 +91,4 @@ ${color #928374}---------
 ${color #928374}Processes: ${font2}${color #ebdbb2}${processes}${font}
 ${execpi 15 ~/.local/bin/conky/net.sh}
 ${if_match "${nodename_short}" == "mother"}${color #ebdbb2}${downspeedgraph eth1 50,160 ebdbb2 928374 256000000 -t}${goto 195}${color #ebdbb2}${upspeedgraph eth1 50,185 ebdbb2 928374 256000000 -t}${endif}${if_match "${nodename_short}" == "po-rbo"}${color #ebdbb2}${downspeedgraph enx4ce1734c425a 50,160 ebdbb2 928374 128000000 -t}${goto 195}${color #ebdbb2}${upspeedgraph enx4ce1734c425a 50,185 ebdbb2 928374 128000000 -t}${endif}
-#${if_match "${nodename_short}" == "mother"}${color #ebdbb2}${downspeedgraph eth1 50,160 ebdbb2 928374 256000000 -t}${goto 195}${color #ebdbb2}${upspeedgraph eth1 50,185 ebdbb2 928374 256000000 -t}${endif}${if_match "${nodename_short}" == "po-rbo"}${color #ebdbb2}${downspeedgraph wlp1s0 50,160 ebdbb2 928374 128000000 -t}${goto 195}${color #ebdbb2}${upspeedgraph wlp1s0 50,185 ebdbb2 928374 128000000 -t}${endif}
 ]]
