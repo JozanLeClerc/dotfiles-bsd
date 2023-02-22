@@ -32,6 +32,7 @@ ${color #928374}---------
 ${color #928374}LAN IP: ${font2}${color #ebdbb2}${addr '$if_main'}${font}
 ${color #928374}DNS IP: ${font2}${color #ebdbb2}${nameserver 0}${font}
 ${color #928374}WAN IP: ${color #ebdbb2}${font2}${execi 300 curl -s https://ifconfig.me || echo No WAN}${font}
+${color #928374}---------
 ${color #928374}D: ${color #ebdbb2}${font2}${downspeed '$if_main'}${font}${goto 125}${color #928374}Total D: ${color #ebdbb2}${font2}${totaldown '$if_main'}${font}
 ${color #928374}U: ${color #ebdbb2}${font2}${upspeed '$if_main'}${goto 125}${font}${color #928374}Total U: ${color #ebdbb2}${font2}${totalup '$if_main'}${font}'
 
