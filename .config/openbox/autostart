@@ -18,21 +18,20 @@
 
 # select OS
 
-os=$(cat /tmp/os)
-case $os in
-	1)
+case $(hostname -s) in
+	mother)
 		icon=" "
 		mpd="mpd"
 		xscr="xscreensaver --no-splash"
 		sleep="sleep 0.5"
 		;;
-	2)
+	po-rbo)
 		icon=" "
 		mpd="mpd"
 		xscr="xscreensaver"
 		sleep="sleep 0.5"
 		;;
-	3)
+	fbsd-tp)
 		icon=" "
 		mpd="musicpd"
 		xscr="xscreensaver --no-splash"
