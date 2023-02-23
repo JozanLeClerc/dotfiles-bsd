@@ -206,7 +206,7 @@ update() {
 			yay
 			;;
 		po-rbo)
-			doas apt update && doas apt upgrade
+			doas apt update && doas apt dist-upgrade
 			nix-channel --update
 			nix-env -u
 			;;
