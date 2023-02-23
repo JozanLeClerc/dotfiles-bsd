@@ -6,4 +6,4 @@ words=$(printf "%s" "$3" |
 	sed 's/<b>//g' |
 	sed 's/<\/b>//g' |
 	sed 's/[^a-zA-Z0-9?!.,% ]//g')
-espeak "$words"
+espeak -v fr "$words"

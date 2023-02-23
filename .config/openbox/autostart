@@ -62,6 +62,7 @@ xset -dpms
 # else
 # 	"$HOME"/.local/bin/dscr
 # fi
+sleep 3
 startif tint2
 $sleep
 startif plank
