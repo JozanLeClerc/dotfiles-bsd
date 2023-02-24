@@ -76,9 +76,9 @@ ${color1}3: ${color0}${cpubar cpu2 8,150}${color0}${color1}${alignr}4: ${color0}
 ${color1}5: ${color0}${cpubar cpu4 8,150}${color0}${color1}${alignr}6: ${color0}${cpubar cpu5 8,150}${color0}${if_match "${nodename_short}" == "mother"}
 ${color1}7: ${color0}${cpubar cpu6 8,150}${color0}${color1}${alignr}8: ${color0}${cpubar cpu7 8,150}${color0}${endif}${font}
 ${color1}${font1}MEM ${hr 2}${font}
-${color1}RAM:  ${font2}${color0}${mem} / ${memmax} ${color0}${membar 8}${font}
-${memgraph 50,380 ebdbb2 928374 -t}
+${color0}${memgraph 50,380 ebdbb2 928374 -t}
 ${voffset -21}${hr}
+${color1}RAM:  ${font2}${color0}${mem} / ${memmax} ${color0}${membar 8}${font}
 ${color1}SWAP: ${font2}${color0}${swap} / ${swapmax} ${color0}${swapbar 8}${font}
 ${color1}${font1}DISK ${hr 2}${font}
 ${alignr}${if_match "${nodename_short}" == "mother"}${color1}NVMe temp: ${font2}${color0}${hwmon 1 temp 1}°C${endif}${if_match "${nodename_short}" == "po-rbo"}${color1}NVMe temp: ${font2}${color0}${hwmon 2 temp 1}°C${endif}${font}
