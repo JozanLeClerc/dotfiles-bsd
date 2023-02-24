@@ -23,19 +23,19 @@ case $(hostname -s) in
 		icon=" "
 		mpd="mpd"
 		xscr="xscreensaver --no-splash"
-		sleep="sleep 0.5"
+		sleep="sleep 1"
 		;;
 	po-rbo)
 		icon=" "
 		mpd="mpd"
 		xscr="xscreensaver"
-		sleep="sleep 0.5"
+		sleep="sleep 1"
 		;;
 	fbsd-tp)
 		icon=" "
 		mpd="musicpd"
 		xscr="xscreensaver --no-splash"
-		sleep="gsleep 0.5"
+		sleep="gsleep 1"
 		;;
 esac
 
