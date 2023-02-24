@@ -26,7 +26,7 @@ ${color1}No network${font}'
 	exit
 fi
 
-echo '${font1}NET ${hr 2}${font}
+echo '${color1}${font1}NET ${hr 2}${font}
 ${color1}Interface: ${font2}${color0}'$if_main'${font}
 ${color1}---------
 ${color1}LAN IP: ${font2}${color0}${addr '$if_main'}${font}
