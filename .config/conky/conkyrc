@@ -11,8 +11,8 @@ conky.config = {
     use_spacer = 'none',
     use_xft = true,
     xftalpha = 1,
-    font  = 'Hack Nerd Font:size=10',
-    font1 = 'Hack Nerd Font:bold:size=10',
+    font  = 'Hack Nerd Font Mono:size=10',
+    font1 = 'Hack Nerd Font Mono:bold:size=10',
 	font2 = 'Hack Nerd Font Mono:bold:size=10',
 	template0 = '\\n',
 	if_up_strictness = address,
@@ -59,12 +59,12 @@ ${color1}Terminal: ${font2}${color0}${nodename_short}${font}
 ${color1}OS:       ${font2}${color0}${sysname}${font}
 ${color1}Kernel:   ${font2}${color0}${kernel}${font}
 ${color1}Uptime:   ${font2}${color0}${uptime}${font}
-${if_match "${nodename_short}" == "mother"}${if_mpd_playing}${font1}MPD ${hr 2}${font}
+${if_match "${nodename_short}" == "mother"}${if_mpd_playing}${color1}${font1}MPD ${hr 2}${font}
 ${font2}${color0}${goto 130}${mpd_artist}
-${goto 130}${scroll wait 30 3 1 ${mpd_title}}
+${goto 130}${scroll wait 30 3 5 ${mpd_title}}
+${goto 130}${mpd_date} - ${mpd_album}
 ${goto 130}${mpd_elapsed}/${mpd_length} ${mpd_bar}
-${execi 5 ~/.local/bin/conky/cover.sh >/dev/null 2>&1}${image /tmp/conkyCover.png -p 5,145 -n}${font}
-
+${execi 5 ~/.local/bin/conky/cover.sh >/dev/null 2>&1}${image /tmp/conkyCover.png -p 5,120 -n}${font}
 
 ${endif}${endif}${execpi 300 ~/.local/bin/conky/weather.sh}
 ${color1}${font1}CPU ${hr 2}${font}
