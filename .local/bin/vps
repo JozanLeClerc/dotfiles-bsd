@@ -10,7 +10,7 @@ rsync -e "ssh -p$serv_port" -avh --no-o --no-g --progress --delete-after \
 	  --exclude 'LICENSE' \
 	  --exclude 'asm-example.cgi' \
 	  "$HOME"/dev/web/joe-www/ \
-	  root@$serv_addr:/var/jail/www/var/www/joe
+	  root@$serv_addr:/var/jail/www/var/www/joe/
 # gitjoe-cgit
 rsync -e "ssh -p$serv_port" -avh --no-o --no-g --progress --delete-after \
 	  --exclude 'cgit.cgi' \
@@ -18,17 +18,17 @@ rsync -e "ssh -p$serv_port" -avh --no-o --no-g --progress --delete-after \
 	  --exclude 'README.org' \
 	  --exclude 'LICENSE' \
 	  "$HOME"/dev/web/gitjoe-cgit/ \
-	  root@$serv_addr:/usr/local/www/gitjoe
+	  root@$serv_addr:/var/jail/www/var/www/gitjoe/
 rsync -e "ssh -p22" -avh --no-o --no-g --progress \
 	  "$HOME"/dev/perl/gitjoe-scripts/git-ro-daemon.csh \
-	  git-ro@$serv_addr:/usr/local/git/git-ro
+	  git-ro@$serv_addr:/var/jail/git/var/git/git-ro/
 # joe-scripts
 rsync -e "ssh -p$serv_port" -avh --no-o --no-g --progress --delete-after \
 	  --exclude '.*' \
 	  --exclude 'README.org' \
 	  --exclude 'LICENSE' \
 	  "$HOME"/dev/perl/joe-scripts/ \
-	  root@$serv_addr:/root/bin/joe
+	  root@$serv_addr:/var/jail/www/root/bin/
 # gitjoe-scripts
 rsync -e "ssh -p$serv_port" -avh --no-o --no-g --progress --delete-after \
 	  --exclude '.*' \
