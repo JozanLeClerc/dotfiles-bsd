@@ -95,5 +95,5 @@ ${font2}${color2}${top_mem name 4} ${alignr}${top_mem pid 4}  ${top_mem cpu 4}  
 ${color1}---------
 ${color1}Processes: ${font2}${color0}${processes}${font}
 ${execpi 15 ~/.local/bin/conky/net.sh}
-${if_match "${nodename_short}" == "mother"}${color0}${downspeedgraph eth1 50,185 2ebdbb2 928374 56000000 -t}${goto 195}${color0}${upspeedgraph eth1 50,180 ebdbb2 928374 256000000 -t}${endif}${if_match "${nodename_short}" == "po-rbo"}${color0}${downspeedgraph enx4ce1734c425a 50,180 ebdbb2 928374 128000000 -t}${goto 195}${color0}${upspeedgraph enx4ce1734c425a 50,180 ebdbb2 928374 128000000 -t}${endif}
+${if_match "${nodename_short}" == "mother"}${color0}${downspeedgraph eth1 50,185 ebdbb2 928374 256000000 -t}${goto 195}${color0}${upspeedgraph eth1 50,180 ebdbb2 928374 256000000 -t}${endif}${if_match "${nodename_short}" == "po-rbo"}${color0}${downspeedgraph enx4ce1734c425a 50,180 ebdbb2 928374 128000000 -t}${goto 195}${color0}${upspeedgraph enx4ce1734c425a 50,180 ebdbb2 928374 128000000 -t}${endif}
 ]]
