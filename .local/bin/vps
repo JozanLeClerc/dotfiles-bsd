@@ -9,6 +9,10 @@ rsync -e "ssh -p$serv_port" -avh --no-o --no-g --progress --delete-after \
 	  --exclude 'README.org' \
 	  --exclude 'LICENSE' \
 	  --exclude 'asm-example.cgi' \
+	  --exclude 'files/' \
+	  --exclude 'caco' \
+	  --exclude 'shit' \
+	  --exclude 'bon_concert' \
 	  "$HOME"/dev/web/joe-www/ \
 	  root@$serv_addr:/var/jail/www/var/www/joe/
 # gitjoe-cgit
