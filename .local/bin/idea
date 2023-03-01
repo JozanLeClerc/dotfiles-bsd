@@ -1,19 +1,23 @@
 #!/bin/sh -e
 
 if [ -z "$1" ]; then
-	thought=$(cat | xargs)
+	thought=$(cat -)
 elif [ -f "$1" ]; then
-	thought=$(cat "$1" | xargs)
+	thought=$(cat "$1")
 else
 	thought="$*"
 fi
 
+thought_a="$(printf "%s" "${thought}" | sed "s/\n/<br>/")"
+exit
 date=$(date '+%a, %d %b %Y %T')
 html_fmt='\t\t\t\t<h3>'"${date}"'<\/h3>\
 \t\t\t\t<p>\
-\t\t\t\t\t'"${thought}"'\
+\t\t\t\t\t'"${thought_a}"'\
 \t\t\t\t<\/p>\
 '
+echo "%s" "${html_fmt}"
+exit
 case $(hostname -s) in
 	mother|po-rbo) sed="sed -i" ;;
 	fbsd-tp) sed="sed -i ''" ;;
