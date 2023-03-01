@@ -33,8 +33,8 @@ ${color1}LAN IP: ${font2}${color0}${addr '$if_main'}${font}
 ${color1}DNS IP: ${font2}${color0}${nameserver 0}${font}
 ${color1}WAN IP: ${color0}${font2}${execi 300 curl -s https://ifconfig.me || echo No WAN}${font}
 ${color1}---------
-${color1}D: ${color0}${font2}${downspeed '$if_main'}${font}${goto 125}${color1}Total D: ${color0}${font2}${totaldown '$if_main'}${font}
-${color1}U: ${color0}${font2}${upspeed '$if_main'}${goto 125}${font}${color1}Total U: ${color0}${font2}${totalup '$if_main'}${font}'
+${color1}D: ${color0}${font2}${downspeed '$if_main'}${font}${color1}  --  Total: ${color0}${font2}${totaldown '$if_main'}${font}
+${color1}U: ${color0}${font2}${upspeed '$if_main'}${font}${color1}  --  Total: ${color0}${font2}${totalup '$if_main'}${font}'
 
 
 # ${color1}VPN IP:    ${font2}${color0}${addr proton0}${font}
