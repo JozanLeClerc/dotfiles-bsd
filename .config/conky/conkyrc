@@ -8,7 +8,7 @@ conky.config = {
     own_window_argb_visual = true,
     own_window_argb_value = 255,
     double_buffer = true,
-    use_spacer = 'none',
+    use_spacer = 'left',
     use_xft = true,
     xftalpha = 1,
     font  = 'Hack Nerd Font Mono:size=10',
@@ -17,14 +17,14 @@ conky.config = {
 	template0 = '\\n',
 	if_up_strictness = address,
 	format_human_readable = true,
-    update_interval = 0.5,
+    update_interval = 0.1,
     uppercase = false,
     override_utf8_locale = true,
     stippled_borders = 0,
     border_width = 1,
     draw_borders = false,
     draw_outline = false,
-    draw_shades = false,
+    draw_shades = true,
 	default_shade_color = AAAAAA,
 	default_outline_color = AAAAAA,
 	draw_graph_borders = false,
@@ -38,9 +38,9 @@ conky.config = {
     gap_y = 40,
     net_avg_samples = 2,
     cpu_avg_samples = 4,
-    short_units = true,
+    short_units = false,
     pad_percents = 2,
-    text_buffer_size = 8192,
+	text_buffer_size = 16384,
     out_to_console = false,
     out_to_stderr = false,
     extra_newline = false,
@@ -87,7 +87,7 @@ ${voffset -21}${hr}
 ${color1}NVMe: ${font2}${color0}${fs_bar 8 /}${font}${if_match "${nodename_short}" == "mother"}
 ${color1}HDD:  ${font2}${color0}${fs_bar 8 /var/hdd}${font}${endif}
 ${color1}${font1}PROC ${hr 2}${font}
-${color1}Process:${color1}${alignr}PID     CPU   MEM
+${color1}COMMAND${color1}${alignr}PID     CPU    MEM
 ${font2}${color0}${top_mem name 1} ${alignr}${top_mem pid 1}  ${top_mem cpu 1}  ${top_mem mem_res 1}
 ${font2}${color2}${top_mem name 2} ${alignr}${top_mem pid 2}  ${top_mem cpu 2}  ${top_mem mem_res 2}
 ${font2}${color0}${top_mem name 3} ${alignr}${top_mem pid 3}  ${top_mem cpu 3}  ${top_mem mem_res 3}
