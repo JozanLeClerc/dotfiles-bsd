@@ -8,19 +8,20 @@ else
 	thought="$*"
 fi
 
-thought="$(echo -n "${thought}" | sed '{s/$/<br>\\/;s/^/\\t\\t\\t\\t\\t/;};${s/<br>\\$/\\/;p;x;};1d')"
-date=$(date '+%a, %d %b %Y %T')
-html_fmt='\t\t\t\t<h3>'"${date}"'<\/h3>\
+thought="$(printf "%s" "${thought}" | sed '{s#^#\\t\\t\\t\\t\\t#;s#^\\t\\t\\t\\t\\t$#\\t\\t\\t\\t</p>\\\n\\t\\t\\t\\t<p>#;s#$#\\#;}')"
+# thought="$(echo -n "${thought}" | sed '{s/$$/<\/p>\n<p>/;s/$/\\/;s/^/\\t\\t\\t\\t\\t/;};${s/<br>\\$/\\/;p;x;};1d')"
+date=$(date '+%a, %d %b %Y %H:%M')
+html_fmt='\t\t\t\t<h3>'"${date}"'</h3>\
 \t\t\t\t<p>\
 '"${thought}"'
-\t\t\t\t<\/p>\
+\t\t\t\t</p>\
 '
 case $(hostname -s) in
 	mother|po-rbo) sed="sed -i" ;;
 	fbsd-tp) sed="sed -i ''" ;;
 esac
 
-$sed -e '/<!-- thoughts here -->$/{n;s/^/'"${html_fmt}"'/;}' \
+$sed -e '/<!-- thoughts here -->$/{n;s#^#'"${html_fmt}"'#;}' \
 	"$HOME"/dev/web/joe-www/thoughts.html
 git -C "$HOME"/dev/web/joe-www add -u
 git -C "$HOME"/dev/web/joe-www commit -m "Thought: ${date}"
