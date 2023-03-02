@@ -4,7 +4,7 @@ serv_addr="95.179.223.82"
 serv_port="10022"
 
 # joe-www
-rsync -e "ssh -p$serv_port" -avh --no-o --no-g --progress --delete-after \
+rsync -e "ssh -p$serv_port" -avh --no-o --no-g --delete-after \
 	  --exclude '.*' \
 	  --exclude 'README.org' \
 	  --exclude 'LICENSE' \
@@ -16,7 +16,7 @@ rsync -e "ssh -p$serv_port" -avh --no-o --no-g --progress --delete-after \
 	  "$HOME"/dev/web/joe-www/ \
 	  root@$serv_addr:/var/jail/www/var/www/joe/
 # gitjoe-cgit
-rsync -e "ssh -p$serv_port" -avh --no-o --no-g --progress --delete-after \
+rsync -e "ssh -p$serv_port" -avh --no-o --no-g --delete-after \
 	  --exclude 'cgit.cgi' \
 	  --exclude '.*' \
 	  --exclude 'README.org' \
@@ -27,20 +27,20 @@ rsync -e "ssh -p22" -avh --no-o --no-g --progress \
 	  "$HOME"/dev/perl/gitjoe-scripts/git-ro-daemon.csh \
 	  git-ro@$serv_addr:/var/jail/git/var/git/git-ro/
 # joe-scripts
-rsync -e "ssh -p$serv_port" -avh --no-o --no-g --progress --delete-after \
+rsync -e "ssh -p$serv_port" -avh --no-o --no-g --delete-after \
 	  --exclude '.*' \
 	  --exclude 'README.org' \
 	  --exclude 'LICENSE' \
 	  "$HOME"/dev/perl/joe-scripts/ \
 	  root@$serv_addr:/var/jail/www/root/bin/
 # gitjoe-scripts
-rsync -e "ssh -p$serv_port" -avh --no-o --no-g --progress --delete-after \
+rsync -e "ssh -p$serv_port" -avh --no-o --no-g --delete-after \
 	  --exclude '.*' \
 	  --exclude 'README.org' \
 	  --exclude 'LICENSE' \
 	  "$HOME"/dev/perl/gitjoe-scripts/src/ \
 	  root@$serv_addr:/root/bin/gitjoe
 # backups
-rsync -e "ssh -p$serv_port" -avh --no-o --no-g --progress "$XDG_CONFIG_HOME"/newsboat/urls root@$serv_addr:/root/backup/apps/newsboat
-rsync -e "ssh -p$serv_port" -avh --no-o --no-g --progress --delete-after "$XDG_DATA_HOME"/calcurse/ root@$serv_addr:/root/backup/apps/calcurse
-rsync -e "ssh -p$serv_port" -avh --no-o --no-g --progress "$XDG_DATA_HOME"/abook/addressbook root@$serv_addr:/root/backup/apps/abook
+rsync -e "ssh -p$serv_port" -avh --no-o --no-g "$XDG_CONFIG_HOME"/newsboat/urls root@$serv_addr:/root/backup/apps/newsboat
+rsync -e "ssh -p$serv_port" -avh --no-o --no-g --delete-after "$XDG_DATA_HOME"/calcurse/ root@$serv_addr:/root/backup/apps/calcurse
+rsync -e "ssh -p$serv_port" -avh --no-o --no-g "$XDG_DATA_HOME"/abook/addressbook root@$serv_addr:/root/backup/apps/abook
