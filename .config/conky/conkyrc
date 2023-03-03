@@ -68,20 +68,25 @@ ${execi 5 ~/.local/bin/conky/cover.sh >/dev/null 2>&1}${image /tmp/conkyCover.pn
 
 ${endif}${endif}${execpi 300 ~/.local/bin/conky/weather.sh}
 ${color1}${font1}CPU ${hr 2}${font}
-${color1}Freq: ${font2}${color0}${freq_g} GHz ${color0}${font}${alignr}${if_match "${nodename_short}" == "mother"}${color1}Temp: ${font2}${color0}${hwmon 2 temp 1}°C${endif}${if_match "${nodename_short}" == "po-rbo"}${color1}Temp: ${font2}${color0}${hwmon 4 temp 1}°C${endif}${font}
+${color1}Freq: ${font2}${color0}${freq_g} GHz ${color0}${font}${alignr}${if_match "${nodename_short}" == "mother"}${color1}Temp:${font2}${color0}${hwmon 2 temp 1}°C${endif}${if_match "${nodename_short}" == "po-rbo"}${color1}Temp:${font2}${color0}${hwmon 4 temp 1}°C${endif}${font}
 ${cpugraph 50,380 928374 ebdbb2}
 ${voffset -21}${hr}
-${color1}1: ${color0}${cpubar cpu0 8,150}${color0}${color1}${alignr}2: ${color0}${cpubar cpu1 8,150}${color0}
-${color1}3: ${color0}${cpubar cpu2 8,150}${color0}${color1}${alignr}4: ${color0}${cpubar cpu3 8,150}${color0}
-${color1}5: ${color0}${cpubar cpu4 8,150}${color0}${color1}${alignr}6: ${color0}${cpubar cpu5 8,150}${color0}${if_match "${nodename_short}" == "mother"}
-${color1}7: ${color0}${cpubar cpu6 8,150}${color0}${color1}${alignr}8: ${color0}${cpubar cpu7 8,150}${color0}${endif}${font}
+${color1}1: ${color0}${cpubar cpu0 8,155}${color0}${color1}${alignr}2: ${color0}${cpubar cpu1 8,155}${color0}
+${color1}3: ${color0}${cpubar cpu2 8,155}${color0}${color1}${alignr}4: ${color0}${cpubar cpu3 8,155}${color0}
+${color1}5: ${color0}${cpubar cpu4 8,155}${color0}${color1}${alignr}6: ${color0}${cpubar cpu5 8,155}${color0}${if_match "${nodename_short}" == "mother"}
+${color1}7: ${color0}${cpubar cpu6 8,155}${color0}${color1}${alignr}8: ${color0}${cpubar cpu7 8,155}${color0}${endif}${font}
 ${color1}${font1}MEM ${hr 2}${font}
 ${color0}${memgraph 50,380 928374 ebdbb2}
 ${voffset -21}${hr}
-${color1}RAM:  ${font2}${color0}${mem} / ${memmax} ${color0}${membar 8}${font}
-${color1}SWAP: ${font2}${color0}${swap} / ${swapmax} ${color0}${swapbar 8}${font}
+${color1}RAM:  ${color0}${membar 8}${font}
+${color1}SWAP: ${color0}${swapbar 8}${font}${if_match "${nodename_short}" == "mother"}
+${color1}${font1}GPU ${hr 2}${font}
+${color1}Card: ${font2}${color0}${nvidia modelname}${font}${alignr}${color1}Temp: ${font2}${color0}${nvidia gputemp}°C${font}
+${color0}${nvidiagraph gpuutil 50,380 928374 ebdbb2}
+${voffset -21}${hr}
+${color1}VRAM: ${color0}${nvidiabar 8 mem}${font}${endif}
 ${color1}${font1}DISK ${hr 2}${font}
-${alignr}${if_match "${nodename_short}" == "mother"}${color1}NVMe temp: ${font2}${color0}${hwmon 1 temp 1}°C${endif}${if_match "${nodename_short}" == "po-rbo"}${color1}NVMe temp: ${font2}${color0}${hwmon 2 temp 1}°C${endif}${font}
+${alignr}${if_match "${nodename_short}" == "mother"}${color1}NVMe temp:${font2}${color0}${hwmon 1 temp 1}°C${endif}${if_match "${nodename_short}" == "po-rbo"}${color1}NVMe temp:${font2}${color0}${hwmon 2 temp 1}°C${endif}${font}
 ${diskiograph nvme0n1 50,380 928374 ebdbb2}
 ${voffset -21}${hr}
 ${color1}NVMe: ${font2}${color0}${fs_bar 8 /}${font}${if_match "${nodename_short}" == "mother"}
