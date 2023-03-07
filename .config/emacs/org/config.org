@@ -120,70 +120,72 @@
 
 ** Some org
 #+BEGIN_SRC emacs-lisp
-	;; set key for agenda
-	;; (require 'org)
-	;; (global-set-(kbd "C-c a") 'org-agenda)
+	   ;; set key for agenda
+	   ;; (require 'org)
+	   ;; (global-set-(kbd "C-c a") 'org-agenda)
 
-	;;file to save todo items
-	;; (setq org-agenda-files (quote ("~/.config/emacs/org/todo.org")))
-	(setq org-log-done 'time)
+	   ;;file to save todo items
+	   ;; (setq org-agenda-files (quote ("~/.config/emacs/org/todo.org")))
+	   (setq org-log-done 'time)
 
-	;;set priority range from A to C with default A
-	 (setq org-highest-priority ?A)
-	 (setq org-lowest-priority ?C)
-	 (setq org-default-priority ?A)
+	   ;;set priority range from A to C with default A
+		(setq org-highest-priority ?A)
+		(setq org-lowest-priority ?C)
+		(setq org-default-priority ?A)
 
-	;;set colours for priorities
-	(setq org-priority-faces '((?A . (:foreground "#F0DFAF" :weight bold))
-							   (?B . (:foreground "LightSteelBlue"))
-							   (?C . (:foreground "OliveDrab"))))
+	   ;;set colours for priorities
+	   (setq org-priority-faces '((?A . (:foreground "#F0DFAF" :weight bold))
+								  (?B . (:foreground "LightSteelBlue"))
+								  (?C . (:foreground "OliveDrab"))))
 
- (setq org-todo-keywords
-  '((sequence "TODO"
-      "|"
-      "DONE"
-      "CANCELED")))
+	(setq org-todo-keywords
+	 '((sequence "TODO"
+		 "DOING"
+		 "|"
+		 "DONE"
+		 "DELAYED"
+		 "CANCELED")))
 
-  (setq org-log-done 'time)
+	 (setq org-log-done 'time)
 
-	;;open agenda in current window
-	;; (setq org-agenda-window-setup (quote current-window))
+	   ;;open agenda in current window
+	   ;; (setq org-agenda-window-setup (quote current-window))
 
-	;;capture todo items using C-c C-t t
-	;; (define-key global-map (kbd "C-c C-t") 'org-capture)
-	;; (setq org-capture-templates
-	;;	  '(("t" "todo" entry (file+headline "~/.config/emacs/org/todo.org" "Tasks")
-	;;		 "* TODO [#A] %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n")))
+	   ;;capture todo items using C-c C-t t
+	   ;; (define-key global-map (kbd "C-c C-t") 'org-capture)
+	   ;; (setq org-capture-templates
+	   ;;	  '(("t" "todo" entry (file+headline "~/.config/emacs/org/todo.org" "Tasks")
+	   ;;		 "* TODO [#A] %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n")))
 
-	;;open agenda in current window
-	;; (setq org-agenda-window-setup (quote current-window))
-	;;warn me of any deadlines in next 7 days
-	;; (setq org-deadline-warning-days 7)
-	;;show me tasks scheduled or due in next fortnight
-	;; (setq org-agenda-span (quote fortnight))
-	;;don't show tasks as scheduled if they are already shown as a deadline
-	;; (setq org-agenda-skip-scheduled-if-deadline-is-shown t)
-	;;don't give awarning colour to tasks with impending deadlines
-	;;if they are scheduled to be done
-	;; (setq org-agenda-skip-deadline-prewarning-if-scheduled (quote pre-scheduled))
-	;;don't show tasks that are scheduled or have deadlines in the
-	;;normal todo list
-	;; (setq org-agenda-todo-ignore-deadlines (quote all))
-	;; (setq org-agenda-todo-ignore-scheduled (quote all))
-	;;sort tasks in order of when they are due and then by priority
-	;; (setq org-agenda-sorting-strategy
-	;;  (quote
-	;;   ((agenda deadline-up priority-down)
-	;;	(todo priority-down category-keep)
-	;;	(tags priority-down category-keep)
-	;;	(search category-keep))))
+	   ;;open agenda in current window
+	   ;; (setq org-agenda-window-setup (quote current-window))
+	   ;;warn me of any deadlines in next 7 days
+	   ;; (setq org-deadline-warning-days 7)
+	   ;;show me tasks scheduled or due in next fortnight
+	   ;; (setq org-agenda-span (quote fortnight))
+	   ;;don't show tasks as scheduled if they are already shown as a deadline
+	   ;; (setq org-agenda-skip-scheduled-if-deadline-is-shown t)
+	   ;;don't give awarning colour to tasks with impending deadlines
+	   ;;if they are scheduled to be done
+	   ;; (setq org-agenda-skip-deadline-prewarning-if-scheduled (quote pre-scheduled))
+	   ;;don't show tasks that are scheduled or have deadlines in the
+	   ;;normal todo list
+	   ;; (setq org-agenda-todo-ignore-deadlines (quote all))
+	   ;; (setq org-agenda-todo-ignore-scheduled (quote all))
+	   ;;sort tasks in order of when they are due and then by priority
+	   ;; (setq org-agenda-sorting-strategy
+	   ;;  (quote
+	   ;;   ((agenda deadline-up priority-down)
+	   ;;	(todo priority-down category-keep)
+	   ;;	(tags priority-down category-keep)
+	   ;;	(search category-keep))))
 
-	(org-babel-do-load-languages
-		'org-babel-load-languages '((C . t )))
-	(org-babel-do-load-languages
-		'org-babel-load-languages '((lisp . t)))
-	 (eval-after-load "org"
-	 '(require 'ox-md nil t))
+	   (org-babel-do-load-languages
+		   'org-babel-load-languages '((C . t )))
+	   (org-babel-do-load-languages
+		   'org-babel-load-languages '((lisp . t)))
+		(eval-after-load "org"
+		'(require 'ox-md nil t))
 #+END_SRC
 
 ** header2
@@ -307,27 +309,28 @@
 
 *** Dashboard
 #+BEGIN_SRC emacs-lisp
-  (require 'dashboard)
-  (dashboard-setup-startup-hook)
+	(require 'dashboard)
+	(dashboard-setup-startup-hook)
 
-  (setq dashboard-banner-logo-title	(concat "Welcome back to Emacs " emacs-version ", partner!")
+	(setq dashboard-banner-logo-title	(concat "Welcome back to Emacs " emacs-version ", partner!")
 
-		dashboard-startup-banner		"~/pics/profile/caco.png"
-		;; dashboard-startup-banner		'official
-		dashboard-set-init-info		nil
-		dashboard-set-footer			nil
-		dashboard-center-content		t
-		dashboard-show-shortcuts		nil
-		dashboard-set-heading-icons	t
-		dashboard-set-file-icons		nil
-		dashboard-set-navigator		t
-		show-week-agenda-p			t)
+		  dashboard-startup-banner		"~/pics/profile/caco.png"
+		  ;; dashboard-startup-banner		'official
+		  dashboard-set-init-info		nil
+		  dashboard-set-footer			nil
+		  dashboard-center-content		t
+		  dashboard-show-shortcuts		nil
+		  dashboard-set-heading-icons	t
+		  dashboard-set-file-icons		nil
+		  dashboard-set-navigator		t
+		  show-week-agenda-p			t)
 
-  (setq dashboard-items '((projects . 10)
-						  (recents . 10)
-						  (bookmarks . 10)))
+	(setq dashboard-items '((projects . 10)
+							(recents . 10)
+							(bookmarks . 10)
+  (agenda . 5)))
 
-  (add-to-list 'evil-emacs-state-modes 'dashboard-mode)
+	(add-to-list 'evil-emacs-state-modes 'dashboard-mode)
 #+END_SRC
 
 *** w3m
