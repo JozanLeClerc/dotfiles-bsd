@@ -22,7 +22,7 @@ rsync -e "ssh -p$serv_port" -avh --no-o --no-g --delete-after \
 	  --exclude 'README.org' \
 	  --exclude 'LICENSE' \
 	  "$HOME"/dev/web/gitjoe-cgit/ \
-	  root@$serv_addr:/var/jail/www/var/www/gitjoe/
+	  root@$serv_addr:/var/jail/git/var/www/gitjoe/
 rsync -e "ssh -p22" -avh --no-o --no-g --progress \
 	  "$HOME"/dev/perl/gitjoe-scripts/git-ro-daemon.csh \
 	  git-ro@$serv_addr:/var/jail/git/var/git/git-ro/
