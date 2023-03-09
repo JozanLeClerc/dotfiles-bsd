@@ -49,24 +49,17 @@ startif() {
 }
 
 export LANG='en_US.UTF-8'
-if [ $(hostname -s) = mother ]; then
-	"$HOME"/.local/bin/scr.sh
-fi
 startif dunst
 startif picom
 startif mpd-notification
 pgrep $mpd >/dev/null || $mpd >/dev/null 2>&1
-startif $xscr
 "$HOME"/.local/bin/setwp "$HOME"/pics/wp.jpg
 "$HOME"/.local/bin/kb
 xset s off
 xset -dpms
-# if xrandr | grep -F 'DisplayPort-0 connected' >/dev/null 2>&1; then
-# 	"$HOME"/.local/bin/scr
-# else
-# 	"$HOME"/.local/bin/dscr
-# fi
 sleep 2
+startif $xscr
+$sleep
 startif tint2
 $sleep
 startif plank
