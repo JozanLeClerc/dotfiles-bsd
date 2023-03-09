@@ -24,20 +24,25 @@ case $(hostname -s) in
 		mpd="mpd"
 		xscr="xscreensaver --no-splash"
 		sleep="sleep 1"
+		ping="ping -c1 -w1 9.9.9.9 >/dev/null 2>&1"
 		;;
 	po-rbo)
 		icon=" "
 		mpd="mpd"
 		xscr="xscreensaver"
 		sleep="sleep 1"
+		ping="ping -c1 -w1 9.9.9.9 >/dev/null 2>&1"
 		;;
-	fbsd-tp)
+	mars)
 		icon=" "
 		mpd="musicpd"
 		xscr="xscreensaver --no-splash"
 		sleep="gsleep 1"
+		ping="ping -c1 -t1 9.9.9.9 >/dev/null 2>&1"
 		;;
 esac
+
+$ping && git --git-dir="$HOME"/docs/dotfiles-bsd --work-tree="$HOME" pull
 
 startif() {
 	pgrep "$(basename "$1")" >/dev/null || "$@" >/dev/null 2>&1 &

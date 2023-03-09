@@ -18,7 +18,7 @@ html_fmt='\t\t\t\t<h3>'"${date}"'</h3>\
 '
 case $(hostname -s) in
 	mother|po-rbo) sed="sed -i" ;;
-	fbsd-tp) sed="sed -i ''" ;;
+	mars) sed="sed -i ''" ;;
 esac
 
 $sed -e '/<!-- thoughts here -->$/{n;s#^#'"${html_fmt}"'#;}' \

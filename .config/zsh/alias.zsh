@@ -210,7 +210,7 @@ update() {
 			nix-channel --update
 			nix-env -u
 			;;
-		fbsd-tp)
+		mars)
 			doas pkg update && doas pkg upgrade
 			;;
 	esac

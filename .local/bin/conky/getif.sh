@@ -11,7 +11,7 @@ case "$(hostname -s)" in
 		if_main="enx4ce1734c425a"
 		if_alt="wlp1s0"
 		;;
-	fbsd-tp)
+	mars)
 		if_main="em0"
 		if_alt="wlan0"
 		exit

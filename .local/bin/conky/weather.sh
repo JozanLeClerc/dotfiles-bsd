@@ -2,10 +2,10 @@
 
 case "$(hostname -s)" in
 	mother | po-rbo)
-		ping -c1 -w1 1.1.1.1 >/dev/null 2>&1 || exit
+		ping -c1 -w1 9.9.9.9 >/dev/null 2>&1 || exit
 		;;
-	fbsd-tp)
-		ping -c1 -t1 1.1.1.1 >/dev/null 2>&1 || exit
+	mars)
+		ping -c1 -t1 9.9.9.9 >/dev/null 2>&1 || exit
 		;;
 esac
 

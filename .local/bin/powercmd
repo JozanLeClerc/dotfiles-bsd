@@ -6,7 +6,7 @@ host="$(hostname -s)"
 case $host in
 	mother) icon=" " ;;
 	po-rbo) icon=" " ;;
-	fbsd-tp) icon=" " ;;
+	mars) icon=" " ;;
 esac
 
 case $1 in
@@ -19,7 +19,7 @@ case $1 in
 		case $host in
 			mother) loginctl suspend ;;
 			po-rbo) systemctl suspend ;;
-			fbsd-tp) acpiconf -s 3 ;;
+			mars) acpiconf -s 3 ;;
 		esac
 		;;
 	"reboot")
@@ -29,7 +29,7 @@ case $1 in
 		case $host in
 			mother) loginctl reboot ;;
 			po-rbo) systemctl reboot ;;
-			fbsd-tp) shutdown -r now ;;
+			mars) shutdown -r now ;;
 		esac
 		;;
 	"poweroff")
@@ -39,7 +39,7 @@ case $1 in
 		case $host in
 			mother) loginctl poweroff ;;
 			po-rbo) systemctl poweroff ;;
-			fbsd-tp) shutdown -p now ;;
+			mars) shutdown -p now ;;
 		esac
 		;;
 	*)
