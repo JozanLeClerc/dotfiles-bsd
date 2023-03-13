@@ -2,6 +2,7 @@
 
 use strict;
 use warnings;
+use Sys::Hostname;
 use Scalar::Util qw(looks_like_number);
 use File::HomeDir qw(home);
 use File::Basename qw(basename);
@@ -9,24 +10,27 @@ use Cwd qw(cwd);
 use Term::ReadKey;
 use Capture::Tiny qw(capture);
 use POSIX qw(setsid);
+use feature qw(switch);
+no warnings qw(experimental::smartmatch);
 
 use constant {
-	TERMINAL_PATH	=> '/usr/local/bin/st',
-	MPVIEW_PATH		=> home() . '/.local/bin/mpview',
-	MPV_PATH		=> '/usr/local/bin/mpv',
-	YTDL_PATH		=> '/usr/local/bin/yt-dlp',
-	FETCH_PATH		=> '/usr/bin/fetch',
-	IMGVIEW_PATH	=> '/usr/local/bin/nsxiv',
-	ZATHURA_PATH	=> '/usr/local/bin/zathura',
-	W3M_PATH		=> '/usr/local/bin/w3m',
-	BROWSER_PATH	=> '/usr/local/bin/iridium',
-	NOTIFYSEND_PATH	=> '/usr/local/bin/notify-send'
+	TERMINAL_PATH	=> 'st',
+	MPV_PATH		=> 'mpv',
+	YTDL_PATH		=> 'yt-dlp',
+	FETCH_PATH		=> 'fetch',
+	CURL_PATH		=> 'curl',
+	IMGVIEW_PATH	=> 'nsxiv',
+	ZATHURA_PATH	=> 'zathura',
+	W3M_PATH		=> 'w3m',
+	BROWSER_PATH	=> 'firefox',
+	NOTIFYSEND_PATH	=> 'notify-send',
+	HOSTNAME		=> (split /\./, hostname())
 };
 use constant PROG_LIST	=> "" .
 "mpv"					. "\n" .
 "mpv-term"				. "\n" .
-"youtube-dl"			. "\n" .
-"youtube-dl thumbnail"	. "\n" .
+"ytdl"					. "\n" .
+"ytdl thumbnail"		. "\n" .
 "fetch"					. "\n" .
 "nsxiv"					. "\n" .
 "zathura"				. "\n" .
@@ -60,7 +64,7 @@ sub open_link
 	my @wc;
 
 	if ($a eq "mpv") {
-		if (system(MPVIEW_PATH, $url) != 0) {
+		if (system(MPV_PATH, $url) != 0) {
 			system(
 				NOTIFYSEND_PATH,
 				'-u', 'critical',
@@ -74,12 +78,12 @@ sub open_link
 	elsif ($a eq "mpv-term") {
 		exec(TERMINAL_PATH, '-e', MPV_PATH, '--audio-channels=stereo', $url);
 	}
-	elsif ($a eq "fetch" || $a eq "youtube-dl") {
+	elsif ($a eq "fetch" || $a eq "ytdl") {
 		$pid = fork();
 		if (not $pid) {
 			setsid();
 			$ret = -1;
-			if ($a eq "youtube-dl") {
+			if ($a eq "ytdl") {
 				$list = QUAL_LIST;
 				$quality = `printf "$list" | dmenu -i -l 8 -m 0`;
 				if (not $quality) {
@@ -97,7 +101,7 @@ sub open_link
 				}
 				$file_name = $url;
 				$file_name =~ s/.+\///g;
-				$file_name = `youtube-dl -e $url`;
+				$file_name = `yt-dlp -e $url`;
 				if (not $file_name) {
 					$file_name = "YouTube video";
 				}
@@ -233,7 +237,14 @@ sub open_link
 					'  <b>' . $file_name . '</b> started downloading'
 				);
 				(undef, undef, $ret) = capture {
-					system(FETCH_PATH, $url);
+					given (HOSTNAME) {
+						when(["mother", "po-rbo"]) {
+							system(CURL_PATH, "-fsSLO", $url);
+						}
+						when("mars") {
+							system(FETCH_PATH, $url);
+						}
+					}
 				};
 				if ($ret == 0) {
 					system(
@@ -271,7 +282,7 @@ sub open_link
 			exit 0;
 		}
 	}
-	elsif ($a eq "youtube-dl thumbnail") {
+	elsif ($a eq "ytdl thumbnail") {
 		$pid = fork();
 		if (not $pid) {
 			setsid();
@@ -279,7 +290,7 @@ sub open_link
 			$file_name = $url;
 			$file_name =~ s/.+\///g;
 			if ($file_name =~ m/^watch\?v=.+/) {
-				$file_name = `youtube-dl -e $url`;
+				$file_name = `yt-dlp -e $url`;
 				if (not $file_name) {
 					$file_name = "Youtube video";
 				}
@@ -306,11 +317,18 @@ sub open_link
 					);
 				exit 0;
 			}
-			system(FETCH_PATH, '-q', $tmp);
+			given (HOSTNAME) {
+				when(["mother", "po-rbo"]) {
+					system(CURL_PATH, "-fsSLO", $tmp);
+				}
+				when("mars") {
+					system(FETCH_PATH, '-q', $tmp);
+				}
+			}
 			$file_name = $tmp;
 			$file_name =~ s/.+\///g;
 			chomp $file_name;
-			system(IMGVIEW_PATH, '-f', '-b', '-a', $file_name);
+			system(IMGVIEW_PATH, '-b', '-a', $file_name);
 			unlink($file_name);
 			exit 0;
 		}
@@ -329,8 +347,15 @@ sub open_link
 				'download started',
 				'  fetching <b>'. $file_name . '</b> to <b>/tmp</b>'
 				);
-			system(FETCH_PATH, '-q', $url);
-			if ($a == "nsxiv") {
+			given (HOSTNAME) {
+				when(["mother", "po-rbo"]) {
+					system(CURL_PATH, "-fsSLO", $url);
+				}
+				when("mars") {
+					system(FETCH_PATH, '-q', $url);
+				}
+			}
+			if ($a eq "nsxiv") {
 				exec(IMGVIEW_PATH, '-b', '-a', $file_name);
 			}
 			else {
