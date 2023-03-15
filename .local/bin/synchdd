@@ -1,18 +1,22 @@
 #!/bin/csh -e
 
-[ -d $HOME/hdd ] || exit 1
+dest="$HOME"/exthdd/
+
+[ -d $dest ] || exit 1
 # books
-rsync -avh --delete-after \
-	$HOME/books $HOME/hdd
+rsync -avhk --delete-after \
+	$HOME/books $dest
 # docs
-rsync -avh --delete-after \
+rsync -avhk --delete-after \
 	--exclude 'dotfiles-*' \
 	--exclude 'conffiles-bsd' \
-	--exclude 'phone_mu' \
-	$HOME/docs $HOME/hdd
+	$HOME/docs $dest
 # mu
 rsync -avhk --delete-after \
-	$HOME/mu $HOME/hdd
+	$HOME/mu $dest
 # pics
-rsync -avh --delete-after \
-	$HOME/pics $HOME/hdd
+rsync -avhk --delete-after \
+	$HOME/pics $dest
+# vids
+rsync -avhk --delete-after \
+	$HOME/vids $dest
