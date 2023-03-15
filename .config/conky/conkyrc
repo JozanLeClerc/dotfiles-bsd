@@ -89,8 +89,9 @@ ${color1}${font1}DISK ${hr 2}${font}
 ${alignr}${if_match "${nodename_short}" == "mother"}${color1}NVMe temp:${font2}${color0}${hwmon 1 temp 1}°C${endif}${if_match "${nodename_short}" == "po-rbo"}${color1}NVMe temp:${font2}${color0}${hwmon 2 temp 1}°C${endif}${font}
 ${diskiograph nvme0n1 50,380 ebdbb2 928374 -t}
 ${voffset -21}${hr}
-${color1}NVMe: ${font2}${color0}${fs_bar 8 /}${font}${if_match "${nodename_short}" == "mother"}
-${color1}HDD:  ${font2}${color0}${fs_bar 8 /var/hdd}${font}${endif}
+${color1}NVMe: ${font2}${color0}${fs_bar 8 /}${font}${if_existing /var/hdd}
+${color1}HDD:  ${font2}${color0}${fs_bar 8 /var/hdd}${font}${endif}${if_existing /home/jozan/exthdd}
+${color1}EHDD: ${font2}${color0}${fs_bar 8 /home/jozan/exthdd}${endif}
 ${color1}${font1}PROC ${hr 2}${font}
 ${color1}COMMAND${color1}${alignr}PID     CPU      MEM
 ${font2}${color0}${top_mem name 1} ${alignr}${top_mem pid 1}  ${top_mem cpu 1}  ${top_mem mem_res 1}

@@ -215,6 +215,7 @@ update() {
 			;;
 	esac
 }
+alias up='update'
 nixi() {
 	nix-env -iA $(for i in $@; do printf "nixpkgs.%s " "$i"; done)
 }
