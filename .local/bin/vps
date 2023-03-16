@@ -11,7 +11,7 @@ rsync -e "ssh -p$serv_port" -avh --no-o --no-g --delete-after \
 	  --exclude 'asm-example.cgi' \
 	  --exclude 'files/' \
 	  --exclude 'caco' \
-	  --exclude 'shit' \
+	  --exclude 'sad' \
 	  --exclude 'bon_concert' \
 	  "$HOME"/dev/web/joe-www/ \
 	  root@$serv_addr:/var/jail/www/var/www/joe/
