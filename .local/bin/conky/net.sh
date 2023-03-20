@@ -21,7 +21,7 @@ if grep up "/sys/class/net/$if_main/operstate" >/dev/null 2>&1 && ! [ -z $(ifcon
 elif grep up "/sys/class/net/$if_alt/operstate" >/dev/null 2>&1 && ! [ -z $(ifconfig $if_alt 2>/dev/null | awk '/inet / {print $2}') ]; then
 	if_main=$if_alt
 else
-	echo '${font1}NET ${hr}${font}
+	echo '${color1}${font1}NET ${hr}${font}
 ${color1}No network${font}'
 	exit
 fi
