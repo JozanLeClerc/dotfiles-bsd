@@ -23,6 +23,11 @@
 				<command>qalculate-gtk</command>
 			</action>
 		</item>
+		<item label="Kleopatra">
+			<action name="Execute">
+				<command>kleopatra</command>
+			</action>
+		</item>
 		<item label="Google Earth">
 			<action name="Execute">
 				<command>google-earth-pro</command>
