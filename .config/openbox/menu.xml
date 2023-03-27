@@ -101,6 +101,30 @@
 		</item>
 	</menu>
 
+	<menu id="apps-audio-menu" label="Audio">
+		<item label="REAPER">
+			<action name="Execute">
+				<command>reaper</command>
+			</action>
+		</item>
+		<item label="Mixbus 32C">
+			<action name="Execute">
+				<command>mixbus</command>
+			</action>
+		</item>
+		<separator />
+		<item label="Pusle Control Pannel">
+			<action name="Execute">
+				<command>pavucontrol</command>
+			</action>
+		</item>
+		<item label="JACK Audio Connection">
+			<action name="Execute">
+				<command>qjackctl</command>
+			</action>
+		</item>
+	</menu>
+
 	<menu id="apps-multimedia-menu" label="Multimedia">
 		<item label="Ario">
 			<action name="Execute">
@@ -181,6 +205,7 @@
 		<menu id="apps-editors-menu"/>
 		<menu id="apps-graphics-menu"/>
 		<menu id="apps-net-menu"/>
+		<menu id="apps-audio-menu"/>
 		<menu id="apps-multimedia-menu"/>
 		<menu id="apps-games-menu"/>
 		<separator label="System" />
