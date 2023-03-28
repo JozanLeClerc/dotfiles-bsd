@@ -233,9 +233,14 @@ search() {
 alias watch='cmdwatch' \
 	tsd='transmission-daemon' \
 	tsm='transmission-remote' \
-	rsox='sox -t oss default' \
-	pstree='dtpstree -U' \
-	open='xdg-open' \
+	rsox='sox -t oss default'
+pstree() {
+	case $(hostname -s) in
+		mother|po-rbo) pstree -U ;;
+		mars) dtpstree -U ;;
+	esac
+}
+alias open='xdg-open' \
 	speedtest='speedtest --bytes' \
 	calcurse='calcurse -C $XDG_CONFIG_HOME/calcurse -D $XDG_DATA_HOME/calcurse' \
 	abook='abook -C $XDG_CONFIG_HOME/abook/abookrc --datafile $XDG_DATA_HOME/abook/addressbook' \
