@@ -35,9 +35,7 @@ fi
 
 echo '${color1}${font1}NET ${hr 2}${font}
 ${color1}Interface: ${font2}${color0}'$if_main'${font}'
-
 [ -z $if_wg ] || echo '${color1}WireGuard: ${color0}${font2}ON${font}'
-
 echo '${color1}---------
 ${color1}LAN IP: ${font2}${color0}${addr '$if_main'}${font}'
 [ -z $if_wg ] || echo '${color1}WG  IP: ${color0}${font2}${addr '$if_wg'}${font}'
