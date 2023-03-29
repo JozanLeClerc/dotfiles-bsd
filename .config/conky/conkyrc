@@ -70,12 +70,13 @@ ${goto 130}${mpd_elapsed}/${mpd_length} ${mpd_bar}
 ${execi 5 ~/.local/bin/conky/cover.sh >/dev/null 2>&1}${image /tmp/conkyCover.png -p 5,120 -n}
 
 ${endif}${endif}
-${color orange}${hr}
+${color0}${hr}
 ${color0}${font ConkySymbols:size=18}f${font :bold:}${voffset -5} CPU${font}${goto 115}${if_match "${nodename_short}" == "po-rbo"}AMD Ryzen 5 4500U${endif}${if_match "${nodename_short}" == "mother"}Intel i7-4790${endif} @ ${freq_g}GHz${alignr}${font :bold:}${cpu}%${font}
 ${color orange}${cpubar}
 ${color orange}${offset 10}${cpugraph cpu1 30,90 000000 DDAA00} ${cpugraph cpu2 30,90 000000 DDAA00} ${cpugraph cpu3 30,90 000000 DDAA00} ${cpugraph cpu4 30,90 000000 DDAA00} ${voffset 12} ${color0} ${goto 25}CPU 1: ${cpu cpu1}% ${goto 120}CPU 2: ${cpu cpu2}% ${goto 215}CPU 3: ${cpu cpu3}% ${voffset -29} ${goto 307}CPU 4: ${cpu cpu4}%
 ${color orange}${offset 10}${cpugraph cpu5 30,90 000000 DDAA00} ${cpugraph cpu6 30,90 000000 DDAA00} ${voffset 12} ${color0} ${goto 25}CPU 5: ${cpu cpu5}% ${voffset -29} ${goto 120}CPU 6: ${cpu cpu6}%${if_match "${nodename_short}" == "mother"}${goto 215}CPU 7: ${cpu cpu7}% ${voffset -29} ${goto 307}CPU 8: ${cpu cpu8}%${endif}
-${color LightGreen}${hr 1}${font}
+
+${color0}${hr}${font}
 ${color0}${font ConkySymbols:size=18}j${font :bold:}${voffset -5} RAM${goto 150}$mem / $memmax${alignr}${memperc}%${font}
 ${color LightGreen}${membar}
 ${color0}${font :size 11:bold}${offset 5}Top Processes ${alignr}${offset -5}CPU%${offset 10}MEM%
