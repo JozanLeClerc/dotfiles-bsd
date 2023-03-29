@@ -10,7 +10,7 @@ conky.config = {
     double_buffer = true,
     use_spacer = 'left',
     use_xft = true,
-	xinerama_head = 3,
+	xinerama_head = 0,
     xftalpha = 1,
     font  = 'Open Sans:style=Semibold:size=10',
     font1 = 'ConkySymbols:size=18',
