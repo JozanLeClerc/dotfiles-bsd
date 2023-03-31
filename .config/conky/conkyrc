@@ -43,7 +43,7 @@ conky.config = {
     cpu_avg_samples = 4,
     short_units = false,
     pad_percents = 2,
-	text_buffer_size = 16384,
+	text_buffer_size = 256,
     out_to_console = false,
     out_to_stderr = false,
     extra_newline = false,
@@ -60,8 +60,7 @@ ${color0}${alignc}${time %A %e %B %Y - %Hh%M}
 ${alignc}${color1}Terminal: ${color0}${nodename_short}
 ${alignc}${color1}OS: ${color0}${sysname} - ${execi 300 lsb_release -ds}
 ${alignc}${color1}Kernel: ${color0}${kernel}
-${alignc}${color1}Uptime: ${color0}${uptime}
-${image ~/.config/conky/artix-logo.png -p 5,10 -s 75x75 -n}${font}${if_match "${nodename_short}" == "mother"}${if_mpd_playing}
+${alignc}${color1}Uptime: ${color0}${uptime_short}${image ~/.config/conky/artix-logo.png -p 5,10 -s 75x75 -n}${font}${if_match "${nodename_short}" == "mother"}${if_mpd_playing}
 ${color1}MPD ${hr 2}${font}
 ${color0}${goto 130}${mpd_artist}
 ${goto 130}${scroll wait 30 3 5 ${mpd_title}}
@@ -73,14 +72,13 @@ ${endif}${endif}
 ${color0}${hr}
 ${color0}${font ConkySymbols:size=18}f${font :bold:}${voffset -5} CPU${font}${goto 115}${if_match "${nodename_short}" == "mother"}Intel i7-4790${endif}${if_match "${nodename_short}" == "po-rbo"}AMD Ryzen 5 4500U${endif} @ ${freq_g}GHz${alignr}${font :bold:}${cpu}%${font}
 ${color orange}${cpubar}
-${color orange}${offset 10}${cpugraph cpu1 30,90 000000 DDAA00} ${cpugraph cpu2 30,90 000000 DDAA00} ${cpugraph cpu3 30,90 000000 DDAA00} ${cpugraph cpu4 30,90 000000 DDAA00} ${voffset 12} ${color0} ${goto 25}CPU 1: ${cpu cpu1}% ${goto 120}CPU 2: ${cpu cpu2}% ${goto 215}CPU 3: ${cpu cpu3}% ${voffset -29} ${goto 307}CPU 4: ${cpu cpu4}%
-${color orange}${offset 10}${cpugraph cpu5 30,90 000000 DDAA00} ${cpugraph cpu6 30,90 000000 DDAA00} ${voffset 12} ${color0} ${goto 25}CPU 5: ${cpu cpu5}% ${voffset -29} ${goto 120}CPU 6: ${cpu cpu6}%${if_match "${nodename_short}" == "mother"}${goto 215}CPU 7: ${cpu cpu7}% ${voffset -29} ${goto 307}CPU 8: ${cpu cpu8}%${endif}
-
+${color orange}${offset 3}${cpugraph cpu1 30,93 000000 DDAA00} ${cpugraph cpu2 30,93 000000 DDAA00} ${cpugraph cpu3 30,93 000000 DDAA00} ${cpugraph cpu4 30,93 000000 DDAA00} ${voffset 12} ${color0} ${goto 19}CPU 1: ${cpu cpu1}% ${goto 115}CPU 2: ${cpu cpu2}% ${goto 210}CPU 3: ${cpu cpu3}% ${voffset -29} ${goto 307}CPU 4: ${cpu cpu4}%
+${color orange}${offset 3}${cpugraph cpu5 30,93 000000 DDAA00} ${cpugraph cpu6 30,93 000000 DDAA00} ${voffset 12} ${color0} ${goto 19}CPU 5: ${cpu cpu5}% ${voffset -29} ${goto 115}CPU 6: ${cpu cpu6}%${if_match "${nodename_short}" == "mother"}${cpugraph cpu7 30,93 000000 DDAA00} ${cpugraph cpu6 30,95 000000 DDAA00} ${goto 210}CPU 7: ${cpu cpu7}% ${voffset -29} ${goto 307}CPU 8: ${cpu cpu8}%${endif}
 ${color0}${hr}${font}
 ${color0}${font ConkySymbols:size=18}j${font :bold:}${voffset -5} RAM${font}${goto 150}$mem / $memmax${alignr}${font :bold:}${memperc}%${font}
 ${color LightGreen}${membar}
 ${color0}${font :size 11:bold}${offset 5}Top Processes ${alignr}${offset -5}CPU%${offset 10}MEM%
-${color LightGreen}${memgraph 120,390 000000 228B22}${voffset -135}
+${color LightGreen}${memgraph 120,390 000000 228B22}${voffset -134}
 ${color0}${offset 5}${top_mem name 1} ${alignr 10}${offset -13}${top_mem cpu 1}${offset 15}${top_mem mem 1}
 ${color0}${offset 5}${top_mem name 2} ${alignr 10}${offset -13}${top_mem cpu 2}${offset 15}${top_mem mem 2}
 ${color0}${offset 5}${top_mem name 3} ${alignr 10}${offset -13}${top_mem cpu 3}${offset 15}${top_mem mem 3}
@@ -89,19 +87,24 @@ ${color0}${offset 5}${top_mem name 5} ${alignr 10}${offset -13}${top_mem cpu 5}$
 ${color0}${hr}${font}${if_match "${nodename_short}" == "mother"}
 ${color0}${font ConkySymbols:size=18}n${font :bold:}${voffset -5} GPU${font}${goto 50}${voffset -6}${nvidia modelname} @ ${nvidia gpufreq}MHz${alignr}${font :bold:}${nvidia gpuutil}%${font}
 ${color tomato}${nvidiabar gpuutil}
-${color tomato}${offset 10}${nvidiagraph gpuutil 30,184 000000 FF6347} ${nvidiagraph mem 30,184 000000 FF6347} ${voffset 13} ${goto 25}${color0}GPU Usage: ${execi 5 radeontop -d- -l1 | grep -o 'gpu [0-9]\{1,3\}' | cut -c 5-10}%${voffset -30}${goto 215}VRAM Usage: ${execi 5 radeontop -d- -l1 | grep -o 'vram [0-9]\{1,3\}' | cut -c 5-10}%${endif}${if_match "${nodename_short}" == "po-rbo"}
+${color tomato}${offset 3}${nvidiagraph gpuutil 30,190 000000 FF6347} ${nvidiagraph mem 30,190 000000 FF6347} ${voffset 13} ${goto 25}${color0}GPU Usage: ${nvidia gpuutil}${goto 215}VRAM Usage: ${nvidia memutil}%${endif}${if_match "${nodename_short}" == "po-rbo"}
 ${color0}${font ConkySymbols:size=18}n${font :bold:}${voffset -5} GPU${font}${goto 140}AMD Renoir @ ${exec awk 'NR==2{print $2}' /sys/class/drm/card0/device/pp_dpm_sclk}${alignr}${font :bold:}${execi 5 radeontop -d- -l1 | grep -o 'gpu [0-9]\{1,3\}' | cut -c 5-10}%${font}
 ${color tomato}${execbar "radeontop -d- -l1 | grep -o 'gpu [0-9]\{1,3\}' | cut -c 5-10"}
-${color tomato}${offset 10}${execgraph "radeontop -d- -l1 | grep -o 'gpu [0-9]\{1,3\}' | cut -c 5-10" 30,182 000000 FF6347} ${execgraph "radeontop -d- -l1 | grep -o 'vram [0-9]\{1,3\}' | cut -c 5-10 | awk '{print $1 - 99}'" 30,182 000000 FF6347} ${voffset 13} ${goto 25}${color0}GPU Usage: ${execi 5 radeontop -d- -l1 | grep -o 'gpu [0-9]\{1,3\}' | cut -c 5-10}%${voffset -30}${goto 215}VRAM Usage: ${execi 5 radeontop -d- -l1 | grep -o 'vram [0-9]\{1,3\}' | cut -c 5-10 | awk '{print $1 - 99}'}%
-${endif}
+${color tomato}${offset 3}${execgraph "radeontop -d- -l1 | grep -o 'gpu [0-9]\{1,3\}' | cut -c 5-10" 30,190 000000 FF6347} ${execgraph "radeontop -d- -l1 | grep -o 'vram [0-9]\{1,3\}' | cut -c 5-10 | awk '{print $1 - 99}'" 30,190 000000 FF6347} ${voffset 13} ${goto 25}${color0}GPU Usage: ${execi 5 radeontop -d- -l1 | grep -o 'gpu [0-9]\{1,3\}' | cut -c 5-10}%${voffset -30}${goto 215}VRAM Usage: ${execi 5 radeontop -d- -l1 | grep -o 'vram [0-9]\{1,3\}' | cut -c 5-10 | awk '{print $1 - 99}'}%${endif}
 ${color0}${hr}${font}
 ${color0}${font ConkySymbols:size=18}k${font :Bold:}${voffset -5} FILE SYSTEMS${alignr}NVMe ${fs_used_perc /}%${if_match "${nodename_short}" == "mother"} | HDD ${fs_used_perc /var/hdd}%${endif}${font}
-
 ${color0}NVMe ${goto 60}${color darkcyan}${fs_bar 8,210 /} ${color0}${alignr}${fs_free /} / ${fs_size /}${if_match "${nodename_short}" == "mother"}
 ${color0}HDD  ${goto 60}${color darkcyan}${fs_bar 8,210 /var/hdd} ${color0}${alignr} ${fs_free /var/hdd} / ${fs_size /var/hdd}${if_existing /home/jozan/exthdd}
 ${color0}EXT  ${goto 60}${color darkcyan}${fs_bar 8,210 /home/jozan/exthdd} ${color0}${alignr}${fs_free /home/jozan/exthdd} / ${fs_size /home/jozan/exthdd}${endif}${endif}
-${color darkcyan}${offset 10}${diskiograph_read nvme0n1 30,184 000000 008B8B} ${diskiograph_write nvme0n1 30,184 000000 008B8B} ${voffset 13} ${goto 25}${color0}NVMe read: ${diskio_read nvme0n1}${goto 215}NVMe write: ${diskio_write nvme0n1}${font}${if_match "${nodename_short}" == "mother"}
-${color darkcyan}${offset 10}${diskiograph_read sda1 30,184 000000 008B8B} ${diskiograph_write sda1 30,184 000000 008B8B} ${voffset 13} ${goto 25}${color0}NVMe read: ${diskio_read sda1}${goto 215}NVMe write: ${diskio_write sda1}${font}${endif}
-${execpi 5 ~/.local/bin/conky/net.sh}
-${if_match "${nodename_short}" == "mother"}${color0}${downspeedgraph eth1 50,185 ebdbb2 928374 256000000 -t}${goto 195}${color0}${upspeedgraph eth1 50,180 ebdbb2 928374 256000000 -t}${endif}${if_match "${nodename_short}" == "po-rbo"}${color0}${downspeedgraph enx34298f762de7 50,180 ebdbb2 928374 128000000 -t}${goto 195}${color0}${upspeedgraph enx34298f762de7 50,180 ebdbb2 928374 128000000 -t}${endif}
+${color darkcyan}${offset 3}${diskiograph_read nvme0n1 30,190 000000 008B8B} ${diskiograph_write nvme0n1 30,190 000000 008B8B} ${voffset 13} ${goto 25}${color0}NVMe R: ${diskio_read nvme0n1}${goto 215}NVMe W: ${diskio_write nvme0n1}${font}${if_match "${nodename_short}" == "mother"}
+${color darkcyan}${offset 10}${diskiograph_read sda1 30,182 000000 008B8B} ${diskiograph_write sda1 30,182 000000 008B8B} ${voffset 13} ${goto 25}${color0}HDD R: ${diskio_read sda1}${goto 215}HDD W: ${diskio_write sda1}${font}${endif}
+${color0}${hr}${font}
+${color0}${font ConkySymbols:size=18}i${font :Bold:} ${voffset -5}NETWORK${font} LAN IP: ${if_match "${nodename_short}" == "mother"}${addr eth1}${endif}${if_match "${nodename_short}" == "po-rbo"}${addr enx34298f762de7}${endif} ${if_up wg0} | WG IP: ${addr wg0}${endif}${if_match "${nodename_short}" == "mother"}
+${color 81B562}${offset 3}${downspeedgraph eth1 50,190 000000 81B562 128000000}${goto 205}${color SteelBlue}${upspeedgraph eth1 50,190 000000 4682B4 128000000}
+${color0}${voffset -55}${offset 10}Download${goto 210}Upload${offset 10}
+${offset 10} ${downspeed eth1} ${goto 210}${upspeed eth1}${endif}${if_match "${nodename_short}" == "po-rbo"}
+${color 81B562}${offset 3}${downspeedgraph enx34298f762de7 50,190 000000 81B562 128000000}${goto 205}${color SteelBlue}${upspeedgraph enx34298f762de7 50,190 000000 4682B4 128000000}
+${color0}${voffset -55}${offset 10}Download${goto 210}Upload${offset 10}
+${offset 10} ${downspeed enx34298f762de7} ${goto 210}${upspeed enx34298f762de7}${endif}
+
 ]]

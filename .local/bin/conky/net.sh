@@ -32,6 +32,8 @@ else
 ${color1}No network${font}'
 	exit
 fi
+echo -n $if_main
+exit
 
 echo '${color1}NET ${hr 2}${font}
 ${color1}Interface: ${color0}'$if_main'${font}'
