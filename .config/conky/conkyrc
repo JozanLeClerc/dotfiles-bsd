@@ -100,17 +100,8 @@ ${color0}${font ConkySymbols:size=18}k${font :Bold:}${voffset -5} FILE SYSTEMS${
 ${color0}NVMe ${goto 60}${color darkcyan}${fs_bar 8,210 /} ${color0}${alignr}${fs_free /} / ${fs_size /}${if_match "${nodename_short}" == "mother"}
 ${color0}HDD  ${goto 60}${color darkcyan}${fs_bar 8,210 /var/hdd} ${color0}${alignr} ${fs_free /var/hdd} / ${fs_size /var/hdd}${if_existing /home/jozan/exthdd}
 ${color0}EXT  ${goto 60}${color darkcyan}${fs_bar 8,210 /home/jozan/exthdd} ${color0}${alignr}${fs_free /home/jozan/exthdd} / ${fs_size /home/jozan/exthdd}${endif}${endif}
-${color darkcyan}${offset 10}${diskiograph nvme0n1 30,368 ebdbb2 928374 -t}
-
-
-
-
-${color1}DISK ${hr 2}${font}
-${alignr}${if_match "${nodename_short}" == "mother"}${color1}NVMe temp:${color0}${hwmon 1 temp 1}°C${endif}${if_match "${nodename_short}" == "po-rbo"}${color1}NVMe temp:${color0}${hwmon 2 temp 1}°C${endif}${font}
-${diskiograph nvme0n1 50,380 ebdbb2 928374 -t}
-${color1}NVMe: ${color0}${fs_bar 8 /}${font}${if_existing /var/hdd}
-${color1}HDD:  ${color0}${fs_bar 8 /var/hdd}${font}${endif}${if_existing /home/jozan/exthdd}
-${color1}EHDD: ${color0}${fs_bar 8 /home/jozan/exthdd}${endif}
+${color darkcyan}${offset 10}${diskiograph_read nvme0n1 30,184 000000 008B8B} ${diskiograph_write nvme0n1 30,184 000000 008B8B} ${voffset 13} ${goto 25}${color0}NVMe read: ${diskio_read nvme0n1}${goto 215}NVMe write: ${diskio_write nvme0n1}${font}${if_match "${nodename_short}" == "mother"}
+${color darkcyan}${offset 10}${diskiograph_read sda1 30,184 000000 008B8B} ${diskiograph_write sda1 30,184 000000 008B8B} ${voffset 13} ${goto 25}${color0}NVMe read: ${diskio_read sda1}${goto 215}NVMe write: ${diskio_write sda1}${font}${endif}
 ${execpi 5 ~/.local/bin/conky/net.sh}
 ${if_match "${nodename_short}" == "mother"}${color0}${downspeedgraph eth1 50,185 ebdbb2 928374 256000000 -t}${goto 195}${color0}${upspeedgraph eth1 50,180 ebdbb2 928374 256000000 -t}${endif}${if_match "${nodename_short}" == "po-rbo"}${color0}${downspeedgraph enx34298f762de7 50,180 ebdbb2 928374 128000000 -t}${goto 195}${color0}${upspeedgraph enx34298f762de7 50,180 ebdbb2 928374 128000000 -t}${endif}
 ]]
