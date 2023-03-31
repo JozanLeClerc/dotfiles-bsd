@@ -19,7 +19,7 @@ conky.config = {
 	template0 = '\\n',
 	if_up_strictness = address,
 	format_human_readable = true,
-    update_interval = 0.1,
+    update_interval = 0.5,
     uppercase = false,
     override_utf8_locale = true,
     stippled_borders = 0,
@@ -75,7 +75,7 @@ ${color0}${hr}
 ${color0}${font ConkySymbols:size=18}f${font :bold:}${voffset -5} CPU${font}${goto 115}${if_match "${nodename_short}" == "mother"}Intel i7-4790${endif}${if_match "${nodename_short}" == "po-rbo"}AMD Ryzen 5 4500U${endif} @ ${freq_g}GHz${alignr}${font :bold:}${cpu}%${font}
 ${color orange}${cpubar}
 ${color orange}${offset 3}${cpugraph cpu1 30,93 000000 DDAA00} ${cpugraph cpu2 30,93 000000 DDAA00} ${cpugraph cpu3 30,93 000000 DDAA00} ${cpugraph cpu4 30,93 000000 DDAA00} ${voffset 12} ${color0} ${goto 19}CPU 1: ${cpu cpu1}% ${goto 115}CPU 2: ${cpu cpu2}% ${goto 210}CPU 3: ${cpu cpu3}% ${voffset -29} ${goto 307}CPU 4: ${cpu cpu4}%
-${color orange}${offset 3}${cpugraph cpu5 30,93 000000 DDAA00} ${cpugraph cpu6 30,93 000000 DDAA00} ${voffset 12} ${color0} ${goto 19}CPU 5: ${cpu cpu5}% ${voffset -29} ${goto 115}CPU 6: ${cpu cpu6}%${if_match "${nodename_short}" == "mother"}${cpugraph cpu7 30,93 000000 DDAA00} ${cpugraph cpu6 30,95 000000 DDAA00} ${goto 210}CPU 7: ${cpu cpu7}% ${voffset -29} ${goto 307}CPU 8: ${cpu cpu8}%${endif}
+${color orange}${offset 3}${cpugraph cpu5 30,93 000000 DDAA00} ${cpugraph cpu6 30,93 000000 DDAA00} ${if_match "${nodename_short}" == "mother"}${cpugraph cpu7 30,93 000000 DDAA00} ${cpugraph cpu8 30,93 000000 DDAA00}${endif} ${voffset 12} ${color0} ${goto 19}CPU 5: ${cpu cpu5}% ${goto 115}CPU 6: ${cpu cpu6}%${if_match "${nodename_short}" == "mother"} ${goto 210}CPU 7: ${cpu cpu7}% ${voffset -29} ${goto 307}CPU 8: ${cpu cpu8}%${endif}
 ${color0}${hr}${font}
 ${color0}${font ConkySymbols:size=18}j${font :bold:}${voffset -5} RAM${font}${goto 150}$mem / $memmax${alignr}${font :bold:}${memperc}%${font}
 ${color LightGreen}${membar}
@@ -87,26 +87,26 @@ ${color0}${offset 5}${top_mem name 3} ${alignr 10}${offset -13}${top_mem cpu 3}$
 ${color0}${offset 5}${top_mem name 4} ${alignr 10}${offset -13}${top_mem cpu 4}${offset 15}${top_mem mem 4}
 ${color0}${offset 5}${top_mem name 5} ${alignr 10}${offset -13}${top_mem cpu 5}${offset 15}${top_mem mem 5}${if_match "${nodename_short}" == "mother"}
 ${color0}${hr}${font}
-${color0}${font ConkySymbols:size=18}n${font :bold:}${voffset -5} GPU${font}${goto 50}${voffset -6}${nvidia modelname} @ ${nvidia gpufreq}MHz${alignr}${font :bold:}${nvidia gpuutil}%${font}
+${color0}${font ConkySymbols:size=18}n${font :bold:}${voffset -5} GPU${font}${goto 90}${nvidia modelname} @ ${nvidia gpufreq}MHz${alignr}${font :bold:}${nvidia gpuutil}%${font}
 ${color tomato}${nvidiabar gpuutil}
-${color tomato}${offset 3}${nvidiagraph gpuutil 30,190 000000 FF6347} ${nvidiagraph mem 30,190 000000 FF6347} ${voffset 13} ${goto 25}${color0}GPU Usage: ${nvidia gpuutil}${goto 215}VRAM Usage: ${nvidia memutil}%${endif}
+${color tomato}${offset 3}${nvidiagraph gpuutil 30,190 000000 FF6347} ${nvidiagraph mem 30,190 000000 FF6347} ${voffset 13} ${goto 25}${color0}GPU Usage: ${nvidia gpuutil}%${goto 215}${voffset -29}VRAM Usage: ${nvidia memutil}%${endif}
 ${color0}${hr}${font}
 ${color0}${font ConkySymbols:size=18}k${font :Bold:}${voffset -5} FILE SYSTEMS${alignr}NVMe ${fs_used_perc /}%${if_match "${nodename_short}" == "mother"} | HDD ${fs_used_perc /var/hdd}%${endif}${font}
 ${voffset 5}${color1}NVMe ${goto 60}${color darkcyan}${fs_bar 8,210 /} ${color0}${alignr}${fs_free /} / ${fs_size /}${if_match "${nodename_short}" == "mother"}
 ${color1}HDD  ${goto 60}${color darkcyan}${fs_bar 8,210 /var/hdd} ${color0}${alignr} ${fs_free /var/hdd} / ${fs_size /var/hdd}${if_existing /home/jozan/exthdd}
 ${color1}EXT  ${goto 60}${color darkcyan}${fs_bar 8,210 /home/jozan/exthdd} ${color0}${alignr}${fs_free /home/jozan/exthdd} / ${fs_size /home/jozan/exthdd}${endif}${endif}
-${color darkcyan}${offset 3}${diskiograph_read nvme0n1 30,190 000000 008B8B} ${diskiograph_write nvme0n1 30,190 000000 008B8B} ${voffset 13} ${goto 25}${color0}NVMe R: ${diskio_read nvme0n1}${goto 215}NVMe W: ${diskio_write nvme0n1}${font}${if_match "${nodename_short}" == "mother"}
-${color darkcyan}${offset 10}${diskiograph_read sda1 30,182 000000 008B8B} ${diskiograph_write sda1 30,182 000000 008B8B} ${voffset 13} ${goto 25}${color0}HDD R: ${diskio_read sda1}${goto 215}HDD W: ${diskio_write sda1}${font}${endif}
+${color darkcyan}${offset 3}${diskiograph_read nvme0n1 30,190 000000 008B8B} ${diskiograph_write nvme0n1 30,190 000000 008B8B} ${voffset 13} ${goto 25}${color0}NVMe R: ${diskio_read nvme0n1}${goto 215}NVMe W: ${diskio_write nvme0n1}${voffset -29}${font}${if_match "${nodename_short}" == "mother"}
+${color darkcyan}${offset 3}${diskiograph_read sdb1 30,190 000000 008B8B} ${diskiograph_write sdb1 30,190 000000 008B8B} ${voffset 13} ${goto 25}${color0}HDD R: ${diskio_read sdb1}${goto 215}HDD W: ${diskio_write sdb1}${voffset -29}${font}${endif}
 ${color0}${hr}${font}
 ${color0}${font ConkySymbols:size=18}i${font :Bold:} ${voffset -5}NETWORK${alignr}${execpi 5 ~/.local/bin/conky/net.sh}${if_match "${nodename_short}" == "mother"}
 ${color 81B562}${offset 3}${downspeedgraph eth1 50,190 000000 81B562 128000000}${goto 205}${color SteelBlue}${upspeedgraph eth1 50,190 000000 4682B4 128000000}
 ${color0}${voffset -55}${offset 10}Download${goto 210}Upload${offset 10}
 ${offset 10} ${downspeed eth1} ${goto 210}${upspeed eth1}${endif}${if_match "${nodename_short}" == "po-rbo"}
-${color 81B562}${offset 3}${downspeedgraph enx34298f762de7 50,190 000000 81B562 128000000}${goto 205}${color SteelBlue}${upspeedgraph enx34298f762de7 50,190 000000 4682B4 128000000}
+${color 81B562}${offset 3}${downspeedgraph enx34298f762de7 50,190 000000 81B562 128000000} ${color SteelBlue}${upspeedgraph enx34298f762de7 50,190 000000 4682B4 128000000}
 ${color0}${voffset -55}${offset 10}Download${goto 210}Upload${offset 10}
 ${offset 10} ${downspeed enx34298f762de7} ${goto 210}${upspeed enx34298f762de7}${endif}
 ${color0}${hr}${font}
-${font ConkySymbols:size=18:bold}h${font :bold:}${voffset -5}TEMPERATURES ${goto 150}${font}${if_match "${nodename_short}" == "mother"}
+${font ConkySymbols:size=18:bold}h${font :bold:}${voffset -5}TEMPERATURES ${goto 150}${font}${if_match "${nodename_short}" == "moother"}
 ${color EE4444}${execbar sensors | grep CPUTIN | awk '{print $2}'}
 ${color LightBlue}${execbar sensors | grep fan1 | awk 'NR==1{print $2/35}'}
 ${color0}GPU: ${hwmon 3 temp 1}°C ${goto 150}Junc: ${hwmon 3 temp 2}°C${goto 260}GPU Fan${alignr}${hwmon 3 fan 1} RPM
@@ -119,6 +119,6 @@ ${endif}${if_match "${nodename_short}" == "po-rbo"}
 ${voffset 3}${color1}CPU: ${color0}${hwmon 4 temp 1}°C
 ${color EE4444}${execbar sensors | grep Tctl | awk '{print $2}'}
 ${color1}GPU: ${color0}${hwmon 3 temp 1}°C
-${color EE4444}${execbar sensors | grep edge | awk '{print $2}'}
+${color EE4444}${execbar sensors | grep edge | awk '{print $2}'}${endif}
 
 ]]
