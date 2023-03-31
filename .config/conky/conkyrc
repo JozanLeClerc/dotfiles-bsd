@@ -63,13 +63,12 @@ ${alignc}${color1}Terminal: ${color0}${nodename_short}
 ${alignc}${color1}OS: ${color0}${sysname} - ${execi 300 lsb_release -ds}
 ${alignc}${color1}Kernel: ${color0}${kernel}
 ${alignc}${color1}Uptime: ${color0}${uptime_short}${image ~/.config/conky/artix-logo.png -p 5,10 -s 75x75 -n}${font}${if_match "${nodename_short}" == "mother"}${if_mpd_playing}
-${color1}MPD ${hr 2}${font}
+${color0}${hr}${font}
 ${color0}${goto 130}${mpd_artist}
 ${goto 130}${scroll wait 30 3 5 ${mpd_title}}
 ${goto 130}${mpd_date} - ${mpd_album}
 ${goto 130}${mpd_elapsed}/${mpd_length} ${mpd_bar}
-${execi 5 ~/.local/bin/conky/cover.sh >/dev/null 2>&1}${image /tmp/conkyCover.png -p 5,120 -n}
-
+${execi 5 ~/.local/bin/conky/cover.sh >/dev/null 2>&1}${image /tmp/conkyCover.png -p 0,120 -n}
 ${endif}${endif}
 ${color0}${hr}
 ${color0}${font ConkySymbols:size=18}f${font :bold:}${voffset -5} CPU${font}${goto 115}${if_match "${nodename_short}" == "mother"}Intel i7-4790${endif}${if_match "${nodename_short}" == "po-rbo"}AMD Ryzen 5 4500U${endif} @ ${freq_g}GHz${alignr}${font :bold:}${cpu}%${font}
