@@ -44,6 +44,7 @@ video/mp4=mpv.desktop
 application/zip=xarchiver.desktop
 video/x-matroska=mpv.desktop
 video/x-ms-wmv=mpv.desktop
+application/x-ms-dos-executable=wine.desktop
 
 [Added Associations]
 x-scheme-handler/https=userapp-Firefox-NVLWI0.desktop;firefox.desktop;
@@ -65,6 +66,7 @@ video/x-matroska=mpv.desktop;
 application/x-partial-download=mpv.desktop;
 video/x-ms-wmv=mpv.desktop;
 image/png=userapp-nsxiv -b -a-NUYH01.desktop;userapp-nsxiv -b -a-8PYC01.desktop;sxiv.desktop;userapp-nsxiv -b -a-25V8Z1.desktop;nsxiv.desktop;
+application/x-ms-dos-executable=wine.desktop;
 
 [Removed Associations]
 x-scheme-handler/http=firefox.desktop;
