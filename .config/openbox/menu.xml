@@ -109,7 +109,7 @@
 		</item>
 		<item label="Mixbus 32C">
 			<action name="Execute">
-				<command>mixbus</command>
+				<command>Mixbus32C9</command>
 			</action>
 		</item>
 		<separator />
