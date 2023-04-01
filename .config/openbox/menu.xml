@@ -28,6 +28,11 @@
 				<command>kleopatra</command>
 			</action>
 		</item>
+		<item label="Transmission">
+			<action name="Execute">
+				<command>transmission-gtk</command>
+			</action>
+		</item>
 		<item label="Google Earth">
 			<action name="Execute">
 				<command>google-earth-pro</command>
