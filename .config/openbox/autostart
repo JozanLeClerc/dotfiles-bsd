@@ -50,6 +50,9 @@ startif() {
 }
 
 export LANG='en_US.UTF-8'
+startif pipewire
+startif pipewire-pulse
+startif wireplumber
 startif dunst
 startif picom
 startif mpd-notification
