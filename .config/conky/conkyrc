@@ -68,8 +68,7 @@ ${color0}${goto 130}${mpd_artist}
 ${goto 130}${scroll wait 30 3 5 ${mpd_title}}
 ${goto 130}${mpd_date} - ${mpd_album}
 ${goto 130}${mpd_elapsed}/${mpd_length} ${mpd_bar}
-${execi 5 ~/.local/bin/conky/cover.sh >/dev/null 2>&1}${image /tmp/conkyCover.png -p 0,120 -n}
-${endif}${endif}
+${execi 5 ~/.local/bin/conky/cover.sh >/dev/null 2>&1}${image /tmp/conkyCover.png -p 10,115 -n}${endif}${endif}
 ${color0}${hr}
 ${color0}${font ConkySymbols:size=18}f${font :bold:}${voffset -5} CPU${font}${goto 115}${if_match "${nodename_short}" == "mother"}Intel i7-4790${endif}${if_match "${nodename_short}" == "po-rbo"}AMD Ryzen 5 4500U${endif} @ ${freq_g}GHz${alignr}${font :bold:}${cpu}%${font}
 ${color orange}${cpubar}
