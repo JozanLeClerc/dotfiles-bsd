@@ -50,9 +50,6 @@ startif() {
 }
 
 export LANG='en_US.UTF-8'
-startif pipewire
-startif pipewire-pulse
-startif wireplumber
 startif dunst
 startif picom
 startif mpd-notification
@@ -70,6 +67,11 @@ startif plank
 $sleep
 startif conky -d -c "$HOME"/.config/conky/conkyrc
 $sleep
+startif pipewire
+$sleep
+startif pipewire-pulse
+$sleep
+startif wireplumber
 cd "$HOME"
 xrdb "$HOME"/.config/x11/xresources
 notify-send -u normal 'Welcome' "$icon Welcome back, partner!"
