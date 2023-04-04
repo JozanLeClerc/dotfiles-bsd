@@ -42,7 +42,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>gruvbox-material-dark-blocks</name>
+    <name>Xinit</name>
     <titleLayout>SDNLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -122,12 +122,12 @@
        and back in -->
     <number>4</number>
     <firstdesk>1</firstdesk>
-	<names>
+    <names>
       <name>work</name>
       <name>play</name>
       <name>dull</name>
       <name>boy</name>
-	</names>
+    </names>
     <popupTime>500</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
        desktops.  Set this to 0 to disable the popup. -->
@@ -679,22 +679,22 @@
         <!-- <action name="Unshade"/> -->
       </mousebind>
       <mousebind button="Middle" action="Click">
-		<action name="ToggleShade"/>
-		<action name="if">
-		  <shaded>no</shaded>
-		  <then>
+        <action name="ToggleShade"/>
+        <action name="if">
+          <shaded>no</shaded>
+          <then>
             <action name="Focus"/>
-			<action name="Raise"/>
-		  </then>
-		</action>
-		<action name="if">
-		  <shaded>yes</shaded>
-		  <then>
-			<action name="FocusToBottom"/>
-			<action name="Unfocus"/>
-			<action name="Lower"/>
-		  </then>
-		</action>
+            <action name="Raise"/>
+          </then>
+        </action>
+        <action name="if">
+          <shaded>yes</shaded>
+          <then>
+            <action name="FocusToBottom"/>
+            <action name="Unfocus"/>
+            <action name="Lower"/>
+          </then>
+        </action>
       </mousebind>
       <mousebind button="Right" action="Press">
         <action name="Focus"/>
