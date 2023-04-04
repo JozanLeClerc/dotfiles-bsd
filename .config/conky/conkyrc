@@ -78,7 +78,7 @@ ${color0}${hr}${font}
 ${color0}${font ConkySymbols:size=18}j${font :bold:}${voffset -5} RAM${font}${goto 150}$mem / $memmax${alignr}${font :bold:}${memperc}%${font}
 ${color LightGreen}${membar}
 ${color0}${font :size 11:bold}${offset 5}Top Processes ${alignr}${offset -5}CPU%${offset 10}MEM%
-${color LightGreen}${memgraph 120,390 000000 228B22}${voffset -134}
+${color LightGreen}${memgraph 95,390 000000 228B22}${voffset -110}${font}
 ${color0}${offset 5}${top_mem name 1} ${alignr 10}${offset -13}${top_mem cpu 1}${offset 15}${top_mem mem 1}
 ${color0}${offset 5}${top_mem name 2} ${alignr 10}${offset -13}${top_mem cpu 2}${offset 15}${top_mem mem 2}
 ${color0}${offset 5}${top_mem name 3} ${alignr 10}${offset -13}${top_mem cpu 3}${offset 15}${top_mem mem 3}
