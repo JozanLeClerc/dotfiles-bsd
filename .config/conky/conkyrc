@@ -62,7 +62,7 @@ ${color0}${alignc}${time %A %e %B %Y - %Hh%M}
 ${alignc}${color1}Terminal: ${color0}${nodename_short}
 ${alignc}${color1}OS: ${color0}${sysname} - ${execi 300 lsb_release -ds}
 ${alignc}${color1}Kernel: ${color0}${kernel}
-${alignc}${color1}Uptime: ${color0}${uptime_short}${image ~/.config/conky/artix-logo.png -p 5,10 -s 75x75 -n}${font}${if_match "${nodename_short}" == "mother"}${if_mpd_playing}
+${alignc}${color1}Uptime: ${color0}${uptime_short}${font}${if_match "${nodename_short}" == "po-rbo"}${image ~/.config/conky/popos-logo.png -p 5,10 -s 75x75 -n}${endif}${if_match "${nodename_short}" == "mother"}${image ~/.config/conky/artix-logo.png -p 5,10 -s 75x75 -n}${if_mpd_playing}
 ${color0}${hr}${font}
 ${color0}${goto 130}${mpd_artist}
 ${goto 130}${scroll wait 30 3 5 ${mpd_title}}
