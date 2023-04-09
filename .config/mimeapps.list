@@ -67,6 +67,7 @@ application/x-partial-download=mpv.desktop;
 video/x-ms-wmv=mpv.desktop;
 image/png=userapp-nsxiv -b -a-NUYH01.desktop;userapp-nsxiv -b -a-8PYC01.desktop;sxiv.desktop;userapp-nsxiv -b -a-25V8Z1.desktop;nsxiv.desktop;
 application/x-ms-dos-executable=wine.desktop;
+application/octet-stream=nvim.desktop;
 
 [Removed Associations]
 x-scheme-handler/http=firefox.desktop;
