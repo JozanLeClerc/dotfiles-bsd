@@ -107,14 +107,14 @@
 	</menu>
 
 	<menu id="apps-audio-menu" label="Audio">
-		<item label="Mixbus 32C">
-			<action name="Execute">
-				<command>Mixbus32C9</command>
-			</action>
-		</item>
 		<item label="REAPER">
 			<action name="Execute">
 				<command>reaper</command>
+			</action>
+		</item>
+		<item label="Mixbus 32C">
+			<action name="Execute">
+				<command>Mixbus32C9</command>
 			</action>
 		</item>
 		<separator />
