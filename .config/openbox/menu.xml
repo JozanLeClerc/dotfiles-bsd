@@ -74,14 +74,19 @@
 	</menu>
 
 	<menu id="apps-net-menu" label="Internet">
-		<item label="Iridium">
+		<item label="LibreWolf">
 			<action name="Execute">
-				<command>iridium --force-dark-mode</command>
+				<command>librewolf</command>
 			</action>
 		</item>
 		<item label="Firefox">
 			<action name="Execute">
 				<command>firefox</command>
+			</action>
+		</item>
+		<item label="Iridium">
+			<action name="Execute">
+				<command>iridium --force-dark-mode</command>
 			</action>
 		</item>
 		<item label="Discord">
@@ -200,9 +205,9 @@
 				<command>pcmanfm</command>
 			</action>
 		</item>
-		<item label="Firefox">
+		<item label="LibreWolf">
 			<action name="Execute">
-				<command>firefox</command>
+				<command>librewolf</command>
 			</action>
 		</item>
 		<separator />
