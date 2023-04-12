@@ -410,7 +410,7 @@
     </keybind>
     <keybind key="W-F3">
       <action name="Execute">
-        <command>firefox</command>
+        <command>librewolf</command>
       </action>
     </keybind>
     <keybind key="W-S-F3">
