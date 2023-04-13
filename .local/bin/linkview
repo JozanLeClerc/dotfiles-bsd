@@ -7,6 +7,7 @@ use Scalar::Util qw(looks_like_number);
 use File::HomeDir qw(home);
 use File::Basename qw(basename);
 use Cwd qw(cwd);
+use Env qw(BROWSER TERMINAL);
 use Term::ReadKey;
 use Capture::Tiny qw(capture);
 use POSIX qw(setsid);
@@ -14,7 +15,7 @@ use feature qw(switch);
 no warnings qw(experimental::smartmatch);
 
 use constant {
-	TERMINAL_PATH	=> 'st',
+	TERMINAL_PATH	=> $TERMINAL,
 	MPV_PATH		=> 'mpv',
 	YTDL_PATH		=> 'yt-dlp',
 	FETCH_PATH		=> 'fetch',
@@ -22,7 +23,7 @@ use constant {
 	IMGVIEW_PATH	=> 'nsxiv',
 	ZATHURA_PATH	=> 'zathura',
 	W3M_PATH		=> 'w3m',
-	BROWSER_PATH	=> 'firefox',
+	BROWSER_PATH	=> $BROWSER,
 	NOTIFYSEND_PATH	=> 'notify-send',
 	HOSTNAME		=> (split /\./, hostname())
 };
