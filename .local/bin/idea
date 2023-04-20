@@ -37,10 +37,10 @@ esac
 
 $sed -e '/<\/channel>/i '"${rss_fmt}" \
 	"$HOME"/dev/web/joe-www/thoughts.xml
-#$sed -e '/<!-- thoughts here -->$/{n;s#^#'"${html_fmt}"'#;}' \
-#	"$HOME"/dev/web/joe-www/thoughts.html
-#git -C "$HOME"/dev/web/joe-www add -u
-#git -C "$HOME"/dev/web/joe-www commit -m "Thought: ${date}"
-#git -C "$HOME"/dev/web/joe-www push
-#
-#vps
+$sed -e '/<!-- thoughts here -->$/{n;s#^#'"${html_fmt}"'#;}' \
+	"$HOME"/dev/web/joe-www/thoughts.html
+git -C "$HOME"/dev/web/joe-www add -u
+git -C "$HOME"/dev/web/joe-www commit -m "Thought: ${date}"
+git -C "$HOME"/dev/web/joe-www push
+
+vps
