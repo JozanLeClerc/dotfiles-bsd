@@ -19,7 +19,7 @@ rss_fmt='\\t<item>\
 \t  <title>'"${date}"'</title>\
 \t  <pubDate>'"${date} $(date '+%Z')"'</pubDate>\
 \t  <link>http://jozan.org/thoughts.html</link>\
-\t  <guid>'"$(uuidgen)"'</guid>\
+\t  <guid isPermalink="false">'"$(uuidgen)"'</guid>\
 \t  <description>\
 \t\t<![CDATA[\
 \t\t\t\t<p>\
