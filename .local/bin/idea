@@ -17,7 +17,7 @@ html_fmt='\t\t\t\t<h3>'"${date}"'</h3>\
 '
 rss_fmt='\\t<item>\
 \t  <title>'"${date}"'</title>\
-\t  <pubDate>'"${date_rss}"'</pubDate>\
+\t  <pubDate>'"${date} $(date '+%Z')"'</pubDate>\
 \t  <link>http://jozan.org/thoughts.html</link>\
 \t  <guid>'"$(uuidgen)"'</guid>\
 \t  <description>'"${thought}"'</description>\
@@ -31,10 +31,10 @@ esac
 
 $sed -e '/<\/channel>/i '"${rss_fmt}" \
 	"$HOME"/dev/web/joe-www/thoughts.xml
-#$sed -e '/<!-- thoughts here -->$/{n;s#^#'"${html_fmt}"'#;}' \
-#	"$HOME"/dev/web/joe-www/thoughts.html
-#git -C "$HOME"/dev/web/joe-www add -u
-#git -C "$HOME"/dev/web/joe-www commit -m "Thought: ${date}"
-#git -C "$HOME"/dev/web/joe-www push
-#
-#vps
+$sed -e '/<!-- thoughts here -->$/{n;s#^#'"${html_fmt}"'#;}' \
+	"$HOME"/dev/web/joe-www/thoughts.html
+git -C "$HOME"/dev/web/joe-www add -u
+git -C "$HOME"/dev/web/joe-www commit -m "Thought: ${date}"
+git -C "$HOME"/dev/web/joe-www push
+
+vps
