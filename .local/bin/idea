@@ -8,11 +8,11 @@ else
 	thought="$*"
 fi
 
-thought_html="$(printf "%s" "${thought}" | sed '{s#^#\\t\\t\\t\\t\\t#;s#^\\t\\t\\t\\t\\t$#\\t\\t\\t\\t</p>\\\n\\t\\t\\t\\t<p>#;s#$#\\#;}')"
+thought="$(printf "%s" "${thought}" | sed '{s#^#\\t\\t\\t\\t\\t#;s#^\\t\\t\\t\\t\\t$#\\t\\t\\t\\t</p>\\\n\\t\\t\\t\\t<p>#;s#$#\\#;}')"
 date=$(date '+%a, %d %b %Y %H:%M')
 html_fmt='\t\t\t\t<h3>'"${date}"'</h3>\
 \t\t\t\t<p>\
-'"${thought_html}"'
+'"${thought}"'
 \t\t\t\t</p>\
 '
 rss_fmt='\\t<item>\
@@ -20,7 +20,13 @@ rss_fmt='\\t<item>\
 \t  <pubDate>'"${date} $(date '+%Z')"'</pubDate>\
 \t  <link>http://jozan.org/thoughts.html</link>\
 \t  <guid>'"$(uuidgen)"'</guid>\
-\t  <description>'"${thought}"'</description>\
+\t  <description>\
+\t\t<![CDATA[\
+\t\t\t\t<p>\
+'"${thought}"'
+\t\t\t\t</p>\
+\t\t]]>\
+\t  </description>\
 \t</item>
 '
 
@@ -31,10 +37,10 @@ esac
 
 $sed -e '/<\/channel>/i '"${rss_fmt}" \
 	"$HOME"/dev/web/joe-www/thoughts.xml
-$sed -e '/<!-- thoughts here -->$/{n;s#^#'"${html_fmt}"'#;}' \
-	"$HOME"/dev/web/joe-www/thoughts.html
-git -C "$HOME"/dev/web/joe-www add -u
-git -C "$HOME"/dev/web/joe-www commit -m "Thought: ${date}"
-git -C "$HOME"/dev/web/joe-www push
-
-vps
+#$sed -e '/<!-- thoughts here -->$/{n;s#^#'"${html_fmt}"'#;}' \
+#	"$HOME"/dev/web/joe-www/thoughts.html
+#git -C "$HOME"/dev/web/joe-www add -u
+#git -C "$HOME"/dev/web/joe-www commit -m "Thought: ${date}"
+#git -C "$HOME"/dev/web/joe-www push
+#
+#vps
