@@ -146,6 +146,11 @@
 				<command>ario</command>
 			</action>
 		</item>
+		<item label="Kdenlive">
+			<action name="Execute">
+				<command>kdenlive</command>
+			</action>
+		</item>
 	</menu>
 
 	<menu id="apps-graphics-menu" label="Graphics">
