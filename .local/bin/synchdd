@@ -20,3 +20,6 @@ rsync -avhk --delete-after \
 # vids
 rsync -avhk --delete-after \
 	$HOME/vids $dest
+# sort_dir
+rsync -avhk --delete-after \
+	$HOME/hdd/sort $dest
