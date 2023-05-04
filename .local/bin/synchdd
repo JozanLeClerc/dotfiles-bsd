@@ -1,8 +1,9 @@
-#!/bin/csh -e
+#!/bin/sh -e
 
 dest="$HOME"/exthdd/
 
 [ -d $dest ] || exit 1
+
 # books
 rsync -avhk --delete-after \
 	$HOME/books $dest
