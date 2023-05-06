@@ -35,7 +35,12 @@
 		</item>
 		<item label="Wireshark">
 			<action name="Execute">
-				<command>sudo wireshark</command>
+				<command>doas wireshark</command>
+			</action>
+		</item>
+		<item label="MKVToolNix">
+			<action name="Execute">
+				<command>mkvtoolnix-gui</command>
 			</action>
 		</item>
 		<item label="Google Earth">
