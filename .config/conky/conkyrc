@@ -91,10 +91,10 @@ ${color tomato}${nvidiabar gpuutil}
 ${color tomato}${offset 3}${nvidiagraph gpuutil 30,190 000000 FF6347} ${nvidiagraph mem 30,190 000000 FF6347} ${voffset 13} ${goto 25}${color0}GPU Usage: ${nvidia gpuutil}%${goto 215}${voffset -29}VRAM Usage: ${nvidia memutil}%${endif}
 ${color0}${hr}${font}
 ${color0}${font ConkySymbols:size=18}k${font :Bold:}${voffset -5} FILE SYSTEMS${alignr}NVMe ${fs_used_perc /}%${if_match "${nodename_short}" == "mother"} | HDD ${fs_used_perc /var/hdd}%${endif}${font}
-${voffset 5}${color1}NVMe ${goto 60}${color darkcyan}${fs_bar 8,210 /} ${color0}${alignr}${fs_free /} / ${fs_size /}${if_match "${nodename_short}" == "mother"}
-${color1}HDD  ${goto 60}${color darkcyan}${fs_bar 8,210 /var/hdd} ${color0}${alignr} ${fs_free /var/hdd} / ${fs_size /var/hdd}${if_existing /home/jozan/exthdd}
-${color1}EXT  ${goto 60}${color darkcyan}${fs_bar 8,210 /home/jozan/exthdd} ${color0}${alignr}${fs_free /home/jozan/exthdd} / ${fs_size /home/jozan/exthdd}${endif}${if_existing /home/jozan/saturn}
-${color1}SAT  ${goto 60}${color darkcyan}${fs_bar 8,210 /home/jozan/saturn} ${color0}${alignr}${fs_free /home/jozan/saturn} / ${fs_size /home/jozan/saturn}${endif}${endif}
+${voffset 5}${color1}NVMe ${goto 70}${color darkcyan}${fs_bar 8,210 /} ${color0}${alignr}${fs_free /} / ${fs_size /}${if_match "${nodename_short}" == "mother"}
+${color1}HDD     ${goto 70}${color darkcyan}${fs_bar 8,210 /var/hdd} ${color0}${alignr} ${fs_free /var/hdd} / ${fs_size /var/hdd}${if_existing /home/jozan/exthdd}
+${color1}EXT     ${goto 70}${color darkcyan}${fs_bar 8,210 /home/jozan/exthdd} ${color0}${alignr}${fs_free /home/jozan/exthdd} / ${fs_size /home/jozan/exthdd}${endif}${if_existing /home/jozan/saturn}
+${color1}SATURN  ${goto 70}${color darkcyan}${fs_bar 8,210 /home/jozan/saturn} ${color0}${alignr}${fs_free /home/jozan/saturn} / ${fs_size /home/jozan/saturn}${endif}${endif}
 ${color darkcyan}${offset 3}${diskiograph_read nvme0n1 30,190 000000 008B8B} ${diskiograph_write nvme0n1 30,190 000000 008B8B} ${voffset 13} ${goto 25}${color0}NVMe R: ${diskio_read nvme0n1}${goto 215}NVMe W: ${diskio_write nvme0n1}${voffset -29}${font}${if_match "${nodename_short}" == "mother"}
 ${color darkcyan}${offset 3}${diskiograph_read sdb1 30,190 000000 008B8B} ${diskiograph_write sdb1 30,190 000000 008B8B} ${voffset 13} ${goto 25}${color0}HDD R: ${diskio_read sdb1}${goto 215}HDD W: ${diskio_write sdb1}${voffset -29}${font}${endif}
 ${color0}${hr}${font}
