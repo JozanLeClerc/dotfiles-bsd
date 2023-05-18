@@ -23,7 +23,7 @@ case $(hostname -s) in
 		prompt_main="blue"
 		prompt_alt="cyan"
 		;;
-	fbsd-tp)
+	mars)
 		os_color='\e[1;31m'
 		prompt_main="red"
 		prompt_alt="blue"
