@@ -333,7 +333,7 @@
     </keybind>
     <!-- Keybindings for window switching -->
     <keybind key="A-Escape">
-      <action name="NextWindow">
+      <action name="PreviousWindow">
         <finalactions>
           <action name="Focus"/>
           <action name="Raise"/>
