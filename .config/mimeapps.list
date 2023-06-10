@@ -1,16 +1,16 @@
 [Default Applications]
-x-scheme-handler/http=firefox.desktop
-x-scheme-handler/https=firefox.desktop
+x-scheme-handler/http=librewolf.desktop
+x-scheme-handler/https=librewolf.desktop
 x-scheme-handler/ftp=iridium-browser.desktop
 image/png=userapp-nsxiv -b -a-NUYH01.desktop
-x-scheme-handler/chrome=firefox.desktop
-text/html=firefox.desktop
-application/x-extension-htm=firefox.desktop
-application/x-extension-html=firefox.desktop
-application/x-extension-shtml=firefox.desktop
-application/xhtml+xml=firefox.desktop
-application/x-extension-xhtml=firefox.desktop
-application/x-extension-xht=firefox.desktop
+x-scheme-handler/chrome=librewolf.desktop
+text/html=librewolf.desktop
+application/x-extension-htm=librewolf.desktop
+application/x-extension-html=librewolf.desktop
+application/x-extension-shtml=librewolf.desktop
+application/xhtml+xml=librewolf.desktop
+application/x-extension-xhtml=librewolf.desktop
+application/x-extension-xht=librewolf.desktop
 application/pdf=org.pwmt.zathura-pdf-poppler.desktop
 image/jpeg=nsxiv.desktop
 image/gif=nsxiv.desktop
@@ -50,7 +50,7 @@ message/rfc822=userapp-Thunderbird-SJ2821.desktop
 x-scheme-handler/mid=userapp-Thunderbird-SJ2821.desktop
 
 [Added Associations]
-x-scheme-handler/https=userapp-Firefox-NVLWI0.desktop;firefox.desktop;
+x-scheme-handler/https=userapp-Firefox-NVLWI0.desktop;librewolf.desktop;
 x-scheme-handler/ftp=userapp-Firefox-NVLWI0.desktop;
 x-scheme-handler/chrome=userapp-Firefox-NVLWI0.desktop;
 text/html=userapp-Firefox-NVLWI0.desktop;
@@ -75,4 +75,4 @@ x-scheme-handler/mailto=userapp-Thunderbird-SJ2821.desktop;
 x-scheme-handler/mid=userapp-Thunderbird-SJ2821.desktop;
 
 [Removed Associations]
-x-scheme-handler/http=firefox.desktop;
+x-scheme-handler/http=librewolf.desktop;
