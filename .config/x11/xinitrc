@@ -1,5 +1,6 @@
 # vim: filetype=sh
 
+cool-retro-term
 #startif() {
 #	pgrep "$(basename "$1")" >/dev/null || "$@" >/dev/null 2>&1 &
 #}
