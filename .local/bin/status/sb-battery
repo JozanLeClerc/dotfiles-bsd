@@ -1,10 +1,17 @@
 #!/bin/sh
 
-status=$(apm -b)
+case $(hostname -s) in
+	mother) return ;;
+	po-rbo) [ $(cat /sys/class/power_supply/BAT0/status) = "Charging" ] && echo -n "ﮣ " ;;
+	mars) [ $(apm -b) -eq 3 ] && echo -n "ﮣ " ;;
+esac
 
-[ "$status" -eq 3 ] && echo "ﮣ "
+case $(hostname -s) in
+	po-rbo) charge=$(cat /sys/class/power_supply/BAT0/capacity) ;;
+	mars) charge=$(apm -l) ;;
+esac
 
-case $(echo $(apm -l) / 20 | bc) in
+case $(echo $charge / 20 | bc) in
 	"0") printf " ";;
 	"1") printf " ";;
 	"2") printf " ";;
