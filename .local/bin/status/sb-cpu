@@ -9,8 +9,18 @@
 
 printf " "
 # for i in $(top -P -d 2 -s 0.2 | grep '^CPU' | tail -n$ncpu | sed '{s/% idle$//;s/.*[[:blank:]]//;s/\..*//;s/^/100 - /;}' | bc); do
-stats=$(top -d 2 -s 0.2 | grep -E 'load averages:|^CPU')
-printf "%s " "$(echo "$stats" | sed '{1,2d;4d;s/.*averages: *//;s/,.*//;}')"
+case $(hostname -s) in
+	mother|po-rbo)
+		stats=$(uptime | head -n1)
+		printf "%s " "$(echo "$stats" | sed 's/.*average: *//;s/,.*//')"
+		return
+		;;
+	mars)
+		stats=$(top -d 2 -s 0.2 | grep -E 'load averages:|^CPU')
+		printf "%s " "$(echo "$stats" | sed '{1,2d;4d;s/.*averages: *//;s/,.*//;}')"
+		;;
+esac
+
 case $(echo "$stats" | sed '{1,3d;s/% idle$//;s/.*[[:blank:]]//;s/\..*//;s/^/(100 - /;s/$/) \/ 12\.5/;}' | bc) in
 		"0") printf "[        ]\n";;
 		"1") printf "[=       ]\n";;

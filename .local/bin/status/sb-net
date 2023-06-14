@@ -1,9 +1,13 @@
 #!/bin/sh
 
-if ifconfig | grep '^tun' >/dev/null 2>&1; then
+case $(hostname -s) in
+	mother|po-rbo) ping="ping -c1 -w1 1.1.1.1" ;;
+	mars)          ping="ping -c1 -t1 1.1.1.1" ;;
+esac
+if ifconfig | grep -E '^tun|^vpn' >/dev/null 2>&1; then
 	echo -n "  "
 fi
-if ! ping -q -c1 -t1 1.1.1.1 >/dev/null 2>&1; then
+if ! $ping >/dev/null 2>&1; then
 	echo "ﰸ "
 	return
 fi

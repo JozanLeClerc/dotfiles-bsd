@@ -1,11 +1,9 @@
 #!/bin/sh
 
-os=$(uname)
-
-case $os in
-	"FreeBSD") os=""  ;;
-	"Linux")   os=""  ;;
-	*)         return ;;
+case $(hostname -s) in
+	mother) os="" ;;
+	po-rbo) os="" ;;
+	mars)   os="" ;;
 esac
 
 echo "$os "
