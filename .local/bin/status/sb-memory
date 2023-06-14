@@ -1,7 +1,14 @@
 #!/bin/sh
 
-sysctl -n hw.physmem \
-	hw.pagesize \
-	vm.stats.vm.v_inactive_count \
-	vm.stats.vm.v_free_count \
-	vm.stats.vm.v_cache_count | xargs | awk '{printf ("﬙ %2.2fG/%2.2fG\n", ($1 / (1024 ^ 3)) - (($3 + $4 + $5) * $2 / (1024 ^ 3)), ($1 / (1024 ^ 3)))}'
+case $(hostname -s) in
+	mother|po-rbo)
+		free | sed -n '2p' | awk '{printf ("﬙ %2.2fG/%2.2fG\n", ($2 / (1000 ^ 2)) - ($7 / (1000 ^ 2)), ($2 / (1000 ^ 2)))}'
+		;;
+	mars)
+		sysctl -n hw.physmem \
+			hw.pagesize \
+			vm.stats.vm.v_inactive_count \
+			vm.stats.vm.v_free_count \
+			vm.stats.vm.v_cache_count | xargs | awk '{printf ("﬙ %2.2fG/%2.2fG\n", ($1 / (1024 ^ 3)) - (($3 + $4 + $5) * $2 / (1024 ^ 3)), ($1 / (1024 ^ 3)))}'
+					;;
+esac
