@@ -12,7 +12,7 @@ printf " "
 case $(hostname -s) in
 	mother|po-rbo)
 		stats=$(uptime | head -n1)
-		printf "%s " "$(echo "$stats" | sed 's/.*average: *//;s/,.*//')"
+		printf "%s" "$(echo "$stats" | sed 's/.*average: *//;s/,.*//')"
 		return
 		;;
 	mars)

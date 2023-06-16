@@ -1,5 +1,7 @@
 #!/bin/sh
 
+[ $(hostname -s) = "mars" ] || return
+
 vol="$(mixer vol | awk '{print $7}' | cut -d ':' -f1)"
 
 if [ "$vol" -gt "0" ]; then

@@ -14,7 +14,7 @@
  '(ccls-sem-parameter-faces
    [ccls-sem-parameter-face-0 ccls-sem-parameter-face-1 ccls-sem-parameter-face-2 ccls-sem-parameter-face-3 ccls-sem-parameter-face-4 ccls-sem-parameter-face-5 ccls-sem-parameter-face-6 ccls-sem-parameter-face-7 ccls-sem-parameter-face-8 ccls-sem-parameter-face-9])
  '(custom-safe-themes
-   '("d80952c58cf1b06d936b1392c38230b74ae1a2a6729594770762dc0779ac66b7" efault))
+   '("d445c7b530713eac282ecdeea07a8fa59692c83045bf84dd112dd738c7bcad1d" "d80952c58cf1b06d936b1392c38230b74ae1a2a6729594770762dc0779ac66b7" efault))
  '(fci-rule-color "#676E95")
  '(hl-todo-keyword-faces
    '(("TODO" . "#dc752f")

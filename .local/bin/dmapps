@@ -1,0 +1,95 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+use Data::Dump qw(dump);
+use POSIX qw(setsid);
+use Sys::Hostname;
+
+use constant PROG_LIST	=> "" .
+"Terminal"				. "\n" .
+"File manager"			. "\n" .
+"Web browser"			. "\n" .
+"--- Accessories ---"	. "\n" .
+"Qualculate!"			. "\n" .
+"Kleopatra"				. "\n" .
+"Transmission"			. "\n" .
+"Wireshark"				. "\n" .
+"MKVToolNix"			. "\n";
+
+sub run
+{
+	my ($action) = @_;
+	my $pid;
+
+	chomp($action);
+	# Terminal
+	if ($action eq "Terminal") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("alacritty");
+	}
+	# File manager
+	elsif ($action eq "File manager") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("pcmanfm");
+	}
+	# Web browser
+	elsif ($action eq "Web browser") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("librewolf");
+	}
+	# --- Accessories ---
+	# Qualculate!
+	elsif ($action eq "Qualculate!") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("qualculate-gtk");
+	}
+	# Kleopatra
+	elsif ($action eq "Kleopatra") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("kleopatra");
+	}
+	# Transmission
+	elsif ($action eq "Transmission") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("transmission-gtk");
+	}
+	# Wireshark
+	elsif ($action eq "Wireshark") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("doas", "wireshark");
+	}
+	return;
+}
+
+sub main
+{
+	my $action;
+	my $prompt;
+
+	$prompt = PROG_LIST;
+	$action = `printf "$prompt" | dmenu -i -l 25 -m 0`;
+	if (not $action) {
+		return;
+	}
+	run($action);
+	return;
+}
+
+main();
+
+__END__

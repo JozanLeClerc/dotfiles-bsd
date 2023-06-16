@@ -1,5 +1,6 @@
 #!/bin/sh
 
+return
 mp=$(mpc status)
 icon=$(echo "$mp" | sed -n 2p | sed -E 's/(^|\])[^[]*($|\[)//g')
 case $icon in
