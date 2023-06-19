@@ -11,7 +11,7 @@ use constant PROG_LIST	=> "" .
 "File manager"			. "\n" .
 "Web browser"			. "\n" .
 "--- Accessories ---"	. "\n" .
-"Qualculate!"			. "\n" .
+"Qalculate!"			. "\n" .
 "Kleopatra"				. "\n" .
 "Transmission"			. "\n" .
 "Wireshark"				. "\n" .
@@ -45,12 +45,12 @@ sub run
 		exec("librewolf");
 	}
 	# --- Accessories ---
-	# Qualculate!
-	elsif ($action eq "Qualculate!") {
+	# Qalculate!
+	elsif ($action eq "Qalculate!") {
 		$pid = fork();
 		exit if $pid;
 		setsid();
-		exec("qualculate-gtk");
+		exec("qalculate-gtk");
 	}
 	# Kleopatra
 	elsif ($action eq "Kleopatra") {
