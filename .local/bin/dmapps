@@ -30,13 +30,19 @@ use constant PROG_LIST	=> "" .
 "Firefox"				. "\n" .
 "Iridium"				. "\n" .
 "Chromium"				. "\n" .
+"Discord"				. "\n" .
+"Signal"				. "\n" .
+"Liferea"				. "\n" .
+"HexChat"				. "\n" .
 ""	;
 use constant WORK_LIST	=> "" .
-"--- Work ---"	. "\n" .
-"Remmina"		. "\n" .
-"Insomnia"		. "\n" .
-"VMware"		. "\n" .
-"miro"			. "\n";
+"--- Work ---"		. "\n" .
+"Remmina"			. "\n" .
+"Rclone Browser"	. "\n" .
+"Insomnia"			. "\n" .
+"VMware"			. "\n" .
+"DBeaver"			. "\n" .
+"Miro"				. "\n";
 
 sub run
 {
@@ -179,7 +185,71 @@ sub run
 		$pid = fork();
 		exit if $pid;
 		setsid();
-		exec("Chromium");
+		exec("chromium");
+	}
+	# Discord
+	elsif ($action eq "Discord") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("discord");
+	}
+	# Signal
+	elsif ($action eq "Signal") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("signal-desktop");
+	}
+	# Liferea
+	elsif ($action eq "Liferea") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("liferea");
+	}
+	# --- Work ---
+	# Remmina
+	elsif ($action eq "Remmina") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("remmina");
+	}
+	# Rclone Browser
+	elsif ($action eq "Rclone Browser") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("rclone-browser");
+	}
+	# Insomnia
+	elsif ($action eq "Insomnia") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("insomnia");
+	}
+	# VMware
+	elsif ($action eq "VMware") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("vmware");
+	}
+	# DBeaver
+	elsif ($action eq "DBeaver") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("dbeaver");
+	}
+	# Miro
+	elsif ($action eq "Miro") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("miro");
 	}
 	return;
 }
