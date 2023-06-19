@@ -7,34 +7,47 @@ use POSIX qw(setsid);
 use Sys::Hostname qw(hostname);
 
 use constant PROG_LIST	=> "" .
-"Terminal"				. "\n" .
-"File manager"			. "\n" .
-"Web browser"			. "\n" .
-"Mail client"			. "\n" .
-"--- Accessories ---"	. "\n" .
-"Qalculate!"			. "\n" .
-"Kleopatra"				. "\n" .
-"Transmission"			. "\n" .
-"Wireshark"				. "\n" .
-"MKVToolNix"			. "\n" .
-"Stellarium"			. "\n" .
-"Google Earth"			. "\n" .
-"--- Editors ---"		. "\n" .
-"NeoVim"				. "\n" .
-"Emacs"					. "\n" .
-"Emacs-NoX"				. "\n" .
-"--- Graphics ---"		. "\n" .
-"GIMP"					. "\n" .
-"Inkscape"				. "\n" .
-"--- Internet ---"		. "\n" .
-"LibreWolf"				. "\n" .
-"Firefox"				. "\n" .
-"Iridium"				. "\n" .
-"Chromium"				. "\n" .
-"Discord"				. "\n" .
-"Signal"				. "\n" .
-"Liferea"				. "\n" .
-"HexChat"				. "\n" .
+"Terminal"					. "\n" .
+"File manager"				. "\n" .
+"Web browser"				. "\n" .
+"Mail client"				. "\n" .
+"--- Accessories ---"		. "\n" .
+"Qalculate!"				. "\n" .
+"Kleopatra"					. "\n" .
+"Transmission"				. "\n" .
+"Wireshark"					. "\n" .
+"MKVToolNix"				. "\n" .
+"Stellarium"				. "\n" .
+"Google Earth"				. "\n" .
+"--- Editors ---"			. "\n" .
+"NeoVim"					. "\n" .
+"Emacs"						. "\n" .
+"Emacs-NoX"					. "\n" .
+"--- Graphics ---"			. "\n" .
+"GIMP"						. "\n" .
+"Inkscape"					. "\n" .
+"--- Internet ---"			. "\n" .
+"LibreWolf"					. "\n" .
+"Firefox"					. "\n" .
+"Iridium"					. "\n" .
+"Chromium"					. "\n" .
+"Discord"					. "\n" .
+"Signal"					. "\n" .
+"Liferea"					. "\n" .
+"HexChat"					. "\n" .
+"--- Audio ---"				. "\n" .
+"REAPER"					. "\n" .
+"Audacity"					. "\n" .
+"Pulse Control Panel"		. "\n" .
+"JACK Audio Connection Kit"	. "\n" .
+"--- Multimedia ---"		. "\n" .
+"Ario"						. "\n" .
+"Kdenlive"					. "\n" .
+"--- Games ---"				. "\n" .
+"Steam"						. "\n" .
+"Lutris"					. "\n" .
+"GZDoom"					. "\n" .
+"DOSBox"					. "\n" .
 ""	;
 use constant WORK_LIST	=> "" .
 "--- Work ---"		. "\n" .
@@ -43,7 +56,7 @@ use constant WORK_LIST	=> "" .
 "Insomnia"			. "\n" .
 "VMware"			. "\n" .
 "DBeaver"			. "\n" .
-"Miro"				. "\n";
+"Miro";
 
 sub run
 {
@@ -265,6 +278,79 @@ sub run
 		exit if $pid;
 		setsid();
 		exec("miro");
+	}
+	# --- Audio ---
+	# REAPER
+	elsif ($action eq "REAPER") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("reaper");
+	}
+	# Audacity
+	elsif ($action eq "Audacity") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("audacity");
+	}
+	# Pulse Control Panel
+	elsif ($action eq "Pulse Control Panel") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("pavucontrol");
+	}
+	# JACK Audio Connection Kit
+	elsif ($action eq "JACK Audio Connection Kit") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("qjackctl");
+	}
+	# --- Multimedia ---
+	# Ario
+	elsif ($action eq "Ario") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("ario");
+	}
+	# Kdenlive
+	elsif ($action eq "Kdenlive") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("kdenlive");
+	}
+	# --- Multimedia ---
+	# Steam
+	elsif ($action eq "Steam") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("steam");
+	}
+	# Lutris
+	elsif ($action eq "Lutris") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("lutris");
+	}
+	# GZDoom
+	elsif ($action eq "GZDoom") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("gzdoom");
+	}
+	# DOSBox
+	elsif ($action eq "DOSBox") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("dosbox");
 	}
 	return;
 }
