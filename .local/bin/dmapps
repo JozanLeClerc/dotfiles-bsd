@@ -208,6 +208,13 @@ sub run
 		setsid();
 		exec("liferea");
 	}
+	# HexChat
+	elsif ($action eq "HexChat") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("hexchat");
+	}
 	# --- Work ---
 	# Remmina
 	elsif ($action eq "Remmina") {
