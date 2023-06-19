@@ -114,7 +114,7 @@ sub run
 		$pid = fork();
 		exit if $pid;
 		setsid();
-		exec("alacritty", "-e", "nvim");
+		exec($TERMINAL, "-e", "nvim");
 	}
 	# Emacs
 	elsif ($action eq "Emacs") {
@@ -128,7 +128,7 @@ sub run
 		$pid = fork();
 		exit if $pid;
 		setsid();
-		exec("alacritty", "-e", "emacs-nw");
+		exec($TERMINAL, "-e", "emacs-nw");
 	}
 	return;
 }
