@@ -3,7 +3,6 @@
 use strict;
 use warnings;
 use Data::Dump qw(dump);
-use Env qw(TERMINAL);
 use POSIX qw(setsid);
 use Sys::Hostname qw(hostname);
 
@@ -23,6 +22,14 @@ use constant PROG_LIST	=> "" .
 "NeoVim"				. "\n" .
 "Emacs"					. "\n" .
 "Emacs-NoX"				. "\n" .
+"--- Graphics ---"		. "\n" .
+"GIMP"					. "\n" .
+"Inkscape"				. "\n" .
+"--- Internet ---"		. "\n" .
+"LibreWolf"				. "\n" .
+"Firefox"				. "\n" .
+"Iridium"				. "\n" .
+"Chromium"				. "\n" .
 ""	;
 use constant WORK_LIST	=> "" .
 "--- Work ---"	. "\n" .
@@ -114,7 +121,7 @@ sub run
 		$pid = fork();
 		exit if $pid;
 		setsid();
-		exec($TERMINAL, "-e", "nvim");
+		exec("alacritty", "-e", "nvim");
 	}
 	# Emacs
 	elsif ($action eq "Emacs") {
@@ -128,7 +135,51 @@ sub run
 		$pid = fork();
 		exit if $pid;
 		setsid();
-		exec($TERMINAL, "-e", "emacs-nw");
+		exec("alacritty", "-e", "emacs-nw");
+	}
+	# --- Graphics ---
+	# GIMP
+	elsif ($action eq "GIMP") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("gimp");
+	}
+	# Inkscape
+	elsif ($action eq "Inkscape") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("inkscape");
+	}
+	# --- Internet ---
+	# LibreWolf
+	elsif ($action eq "LibreWolf") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("librewolf");
+	}
+	# Firefox
+	elsif ($action eq "firefox") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("firefox");
+	}
+	# Iridium
+	elsif ($action eq "Iridium") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("iridium", "--force-dark-mode");
+	}
+	# Chromium
+	elsif ($action eq "Chromium") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("Chromium");
 	}
 	return;
 }
