@@ -17,6 +17,7 @@ use constant PROG_LIST	=> "" .
 "Transmission"			. "\n" .
 "Wireshark"				. "\n" .
 "MKVToolNix"			. "\n" .
+"Stellarium"			. "\n" .
 "Google Earth"			. "\n" .
 "--- Editors ---"		. "\n" .
 "NeoVim"				. "\n" .
@@ -113,6 +114,13 @@ sub run
 		exit if $pid;
 		setsid();
 		exec("mkvtoolnix-gui");
+	}
+	# Stellarium
+	elsif ($action eq "Stellarium") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("stellarium");
 	}
 	# Google Earth
 	elsif ($action eq "Google Earth") {
