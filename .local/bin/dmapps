@@ -3,19 +3,33 @@
 use strict;
 use warnings;
 use Data::Dump qw(dump);
+use Env qw(TERMINAL);
 use POSIX qw(setsid);
-use Sys::Hostname;
+use Sys::Hostname qw(hostname);
 
 use constant PROG_LIST	=> "" .
 "Terminal"				. "\n" .
 "File manager"			. "\n" .
 "Web browser"			. "\n" .
+"Mail client"			. "\n" .
 "--- Accessories ---"	. "\n" .
 "Qalculate!"			. "\n" .
 "Kleopatra"				. "\n" .
 "Transmission"			. "\n" .
 "Wireshark"				. "\n" .
-"MKVToolNix"			. "\n";
+"MKVToolNix"			. "\n" .
+"Google Earth"			. "\n" .
+"--- Editors ---"		. "\n" .
+"NeoVim"				. "\n" .
+"Emacs"					. "\n" .
+"Emacs-NoX"				. "\n" .
+""	;
+use constant WORK_LIST	=> "" .
+"--- Work ---"	. "\n" .
+"Remmina"		. "\n" .
+"Insomnia"		. "\n" .
+"VMware"		. "\n" .
+"miro"			. "\n";
 
 sub run
 {
@@ -43,6 +57,13 @@ sub run
 		exit if $pid;
 		setsid();
 		exec("librewolf");
+	}
+	# Mail client
+	elsif ($action eq "Mail client") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("thunderbird");
 	}
 	# --- Accessories ---
 	# Qalculate!
@@ -73,6 +94,42 @@ sub run
 		setsid();
 		exec("doas", "wireshark");
 	}
+	# MKVToolNix
+	elsif ($action eq "MKVToolNix") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("mkvtoolnix-gui");
+	}
+	# Google Earth
+	elsif ($action eq "Google Earth") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("google-earth-pro");
+	}
+	# --- Editors ---
+	# NeoVim
+	elsif ($action eq "NeoVim") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("alacritty", "-e", "nvim");
+	}
+	# Emacs
+	elsif ($action eq "Emacs") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("emacs");
+	}
+	# Emacs-NoX
+	elsif ($action eq "Emacs-NoX") {
+		$pid = fork();
+		exit if $pid;
+		setsid();
+		exec("alacritty", "-e", "emacs-nw");
+	}
 	return;
 }
 
@@ -82,7 +139,12 @@ sub main
 	my $prompt;
 
 	$prompt = PROG_LIST;
-	$action = `printf "$prompt" | dmenu -i -l 25 -m 0`;
+	if (hostname() eq "po-rbo.ln.ysosecure.com") {
+		$prompt .= WORK_LIST;
+	}
+	$action = `dmenu -i -l 25 -m 0 <<LIST
+$prompt
+LIST`;
 	if (not $action) {
 		return;
 	}
