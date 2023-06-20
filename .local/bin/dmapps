@@ -4,6 +4,7 @@ use strict;
 use warnings;
 use Data::Dump qw(dump);
 use POSIX qw(setsid);
+use Switch;
 use Sys::Hostname qw(hostname);
 
 use constant PROG_LIST	=> "" .
@@ -56,7 +57,8 @@ use constant WORK_LIST	=> "" .
 "Insomnia"			. "\n" .
 "VMware"			. "\n" .
 "DBeaver"			. "\n" .
-"Miro";
+"Miro"				. "\n" .
+"Teams";
 
 sub run
 {
@@ -64,293 +66,136 @@ sub run
 	my $pid;
 
 	chomp($action);
-	# Terminal
-	if ($action eq "Terminal") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("alacritty");
-	}
-	# File manager
-	elsif ($action eq "File manager") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("pcmanfm");
-	}
-	# Web browser
-	elsif ($action eq "Web browser") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("librewolf");
-	}
-	# Mail client
-	elsif ($action eq "Mail client") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("thunderbird");
-	}
-	# --- Accessories ---
-	# Qalculate!
-	elsif ($action eq "Qalculate!") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("qalculate-gtk");
-	}
-	# Kleopatra
-	elsif ($action eq "Kleopatra") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("kleopatra");
-	}
-	# Transmission
-	elsif ($action eq "Transmission") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("transmission-gtk");
-	}
-	# Wireshark
-	elsif ($action eq "Wireshark") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("doas", "wireshark");
-	}
-	# MKVToolNix
-	elsif ($action eq "MKVToolNix") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("mkvtoolnix-gui");
-	}
-	# Stellarium
-	elsif ($action eq "Stellarium") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("stellarium");
-	}
-	# Google Earth
-	elsif ($action eq "Google Earth") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("google-earth-pro");
-	}
-	# --- Editors ---
-	# NeoVim
-	elsif ($action eq "NeoVim") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("alacritty", "-e", "nvim");
-	}
-	# Emacs
-	elsif ($action eq "Emacs") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("emacs");
-	}
-	# Emacs-NoX
-	elsif ($action eq "Emacs-NoX") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("alacritty", "-e", "emacs-nw");
-	}
-	# --- Graphics ---
-	# GIMP
-	elsif ($action eq "GIMP") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("gimp");
-	}
-	# Inkscape
-	elsif ($action eq "Inkscape") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("inkscape");
-	}
-	# --- Internet ---
-	# LibreWolf
-	elsif ($action eq "LibreWolf") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("librewolf");
-	}
-	# Firefox
-	elsif ($action eq "firefox") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("firefox");
-	}
-	# Iridium
-	elsif ($action eq "Iridium") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("iridium", "--force-dark-mode");
-	}
-	# Chromium
-	elsif ($action eq "Chromium") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("chromium");
-	}
-	# Discord
-	elsif ($action eq "Discord") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("discord");
-	}
-	# Signal
-	elsif ($action eq "Signal") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("signal-desktop");
-	}
-	# Liferea
-	elsif ($action eq "Liferea") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("liferea");
-	}
-	# HexChat
-	elsif ($action eq "HexChat") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("hexchat");
-	}
-	# --- Work ---
-	# Remmina
-	elsif ($action eq "Remmina") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("remmina");
-	}
-	# Rclone Browser
-	elsif ($action eq "Rclone Browser") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("rclone-browser");
-	}
-	# Insomnia
-	elsif ($action eq "Insomnia") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("insomnia");
-	}
-	# VMware
-	elsif ($action eq "VMware") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("vmware");
-	}
-	# DBeaver
-	elsif ($action eq "DBeaver") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("dbeaver");
-	}
-	# Miro
-	elsif ($action eq "Miro") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("miro");
-	}
-	# --- Audio ---
-	# REAPER
-	elsif ($action eq "REAPER") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("reaper");
-	}
-	# Audacity
-	elsif ($action eq "Audacity") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("audacity");
-	}
-	# Pulse Control Panel
-	elsif ($action eq "Pulse Control Panel") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("pavucontrol");
-	}
-	# JACK Audio Connection Kit
-	elsif ($action eq "JACK Audio Connection Kit") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("qjackctl");
-	}
-	# --- Multimedia ---
-	# Ario
-	elsif ($action eq "Ario") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("ario");
-	}
-	# Kdenlive
-	elsif ($action eq "Kdenlive") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("kdenlive");
-	}
-	# --- Multimedia ---
-	# Steam
-	elsif ($action eq "Steam") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("steam");
-	}
-	# Lutris
-	elsif ($action eq "Lutris") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("lutris");
-	}
-	# GZDoom
-	elsif ($action eq "GZDoom") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("gzdoom");
-	}
-	# DOSBox
-	elsif ($action eq "DOSBox") {
-		$pid = fork();
-		exit if $pid;
-		setsid();
-		exec("dosbox");
+	$pid = fork();
+	exit if $pid;
+	setsid();
+	switch ($action) {
+		case "Terminal" {
+			exec("alacritty");
+		}
+		case "File manager" {
+			exec("pcmanfm");
+		}
+		case "Web browser" {
+			exec("librewolf");
+		}
+		case "Mail client" {
+			exec("thunderbird");
+		}
+		case "Qalculate!" {
+			exec("qalculate-gtk");
+		}
+		case "Kleopatra" {
+			exec("kleopatra");
+		}
+		case "Transmission" {
+			exec("transmission-gtk");
+		}
+		case "Wireshark" {
+			exec("doas", "wireshark");
+		}
+		case "MKVToolNix" {
+			exec("mkvtoolnix-gui");
+		}
+		case "Stellarium" {
+			exec("stellarium");
+		}
+		case "Google Earth" {
+			exec("google-earth-pro");
+		}
+		case "NeoVim" {
+			exec("alacritty", "-e", "nvim");
+		}
+		case "Emacs" {
+			exec("emacs");
+		}
+		case "Emacs-NoX" {
+			exec("alacritty", "-e", "emacs-nw");
+		}
+		case "GIMP" {
+			exec("gimp");
+		}
+		case "Inkscape" {
+			exec("inkscape");
+		}
+		case "LibreWolf" {
+			exec("librewolf");
+		}
+		case "Firefox" {
+			exec("firefox");
+		}
+		case "Iridium" {
+			exec("iridium", "--force-dark-mode");
+		}
+		case "Chromium" {
+			exec("chromium");
+		}
+		case "Discord" {
+			exec("discord");
+		}
+		case "Signal" {
+			exec("signal-desktop");
+		}
+		case "Liferea" {
+			exec("liferea");
+		}
+		case "HexChat" {
+			exec("hexchat");
+		}
+		case "REAPER" {
+			exec("reaper");
+		}
+		case "Audacity" {
+			exec("audacity");
+		}
+		case "Pulse Control Panel" {
+			exec("pavucontrol");
+		}
+		case "JACK Audio Connection Kit" {
+			exec("qjackctl");
+		}
+		case "Ario" {
+			exec("ario");
+		}
+		case "Kdenlive" {
+			exec("kdenlive");
+		}
+		case "Steam" {
+			exec("steam");
+		}
+		case "Lutris" {
+			exec("lutris");
+		}
+		case "GZDoom" {
+			exec("gzdoom");
+		}
+		case "DOSBox" {
+			exec("dosbox");
+		}
+		case "Remmina" {
+			exec("remmina");
+		}
+		case "Rclone Browser" {
+			exec("rclone-browser");
+		}
+		case "Insomnia" {
+			exec("insomnia");
+		}
+		case "VMware" {
+			exec("vmware");
+		}
+		case "DBeaver" {
+			exec("dbeaver");
+		}
+		case "Miro" {
+			exec("miro");
+		}
+		case "Teams" {
+			exec("teams");
+		}
+		else {
+			return;
+		}
 	}
 	return;
 }
