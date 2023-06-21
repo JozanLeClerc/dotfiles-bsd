@@ -58,6 +58,7 @@ use constant WORK_LIST	=> "" .
 "VMware"			. "\n" .
 "DBeaver"			. "\n" .
 "Miro"				. "\n" .
+"FortiClient"		. "\n" .
 "Teams";
 
 sub run
@@ -189,6 +190,9 @@ sub run
 		}
 		case "Miro" {
 			exec("miro");
+		}
+		case "FortiClient" {
+			exec("forticlient", "gui");
 		}
 		case "Teams" {
 			exec("teams");
