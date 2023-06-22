@@ -1,7 +1,7 @@
 [Default Applications]
 x-scheme-handler/http=librewolf.desktop
 x-scheme-handler/https=librewolf.desktop
-x-scheme-handler/ftp=iridium-browser.desktop
+x-scheme-handler/ftp=librewolf.desktop
 image/png=userapp-nsxiv -b -a-NUYH01.desktop
 x-scheme-handler/chrome=librewolf.desktop
 text/html=librewolf.desktop
