@@ -46,7 +46,7 @@
 
 xset r rate 200 150
 setxkbmap -option
-setxkbmap -layout us,fr -option grp:alt_shift_toggle
+setxkbmap -layout us -variant intl
 setxkbmap -option ctrl:swapcaps
 setxkbmap -option caps:none
 xmodmap -e 'keycode 9 = Tab'
