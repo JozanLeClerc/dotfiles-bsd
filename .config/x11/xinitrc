@@ -1,4 +1,4 @@
 # vim: filetype=sh
 
-cool-retro-term &
-exec dwm
+#cool-retro-term &
+#exec dwm
