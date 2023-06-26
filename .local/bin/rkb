@@ -1,4 +1,5 @@
 #!/bin/sh
 
-notify-send -u low -t 2000 'kb' '  Restored Ctrl/Caps Lock and Esc/Tab'
+notify-send -u low -t 2000 'kb' '  Restored Esc/Tab'
 setxkbmap -option
+setxkbmap -layout us -variant intl

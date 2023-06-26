@@ -47,11 +47,11 @@
 xset r rate 200 150
 setxkbmap -option
 setxkbmap -layout us -variant intl
-setxkbmap -option ctrl:swapcaps
+#setxkbmap -option ctrl:swapcaps
 setxkbmap -option caps:none
 xmodmap -e 'keycode 9 = Tab'
 xmodmap -e 'keycode 23 = Escape'
-xmodmap -e 'keycode 37 ='
-notify-send -u low -t 2000 'kb' '  Swapped Ctrl/Caps Lock and Esc/Tab'
+#xmodmap -e 'keycode 37 ='
+notify-send -u low -t 2000 'kb' '  Swapped Esc/Tab'
 
 # vim: filetype=sh
