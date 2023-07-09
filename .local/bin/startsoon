@@ -1,4 +1,4 @@
-#!/usr/local/bin/dash
+#!/bin/sh
 
 randcol() {
 	col=$(shuf -i 1-9 -n1)
