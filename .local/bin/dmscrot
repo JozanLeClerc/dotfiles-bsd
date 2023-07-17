@@ -51,6 +51,8 @@ sub clip_img
 
 	chomp $file;
 	system('echo -n ' . $file . ' | ' . XCLIP_PATH);
+	system('copyq write image/png - < ' . $file);
+	system('copyq', 'select', '0');
 	return;
 }
 
