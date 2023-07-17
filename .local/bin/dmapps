@@ -192,7 +192,7 @@ sub run
 			exec("miro");
 		}
 		case "FortiClient" {
-			exec("forticlient", "gui");
+			exec("/opt/forticlient/gui/FortiClient-linux-x64/FortiClient");
 		}
 		case "Teams" {
 			exec("teams");

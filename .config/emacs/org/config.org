@@ -379,8 +379,8 @@
 	  (setq helm-quick-update				t
 			helm-bookmark-show-location		t
 			helm-buffers-fuzzy-matching		t
-			helm-make-executable			"/usr/local/bin/gmake"
-			helm-make-nproc					5
+			helm-make-executable			"/usr/bin/make"
+			helm-make-nproc					12
 			helm-split-window-in-side-p		t)
 
 	  (defun helm-my-buffers ()
@@ -573,7 +573,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 	(lambda nil
 	(ansi-term shell-pop-term-shell)))))
 
-(setq shell-pop-term-shell "/usr/local/bin/zsh")
+(setq shell-pop-term-shell "/usr/bin/zsh")
 (add-to-list 'evil-emacs-state-modes 'term-mode)
 #+END_SRC
 
@@ -868,10 +868,13 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ** Custom funcs
 #+BEGIN_SRC emacs-lisp
-(defadvice text-scale-increase (around all-buffers (arg) activate)
-  (dolist (buffer (buffer-list))
-    (with-current-buffer buffer
-      ad-do-it)))
+  (defadvice text-scale-increase (around all-buffers (arg) activate)
+	(dolist (buffer (buffer-list))
+	  (with-current-buffer buffer
+		ad-do-it)))
+
+  (defun my/insert-current-date () (interactive)
+	(insert (shell-command-to-string "echo ' *' $(date -R)")))
 #+END_SRC
 
 ** Compilation
@@ -905,7 +908,9 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 	 (global-set-key [f4] 'helm-make-projectile)
 	 (global-set-key [f5] 'undo-tree-visualize)
 	 (global-set-key (kbd "C-x d") 'dired)
+	 (global-set-key (kbd "C-x d") 'dired)
 	 (global-set-key (kbd "C-x b") 'ibuffer)
+	 (global-set-key (kbd "C-c d") 'my/insert-current-date)
 	 (global-set-key (kbd "M-9") 'shell-command)
 	 (global-set-key (kbd "M-0") 'async-shell-command)
 	 (global-set-key (kbd "M-j") 'next-buffer)
