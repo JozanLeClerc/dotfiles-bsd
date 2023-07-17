@@ -25,7 +25,7 @@ use constant PROG_LIST	=> "" .
 "Emacs"						. "\n" .
 "Emacs-NoX"					. "\n" .
 "--- Graphics ---"			. "\n" .
-"GIMP"						. "\n" .
+"GIMP - GNU Image Manipulation Program"	. "\n" .
 "Inkscape"					. "\n" .
 "--- Internet ---"			. "\n" .
 "LibreWolf"					. "\n" .
@@ -113,7 +113,7 @@ sub run
 		case "Emacs-NoX" {
 			exec("alacritty", "-e", "emacs-nw");
 		}
-		case "GIMP" {
+		case "GIMP - GNU Image Manipulation Program" {
 			exec("gimp");
 		}
 		case "Inkscape" {
