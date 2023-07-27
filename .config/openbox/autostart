@@ -68,7 +68,7 @@ startif dunst
 startif picom
 startif mpd-notification
 pgrep $mpd >/dev/null || $mpd >/dev/null 2>&1
-"$HOME"/.local/bin/setwp "$HOME"/pics/wp.jpg
+"$HOME"/.local/bin/setwp "$HOME"/pics/the_wall.png
 "$HOME"/.local/bin/kb
 xset s off
 xset -dpms
