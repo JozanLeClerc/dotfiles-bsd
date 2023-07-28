@@ -102,9 +102,9 @@ ${color0}${font ConkySymbols:size=18}i${font :Bold:} ${voffset -5}NETWORK${align
 ${color 81B562}${offset 3}${downspeedgraph eth1 50,190 000000 81B562 128000000}${goto 205}${color SteelBlue}${upspeedgraph eth1 50,190 000000 4682B4 128000000}
 ${color0}${voffset -55}${offset 10}Download${goto 210}Upload${offset 10}
 ${offset 10} ${downspeed eth1} ${goto 210}${upspeed eth1}${endif}${if_match "${nodename_short}" == "po-rbo"}
-${color 81B562}${offset 3}${downspeedgraph enx34298f762de7 50,190 000000 81B562 128000000} ${color SteelBlue}${upspeedgraph enx34298f762de7 50,190 000000 4682B4 128000000}
+${color 81B562}${offset 3}${downspeedgraph eth0 50,190 000000 81B562 128000000} ${color SteelBlue}${upspeedgraph eth0 50,190 000000 4682B4 128000000}
 ${color0}${voffset -55}${offset 10}Download${goto 210}Upload${offset 10}
-${offset 10} ${downspeed enx34298f762de7} ${goto 210}${upspeed enx34298f762de7}${endif}
+${offset 10} ${downspeed eth0} ${goto 210}${upspeed eth0}${endif}
 ${color0}${hr}${font}
 ${font ConkySymbols:size=18:bold}h${font :bold:}${voffset -5}TEMPERATURES ${goto 150}${font}${if_match "${nodename_short}" == "moother"}
 ${color EE4444}${execbar sensors | grep CPUTIN | awk '{print $2}'}

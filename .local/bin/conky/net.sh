@@ -6,7 +6,7 @@ case "$(hostname -s)" in
 		if_alt="eth0"
 		;;
 	po-rbo)
-		if_main="enx34298f762de7"
+		if_main="eth0"
 		if_alt="wlp1s0"
 		;;
 	mars)
