@@ -385,7 +385,7 @@
     <!-- Keybindings for running applications -->
     <keybind key="W-p">
       <action name="Execute">
-        <command>dmenu_run</command>
+        <command>dmenu_run -m 0</command>
       </action>
     </keybind>
     <keybind key="W-Return">
