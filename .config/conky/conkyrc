@@ -85,7 +85,6 @@ ${color0}${offset 5}${top_mem name 4} ${alignr 10}${offset -13}${top_mem cpu 4}$
 ${color0}${offset 5}${top_mem name 5} ${alignr 10}${offset -13}${top_mem cpu 5}${offset 15}${top_mem mem 5}${if_match "${nodename_short}" == "mother"}
 ${color0}${hr}${font}
 ${color0}${font ConkySymbols:size=18}n${font :bold:}${voffset -5} GPU${font}${goto 90}${nvidia modelname} @ ${nvidia gpufreq}MHz${alignr}${font :bold:}${nvidia gpuutil}%${font}
-${nvidia perfmode}
 ${color1}PCIe ${goto 70}${color tomato}${nvidiabar 8,290 pcieutil} ${color0}${alignr}${nvidia pcieutil}%
 ${color1}Fan  ${goto 70}${color tomato}${nvidiabar 8,290 fanlevel} ${color0}${alignr}${nvidia fanlevel}%
 ${color1}Temp ${goto 70}${color tomato}${nvidiabar 8,290 temp}     ${color0}${alignr}${nvidia temp}°C
