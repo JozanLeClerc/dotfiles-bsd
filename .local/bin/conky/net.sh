@@ -32,8 +32,8 @@ else
 fi
 
 echo $if_main'${font}'
-[ -z $if_wg ] || echo '${color1}WireGuard: ${color0}ON${font}'
-[ -z $if_wg ] || echo '${color1}WG  IP:   ${color0}${goto 70}${addr '$if_wg'}${font}'
-echo '${voffset 3}${color1}LAN IP:   ${color0}${goto 70}${addr '$if_main'}${font}'
-echo '${color1}DNS IP:  ${color0}${goto 70}${nameserver 0}${font}'
-echo '${color1}WAN IP: ${color0}${goto 70}${execi 15 curl -s https://ifconfig.me || echo No WAN}${font}'
+[ -z $if_wg ] || echo '${color1}WireGuard ${color0}ON${font}'
+[ -z $if_wg ] || echo '${color1}WG  IP   ${color0}${goto 70}${addr '$if_wg'}${font}'
+echo '${voffset 3}${color1}LAN IP   ${color0}${goto 70}${addr '$if_main'}${font}'
+echo '${color1}DNS IP  ${color0}${goto 70}${nameserver 0}${font}'
+echo '${color1}WAN IP ${color0}${goto 70}${execi 15 curl -s https://ifconfig.me || echo No WAN}${font}'

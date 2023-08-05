@@ -71,13 +71,11 @@ ${goto 130}${mpd_elapsed}/${mpd_length} ${mpd_bar}
 ${execi 5 ~/.local/bin/conky/cover.sh >/dev/null 2>&1}${image /tmp/conkyCover.png -p 10,115 -n}${endif}${endif}
 ${color0}${hr}
 ${color0}${font ConkySymbols:size=18}f${font :bold:}${voffset -5} CPU${font}${goto 115}${if_match "${nodename_short}" == "mother"}Intel i7-4790${endif}${if_match "${nodename_short}" == "po-rbo"}Intel i5-12450H${endif} @ ${freq_g}GHz${alignr}${font :bold:}${cpu}%${font}
-${color orange}${cpubar}
 ${color orange}${offset 3}${cpugraph cpu1 30,93 000000 DDAA00} ${cpugraph cpu2 30,93 000000 DDAA00} ${cpugraph cpu3 30,93 000000 DDAA00} ${cpugraph cpu4 30,93 000000 DDAA00} ${voffset 12} ${color0} ${goto 19}CPU 1: ${cpu cpu1}% ${goto 115}CPU 2: ${cpu cpu2}% ${goto 210}CPU 3: ${cpu cpu3}% ${voffset -29} ${goto 307}CPU 4: ${cpu cpu4}%
 ${color orange}${offset 3}${cpugraph cpu5 30,93 000000 DDAA00} ${cpugraph cpu6 30,93 000000 DDAA00} ${cpugraph cpu7 30,93 000000 DDAA00} ${cpugraph cpu8 30,93 000000 DDAA00} ${voffset 12} ${color0} ${goto 19}CPU 5: ${cpu cpu5}% ${goto 115}CPU 6: ${cpu cpu6}% ${goto 210}CPU 7: ${cpu cpu7}% ${voffset -29} ${goto 307}CPU 8: ${cpu cpu8}%${if_match "${nodename_short}" == "po-rbo"}
 ${color orange}${offset 3}${cpugraph cpu9 30,93 000000 DDAA00} ${cpugraph cpu10 30,93 000000 DDAA00} ${cpugraph cpu11 30,93 000000 DDAA00} ${cpugraph cpu12 30,93 000000 DDAA00} ${voffset 12} ${color0} ${goto 19}CPU 9: ${cpu cpu9}% ${goto 115}CPU 10: ${cpu cpu10}% ${goto 210}CPU 11: ${cpu cpu11}% ${voffset -29} ${goto 307}CPU 12: ${cpu cpu12}%${endif}
 ${color0}${hr}${font}
 ${color0}${font ConkySymbols:size=18}j${font :bold:}${voffset -5} MEMORY${font}${goto 150}$mem / $memmax${alignr}${font :bold:}${memperc}%${font}
-${color 228B22}${membar}
 ${color0}${font :size 11:bold}${offset 5}Top Processes ${alignr}${offset -5}CPU%${offset 10}MEM%
 ${color 228B22}${memgraph 95,390 000000 228B22}${voffset -110}${font}
 ${color0}${offset 5}${top_mem name 1} ${alignr 10}${offset -13}${top_mem cpu 1}${offset 15}${top_mem mem 1}
@@ -87,7 +85,9 @@ ${color0}${offset 5}${top_mem name 4} ${alignr 10}${offset -13}${top_mem cpu 4}$
 ${color0}${offset 5}${top_mem name 5} ${alignr 10}${offset -13}${top_mem cpu 5}${offset 15}${top_mem mem 5}${if_match "${nodename_short}" == "mother"}
 ${color0}${hr}${font}
 ${color0}${font ConkySymbols:size=18}n${font :bold:}${voffset -5} GPU${font}${goto 90}${nvidia modelname} @ ${nvidia gpufreq}MHz${alignr}${font :bold:}${nvidia gpuutil}%${font}
-${color tomato}${nvidiabar gpuutil}
+${color1}PCIe ${goto 70}${color tomato}${nvidiabar 8,290 pcieutil} ${color0}${alignr}${nvidia pcieutil}%
+${color1}Fan  ${goto 70}${color tomato}${nvidiabar 8,290 fanlevel} ${color0}${alignr}${nvidia fanlevel}%
+${color1}Temp ${goto 70}${color tomato}${nvidiabar 8,290 temp}     ${color0}${alignr}${nvidia temp}°C
 ${color tomato}${offset 3}${nvidiagraph gpuutil 30,190 000000 FF6347} ${nvidiagraph mem 30,190 000000 FF6347} ${voffset 13} ${goto 25}${color0}GPU Usage: ${nvidia gpuutil}%${goto 215}${voffset -29}VRAM Usage: ${nvidia memutil}%${endif}
 ${color0}${hr}${font}
 ${color0}${font ConkySymbols:size=18}k${font :Bold:}${voffset -5} FILE SYSTEMS${alignr}NVMe ${fs_used_perc /}%${if_match "${nodename_short}" == "mother"} | HDD ${fs_used_perc /var/hdd}%${endif}${font}
