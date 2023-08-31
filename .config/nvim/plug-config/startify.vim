@@ -22,11 +22,9 @@ let g:startify_lists = [
 			\ { 'type': 'commands',  'header': startify#pad(['Commands'])	},
 			\ ]
 let g:startify_bookmarks = [
-			\ { 'b': '~/.config/bspwm/bspwmrc' },
 			\ { 'env': '~/.config/env' },
-			\ { 'fa': '~/.config/fish/alias.fish' },
-			\ { 'fc': '~/.config/fish/config.fish' },
 			\ { 'v': '~/.config/nvim/init.vim' },
 			\ { 'zc': '~/.config/zsh/.zshrc' },
 			\ { 'za': '~/.config/zsh/alias.zsh' },
+			\ { 'gj': '~/dev/go/gojosh' },
 			\ ]
