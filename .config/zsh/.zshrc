@@ -11,6 +11,8 @@
 # ==     =====   ====   ==
 # ========================
 
+[ -z "$TMUX"  ] && export TERM=xterm-256color || export TERM=screen-256color
+
 autoload -U colors && colors
 
 HISTSIZE=1000000

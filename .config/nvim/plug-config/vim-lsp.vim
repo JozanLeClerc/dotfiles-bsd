@@ -21,6 +21,19 @@ highlight LspWarningHighlight cterm=underline gui=underline ctermfg=DarkRed guif
 highlight LspInformationHighlight cterm=underline gui=underline ctermfg=Green guifg=Green
 highlight LspHintHighlight term=italic cterm=italic gui=italic ctermfg=Green guifg=Green
 
+augroup LspGo
+  au!
+  autocmd User lsp_setup call lsp#register_server({
+      \ 'name': 'go-lang',
+      \ 'cmd': {server_info->['gopls']},
+      \ 'whitelist': ['go'],
+      \ })
+  autocmd FileType go setlocal omnifunc=lsp#complete
+  "autocmd FileType go nmap <buffer> gd <plug>(lsp-definition)
+  "autocmd FileType go nmap <buffer> ,n <plug>(lsp-next-error)
+  "autocmd FileType go nmap <buffer> ,p <plug>(lsp-previous-error)
+augroup END
+
 let g:lsp_signs_priority = 10
 let g:lsp_textprop_enabled = 1
 let g:lsp_cxx_hl_use_text_props = 1
