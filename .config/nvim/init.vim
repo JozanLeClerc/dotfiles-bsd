@@ -24,8 +24,8 @@ source $XDG_CONFIG_HOME/nvim/settings.vim
 source $XDG_CONFIG_HOME/nvim/bindings.vim
 source $XDG_CONFIG_HOME/nvim/sidebars.vim
 source $XDG_CONFIG_HOME/nvim/langs.vim
-"source $XDG_CONFIG_HOME/nvim/plug-config/airline.vim
-source $XDG_CONFIG_HOME/nvim/plug-config/lightline.vim
+source $XDG_CONFIG_HOME/nvim/plug-config/airline.vim
+"source $XDG_CONFIG_HOME/nvim/plug-config/lightline.vim
 source $XDG_CONFIG_HOME/nvim/plug-config/asyncomplete.vim
 source $XDG_CONFIG_HOME/nvim/plug-config/floaterm.vim
 source $XDG_CONFIG_HOME/nvim/plug-config/nerd-commenter.vim
