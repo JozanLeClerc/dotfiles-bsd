@@ -17,7 +17,7 @@ vim.cmd('set runtimepath^=/home/r_bousset/.config/nvim runtimepath+=/home/jozan/
 vim.cmd('let &packpath = &runtimepath')
 require('plug')
 require('settings')
--- vim.cmd('source ' .. confdir .. '/nvim/settings.vim')
+require('plugs-config/treesitter')
 vim.cmd('source ' .. confdir .. '/nvim/bindings.vim')
 vim.cmd('source ' .. confdir .. '/nvim/sidebars.vim')
 vim.cmd('source ' .. confdir .. '/nvim/langs.vim')
