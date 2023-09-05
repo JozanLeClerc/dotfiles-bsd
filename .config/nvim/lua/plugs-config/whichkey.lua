@@ -1,3 +1,4 @@
+
 local wk = require("which-key")
 wk.register({
 	b = { ':Buffers<CR>', 'buffers', noremap = true, silent = true },
@@ -25,3 +26,18 @@ wk.register({
 		r = { ':Rg<CR>', 'ripgrep', noremap = true, silent = true },
 	},
 }, { prefix = '<leader>', })
+wk.setup({
+	plugins = {
+		presets = {
+			operators = false,
+			motions = false,
+			text_objects = false,
+			window = false,
+			nav = false,
+			z = false,
+			g = false
+		},
+	},
+	triggers = { "<leader>" },
+	triggers_nowait = { "d" },
+})
