@@ -82,30 +82,56 @@ ins_left {
   function()
     return '▊'
   end,
-  color = { fg = colors.red }, -- Sets highlighting of component
+  -- color = { fg = colors.green }, -- Sets highlighting of component
+  color = function()
+    -- auto change color according to neovims mode
+    local mode_color = {
+      n = colors.green,
+      i = colors.blue,
+      v = colors.magenta,
+      [''] = colors.magenta,
+      V = colors.magenta,
+      c = colors.yellow,
+      no = colors.red,
+      s = colors.orange,
+      S = colors.orange,
+      [''] = colors.orange,
+      ic = colors.yellow,
+      R = colors.red,
+      Rv = colors.violet,
+      cv = colors.red,
+      ce = colors.red,
+      r = colors.cyan,
+      rm = colors.cyan,
+      ['r?'] = colors.cyan,
+      ['!'] = colors.red,
+      t = colors.red,
+    }
+    return { fg = mode_color[vim.fn.mode()] }
+  end,
   padding = { left = 0, right = 1 }, -- We don't need space before this
 }
 
 ins_left {
   -- mode component
   function()
-    return '󱓞'
+    return ''
   end,
   color = function()
     -- auto change color according to neovims mode
     local mode_color = {
-      n = colors.red,
-      i = colors.green,
-      v = colors.blue,
-      [''] = colors.blue,
-      V = colors.blue,
-      c = colors.magenta,
+      n = colors.green,
+      i = colors.blue,
+      v = colors.magenta,
+      [''] = colors.magenta,
+      V = colors.magenta,
+      c = colors.yellow,
       no = colors.red,
       s = colors.orange,
       S = colors.orange,
       [''] = colors.orange,
       ic = colors.yellow,
-      R = colors.violet,
+      R = colors.red,
       Rv = colors.violet,
       cv = colors.red,
       ce = colors.red,
@@ -213,7 +239,33 @@ ins_right {
   function()
     return '▊'
   end,
-  color = { fg = colors.blue },
+  -- color = { fg = colors.green },
+  color = function()
+    -- auto change color according to neovims mode
+    local mode_color = {
+      n = colors.green,
+      i = colors.blue,
+      v = colors.magenta,
+      [''] = colors.magenta,
+      V = colors.magenta,
+      c = colors.yellow,
+      no = colors.red,
+      s = colors.orange,
+      S = colors.orange,
+      [''] = colors.orange,
+      ic = colors.yellow,
+      R = colors.red,
+      Rv = colors.violet,
+      cv = colors.red,
+      ce = colors.red,
+      r = colors.cyan,
+      rm = colors.cyan,
+      ['r?'] = colors.cyan,
+      ['!'] = colors.red,
+      t = colors.red,
+    }
+    return { fg = mode_color[vim.fn.mode()] }
+  end,
   padding = { left = 1 },
 }
 
