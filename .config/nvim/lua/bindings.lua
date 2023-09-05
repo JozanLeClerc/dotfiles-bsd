@@ -1,6 +1,26 @@
-vim.call('which_key#register', '\\', 'g:which_key_map')
-vim.g.which_key_map = {}
-vim.keymap.set('n', 'c', '"_c', { noremap = true, silent = false })
+local wk = require("which-key")
+wk.register({
+	b = { ':Buffers<CR>', 'buffers', noremap = true, silent = true },
+	c = { name = '+nerd-commenter' },
+	d = { ':bd<CR>', 'close buffer', noremap = true, silent = false },
+	e = { ':Files<CR>', 'files', noremap = true, silent = true },
+	G = { ':FloatermNew lazygit<CR>', 'lazygit', noremap = true, silent = true },
+	h = { ':Startify<CR>', 'startify', noremap = true, silent = true },
+	k = { ':w<CR>:bp<CR>:bd #<CR>', 'write and close buffer', noremap = true, silent = false },
+	p = { ':<C-u>CocList -A --normal yank<CR>', 'CoC paste', noremap = true, silent = true },
+	v = { ':FloatermNew vifm<CR>', 'vifm', noremap = true, silent = true },
+	w = { ':w<CR>', 'write buffer', noremap = true, silent = false },
+	x = { ':w<CR>:bp<CR>:bd #<CR>', 'write and close buffer', noremap = true, silent = false },
+	q = { name = '+coc-fix-current' },
+	r = { name = '+coc-rename' },
+	g = {
+		name = 'grep',
+		a = { ':Ag<CR>', 'the_silver_searcher', noremap = true, silent = true },
+		g = { ':Grep<CR>', 'grep', noremap = true, silent = true },
+		r = { ':Rg<CR>', 'ripgrep', noremap = true, silent = true },
+	},
+}, { prefix = '<leader>' })
+
 vim.keymap.set('n', 'M-;', ':call nerdcommenter#Comment(0,"toggle")<CR>', { noremap = true, silent = false })
 vim.keymap.set('n', 'M-x', ':', { noremap = true, silent = false })
 vim.keymap.set('n', '<M-k>', ':bprevious<CR>', { noremap = true, silent = true })
@@ -14,20 +34,6 @@ vim.keymap.set('n', '<C-q>', '<C-w>q', { noremap = true, silent = false })
 vim.keymap.set('n', '*', '*zz', { noremap = true, silent = false })
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true, silent = false })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true, silent = false })
-vim.keymap.set('n', '<leader>', ":WhichKey '\\'<CR>", { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>b', ':Buffers<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>d', ':bd<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<leader>e', ':Files<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>ga', ':Ag<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>gg', ':Grep<Space>', { noremap = true, silent = false })
-vim.keymap.set('n', '<leader>gr', ':Rg<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>G', ':FloatermNew lazygit<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>h', ':Startify<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>k', ':w<CR>:bp<CR>:bd #<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<leader>p', ':<C-u>CocList -A --normal yank<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<silent><leader>v', ':FloatermNew vifm<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>w', ':w<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<leader>x', ':w<CR>:bp<CR>:bd #<CR>', { noremap = true, silent = false })
 vim.keymap.set('n', '<M-1>', '<Plug>AirlineSelectTab1')
 vim.keymap.set('n', '<M-2>', '<Plug>AirlineSelectTab2')
 vim.keymap.set('n', '<M-3>', '<Plug>AirlineSelectTab3')
@@ -38,32 +44,9 @@ vim.keymap.set('n', '<M-7>', '<Plug>AirlineSelectTab7')
 vim.keymap.set('n', '<M-8>', '<Plug>AirlineSelectTab8')
 vim.keymap.set('n', '<M-9>', '<Plug>AirlineSelectTab9')
 vim.keymap.set('n', '<M-0>', '<Plug>AirlineSelectTab10')
-vim.keymap.set('i', '<expr> <C-j>', 'pumvisible() ? "<C-n>" : "<C-j>"')
-vim.keymap.set('i', '<expr> <C-k>', 'pumvisible() ? "<C-p>" : "<C-k>"')
-vim.keymap.set('i', '<expr> <cr>',  'pumvisible() ? asyncomplete#close_popup() : "\\<cr>"')
+vim.keymap.set('i', '<C-j>', 'pumvisible() ? "<C-n>" : "<C-j>"', { expr = true })
+vim.keymap.set('i', '<C-k>', 'pumvisible() ? "<C-p>" : "<C-k>"', { expr = true })
+vim.keymap.set('i', '<cr>',  'pumvisible() ? asyncomplete#close_popup() : "\\<cr>"', { expr = true })
 vim.g.floaterm_keymap_toggle = '<F1>'
 vim.g.floaterm_keymap_prev =   '<F11>'
 vim.g.floaterm_keymap_next =   '<F12>'
-vim.cmd [[
-let g:which_key_map = {
-\ 'b': 'buffers',
-\ 'c': { 'name': '+nerd-commenter' },
-\ 'd': 'close-buffer',
-\ 'e': 'files',
-\ 'G': 'lazygit',
-\ 'h': 'startify',
-\ 'k': 'write-and-close-buffer',
-\ 'p': 'coc-paste',
-\ 'q': { 'name': '+coc-fix-current' },
-\ 'r': { 'name': '+coc-rename' },
-\ 'v': 'vifm',
-\ 'w': 'write-buffer',
-\ 'x': 'write-and-close-buffer',
-\ 'g': { 'name': '+grep' }
-\ }
-let g:which_key_map.g = {
-\ 'a': 'the_silver_searcher',
-\ 'g': 'grep',
-\ 'r': 'ripgrep'
-\ }
-]]
