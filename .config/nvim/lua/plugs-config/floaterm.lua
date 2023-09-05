@@ -1,0 +1,9 @@
+vim.g.floaterm_autoinsert = 1
+vim.g.floaterm_width = 0.6
+vim.g.floaterm_height = 0.45
+vim.g.floaterm_wintitle = 0
+vim.g.floaterm_autoclose = 1
+vim.g.floaterm_position = 'bottom'
+vim.g.floaterm_gitcommit = 'split'
+vim.g.floaterm_wintype = 'floating'
+vim.g.floaterm_rootmarkers = { '.project', '.git', '.hg', '.svn', '.root', '.gitignore', '.fslckout', '.fossil-settings' }
