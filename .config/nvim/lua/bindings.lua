@@ -8,6 +8,7 @@ wk.register({
 	h = { ':Startify<CR>', 'startify', noremap = true, silent = true },
 	k = { ':w<CR>:bp<CR>:bd #<CR>', 'write and close buffer', noremap = true, silent = false },
 	p = { ':<C-u>CocList -A --normal yank<CR>', 'CoC paste', noremap = true, silent = true },
+	u = { ':UndotreeShow<CR>', 'undotree', noremap = true, silent = true },
 	v = { ':FloatermNew vifm<CR>', 'vifm', noremap = true, silent = true },
 	w = { ':w<CR>', 'write buffer', noremap = true, silent = false },
 	x = { ':w<CR>:bp<CR>:bd #<CR>', 'write and close buffer', noremap = true, silent = false },
