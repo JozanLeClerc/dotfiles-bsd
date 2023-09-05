@@ -8,4 +8,4 @@ vim.api.nvim_create_autocmd('BufNewFile,BufRead', { pattern = '*.ms,*.1,*.2,*.3,
 vim.api.nvim_create_autocmd('BufNewFile,BufRead', { pattern = '*.conf', command = 'set filetype=conf'})
 vim.api.nvim_create_autocmd('BufWritePost', { pattern = '*.ms', command = "let pdf=fnamemodify(bufname('%'), ':r') . \".pdf\" | silent! execute \"!nroff % -ms -Tpdf -Kutf8 > \" . pdf"})
 vim.api.nvim_create_autocmd('FileType fish', { command = 'compiler fish'})
-vim.api.nvim_create_autocmd('FileType perl', { command = 'setlocal com-=:# kp=perldoc -f | compiler perl'})
+vim.api.nvim_create_autocmd('FileType perl', { command = 'setlocal com-=:# kp=perldoc\\ -f | compiler perl'})
