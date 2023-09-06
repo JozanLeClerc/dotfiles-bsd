@@ -178,16 +178,22 @@ ins_left {
 
 -- Insert mid section. You can make any number of sections in neovim :)
 -- for lualine it's any number greater then 2
-ins_left {
-  function()
-    return '%='
-  end,
+-- ins_left {
+--   function()
+--     return '%='
+--   end,
+-- }
+
+ins_right {
+  'filetype',
+  icons_enabled = true, -- I think icons are cool but Eviline doesn't have them. sigh
+  color = { fg = colors.blue },
 }
 
-ins_left {
+ins_right {
   -- Lsp server name .
   function()
-    local msg = 'No Active Lsp'
+    local msg = 'no lsp'
     local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
     local clients = vim.lsp.get_active_clients()
     if next(clients) == nil then
@@ -201,14 +207,8 @@ ins_left {
     end
     return msg
   end,
-  icon = '  LSP:',
+  icon = ' ',
   color = { fg = colors.cyan },
-}
-
-ins_right {
-  'filetype',
-  icons_enabled = true, -- I think icons are cool but Eviline doesn't have them. sigh
-  color = { fg = colors.green, gui = 'bold' },
 }
 
 ins_right {
