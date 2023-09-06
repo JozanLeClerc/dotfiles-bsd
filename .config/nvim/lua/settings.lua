@@ -25,12 +25,14 @@ vim.opt.ruler = true
 vim.opt.tabstop = 4
 vim.opt.textwidth = 80
 vim.opt.timeoutlen = 0
+vim.opt.timeoutlen = 250
 vim.opt.undodir = '/tmp/nvim_undo'
 vim.opt.undofile = true
 vim.opt.wildmode = 'longest,list,full'
 vim.opt.directory = '/tmp/nvim_swap'
+vim.o.ignorecase = true
+vim.o.smartcase = true
 vim.opt.wrap = true
-vim.opt.textwidth = 0
 vim.cmd [[
 syntax on
 filetype plugin indent on
@@ -44,3 +46,11 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 vim.g.mapleader = '\\'
 vim.g.maplocalleader = '\\'
 vim.g['battery#update_statusline'] = 1
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
+})

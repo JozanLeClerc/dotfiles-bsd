@@ -146,16 +146,23 @@ ins_left {
   padding = { right = 1 },
 }
 
-ins_left {
-  -- filesize component
-  'filesize',
-  cond = conditions.buffer_not_empty,
-}
+-- ins_left {
+--   'filename',
+--   cond = conditions.buffer_not_empty,
+--   color = { fg = colors.magenta, gui = 'bold' },
+-- }
 
 ins_left {
-  'filename',
-  cond = conditions.buffer_not_empty,
-  color = { fg = colors.magenta, gui = 'bold' },
+	'buffers',
+	show_filename_only = true,
+	hide_filename_extension = false,
+	show_modified_status = true,
+	-- color = { fg = colors.darkblue },
+	-- buffers_color = {
+	-- 	-- Same values as the general color option can be used here.
+	-- 	active =  'lualine_{section}_active',     -- Color for active buffer.
+	-- 	inactive = 'lualine_{section}_inactive', -- Color for inactive buffer.
+	-- },
 }
 
 ins_left {
@@ -195,13 +202,19 @@ ins_left {
     return msg
   end,
   icon = '  LSP:',
-  color = { fg = colors.darkblue },
+  color = { fg = colors.cyan },
 }
 
 ins_right {
   'filetype',
   icons_enabled = true, -- I think icons are cool but Eviline doesn't have them. sigh
   color = { fg = colors.green, gui = 'bold' },
+}
+
+ins_right {
+  -- filesize component
+  'filesize',
+  cond = conditions.buffer_not_empty,
 }
 
 ins_right {
