@@ -154,7 +154,7 @@ ins_left {
 
 ins_left {
 	'buffers',
-	show_filename_only = true,
+	show_filename_only = false,
 	hide_filename_extension = false,
 	show_modified_status = true,
 	symbols = {
@@ -162,7 +162,6 @@ ins_left {
 		alternate_file = '', -- Text to show to identify the alternate file
 		directory =  '',     -- Text to show when the buffer is a directory
 	},
-	-- color = { fg = colors.magenta },
 	buffers_color = {
 		-- Same values as the general color option can be used here.
 		active = function()
@@ -191,8 +190,6 @@ ins_left {
 			}
 			return { fg = mode_color[vim.fn.mode()], gui = 'bold' }
 		end,
-		-- active =  { fg = colors.magenta, gui = 'bold' },     -- Color for active buffer.
-		-- inactive = { fg = colors.blue }, -- Color for inactive buffer.
 	},
 }
 
