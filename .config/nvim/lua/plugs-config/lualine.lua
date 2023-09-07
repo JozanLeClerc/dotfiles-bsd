@@ -157,12 +157,43 @@ ins_left {
 	show_filename_only = true,
 	hide_filename_extension = false,
 	show_modified_status = true,
-	-- color = { fg = colors.darkblue },
-	-- buffers_color = {
-	-- 	-- Same values as the general color option can be used here.
-	-- 	active =  'lualine_{section}_active',     -- Color for active buffer.
-	-- 	inactive = 'lualine_{section}_inactive', -- Color for inactive buffer.
-	-- },
+	symbols = {
+		modified = ' ●',      -- Text to show when the buffer is modified
+		alternate_file = '', -- Text to show to identify the alternate file
+		directory =  '',     -- Text to show when the buffer is a directory
+	},
+	-- color = { fg = colors.magenta },
+	buffers_color = {
+		-- Same values as the general color option can be used here.
+		active = function()
+			-- auto change color according to neovims mode
+			local mode_color = {
+				n = colors.green,
+				i = colors.blue,
+				v = colors.magenta,
+				[''] = colors.magenta,
+				V = colors.magenta,
+				c = colors.yellow,
+				no = colors.red,
+				s = colors.orange,
+				S = colors.orange,
+				[''] = colors.orange,
+				ic = colors.yellow,
+				R = colors.red,
+				Rv = colors.violet,
+				cv = colors.red,
+				ce = colors.red,
+				r = colors.cyan,
+				rm = colors.cyan,
+				['r?'] = colors.cyan,
+				['!'] = colors.red,
+				t = colors.red,
+			}
+			return { fg = mode_color[vim.fn.mode()], gui = 'bold' }
+		end,
+		-- active =  { fg = colors.magenta, gui = 'bold' },     -- Color for active buffer.
+		-- inactive = { fg = colors.blue }, -- Color for inactive buffer.
+	},
 }
 
 ins_left {
@@ -197,7 +228,8 @@ ins_right {
     local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
     local clients = vim.lsp.get_active_clients()
     if next(clients) == nil then
-      return msg
+		-- icon = ''
+		return
     end
     for _, client in ipairs(clients) do
       local filetypes = client.config.filetypes
