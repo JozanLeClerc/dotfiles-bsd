@@ -157,6 +157,7 @@ ins_left {
 	show_filename_only = false,
 	hide_filename_extension = false,
 	show_modified_status = true,
+	icons_enabled = true,
 	symbols = {
 		modified = ' ●',      -- Text to show when the buffer is modified
 		alternate_file = '', -- Text to show to identify the alternate file
@@ -241,15 +242,15 @@ ins_right {
 }
 
 ins_right {
-  -- filesize component
-  'filesize',
-  cond = conditions.buffer_not_empty,
-}
-
-ins_right {
   'branch',
   icon = '',
   color = { fg = colors.violet, gui = 'bold' },
+}
+
+ins_right {
+  -- filesize component
+  'filesize',
+  cond = conditions.buffer_not_empty,
 }
 
 ins_right {
