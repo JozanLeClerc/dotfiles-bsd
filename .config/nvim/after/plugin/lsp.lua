@@ -31,6 +31,7 @@ require('mason-lspconfig').setup({
 		'cmake',
 		'marksman',
 		'ltex',
+		'perlnavigator',
 	},
   handlers = {
     lsp.default_setup,

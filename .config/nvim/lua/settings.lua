@@ -18,6 +18,8 @@ vim.opt.mouse = 'a'
 vim.opt.compatible = false
 vim.opt.expandtab = false
 vim.opt.hlsearch = false
+vim.opt.incsearch = true
+vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
@@ -30,6 +32,9 @@ vim.opt.undodir = '/tmp/nvim_undo'
 vim.opt.undofile = true
 vim.opt.wildmode = 'longest,list,full'
 vim.opt.directory = '/tmp/nvim_swap'
+vim.opt.colorcolumn = "80"
+vim.opt.scrolloff = 5
+vim.opt.signcolumn = "yes"
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.opt.wrap = true
@@ -45,7 +50,6 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 ]]
 vim.g.mapleader = '\\'
 vim.g.maplocalleader = '\\'
-vim.g['battery#update_statusline'] = 1
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
