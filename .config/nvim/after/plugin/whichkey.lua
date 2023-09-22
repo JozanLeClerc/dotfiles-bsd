@@ -1,10 +1,11 @@
 
-local wk = require("which-key")
+local ts = require('telescope.builtin')
+local wk = require('which-key')
 wk.register({
 	b = { ':Buffers<CR>', 'buffers', noremap = true, silent = true },
 	c = { name = '+nerd-commenter' },
 	d = { ':bd<CR>', 'close buffer', noremap = true, silent = false },
-	e = { ':Files<CR>', 'files', noremap = true, silent = true },
+	e = { ':Telescope find_files<CR>', 'find files', noremap = true, silent = true },
 	G = { ':FloatermNew lazygit<CR>', 'lazygit', noremap = true, silent = true },
 	h = { ':Startify<CR>', 'startify', noremap = true, silent = true },
 	k = { ':w<CR>:bp<CR>:bd #<CR>', 'write and close buffer', noremap = true, silent = false },
@@ -17,13 +18,23 @@ wk.register({
 	r = { name = '+coc-rename' },
 	f = {
 		name = 'telescope',
-		f = { ':Telescope find_files<CR>', 'find files', noremap = true, silent = true },
+		-- f = { ':Telescope find_files<CR>', 'find files', noremap = true, silent = true },
+		f = { ts.find_files, 'find files', noremap = true, silent = true },
+		g = { ts.git_files, 'git files', noremap = true, silent = true },
+		s = { function()
+			ts.grep_string({ search = vim.fn.input("Grep > ") })
+		end, 'grep string', noremap = true, silent = true },
 	},
 	g = {
 		name = 'grep',
 		a = { ':Ag<CR>', 'the_silver_searcher', noremap = true, silent = true },
 		g = { ':Grep<CR>', 'grep', noremap = true, silent = true },
 		r = { ':Rg<CR>', 'ripgrep', noremap = true, silent = true },
+	},
+	v = {
+		name = 'nvim',
+		v = { vim.cmd.Ex, 'explorer', noremap = true, silent = true },
+		u = { ':PlugUpgrade<CR>:PlugUpdate<CR>', 'upgrade', noremap = true, silent = true },
 	},
 }, { prefix = '<leader>', })
 wk.setup({
@@ -41,3 +52,5 @@ wk.setup({
 	triggers = { "<leader>" },
 	triggers_nowait = { "d" },
 })
+
+vim.keymap.set('n', '<C-p>', ts.git_files)
