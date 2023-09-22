@@ -112,4 +112,6 @@ lspconfig.ccls.setup {
 
 lsp.setup()
 
-require'lspconfig'.ccls.setup{}
+require'lspconfig'.ccls.setup{
+	cmd = { '/usr/bin/ccls' },
+}
