@@ -1,7 +1,13 @@
-
+local ma = require('harpoon.mark')
+local ui = require('harpoon.ui')
 local ts = require('telescope.builtin')
 local wk = require('which-key')
 wk.register({
+	a = {
+		name = 'harpoon',
+		a = { ma.add_file, 'add file', noremap = true, silent = true },
+		e = { ui.toggle_quick_menu, 'toggle ui', noremap = true, silent = true },
+	},
 	b = { ':Buffers<CR>', 'buffers', noremap = true, silent = true },
 	c = { name = '+nerd-commenter' },
 	d = { ':bd<CR>', 'close buffer', noremap = true, silent = true },
