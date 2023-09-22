@@ -4,7 +4,7 @@ local wk = require('which-key')
 wk.register({
 	b = { ':Buffers<CR>', 'buffers', noremap = true, silent = true },
 	c = { name = '+nerd-commenter' },
-	d = { ':bd<CR>', 'close buffer', noremap = true, silent = false },
+	d = { ':bd<CR>', 'close buffer', noremap = true, silent = true },
 	e = { ':Telescope find_files<CR>', 'find files', noremap = true, silent = true },
 	G = { ':FloatermNew lazygit<CR>', 'lazygit', noremap = true, silent = true },
 	h = { ':Startify<CR>', 'startify', noremap = true, silent = true },
