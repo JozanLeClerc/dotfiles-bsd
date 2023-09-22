@@ -19,7 +19,6 @@ vim.opt.compatible = false
 vim.opt.expandtab = false
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
-vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
