@@ -36,4 +36,4 @@ let g:startify_session_before_save = ['call sidebar#close_all()']
 vim.keymap.set('n', '<F2>', ':call sidebar#toggle("nerdtree")<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<F4>', ':make<space>-j5<space>', { noremap = true, silent = false })
 vim.keymap.set('n', '<F3>', ':call sidebar#toggle("tagbar")<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<F5>', ':call sidebar#toggle("undotree")<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<F5>', vim.cmd.UndotreeToggle, { noremap = true, silent = true })

@@ -45,5 +45,15 @@ Plug('nvim-lua/plenary.nvim')
 Plug('ThePrimeagen/harpoon')
 Plug('HiPhish/rainbow-delimiters.nvim')
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
+--  Uncomment these if you want to manage LSP servers from neovim
+ Plug('williamboman/mason.nvim')
+ Plug('williamboman/mason-lspconfig.nvim')
+-- LSP Support
+Plug('neovim/nvim-lspconfig')
+-- Autocompletion
+Plug('hrsh7th/nvim-cmp')
+Plug('hrsh7th/cmp-nvim-lsp')
+Plug('L3MON4D3/LuaSnip')
+Plug('VonHeikemen/lsp-zero.nvim', {['branch'] = 'v3.x'})
 
 vim.call('plug#end')
