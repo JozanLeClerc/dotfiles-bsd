@@ -24,7 +24,6 @@ require('mason-lspconfig').setup({
 		'eslint',
 		'rust_analyzer',
 		'lua_ls',
-		'ccls',
 		'gopls',
 		'arduino_language_server',
 		'bashls',
@@ -97,3 +96,18 @@ cmp.setup {
     })
   }
 }
+
+lsp.configure('ccls', {
+	force_setup = true,
+	init_options = {
+		compilationDatabaseDirectory = 'build',
+		index = {
+			threads = 0,
+		},
+		clang = {
+			excludeArgs = { '-frounding-math' }
+		}
+	}
+})
+
+lsp.setup()
