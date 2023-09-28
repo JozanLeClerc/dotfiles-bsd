@@ -31,6 +31,7 @@ require('mason-lspconfig').setup({
 		'marksman',
 		'ltex',
 		'perlnavigator',
+		'clangd',
 	},
   handlers = {
     lsp.default_setup,
@@ -96,17 +97,17 @@ cmp.setup {
   }
 }
 
-local lspconfig = require'lspconfig'
-lspconfig.ccls.setup {
-	init_options = {
-		compilationDatabaseDirectory = "build";
-		index = {
-			threads = 0;
-		};
-		clang = {
-			excludeArgs = { "-frounding-math" } ;
-		};
-	}
-}
+-- local lspconfig = require'lspconfig'
+-- lspconfig.ccls.setup {
+--     init_options = {
+--         compilationDatabaseDirectory = "build";
+--         index = {
+--             threads = 0;
+--         };
+--         clang = {
+--             excludeArgs = { "-frounding-math" };
+--         };
+--     }
+-- }
 
 lsp.setup()
