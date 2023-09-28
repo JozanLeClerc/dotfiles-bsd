@@ -49,7 +49,6 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 
 lsp.set_preferences({
 --     sign_icons = { }
-
     sign_icons = {
       Text = "󰉿",
       Method = "󰆧",
@@ -99,19 +98,15 @@ cmp.setup {
 
 local lspconfig = require'lspconfig'
 lspconfig.ccls.setup {
-  init_options = {
-    compilationDatabaseDirectory = "build";
-    index = {
-      threads = 0;
-    };
-    clang = {
-      excludeArgs = { "-frounding-math"} ;
-    };
-  }
+	init_options = {
+		compilationDatabaseDirectory = "build";
+		index = {
+			threads = 0;
+		};
+		clang = {
+			excludeArgs = { "-frounding-math"} ;
+		};
+	}
 }
 
 lsp.setup()
-
-require'lspconfig'.ccls.setup({
-	cmd = { '/usr/bin/ccls' },
-})
