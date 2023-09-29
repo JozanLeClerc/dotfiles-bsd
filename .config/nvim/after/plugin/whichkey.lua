@@ -7,7 +7,7 @@ wk.register({
 	a = {
 		name = 'harpoon',
 		a = { ma.add_file, 'add file', noremap = true, silent = true },
-		e = { ui.toggle_quick_menu, 'toggle ui', noremap = true, silent = true },
+		e = { ':Telescope harpoon marks<CR>', 'harpoon marks', noremap = true, silent = true },
 	},
 	b = { ':Buffers<CR>', 'buffers', noremap = true, silent = true },
 	c = { name = '+nerd-commenter' },
@@ -22,7 +22,7 @@ wk.register({
 	x = { ':w<CR>:bp<CR>:bd #<CR>', 'write and close buffer', noremap = true, silent = false },
 	f = {
 		name = 'telescope',
-		-- f = { ':Telescope find_files<CR>', 'find files', noremap = true, silent = true },
+		e = { ':Telescope harpoon marks<CR>', 'harpoon marks', noremap = true, silent = true },
 		f = { ts.find_files, 'find files', noremap = true, silent = true },
 		g = { ts.git_files, 'git files', noremap = true, silent = true },
 		s = { function()
