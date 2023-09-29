@@ -1,6 +1,7 @@
 local ma = require('harpoon.mark')
 local ui = require('harpoon.ui')
 local ts = require('telescope.builtin')
+require('telescope').load_extension('harpoon')
 local wk = require('which-key')
 wk.register({
 	a = {
