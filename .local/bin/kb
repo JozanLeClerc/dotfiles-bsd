@@ -47,6 +47,7 @@
 xset r rate 200 150
 setxkbmap -option
 setxkbmap -layout us -variant intl
+exit
 if [ "$(hostname -s)" = "po-rbo" ]; then
 	setxkbmap -option ctrl:swapcaps
 	setxkbmap -option caps:none
