@@ -1,13 +1,30 @@
 #!/bin/sh -e
 
-if ! mount | grep -F /dev/da0p1; then
-	notify-send -u critical 'fathdd' '  HDD not mounted'
-	exit 1
-fi
-if ! umount /dev/da0p1.eli; then
-	notify-send -u critical 'fathdd' '  Failed to dismount HDD'
-	exit 1
-fi
-geli detach da0p1.eli
-rmdir "$HOME"/hdd
-notify-send -t 5000 'fathdd' '  HDD dismounted from <b>~/hdd</b>'
+devname="exthdd"
+mountpoint="$HOME/$devname"
+
+case "$(hostname -s)" in
+	mother|po-rbo)
+		if ! doas umount "$mountpoint"; then
+			notify-send -u critical 'exthdd' "  failed to dismount $mountpoint"
+		fi
+		if ! doas cryptsetup close "$devname"; then
+			notify-send -u critical 'exthdd' "  failed to close crypt dev $devname"
+		fi
+		rmdir "$mountpoint"
+		notify-send -t 5000 'exthdd' "  crypt dev dismounted from $mountpoint"
+		;;
+	mars)
+		if ! mount | grep -F /dev/da0p1; then
+			notify-send -u critical 'fathdd' '  HDD not mounted'
+			exit 1
+		fi
+		if ! umount /dev/da0p1.eli; then
+			notify-send -u critical 'fathdd' '  Failed to dismount HDD'
+			exit 1
+		fi
+		geli detach da0p1.eli
+		rmdir "$HOME"/hdd
+		notify-send -t 5000 'fathdd' '  HDD dismounted from <b>~/hdd</b>'
+		;;
+esac
