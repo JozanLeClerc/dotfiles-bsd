@@ -48,6 +48,7 @@ application/x-ms-dos-executable=wine.desktop
 x-scheme-handler/mailto=userapp-Thunderbird-SJ2821.desktop
 message/rfc822=userapp-Thunderbird-SJ2821.desktop
 x-scheme-handler/mid=userapp-Thunderbird-SJ2821.desktop
+video/x-msvideo=mpv.desktop
 
 [Added Associations]
 x-scheme-handler/https=userapp-Firefox-NVLWI0.desktop;librewolf.desktop;
@@ -73,6 +74,7 @@ application/x-ms-dos-executable=wine.desktop;
 application/octet-stream=nvim.desktop;
 x-scheme-handler/mailto=userapp-Thunderbird-SJ2821.desktop;
 x-scheme-handler/mid=userapp-Thunderbird-SJ2821.desktop;
+video/x-msvideo=mpv.desktop;
 
 [Removed Associations]
 x-scheme-handler/http=librewolf.desktop;
