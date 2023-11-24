@@ -2,7 +2,7 @@
 
 case $(hostname -s) in
 	mother) return ;;
-	po-rbo) 
+	po-rbo)
 		charge=$(cat /sys/class/power_supply/BAT0/capacity)
 		[ "$(cat /sys/class/power_supply/BAT0/status)" = "Charging" ]     && printf "󱐋 "
 		[ "$(cat /sys/class/power_supply/BAT0/status)" = "Not charging" ] && printf "󱐋 "
@@ -18,7 +18,7 @@ case $(echo "$charge" / 20 | bc) in
 	"1") printf " " ;;
 	"2") printf " " ;;
 	"3") printf " " ;;
-	"4") 
+	"4")
 		[ "$charge" -gt 94 ] && return
 		printf " "
 		;;
