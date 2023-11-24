@@ -22,14 +22,14 @@ case $(hostname -s) in
 esac
 
 case $(echo "$stats" | sed '{1,3d;s/% idle$//;s/.*[[:blank:]]//;s/\..*//;s/^/(100 - /;s/$/) \/ 12\.5/;}' | bc) in
-		"0") printf "[        ]\n";;
-		"1") printf "[=       ]\n";;
-		"2") printf "[==      ]\n";;
-		"3") printf "[===     ]\n";;
-		"4") printf "[====    ]\n";;
-		"5") printf "[=====   ]\n";;
-		"6") printf "[======  ]\n";;
-		"7") printf "[======= ]\n";;
-		"8") printf "[========]\n";;
+		"0") printf "[        ]\n" ;;
+		"1") printf "[=       ]\n" ;;
+		"2") printf "[==      ]\n" ;;
+		"3") printf "[===     ]\n" ;;
+		"4") printf "[====    ]\n" ;;
+		"5") printf "[=====   ]\n" ;;
+		"6") printf "[======  ]\n" ;;
+		"7") printf "[======= ]\n" ;;
+		"8") printf "[========]\n" ;;
 esac
 
