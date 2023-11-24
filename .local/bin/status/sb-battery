@@ -2,8 +2,8 @@
 
 case $(hostname -s) in
 	mother) return ;;
-	po-rbo) [ $(cat /sys/class/power_supply/BAT0/status) = "Charging" ] && echo -n "ﮣ " ;;
-	mars) [ $(apm -b) -eq 3 ] && echo -n "ﮣ " ;;
+	po-rbo) [ "$(cat /sys/class/power_supply/BAT0/status)" = "Charging" ] && echo -n "ﮣ " ;;
+	mars) [ "$(apm -b)" -eq 3 ] && echo -n "ﮣ " ;;
 esac
 
 case $(hostname -s) in
@@ -11,7 +11,7 @@ case $(hostname -s) in
 	mars) charge=$(apm -l) ;;
 esac
 
-case $(echo $charge / 20 | bc) in
+case $(echo "$charge" / 20 | bc) in
 	"0") printf " ";;
 	"1") printf " ";;
 	"2") printf " ";;
