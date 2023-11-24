@@ -22,4 +22,5 @@ case $(echo "$charge" / 20 | bc) in
 		[ "$charge" -gt 94 ] && return
 		printf " "
 		;;
+	"5") printf "󱐋 " ;;
 esac
