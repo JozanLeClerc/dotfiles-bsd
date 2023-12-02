@@ -11,10 +11,10 @@
 # ==     =====   ====   ==
 # ========================
 
-alias exa='exa --color=always --group-directories-first --icons' \
-	ls='exa -l'
+alias eza='eza --color=always --group-directories-first --icons' \
+	ls='eza -l'
 tree() {
-	exa -T $@ | $PAGER
+	eza -T $@ | $PAGER
 }
 alias \
 	e='editorcmd' \
