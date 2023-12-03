@@ -1,8 +1,8 @@
 #!/bin/sh
 
 case $(hostname -s) in
-	mother|po-rbo) ping="ping -c1 -w1 1.1.1.1" ;;
-	mars)          ping="ping -c1 -t1 1.1.1.1" ;;
+	mother|po-rbo) ping="ping -c1 -w1 9.9.9.9" ;;
+	mars)          ping="ping -c1 -t1 9.9.9.9" ;;
 esac
 if ifconfig | grep -E '^tun|^vpn' >/dev/null 2>&1; then
 	echo -n "  "
