@@ -4,8 +4,10 @@ case $(hostname -s) in
 	mother) return ;;
 	po-rbo)
 		charge=$(cat /sys/class/power_supply/BAT0/capacity)
-		[ "$(cat /sys/class/power_supply/BAT0/status)" = "Charging" ]     && printf "󱐋 "
-		[ "$(cat /sys/class/power_supply/BAT0/status)" = "Not charging" ] && printf "󱐋 "
+		case "$(cat /sys/class/power_supply/BAT0/status)" in
+			"Charging"|"Not charging") printf "󱐋 " ;;
+			"Full") printf "󱐋 "; return ;;
+		esac
 		;;
 	mars)
 		charge=$(apm -l)
@@ -22,5 +24,8 @@ case $(echo "$charge" / 20 | bc) in
 		[ "$charge" -gt 94 ] && return
 		printf " "
 		;;
-	"5") printf "󱐋 " ;;
+	"5") 
+		[ "$(cat /sys/class/power_supply/BAT0/status)" = "Charging" ] && return
+		printf "󱐋 "
+		;;
 esac
