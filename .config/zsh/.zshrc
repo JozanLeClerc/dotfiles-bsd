@@ -72,10 +72,10 @@ autoload edit-command-line && zle -N edit-command-line
 bindkey "^e" edit-command-line
 
 autoload -U add-zsh-hook
-exa_after_cd() {
-	exa -l --icons --color=always --group-directories-first --no-permissions --no-user --no-time --no-filesize
+eza_after_cd() {
+	eza -l --icons --color=always --group-directories-first --no-permissions --no-user --no-time --no-filesize
 }
-add-zsh-hook chpwd exa_after_cd
+add-zsh-hook chpwd eza_after_cd
 
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
