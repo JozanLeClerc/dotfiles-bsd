@@ -247,8 +247,7 @@ alias open='xdg-open' \
 	dosbox='dosbox -conf $XDG_CONFIG_HOME/dosbox/dosbox.conf' \
 	gpg='gpg2' \
 	mysql='mycli -u root -h' \
-	wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"' \
-	os='openstack'
-osc() {
-	openstack --os-cloud=$1
+	wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
+os() {
+	OS_CLOUD=$1 openstack
 }

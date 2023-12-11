@@ -67,6 +67,7 @@ export NOTMUCH_CONFIG="$XDG_CONFIG_HOME"/notmuch/notmuchrc
 export NMBGIT="$XDG_DATA_HOME"/notmuch/nmbug
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
+export PYENV_ROOT="$HOME"/.pyenv
 export SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc
 export STACK_ROOT="$XDG_DATA_HOME"/stack
 export TSH_HOME="$XDG_CONFIG_HOME"/tsh
@@ -92,4 +93,4 @@ export WWW_HOME='https://start.duckduckgo.com/'
 export YTFZF_HIST='0'
 
 # PATH
-export PATH="$HOME"/.local/bin:"$HOME"/.local/bin/status:/usr/local/llvm13/bin:"$PATH"
+export PATH="$HOME"/.local/bin:"$HOME"/.local/bin/status:/usr/local/llvm13/bin:"$HOME"/.pyenv/bin:"$PATH"
