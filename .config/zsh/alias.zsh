@@ -249,5 +249,5 @@ alias open='xdg-open' \
 	mysql='mycli -u root -h' \
 	wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 os() {
-	OS_CLOUD=$1 openstack
+	OS_CLOUD=$1 openstack ${@:2}
 }
