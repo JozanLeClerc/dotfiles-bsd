@@ -24,6 +24,7 @@ require('mason-lspconfig').setup({
 		'eslint',
 		'rust_analyzer',
 		'lua_ls',
+		'hydra_lsp',
 		'gopls',
 		'arduino_language_server',
 		'bashls',
