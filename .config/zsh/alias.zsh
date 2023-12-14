@@ -60,7 +60,7 @@ alias \
 	free='freecolor' \
 	gt='gpg-tui' \
 	lg='lazygit' \
-	gjdo='/home/jozan/dev/perl/gitjoe-scripts/gitjoe-do.pl' \
+	gjdo="$HOME/dev/perl/gitjoe-scripts/gitjoe-do.pl" \
 	ddgit='git --git-dir=$HOME/docs/redot --work-tree=$HOME' \
 	dgit='git --git-dir=$HOME/docs/dotfiles-bsd --work-tree=$HOME' \
 	confgit='git --git-dir=$HOME/docs/conffiles-bsd --work-tree=/'
