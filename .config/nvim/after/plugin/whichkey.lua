@@ -31,7 +31,7 @@ wk.register({
 	},
 	g = {
 		name = 'git',
-		s = { vim.cmd.Git, 'git' },
+		g = { vim.cmd.Git, 'git' },
 		-- a = { ':Ag<CR>', 'the_silver_searcher', noremap = true, silent = true },
 		-- g = { ':Grep<CR>', 'grep', noremap = true, silent = true },
 		-- r = { ':Rg<CR>', 'ripgrep', noremap = true, silent = true },

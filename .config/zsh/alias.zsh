@@ -22,11 +22,11 @@ alias \
 	c='clear' \
 	less='less --tabs 4' \
 	bc='bc -l' \
-	mkf='gmake fclean' \
 	mkc='gmake clean' \
-	mk='gmake -j5' \
+	mk='gmake -j12' \
+	mkr='gmake -j12 run'
 	bmkc='make clean' \
-	bmk='make -j5' \
+	bmk='make -j12' \
 	web='w3m https://duckduckgo.com/' \
 	mpv='mpv --audio-channels=stereo' \
 	bat='bat --style=plain --tabs 4 --paging=always -f' \

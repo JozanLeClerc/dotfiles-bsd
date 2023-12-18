@@ -32,6 +32,7 @@ require('mason-lspconfig').setup({
 		'ltex',
 		'perlnavigator',
 		'clangd',
+		'yamlls',
 	},
   handlers = {
     lsp.default_setup,
