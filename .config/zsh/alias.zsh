@@ -24,7 +24,7 @@ alias \
 	bc='bc -l' \
 	mkc='gmake clean' \
 	mk='gmake -j12' \
-	mkr='gmake -j12 run'
+	mkr='gmake -j12 run' \
 	bmkc='make clean' \
 	bmk='make -j12' \
 	web='w3m https://duckduckgo.com/' \
