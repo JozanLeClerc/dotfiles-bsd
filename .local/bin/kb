@@ -47,13 +47,13 @@
 xset r rate 200 150
 setxkbmap -option
 setxkbmap -layout us -variant intl
-#if [ "$(hostname -s)" = "po-rbo" ]; then
-#	setxkbmap -option ctrl:swapcaps
-#	setxkbmap -option caps:none
-#	xmodmap -e 'keycode 9 = Tab'
-#	xmodmap -e 'keycode 23 = Escape'
-#	xmodmap -e 'keycode 37 ='
-#fi
+if [ "$(hostname -s)" = "mother" ]; then
+	setxkbmap -option ctrl:swapcaps
+	setxkbmap -option caps:none
+	xmodmap -e 'keycode 9 = Tab'
+	xmodmap -e 'keycode 23 = Escape'
+	xmodmap -e 'keycode 37 ='
+fi
 notify-send -u low -t 2000 'kb' '  Swapped Esc/Tab'
 
 # vim: filetype=sh
