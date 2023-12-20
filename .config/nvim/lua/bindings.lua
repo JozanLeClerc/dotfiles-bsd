@@ -15,7 +15,7 @@ vim.keymap.set('n', '<C-q>', '<C-w>q', { noremap = true, silent = false })
 vim.keymap.set('n', '*', '*zz', { noremap = true, silent = false })
 vim.keymap.set('i', '<C-j>', 'pumvisible() ? "<C-n>" : "<C-j>"', { expr = true })
 vim.keymap.set('i', '<C-k>', 'pumvisible() ? "<C-p>" : "<C-k>"', { expr = true })
-vim.keymap.set('i', '<cr>',  'pumvisible() ? asyncomplete#close_popup() : "\\<cr>"', { expr = true })
+vim.keymap.set('i', '<CR>',  'pumvisible() ? asyncomplete#close_popup() : "\\<cr>"', { expr = true })
 vim.g.floaterm_keymap_toggle = '<F1>'
 vim.g.floaterm_keymap_prev =   '<F11>'
 vim.g.floaterm_keymap_next =   '<F12>'

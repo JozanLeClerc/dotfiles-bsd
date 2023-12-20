@@ -1,19 +1,25 @@
-local ma = require('harpoon.mark')
-local ui = require('harpoon.ui')
+local harpoon = require('harpoon')
+harpoon:setup()
+
+vim.keymap.set('n', '<M-1>', function() harpoon:list():select(1) end)
+vim.keymap.set('n', '<M-2>', function() harpoon:list():select(2) end)
+vim.keymap.set('n', '<M-3>', function() harpoon:list():select(3) end)
+vim.keymap.set('n', '<M-4>', function() harpoon:list():select(4) end)
+
 local ts = require('telescope.builtin')
 require('telescope').load_extension('harpoon')
 local wk = require('which-key')
 wk.register({
 	a = {
 		name = 'harpoon',
-		a = { ma.add_file, 'add file', noremap = true, silent = true },
-		e = { ':Telescope harpoon marks<CR>', 'harpoon marks', noremap = true, silent = true },
-		f = { ':Telescope harpoon marks<CR>', 'harpoon marks', noremap = true, silent = true },
+		a = { function() harpoon:list():append() end, 'add file', noremap = true, silent = true },
+		e = { function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, 'harpoon ui', noremap = true, silent = true },
+		f = { ':Telescope harpoon marks<CR>', 'harpoon telescope ui', noremap = true, silent = true },
 	},
 	b = { ':Buffers<CR>', 'buffers', noremap = true, silent = true },
 	c = { name = '+nerd-commenter' },
 	d = { ':bd<CR>', 'close buffer', noremap = true, silent = true },
-	D = { 'ddk:put = strftime(\' * %c\')<CR>', 'insert date', noremap = true, silent = true },
+	D = { '"-ddk:put = strftime(\' * %c\')<CR>', 'insert date', noremap = true, silent = true },
 	e = { ':Telescope find_files<CR>', 'find files', noremap = true, silent = true },
 	G = { ':FloatermNew lazygit<CR>', 'lazygit', noremap = true, silent = true },
 	h = { ':Startify<CR>', 'startify', noremap = true, silent = true },
