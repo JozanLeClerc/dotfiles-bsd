@@ -1,60 +1,86 @@
-local Plug = vim.fn['plug#']
+vim.cmd.packadd('packer.nvim')
 
-vim.call('plug#begin', os.getenv("XDG_DATA_HOME") .. '/nvim/plugged')
+return require('packer').startup({function(use)
+	-- Packer can manage itself
+	use 'wbthomason/packer.nvim'
+	use {
+		'nvim-telescope/telescope.nvim',
+		branch = '0.1.x',
+		requires = { {'nvim-lua/plenary.nvim'} }
+	}
+	use {
+		'windwp/nvim-autopairs',
+		config = function() require('nvim-autopairs').setup {} end
+	}
+	use 'jiangmiao/auto-pairs'
+	use 'folke/which-key.nvim'
+	use 'mhinz/vim-signify'
+	use 'mhinz/vim-startify'
+	use 'morhetz/gruvbox'
+	use 'mg979/vim-visual-multi'
+	use 'preservim/tagbar'
+	use 'preservim/nerdcommenter'
+	use {
+		'nvim-tree/nvim-tree.lua',
+		requires = {'nvim-tree/nvim-web-devicons'}
+	}
+	use 'mbbill/undotree'
+	-- use 'brglng/vim-sidebar-manager'
+	use 'sainnhe/gruvbox-material'
+	use 'tpope/vim-fugitive'
+	use 'tpope/vim-surround'
+	use 'nvim-lualine/lualine.nvim'
+	use 'voldikss/vim-floaterm'
+	use 'chrisbra/csv.vim'
+	use {
+		'ThePrimeagen/harpoon',
+		branch = 'harpoon2',
+		requires = { {'nvim-lua/plenary.nvim'} }
+	}
+	use 'HiPhish/rainbow-delimiters.nvim'
+	use {
+		'nvim-treesitter/nvim-treesitter',
+		run = function()
+			local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+			ts_update()
+		end,}
+	use {
+		'VonHeikemen/lsp-zero.nvim',
+		branch = 'v3.x',
+		requires = {
+			-- LSP Support
+			{'neovim/nvim-lspconfig'},
+			{'williamboman/mason.nvim'},
+			{'williamboman/mason-lspconfig.nvim'},
 
-Plug('ap/vim-css-color')
-Plug('brglng/vim-sidebar-manager')
-Plug('dag/vim-fish')
--- Plug('jackguo380/vim-lsp-cxx-highlight')
-Plug('jceb/vim-orgmode')
-Plug('jiangmiao/auto-pairs')
--- Plug('junegunn/fzf')
--- Plug('junegunn/fzf.vim')
--- Plug('voldikss/fzf-floaterm')
-Plug('folke/which-key.nvim')
-Plug('mbbill/undotree')
-Plug('mhinz/vim-signify')
-Plug('mhinz/vim-startify')
-Plug('morhetz/gruvbox')
-Plug('mg979/vim-visual-multi')
-Plug('prabirshrestha/async.vim')
-Plug('prabirshrestha/asyncomplete.vim')
-Plug('keremc/asyncomplete-clang.vim')
-Plug('prabirshrestha/vim-lsp')
-Plug('preservim/tagbar')
-Plug('preservim/nerdcommenter')
-Plug('preservim/nerdtree')
-Plug('ryanoasis/vim-devicons')
-Plug('nvim-tree/nvim-web-devicons')
-Plug('sainnhe/gruvbox-material')
-Plug('tpope/vim-dispatch')
-Plug('tpope/vim-fugitive')
-Plug('tpope/vim-speeddating')
-Plug('tpope/vim-surround')
--- Plug('unblevable/quick-scope')
-Plug('vifm/vifm.vim')
--- Plug('vim-airline/vim-airline')
--- Plug('vim-airline/vim-airline-themes')
-Plug('nvim-lualine/lualine.nvim')
-Plug('folke/trouble.nvim')
-Plug('vim-scripts/grep.vim')
-Plug('voldikss/vim-floaterm')
-Plug('chrisbra/csv.vim')
-Plug('nvim-telescope/telescope.nvim')
-Plug('nvim-lua/plenary.nvim')
-Plug('ThePrimeagen/harpoon', {['branch'] = 'harpoon2'})
-Plug('HiPhish/rainbow-delimiters.nvim')
-Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
---  Uncomment these if you want to manage LSP servers from neovim
- Plug('williamboman/mason.nvim')
- Plug('williamboman/mason-lspconfig.nvim')
--- LSP Support
-Plug('neovim/nvim-lspconfig')
--- Autocompletion
-Plug('hrsh7th/nvim-cmp')
-Plug('hrsh7th/cmp-nvim-lsp')
-Plug('L3MON4D3/LuaSnip')
-Plug('VonHeikemen/lsp-zero.nvim', {['branch'] = 'v3.x'})
-Plug('onsails/lspkind.nvim')
+			-- Autocompletion
+			{'hrsh7th/nvim-cmp'},
+			{'hrsh7th/cmp-buffer'},
+			{'hrsh7th/cmp-path'},
+			{'saadparwaiz1/cmp_luasnip'},
+			{'hrsh7th/cmp-nvim-lsp'},
+			{'hrsh7th/cmp-nvim-lua'},
 
-vim.call('plug#end')
+			-- Snippets
+			{'L3MON4D3/LuaSnip'},
+			{'rafamadriz/friendly-snippets'},
+		}
+	}
+	use({
+		'folke/trouble.nvim',
+		requires = {
+			{'nvim-tree/nvim-web-devicons'},
+		},
+		config = function()
+			require('trouble').setup {
+				icons = true,
+			}
+		end
+	})
+	use 'onsails/lspkind.nvim'
+end,
+config = {
+  display = {
+    open_fn = require('packer.util').float,
+  }
+}})

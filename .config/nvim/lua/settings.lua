@@ -1,3 +1,5 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 vim.opt.autochdir = false
 vim.opt.bg = 'dark'
 vim.opt.cindent = true

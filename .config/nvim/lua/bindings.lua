@@ -16,6 +16,10 @@ vim.keymap.set('n', '*', '*zz', { noremap = true, silent = false })
 vim.keymap.set('i', '<C-j>', 'pumvisible() ? "<C-n>" : "<C-j>"', { expr = true })
 vim.keymap.set('i', '<C-k>', 'pumvisible() ? "<C-p>" : "<C-k>"', { expr = true })
 vim.keymap.set('i', '<CR>',  'pumvisible() ? asyncomplete#close_popup() : "\\<cr>"', { expr = true })
+vim.keymap.set('n', '<F2>', vim.cmd.NvimTreeToggle, { noremap = true, silent = true })
+vim.keymap.set('n', '<F4>', ':make<space>-j5<space>', { noremap = true, silent = false })
+vim.keymap.set('n', '<F3>', vim.cmd.TroubleToggle, { noremap = true, silent = true })
+vim.keymap.set('n', '<F5>', vim.cmd.UndotreeToggle, { noremap = true, silent = true })
 vim.g.floaterm_keymap_toggle = '<F1>'
 vim.g.floaterm_keymap_prev =   '<F11>'
 vim.g.floaterm_keymap_next =   '<F12>'
