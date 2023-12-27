@@ -56,7 +56,6 @@ require('lspconfig').gopls.setup({
 				escape = true,
 				inline = true,
 			},
-			staticcheck = true,
 			gofumpt = true,
 		},
 	},
