@@ -25,7 +25,6 @@ wk.register({
 	h = { ':Startify<CR>', 'startify', noremap = true, silent = true },
 	k = { ':w<CR>:bp<CR>:bd #<CR>', 'write and close buffer', noremap = true, silent = false },
 	u = { vim.cmd.UndotreeToggle, 'undotree', noremap = true, silent = true },
-	v = { ':FloatermNew vifm<CR>', 'vifm', noremap = true, silent = true },
 	w = { ':w<CR>', 'write buffer', noremap = true, silent = false },
 	x = { ':w<CR>:bp<CR>:bd #<CR>', 'write and close buffer', noremap = true, silent = false },
 	f = {
@@ -47,7 +46,7 @@ wk.register({
 	v = {
 		name = 'nvim',
 		v = { vim.cmd.Ex, 'explorer', noremap = true, silent = true },
-		u = { ':PlugUpgrade<CR>:PlugUpdate<CR>', 'upgrade', noremap = true, silent = true },
+		u = { vim.cmd.PackerSync, 'upgrade', noremap = true, silent = true },
 	},
 }, { prefix = '<leader>', })
 wk.setup({
