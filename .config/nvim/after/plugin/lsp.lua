@@ -39,6 +39,32 @@ require('mason-lspconfig').setup({
   },
 })
 
+-- langs
+
+require('lspconfig').gopls.setup({
+	settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true,
+			},
+			codelenses = {
+				generate = true,
+				gc_details = true,
+			},
+			annotations = {
+				bounds = true,
+				escape = true,
+				inline = true,
+			},
+			staticcheck = true,
+			gofumpt = true,
+		},
+	},
+})
+
+
+-- cmp
+
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 cmp.setup({
