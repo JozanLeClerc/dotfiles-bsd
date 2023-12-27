@@ -45,6 +45,7 @@ require('lspconfig').gopls.setup({
 	settings = {
 		gopls = {
 			analyses = {
+				unreachable = true,
 				unusedparams = true,
 			},
 			codelenses = {
