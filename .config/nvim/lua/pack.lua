@@ -22,6 +22,7 @@ return require('packer').startup({function(use)
 	-- use 'preservim/nerdcommenter'
 	use {
 		'numToStr/Comment.nvim',
+		requires = { {'JoosepAlviste/nvim-ts-context-commentstring'} },
 		config = function()
 			require('Comment').setup()
 		end
@@ -103,14 +104,14 @@ return require('packer').startup({function(use)
 			require('ibl').setup()
 		end,
 	}
-	use {
+	use ({
 		'folke/todo-comments.nvim',
 		requires = { {'nvim-lua/plenary.nvim'} },
 		config = function()
-			require('todo-comments.config').setup {}
+			require('todo-comments.config').setup()
 			require('todo-comments')
 		end
-	}
+	})
 	use 'onsails/lspkind.nvim'
 end,
 config = {
