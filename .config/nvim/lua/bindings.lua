@@ -1,4 +1,3 @@
-vim.keymap.set('n', '<M-;>', ':call nerdcommenter#Comment(0,"toggle")<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<M-x>', ':', { noremap = true, silent = false })
 vim.keymap.set('n', '<M-k>', ':bprevious<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })

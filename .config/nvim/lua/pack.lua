@@ -19,7 +19,13 @@ return require('packer').startup({function(use)
 	use 'morhetz/gruvbox'
 	use 'mg979/vim-visual-multi'
 	use 'preservim/tagbar'
-	use 'preservim/nerdcommenter'
+	-- use 'preservim/nerdcommenter'
+	use {
+		'numToStr/Comment.nvim',
+		config = function()
+			require('Comment').setup()
+		end
+	}
 	use {
 		'nvim-tree/nvim-tree.lua',
 		requires = {'nvim-tree/nvim-web-devicons'}
@@ -28,7 +34,19 @@ return require('packer').startup({function(use)
 	-- use 'brglng/vim-sidebar-manager'
 	use 'sainnhe/gruvbox-material'
 	use 'tpope/vim-fugitive'
-	use 'kylechui/nvim-surround'
+	use({
+		"kylechui/nvim-surround",
+		requires = {
+			{'nvim-treesitter/nvim-treesitter'},
+			{'nvim-treesitter/nvim-treesitter-textobjects'},
+		},
+		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end
+	})
 	-- use 'tpope/vim-surround'
 	use 'nvim-lualine/lualine.nvim'
 	use 'voldikss/vim-floaterm'
@@ -40,7 +58,8 @@ return require('packer').startup({function(use)
 	}
 	use 'HiPhish/rainbow-delimiters.nvim'
 	use {
-		'nvim-treesitter/nvim-treesitter',
+		'nvim-treesitter/nvim-treesitter-textobjects',
+		requires = { {'nvim-treesitter/nvim-treesitter'} },
 		run = function()
 			local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
 			ts_update()
@@ -76,7 +95,7 @@ return require('packer').startup({function(use)
 			require('trouble').setup {
 				icons = true,
 			}
-		end
+		end,
 	})
 	use 'onsails/lspkind.nvim'
 end,
