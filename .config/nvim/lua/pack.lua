@@ -97,6 +97,20 @@ return require('packer').startup({function(use)
 			}
 		end,
 	})
+	use {
+		'lukas-reineke/indent-blankline.nvim',
+		config = function()
+			require('ibl').setup()
+		end,
+	}
+	use {
+		'folke/todo-comments.nvim',
+		requires = { {'nvim-lua/plenary.nvim'} },
+		config = function()
+			require('todo-comments.config').setup {}
+			require('todo-comments')
+		end
+	}
 	use 'onsails/lspkind.nvim'
 end,
 config = {

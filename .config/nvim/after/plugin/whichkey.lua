@@ -35,6 +35,7 @@ wk.register({
 		s = { function()
 			ts.grep_string({ search = vim.fn.input("Grep > ") })
 		end, 'grep string', noremap = true, silent = true },
+		t = { ':TodoTelescope keywords=TODO,HACK,WARN,PERF,NOTE,TEST<CR>', 'todo', noremap = true, silent = true }
 	},
 	g = {
 		name = 'git',
