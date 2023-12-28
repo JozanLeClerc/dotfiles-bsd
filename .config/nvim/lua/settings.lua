@@ -42,8 +42,8 @@ vim.o.smartcase = true
 vim.opt.wrap = true
 vim.cmd [[
 syntax on
-filetype plugin indent on
 colorscheme gruvbox-material
+filetype plugin indent on
 highlight Normal ctermbg=none guibg=none
 highlight NonText ctermbg=none guibg=none
 highlight LineNr ctermbg=none guibg=none

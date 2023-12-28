@@ -114,8 +114,8 @@ return require('packer').startup({function(use)
 	})
 	use 'onsails/lspkind.nvim'
 end,
-config = {
-  display = {
-    open_fn = require('packer.util').float,
-  }
+	config = {
+		display = {
+			open_fn = require('packer.util').float,
+		}
 }})
