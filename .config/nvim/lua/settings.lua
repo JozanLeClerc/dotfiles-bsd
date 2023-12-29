@@ -1,7 +1,6 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.autochdir = false
-vim.opt.bg = 'dark'
 vim.opt.cindent = true
 vim.cmd [[
 set cinoptions=>s,e0,n0,f0,{0,}0,^0,L-1,:s,=s,l1,b0,gs,h0,N0,E0,p0,t0,i0,+s
@@ -14,7 +13,6 @@ vim.opt.completeopt = 'menuone,noinsert,noselect,preview'
 vim.opt.cursorline = true
 vim.opt.encoding = 'utf-8'
 -- vim.opt.go = 'a'
-vim.opt.termguicolors = true
 vim.opt.hidden = true
 vim.opt.makeprg = 'make'
 vim.opt.mouse = 'a'
@@ -40,6 +38,11 @@ vim.opt.signcolumn = "yes"
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.opt.wrap = true
+vim.opt.termguicolors = true
+vim.opt.bg = 'dark'
+vim.g.gruvbox_material_background = 'medium'
+vim.g.gruvbox_material_foreground = 'mix'
+vim.g.gruvbox_material_better_performance = 1
 vim.cmd [[
 syntax on
 colorscheme gruvbox-material
@@ -48,6 +51,8 @@ highlight Normal ctermbg=none guibg=none
 highlight NonText ctermbg=none guibg=none
 highlight LineNr ctermbg=none guibg=none
 highlight EndOfBuffer ctermbg=none guibg=none
+highlight DiagnosticVirtualTextError guifg='#f25942'
+highlight DiagnosticVirtualTextWarn  guifg='#e9b143'
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 ]]
 vim.g.mapleader = '\\'
