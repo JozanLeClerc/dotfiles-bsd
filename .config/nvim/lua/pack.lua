@@ -99,7 +99,9 @@ return require('packer').startup({function(use)
 				"Whitespace",
 			}
 			require('ibl').setup {
-				indent = { highlight = highlight, char = '┊', }
+				debounce = 100,
+				indent = { highlight = highlight, char = '┊', },
+				scope = { show_start = false, show_end = false },
 			}
 		end,
 	}
