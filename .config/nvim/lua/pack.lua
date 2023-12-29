@@ -16,7 +16,6 @@ return require('packer').startup({function(use)
 	use 'folke/which-key.nvim'
 	use 'mhinz/vim-signify'
 	use 'mhinz/vim-startify'
-	use 'morhetz/gruvbox'
 	use 'mg979/vim-visual-multi'
 	use 'preservim/tagbar'
 	-- use 'preservim/nerdcommenter'
@@ -92,11 +91,6 @@ return require('packer').startup({function(use)
 		requires = {
 			{'nvim-tree/nvim-web-devicons'},
 		},
-		config = function()
-			require('trouble').setup {
-				icons = true,
-			}
-		end,
 	})
 	use {
 		'lukas-reineke/indent-blankline.nvim',

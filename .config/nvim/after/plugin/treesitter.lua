@@ -13,7 +13,7 @@ require'nvim-treesitter.configs'.setup {
 		'regex',
 		'markdown',
 		'markdown_inline',
-		'comment'
+		'comment',
 	},
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
