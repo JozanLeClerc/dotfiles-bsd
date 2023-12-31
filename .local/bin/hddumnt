@@ -6,13 +6,13 @@ mountpoint="$HOME/$devname"
 case "$(hostname -s)" in
 	mother|po-rbo)
 		if ! doas umount "$mountpoint"; then
-			notify-send -u critical 'exthdd' "  failed to dismount $mountpoint"
+			notify-send -u critical 'exthdd' "  failed to dismount <b>$mountpoint</b>"
 		fi
 		if ! doas cryptsetup close "$devname"; then
-			notify-send -u critical 'exthdd' "  failed to close crypt dev $devname"
+			notify-send -u critical 'exthdd' "  failed to close crypt dev <b>$devname</b>"
 		fi
 		rmdir "$mountpoint"
-		notify-send -t 5000 'exthdd' "  crypt dev dismounted from $mountpoint"
+		notify-send -t 5000 'exthdd' "  crypt dev dismounted from <b>$mountpoint</b>"
 		;;
 	mars)
 		if ! mount | grep -F /dev/da0p1; then

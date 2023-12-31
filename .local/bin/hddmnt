@@ -11,15 +11,15 @@ case "$(hostname -s)" in
 			exit 1
 		fi
 		if ! doas cryptsetup open "$dev" "$devname"; then
-			notify-send -u critical 'exthdd' "  failed to uncrypt dev $dev"
+			notify-send -u critical 'exthdd' "  failed to uncrypt dev <b>$dev</b>"
 			exit 1
 		fi
 		mkdir -p "$mountpoint"
 		if ! doas mount /dev/mapper/"$devname" "$mountpoint"; then
-			notify-send -u critical 'exthdd' "  failed to mount dev $dev"
+			notify-send -u critical 'exthdd' "  failed to mount dev <b>$dev</b>"
 			exit 1
 		fi
-		notify-send -t 5000 'exthdd' "  crypt dev mounted to $mountpoint"
+		notify-send -t 5000 'exthdd' "  crypt dev mounted to <b>$mountpoint</b>"
 		;;
 	mars) 
 		if ! diskinfo da0 >/dev/null; then
