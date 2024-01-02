@@ -40,26 +40,32 @@ vim.o.smartcase = true
 vim.opt.wrap = true
 vim.opt.termguicolors = true
 vim.opt.bg = 'dark'
-vim.g.gruvbox_material_background = 'medium'
-vim.g.gruvbox_material_foreground = 'mix'
-vim.g.gruvbox_material_better_performance = 1
+-- vim.g.gruvbox_material_background = 'medium'
+-- vim.g.gruvbox_material_foreground = 'mix'
+-- vim.g.gruvbox_material_better_performance = 1
 vim.cmd [[
 syntax on
 
-set t_Co=256
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 colorscheme deus
 let g:deus_termcolors=256
-"colorscheme gruvbox
+" colorscheme gruvbox-material
+" colorscheme gruvbox
 
 filetype plugin indent on
 highlight Normal ctermbg=none guibg=none
 highlight NonText ctermbg=none guibg=none
 highlight LineNr ctermbg=none guibg=none
 highlight EndOfBuffer ctermbg=none guibg=none
-" highlight DiagnosticVirtualTextError guifg='#f25942'
-" highlight DiagnosticVirtualTextWarn  guifg='#e9b143'
+highlight DiagnosticError guifg='#f25942'
+highlight DiagnosticVirtualTextError guifg='#f25942'
+highlight TroubleError guifg='#f25942'
+highlight TroubleSignError guifg='#f25942'
+highlight DiagnosticWarn  guifg='#e9b143'
+highlight DiagnosticVirtualTextWarn  guifg='#e9b143'
+highlight TroubleWarn  guifg='#e9b143'
+highlight TroubleSignWarn  guifg='#e9b143'
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 ]]
 vim.g.mapleader = '\\'
