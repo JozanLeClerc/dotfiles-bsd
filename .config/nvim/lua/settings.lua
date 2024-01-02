@@ -51,6 +51,7 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 colorscheme deus
 let g:deus_termcolors=256
+"colorscheme gruvbox
 
 filetype plugin indent on
 highlight Normal ctermbg=none guibg=none
