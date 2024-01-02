@@ -33,6 +33,7 @@ return require('packer').startup({function(use)
 	use 'mbbill/undotree'
 	-- use 'brglng/vim-sidebar-manager'
 	use 'sainnhe/gruvbox-material'
+	use 'theniceboy/nvim-deus'
 	use 'tpope/vim-fugitive'
 	use({
 		"kylechui/nvim-surround",

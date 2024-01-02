@@ -45,14 +45,20 @@ vim.g.gruvbox_material_foreground = 'mix'
 vim.g.gruvbox_material_better_performance = 1
 vim.cmd [[
 syntax on
-colorscheme gruvbox-material
+
+set t_Co=256
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+colorscheme deus
+let g:deus_termcolors=256
+
 filetype plugin indent on
 highlight Normal ctermbg=none guibg=none
 highlight NonText ctermbg=none guibg=none
 highlight LineNr ctermbg=none guibg=none
 highlight EndOfBuffer ctermbg=none guibg=none
-highlight DiagnosticVirtualTextError guifg='#f25942'
-highlight DiagnosticVirtualTextWarn  guifg='#e9b143'
+" highlight DiagnosticVirtualTextError guifg='#f25942'
+" highlight DiagnosticVirtualTextWarn  guifg='#e9b143'
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 ]]
 vim.g.mapleader = '\\'
