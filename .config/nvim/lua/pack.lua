@@ -52,6 +52,7 @@ return require('packer').startup({function(use)
 	-- use 'tpope/vim-surround'
 	use 'nvim-lualine/lualine.nvim'
 	use 'voldikss/vim-floaterm'
+	-- use 'akinsho/toggleterm.nvim'
 	use 'chrisbra/csv.vim'
 	use {
 		'ThePrimeagen/harpoon',
