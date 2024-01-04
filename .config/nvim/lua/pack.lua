@@ -14,7 +14,12 @@ return require('packer').startup({function(use)
 	}
 	use 'jiangmiao/auto-pairs'
 	use 'folke/which-key.nvim'
-	use 'mhinz/vim-signify'
+	use {'lewis6991/gitsigns.nvim',
+		config = function()
+			require("gitsigns").setup()
+		end
+	}
+	-- use 'mhinz/vim-signify'
 	use 'mhinz/vim-startify'
 	use 'mg979/vim-visual-multi'
 	use 'preservim/tagbar'
