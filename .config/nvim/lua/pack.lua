@@ -19,7 +19,6 @@ return require('packer').startup({function(use)
 			require("gitsigns").setup()
 		end
 	}
-	-- use 'mhinz/vim-signify'
 	use 'mhinz/vim-startify'
 	use 'mg979/vim-visual-multi'
 	use 'preservim/tagbar'
