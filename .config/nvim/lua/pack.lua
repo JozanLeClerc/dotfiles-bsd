@@ -34,6 +34,7 @@ return require('packer').startup({function(use)
 	-- use 'brglng/vim-sidebar-manager'
 	use 'ellisonleao/gruvbox.nvim'
 	use 'sainnhe/gruvbox-material'
+	use 'navarasu/onedark.nvim'
 	use 'theniceboy/nvim-deus'
 	use 'tpope/vim-fugitive'
 	use({
