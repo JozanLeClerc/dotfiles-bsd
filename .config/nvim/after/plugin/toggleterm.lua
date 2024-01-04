@@ -8,7 +8,7 @@ require("toggleterm").setup({
 	start_in_insert = true,
 	insert_mappings = true,
 	persist_size = true,
-	direction = "float",
+	direction = "horizontal",
 	close_on_exit = true,
 	shell = vim.o.shell,
 	float_opts = {
@@ -20,3 +20,10 @@ require("toggleterm").setup({
 		},
 	},
 })
+
+function _G.set_terminal_keymaps()
+	local opts = {noremap = true}
+	vim.api.nvim_buf_set_keymap(0, 't', '<C-k>', [[<C-\><C-n><C-W>k]], opts)
+end
+
+vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
