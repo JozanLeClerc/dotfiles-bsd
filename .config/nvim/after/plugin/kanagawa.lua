@@ -3,7 +3,7 @@ require('kanagawa').setup({
     undercurl = true,            -- enable undercurls
     commentStyle = { italic = true },
     functionStyle = {},
-    keywordStyle = { italic = false, bold = true },
+    keywordStyle = { italic = true, bold = false },
     statementStyle = { bold = false },
     typeStyle = {},
     transparent = true,         -- do not set background color
