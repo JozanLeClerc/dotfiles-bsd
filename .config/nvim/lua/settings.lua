@@ -55,10 +55,10 @@ syntax on
 
 " colorscheme gruvbox
 
-let g:onedark_config = {
-    \ 'style': 'warmer',
-\}
-colorscheme onedark
+" let g:onedark_config = {
+"     \ 'style': 'warmer',
+" \}
+" colorscheme onedark
 
 
 filetype plugin indent on

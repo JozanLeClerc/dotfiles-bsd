@@ -35,6 +35,7 @@ return require('packer').startup({function(use)
 	use 'ellisonleao/gruvbox.nvim'
 	use 'sainnhe/gruvbox-material'
 	use 'navarasu/onedark.nvim'
+	use 'rebelot/kanagawa.nvim'
 	use 'theniceboy/nvim-deus'
 	use 'tpope/vim-fugitive'
 	use({
