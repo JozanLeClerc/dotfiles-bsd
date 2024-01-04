@@ -18,7 +18,7 @@ wk.register({
 		f = { ':Telescope harpoon marks<CR>', 'harpoon telescope ui',                    noremap = true, silent = true },
 	},
 	d = { ':bd<CR>', 'close buffer', noremap = true, silent = true },
-	D = { '"-ddk:put = strftime(\' * %c\')<CR>', 'insert date', noremap = true, silent = true },
+	D = { '"-ddk:put = strftime(\' * %a %b %d %T %Y\')<CR>', 'insert date', noremap = true, silent = true },
 	h = { ':Startify<CR>', 'startify', noremap = true, silent = true },
 	k = { ':w<CR>:bp<CR>:bd #<CR>', 'write and close buffer', noremap = true, silent = false },
 	u = { vim.cmd.UndotreeToggle, 'undotree', noremap = true, silent = true },
