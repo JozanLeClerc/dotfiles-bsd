@@ -40,6 +40,7 @@ vim.o.smartcase = true
 vim.opt.wrap = true
 vim.opt.termguicolors = true
 vim.opt.bg = 'dark'
+--
 -- vim.g.gruvbox_material_background = 'medium'
 -- vim.g.gruvbox_material_foreground = 'mix'
 -- vim.g.gruvbox_material_better_performance = 1
@@ -68,14 +69,14 @@ highlight LineNr ctermbg=none guibg=none
 highlight EndOfBuffer ctermbg=none guibg=none
 highlight FloatermBorder guibg=none guifg='#ebdbb2'
 highlight SignColumn ctermbg=none guibg=none
-highlight DiagnosticError				guifg='#f25942' guibg=none ctermbg=none
-highlight DiagnosticVirtualTextError	guifg='#f25942' guibg=none ctermbg=none
-highlight TroubleError					guifg='#f25942' guibg=none ctermbg=none
-highlight TroubleSignError				guifg='#f25942' guibg=none ctermbg=none
-highlight DiagnosticWarn				guifg='#e9b143' guibg=none ctermbg=none
-highlight DiagnosticVirtualTextWarn		guifg='#e9b143' guibg=none ctermbg=none
-highlight TroubleWarn					guifg='#e9b143' guibg=none ctermbg=none
-highlight TroubleSignWarn				guifg='#e9b143' guibg=none ctermbg=none
+" highlight DiagnosticError				guifg='#f25942' guibg=none ctermbg=none
+" highlight DiagnosticVirtualTextError	guifg='#f25942' guibg=none ctermbg=none
+" highlight TroubleError					guifg='#f25942' guibg=none ctermbg=none
+" highlight TroubleSignError				guifg='#f25942' guibg=none ctermbg=none
+" highlight DiagnosticWarn				guifg='#e9b143' guibg=none ctermbg=none
+" highlight DiagnosticVirtualTextWarn		guifg='#e9b143' guibg=none ctermbg=none
+" highlight TroubleWarn					guifg='#e9b143' guibg=none ctermbg=none
+" highlight TroubleSignWarn				guifg='#e9b143' guibg=none ctermbg=none
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 ]]
 vim.g.mapleader = '\\'
