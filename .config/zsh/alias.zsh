@@ -63,7 +63,8 @@ alias \
 	gjdo="$HOME/dev/perl/gitjoe-scripts/gitjoe-do.pl" \
 	ddgit='git --git-dir=$HOME/docs/redot --work-tree=$HOME' \
 	dgit='git --git-dir=$HOME/docs/dotfiles-bsd --work-tree=$HOME' \
-	confgit='git --git-dir=$HOME/docs/conffiles-bsd --work-tree=/'
+	confgit='git --git-dir=$HOME/docs/conffiles-bsd --work-tree=/' \
+	git-pull-all='git branch -r | sed "1d;s,\x1B\[[0-9;]*[a-zA-Z],,g" | while read remote; do git branch --track "${remote#origin/}" "$remote"; git checkout "${remote#origin/}"; git pull; done'
 bssh() {
 	user='rbousset'
 	host='bastion'
