@@ -13,23 +13,10 @@ return require('packer').startup({function(use)
 		config = function() require('nvim-autopairs').setup {} end
 	}
 	use 'jiangmiao/auto-pairs'
-	use 'folke/which-key.nvim'
+	-- use 'folke/which-key.nvim'
 	use 'lewis6991/gitsigns.nvim'
 	-- use 'mhinz/vim-startify'
-	use {
-		'nvimdev/dashboard-nvim',
-		event = 'VimEnter',
-		config = function()
-			require('dashboard').setup {
-				theme = 'hyper',
-				hide = {
-					statusLine = false,
-				},
-			}
-		end,
-		requires = {'nvim-tree/nvim-web-devicons'}
-	}
-	use 'mg979/vim-visual-multi'
+	-- use 'mg979/vim-visual-multi'
 	use 'preservim/tagbar'
 	-- use 'preservim/nerdcommenter'
 	use {
@@ -67,7 +54,7 @@ return require('packer').startup({function(use)
 	-- use 'tpope/vim-surround'
 	use 'nvim-lualine/lualine.nvim'
 	-- use 'voldikss/vim-floaterm'
-	use 'akinsho/toggleterm.nvim'
+	-- use 'akinsho/toggleterm.nvim'
 	use 'chrisbra/csv.vim'
 	use {
 		'ThePrimeagen/harpoon',

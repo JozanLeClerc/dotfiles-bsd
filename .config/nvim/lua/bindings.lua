@@ -26,3 +26,43 @@ vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 vim.keymap.set('x', '<leader>p', "\"_dP")
 vim.keymap.set('n', 'Q', '<nop>')
+
+
+vim.keymap.set('n', '<M-1>', function() harpoon:list():select(1) end)
+vim.keymap.set('n', '<M-2>', function() harpoon:list():select(2) end)
+vim.keymap.set('n', '<M-3>', function() harpoon:list():select(3) end)
+vim.keymap.set('n', '<M-4>', function() harpoon:list():select(4) end)
+
+local ts = require('telescope.builtin')
+require('telescope').load_extension('harpoon')
+local harpoon = require('harpoon')
+harpoon:setup()
+
+-- normal
+vim.keymap.set('n', '<leader>d', ':bd<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>D', '"-ddk:put = strftime(\' * %a %b %d %T %Y\')<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>k',  ':w<CR>:bp<CR>:bd #<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>u',  vim.cmd.UndotreeToggle, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>u', ':w<CR>', { noremap = true, silent = true })
+-- harpoon
+vim.keymap.set('n', '<leader>aa', function() harpoon:list():append() end, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ae', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>af', ':Telescope harpoon marks<CR>', { noremap = true, silent = true })
+-- trouble
+vim.keymap.set('n', '<leader>xx', vim.cmd.TroubleToggle, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>xx', ':TroubleToggle workspace_diagnostics<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>xd', ':TroubleToggle document_diagnostics<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>xl', ':TroubleToggle loclist<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>xq', ':TroubleToggle quickfix<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>xs', ':TroubleToggle lsp_references<CR>', { noremap = true, silent = true })
+-- telescope
+vim.keymap.set('n', '<leader>fb', ts.buffers, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>fd', ts.diagnostics, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>fe', ':Telescope harpoon marks<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ff', ts.find_files, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>fg', ts.git_files, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>fs', function() ts.grep_string({ search = vim.fn.input("Grep > ") }) end, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ft', ':TodoTelescope keywords=TODO,HACK,WARN,PERF,NOTE,TEST<CR>', { noremap = true, silent = true })
+-- neovim
+vim.keymap.set('n', '<leader>vu', vim.cmd.PackerSync, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>vv', vim.cmd.Ex, { noremap = true, silent = true })
