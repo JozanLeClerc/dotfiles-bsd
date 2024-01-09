@@ -62,7 +62,7 @@ vim.keymap.set('n', '<leader>fe', ':Telescope harpoon marks<CR>', { noremap = tr
 vim.keymap.set('n', '<leader>ff', ts.find_files, { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>fg', ts.git_files, { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>fs', function() ts.grep_string({ search = vim.fn.input("Grep > ") }) end, { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>ft', ':TodoTelescope keywords=TODO,HACK,WARN,PERF,NOTE,TEST<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ft', ':TodoTelescope keywords=TODO,HACK,WARN,PERF,NOTE,TEST,FIX<CR>', { noremap = true, silent = true })
 -- neovim
 vim.keymap.set('n', '<leader>vu', vim.cmd.PackerSync, { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>vv', vim.cmd.Ex, { noremap = true, silent = true })
