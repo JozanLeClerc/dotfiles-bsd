@@ -49,7 +49,7 @@ vim.keymap.set('n', '<leader>ae', function() harpoon.ui:toggle_quick_menu(harpoo
 vim.keymap.set('n', '<leader>af', ':Telescope harpoon marks<CR>', { noremap = true, silent = true })
 -- trouble
 vim.keymap.set('n', '<leader>xx', vim.cmd.TroubleToggle, { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>xx', ':TroubleToggle workspace_diagnostics<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>xw', ':TroubleToggle workspace_diagnostics<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>xd', ':TroubleToggle document_diagnostics<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>xl', ':TroubleToggle loclist<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>xq', ':TroubleToggle quickfix<CR>', { noremap = true, silent = true })
