@@ -27,16 +27,15 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 vim.keymap.set('x', '<leader>p', "\"_dP")
 vim.keymap.set('n', 'Q', '<nop>')
 
+local ts = require('telescope.builtin')
+require('telescope').load_extension('harpoon')
+local harpoon = require('harpoon')
+harpoon:setup()
 
 vim.keymap.set('n', '<M-1>', function() harpoon:list():select(1) end)
 vim.keymap.set('n', '<M-2>', function() harpoon:list():select(2) end)
 vim.keymap.set('n', '<M-3>', function() harpoon:list():select(3) end)
 vim.keymap.set('n', '<M-4>', function() harpoon:list():select(4) end)
-
-local ts = require('telescope.builtin')
-require('telescope').load_extension('harpoon')
-local harpoon = require('harpoon')
-harpoon:setup()
 
 -- normal
 vim.keymap.set('n', '<leader>d', ':bd<CR>', { noremap = true, silent = true })
