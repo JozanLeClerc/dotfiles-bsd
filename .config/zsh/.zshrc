@@ -22,8 +22,8 @@ HISTFILE=$XDG_CONFIG_HOME/zsh/history
 case $(hostname -s) in
 	mother|po-rbo)
 		os_color='\e[1;34m'
-		prompt_main="blue"
-		prompt_alt="cyan"
+		prompt_main="red"
+		prompt_alt="blue"
 		;;
 	mars)
 		os_color='\e[1;31m'
