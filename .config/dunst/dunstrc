@@ -83,8 +83,8 @@
     #icon = /path/to/icon
 
 [urgency_normal]
-    background = "#728CAB"
-    foreground = "#F7F6F2"
+    background = "#cc241d"
+    foreground = "#ebdbb2"
     frame_color = "#ebdbb2"
     timeout = 10
 
