@@ -4,7 +4,7 @@ case $(hostname -s) in
 	mother|po-rbo) ping="ping -c1 -w1 9.9.9.9" ;;
 	mars)          ping="ping -c1 -t1 9.9.9.9" ;;
 esac
-if ifconfig | grep -E '^tun|^vpn' >/dev/null 2>&1; then
+if ifconfig | grep -E '^tun|^vpn|^wg' >/dev/null 2>&1; then
 	echo -n "  "
 fi
 if ! $ping >/dev/null 2>&1; then
