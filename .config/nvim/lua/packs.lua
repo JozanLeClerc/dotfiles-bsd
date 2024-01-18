@@ -123,6 +123,12 @@ return require('packer').startup({function(use)
 		end
 	})
 	use 'onsails/lspkind.nvim'
+	use 'alec-gibson/nvim-tetris'
+	use 'seandewar/nvimesweeper'
+	use {
+		'alanfortlink/blackjack.nvim',
+		requires = {'nvim-lua/plenary.nvim'},
+	}
 end,
 	config = {
 		display = {
