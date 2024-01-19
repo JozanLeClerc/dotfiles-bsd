@@ -52,7 +52,7 @@ syntax on
 " let g:deus_termcolors=256
 " colorscheme deus
 
-colorscheme gruvbox-material
+" colorscheme gruvbox-material
 
 " colorscheme gruvbox
 
