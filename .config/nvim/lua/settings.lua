@@ -36,13 +36,14 @@ vim.opt.scrolloff = 5
 vim.opt.signcolumn = "yes"
 vim.o.ignorecase = true
 vim.o.smartcase = true
+vim.opt.fillchars = {eob = " "}
 vim.opt.wrap = true
 vim.opt.termguicolors = true
 vim.opt.bg = 'dark'
 
--- vim.g.gruvbox_material_background = 'medium'
--- vim.g.gruvbox_material_foreground = 'original'
--- vim.g.gruvbox_material_better_performance = 1
+vim.g.gruvbox_material_background = 'medium'
+vim.g.gruvbox_material_foreground = 'original'
+vim.g.gruvbox_material_better_performance = 1
 
 vim.cmd [[
 syntax on

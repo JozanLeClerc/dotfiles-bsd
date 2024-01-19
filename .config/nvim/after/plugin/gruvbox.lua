@@ -20,6 +20,7 @@ require("gruvbox").setup({
   palette_overrides = {},
   overrides = {
 		["@punctuation.delimiter"] = { fg = "#928374" },
+		["@string"]                = { fg = "#8ec07c" },
 	},
   dim_inactive = false,
   transparent_mode = true,
