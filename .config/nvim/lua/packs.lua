@@ -37,6 +37,7 @@ return require('packer').startup({function(use)
 	use 'navarasu/onedark.nvim'
 	use 'rebelot/kanagawa.nvim'
 	use 'theniceboy/nvim-deus'
+	use 'savq/melange-nvim'
 	use 'tpope/vim-fugitive'
 	use({
 		"kylechui/nvim-surround",

@@ -39,10 +39,11 @@ vim.o.smartcase = true
 vim.opt.wrap = true
 vim.opt.termguicolors = true
 vim.opt.bg = 'dark'
---
+
 -- vim.g.gruvbox_material_background = 'medium'
--- vim.g.gruvbox_material_foreground = 'mix'
+-- vim.g.gruvbox_material_foreground = 'original'
 -- vim.g.gruvbox_material_better_performance = 1
+
 vim.cmd [[
 syntax on
 
@@ -51,9 +52,11 @@ syntax on
 " let g:deus_termcolors=256
 " colorscheme deus
 
-" colorscheme gruvbox-material
+colorscheme gruvbox-material
 
 " colorscheme gruvbox
+
+" colorscheme melange
 
 " let g:onedark_config = {
 "     \ 'style': 'warmer',
