@@ -1,4 +1,5 @@
 require("gruvbox").setup({
+  priority = 1000,
   terminal_colors = false, -- add neovim terminal colors
   undercurl = true,
   underline = true,
@@ -19,7 +20,7 @@ require("gruvbox").setup({
   contrast = "", -- can be "hard", "soft" or empty string
   palette_overrides = {},
   overrides = {
-		-- ["@punctuation.delimiter"] = { fg = "#928374" },
+		["@punctuation.delimiter"] = { fg = "#928374" },
 		["@string"]                = { fg = "#8ec07c" },
 	},
   dim_inactive = false,
