@@ -124,6 +124,25 @@ return require('packer').startup({function(use)
 		end
 	})
 	use 'onsails/lspkind.nvim'
+	use ({
+		'lcheylus/overlength.nvim',
+		config = function()
+			require('overlength').setup({
+				enabled = true,
+				colors = {
+					ctermfg = nil,
+					ctermbg = 'darkgrey',
+					fg = nil,
+					bg = '#8B0000',
+				},
+				textwidth_mode = 0,
+				default_overlength = 80,
+				grace_length = 1,
+				highlight_to_eol = true,
+				disable_ft = { 'qf', 'help', 'man', 'checkhealth', 'lazy', 'packer', 'NvimTree', 'Telescope', 'WhichKey' },
+			})
+		end
+	})
 	use 'alec-gibson/nvim-tetris'
 	use 'seandewar/nvimesweeper'
 	use {
