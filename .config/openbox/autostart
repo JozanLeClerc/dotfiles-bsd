@@ -88,6 +88,8 @@ $sleep
 startif wireplumber
 $sleep
 startif copyq
+$sleep
+startif nextcloud
 cd "$HOME"
 xrdb "$HOME"/.config/x11/xresources
 notify-send -u normal 'Welcome' "$icon Welcome back, partner!"
