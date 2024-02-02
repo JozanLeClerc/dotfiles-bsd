@@ -156,9 +156,9 @@
 				<command>kdenlive</command>
 			</action>
 		</item>
-		<item label="ossia">
+		<item label="ossia score">
 			<action name="Execute">
-				<command>ossia</command>
+				<command>ossia-score</command>
 			</action>
 		</item>
 	</menu>
