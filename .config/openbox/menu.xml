@@ -156,6 +156,11 @@
 				<command>kdenlive</command>
 			</action>
 		</item>
+		<item label="ossia">
+			<action name="Execute">
+				<command>ossia</command>
+			</action>
+		</item>
 	</menu>
 
 	<menu id="apps-graphics-menu" label="Graphics">
