@@ -143,6 +143,14 @@ return require('packer').startup({function(use)
 			})
 		end
 	})
+	use({
+		"tadmccorkle/markdown.nvim",
+		config = function()
+			require("markdown").setup({
+				-- configuration here or empty for defaults
+			})
+		end,
+	})
 	use 'alec-gibson/nvim-tetris'
 	use 'seandewar/nvimesweeper'
 	use {

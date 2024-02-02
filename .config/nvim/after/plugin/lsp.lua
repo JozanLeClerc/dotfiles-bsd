@@ -27,8 +27,6 @@ require('mason-lspconfig').setup({
 		'gopls',
 		'arduino_language_server',
 		'bashls',
-		'marksman',
-		'ltex',
 		'perlnavigator',
 		'clangd',
 		'yamlls',
