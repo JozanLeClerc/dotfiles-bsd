@@ -64,7 +64,6 @@ export LANG='en_US.UTF-8'
 	--output HDMI-2 --off \
 	--output VIRTUAL-1 --off
 
-startif doas service wireguard start
 startif dunst
 startif picom
 startif mpd-notification
@@ -74,7 +73,11 @@ pgrep $mpd >/dev/null || $mpd >/dev/null 2>&1
 xset s off
 xset -dpms
 sleep 2
+$sleep
 startif $xscr
+$sleep
+doas rc-service wireguard start &&
+	notify-send -u normal 'wireguard' 'wireguard started'
 $sleep
 startif tint2
 $sleep
