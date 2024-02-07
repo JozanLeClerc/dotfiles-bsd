@@ -49,6 +49,7 @@ use constant PROG_LIST	=> "" .
 "Lutris"					. "\n" .
 "GZDoom"					. "\n" .
 "DOSBox"					. "\n" .
+"RPCS3" 					. "\n" .
 ""	;
 use constant WORK_LIST	=> "" .
 "--- Work ---"		. "\n" .
@@ -172,6 +173,9 @@ sub run
 		}
 		case "DOSBox" {
 			exec("dosbox");
+		}
+		case "RPCS3" {
+			exec("rpcs3");
 		}
 		case "Remmina" {
 			exec("remmina");

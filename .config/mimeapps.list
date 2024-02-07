@@ -49,6 +49,7 @@ x-scheme-handler/mailto=userapp-Thunderbird-SJ2821.desktop
 message/rfc822=userapp-Thunderbird-SJ2821.desktop
 x-scheme-handler/mid=userapp-Thunderbird-SJ2821.desktop
 video/x-msvideo=mpv.desktop
+x-scheme-handler/discord-424004941485572097=discord-424004941485572097.desktop
 
 [Added Associations]
 x-scheme-handler/https=userapp-Firefox-NVLWI0.desktop;librewolf.desktop;firefox.desktop;
