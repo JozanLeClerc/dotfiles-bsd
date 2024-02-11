@@ -77,7 +77,7 @@ $sleep
 startif $xscr
 $sleep
 doas rc-service wireguard start &&
-	notify-send -u normal 'wireguard' 'wireguard started'
+	notify-send -u normal 'wireguard' 'WireGuard started'
 $sleep
 startif tint2
 $sleep
