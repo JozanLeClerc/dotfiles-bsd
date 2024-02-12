@@ -39,19 +39,6 @@ return require('packer').startup({function(use)
 	use 'theniceboy/nvim-deus'
 	use 'savq/melange-nvim'
 	use 'tpope/vim-fugitive'
-	use({
-		"kylechui/nvim-surround",
-		requires = {
-			{'nvim-treesitter/nvim-treesitter'},
-			{'nvim-treesitter/nvim-treesitter-textobjects'},
-		},
-		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-		config = function()
-			require("nvim-surround").setup({
-				-- Configuration here, or leave empty to use defaults
-			})
-		end
-	})
 	-- use 'tpope/vim-surround'
 	use 'nvim-lualine/lualine.nvim'
 	-- use 'voldikss/vim-floaterm'
@@ -157,6 +144,30 @@ return require('packer').startup({function(use)
 		'alanfortlink/blackjack.nvim',
 		requires = {'nvim-lua/plenary.nvim'},
 	}
+	use({
+		"kylechui/nvim-surround",
+		requires = {
+			{'nvim-treesitter/nvim-treesitter'},
+			{'nvim-treesitter/nvim-treesitter-textobjects'},
+		},
+		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end
+	})
+	use({
+		'ggandor/leap.nvim',
+		requires = {'tpope/vim-repeat'},
+		config = function()
+			require('leap').setup({})
+			vim.keymap.set({'n', 'x', 'o'}, '<leader>s', '<Plug>(leap-forward-to)')
+			vim.keymap.set({'n', 'x', 'o'}, '<leader>S', '<Plug>(leap-backward-to)')
+			vim.keymap.set({'n', 'x', 'o'}, '<C-s>', '<Plug>(leap-forward-till)')
+			vim.keymap.set({'n', 'x', 'o'}, '<C-S-s>', '<Plug>(leap-backward-till)')
+		end
+	})
 end,
 	config = {
 		display = {
