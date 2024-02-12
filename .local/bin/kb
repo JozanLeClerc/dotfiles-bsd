@@ -47,7 +47,7 @@
 xset r rate 200 150
 setxkbmap -option
 setxkbmap -layout us -variant intl
-if [ "$(hostname -s)" = "po-rbo" ]; then
+if [ "$(hostname -s)" = "motherqwe" ]; then
 	setxkbmap -option ctrl:swapcaps
 	setxkbmap -option caps:none
 	xmodmap -e 'keycode 9 = Tab'
