@@ -111,7 +111,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 
 [window]
 decorations = "full"
-opacity = 0.92
+opacity = 0.85
 title = "Alacritty"
 
 [window.class]
