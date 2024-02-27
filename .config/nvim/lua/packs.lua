@@ -26,10 +26,10 @@ return require('packer').startup({function(use)
 			require('Comment').setup()
 		end
 	}
-	use {
-		'nvim-tree/nvim-tree.lua',
-		requires = {'nvim-tree/nvim-web-devicons'}
-	}
+	-- use {
+	-- 	'nvim-tree/nvim-tree.lua',
+	-- 	requires = {'nvim-tree/nvim-web-devicons'}
+	-- }
 	use 'mbbill/undotree'
 	-- use 'brglng/vim-sidebar-manager'
 	use 'ellisonleao/gruvbox.nvim'
