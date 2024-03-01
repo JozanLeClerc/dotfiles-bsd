@@ -216,7 +216,7 @@ update() {
 			git -C $HOME/.local/packs/neovim fetch --tags --all --force
 			git -C $HOME/.local/packs/neovim checkout nightly
 			make -C $HOME/.local/packs/neovim CMAKE_BUILD_TYPE=Release
-			doas -C $HOME/.local/packs/neovim make install distclean
+			doas make -C $HOME/.local/packs/neovim install distclean
 			;;
 		mars)
 			doas pkg update && doas pkg upgrade

@@ -39,7 +39,7 @@ vim.keymap.set('n', '<M-3>', function() harpoon:list():select(3) end)
 vim.keymap.set('n', '<M-4>', function() harpoon:list():select(4) end)
 
 -- normal
-vim.keymap.set('n', '<leader>d', ':bd<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>d', ':bn|:bd#<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>D', '"-ddk:put = strftime(\' * %a %b %d %T %Y\')<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>k',  ':w<CR>:bp<CR>:bd #<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>u',  vim.cmd.UndotreeToggle, { noremap = true, silent = true })
