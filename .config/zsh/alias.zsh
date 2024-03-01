@@ -16,7 +16,7 @@ alias eza='eza --color=always --group-directories-first --icons' \
 tree() {
 	eza -T $@ | $PAGER
 }
-alias hf='cd dev/go/hardflip'
+alias hf='cd ~/dev/go/hardflip'
 alias \
 	e='editorcmd' \
 	vim='nvim' \
@@ -211,6 +211,12 @@ update() {
 			doas apt update && doas apt dist-upgrade
 			nix-channel --update
 			nix-env -u
+			git -C $HOME/.local/packs/neovim checkout master
+			git -C $HOME/.local/packs/neovim pull
+			git -C $HOME/.local/packs/neovim fetch --tags --all --force
+			git -C $HOME/.local/packs/neovim checkout nightly
+			make -C $HOME/.local/packs/neovim CMAKE_BUILD_TYPE=Release
+			doas -C $HOME/.local/packs/neovim make install distclean
 			;;
 		mars)
 			doas pkg update && doas pkg upgrade
