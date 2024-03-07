@@ -145,6 +145,17 @@ econf() {
 	$VISUAL $sc
 	cd $p
 }
+de() {
+	p=$(pwd)
+	cd "$HOME"/dev || return
+	sc=$(fzf --preview='head -$FZF_PREVIEW_LINES {}')
+	if [ ! "$sc" ]; then
+		cd $p
+		return
+	fi
+	$VISUAL $sc
+	cd $p
+}
 eebin() {
 	file=$(find "$HOME"/.local/bin -type f | fzf)
 	[ $? -ne 0 ] && return
