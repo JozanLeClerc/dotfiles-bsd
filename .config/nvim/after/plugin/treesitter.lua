@@ -13,6 +13,7 @@ require'nvim-treesitter.configs'.setup {
 		'regex',
 		'markdown',
 		'markdown_inline',
+		'terraform',
 		'comment',
 	},
 
