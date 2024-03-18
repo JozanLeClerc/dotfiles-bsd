@@ -61,6 +61,7 @@ alias \
 	free='freecolor' \
 	gt='gpg-tui' \
 	lg='lazygit' \
+	tf='terraform' \
 	gjdo="$HOME/dev/perl/gitjoe-scripts/gitjoe-do.pl" \
 	ddgit='git --git-dir=$HOME/docs/redot --work-tree=$HOME' \
 	dgit='git --git-dir=$HOME/docs/dotfiles-bsd --work-tree=$HOME' \
