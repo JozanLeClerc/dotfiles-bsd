@@ -13,6 +13,7 @@ use constant PROG_LIST	=> "" .
 "Web browser"				. "\n" .
 "Mail client"				. "\n" .
 "--- Accessories ---"		. "\n" .
+"Arduino"					. "\n" .
 "Qalculate!"				. "\n" .
 "Kleopatra"					. "\n" .
 "Transmission"				. "\n" .
@@ -83,6 +84,9 @@ sub run
 		}
 		case "Mail client" {
 			exec("thunderbird");
+		}
+		case "Arduino" {
+			exec("arduino");
 		}
 		case "Qalculate!" {
 			exec("qalculate-gtk");
