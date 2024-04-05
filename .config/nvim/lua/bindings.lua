@@ -45,7 +45,7 @@ vim.keymap.set('n', '<leader>k',  ':w<CR>:bp<CR>:bd #<CR>', { noremap = true, si
 vim.keymap.set('n', '<leader>u',  vim.cmd.UndotreeToggle, { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>u', ':w<CR>', { noremap = true, silent = true })
 -- harpoon
-vim.keymap.set('n', '<leader>aa', function() harpoon:list():append() end, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>aa', function() harpoon:list():add() end, { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>ae', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>af', ':Telescope harpoon marks<CR>', { noremap = true, silent = true })
 -- trouble
