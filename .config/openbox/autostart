@@ -43,6 +43,8 @@ case $(hostname -s) in
 		;;
 esac
 
+doas mkdir /var/run/jozan && doas chown -v jozan: /var/run/jozan
+
 $ping && git --git-dir="$HOME"/docs/dotfiles-bsd --work-tree="$HOME" pull
 
 startif() {
