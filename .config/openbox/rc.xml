@@ -410,12 +410,12 @@
     </keybind>
     <keybind key="W-F3">
       <action name="Execute">
-        <command>librewolf</command>
+        <command>firefox</command>
       </action>
     </keybind>
     <keybind key="W-S-F3">
       <action name="Execute">
-        <command>torify iridium-browser --force-dark-mode</command>
+        <command>torify librewolf --force-dark-mode</command>
       </action>
     </keybind>
     <keybind key="W-F4">
@@ -978,7 +978,7 @@
   # order that they appear in this list
 
 
-    # each rule element can be left out or set to 'default' to specify to not 
+    # each rule element can be left out or set to 'default' to specify to not
     # change that attribute of the window
 
     <decor>yes</decor>
