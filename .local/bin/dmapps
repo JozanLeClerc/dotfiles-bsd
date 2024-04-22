@@ -80,7 +80,7 @@ sub run
 			exec("pcmanfm");
 		}
 		case "Web browser" {
-			exec("librewolf");
+			exec("firefox");
 		}
 		case "Mail client" {
 			exec("thunderbird");
