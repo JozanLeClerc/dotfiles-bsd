@@ -24,7 +24,7 @@ alias \
 	less='less --tabs 4' \
 	bc='bc -l' \
 	mkc='gmake clean' \
-	mk='gmake -j12' \
+	mk='gmake -j20' \
 	mkr='gmake -j12 run' \
 	bmkc='make clean' \
 	bmk='make -j12' \
