@@ -4,7 +4,7 @@
 files = [
 	# '/home/jozan/mu/rock/grunge/alice_in_chains/1992_dirt/01_them_bones.flac',
 	#	'/home/jozan/mu/rock/stoner_rock/slo_burn/1997_amusing_the_amazing_ep/02_muezli.flac'
-	#'/home/jozan/mu/rock/stoner_rock/slo_burn/1997_amusing_the_amazing_ep/03_pilot_the_dune.flac'
+	'/home/jozan/mu/rock/stoner_rock/slo_burn/1997_amusing_the_amazing_ep/03_pilot_the_dune.flac'
 	# '/usr/local/hdd/jozan/dl/Songs Of Anarchy/2015 Songs of Anarchy：Vol. 4 (US, 88875 06146 2)/05 Billy Valentine & The Forest Rangers - All Along The Watchtower.flac',
 	# 'dl/Songs Of Anarchy/2011 Songs of Anarchy：Music From Sons of Anarchy Seasons 1-4 (US, 88691 91432 2)/09 Paul Brady & The Forest Rangers - Gimme Shelter.flac',
 	# '/home/jozan/mu/ost/mick_gordon/2020_doom_eternal_original_game_soundtrack/54_meathook.flac',
@@ -13,7 +13,7 @@ files = [
 #	'/home/jozan/mu/metal/technical_death_metal/gojira/2016_magma/04_stranded.flac',
 	# '/home/jozan/mu/metal/technical_death_metal/gojira/2005_form_mars_to_sirius/02_backbone.flac',
 #	'/usr/home/jozan/mu/metal/technical_death_metal/ulcerate/2011_the_destroyers_of_all/07_the_destroyers_of_all.flac',
-	'/home/jozan/mu/rock/grunge/nirvana/2011_nevermind_20th_anniversary_deluxe_edition/cd_1/04_breed.flac',
+	#'/home/jozan/mu/rock/grunge/nirvana/2011_nevermind_20th_anniversary_deluxe_edition/cd_1/04_breed.flac',
 	# '/home/jozan/mu/rock/grunge/alice_in_chains/1990_facelift/02_man_in_the_box.flac',
 	# '/var/hdd/files/mu/rock/grunge/alice_in_chains/1992_dirt/11_angry_chair.flac',
 #	'/var/hdd/files/mu/rock/grunge/soundgarden/1994_superunknown/04_mailman.flac',
