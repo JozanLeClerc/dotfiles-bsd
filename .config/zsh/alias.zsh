@@ -16,7 +16,7 @@ alias eza='eza --color=always --group-directories-first --icons' \
 tree() {
 	eza -T $@ | $PAGER
 }
-alias hf='cd ~/dev/go/hardflip'
+alias hff='cd ~/dev/go/hardflip'
 alias \
 	e='editorcmd' \
 	vim='nvim' \

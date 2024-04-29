@@ -113,9 +113,9 @@
 # NOTE: It might be helpful to run dunst -print in a terminal in order
 # to find fitting options for rules.
 
-# [espeak]			# >shutup
-#    summary = "*"	# >shutup
-#    script = /home/jozan/.local/bin/dunst_espeak.sh	# >shutup
+ [espeak]			# >shutup
+    summary = "*"	# >shutup
+    script = /home/jozan/.local/bin/dunst_espeak.sh	# >shutup
 
 #[script-test]
 #    summary = "*script*"
