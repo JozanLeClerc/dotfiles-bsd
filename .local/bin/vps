@@ -1,6 +1,6 @@
 #!/bin/sh
 
-serv_addr="95.179.223.82"
+serv_addr="10.10.10.6"
 serv_port="10022"
 
 # joe-www
