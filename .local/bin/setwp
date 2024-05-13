@@ -39,6 +39,8 @@ sub set_wp
 	system(
 		FEH_PATH,
 		'--no-fehbg',
+		'--image-bg',
+		'#1d2021',
 		'--bg-fill',
 		$wp,
 		'--bg-fill',

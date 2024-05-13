@@ -12,7 +12,7 @@ return require('packer').startup({function(use)
 		'windwp/nvim-autopairs',
 		config = function() require('nvim-autopairs').setup {} end
 	}
-	use 'jiangmiao/auto-pairs'
+	-- use 'jiangmiao/auto-pairs'
 	-- use 'folke/which-key.nvim'
 	use 'lewis6991/gitsigns.nvim'
 	-- use 'mhinz/vim-startify'
@@ -56,7 +56,8 @@ return require('packer').startup({function(use)
 		run = function()
 			local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
 			ts_update()
-		end,}
+		end,
+	}
 	use {
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v3.x',
@@ -130,20 +131,14 @@ return require('packer').startup({function(use)
 			})
 		end
 	})
-	use({
-		"tadmccorkle/markdown.nvim",
-		config = function()
-			require("markdown").setup({
-				-- configuration here or empty for defaults
-			})
-		end,
-	})
-	use 'alec-gibson/nvim-tetris'
-	use 'seandewar/nvimesweeper'
-	use {
-		'alanfortlink/blackjack.nvim',
-		requires = {'nvim-lua/plenary.nvim'},
-	}
+--	use({
+--		"tadmccorkle/markdown.nvim",
+--		config = function()
+--			require("markdown").setup({
+--				-- configuration here or empty for defaults
+--			})
+--		end,
+--	})
 	use({
 		"kylechui/nvim-surround",
 		requires = {
@@ -167,7 +162,7 @@ return require('packer').startup({function(use)
 			vim.keymap.set({'n', 'x', 'o'}, '<C-s>', '<Plug>(leap-forward-till)')
 			vim.keymap.set({'n', 'x', 'o'}, '<C-S-s>', '<Plug>(leap-backward-till)')
 		end
-	})
+	 })
 end,
 	config = {
 		display = {
