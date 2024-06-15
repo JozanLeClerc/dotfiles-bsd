@@ -17,24 +17,30 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
 end)
 
-require('mason').setup({})
-require('mason-lspconfig').setup({
-	ensure_installed = {
-		'tsserver',
-		'eslint',
-		'rust_analyzer',
-		'lua_ls',
-		'gopls',
-		'arduino_language_server',
-		'bashls',
-		'perlnavigator',
+require('mason').setup({
+	servers = {
 		'clangd',
-		'yamlls',
 	},
-  handlers = {
-    lsp.default_setup,
-  },
 })
+
+
+-- require('mason-lspconfig').setup({
+-- 	ensure_installed = {
+-- 		'tsserver',
+-- 		'eslint',
+-- 		'rust_analyzer',
+-- 		'lua_ls',
+-- 		'gopls',
+-- 		'arduino_language_server',
+-- 		'bashls',
+-- 		'perlnavigator',
+-- 		'clangd',
+-- 		'yamlls',
+-- 	},
+--   handlers = {
+--     lsp.default_setup,
+--   },
+-- })
 
 -- langs
 
@@ -55,6 +61,14 @@ require('lspconfig').gopls.setup({
 				inline = true,
 			},
 			gofumpt = true,
+		},
+	},
+})
+
+require('lspconfig').clangd.setup({
+	settings = {
+		clangd = {
+			mason = false,
 		},
 	},
 })
