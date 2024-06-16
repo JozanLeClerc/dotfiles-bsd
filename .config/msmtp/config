@@ -7,7 +7,7 @@ logfile /home/jozan/.config/msmtp/msmtp.log
 account gmx_rbo
   host mail.gmx.com
   port 587
-  from Rudy Bousset
+  from rbo@gmx.us
   user rbo@gmx.us
   passwordeval "pass show mutt/gmx_rbo"
 
