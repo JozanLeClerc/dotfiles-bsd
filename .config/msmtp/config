@@ -4,6 +4,13 @@ tls	on
 tls_trust_file	/etc/ssl/cert.pem
 logfile /home/jozan/.config/msmtp/msmtp.log
 
+account gmx_rbo
+  host mail.gmx.com
+  port 587
+  from Rudy Bousset
+  user rbo@gmx.us
+  passwordeval "pass show mutt/gmx_rbo"
+
 account gmail_br
   host smtp.gmail.com
   port 587
@@ -25,23 +32,23 @@ account gmail_tos
   user towerofsilence777@gmail.com
   passwordeval "pass show mutt/gmail_tos"
 
-account ss_perso
-  host next.optimails.com
-  port 587
-  from rbousset@secuserve.com
-  user rbousset@secuserve.com
-  passwordeval "pass show mutt/ss_perso"
-
-account ss_exploit
-  host next.optimails.com
-  port 587
-  from Team Exploitation SecuServe
-  user exploitation@secuserve.com
-  passwordeval "pass show mutt/ss_exploit"
-
-account ss_support
-  host next.optimails.com
-  port 587
-  from support@secuserve.com
-  user support@secuserve.com
-  passwordeval "pass show mutt/ss_support"
+# account ss_perso
+#   host next.optimails.com
+#   port 587
+#   from rbousset@secuserve.com
+#   user rbousset@secuserve.com
+#   passwordeval "pass show mutt/ss_perso"
+#
+# account ss_exploit
+#   host next.optimails.com
+#   port 587
+#   from Team Exploitation SecuServe
+#   user exploitation@secuserve.com
+#   passwordeval "pass show mutt/ss_exploit"
+#
+# account ss_support
+#   host next.optimails.com
+#   port 587
+#   from support@secuserve.com
+#   user support@secuserve.com
+#   passwordeval "pass show mutt/ss_support"

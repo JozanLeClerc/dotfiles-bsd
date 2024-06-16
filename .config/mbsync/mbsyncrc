@@ -1,12 +1,38 @@
 # vim filetype=conf
-IMAPStore main-remote
-Host 127.0.0.1
-Port 1143
-User rrbo@proton.me
-PassCmd "pass show mutt/main"
-# AuthMechs LOGIN
-SSLType None
+
+#IMAPStore main-remote
+#Host 127.0.0.1
+#Port 1143
+#User rrbo@proton.me
+#PassCmd "pass show mutt/main"
+## AuthMechs LOGIN
+#SSLType None
 # CertificateFile /etc/ssl/cert.pem
+
+IMAPStore gmx_rbo-remote
+Host imap.gmx.com
+Port 993
+User rbo@gmx.us
+PassCmd "pass show mutt/gmx_rbo"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/cert.pem
+
+MaildirStore gmx_rbo-local
+SubFolders Verbatim
+Path /var/mail/jozan/gmx_rbo/
+Inbox /var/mail/jozan/gmx_rbo/INBOX
+
+Channel gmx_rbo
+Expunge Both
+Far :gmx_rbo-remote:
+Near :gmx_rbo-local:
+Patterns *
+Create Both
+SyncState *
+MaxMessages 0
+ExpireUnread no
+# End profile
 
 IMAPStore gmail_br-remote
 Host imap.gmail.com
@@ -83,77 +109,77 @@ MaxMessages 0
 ExpireUnread no
 # End profile
 
-IMAPStore ss_perso-remote
-Host next.optimails.com
-Port 993
-User rbousset@secuserve.com
-PassCmd "pass show mutt/ss_perso"
-AuthMechs LOGIN
-SSLType IMAPS
-CertificateFile /etc/ssl/cert.pem
-
-MaildirStore ss_perso-local
-SubFolders Verbatim
-Path /var/mail/jozan/ss_perso/
-Inbox /var/mail/jozan/ss_perso/INBOX
-
-Channel ss_perso
-Expunge Both
-Far :ss_perso-remote:
-Near :ss_perso-local:
-Patterns *
-Create Both
-SyncState *
-MaxMessages 0
-ExpireUnread no
-# End profile
-
-IMAPStore ss_exploit-remote
-Host next.optimails.com
-Port 993
-User exploitation@secuserve.com
-PassCmd "pass show mutt/ss_exploit"
-AuthMechs LOGIN
-SSLType IMAPS
-CertificateFile /etc/ssl/cert.pem
-
-MaildirStore ss_exploit-local
-SubFolders Verbatim
-Path /var/mail/jozan/ss_exploit/
-Inbox /var/mail/jozan/ss_exploit/INBOX
-
-Channel ss_exploit
-Expunge Both
-Far :ss_exploit-remote:
-Near :ss_exploit-local:
-Patterns *
-Create Both
-SyncState *
-MaxMessages 0
-ExpireUnread no
-# End profile
-
-IMAPStore ss_support-remote
-Host next.optimails.com
-Port 993
-User support@secuserve.com
-PassCmd "pass show mutt/ss_support"
-AuthMechs LOGIN
-SSLType IMAPS
-CertificateFile /etc/ssl/cert.pem
-
-MaildirStore ss_support-local
-SubFolders Verbatim
-Path /var/mail/jozan/ss_support/
-Inbox /var/mail/jozan/ss_support/INBOX
-
-Channel ss_support
-Expunge Both
-Far :ss_support-remote:
-Near :ss_support-local:
-Patterns *
-Create Both
-SyncState *
-MaxMessages 0
-ExpireUnread no
-# End profile
+# IMAPStore ss_perso-remote
+# Host next.optimails.com
+# Port 993
+# User rbousset@secuserve.com
+# PassCmd "pass show mutt/ss_perso"
+# AuthMechs LOGIN
+# SSLType IMAPS
+# CertificateFile /etc/ssl/cert.pem
+#
+# MaildirStore ss_perso-local
+# SubFolders Verbatim
+# Path /var/mail/jozan/ss_perso/
+# Inbox /var/mail/jozan/ss_perso/INBOX
+#
+# Channel ss_perso
+# Expunge Both
+# Far :ss_perso-remote:
+# Near :ss_perso-local:
+# Patterns *
+# Create Both
+# SyncState *
+# MaxMessages 0
+# ExpireUnread no
+# # End profile
+#
+# IMAPStore ss_exploit-remote
+# Host next.optimails.com
+# Port 993
+# User exploitation@secuserve.com
+# PassCmd "pass show mutt/ss_exploit"
+# AuthMechs LOGIN
+# SSLType IMAPS
+# CertificateFile /etc/ssl/cert.pem
+#
+# MaildirStore ss_exploit-local
+# SubFolders Verbatim
+# Path /var/mail/jozan/ss_exploit/
+# Inbox /var/mail/jozan/ss_exploit/INBOX
+#
+# Channel ss_exploit
+# Expunge Both
+# Far :ss_exploit-remote:
+# Near :ss_exploit-local:
+# Patterns *
+# Create Both
+# SyncState *
+# MaxMessages 0
+# ExpireUnread no
+# # End profile
+#
+# IMAPStore ss_support-remote
+# Host next.optimails.com
+# Port 993
+# User support@secuserve.com
+# PassCmd "pass show mutt/ss_support"
+# AuthMechs LOGIN
+# SSLType IMAPS
+# CertificateFile /etc/ssl/cert.pem
+#
+# MaildirStore ss_support-local
+# SubFolders Verbatim
+# Path /var/mail/jozan/ss_support/
+# Inbox /var/mail/jozan/ss_support/INBOX
+#
+# Channel ss_support
+# Expunge Both
+# Far :ss_support-remote:
+# Near :ss_support-local:
+# Patterns *
+# Create Both
+# SyncState *
+# MaxMessages 0
+# ExpireUnread no
+# # End profile

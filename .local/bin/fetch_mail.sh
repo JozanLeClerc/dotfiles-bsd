@@ -4,8 +4,8 @@ set -f
 set +f
 set -m
 
-export GNUPGHOME=/home/jozan/.local/share/gnupg
-export PASSWORD_STORE_DIR=/home/jozan/.local/share/pass 
+export GNUPGHOME=$HOME/.local/share/gnupg
+export PASSWORD_STORE_DIR=$HOME/.local/share/pass
 
 mc_file="/tmp/newmailcount"
 if [ -f $mc_file ]; then
